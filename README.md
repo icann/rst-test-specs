@@ -10,6 +10,6 @@ Each *test plan* includes one or more *test suites* which in turn include
 one or more *test cases*. For a test to succeed, every test case has to pass.
 
 `rst-test-specs.yaml` describes each test plan, suite and case in the RST system
-in a machine-readable format, suitable for (a) version tracking, (b) automatically
-generating documentation, and (c) orchestrating registry system testing in a
-reliable and repeatable way.
+in a machine-readable format, suitable for version tracking and reliable and
+repeatable (a) documentation generation, (b) code generation, and (c)
+orchestrating registry system testing.
