@@ -13,3 +13,6 @@ one or more *test cases*. For a test to succeed, every test case has to pass.
 in a machine-readable format, suitable for version tracking and reliable and
 repeatable (a) documentation generation, (b) code generation, and (c)
 orchestrating registry system testing.
+
+The business rationale for Registry System Testing originates in [Section 5.2 of
+the Applicant Guidebook](./AGB-5.2.md).
