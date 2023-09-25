@@ -1,5 +1,7 @@
 ## 5.2 Pre-Delegation Testing
 
+*The original source for this document is [Section 5.2 of the Applicant Guidebook](https://newgtlds.icann.org/en/applicants/agb/transition-delegation-04jun12-en.pdf).*
+
 Each applicant will be required to complete pre-delegation technical testing as a prerequisite to delegation into the root zone. This pre-delegation test must be completed within the time period specified in the registry agreement.
 
 The purpose of the pre-delegation technical test is to verify that the applicant has met its commitment to establish registry operations in accordance with the technical and operational criteria described in Module 2.
