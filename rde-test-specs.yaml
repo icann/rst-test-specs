@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan: 1.0
 Version: 2.0
-Last-Updated: 2023-09-21
+Last-Updated: 2023-09-26
 
 Preamble: |
   This file was assembled from a set of Word documents originally created by
@@ -27,336 +27,336 @@ Contact:
   Email: rst@icann.org
 
 Plans:
-    StandardPreDelegationTest:
-      Name: Standard PDT Test Plan
-      Description: |
-        ICANN (Internet Corporation for Assigned Names and Numbers) are now
-        allowing applications for new gTLDs (generic Top-Level Domains). All
-        applicants have to go through the evaluation process. One step in the
-        evaluation process is the Pre-Delegation Testing (PDT).
+  StandardPreDelegationTest:
+    Name: Standard PDT Test Plan
+    Description: |
+      ICANN (Internet Corporation for Assigned Names and Numbers) are now
+      allowing applications for new gTLDs (generic Top-Level Domains). All
+      applicants have to go through the evaluation process. One step in the
+      evaluation process is the Pre-Delegation Testing (PDT).
 
-        Only the test cases listed in this document will be included in a
-        Standard PDT Test. For details about a test case, refer to the relevant
-        Test Area Specification document.
+      Only the test cases listed in this document will be included in a
+      Standard PDT Test. For details about a test case, refer to the relevant
+      Test Area Specification document.
 
-        The purpose of the Pre-Delegation Testing is to verify that the
-        applicant has met its commitment to establish registry operations in
-        accordance with the technical and operational criteria described in the
-        gTLD Applicant Guidebook (AGB). Each applicant will be required to
-        complete Pre-Delegation Testing as a prerequisite to delegation into the
-        root zone.
+      The purpose of the Pre-Delegation Testing is to verify that the
+      applicant has met its commitment to establish registry operations in
+      accordance with the technical and operational criteria described in the
+      gTLD Applicant Guidebook (AGB). Each applicant will be required to
+      complete Pre-Delegation Testing as a prerequisite to delegation into the
+      root zone.
 
-      Test-Suites:
-        DNS:
-          - DNS01
-          - DNS02
-          - DNS03
-          - DNS04
-          - DNS05
-          - DNS06
-          - DNS07
-          - DNS08
-          - DNS09
-          - DNS10
-          - DNS11
-          - DNS12
-          - DNS14
-          - DNS15
-          - DNS16
-          - DNS17
-          - DNS18
-          - DNS19
-          - DNS20
-          - DNS21
-          - DNS23
-          - DNS24
-          - DNS25
-          - DNS26
-          - DNS27
-          - DNS28
-          - DNS29
-          - DNS30
-          - DNS31
-          - DNS32
-          - DNS33
-          - DNS34
-          - DNS35
-          - DNS36
+    Test-Suites:
+      DNS:
+        - DNS01
+        - DNS02
+        - DNS03
+        - DNS04
+        - DNS05
+        - DNS06
+        - DNS07
+        - DNS08
+        - DNS09
+        - DNS10
+        - DNS11
+        - DNS12
+        - DNS14
+        - DNS15
+        - DNS16
+        - DNS17
+        - DNS18
+        - DNS19
+        - DNS20
+        - DNS21
+        - DNS23
+        - DNS24
+        - DNS25
+        - DNS26
+        - DNS27
+        - DNS28
+        - DNS29
+        - DNS30
+        - DNS31
+        - DNS32
+        - DNS33
+        - DNS34
+        - DNS35
+        - DNS36
 
-        RDDS:
-          - WhoisCLI01 
-          - WhoisCLI02 
-          - WhoisCLI03 
-          - WhoisWeb01 
-          - WhoisWeb02 
-          - WhoisWeb03
-          - WhoisWeb04
-          - WhoisWeb05
-          - WhoisWeb09
-          - WhoisSearch00
-          - WhoisSearch01
-          - WhoisSearch02
-          - WhoisSearch03
-          - WhoisSearch04
-          - WhoisSearch09
+      RDDS:
+        - WhoisCLI01
+        - WhoisCLI02
+        - WhoisCLI03
+        - WhoisWeb01
+        - WhoisWeb02
+        - WhoisWeb03
+        - WhoisWeb04
+        - WhoisWeb05
+        - WhoisWeb09
+        - WhoisSearch00
+        - WhoisSearch01
+        - WhoisSearch02
+        - WhoisSearch03
+        - WhoisSearch04
+        - WhoisSearch09
 
-        EPP:
-          - EppConnTest
-          - EPPDomCreate01
-          - EPPDomCreate02
-          - EPPDomCreate03
-          - EPPDomRenew01
-          - EPPDomTransfer01
-          - EPPDomTransfer02
-          - EPPDomDelete01
-          - EPPConCreate01
-          - EPPConDelete01
-          - EPPHostDelete01
-          - EPPHostUpdate01
-          - EPPContactUpdate01
-          - EPPDomUpdate01
-          - EPPExtensions
+      EPP:
+        - EppConnTest
+        - EPPDomCreate01
+        - EPPDomCreate02
+        - EPPDomCreate03
+        - EPPDomRenew01
+        - EPPDomTransfer01
+        - EPPDomTransfer02
+        - EPPDomDelete01
+        - EPPConCreate01
+        - EPPConDelete01
+        - EPPHostDelete01
+        - EPPHostUpdate01
+        - EPPContactUpdate01
+        - EPPDomUpdate01
+        - EPPExtensions
 
-        IDN:
-          - IDNvalid00
-          - IDNvalid01
-          - IDNvalid02
-          - IDNvalid03
-          - IDNvalid04
-          - IDNvalid05
-          - IDNvalid06
-          - IDNvalid07
-          - IDNvalid09
-          - IDNvalid10
-          - IDNvalid11
-          - IDNvalid12
-          - IDNvalid13
+      IDN:
+        - IDNvalid00
+        - IDNvalid01
+        - IDNvalid02
+        - IDNvalid03
+        - IDNvalid04
+        - IDNvalid05
+        - IDNvalid06
+        - IDNvalid07
+        - IDNvalid09
+        - IDNvalid10
+        - IDNvalid11
+        - IDNvalid12
+        - IDNvalid13
 
-        RDE:
-          - DataEscrowFileName01
-          - DataEscrowFileName02
-          - DataEscrowVerify01
-          - DataEscrowVerify02
-          - DataEscrowContent01
-          - DataEscrowContent02
+      RDE:
+        - DataEscrowFileName01
+        - DataEscrowFileName02
+        - DataEscrowVerify01
+        - DataEscrowVerify02
+        - DataEscrowContent01
+        - DataEscrowContent02
 
-    StandardRSPChangeTest:
-      Name: Standard RSP Change Test Plan
-      Description: |
-        The RST Service Provider will test the technical infrastructure (DNS,
-        EPP, Whois, Data Escrow and IDN) and also review submitted documents
-        (IDN, Documentation).
-      Test-Suites:
-        DNS:
-          - DNS01
-          - DNS02
-          - DNS03
-          - DNS04
-          - DNS05
-          - DNS06
-          - DNS07
-          - DNS08
-          - DNS09
-          - DNS10
-          - DNS11
-          - DNS12
-          - DNS14
-          - DNS15
-          - DNS16
-          - DNS17
-          - DNS18
-          - DNS19
-          - DNS20
-          - DNS21
-          - DNS23
-          - DNS24
-          - DNS25
-          - DNS26
-          - DNS27
-          - DNS28
-          - DNS29
-          - DNS30
-          - DNS31
-          - DNS32
-          - DNS33
-          - DNS34
-          - DNS35
-          - DNS36
+  StandardRSPChangeTest:
+    Name: Standard RSP Change Test Plan
+    Description: |
+      The RST Service Provider will test the technical infrastructure (DNS,
+      EPP, Whois, Data Escrow and IDN) and also review submitted documents
+      (IDN, Documentation).
+    Test-Suites:
+      DNS:
+        - DNS01
+        - DNS02
+        - DNS03
+        - DNS04
+        - DNS05
+        - DNS06
+        - DNS07
+        - DNS08
+        - DNS09
+        - DNS10
+        - DNS11
+        - DNS12
+        - DNS14
+        - DNS15
+        - DNS16
+        - DNS17
+        - DNS18
+        - DNS19
+        - DNS20
+        - DNS21
+        - DNS23
+        - DNS24
+        - DNS25
+        - DNS26
+        - DNS27
+        - DNS28
+        - DNS29
+        - DNS30
+        - DNS31
+        - DNS32
+        - DNS33
+        - DNS34
+        - DNS35
+        - DNS36
 
-        RDDS:
-          - WhoisCLI01 
-          - WhoisCLI02 
-          - WhoisCLI03 
-          - WhoisWeb01 
-          - WhoisWeb02 
-          - WhoisWeb03
-          - WhoisWeb04
-          - WhoisWeb05
-          - WhoisWeb09
-          - WhoisSearch00
-          - WhoisSearch01
-          - WhoisSearch02
-          - WhoisSearch03
-          - WhoisSearch04
-          - WhoisSearch09
+      RDDS:
+        - WhoisCLI01
+        - WhoisCLI02
+        - WhoisCLI03
+        - WhoisWeb01
+        - WhoisWeb02
+        - WhoisWeb03
+        - WhoisWeb04
+        - WhoisWeb05
+        - WhoisWeb09
+        - WhoisSearch00
+        - WhoisSearch01
+        - WhoisSearch02
+        - WhoisSearch03
+        - WhoisSearch04
+        - WhoisSearch09
 
-        EPP:
-          - EppConnTest
-          - EPPDomCreate01
-          - EPPDomCreate02
-          - EPPDomCreate03
-          - EPPDomRenew01
-          - EPPDomTransfer01
-          - EPPDomTransfer02
-          - EPPDomDelete01
-          - EPPConCreate01
-          - EPPConDelete01
-          - EPPHostDelete01
-          - EPPHostUpdate01
-          - EPPContactUpdate01
-          - EPPDomUpdate01
-          - EPPExtensions
+      EPP:
+        - EppConnTest
+        - EPPDomCreate01
+        - EPPDomCreate02
+        - EPPDomCreate03
+        - EPPDomRenew01
+        - EPPDomTransfer01
+        - EPPDomTransfer02
+        - EPPDomDelete01
+        - EPPConCreate01
+        - EPPConDelete01
+        - EPPHostDelete01
+        - EPPHostUpdate01
+        - EPPContactUpdate01
+        - EPPDomUpdate01
+        - EPPExtensions
 
-        IDN:
-          - IDNvalid00
-          - IDNvalid01
-          - IDNvalid02
-          - IDNvalid03
-          - IDNvalid04
-          - IDNvalid05
-          - IDNvalid06
-          - IDNvalid07
-          - IDNvalid09
-          - IDNvalid10
-          - IDNvalid11
-          - IDNvalid12
-          - IDNvalid13
+      IDN:
+        - IDNvalid00
+        - IDNvalid01
+        - IDNvalid02
+        - IDNvalid03
+        - IDNvalid04
+        - IDNvalid05
+        - IDNvalid06
+        - IDNvalid07
+        - IDNvalid09
+        - IDNvalid10
+        - IDNvalid11
+        - IDNvalid12
+        - IDNvalid13
 
-        RDE:
-          - DataEscrowFileName01
-          - DataEscrowFileName02
-          - DataEscrowVerify01
-          - DataEscrowVerify02
-          - DataEscrowContent01
-          - DataEscrowContent02
+      RDE:
+        - DataEscrowFileName01
+        - DataEscrowFileName02
+        - DataEscrowVerify01
+        - DataEscrowVerify02
+        - DataEscrowContent01
+        - DataEscrowContent02
 
-    DNSRSPChangeTest:
-      Name: DNS RSP Change Test Plan
-      Description: |
-        The RST Service Provider will test the DNS technical infrastructure.
-      Test-Suites:
-        DNS:
-          - DNS02
-          - DNS03
-          - DNS04
-          - DNS07
-          - DNS08
-          - DNS10
-          - DNS11
-          - DNS12
-          - DNS14
-          - DNS15
-          - DNS16
-          - DNS17
-          - DNS19
-          - DNS20
-          - DNS21
-          - DNS23
-          - DNS24
-          - DNS25
-          - DNS26
-          - DNS27
-          - DNS31
-          - DNS32
-          - DNS33
-          - DNS36
+  DNSRSPChangeTest:
+    Name: DNS RSP Change Test Plan
+    Description: |
+      The RST Service Provider will test the DNS technical infrastructure.
+    Test-Suites:
+      DNS:
+        - DNS02
+        - DNS03
+        - DNS04
+        - DNS07
+        - DNS08
+        - DNS10
+        - DNS11
+        - DNS12
+        - DNS14
+        - DNS15
+        - DNS16
+        - DNS17
+        - DNS19
+        - DNS20
+        - DNS21
+        - DNS23
+        - DNS24
+        - DNS25
+        - DNS26
+        - DNS27
+        - DNS31
+        - DNS32
+        - DNS33
+        - DNS36
 
-    IDNTest:
-      Name: IDN RST Test Plan
-      Description: |
-        A Registry Operator may apply to ICANN to amend its Registry Agreement
-        for an already delegated TLD, to either offer new services or retract
-        services currently offered. If the requested amendment affects Registry
-        Operator’s support for IDN, an RST IDN test is called for before the
-        amendment can be authorized.
+  IDNTest:
+    Name: IDN RST Test Plan
+    Description: |
+      A Registry Operator may apply to ICANN to amend its Registry Agreement
+      for an already delegated TLD, to either offer new services or retract
+      services currently offered. If the requested amendment affects Registry
+      Operator’s support for IDN, an RST IDN test is called for before the
+      amendment can be authorized.
 
-        The purpose of an IDN RST test is to verify that the Registry Operator’s
-        registry system handles IDN registrations in accordance with the
-        submitted policy statements and IDN tables.
+      The purpose of an IDN RST test is to verify that the Registry Operator’s
+      registry system handles IDN registrations in accordance with the
+      submitted policy statements and IDN tables.
 
-        Only the test cases listed in this document will be included in an IDN
-        RST Test. For details about a test case, refer to the relevant Test Area
-        Specification document.
-      Test-Suites:
-        IDN:
-          - IDNvalid00
-          - IDNvalid01
-          - IDNvalid02
-          - IDNvalid03
-          - IDNvalid04
-          - IDNvalid05
-          - IDNvalid06
-          - IDNvalid07
-          - IDNvalid09
-          - IDNvalid10
-          - IDNvalid11
-          - IDNvalid12
-          - IDNvalid13
+      Only the test cases listed in this document will be included in an IDN
+      RST Test. For details about a test case, refer to the relevant Test Area
+      Specification document.
+    Test-Suites:
+      IDN:
+        - IDNvalid00
+        - IDNvalid01
+        - IDNvalid02
+        - IDNvalid03
+        - IDNvalid04
+        - IDNvalid05
+        - IDNvalid06
+        - IDNvalid07
+        - IDNvalid09
+        - IDNvalid10
+        - IDNvalid11
+        - IDNvalid12
+        - IDNvalid13
 
-    SRSGatewayTest:
-      Name: SRS Gateway Test Plan
-      Description: |
-        An SRS Gateway service is a Shared Registry System implementation that
-        acts as a proxy between a subset of Registrars and the Registry. It uses
-        a local cache to speed up EPP query commands, but forwards all EPP
-        transform commands to the TLD Registry System. TLD registries need to
-        deploy a proxy setup in order to operate in certain markets worldwide.
+  SRSGatewayTest:
+    Name: SRS Gateway Test Plan
+    Description: |
+      An SRS Gateway service is a Shared Registry System implementation that
+      acts as a proxy between a subset of Registrars and the Registry. It uses
+      a local cache to speed up EPP query commands, but forwards all EPP
+      transform commands to the TLD Registry System. TLD registries need to
+      deploy a proxy setup in order to operate in certain markets worldwide.
 
-        The purpose of an SRS Gateway Test is to verify that the Registry
-        Operator’s proxy setup operates in accordance with the technical and
-        operational criteria for EPP systems described in the gTLD Applicant
-        Guidebook (AGB). Furthermore, it must keep its own database synchronized
-        with that of the TLD registry.
+      The purpose of an SRS Gateway Test is to verify that the Registry
+      Operator’s proxy setup operates in accordance with the technical and
+      operational criteria for EPP systems described in the gTLD Applicant
+      Guidebook (AGB). Furthermore, it must keep its own database synchronized
+      with that of the TLD registry.
 
-        Only the test cases listed in this document will be included in an SRS
-        Gateway Test. For details about a test case, refer to the relevant Test
-        Area Specification document.
-      Test-Suites:
-        RDDS:
-          - SRSGWWhoisCLI01
-          - SRSGWWhoisCLI02
-          - SRSGWWhoisCLI03
+      Only the test cases listed in this document will be included in an SRS
+      Gateway Test. For details about a test case, refer to the relevant Test
+      Area Specification document.
+    Test-Suites:
+      RDDS:
+        - SRSGWWhoisCLI01
+        - SRSGWWhoisCLI02
+        - SRSGWWhoisCLI03
 
-        EPP:
-          - TLDSRSEPPConnTest
-          - TLDSRSEPPDomCreate01
-          - TLDSRSEPPDomCreate02
-          - TLDSRSEPPDomCreate03
-          - TLDSRSEPPDomRenew01
-          - TLDSRSEPPDomTransfer01
-          - TLDSRSEPPDomTransfer02
-          - TLDSRSEPPDomDelete01
-          - TLDSRSEPPConCreate01
-          - TLDSRSEPPConDelete01
-          - TLDSRSEPPHostDelete01
-          - TLDSRSEPPHostUpdate01
-          - TLDSRSEPPConUpdate01
-          - TLDSRSEPPDomUpdate01
-          - SRSGWAddrVer
-          - SRSGWConnTest
-          - SRSGWDomCreate01
-          - SRSGWDomCreate02
-          - SRSGWDomCreate03
-          - SRSGWDomRenew01
-          - SRSGWDomTransfer01
-          - SRSGWDomTransfer02
-          - SRSGWDomDelete01
-          - SRSGWConCreate01
-          - SRSGWConDelete01
-          - SRSGWHostDelete01
-          - SRSGWHostUpdate01
-          - SRSGWConUpdate01
-          - SRSGWDomUpdate01
+      EPP:
+        - TLDSRSEPPConnTest
+        - TLDSRSEPPDomCreate01
+        - TLDSRSEPPDomCreate02
+        - TLDSRSEPPDomCreate03
+        - TLDSRSEPPDomRenew01
+        - TLDSRSEPPDomTransfer01
+        - TLDSRSEPPDomTransfer02
+        - TLDSRSEPPDomDelete01
+        - TLDSRSEPPConCreate01
+        - TLDSRSEPPConDelete01
+        - TLDSRSEPPHostDelete01
+        - TLDSRSEPPHostUpdate01
+        - TLDSRSEPPConUpdate01
+        - TLDSRSEPPDomUpdate01
+        - SRSGWAddrVer
+        - SRSGWConnTest
+        - SRSGWDomCreate01
+        - SRSGWDomCreate02
+        - SRSGWDomCreate03
+        - SRSGWDomRenew01
+        - SRSGWDomTransfer01
+        - SRSGWDomTransfer02
+        - SRSGWDomDelete01
+        - SRSGWConCreate01
+        - SRSGWConDelete01
+        - SRSGWHostDelete01
+        - SRSGWHostUpdate01
+        - SRSGWConUpdate01
+        - SRSGWDomUpdate01
 
 Test-Cases:
   DNS01:
@@ -378,13 +378,13 @@ Test-Cases:
         Id                        Description                     Type
         ------------------------- ------------------------------- ------------
         TLD                       The ASCII compatible name of    String
-                                  the TLD                         
+                                  the TLD
 
         DnsNameServer-\[1..n\]    FQDN of authoritative name      String
-                                  server                          
+                                  server
 
         DnsGlueRecord-\[1..n\]    All IPv4 or IPv6 addresses for  String
-                                  auth NS                         
+                                  auth NS
         ----------------------------------------------------------------------
 
       The above input is also considered to be the exact same information that
@@ -991,23 +991,23 @@ Test-Cases:
         Id                          Description                     Type
         --------------------------- ------------------------------- ------------
         TLD                         The ASCII compatible name of    String
-                                    the TLD                         
+                                    the TLD
 
         DnsKeyDigest-\[1..n\]       The digest (DS) of the DNSKEY   String
 
         DnsKeyTag-\[1..n\]          The key tag of the DNSKEY       Number
 
         DnsKeyAlgorithm-\[1..n\]    The algorithm number of the     Number
-                                    DNSKEY                          
+                                    DNSKEY
 
         DnsKeyDigestType-\[1..n\]   The digest type number of the   Number
-                                    DS                              
+                                    DS
 
         DnsNameServer-\[1..n\]      FQDN of authoritative name      String
-                                    server                          
+                                    server
 
         DnsGlueRecord-\[1..n\]      All IPv4 or IPv6 addresses for  String
-                                    auth NS                         
+                                    auth NS
         ------------------------------------------------------------------------
 
       The above input parameters are not the name server delegation data, but
@@ -1114,27 +1114,27 @@ Test-Cases:
         Id                          Description                     Type
         --------------------------- ------------------------------- ------------
         TLD                         The ASCII compatible name of    String
-                                    the TLD                         
+                                    the TLD
 
         DnsKeyDigest-\[1..n\]       The digest (DS) of the DNSKEY   String
 
         DnsKeyTag-\[1..n\]          The key tag of the DNSKEY       Number
 
         DnsKeyAlgorithm-\[1..n\]    The algorithm number of the     Number
-                                    DNSKEY                          
+                                    DNSKEY
 
         DnsKeyDigestType-\[1..n\]   The digest type number of the   Number
-                                    DS                              
+                                    DS
 
         DnsNameServer-\[1..n\]      FQDN of authoritative name      String
-                                    server                          
+                                    server
 
         DnsGlueRecord-\[1..n\]      All IPv4 or IPv6 addresses for  String
-                                    auth NS                         
+                                    auth NS
 
         SubDomain                   A delegated domain with NS and  String
-                                    DS records published in the TLD 
-                                    zone                            
+                                    DS records published in the TLD
+                                    zone
         ------------------------------------------------------------------------
 
       The above input is also considered to be the exact same information that
@@ -1653,17 +1653,17 @@ Test-Cases:
         Id                        Description                     Type
         ------------------------- ------------------------------- ------------
         TLD                       The ASCII compatible name of    String
-                                  the TLD                         
+                                  the TLD
 
         DnsNameServer-\[1..n\]    FQDN of authoritative name      String
-                                  server                          
+                                  server
 
         DnsGlueRecord-\[1..n\]    All IPv4 or IPv6 addresses for  String
-                                  auth NS                         
+                                  auth NS
 
         SubDomain                 A delegated domain with NS and  String
-                                  DS records published in the TLD 
-                                  zone                            
+                                  DS records published in the TLD
+                                  zone
         ----------------------------------------------------------------------
 
       The above input is also considered to be the exact same information that
@@ -1709,13 +1709,13 @@ Test-Cases:
         Id                        Description                     Type
         ------------------------- ------------------------------- ------------
         TLD                       The ASCII compatible name of    String
-                                  the TLD                         
+                                  the TLD
 
         DnsNameServer-\[1..n\]    FQDN of authoritative name      String
-                                  server                          
+                                  server
 
         DnsGlueRecord-\[1..n\]    All IPv4 or IPv6 addresses for  String
-                                  auth NS                         
+                                  auth NS
         ----------------------------------------------------------------------
 
       The above input is also considered to be the exact same information that
@@ -2071,10 +2071,10 @@ Test-Cases:
         Id                      Description                         Type
         ----------------------- ----------------------------------- ------------
         TLD                     The ASCII compatible name of the    String
-                                TLD                                 
+                                TLD
 
         DataFileFull-\[1..n\]   The files containing the full       Files
-                                deposit                             
+                                deposit
 
         DataSigFull-\[1..n\]    The files containing the signature  Files
         ------------------------------------------------------------------------
@@ -2163,10 +2163,10 @@ Test-Cases:
         Id                      Description                         Type
         ----------------------- ----------------------------------- ------------
         TLD                     The ASCII compatible name of the    String
-                                TLD                                 
+                                TLD
 
         DataFileDiff-\[1..n\]   The files containing the            Files
-                                differential deposit                
+                                differential deposit
 
         DataSigDiff-\[1..n\]    The files containing the signature  Files
         ------------------------------------------------------------------------
@@ -2254,12 +2254,12 @@ Test-Cases:
         Id                      Description                         Type
         ----------------------- ----------------------------------- ------------
         DataFileFull-\[1..n\]   The files containing the full       Files
-                                deposit                             
+                                deposit
 
         DataSigFull-\[1..n\]    The files containing the signature  Files
 
         DataRegPubKey           The public key used for             File
-                                verification                        
+                                verification
         ------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -2356,12 +2356,12 @@ Test-Cases:
         Id                      Description                         Type
         ----------------------- ----------------------------------- ------------
         DataFileDiff-\[1..n\]   The files containing the            Files
-                                differential deposit                
+                                differential deposit
 
         DataSigDiff-\[1..n\]    The files containing the signature  Files
 
         DataRegPubKey           The public key used for             File
-                                verification                        
+                                verification
         ------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -2453,11 +2453,11 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         DataFileFull           The unencrypted file containing the File
-                               full deposit                        
+                               full deposit
 
         DataProfile            The data escrow profile described   XML file
-                               using W3C XML Schema. Provided by   
-                               ICANN.                              
+                               using W3C XML Schema. Provided by
+                               ICANN.
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -2516,11 +2516,11 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         DataFileDiff           The unencrypted file containing the File
-                               differential deposit                
+                               differential deposit
 
         DataProfile            The data escrow profile described   XML file
-                               using W3C XML Schema. Provided by   
-                               ICANN.                              
+                               using W3C XML Schema. Provided by
+                               ICANN.
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -2581,7 +2581,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -2686,7 +2686,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -2752,7 +2752,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -2824,7 +2824,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -2892,7 +2892,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -2957,7 +2957,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3023,7 +3023,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3099,10 +3099,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         XMLFile                Description of Registry Operator's  Files
-                               DNS environment in XML format       
+                               DNS environment in XML format
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -3168,7 +3168,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3249,7 +3249,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3313,7 +3313,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3377,7 +3377,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3449,7 +3449,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3507,7 +3507,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         -----------------------------------------------------------------------
 
@@ -3560,14 +3560,14 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         DataEscrowAgreement    The data escrow agreement between   Document
-                               Registry Operator and data escrow   
-                               agent                               
+                               Registry Operator and data escrow
+                               agent
 
         LetterOfCompliance     A letter of compliance from either  Document
-                               the data escrow agent or ICANN      
+                               the data escrow agent or ICANN
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -3665,10 +3665,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         Specification 10       Specification 10 of the Registry    Documents
-                               Agreement                           
+                               Agreement
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -3754,10 +3754,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         Specification 10       Specification 10 of the Registry    Documents
-                               Agreement                           
+                               Agreement
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -3831,10 +3831,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDSelfCert           The submitted self-certification    Documents
-                               documentation                       
+                               documentation
 
         Specification 10       Specification 10 of the Registry    Documents
-                               Agreement                           
+                               Agreement
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -3868,7 +3868,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDDPS                The submitted DNSSEC Practice       Document
-                               Statement                           
+                               Statement
 
         -----------------------------------------------------------------------
 
@@ -3935,7 +3935,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         gTLDDPS                The submitted DNSSEC Practice       Document
-                               Statement                           
+                               Statement
 
         -----------------------------------------------------------------------
 
@@ -4055,20 +4055,20 @@ Test-Cases:
         EppNsContactSl            Schema location for Contact Object  String
 
         EppNsHostUri              Object URI for Host Object. If the  String
-                                  Registry Operator is not supporting 
-                                  Host Objects, this field is not     
-                                  mandatory.                          
+                                  Registry Operator is not supporting
+                                  Host Objects, this field is not
+                                  mandatory.
 
         EppNsHostSl               Schema location for Host Object. If String
-                                  the Registry Operator is not        
-                                  supporting Host Objects, this field 
-                                  is not mandatory.                   
+                                  the Registry Operator is not
+                                  supporting Host Objects, this field
+                                  is not mandatory.
 
         EppExtSecDnsUri           Object URI for Sec Dns Object       String
-                                  Extension                           
+                                  Extension
 
         EppExtSecDnsSl            Schema location for Sec Dns Object  String
-                                  Extension                           
+                                  Extension
 
         EppExtUri-\[1..n\]        Object URI for extension 1..n       String
 
@@ -4077,22 +4077,22 @@ Test-Cases:
         EppServerIPv4             IPv4 address to EPP server          String
 
         EppServerIPv6             IPv6 address to EPP server if       String
-                                  registry supports IPv6              
+                                  registry supports IPv6
 
         EppServerPort             Port number to EPP server           Number
 
         EppClientCertificate      Yes if Registry Operator requires   Boolean
-                                  client certificate                  
+                                  client certificate
 
         EppClientKeyPairPem       PEM file with valid client          PEM file
-                                  certificate for test user (Public   
-                                  and private)                        
+                                  certificate for test user (Public
+                                  and private)
 
         EppClientKeyPairPwd       Password for client certificate for String
-                                  test user                           
+                                  test user
 
         EppServerCertificatePem   PEM file with server certificate    PEM file
-                                  (Public)                            
+                                  (Public)
         --------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -4185,10 +4185,10 @@ Test-Cases:
         Id                            Description                       Type
         ----------------------------- --------------------------------- ------------
         DnsGlueRecord1                IPv4 or IPv6 address of 1^st^     String
-                                      authoritative name server         
+                                      authoritative name server
 
         WhoisIPv4Port43               The IPv4 address of the Whois     String
-                                      service on port 43                
+                                      service on port 43
 
         EppDomCreate01Name            Domain name to create             String
 
@@ -4207,10 +4207,10 @@ Test-Cases:
         EpPDomCreate01AuthPw          AuthPw if requited                String
 
         EppDomCreate01Ns01            Host Object or Host Attribute     String
-                                      name for ns01                     
+                                      name for ns01
 
         EppDomCreate01Ns02            Host Object or Host Attribute     String
-                                      name for ns02                     
+                                      name for ns02
 
         EppDomCreate01Ext01Uri        Extension 01 object URI           String
 
@@ -4219,15 +4219,15 @@ Test-Cases:
         EppDomCreate01Ext01ExtName    Extension 01 name                 String
 
         EppDomCreate01Ext01ExtValue   Extension 01 value for direct     String
-                                      text node                         
+                                      text node
 
         EppDomCreate01Ext01Field01    Extension 01 field name 01        String
 
         EppDomCreate01Ext01Value01    Extension 01 field value 01       String
 
-        ...                           Repeat for max y fields           
+        ...                           Repeat for max y fields
 
-        ...                           Repeat for max x extensions       
+        ...                           Repeat for max x extensions
         ----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -4367,29 +4367,29 @@ Test-Cases:
         Id                                Description                     Type
         --------------------------------- ------------------------------- -----------
         DnsGlueRecord1                    IPv4 or IPv6 address of 1^st^   String
-                                          authoritative name server       
+                                          authoritative name server
 
         EppDomCreate02Name                Domain name to update           String
 
         EppDomCreate02Ns01                Subordinate Host Object or Host String
-                                          Attribute name for name server  
-                                          01                              
+                                          Attribute name for name server
+                                          01
 
         EppDomCreate02Ns01Ipv4            Subordinate name server 01 IPv4 String
-                                          address                         
+                                          address
 
         EppDomCreate02Ns01Ipv6            Subordinate name server 01 IPv6 String
-                                          address                         
+                                          address
 
         EppDomCreate02Ns02                Subordinate Host Object or Host String
-                                          Attribute name for name server  
-                                          02                              
+                                          Attribute name for name server
+                                          02
 
         EppDomCreate02Ns02Ipv4            Subordinate name server 02 IPv4 String
-                                          address                         
+                                          address
 
         EppDomCreate02Ns02Ipv6            Subordinate name server 02 IPv6 String
-                                          address                         
+                                          address
 
         EppDomCreate02UpdExt01Uri         Extension 01 object URI         String
 
@@ -4398,17 +4398,17 @@ Test-Cases:
         EppDomCreate02UpdExt01ExtName     Extension 01 name               String
 
         EppDomCreate02UpdExt01ExtValue    Extension 01 value for direct   String
-                                          text node                       
+                                          text node
 
         EppDomCreate02UpdExt01Field01     Extension 01 field name 01      String
 
         EppDomCreate02UpdExt01Value01     Extension 01 field value 01     String
 
-        ...                               Repeat for max y fields for     
-                                          Update                          
+        ...                               Repeat for max y fields for
+                                          Update
 
-        ...                               Repeat for max x extensions for 
-                                          Update                          
+        ...                               Repeat for max x extensions for
+                                          Update
 
         EppDomCreate02Ns01Ext01Uri        Extension 01 object URI         String
 
@@ -4417,17 +4417,17 @@ Test-Cases:
         EppDomCreate02Ns01Ext01ExtName    Extension 01 name               String
 
         EppDomCreate02Ns01Ext01ExtValue   Extension 01 value for direct   String
-                                          text node                       
+                                          text node
 
         EppDomCreate02Ns01Ext01Field01    Extension 01 field name 01      String
 
         EppDomCreate02Ns01Ext01Value01    Extension 01 field value 01     String
 
-        ...                               Repeat for max y fields for     
-                                          name server 01                  
+        ...                               Repeat for max y fields for
+                                          name server 01
 
-        ...                               Repeat for max x extensions for 
-                                          name server 01                  
+        ...                               Repeat for max x extensions for
+                                          name server 01
 
         EppDomCreate02Ns02Ext01Uri        Extension 01 object URI         String
 
@@ -4436,17 +4436,17 @@ Test-Cases:
         EppDomCreate02Ns02Ext01ExtName    Extension 01 name               String
 
         EppDomCreate02Ns02Ext01ExtValue   Extension 01 value for direct   String
-                                          text node                       
+                                          text node
 
         EppDomCreate02Ns02Ext01Field01    Extension 01 field name 01      String
 
         EppDomCreate02Ns02Ext01Value01    Extension 01 field value 01     String
 
-        ...                               Repeat for max y fields for     
-                                          name server 02                  
+        ...                               Repeat for max y fields for
+                                          name server 02
 
-        ...                               Repeat for max x extensions for 
-                                          name server 02                  
+        ...                               Repeat for max x extensions for
+                                          name server 02
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -4793,15 +4793,15 @@ Test-Cases:
         EppDomRenew01Ext01ExtName    Extension 01 name                 String
 
         EppDomRenew01Ext01ExtValue   Extension 01 value for direct     String
-                                     text node                         
+                                     text node
 
         EppDomRenew01Ext01Field01    Extension 01 field name 01        String
 
         EppDomRenew01Ext01Value01    Extension 01 field value 01       String
 
-        ...                          Repeat for max y fields           
+        ...                          Repeat for max y fields
 
-        ...                          Repeat for max x extensions       
+        ...                          Repeat for max x extensions
         ---------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -4868,21 +4868,21 @@ Test-Cases:
         EppDomTransfer01Name            Domain name to transfer          String
 
         EppDomTransfer01AddPeriod       Yes if the Registry Operator     Boolean
-                                        supports adding a period to      
-                                        transfer                         
+                                        supports adding a period to
+                                        transfer
 
         EppDomTransfer01Period          Domain period type               Y/M
 
         EppDomTransfer01PeriodValue     Domain period value              Number
 
         EppDomTransfer01AuthInfo        Authorization info for domain,   String
-                                        registrant or associated         
-                                        contacts                         
+                                        registrant or associated
+                                        contacts
 
         EppDomTransfer01AuthRoid        Roid for registrant or contact   String
-                                        if EppDomTransfer01AuthInfo is   
-                                        associated with registrant or    
-                                        contact object                   
+                                        if EppDomTransfer01AuthInfo is
+                                        associated with registrant or
+                                        contact object
 
         EppDomTransfer01Ext01Uri        Extension 01 object URI          String
 
@@ -4891,15 +4891,15 @@ Test-Cases:
         EppDomTransfer01Ext01ExtName    Extension 01 name                String
 
         EppDomTransfer01Ext01ExtValue   Extension 01 value for direct    String
-                                        text node                        
+                                        text node
 
         EppDomTransfer01Ext01Field01    Extension 01 field name 01       String
 
         EppDomTransfer01Ext01Value01    Extension 01 field value 01      String
 
-        ...                             Repeat for max y fields          
+        ...                             Repeat for max y fields
 
-        ...                             Repeat for max x extensions      
+        ...                             Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -4978,26 +4978,26 @@ Test-Cases:
         Id                              Description                      Type
         ------------------------------- -------------------------------- ------------
         EppDomTransfer02Approve         Yes if the Registry Operator     Boolean
-                                        supports the Approve operation   
+                                        supports the Approve operation
 
         EppDomTransfer02Name            Domain name to transfer          String
 
         EppDomTransfer02AddPeriod       Yes if the Registry Operator     Boolean
-                                        supports adding a period to      
-                                        transfer                         
+                                        supports adding a period to
+                                        transfer
 
         EppDomTransfer02Period          Domain period type               Y/M
 
         EppDomTransfer02PeriodValue     Domain period value              Number
 
         EppDomTransfer02AuthInfo        Authorization info for domain,   String
-                                        registrant or associated         
-                                        contacts if required             
+                                        registrant or associated
+                                        contacts if required
 
         EppDomTransfer02AuthRoid        Roid for registrant or contact   String
-                                        if EppDomTransfer01AuthInfo is   
-                                        associated with registrant or    
-                                        contact object                   
+                                        if EppDomTransfer01AuthInfo is
+                                        associated with registrant or
+                                        contact object
 
         EppDomTransfer02Ext01Uri        Extension 01 object URI          String
 
@@ -5006,15 +5006,15 @@ Test-Cases:
         EppDomTransfer02Ext01ExtName    Extension 01 name                String
 
         EppDomTransfer02Ext01ExtValue   Extension 01 value for direct    String
-                                        text node                        
+                                        text node
 
         EppDomTransfer02Ext01Field01    Extension 01 field name 01       String
 
         EppDomTransfer02Ext01Value01    Extension 01 field value 01      String
 
-        ...                             Repeat for max y fields          
+        ...                             Repeat for max y fields
 
-        ...                             Repeat for max x extensions      
+        ...                             Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5097,15 +5097,15 @@ Test-Cases:
         EppDomDelete01Ext01ExtName    Extension 01 name                 String
 
         EppDomDelete01Ext01ExtValue   Extension 01 value for direct     String
-                                      text node                         
+                                      text node
 
         EppDomDelete01Ext01Field01    Extension 01 field name 01        String
 
         EppDomDelete01Ext01Value01    Extension 01 field value 01       String
 
-        ...                           Repeat for max y fields           
+        ...                           Repeat for max y fields
 
-        ...                           Repeat for max x extensions       
+        ...                           Repeat for max x extensions
         ----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5170,7 +5170,7 @@ Test-Cases:
         EppConCreate01Id              Contact ID to create               String
 
         EppConCreate01PIntMand        Yes if PostalInfo type INT is      Boolean
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PIntName        Contact PostalInfo Int Name        String
 
@@ -5179,24 +5179,24 @@ Test-Cases:
         EppConCreate01PIntStreet1     Contact PostalInfo Int Street1     String
 
         EppConCreate01PIntStreet2     Contact PostalInfo Int Street2, if String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PIntStreet3     Contact PostalInfo Int Street3, if String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PIntCity        Contact PostalInfo Int City        String
 
         EppConCreate01PIntSp          Contact PostalInfo Int State or    String
-                                      Province, if mandatory             
+                                      Province, if mandatory
 
         EppConCreate01PIntPc          Contact PostalInfo Int Postcode,   String
-                                      if mandatory                       
+                                      if mandatory
 
         EppConCreate01PIntCc          Contact PostalInfo Int Country     String
-                                      Code                               
+                                      Code
 
         EppConCreate01PLocMand        Yes if PostalInfo type LOC is      Boolean
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PLocName        Contact PostalInfo Loc Name        String
 
@@ -5205,27 +5205,27 @@ Test-Cases:
         EppConCreate01PLocStreet1     Contact PostalInfo Loc Street1     String
 
         EppConCreate01PLocStreet2     Contact PostalInfo Loc Street2, if String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PLocStreet3     Contact PostalInfo Loc Street3, if String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01PLocCity        Contact PostalInfo Loc City        String
 
         EppConCreate01PLocSp          Contact PostalInfo Loc State or    String
-                                      Province, if mandatory             
+                                      Province, if mandatory
 
         EppConCreate01PLocPc          Contact PostalInfo Loc Postcode,   String
-                                      if mandatory                       
+                                      if mandatory
 
         EppConCreate01PLocCc          Contact PostalInfo Loc Country     String
-                                      Code                               
+                                      Code
 
         EppConCreate01Voice           Contact Voice telephone number, if String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01Fax             Contact Fax telephone number, if   String
-                                      mandatory                          
+                                      mandatory
 
         EppConCreate01Email           Contact Email address              String
 
@@ -5238,15 +5238,15 @@ Test-Cases:
         EppConCreate01Ext01ExtName    Extension 01 name                  String
 
         EppConCreate01Ext01ExtValue   Extension 01 value for direct text String
-                                      node                               
+                                      node
 
         EppConCreate01Ext01Field01    Extension 01 field name 01         String
 
         EppConCreate01Ext01Value01    Extension 01 field value 01        String
 
-        ...                           Repeat for max y fields            
+        ...                           Repeat for max y fields
 
-        ...                           Repeat for max x extensions        
+        ...                           Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5333,15 +5333,15 @@ Test-Cases:
         EppConDelete01Ext01ExtName    Extension 01 name                  String
 
         EppConDelete01Ext01ExtValue   Extension 01 value for direct text String
-                                      node                               
+                                      node
 
         EppConDelete01Ext01Field01    Extension 01 field name 01         String
 
         EppConDelete01Ext01Value01    Extension 01 field value 01        String
 
-        ...                           Repeat for max y fields            
+        ...                           Repeat for max y fields
 
-        ...                           Repeat for max x extensions        
+        ...                           Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5415,15 +5415,15 @@ Test-Cases:
         EppHostDelete01Ext01ExtName    Extension 01 name                 String
 
         EppHostDelete01Ext01ExtValue   Extension 01 value for direct     String
-                                       text node                         
+                                       text node
 
         EppHostDelete01Ext01Field01    Extension 01 field name 01        String
 
         EppHostDelete01Ext01Value01    Extension 01 field value 01       String
 
-        ...                            Repeat for max y fields           
+        ...                            Repeat for max y fields
 
-        ...                            Repeat for max x extensions       
+        ...                            Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5499,15 +5499,15 @@ Test-Cases:
         EppHostUpdate01Ext01ExtName    Extension 01 name                 String
 
         EppHostUpdate01Ext01ExtValue   Extension 01 value for direct     String
-                                       text node                         
+                                       text node
 
         EppHostUpdate01Ext01Field01    Extension 01 field name 01        String
 
         EppHostUpdate01Ext01Value01    Extension 01 field value 01       String
 
-        ...                            Repeat for max y fields           
+        ...                            Repeat for max y fields
 
-        ...                            Repeat for max x extensions       
+        ...                            Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5571,37 +5571,37 @@ Test-Cases:
         Id                                Description                                   Type
         --------------------------------- ------------- ------------------------------- ------------
         EppContactUpdate01Id              Contact ID to                                 String
-                                          update                                        
+                                          update
 
         EppContactUpdate01Email                         Email address to set            String
 
         EppContactUpdate01Ext01Uri        Extension 01                                  String
-                                          object URI                                    
+                                          object URI
 
         EppContactUpdate01Ext01Sl         Extension 01                                  String
-                                          schema                                        
-                                          location                                      
+                                          schema
+                                          location
 
         EppContactUpdate01Ext01ExtName                  Extension 01 name               String
 
         EppContactUpdate01Ext01ExtValue   Extension 01                                  String
-                                          value for                                     
-                                          direct text                                   
-                                          node                                          
+                                          value for
+                                          direct text
+                                          node
 
         EppContactUpdate01Ext01Field01    Extension 01                                  String
-                                          field name 01                                 
+                                          field name 01
 
         EppContactUpdate01Ext01Value01    Extension 01                                  String
-                                          field value                                   
-                                          01                                            
+                                          field value
+                                          01
 
-        ...                               Repeat for                                    
-                                          max y fields                                  
+        ...                               Repeat for
+                                          max y fields
 
-        ...                               Repeat for                                    
-                                          max x                                         
-                                          extensions                                    
+        ...                               Repeat for
+                                          max x
+                                          extensions
         --------------------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -5907,45 +5907,45 @@ Test-Cases:
         TLDSRSEPPNsContactSl            Schema location for Contact Object String
 
         TLDSRSEPPNsHostUri              Object URI for Host Object. If the String
-                                        registry does not support Host     
-                                        Objects, this field is not         
-                                        mandatory.                         
+                                        registry does not support Host
+                                        Objects, this field is not
+                                        mandatory.
 
         TLDSRSEPPNsHostSl               Schema location for Host Object.   String
-                                        If the registry does not support   
-                                        Host Objects, this field is not    
-                                        mandatory.                         
+                                        If the registry does not support
+                                        Host Objects, this field is not
+                                        mandatory.
 
         TLDSRSEPPExtSecDnsUri           Object URI for Sec Dns Object      String
-                                        Extension                          
+                                        Extension
 
         TLDSRSEPPExtSecDnsSl            Schema location for Sec Dns Object String
-                                        Extension                          
+                                        Extension
 
         TLDSRSEPPExtUri-\[1..n\]        Object URI for extension 1..n      String
 
         TLDSRSEPPExtSl-\[1..n\]         Schema location for extensions     String
-                                        1..n                               
+                                        1..n
 
         TLDSRSEPPServerIPv4             IPv4 address to EPP server         String
 
         TLDSRSEPPServerIPv6             IPv6 address to EPP server if      String
-                                        Registry Operator supports IPv6    
+                                        Registry Operator supports IPv6
 
         TLDSRSEPPServerPort             Port number to EPP server          Number
 
         TLDSRSEPPClientCertificate      Yes if the registry requires       Boolean
-                                        client certificate                 
+                                        client certificate
 
         TLDSRSEPPClientKeyPairPem       PEM file with valid client         PEM file
-                                        certificate for test user (Public  
-                                        and private)                       
+                                        certificate for test user (Public
+                                        and private)
 
         TLDSRSEPPClientKeyPairPwd       Password for client certificate    String
-                                        for test user                      
+                                        for test user
 
         TLDSRSEPPServerCertificatePem   PEM file with server certificate   PEM file
-                                        (Public)                           
+                                        (Public)
         -------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6028,7 +6028,7 @@ Test-Cases:
         Id                                  Description                  Type
         ----------------------------------- ---------------------------- ------------
         TLDSRSWhoisIPv4Port43               The IPv4 address of the      String
-                                            Whois service on port 43     
+                                            Whois service on port 43
 
         TLDSRSEPPDomCreate01Name            Domain name to create        String
 
@@ -6043,15 +6043,15 @@ Test-Cases:
         TLDSRSEPPDomCreate01TechId          Domain Tech id if required   String
 
         TLDSRSEPPDomCreate01BillingId       Domain Billing id if         String
-                                            required                     
+                                            required
 
         TLDSRSEPPDomCreate01AuthPw          AuthPw if required           String
 
         TLDSRSEPPDomCreate01Ns01            Host Object or Host          String
-                                            Attribute name for ns01      
+                                            Attribute name for ns01
 
         TLDSRSEPPDomCreate01Ns02            Host Object or Host          String
-                                            Attribute name for ns02      
+                                            Attribute name for ns02
 
         TLDSRSEPPDomCreate01Ext01Uri        Extension 01 object URI      String
 
@@ -6060,15 +6060,15 @@ Test-Cases:
         TLDSRSEPPDomCreate01Ext01ExtName    Extension 01 name            String
 
         TLDSRSEPPDomCreate01Ext01ExtValue   Extension 01 value for       String
-                                            direct text node             
+                                            direct text node
 
         TLDSRSEPPDomCreate01Ext01Field01    Extension 01 field name 01   String
 
         TLDSRSEPPDomCreate01Ext01Value01    Extension 01 field value 01  String
 
-        ...                                 Repeat for max y fields      
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions  
+        ...                                 Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6176,89 +6176,89 @@ Test-Cases:
         TLDSRSEPPDomCreate02Name                Domain name to update      String
 
         TLDSRSEPPDomCreate02Ns01                Subordinate Host Object or String
-                                                Host Attribute name for    
-                                                name server 01             
+                                                Host Attribute name for
+                                                name server 01
 
         TLDSRSEPPDomCreate02Ns01Ipv4            Subordinate name server 01 String
-                                                IPv4 address               
+                                                IPv4 address
 
         TLDSRSEPPDomCreate02Ns01Ipv6            Subordinate name server 01 String
-                                                IPv6 address               
+                                                IPv6 address
 
         TLDSRSEPPDomCreate02Ns02                Subordinate Host Object or String
-                                                Host Attribute name for    
-                                                name server 02             
+                                                Host Attribute name for
+                                                name server 02
 
         TLDSRSEPPDomCreate02Ns02Ipv4            Subordinate name server 02 String
-                                                IPv4 address               
+                                                IPv4 address
 
         TLDSRSEPPDomCreate02Ns02Ipv6            Subordinate name server 02 String
-                                                IPv6 address               
+                                                IPv6 address
 
         TLDSRSEPPDomCreate02UpdExt01Uri         Extension 01 object URI    String
 
         TLDSRSEPPDomCreate02UpdExt01Sl          Extension 01 schema        String
-                                                location                   
+                                                location
 
         TLDSRSEPPDomCreate02UpdExt01ExtName     Extension 01 name          String
 
         TLDSRSEPPDomCreate02UpdExt01ExtValue    Extension 01 value for     String
-                                                direct text node           
+                                                direct text node
 
         TLDSRSEPPDomCreate02UpdExt01Field01     Extension 01 field name 01 String
 
         TLDSRSEPPDomCreate02UpdExt01Value01     Extension 01 field value   String
-                                                01                         
+                                                01
 
-        ...                                     Repeat for max y fields    
-                                                for Update                 
+        ...                                     Repeat for max y fields
+                                                for Update
 
-        ...                                     Repeat for max x           
-                                                extensions for Update      
+        ...                                     Repeat for max x
+                                                extensions for Update
 
         TLDSRSEPPDomCreate02Ns01Ext01Uri        Extension 01 object URI    String
 
         TLDSRSEPPDomCreate02Ns01Ext01Sl         Extension 01 schema        String
-                                                location                   
+                                                location
 
         TLDSRSEPPDomCreate02Ns01Ext01ExtName    Extension 01 name          String
 
         TLDSRSEPPDomCreate02Ns01Ext01ExtValue   Extension 01 value for     String
-                                                direct text node           
+                                                direct text node
 
         TLDSRSEPPDomCreate02Ns01Ext01Field01    Extension 01 field name 01 String
 
         TLDSRSEPPDomCreate02Ns01Ext01Value01    Extension 01 field value   String
-                                                01                         
+                                                01
 
-        ...                                     Repeat for max y fields    
-                                                for name server 01         
+        ...                                     Repeat for max y fields
+                                                for name server 01
 
-        ...                                     Repeat for max x           
-                                                extensions for name server 
-                                                01                         
+        ...                                     Repeat for max x
+                                                extensions for name server
+                                                01
 
         TLDSRSEPPDomCreate02Ns02Ext01Uri        Extension 01 object URI    String
 
         TLDSRSEPPDomCreate02Ns02Ext01Sl         Extension 01 schema        String
-                                                location                   
+                                                location
 
         TLDSRSEPPDomCreate02Ns02Ext01ExtName    Extension 01 name          String
 
         TLDSRSEPPDomCreate02Ns02Ext01ExtValue   Extension 01 value for     String
-                                                direct text node           
+                                                direct text node
 
         TLDSRSEPPDomCreate02Ns02Ext01Field01    Extension 01 field name 01 String
 
         TLDSRSEPPDomCreate02Ns02Ext01Value01    Extension 01 field value   String
-                                                01                         
+                                                01
 
-        ...                                     Repeat for max y fields    
-                                                for name server 02         
+        ...                                     Repeat for max y fields
+                                                for name server 02
 
-        ...                                     Repeat for max x           
-                                                extensions for name server 
-                                                02                         
+        ...                                     Repeat for max x
+                                                extensions for name server
+                                                02
         ----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6547,15 +6547,15 @@ Test-Cases:
         TLDSRSEPPDomRenew01Ext01ExtName    Extension 01 name            String
 
         TLDSRSEPPDomRenew01Ext01ExtValue   Extension 01 value for       String
-                                           direct text node             
+                                           direct text node
 
         TLDSRSEPPDomRenew01Ext01Field01    Extension 01 field name 01   String
 
         TLDSRSEPPDomRenew01Ext01Value01    Extension 01 field value 01  String
 
-        ...                                Repeat for max y fields      
+        ...                                Repeat for max y fields
 
-        ...                                Repeat for max x extensions  
+        ...                                Repeat for max x extensions
         ----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6622,21 +6622,21 @@ Test-Cases:
         TLDSRSEPPDomTransfer01Name            Domain name to transfer          String
 
         TLDSRSEPPDomTransfer01AddPeriod       Yes, if the registry supports    Boolean
-                                              adding a period to transfer      
+                                              adding a period to transfer
 
         TLDSRSEPPDomTransfer01Period          Domain period type               Y/M
 
         TLDSRSEPPDomTransfer01PeriodValue     Domain period value              Number
 
         TLDSRSEPPDomTransfer01AuthInfo        Authorization info for domain,   String
-                                              registrant or associated         
-                                              contacts                         
+                                              registrant or associated
+                                              contacts
 
         TLDSRSEPPDomTransfer01AuthRoid        Roid for registrant or contact   String
-                                              if                               
-                                              TLDSRSEPPDomTransfer01AuthInfo   
-                                              is associated with registrant or 
-                                              contact object                   
+                                              if
+                                              TLDSRSEPPDomTransfer01AuthInfo
+                                              is associated with registrant or
+                                              contact object
 
         TLDSRSEPPDomTransfer01Ext01Uri        Extension 01 object URI          String
 
@@ -6645,15 +6645,15 @@ Test-Cases:
         TLDSRSEPPDomTransfer01Ext01ExtName    Extension 01 name                String
 
         TLDSRSEPPDomTransfer01Ext01ExtValue   Extension 01 value for direct    String
-                                              text node                        
+                                              text node
 
         TLDSRSEPPDomTransfer01Ext01Field01    Extension 01 field name 01       String
 
         TLDSRSEPPDomTransfer01Ext01Value01    Extension 01 field value 01      String
 
-        ...                                   Repeat for max y fields          
+        ...                                   Repeat for max y fields
 
-        ...                                   Repeat for max x extensions      
+        ...                                   Repeat for max x extensions
         --------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6733,26 +6733,26 @@ Test-Cases:
         Id                                    Description                      Type
         ------------------------------------- -------------------------------- ---------
         TLDSRSEPPDomTransfer02Approve         Yes, if the registry supports    Boolean
-                                              the approve operation            
+                                              the approve operation
 
         TLDSRSEPPDomTransfer02Name            Domain name to transfer          String
 
         TLDSRSEPPDomTransfer02AddPeriod       Yes, if the registry supports    Boolean
-                                              adding a period to a transfer    
+                                              adding a period to a transfer
 
         TLDSRSEPPDomTransfer02Period          Domain period type               Y/M
 
         TLDSRSEPPDomTransfer02PeriodValue     Domain period value              Number
 
         TLDSRSEPPDomTransfer02AuthInfo        Authorization info for domain,   String
-                                              registrant or associated         
-                                              contacts if required             
+                                              registrant or associated
+                                              contacts if required
 
         TLDSRSEPPDomTransfer02AuthRoid        Roid for registrant or contact   String
-                                              if                               
-                                              TLDSRSEPPDomTransfer02AuthInfo   
-                                              is associated with registrant or 
-                                              contact object                   
+                                              if
+                                              TLDSRSEPPDomTransfer02AuthInfo
+                                              is associated with registrant or
+                                              contact object
 
         TLDSRSEPPDomTransfer02Ext01Uri        Extension 01 object URI          String
 
@@ -6761,15 +6761,15 @@ Test-Cases:
         TLDSRSEPPDomTransfer02Ext01ExtName    Extension 01 name                String
 
         TLDSRSEPPDomTransfer02Ext01ExtValue   Extension 01 value for direct    String
-                                              text node                        
+                                              text node
 
         TLDSRSEPPDomTransfer02Ext01Field01    Extension 01 field name 01       String
 
         TLDSRSEPPDomTransfer02Ext01Value01    Extension 01 field value 01      String
 
-        ...                                   Repeat for max y fields          
+        ...                                   Repeat for max y fields
 
-        ...                                   Repeat for max x extensions      
+        ...                                   Repeat for max x extensions
         --------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6854,15 +6854,15 @@ Test-Cases:
         TLDSRSEPPDomDelete01Ext01ExtName    Extension 01 name             String
 
         TLDSRSEPPDomDelete01Ext01ExtValue   Extension 01 value for direct String
-                                            text node                     
+                                            text node
 
         TLDSRSEPPDomDelete01Ext01Field01    Extension 01 field name 01    String
 
         TLDSRSEPPDomDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                 Repeat for max y fields       
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions   
+        ...                                 Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -6929,69 +6929,69 @@ Test-Cases:
         TLDSRSEPPConCreate01Id              Contact ID to create          String
 
         TLDSRSEPPConCreate01PIntMand        Yes, if PostalInfo type INT   Boolean
-                                            is mandatory                  
+                                            is mandatory
 
         TLDSRSEPPConCreate01PIntName        Contact PostalInfo Int Name   String
 
         TLDSRSEPPConCreate01PIntOrg         Contact PostalInfo Int Org    String
 
         TLDSRSEPPConCreate01PIntStreet1     Contact PostalInfo Int        String
-                                            Street1                       
+                                            Street1
 
         TLDSRSEPPConCreate01PIntStreet2     Contact PostalInfo Int        String
-                                            Street2, if mandatory         
+                                            Street2, if mandatory
 
         TLDSRSEPPConCreate01PIntStreet3     Contact PostalInfo Int        String
-                                            Street3, if mandatory         
+                                            Street3, if mandatory
 
         TLDSRSEPPConCreate01PIntCity        Contact PostalInfo Int City   String
 
         TLDSRSEPPConCreate01PIntSp          Contact PostalInfo Int State  String
-                                            or Province, if mandatory     
+                                            or Province, if mandatory
 
         TLDSRSEPPConCreate01PIntPc          Contact PostalInfo Int        String
-                                            Postcode, if mandatory        
+                                            Postcode, if mandatory
 
         TLDSRSEPPConCreate01PIntCc          Contact PostalInfo Int        String
-                                            Country Code                  
+                                            Country Code
 
         TLDSRSEPPConCreate01PLocMand        Yes if PostalInfo type LOC is Boolean
-                                            mandatory                     
+                                            mandatory
 
         TLDSRSEPPConCreate01PLocName        Contact PostalInfo Loc Name   String
 
         TLDSRSEPPConCreate01PLocOrg         Contact PostalInfo Loc Org    String
 
         TLDSRSEPPConCreate01PLocStreet1     Contact PostalInfo Loc        String
-                                            Street1                       
+                                            Street1
 
         TLDSRSEPPConCreate01PLocStreet2     Contact PostalInfo Loc        String
-                                            Street2, if mandatory         
+                                            Street2, if mandatory
 
         TLDSRSEPPConCreate01PLocStreet3     Contact PostalInfo Loc        String
-                                            Street3, if mandatory         
+                                            Street3, if mandatory
 
         TLDSRSEPPConCreate01PLocCity        Contact PostalInfo Loc City   String
 
         TLDSRSEPPConCreate01PLocSp          Contact PostalInfo Loc State  String
-                                            or Province, if mandatory     
+                                            or Province, if mandatory
 
         TLDSRSEPPConCreate01PLocPc          Contact PostalInfo Loc        String
-                                            Postcode, if mandatory        
+                                            Postcode, if mandatory
 
         TLDSRSEPPConCreate01PLocCc          Contact PostalInfo Loc        String
-                                            Country Code                  
+                                            Country Code
 
         TLDSRSEPPConCreate01Voice           Contact Voice telephone       String
-                                            number, if mandatory          
+                                            number, if mandatory
 
         TLDSRSEPPConCreate01Fax             Contact Fax telephone number, String
-                                            if mandatory                  
+                                            if mandatory
 
         TLDSRSEPPConCreate01Email           Contact Email address         String
 
         TLDSRSEPPConCreate01Auth            Contact Auth Info, if         String
-                                            mandatory                     
+                                            mandatory
 
         TLDSRSEPPConCreate01Ext01Uri        Extension 01 object URI       String
 
@@ -7000,15 +7000,15 @@ Test-Cases:
         TLDSRSEPPConCreate01Ext01ExtName    Extension 01 name             String
 
         TLDSRSEPPConCreate01Ext01ExtValue   Extension 01 value for direct String
-                                            text node                     
+                                            text node
 
         TLDSRSEPPConCreate01Ext01Field01    Extension 01 field name 01    String
 
         TLDSRSEPPConCreate01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                 Repeat for max y fields       
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions   
+        ...                                 Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -7102,15 +7102,15 @@ Test-Cases:
         TLDSRSEPPConDelete01Ext01ExtName    Extension 01 name             String
 
         TLDSRSEPPConDelete01Ext01ExtValue   Extension 01 value for direct String
-                                            text node                     
+                                            text node
 
         TLDSRSEPPConDelete01Ext01Field01    Extension 01 field name 01    String
 
         TLDSRSEPPConDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                 Repeat for max y fields       
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions   
+        ...                                 Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -7185,15 +7185,15 @@ Test-Cases:
         TLDSRSEPPHostDelete01Ext01ExtName    Extension 01 name             String
 
         TLDSRSEPPHostDelete01Ext01ExtValue   Extension 01 value for direct String
-                                             text node                     
+                                             text node
 
         TLDSRSEPPHostDelete01Ext01Field01    Extension 01 field name 01    String
 
         TLDSRSEPPHostDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                  Repeat for max y fields       
+        ...                                  Repeat for max y fields
 
-        ...                                  Repeat for max x extensions   
+        ...                                  Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -7270,15 +7270,15 @@ Test-Cases:
         TLDSRSEPPHostUpdate01Ext01ExtName    Extension 01 name            String
 
         TLDSRSEPPHostUpdate01Ext01ExtValue   Extension 01 value for       String
-                                             direct text node             
+                                             direct text node
 
         TLDSRSEPPHostUpdate01Ext01Field01    Extension 01 field name 01   String
 
         TLDSRSEPPHostUpdate01Ext01Value01    Extension 01 field value 01  String
 
-        ...                                  Repeat for max y fields      
+        ...                                  Repeat for max y fields
 
-        ...                                  Repeat for max x extensions  
+        ...                                  Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -7343,37 +7343,37 @@ Test-Cases:
         Id                                      Description                              Type
         --------------------------------------- ------------- -------------------------- -----------
         TLDSRSEPPContactUpdate01Id              Contact ID to                            String
-                                                update                                   
+                                                update
 
         TLDSRSEPPContactUpdate01Email                         Email address to set       String
 
         TLDSRSEPPContactUpdate01Ext01Uri        Extension 01                             String
-                                                object URI                               
+                                                object URI
 
         TLDSRSEPPContactUpdate01Ext01Sl         Extension 01                             String
-                                                schema                                   
-                                                location                                 
+                                                schema
+                                                location
 
         TLDSRSEPPContactUpdate01Ext01ExtName                  Extension 01 name          String
 
         TLDSRSEPPContactUpdate01Ext01ExtValue   Extension 01                             String
-                                                value for                                
-                                                direct text                              
-                                                node                                     
+                                                value for
+                                                direct text
+                                                node
 
         TLDSRSEPPContactUpdate01Ext01Field01    Extension 01                             String
-                                                field name 01                            
+                                                field name 01
 
         TLDSRSEPPContactUpdate01Ext01Value01    Extension 01                             String
-                                                field value                              
-                                                01                                       
+                                                field value
+                                                01
 
-        ...                                     Repeat for                               
-                                                max y fields                             
+        ...                                     Repeat for
+                                                max y fields
 
-        ...                                     Repeat for                               
-                                                max x                                    
-                                                extensions                               
+        ...                                     Repeat for
+                                                max x
+                                                extensions
         --------------------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -7608,45 +7608,45 @@ Test-Cases:
         TLDSRSEPPNsContactSl            Schema location for Contact Object String
 
         TLDSRSEPPNsHostUri              Object URI for Host Object. If the String
-                                        TLD is not supporting Host         
-                                        Objects, this field is not         
-                                        manadatory.                        
+                                        TLD is not supporting Host
+                                        Objects, this field is not
+                                        manadatory.
 
         TLDSRSEPPNsHostSl               Schema location for Host Object.   String
-                                        If the TLD is not supporting Host  
-                                        Objects, this field is not         
-                                        manadatory.                        
+                                        If the TLD is not supporting Host
+                                        Objects, this field is not
+                                        manadatory.
 
         TLDSRSEPPExtSecDnsUri           Object URI for Sec Dns Object      String
-                                        Extension                          
+                                        Extension
 
         TLDSRSEPPExtSecDnsSl            Schema location for Sec Dns Object String
-                                        Extension                          
+                                        Extension
 
         TLDSRSEPPExtUri-\[1..n\]        Object URI for extension 1..n      String
 
         TLDSRSEPPExtSl-\[1..n\]         Schema location for extensions     String
-                                        1..n                               
+                                        1..n
 
         TLDSRSEPPServerIPv4             IPv4 address to EPP server         String
 
         TLDSRSEPPServerIPv6             IPv6 address to EPP server if TLD  String
-                                        supports IPv6                      
+                                        supports IPv6
 
         TLDSRSEPPServerPort             Port number to EPP server          Number
 
         TLDSRSEPPClientCertificate      Yes if TLD requires client         Boolean
-                                        certificate                        
+                                        certificate
 
         TLDSRSEPPClientKeyPairPem       PEM file with valid client         PEM file
-                                        certificate for test user (Public  
-                                        and private)                       
+                                        certificate for test user (Public
+                                        and private)
 
         TLDSRSEPPClientKeyPairPwd       Password for client certificate    String
-                                        for test user                      
+                                        for test user
 
         TLDSRSEPPServerCertificatePem   PEM file with server certificate   PEM file
-                                        (Public)                           
+                                        (Public)
         -------------------------------------------------------------------------------
 
       ## Ordered description of steps to LOGIN over IPv4
@@ -7711,45 +7711,45 @@ Test-Cases:
         SRSGwEppNsContactSl            Schema location for Contact Object String
 
         SRSGwEppNsHostUri              Object URI for Host Object. If the String
-                                       TLD is not supporting Host         
-                                       Objects, this field is not         
-                                       manadatory.                        
+                                       TLD is not supporting Host
+                                       Objects, this field is not
+                                       manadatory.
 
         SRSGwEppNsHostSl               Schema location for Host Object.   String
-                                       If the TLD is not supporting Host  
-                                       Objects, this field is not         
-                                       manadatory.                        
+                                       If the TLD is not supporting Host
+                                       Objects, this field is not
+                                       manadatory.
 
         SRSGwEppExtSecDnsUri           Object URI for Sec Dns Object      String
-                                       Extension                          
+                                       Extension
 
         SRSGwEppExtSecDnsSl            Schema location for Sec Dns Object String
-                                       Extension                          
+                                       Extension
 
         SRSGwEppExtUri-\[1..n\]        Object URI for extension 1..n      String
 
         SRSGwEppExtSl-\[1..n\]         Schema location for extensions     String
-                                       1..n                               
+                                       1..n
 
         SRSGwEppServerIPv4             IPv4 address to EPP server         String
 
         SRSGwEppServerIPv6             IPv6 address to EPP server if TLD  String
-                                       supports IPv6                      
+                                       supports IPv6
 
         SRSGwEppServerPort             Port number to EPP server          Number
 
         SRSGwEppClientCertificate      Yes if TLD requires client         Boolean
-                                       certificate                        
+                                       certificate
 
         SRSGwEppClientKeyPairPem       PEM file with valid client         PEM file
-                                       certificate for test user (Public  
-                                       and private)                       
+                                       certificate for test user (Public
+                                       and private)
 
         SRSGwEppClientKeyPairPwd       Password for client certificate    String
-                                       for test user                      
+                                       for test user
 
         SRSGwEppServerCertificatePem   PEM file with server certificate   PEM file
-                                       (Public)                           
+                                       (Public)
         ------------------------------------------------------------------------------
 
       ## Ordered description of steps to LOGIN over IPv4
@@ -7913,10 +7913,10 @@ Test-Cases:
         SRSGwEppPDomCreate01AuthPw         AuthPw if requited            String
 
         SRSGwEppDomCreate01Ns01            Host Object or Host Attribute String
-                                           name for ns01                 
+                                           name for ns01
 
         SRSGwEppDomCreate01Ns02            Host Object or Host Attribute String
-                                           name for ns02                 
+                                           name for ns02
 
         SRSGwEppDomCreate01Ext01Uri        Extension 01 object URI       String
 
@@ -7925,15 +7925,15 @@ Test-Cases:
         SRSGwEppDomCreate01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppDomCreate01Ext01ExtValue   Extension 01 value for direct String
-                                           text node                     
+                                           text node
 
         SRSGwEppDomCreate01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppDomCreate01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                Repeat for max y fields       
+        ...                                Repeat for max y fields
 
-        ...                                Repeat for max x extensions   
+        ...                                Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -8102,84 +8102,84 @@ Test-Cases:
         SRSGwEppDomCreate02Name                Domain name to update       String
 
         SRSGwEppDomCreate02Ns01                Subordinate Host Object or  String
-                                               Host Attribute name for     
-                                               name server 01              
+                                               Host Attribute name for
+                                               name server 01
 
         SRSGwEppDomCreate02Ns01Ipv4            Subordinate name server 01  String
-                                               IPv4 address                
+                                               IPv4 address
 
         SRSGwEppDomCreate02Ns01Ipv6            Subordinate name server 01  String
-                                               IPv6 address                
+                                               IPv6 address
 
         SRSGwEppDomCreate02Ns02                Subordinate Host Object or  String
-                                               Host Attribute name for     
-                                               name server 02              
+                                               Host Attribute name for
+                                               name server 02
 
         SRSGwEppDomCreate02Ns02Ipv4            Subordinate name server 02  String
-                                               IPv4 address                
+                                               IPv4 address
 
         SRSGwEppDomCreate02Ns02Ipv6            Subordinate name server 02  String
-                                               IPv6 address                
+                                               IPv6 address
 
         SRSGwEppDomCreate02UpdExt01Uri         Extension 01 object URI     String
 
         SRSGwEppDomCreate02UpdExt01Sl          Extension 01 schema         String
-                                               location                    
+                                               location
 
         SRSGwEppDomCreate02UpdExt01ExtName     Extension 01 name           String
 
         SRSGwEppDomCreate02UpdExt01ExtValue    Extension 01 value for      String
-                                               direct text node            
+                                               direct text node
 
         SRSGwEppDomCreate02UpdExt01Field01     Extension 01 field name 01  String
 
         SRSGwEppDomCreate02UpdExt01Value01     Extension 01 field value 01 String
 
-        ...                                    Repeat for max y fields for 
-                                               Update                      
+        ...                                    Repeat for max y fields for
+                                               Update
 
-        ...                                    Repeat for max x extensions 
-                                               for Update                  
+        ...                                    Repeat for max x extensions
+                                               for Update
 
         SRSGwEppDomCreate02Ns01Ext01Uri        Extension 01 object URI     String
 
         SRSGwEppDomCreate02Ns01Ext01Sl         Extension 01 schema         String
-                                               location                    
+                                               location
 
         SRSGwEppDomCreate02Ns01Ext01ExtName    Extension 01 name           String
 
         SRSGwEppDomCreate02Ns01Ext01ExtValue   Extension 01 value for      String
-                                               direct text node            
+                                               direct text node
 
         SRSGwEppDomCreate02Ns01Ext01Field01    Extension 01 field name 01  String
 
         SRSGwEppDomCreate02Ns01Ext01Value01    Extension 01 field value 01 String
 
-        ...                                    Repeat for max y fields for 
-                                               name server 01              
+        ...                                    Repeat for max y fields for
+                                               name server 01
 
-        ...                                    Repeat for max x extensions 
-                                               for name server 01          
+        ...                                    Repeat for max x extensions
+                                               for name server 01
 
         SRSGwEppDomCreate02Ns02Ext01Uri        Extension 01 object URI     String
 
         SRSGwEppDomCreate02Ns02Ext01Sl         Extension 01 schema         String
-                                               location                    
+                                               location
 
         SRSGwEppDomCreate02Ns02Ext01ExtName    Extension 01 name           String
 
         SRSGwEppDomCreate02Ns02Ext01ExtValue   Extension 01 value for      String
-                                               direct text node            
+                                               direct text node
 
         SRSGwEppDomCreate02Ns02Ext01Field01    Extension 01 field name 01  String
 
         SRSGwEppDomCreate02Ns02Ext01Value01    Extension 01 field value 01 String
 
-        ...                                    Repeat for max y fields for 
-                                               name server 02              
+        ...                                    Repeat for max y fields for
+                                               name server 02
 
-        ...                                    Repeat for max x extensions 
-                                               for name server 02          
+        ...                                    Repeat for max x extensions
+                                               for name server 02
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -8647,15 +8647,15 @@ Test-Cases:
         SRSGwEppDomRenew01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppDomRenew01Ext01ExtValue   Extension 01 value for direct String
-                                          text node                     
+                                          text node
 
         SRSGwEppDomRenew01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppDomRenew01Ext01Value01    Extension 01 field value 01   String
 
-        ...                               Repeat for max y fields       
+        ...                               Repeat for max y fields
 
-        ...                               Repeat for max x extensions   
+        ...                               Repeat for max x extensions
         ----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -8811,21 +8811,21 @@ Test-Cases:
         SRSGwEppDomTransfer01Name            Domain name to transfer         String
 
         SRSGwEppDomTransfer01AddPeriod       Yes if the TLD support adding a Boolean
-                                             period to transfer              
+                                             period to transfer
 
         SRSGwEppDomTransfer01Period          Domain period type              Y/M
 
         SRSGwEppDomTransfer01PeriodValue     Domain period value             Number
 
         SRSGwEppDomTransfer01AuthInfo        Authorization info for domain,  String
-                                             registrant or associated        
-                                             contacts                        
+                                             registrant or associated
+                                             contacts
 
         SRSGwEppDomTransfer01AuthRoid        Roid for registrant or contact  String
-                                             if                              
-                                             SRSGwEppDomTransfer01AuthInfo   
-                                             is associated with registrant   
-                                             or contact object               
+                                             if
+                                             SRSGwEppDomTransfer01AuthInfo
+                                             is associated with registrant
+                                             or contact object
 
         SRSGwEppDomTransfer01Ext01Uri        Extension 01 object URI         String
 
@@ -8834,15 +8834,15 @@ Test-Cases:
         SRSGwEppDomTransfer01Ext01ExtName    Extension 01 name               String
 
         SRSGwEppDomTransfer01Ext01ExtValue   Extension 01 value for direct   String
-                                             text node                       
+                                             text node
 
         SRSGwEppDomTransfer01Ext01Field01    Extension 01 field name 01      String
 
         SRSGwEppDomTransfer01Ext01Value01    Extension 01 field value 01     String
 
-        ...                                  Repeat for max y fields         
+        ...                                  Repeat for max y fields
 
-        ...                                  Repeat for max x extensions     
+        ...                                  Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9008,26 +9008,26 @@ Test-Cases:
         Id                                   Description                     Type
         ------------------------------------ ------------------------------- ---------
         SRSGwEppDomTransfer02Approve         Yes if the TLD supports the     Boolean
-                                             approve operation               
+                                             approve operation
 
         SRSGwEppDomTransfer02Name            Domain name to transfer         String
 
         SRSGwEppDomTransfer02AddPeriod       Yes if the TLD support adding a Boolean
-                                             period to transfer              
+                                             period to transfer
 
         SRSGwEppDomTransfer02Period          Domain period type              Y/M
 
         SRSGwEppDomTransfer02PeriodValue     Domain period value             Number
 
         SRSGwEppDomTransfer02AuthInfo        Authorization info for domain,  String
-                                             registrant or associated        
-                                             contacts if required            
+                                             registrant or associated
+                                             contacts if required
 
         SRSGwEppDomTransfer02AuthRoid        Roid for registrant or contact  String
-                                             if                              
-                                             SRSGwEppDomTransfer01AuthInfo   
-                                             is associated with registrant   
-                                             or contact object               
+                                             if
+                                             SRSGwEppDomTransfer01AuthInfo
+                                             is associated with registrant
+                                             or contact object
 
         SRSGwEppDomTransfer02Ext01Uri        Extension 01 object URI         String
 
@@ -9036,15 +9036,15 @@ Test-Cases:
         SRSGwEppDomTransfer02Ext01ExtName    Extension 01 name               String
 
         SRSGwEppDomTransfer02Ext01ExtValue   Extension 01 value for direct   String
-                                             text node                       
+                                             text node
 
         SRSGwEppDomTransfer02Ext01Field01    Extension 01 field name 01      String
 
         SRSGwEppDomTransfer02Ext01Value01    Extension 01 field value 01     String
 
-        ...                                  Repeat for max y fields         
+        ...                                  Repeat for max y fields
 
-        ...                                  Repeat for max x extensions     
+        ...                                  Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9215,15 +9215,15 @@ Test-Cases:
         SRSGwEppDomDelete01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppDomDelete01Ext01ExtValue   Extension 01 value for direct String
-                                           text node                     
+                                           text node
 
         SRSGwEppDomDelete01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppDomDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                Repeat for max y fields       
+        ...                                Repeat for max y fields
 
-        ...                                Repeat for max x extensions   
+        ...                                Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9375,69 +9375,69 @@ Test-Cases:
         SRSGwEppConCreate01Id              Contact ID to create          String
 
         SRSGwEppConCreate01PIntMand        Yes if PostalInfo type INT is Boolean
-                                           mandatory                     
+                                           mandatory
 
         SRSGwEppConCreate01PIntName        Contact PostalInfo Int Name   String
 
         SRSGwEppConCreate01PIntOrg         Contact PostalInfo Int Org    String
 
         SRSGwEppConCreate01PIntStreet1     Contact PostalInfo Int        String
-                                           Street1                       
+                                           Street1
 
         SRSGwEppConCreate01PIntStreet2     Contact PostalInfo Int        String
-                                           Street2, if mandatory         
+                                           Street2, if mandatory
 
         SRSGwEppConCreate01PIntStreet3     Contact PostalInfo Int        String
-                                           Street3, if mandatory         
+                                           Street3, if mandatory
 
         SRSGwEppConCreate01PIntCity        Contact PostalInfo Int City   String
 
         SRSGwEppConCreate01PIntSp          Contact PostalInfo Int State  String
-                                           or Province, if mandatory     
+                                           or Province, if mandatory
 
         SRSGwEppConCreate01PIntPc          Contact PostalInfo Int        String
-                                           Postcode, if mandatory        
+                                           Postcode, if mandatory
 
         SRSGwEppConCreate01PIntCc          Contact PostalInfo Int        String
-                                           Country Code                  
+                                           Country Code
 
         SRSGwEppConCreate01PLocMand        Yes if PostalInfo type LOC is Boolean
-                                           mandatory                     
+                                           mandatory
 
         SRSGwEppConCreate01PLocName        Contact PostalInfo Loc Name   String
 
         SRSGwEppConCreate01PLocOrg         Contact PostalInfo Loc Org    String
 
         SRSGwEppConCreate01PLocStreet1     Contact PostalInfo Loc        String
-                                           Street1                       
+                                           Street1
 
         SRSGwEppConCreate01PLocStreet2     Contact PostalInfo Loc        String
-                                           Street2, if mandatory         
+                                           Street2, if mandatory
 
         SRSGwEppConCreate01PLocStreet3     Contact PostalInfo Loc        String
-                                           Street3, if mandatory         
+                                           Street3, if mandatory
 
         SRSGwEppConCreate01PLocCity        Contact PostalInfo Loc City   String
 
         SRSGwEppConCreate01PLocSp          Contact PostalInfo Loc State  String
-                                           or Province, if mandatory     
+                                           or Province, if mandatory
 
         SRSGwEppConCreate01PLocPc          Contact PostalInfo Loc        String
-                                           Postcode, if mandatory        
+                                           Postcode, if mandatory
 
         SRSGwEppConCreate01PLocCc          Contact PostalInfo Loc        String
-                                           Country Code                  
+                                           Country Code
 
         SRSGwEppConCreate01Voice           Contact Voice telephone       String
-                                           number, if mandatory          
+                                           number, if mandatory
 
         SRSGwEppConCreate01Fax             Contact Fax telephone number, String
-                                           if mandatory                  
+                                           if mandatory
 
         SRSGwEppConCreate01Email           Contact Email address         String
 
         SRSGwEppConCreate01Auth            Contact Auth Info, if         String
-                                           mandatory                     
+                                           mandatory
 
         SRSGwEppConCreate01Ext01Uri        Extension 01 object URI       String
 
@@ -9446,15 +9446,15 @@ Test-Cases:
         SRSGwEppConCreate01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppConCreate01Ext01ExtValue   Extension 01 value for direct String
-                                           text node                     
+                                           text node
 
         SRSGwEppConCreate01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppConCreate01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                Repeat for max y fields       
+        ...                                Repeat for max y fields
 
-        ...                                Repeat for max x extensions   
+        ...                                Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9622,15 +9622,15 @@ Test-Cases:
         SRSGwEppConDelete01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppConDelete01Ext01ExtValue   Extension 01 value for direct String
-                                           text node                     
+                                           text node
 
         SRSGwEppConDelete01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppConDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                Repeat for max y fields       
+        ...                                Repeat for max y fields
 
-        ...                                Repeat for max x extensions   
+        ...                                Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9791,15 +9791,15 @@ Test-Cases:
         SRSGwEppHostDelete01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppHostDelete01Ext01ExtValue   Extension 01 value for direct String
-                                            text node                     
+                                            text node
 
         SRSGwEppHostDelete01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppHostDelete01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                 Repeat for max y fields       
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions   
+        ...                                 Repeat for max x extensions
         ------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -9956,15 +9956,15 @@ Test-Cases:
         SRSGwEppHostUpdate01Ext01ExtName    Extension 01 name             String
 
         SRSGwEppHostUpdate01Ext01ExtValue   Extension 01 value for direct String
-                                            text node                     
+                                            text node
 
         SRSGwEppHostUpdate01Ext01Field01    Extension 01 field name 01    String
 
         SRSGwEppHostUpdate01Ext01Value01    Extension 01 field value 01   String
 
-        ...                                 Repeat for max y fields       
+        ...                                 Repeat for max y fields
 
-        ...                                 Repeat for max x extensions   
+        ...                                 Repeat for max x extensions
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -10112,37 +10112,37 @@ Test-Cases:
         Id                                     Description                               Type
         -------------------------------------- ------------- --------------------------- -----------
         SRSGwEppContactUpdate01Id              Contact ID to                             String
-                                               update                                    
+                                               update
 
         SRSGwEppContactUpdate01Email                         Email address to set        String
 
         SRSGwEppContactUpdate01Ext01Uri        Extension 01                              String
-                                               object URI                                
+                                               object URI
 
         SRSGwEppContactUpdate01Ext01Sl         Extension 01                              String
-                                               schema                                    
-                                               location                                  
+                                               schema
+                                               location
 
         SRSGwEppContactUpdate01Ext01ExtName                  Extension 01 name           String
 
         SRSGwEppContactUpdate01Ext01ExtValue   Extension 01                              String
-                                               value for                                 
-                                               direct text                               
-                                               node                                      
+                                               value for
+                                               direct text
+                                               node
 
         SRSGwEppContactUpdate01Ext01Field01    Extension 01                              String
-                                               field name 01                             
+                                               field name 01
 
         SRSGwEppContactUpdate01Ext01Value01    Extension 01                              String
-                                               field value                               
-                                               01                                        
+                                               field value
+                                               01
 
-        ...                                    Repeat for                                
-                                               max y fields                              
+        ...                                    Repeat for
+                                               max y fields
 
-        ...                                    Repeat for                                
-                                               max x                                     
-                                               extensions                                
+        ...                                    Repeat for
+                                               max x
+                                               extensions
         --------------------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -10508,17 +10508,17 @@ Test-Cases:
         ----------------- -------------------------------------- --------------------
         TableList         A list of all script and language IDN  File, Registry
                           tables cited in the Exhibit A of the   Agreement.
-                          Registry Agreement.                    
+                          Registry Agreement.
 
         PolicyStatement   The IDN policies declared by the       File, IDN
                           registry in section 4 of the IDN       Self-Certification
                           Self-Certification Document,           Document.
-                          corresponding to TableList.            
+                          corresponding to TableList.
 
         EPPtags           A list of all IDN EPP extensions, as   File
-                          well as language and script tags,      
-                          needed for the registration of an IDN  
-                          label.                                 
+                          well as language and script tags,
+                          needed for the registration of an IDN
+                          label.
 
         TestTable         The IDN table under scrutiny.          File or files.
         -----------------------------------------------------------------------------
@@ -10627,13 +10627,13 @@ Test-Cases:
         LocalTableFormat          Describes the IDN table format in   File, IDN
                                   Section 2 of the IDN                Self-Certification
                                   Self-Certification Document if it   Document
-                                  does not comply with either of the  
-                                  reference RFCs.                     
+                                  does not comply with either of the
+                                  reference RFCs.
 
         LocalTableJustification   Verifiable warrant in Section 2 of  File, IDN
                                   the IDN Self-Certification Document Self-Certification
                                   for using a local format instead of Document
-                                  either of the reference RFCs.       
+                                  either of the reference RFCs.
         ----------------------------------------------------------------------------------
 
       None of the reference RFCs for text IDN table formats (RFC 4290 and RFC
@@ -10819,10 +10819,10 @@ Test-Cases:
         TestTable                 The IDN table under scrutiny.       File
 
         ExtendedTestTable         IDN table generated by Test Case    File
-                                  IDNvalid02.                         
+                                  IDNvalid02.
 
         AvailableCodepointTable   A tabular listing of all PVALID and File
-                                  CONTEXTn code points in Unicode.    
+                                  CONTEXTn code points in Unicode.
         --------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -10931,13 +10931,13 @@ Test-Cases:
         TestTable             The IDN table under scrutiny.      File
 
         ExtendedTestTable     Table generated by test            File
-                              IDNvalid02.                        
+                              IDNvalid02.
 
         IDNAContextualRules   The contextual rules listed in RFC File, RFC 5892.
-                              5892, Appendix A.                  
+                              5892, Appendix A.
 
         BidiDigitRules        The contextual rules given in RFC  File, RFC 5893.
-                              5893, Section 2.                   
+                              5893, Section 2.
 
         UnicodeContextRules   The contextual rules given in      Unicode (UAX#24 and
                               Unicode                            ScriptExtensions.txt
@@ -11107,18 +11107,18 @@ Test-Cases:
         ExtendedTestTable         Table generated by test IDNvalid02. File
 
         AvailableCodepointTable   A tabular listing of all PVALID and File
-                                  CONTEXTn code points in Unicode,    
-                                  with separate columns indicating    
-                                  the IDN status and the Unicode      
-                                  script property value for the code  
-                                  point that keys every row. This     
-                                  file is provided internally.        
+                                  CONTEXTn code points in Unicode,
+                                  with separate columns indicating
+                                  the IDN status and the Unicode
+                                  script property value for the code
+                                  point that keys every row. This
+                                  file is provided internally.
 
         ScriptIntegrityPolicies   The script integrity policies       File
-                                  declared by the registry.           
+                                  declared by the registry.
 
         UAX#24                    Unicode Standard Annex #24; Unicode File
-                                  Script Property.                    
+                                  Script Property.
         --------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -11353,8 +11353,8 @@ Test-Cases:
                                                                                                      Self-Certification
                                                                                                      Document.
 
-        IDN Reference Table IDN table found at                                                       
-                            <https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en>   
+        IDN Reference Table IDN table found at
+                            <https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en>
         ------------------------------------------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -11462,23 +11462,23 @@ Test-Cases:
         VariantAlgorithms   The IDN policies submitted for       File, IDN
                             IDNvalid00 that describe the variant Self-Certification
                             generation algorithms used by the    Document
-                            registry.                            
+                            registry.
 
         VariantPolicies     The IDN policies submitted for       File, IDN
                             IDNvalid00 that describe the variant Self-Certification
                             management policies declared by the  Document
-                            registry.                            
+                            registry.
 
         GRsupport           The yes/no response to the question  File, IDN
                             in Section 1 of the Registry         Self-Certification
                             Operator\'s IDN Self-Certification   Document
-                            Document regarding support for IDN   
-                            at the start of General              
-                            Registration.                        
+                            Document regarding support for IDN
+                            at the start of General
+                            Registration.
 
         EPPtags             A list of all EPP extensions needed  File
-                            to submit a request for the          
-                            registration of an IDN label.        
+                            to submit a request for the
+                            registration of an IDN label.
         -----------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -11611,9 +11611,9 @@ Test-Cases:
                                                          Document.
 
         ExhibitA          Exhibit A of the Registry      File
-                          Agreement between ICANN and    
-                          the Registry Operator for the  
-                          TLD tested.                    
+                          Agreement between ICANN and
+                          the Registry Operator for the
+                          TLD tested.
         ------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -11691,17 +11691,17 @@ Test-Cases:
         GRsupport         The yes/no response to the     File, IDN
                           question in Section 1 of the   Self-Certification
                           Registry Operator\'s           Document
-                          Self-Certification Document    
-                          regarding support for IDN at   
-                          the start of General           
-                          Registration (see also         
-                          IDNvalid11).                   
+                          Self-Certification Document
+                          regarding support for IDN at
+                          the start of General
+                          Registration (see also
+                          IDNvalid11).
 
         EPPtags           A list of all IDN EPP          File
-                          extensions, such as language   
-                          and script tags, needed to     
-                          submit a request for the       
-                          registration of an IDN label.  
+                          extensions, such as language
+                          and script tags, needed to
+                          submit a request for the
+                          registration of an IDN label.
         ------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -11796,7 +11796,7 @@ Test-Cases:
 
           e.  TL95 is accepted.
   IDNvalid11:
-    Summary: IDN online registry response validation 
+    Summary: IDN online registry response validation
     Description: |
       ## Objective
 
@@ -11820,16 +11820,16 @@ Test-Cases:
         GRsupport         The yes/no response to the     File, IDN
                           question in Section 1 of the   Self-Certification
                           Registry Operator\'s           Document
-                          Self-Certification Document    
-                          regarding support for IDN at   
-                          the start of General           
-                          Registration.                  
+                          Self-Certification Document
+                          regarding support for IDN at
+                          the start of General
+                          Registration.
 
         EPPtags           A list of all IDN EPP          File
-                          extensions, such as language   
-                          and script tags, needed to     
-                          submit a request for the       
-                          registration of an IDN label.  
+                          extensions, such as language
+                          and script tags, needed to
+                          submit a request for the
+                          registration of an IDN label.
         ------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -12020,9 +12020,9 @@ Test-Cases:
         TestTable        The IDN table under scrutiny.  File
 
         VariantRules     Result from IDNvalid01,        Data
-                         whether the IDN table contains 
-                         variant rules that are         
-                         asymmetrical or intransitive.  
+                         whether the IDN table contains
+                         variant rules that are
+                         asymmetrical or intransitive.
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -12095,7 +12095,7 @@ Test-Cases:
         [ځ]{dir="rtl"}                                                        0681               [حٔ]{dir="rtl"}   062D 0654
 
         ![mage of                                                             08A1               [بٔ]{dir="rtl"}   0628 0654
-        U+08A1](media/image2.png){style="width:0.45276in;height:0.44488in"}                                       
+        U+08A1](media/image2.png){style="width:0.45276in;height:0.44488in"}
 
         ƚ                                                                     019A               l̵                006C 0335
         -----------------------------------------------------------------------------------------------------------------------------
@@ -12113,10 +12113,10 @@ Test-Cases:
         TestTable        The IDN table under scrutiny.  File
 
         VariantRules     Variant rules for the IDN      Data
-                         table                          
+                         table
 
         ContextRules     Contextual rules for the IDN   Data
-                         table                          
+                         table
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -12177,17 +12177,17 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
 
         CharEncoding           Character encoding declaration      String
 
         EppRepID               EPP Repository Identifier           String
-                               declaration                         
+                               declaration
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -12297,10 +12297,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestRegistrar     An existing registrar which has     String
-                               Whois data                          
+                               Whois data
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
 
@@ -12410,13 +12410,13 @@ Test-Cases:
         Id                        Description                         Type
         ------------------------- ----------------------------------- ------------
         TLD                       The ASCII compatible name of the    String
-                                  TLD                                 
+                                  TLD
 
         WhoisTestNameServerName   The domain name of an existing name String
-                                  server which has Whois data         
+                                  server which has Whois data
 
         WhoisTestNameServerIP     The IP address of an existing name  String
-                                  server which has Whois data         
+                                  server which has Whois data
 
         DnsGlueRecord             IPv4 or IPv6 addresses for auth NS  String
 
@@ -12560,7 +12560,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
         -----------------------------------------------------------------------
@@ -12658,7 +12658,7 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
         -----------------------------------------------------------------------
@@ -12755,15 +12755,15 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
 
         EppRepID               EPP Repository Identifier           String
-                               declaration                         
+                               declaration
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -12843,10 +12843,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestRegistrar     An existing registrar which has     String
-                               Whois data                          
+                               Whois data
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
         -----------------------------------------------------------------------
@@ -12923,18 +12923,18 @@ Test-Cases:
         Id                                    Description                                  Type
         ------------------------- ----------- ----------------------------------- -------- ------------
         TLD                                   The ASCII compatible name of the             String
-                                              TLD                                          
+                                              TLD
 
         WhoisTestNameServerName               The domain name of an existing name          String
-                                              server which has Whois data                  
+                                              server which has Whois data
 
         WhoisTestNameServerIP                 The IP address of an existing name           String
-                                              server which has Whois data                  
+                                              server which has Whois data
 
-        DnsGlueRecord             IPv4 or                                         String   
-                                  IPv6                                                     
-                                  addresses                                                
-                                  for auth NS                                              
+        DnsGlueRecord             IPv4 or                                         String
+                                  IPv6
+                                  addresses
+                                  for auth NS
         -----------------------------------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13019,13 +13019,9 @@ Test-Cases:
       Criteria for FAIL:
 
       -   At least one criteria for PASS is unsuccessful.
-
-      # Whois Web 09: Manual Query over IPv6
-
-      ## Test case identifier
-
-      WhoisWeb09
-
+  WhoisWeb09:
+    Summary: Manual Query over IPv6
+    Description: |
       ## Objective
 
       A manual query for a known domain name will be performed on the Whois
@@ -13040,10 +13036,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
         -----------------------------------------------------------------------
@@ -13111,10 +13107,10 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         RegAgree               The Registry Agreement for the      Document
-                               specific gTLD                       
+                               specific gTLD
 
         SearchWhoisDoc         URL to a manual for searchable      String
-                               whois for the specific gTLD         
+                               whois for the specific gTLD
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13194,11 +13190,11 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisCredentials       Optional credentials. E.g. username String
-                               and password for accessing the      
-                               Whois service                       
+                               and password for accessing the
+                               Whois service
 
         DnsGlueRecord          IPv4 or IPv6 addresses for auth NS  String
         -----------------------------------------------------------------------
@@ -13269,14 +13265,14 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisCredentials       Optional credentials. E.g. username String
-                               and password for accessing the      
-                               Whois service                       
+                               and password for accessing the
+                               Whois service
 
         WhoisTestDomain        An existing domain which has Whois  String
-                               data                                
+                               data
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13379,14 +13375,14 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisCredentials       Optional credentials. E.g. username String
-                               and password for accessing the      
-                               Whois service                       
+                               and password for accessing the
+                               Whois service
 
         WhoisTestDomain        An existing domain which has Whois  String
-                               data                                
+                               data
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13468,14 +13464,14 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisCredentials       Optional credentials. E.g. username String
-                               and password for accessing the      
-                               Whois service                       
+                               and password for accessing the
+                               Whois service
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13561,14 +13557,14 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisCredentials       Optional credentials. E.g. username String
-                               and password for accessing the      
-                               Whois service                       
+                               and password for accessing the
+                               Whois service
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13646,27 +13642,27 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestDomain        An existing domain name which has   String
-                               Whois data                          
+                               Whois data
 
         CharEncoding           Character encoding declaration      String
 
         EppRepID               EPP Repository Identifier           String
-                               declaration                         
+                               declaration
 
         TLDSRSWhoisIPv4        The IPv4 address or addresses to    String
-                               the TLD SRS Whois server            
+                               the TLD SRS Whois server
 
         TLDSRSWhoisIPv6        The IPv6 address or addresses to    String
-                               the TLD SRS Whois server            
+                               the TLD SRS Whois server
 
         SRSGwWhoisIPv4         The IPv4 address or addresses to    String
-                               the SRS GW Whois server             
+                               the SRS GW Whois server
 
         SRSGwWhoisIPv6         The IPv6 address or addresses to    String
-                               the SRS GW Whois server             
+                               the SRS GW Whois server
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13784,24 +13780,24 @@ Test-Cases:
         Id                     Description                         Type
         ---------------------- ----------------------------------- ------------
         TLD                    The ASCII compatible name of the    String
-                               TLD                                 
+                               TLD
 
         WhoisTestRegistrar     An existing registrar which has     String
-                               Whois data                          
+                               Whois data
 
         CharEncoding           Character encoding of Whois output  String
 
         TLDSRSWhoisIPv4        The IPv4 address or addresses to    String
-                               the TLD SRS Whois server            
+                               the TLD SRS Whois server
 
         TLDSRSWhoisIPv6        The IPv6 address or addresses to    String
-                               the TLD SRS Whois server            
+                               the TLD SRS Whois server
 
         SRSGwWhoisIPv4         The IPv4 address or addresses to    String
-                               the SRS GW Whois server             
+                               the SRS GW Whois server
 
         SRSGwWhoisIPv6         The IPv6 address or addresses to    String
-                               the SRS GW Whois server             
+                               the SRS GW Whois server
         -----------------------------------------------------------------------
 
       ## Outcome(s)
@@ -13915,43 +13911,43 @@ Test-Cases:
         Id                                    Description                                  Type
         ------------------------- ----------- ----------------------------------- -------- ------------
         TLD                                   The ASCII compatible name of the             String
-                                              TLD                                          
+                                              TLD
 
         WhoisTestNameServerName               The domain name of an existing name          String
-                                              server which has Whois data                  
+                                              server which has Whois data
 
         WhoisTestNameServerIP                 The IP address of an existing name           String
-                                              server which has Whois data                  
+                                              server which has Whois data
 
         CharEncoding                          Character encoding of Whois output           String
 
-        TLDSRSWhoisIPv4           The IPv4                                        String   
-                                  address or                                               
-                                  addresses                                                
-                                  to the TLD                                               
-                                  SRS Whois                                                
-                                  server                                                   
+        TLDSRSWhoisIPv4           The IPv4                                        String
+                                  address or
+                                  addresses
+                                  to the TLD
+                                  SRS Whois
+                                  server
 
-        TLDSRSWhoisIPv6           The IPv6                                        String   
-                                  address or                                               
-                                  addresses                                                
-                                  to the TLD                                               
-                                  SRS Whois                                                
-                                  server                                                   
+        TLDSRSWhoisIPv6           The IPv6                                        String
+                                  address or
+                                  addresses
+                                  to the TLD
+                                  SRS Whois
+                                  server
 
-        SRSGwWhoisIPv4            The IPv4                                        String   
-                                  address or                                               
-                                  addresses                                                
-                                  to the SRS                                               
-                                  GW Whois                                                 
-                                  server                                                   
+        SRSGwWhoisIPv4            The IPv4                                        String
+                                  address or
+                                  addresses
+                                  to the SRS
+                                  GW Whois
+                                  server
 
-        SRSGwWhoisIPv6            The IPv6                                        String   
-                                  address or                                               
-                                  addresses                                                
-                                  to the SRS                                               
-                                  GW Whois                                                 
-                                  server                                                   
+        SRSGwWhoisIPv6            The IPv6                                        String
+                                  address or
+                                  addresses
+                                  to the SRS
+                                  GW Whois
+                                  server
         -----------------------------------------------------------------------------------------------
 
       ## Outcome(s)
