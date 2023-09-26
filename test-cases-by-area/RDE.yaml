@@ -1,0 +1,13 @@
+---
+DataEscrowContent01:
+  Summary: Validate content, full escrow
+DataEscrowContent02:
+  Summary: Validate content, differential escrow
+DataEscrowFileName01:
+  Summary: Verify file names, full escrow
+DataEscrowFileName02:
+  Summary: Verify file names, differential escrow
+DataEscrowVerify01:
+  Summary: Verify signatures, full escrow
+DataEscrowVerify02:
+  Summary: Verify signatures, differential escrow

@@ -1,0 +1,89 @@
+---
+EPPConCreate01:
+  Summary: Create a contact object
+EPPConDelete01:
+  Summary: Delete a contact
+EPPContactUpdate01:
+  Summary: Update a contact
+EPPDomCreate01:
+  Summary: Create a domain
+EPPDomCreate02:
+  Summary: Add hosts to existing domain
+EPPDomCreate03:
+  Summary: Create a DNSSEC-signed domain
+EPPDomDelete01:
+  Summary: Delete a domain
+EPPDomRenew01:
+  Summary: Renew a domain
+EPPDomTransfer01:
+  Summary: Request transfer of a domain
+EPPDomTransfer02:
+  Summary: Approve a requested domain transfer
+EPPDomUpdate01:
+  Summary: Add DNSSEC records to a domain
+EPPExtensions:
+  Summary: Verify required EPP extensions
+EPPHostDelete01:
+  Summary: Delete a host
+EPPHostUpdate01:
+  Summary: Update a host
+EppConnTest:
+  Summary: ~
+SRSGWAddrVer:
+  Summary: Verify IP addresses to SRS Gateway System
+SRSGWConCreate01:
+  Summary: Create a contact and verify that TLD SRS is updated
+SRSGWConDelete01:
+  Summary: Delete a contact and verify that TLD SRS is updated
+SRSGWConUpdate01:
+  Summary: Update a contact and verify that TLD SRS is updated
+SRSGWConnTest:
+  Summary: Verify connectivity
+SRSGWDomCreate01:
+  Summary: Create a domain and verify that TLD SRS is updated
+SRSGWDomCreate02:
+  Summary: Add hosts to a domain and verify that TLD SRS is updated
+SRSGWDomCreate03:
+  Summary: Create DNSSEC-signed domain and verify TLD SRS is updated
+SRSGWDomDelete01:
+  Summary: Delete a domain and verify TLD SRS is updated
+SRSGWDomRenew01:
+  Summary: Renew a domain and verify that TLD SRS is updated
+SRSGWDomTransfer01:
+  Summary: Request transfer of a domain and verify TLD SRS is updated
+SRSGWDomTransfer02:
+  Summary: Approve a domain transfer and verify TLD SRS is updated
+SRSGWDomUpdate01:
+  Summary: Add DNSSEC records to a domain, verify TLD SRS is updated
+SRSGWHostDelete01:
+  Summary: Delete a host and verify that TLD SRS is updated
+SRSGWHostUpdate01:
+  Summary: Update a host and verify that TLD SRS is updated
+TLDSRSEPPConCreate01:
+  Summary: Create a contact
+TLDSRSEPPConDelete01:
+  Summary: Delete a contact
+TLDSRSEPPConUpdate01:
+  Summary: Update a contact
+TLDSRSEPPConnTest:
+  Summary: Verify connectivity
+TLDSRSEPPDomCreate01:
+  Summary: Create a domain
+TLDSRSEPPDomCreate02:
+  Summary: Add hosts to existing domain
+TLDSRSEPPDomCreate03:
+  Summary: Create a DNSSEC-signed domain
+TLDSRSEPPDomDelete01:
+  Summary: Delete a domain
+TLDSRSEPPDomRenew01:
+  Summary: Renew a domain
+TLDSRSEPPDomTransfer01:
+  Summary: Request transfer of a domain
+TLDSRSEPPDomTransfer02:
+  Summary: Approve a requested domain transfer
+TLDSRSEPPDomUpdate01:
+  Summary: Add DNSSEC records to a domain
+TLDSRSEPPHostDelete01:
+  Summary: Delete a host
+TLDSRSEPPHostUpdate01:
+  Summary: Update a host

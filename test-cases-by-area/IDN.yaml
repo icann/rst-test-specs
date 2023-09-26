@@ -1,0 +1,27 @@
+---
+IDNvalid00:
+  Summary: IDN documentation validation
+IDNvalid01:
+  Summary: IDN Table validation
+IDNvalid02:
+  Summary: IDNA Code Point validation
+IDNvalid03:
+  Summary: Contextual Rule validation
+IDNvalid04:
+  Summary: IDN Script validation
+IDNvalid05:
+  Summary: IDN Script Mixing Rule validation
+IDNvalid06:
+  Summary: IDN Language validation
+IDNvalid07:
+  Summary: Variant Code Point validation
+IDNvalid09:
+  Summary: Variant Management Policy
+IDNvalid10:
+  Summary: Basic IDN compliance
+IDNvalid11:
+  Summary: IDN online registry response validation
+IDNvalid12:
+  Summary: Asymmetrical and intransitive variant rule verification
+IDNvalid13:
+  Summary: Pre-composed vs. decomposed character equivalence verification
