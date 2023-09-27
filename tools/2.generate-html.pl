@@ -51,7 +51,7 @@ print $h->open('li');
 print $h->a({'href' => '#test-plans'}, 'Test Plans');
 
 print $h->open('ol');
-foreach my $plan (sort(keys(%{$struct->{'Plans'}}))) {
+foreach my $plan (sort({$struct->{'Plans'}->{$a}->{'Order'} cmp $struct->{'Plans'}->{$b}->{'Order'}} keys(%{$struct->{'Plans'}}))) {
     print $h->li($h->a({'href' => sprintf('#Test-Plan-%s', $plan)}, $struct->{'Plans'}->{$plan}->{'Name'}));
 }
 print $h->close('ol');
@@ -104,7 +104,7 @@ print $h->a({'name' => 'test-plans'});
 print $h->h2('3. Test Plans');
 
 my $i = 0;
-foreach my $plan (sort(keys(%{$struct->{'Plans'}}))) {
+foreach my $plan (sort({$struct->{'Plans'}->{$a}->{'Order'} cmp $struct->{'Plans'}->{$b}->{'Order'} } keys(%{$struct->{'Plans'}}))) {
     print $h->open('section');
     print $h->a({'name' => sprintf('Test-Plan-%s', $plan)});
     print $h->h3(sprintf('3.%u. %s', ++$i, $struct->{'Plans'}->{$plan}->{'Name'}));
@@ -222,6 +222,18 @@ header,nav,body,main,section {
 }
 body {
     margin: 0.5em 5em;
+}
+dl {
+    margin: auto 2em;
+}
+dt {
+    font-weight:bold;
+}
+dt:after {
+    content: ":";
+}
+dd {
+    margin-bottom: 1em;
 }
 .toc-link {
     position:fixed;
