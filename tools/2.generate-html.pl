@@ -178,6 +178,8 @@ print $h->close('html');
 sub md2html {
     my ($md, $shift) = @_;
 
+    return '' unless ($md);
+
     $shift = sprintf('--shift-heading-level-by=%u', $shift);
 
     my($out, $in);
@@ -235,6 +237,11 @@ dt:after {
 dd {
     margin-bottom: 1em;
 }
+
+code,tt,pre {
+    font-family: "Courier New", Courier, monospace;
+}
+
 .toc-link {
     position:fixed;
     margin:0;
