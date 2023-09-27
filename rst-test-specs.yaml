@@ -28,6 +28,12 @@ Preamble: |
   DNS
   : Domain Name System
 
+  TLD
+  : Top-level domain
+
+  gTLD
+  : generic top-level domain
+
   DNSSEC
   : DNS Security Extensions
 
@@ -52,6 +58,17 @@ Preamble: |
   LGR
   : Label Generation Ruleset
 
+  ### 2.2. Note about DNS and DNSSEC test suites
+
+  The DNS and DNSSEC test plans are taken from the test plans that are part of
+  the [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
+  version v4.7.3). Test case IDs from this document can be mapped to the
+  Zonemaster test IDs by removing the `dns-` or `dnssec-` prefix.
+
+  Since Zonemaster is designed to perform testing of domain names anywhere in
+  the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may
+  not be listed in the test suites in this document.
+
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -73,7 +90,68 @@ Plans:
 
     Test-Suites:
       DNS:
+        - dns-address01
+        - dns-address02
+        - dns-address03
+        - dns-connectivity01
+        - dns-connectivity02
+        - dns-connectivity03
+        - dns-connectivity04
+        - dns-consistency01
+        - dns-consistency02
+        - dns-consistency03
+        - dns-consistency04
+        - dns-consistency05
+        - dns-consistency06
+        - dns-delegation01
+        - dns-delegation02
+        - dns-delegation03
+        - dns-delegation04
+        - dns-delegation05
+        - dns-delegation06
+        - dns-nameserver01
+        - dns-nameserver02
+        - dns-nameserver04
+        - dns-nameserver05
+        - dns-nameserver06
+        - dns-nameserver07
+        - dns-nameserver08
+        - dns-nameserver09
+        - dns-nameserver10
+        - dns-nameserver11
+        - dns-nameserver12
+        - dns-nameserver13
+        - dns-syntax05
+        - dns-syntax06
+        - dns-syntax07
+        - dns-zone01
+        - dns-zone02
+        - dns-zone03
+        - dns-zone04
+        - dns-zone05
+        - dns-zone06
+        - dns-zone07
+        - dns-zone10
+
       DNSSEC:
+        - dnssec01
+        - dnssec02
+        - dnssec03
+        - dnssec04
+        - dnssec05
+        - dnssec06
+        - dnssec07
+        - dnssec08
+        - dnssec09
+        - dnssec10
+        - dnssec11
+        - dnssec13
+        - dnssec14
+        - dnssec15
+        - dnssec16
+        - dnssec17
+        - dnssec18
+
       RDDS:
       EPP:
       IDN:
@@ -94,7 +172,68 @@ Plans:
 
     Test-Suites:
       DNS:
+        - dns-address01
+        - dns-address02
+        - dns-address03
+        - dns-connectivity01
+        - dns-connectivity02
+        - dns-connectivity03
+        - dns-connectivity04
+        - dns-consistency01
+        - dns-consistency02
+        - dns-consistency03
+        - dns-consistency04
+        - dns-consistency05
+        - dns-consistency06
+        - dns-delegation01
+        - dns-delegation02
+        - dns-delegation03
+        - dns-delegation04
+        - dns-delegation05
+        - dns-delegation06
+        - dns-nameserver01
+        - dns-nameserver02
+        - dns-nameserver04
+        - dns-nameserver05
+        - dns-nameserver06
+        - dns-nameserver07
+        - dns-nameserver08
+        - dns-nameserver09
+        - dns-nameserver10
+        - dns-nameserver11
+        - dns-nameserver12
+        - dns-nameserver13
+        - dns-syntax05
+        - dns-syntax06
+        - dns-syntax07
+        - dns-zone01
+        - dns-zone02
+        - dns-zone03
+        - dns-zone04
+        - dns-zone05
+        - dns-zone06
+        - dns-zone07
+        - dns-zone10
+
       DNSSEC:
+        - dnssec01
+        - dnssec02
+        - dnssec03
+        - dnssec04
+        - dnssec05
+        - dnssec06
+        - dnssec07
+        - dnssec08
+        - dnssec09
+        - dnssec10
+        - dnssec11
+        - dnssec13
+        - dnssec14
+        - dnssec15
+        - dnssec16
+        - dnssec17
+        - dnssec18
+
       RDDS:
       EPP:
       IDN:
@@ -116,6 +255,67 @@ Plans:
 
     Test-Suites:
       DNS:
+        - dns-address01
+        - dns-address02
+        - dns-address03
+        - dns-connectivity01
+        - dns-connectivity02
+        - dns-connectivity03
+        - dns-connectivity04
+        - dns-consistency01
+        - dns-consistency02
+        - dns-consistency03
+        - dns-consistency04
+        - dns-consistency05
+        - dns-consistency06
+        - dns-delegation01
+        - dns-delegation02
+        - dns-delegation03
+        - dns-delegation04
+        - dns-delegation05
+        - dns-delegation06
+        - dns-nameserver01
+        - dns-nameserver02
+        - dns-nameserver04
+        - dns-nameserver05
+        - dns-nameserver06
+        - dns-nameserver07
+        - dns-nameserver08
+        - dns-nameserver09
+        - dns-nameserver10
+        - dns-nameserver11
+        - dns-nameserver12
+        - dns-nameserver13
+        - dns-syntax05
+        - dns-syntax06
+        - dns-syntax07
+        - dns-zone01
+        - dns-zone02
+        - dns-zone03
+        - dns-zone04
+        - dns-zone05
+        - dns-zone06
+        - dns-zone07
+        - dns-zone10
+
+      DNSSEC:
+        - dnssec01
+        - dnssec02
+        - dnssec03
+        - dnssec04
+        - dnssec05
+        - dnssec06
+        - dnssec07
+        - dnssec08
+        - dnssec09
+        - dnssec10
+        - dnssec11
+        - dnssec13
+        - dnssec14
+        - dnssec15
+        - dnssec16
+        - dnssec17
+        - dnssec18
 
   IDNTest:
     Order: 4
@@ -154,4 +354,295 @@ Plans:
       RDDS:
       EPP:
 
+  StandardRSPEvaluationTest:
+    Order: 6
+    Name: Standard RSP Evaluation Test
+    Description: |
+      For the Next Round of gTLD applications, Registry Service Providers can
+      apply to be pre-evaluated before submission of applications.
+
+      A "Standard" RSP is one which provides all of the critical registry
+      services.
+
+      As a result, this test plan is designed to cover all aspects of RSP
+      operations, and is substantially similar to the Standard Pre-Delegation
+      Test and Standard RSP Change Test.
+    Test-Suites:
+      DNS:
+        - dns-address01
+        - dns-address02
+        - dns-address03
+        - dns-connectivity01
+        - dns-connectivity02
+        - dns-connectivity03
+        - dns-connectivity04
+        - dns-consistency01
+        - dns-consistency02
+        - dns-consistency03
+        - dns-consistency04
+        - dns-consistency05
+        - dns-consistency06
+        - dns-delegation01
+        - dns-delegation02
+        - dns-delegation03
+        - dns-delegation04
+        - dns-delegation05
+        - dns-delegation06
+        - dns-nameserver01
+        - dns-nameserver02
+        - dns-nameserver04
+        - dns-nameserver05
+        - dns-nameserver06
+        - dns-nameserver07
+        - dns-nameserver08
+        - dns-nameserver09
+        - dns-nameserver10
+        - dns-nameserver11
+        - dns-nameserver12
+        - dns-nameserver13
+        - dns-syntax05
+        - dns-syntax06
+        - dns-syntax07
+        - dns-zone01
+        - dns-zone02
+        - dns-zone03
+        - dns-zone04
+        - dns-zone05
+        - dns-zone06
+        - dns-zone07
+        - dns-zone10
+
+      DNSSEC:
+        - dnssec01
+        - dnssec02
+        - dnssec03
+        - dnssec04
+        - dnssec05
+        - dnssec06
+        - dnssec07
+        - dnssec08
+        - dnssec09
+        - dnssec10
+        - dnssec11
+        - dnssec13
+        - dnssec14
+        - dnssec15
+        - dnssec16
+        - dnssec17
+        - dnssec18
+
+      RDDS:
+      EPP:
+      IDN:
+      RDE:
+
+  DNSRSPEvaluationTest:
+    Order: 7
+    Name: DNS RSP Evaluation Test
+    Description: |
+      DNS RSPs provide primary or secondary authoritative DNS services.
+      Therefore, this test plan only covers the DNS area.
+
+      RSPs wishing to offer DNSSEC services in addition to authoritative DNS
+      will also be evaluated using the DNSSEC RSP Evaluation Test below.
+
+    Test-Suites:
+      DNS:
+        - dns-address01
+        - dns-address02
+        - dns-address03
+        - dns-connectivity01
+        - dns-connectivity02
+        - dns-connectivity03
+        - dns-connectivity04
+        - dns-consistency01
+        - dns-consistency02
+        - dns-consistency03
+        - dns-consistency04
+        - dns-consistency05
+        - dns-consistency06
+        - dns-delegation01
+        - dns-delegation02
+        - dns-delegation03
+        - dns-delegation04
+        - dns-delegation05
+        - dns-delegation06
+        - dns-nameserver01
+        - dns-nameserver02
+        - dns-nameserver04
+        - dns-nameserver05
+        - dns-nameserver06
+        - dns-nameserver07
+        - dns-nameserver08
+        - dns-nameserver09
+        - dns-nameserver10
+        - dns-nameserver11
+        - dns-nameserver12
+        - dns-nameserver13
+        - dns-syntax05
+        - dns-syntax06
+        - dns-syntax07
+        - dns-zone01
+        - dns-zone02
+        - dns-zone03
+        - dns-zone04
+        - dns-zone05
+        - dns-zone06
+        - dns-zone07
+        - dns-zone10
+
+      RDDS:
+      EPP:
+      IDN:
+      RDE:
+
+  DNSSECRSPEvaluationTest:
+    Order: 8
+    Name: DNSSEC RSP Evaluation Test
+    Description: |
+      DNSSEC RSPs provide signing of TLD zone files as a service. They do not
+      provide primary or secondary authoritative DNS services.
+
+      RSPs wishing to offer DNSSEC services in addition to authoritative DNS
+      will also be evaluated using the DNSSEC RSP Evaluation Test below.
+
+    Test-Suites:
+
+      DNSSEC:
+        - dnssec01
+        - dnssec02
+        - dnssec03
+        - dnssec04
+        - dnssec05
+        - dnssec06
+        - dnssec07
+        - dnssec08
+        - dnssec09
+        - dnssec10
+        - dnssec11
+        - dnssec13
+        - dnssec14
+        - dnssec15
+        - dnssec16
+        - dnssec17
+        - dnssec18
+
 Test-Cases:
+  dns-address01:
+    Summary: Verify that IPv4 addresse are not in private networks
+  dns-address02:
+    Summary: Verify reverse DNS entries exist for nameserver IP addresses
+  dns-address03:
+    Summary: Verify that reverse DNS entries match nameserver names
+  dns-connectivity01:
+    Summary: Verify nameserver UDP port 53 reachability
+  dns-connectivity02:
+    Summary: Verify nameserver TCP port 53 reachability
+  dns-connectivity03:
+    Summary: Verify that all nameservers do not belong to the same AS
+  dns-connectivity04:
+    Summary: Verify that name servers are not announced in the same IP prefix
+  dns-consistency01:
+    Summary: Query all nameservers for SOA, and verify that they all have the same SOA serial number
+  dns-consistency02:
+    Summary: Query all nameservers for SOA, and verify that they all have the same SOA rname
+  dns-consistency03:
+    Summary: Query all nameservers for SOA, and verify that they all have the same time parameters (REFRESH/RETRY/EXPIRE/MINIMUM)
+  dns-consistency04:
+    Summary: Query all nameservers for the NS set, and verify that they have all the same content
+  dns-consistency05:
+    Summary: Verify that the glue records are consistent with authoritative data
+  dns-consistency06:
+    Summary: Query all nameservers for SOA, and verify that they all have the same SOA mname
+  dns-delegation01:
+    Summary: Verify that there are more than two nameservers
+  dns-delegation02:
+    Summary: Verify that name servers have distinct IP addresses
+  dns-delegation03:
+    Summary: Verify that there is no truncation on referrals
+  dns-delegation04:
+    Summary: Verify that nameservers are authoritative
+  dns-delegation05:
+    Summary: Verify that NS RRs do not point to CNAMEs
+  dns-delegation06:
+    Summary: Verify existence of SOA
+  dns-nameserver01:
+    Summary: Verify that nameserver does not provide recursive service
+  dns-nameserver02:
+    Summary: Verify EDNS0 support
+  dns-nameserver04:
+    Summary: Verify that replies from nameserver comes from the expected IP address
+  dns-nameserver05:
+    Summary: Verify behaviour against AAAA queries
+  dns-nameserver06:
+    Summary: Verify that each nameserver can be resolved to an IP address
+  dns-nameserver07:
+    Summary: Check whether authoritative name servers return an upward referral
+  dns-nameserver08:
+    Summary: Check whether authoritative name servers responses match the case of every letter in QNAME
+  dns-nameserver09:
+    Summary: Check whether authoritative name servers return same results for equivalent names with different cases in the request
+  dns-nameserver10:
+    Summary: Check whether authoritative name servers respond correctly to queries with undefined EDNS version
+  dns-nameserver11:
+    Summary: Check whether authoritative name servers responses doe not include unknown EDNS OPTION-CODE used in query
+  dns-nameserver12:
+    Summary: Check whether authoritative name servers responses has "Z" bits cleared even if they are set in the query
+  dns-nameserver13:
+    Summary: Verify that if the response to a query with an OPT record is truncated, then the response will contain an OPT record
+  dns-syntax05:
+    Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given has a conform usage of at sign (@)
+  dns-syntax06:
+    Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given is RFC822 compliant
+  dns-syntax07:
+    Summary: Verify that SOA mname of zone given conforms to syntax rules
+  dns-zone01:
+    Summary: Check that master nameserver in SOA is fully qualified
+  dns-zone02:
+    Summary: Verify SOA 'refresh' minimum value
+  dns-zone03:
+    Summary: Verify SOA 'retry' value is lower than SOA 'refresh' value
+  dns-zone04:
+    Summary: Verify SOA 'retry' minimum value
+  dns-zone05:
+    Summary: Verify SOA 'expire' minimum value
+  dns-zone06:
+    Summary: Verify SOA 'minimum' (default TTL) value
+  dns-zone07:
+    Summary: Verify that SOA master is not an alias (CNAME)
+  dns-zone10:
+    Summary: Verify that the zone of the domain to be tested return exactly one SOA record
+  dnssec01:
+    Summary: Verifies that all DS records have digest types registered with IANA
+  dnssec02:
+    Summary: Verifies that all DS records have a matching DNSKEY
+  dnssec03:
+    Summary: Check iteration counts for NSEC3
+  dnssec04:
+    Summary: Checks the durations of the signatures for the DNSKEY and SOA RRsets
+  dnssec05:
+    Summary: Check DNSKEY algorithms
+  dnssec06:
+    Summary: Check for DNSSEC extra processing at child nameservers
+  dnssec07:
+    Summary: Check that both DS and DNSKEY are present
+  dnssec08:
+    Summary: Check that the DNSKEY RRset is signed
+  dnssec09:
+    Summary: Check that the SOA RRset is signed
+  dnssec10:
+    Summary: Check for the presence of either NSEC or NSEC3, with proper coverage and signatures
+  dnssec11:
+    Summary: Check that the delegation step from parent is properly signed
+  dnssec13:
+    Summary: Check that all DNSKEY algorithms are used to sign the zone
+  dnssec14:
+    Summary: Check for valid RSA DNSKEY key size
+  dnssec15:
+    Summary: Check existence of CDS and CDNSKEY
+  dnssec16:
+    Summary: Validate CDS
+  dnssec17:
+    Summary: Validate CDNSKEY
+  dnssec18:
+    Summary: Validate trust from DS to CDS and CDNSKEY
