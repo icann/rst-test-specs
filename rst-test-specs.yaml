@@ -225,7 +225,39 @@ Plans:
         - rdap-rdapResponseProfile_2_7_5_3_Validation
 
       EPP:
+        - EPPConnTest
+        - EPPDomCreate01
+        - EPPDomCreate01A
+        - EPPDomCreate02
+        - EPPDomCreate02A
+        - EPPDomCreate03
+        - EPPDomCreate03A
+        - EPPDomRenew01
+        - EPPDomTransfer01
+        - EPPDomTransfer02
+        - EPPDomDelete01
+        - EPPConCreate01
+        - EPPConDelete01
+        - EPPHostDelete01
+        - EPPHostUpdate01
+        - EPPContactUpdate01
+        - EPPDomUpdate01
+        - EPPDomUpdate01A
+        - EPPExtensions
       IDN:
+        - idn-valid00
+        - idn-valid01
+        - idn-valid02
+        - idn-valid03
+        - idn-valid04
+        - idn-valid05
+        - idn-valid06
+        - idn-valid07
+        - idn-valid09
+        - idn-valid10
+        - idn-valid11
+        - idn-valid12
+        - idn-valid13
       RDE:
         - rde-FileName01
         - rde-FileName02
@@ -377,7 +409,41 @@ Plans:
         - rdap-rdapResponseProfile_2_7_5_3_Validation
 
       EPP:
+        - EPPConnTest
+        - EPPDomCreate01
+        - EPPDomCreate01A
+        - EPPDomCreate02
+        - EPPDomCreate02A
+        - EPPDomCreate03
+        - EPPDomCreate03A
+        - EPPDomRenew01
+        - EPPDomTransfer01
+        - EPPDomTransfer02
+        - EPPDomDelete01
+        - EPPConCreate01
+        - EPPConDelete01
+        - EPPHostDelete01
+        - EPPHostUpdate01
+        - EPPContactUpdate01
+        - EPPDomUpdate01
+        - EPPDomUpdate01A
+        - EPPExtensions
+
       IDN:
+        - idn-valid00
+        - idn-valid01
+        - idn-valid02
+        - idn-valid03
+        - idn-valid04
+        - idn-valid05
+        - idn-valid06
+        - idn-valid07
+        - idn-valid09
+        - idn-valid10
+        - idn-valid11
+        - idn-valid12
+        - idn-valid13
+
       RDE:
         - rde-FileName01
         - rde-FileName02
@@ -645,6 +711,20 @@ Plans:
 
       EPP:
       IDN:
+        - idn-valid00
+        - idn-valid01
+        - idn-valid02
+        - idn-valid03
+        - idn-valid04
+        - idn-valid05
+        - idn-valid06
+        - idn-valid07
+        - idn-valid09
+        - idn-valid10
+        - idn-valid11
+        - idn-valid12
+        - idn-valid13
+
       RDE:
         - rde-FileName01
         - rde-FileName02
@@ -707,11 +787,6 @@ Plans:
         - dns-zone06
         - dns-zone07
         - dns-zone10
-
-      RDDS:
-      EPP:
-      IDN:
-      RDE:
 
   DNSSECRSPEvaluationTest:
     Order: 8
@@ -1493,3 +1568,3527 @@ Test-Cases:
 
           c.  The date part of the watermark MUST match the date in the file
               name.
+
+  EPPConnTest:
+    Summary: Verify the connectivity of the EPP system
+    Description: |
+      ## Objective
+
+      This test verifies the connectivity from different nodes to the EPP
+      provisioning system by doing a login and then a logout. For information
+      about nodes, see section 1.2.
+
+      The test will be performed over IPv4, and also IPv6 if the registry
+      supports it.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+        --------------------------------------------------------------------------
+        Id                        Description                         Type
+        ------------------------- ----------------------------------- ------------
+        EppLoginId                Login ID for EPP test user          String
+
+        EppLoginPwd               Login password for EPP test user    String
+
+        EppNsDomainUri            Object URI for Domain Object        String
+
+        EppNsDomainSl             Schema location for Domain Object   String
+
+        EppNsContactUri           Object URI for Contact Object       String
+
+        EppNsContactSl            Schema location for Contact Object  String
+
+        EppNsHostUri              Object URI for Host Object. If the  String
+                                  Registry Operator is not supporting
+                                  Host Objects, this field is not
+                                  mandatory.
+
+        EppNsHostSl               Schema location for Host Object. If String
+                                  the Registry Operator is not
+                                  supporting Host Objects, this field
+                                  is not mandatory.
+
+        EppExtSecDnsUri           Object URI for Sec Dns Object       String
+                                  Extension
+
+        EppExtSecDnsSl            Schema location for Sec Dns Object  String
+                                  Extension
+
+        EppExtUri-\[1..n\]        Object URI for extension 1..n       String
+
+        EppExtSl-\[1..n\]         Schema location for extensions 1..n String
+
+        EppServerIPv4             IPv4 address to EPP server          String
+
+        EppServerIPv6             IPv6 address to EPP server if       String
+                                  registry supports IPv6
+
+        EppServerPort             Port number to EPP server           Number
+
+        EppClientCertificate      Yes if Registry Operator requires   Boolean
+                                  client certificate
+
+        EppClientKeyPairPem       PEM file with valid client          PEM file
+                                  certificate for test user (Public
+                                  and private)
+
+        EppClientKeyPairPwd       Password for client certificate for String
+                                  test user
+
+        EppServerCertificatePem   PEM file with server certificate    PEM file
+                                  (Public)
+        --------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command from each probe MUST complete with result code 1000
+
+      The logout command from each probe MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   IPv6 connectivity
+
+      ## Special procedural requirements
+
+      Abort the test if any operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      This test will be performed from all of the nodes.
+
+      1.  Connect to EppServerIPv4.\
+          Create a login command with *EppLoginId* and password
+          *EppLoginPwd*.\
+          Use the *EppNsDomainUri*, *EppNsDomainSl*, *EppNsContactUri*,
+          *EppNsContactSl*, *EppNsHostUri* and *EppNsHostSl* to build the
+          login message.\
+          Add the secDNS extension with *EppExtSecDnsUri* and
+          *EppExtSecDnsSl*.\
+          Add zero or more extra extensions with *EppExtUri* and *EppExtSl*.\
+          If the server requires client certificate, connect with client
+          certificate *EppClientKeyPairPem.*\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+
+      If registry supports IPv6:
+
+      1.  Connect to EppServerIPv6.\
+          Create a login command with *EppLoginId* and password
+          *EppLoginPwd*.\
+          Use the *EppNsDomainUri*, *EppNsDomainSl*, *EppNsContactUri*,
+          *EppNsContactSl*, *EppNsHostUri* and *EppNsHostSl* to build the
+          login message.\
+          Add the secDNS extension with *EppExtSecDnsUri* and
+          *EppExtSecDnsSl*.\
+          Add zero or more extra extensions with *EppExtUri* and *EppExtSl*.\
+          If the server requires client certificate, connect with client
+          certificate *EppClientKeyPairPem.*\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPDomCreate01:
+    Summary: Create a domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, creating a domain object, logging out, and verifying that the domain
+      is visible in the zone within 24 hours. It also verifies that
+      information is visible in Whois within 24 hours.
+
+      When executing this test case as EPPDomCreate01A, the DNS and Whois
+      verifications are not included. Requirements and test steps marked with
+      an asterisk (\*) should be disregarded for an \'A\' test case.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The IP address for the authoritative name server for the TLD zone is
+      required as the test verifies DNS visibility. It is fetched from the XML
+      data file submitted for the DNS tests.
+
+      The IP address of the Whois server is extracted from the DNS zone by the
+      Whois test and is also used for this TC.
+
+      The full information from the input table in 5.3 is also used for login.
+
+        ----------------------------------------------------------------------------
+        Id                            Description                       Type
+        ----------------------------- --------------------------------- ------------
+        DnsGlueRecord1                IPv4 or IPv6 address of 1^st^     String
+                                      authoritative name server
+
+        WhoisIPv4Port43               The IPv4 address of the Whois     String
+                                      service on port 43
+
+        EppDomCreate01Name            Domain name to create             String
+
+        EppDomCreate01Period          Domain period type                Y/M
+
+        EppDomCreate01PeriodValue     Domain period value               Number
+
+        EppDomCreate01RegistrantId    Domain registrant id              String
+
+        EppDomCreate01AdminId         Domain Admin id if required       String
+
+        EppDomCreate01TechId          Domain Tech id if required        String
+
+        EppDomCreate01BillingId       Domain Billing id if required     String
+
+        EpPDomCreate01AuthPw          AuthPw if requited                String
+
+        EppDomCreate01Ns01            Host Object or Host Attribute     String
+                                      name for ns01
+
+        EppDomCreate01Ns02            Host Object or Host Attribute     String
+                                      name for ns02
+
+        EppDomCreate01Ext01Uri        Extension 01 object URI           String
+
+        EppDomCreate01Ext01Sl         Extension 01 schema location      String
+
+        EppDomCreate01Ext01ExtName    Extension 01 name                 String
+
+        EppDomCreate01Ext01ExtValue   Extension 01 value for direct     String
+                                      text node
+
+        EppDomCreate01Ext01Field01    Extension 01 field name 01        String
+
+        EppDomCreate01Ext01Value01    Extension 01 field value 01       String
+
+        ...                           Repeat for max y fields
+
+        ...                           Repeat for max x extensions
+        ----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      Initial DNS lookup MUST return NXDOMAIN for *EppDomCreate01Name*. \*
+
+      Initial Whois lookup MUST NOT return any information about
+      *EppDomCreate01Name*. \*
+
+      Login step MUST complete with result code 1000.
+
+      Create step MUST complete with result code 1000 or 1001.
+
+      Logout step MUST complete with result code 1500.
+
+      *EppDomCreate01Name* MUST be visible in zone within 24 hours. \*
+
+      *EppDomCreate01Name* MUST be visible in Whois within 24 hours. \*
+
+      *Requirements marked with \* are not considered in test case
+      EPPDomCreate01A.*
+
+      ## Environmental needs
+
+      -   DNS test script
+
+      -   Whois client software
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomCreate01Name* MUST NOT exist in the DNS zone.
+
+      ```{=html}
+      <!-- -->
+      ```
+      -   *EppDomCreate01RegistrantId* MUST exist in contact database
+
+      -   *EppDomCreate01Ns01* MUST exist in host database, and be configured
+          to serve domain *EppDomCreate01Name*.
+
+      -   *EppDomCreate01Ns02* MUST exist in host database, and be configured
+          to serve domain *EppDomCreate01Name*.
+
+      ## Special procedural requirements
+
+      Abort the test if any Whois query takes longer than 10 seconds.
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Verify that the domain is not present in Whois: \*
+
+          a.  Start a terminal.
+
+          b.  Query the Whois service using the client software:\
+              whois -h *WhoisIPv4Port43* *EppDomCreate01Name*
+
+          c.  The domain name MUST NOT be present in the response.
+
+      2.  Perform a DNS lookup for the domain name *EppDomCreate01Name*. \*\
+          The result MUST be NXDOMAIN.
+
+      3.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      4.  Create a domain create command with *EppDomCreate01Name*.
+
+          a.  Use period name from *EppDomCreate01Period* and period value
+              from *EppDomCreate01PeriodValue*.
+
+          b.  Use name server 1 from *EppDomCreate01Ns01* and name server 2
+              from *EppDomCreate01Ns02*.
+
+          c.  If domain create requires extra extensions and values, create an
+              extension part from *EppDomCreate01Ext01Uri* and fill in field
+              name from *EppDomCreateExt01Field01* and values from
+              *EppDomCreateExt01Value01*.
+
+      The domain create command MUST complete with result code 1000 or 1001.
+
+      5.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+
+      6.  Verify that the *EPPDomCreate01Name* domain is visible in the zone
+          within 24 hours. \*
+
+      7.  Verify that the *EPPDomCreate01Name* is visible in Whois within 24
+          hours. \*
+
+      *Steps marked with \* are not included in test case EppDomCreate01A.*
+  EPPDomCreate01A:
+    Summary: ''
+    Description: |
+      ## Objective
+
+      This is a subset of test case EPPDomCreate01. See section 6, "Test Case
+      EPPDomCreate01: Create a domain", for details.
+  EPPDomCreate02:
+    Summary: Add hosts to existing domain
+    Description: |
+      This test is changed from creating a domain to adding subordinate hosts
+      to an existing domain. As a consequence, all fields required for
+      creating the domain are now optional, and will be ignored if they are
+      present in the input data. They will be removed in a future release.
+
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, creating subordinate Host Objects for a domain, updating the domain,
+      logging out, and verifying the correct handling of glue records.
+
+      If the Registry Operator does not support Host Objects, the test uses
+      Host Attributes to insert the subordinate name servers for the domain.
+
+      When executing this test case as EPPDomCreate02A, DNS verification is
+      not included. Requirements and test steps marked with an asterisk (\*)
+      should be disregarded for an \'A\' test case.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The IP address for the authoritative name server for the TLD zone is
+      required as the test verifies DNS visibility. It is fetched from the XML
+      data file submitted for the DNS tests.
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                                Description                     Type
+        --------------------------------- ------------------------------- -----------
+        DnsGlueRecord1                    IPv4 or IPv6 address of 1^st^   String
+                                          authoritative name server
+
+        EppDomCreate02Name                Domain name to update           String
+
+        EppDomCreate02Ns01                Subordinate Host Object or Host String
+                                          Attribute name for name server
+                                          01
+
+        EppDomCreate02Ns01Ipv4            Subordinate name server 01 IPv4 String
+                                          address
+
+        EppDomCreate02Ns01Ipv6            Subordinate name server 01 IPv6 String
+                                          address
+
+        EppDomCreate02Ns02                Subordinate Host Object or Host String
+                                          Attribute name for name server
+                                          02
+
+        EppDomCreate02Ns02Ipv4            Subordinate name server 02 IPv4 String
+                                          address
+
+        EppDomCreate02Ns02Ipv6            Subordinate name server 02 IPv6 String
+                                          address
+
+        EppDomCreate02UpdExt01Uri         Extension 01 object URI         String
+
+        EppDomCreate02UpdExt01Sl          Extension 01 schema location    String
+
+        EppDomCreate02UpdExt01ExtName     Extension 01 name               String
+
+        EppDomCreate02UpdExt01ExtValue    Extension 01 value for direct   String
+                                          text node
+
+        EppDomCreate02UpdExt01Field01     Extension 01 field name 01      String
+
+        EppDomCreate02UpdExt01Value01     Extension 01 field value 01     String
+
+        ...                               Repeat for max y fields for
+                                          Update
+
+        ...                               Repeat for max x extensions for
+                                          Update
+
+        EppDomCreate02Ns01Ext01Uri        Extension 01 object URI         String
+
+        EppDomCreate02Ns01Ext01Sl         Extension 01 schema location    String
+
+        EppDomCreate02Ns01Ext01ExtName    Extension 01 name               String
+
+        EppDomCreate02Ns01Ext01ExtValue   Extension 01 value for direct   String
+                                          text node
+
+        EppDomCreate02Ns01Ext01Field01    Extension 01 field name 01      String
+
+        EppDomCreate02Ns01Ext01Value01    Extension 01 field value 01     String
+
+        ...                               Repeat for max y fields for
+                                          name server 01
+
+        ...                               Repeat for max x extensions for
+                                          name server 01
+
+        EppDomCreate02Ns02Ext01Uri        Extension 01 object URI         String
+
+        EppDomCreate02Ns02Ext01Sl         Extension 01 schema location    String
+
+        EppDomCreate02Ns02Ext01ExtName    Extension 01 name               String
+
+        EppDomCreate02Ns02Ext01ExtValue   Extension 01 value for direct   String
+                                          text node
+
+        EppDomCreate02Ns02Ext01Field01    Extension 01 field name 01      String
+
+        EppDomCreate02Ns02Ext01Value01    Extension 01 field value 01     String
+
+        ...                               Repeat for max y fields for
+                                          name server 02
+
+        ...                               Repeat for max x extensions for
+                                          name server 02
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      Initial DNS lookup MUST NOT show neither *EppDomCreate02Ns01* nor
+      *EppDomCreate02Ns02* as nameservers for *EppDomCreate02Name*. \*
+
+      The login command MUST complete with result code 1000.
+
+      If the Registry Operator is using Host Objects, the host create command
+      MUST complete with result code 1000 or 1001.
+
+      The domain update command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      *EppDomCreate02Name* MUST be visible in zone with correct glue records
+      within 24 hours.
+
+      *Requirements marked with \* are not considered in test case
+      EPPDomCreate02A.*
+
+      ## Environmental needs
+
+      -   DNS test script
+
+      ```{=html}
+      <!-- -->
+      ```
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomCreate02Name* MUST exist in EPP database.
+
+      -   *EppDomCreate02RegistrantId* MUST exist in contact database
+
+      -   *EppDomCreate02Ns01* MUST be configured to serve domain
+          *EppDomCreate02Name*.
+
+      -   *EppDomCreate02Ns02* MUST be configured to serve domain
+          *EppDomCreate02Name*.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform a DNS lookup for *EppDomCreate02Name* domain name.\
+          The result MUST NOT show neither *EppDomCreate02Ns01 n*or
+          *EppDomCreate02Ns02* as Nameservers for *EppDomCreate02Name*. \*
+
+      2.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      3.  If the registry does not support Host Objects, skip to step 6.
+
+      4.  Create a host create command for subordinate host
+          *EppDomCreate02Ns01* with IPv4 address *EppDomCreate02Ns01Ipv4*
+          and/or IPv6 address *EppDomCreate02Ns01Ipv6.\
+          * The host create command MUST complete with result code 1000 or
+          1001.
+
+      5.  Create a host create command for subordinate host
+          *EppDomCreate02Ns02* with IPv4 address *EppDomCreate02Ns02Ipv4*
+          and/or IPv6 address *EppDomCreate02Ns02Ipv6.\
+          * The host create command MUST complete with result code 1000 or
+          1001.
+
+      6.  Create a domain update command with *EppDomCreate02Name* and hosts
+          *EppDomCreate02Ns01* and *EppDomCreate02Ns02.\
+          * - If the registry supports Host Objects, use Host Objects.\
+          - If the registry does not support Host Objects, use Host
+          Attributes.*\
+          * The domain update command MUST complete with result code 1000 or
+          1001.
+
+      7.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+
+      8.  Verify that the *EppDomCreate02Name* domain and the correct glue
+          records are visible in the zone within 24 hours. \*
+
+      *Steps marked with \* are not included in test case EppDomCreate02A.*
+  EPPDomCreate02A:
+    Summary: ''
+    Description: |
+      ## Objective
+
+      This is a subset of test case EPPDomCreate02. See section 8, "Test Case
+      EPPDomCreate02: Add hosts to existing domain", for details.
+  EPPDomCreate03:
+    Summary: Create a DNSSEC-signed domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, creating a domain object with DNSSEC records and logging out.
+
+      When executing this test case as EPPDomCreate03A, DNS verification is
+      not included. Requirements and test steps marked with an asterisk (\*)
+      should be disregarded for an \'A\' test case.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The IP address for the authoritative name server for the TLD zone is
+      required as the test verifies DNS visibility. It is fetched from the XML
+      data file submitted for the DNS tests.
+
+      The full information from the input table in 5.3 is also used for login.
+
+      +-----------------------+---------------------------------+---+----------+
+      | Id                    | Description                     |   | Type     |
+      +=======================+=================================+===+==========+
+      | DnsGlueRecord1        | IPv4 or IPv6 address of 1^st^   |   | String   |
+      |                       | authoritative name server       |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03Name    | Domain name to create           |   | String   |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03Period  | Domain period type              |   | Y/M      |
+      +-----------------------+---------------------------------+---+----------+
+      | EppD                  | Domain period value             |   | Number   |
+      | omCreate03PeriodValue |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDo                 | Domain registrant id            |   | String   |
+      | mCreate03RegistrantId |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03AdminId | Domain admin id if required     | S |          |
+      |                       |                                 | t |          |
+      |                       |                                 | r |          |
+      |                       |                                 | i |          |
+      |                       |                                 | n |          |
+      |                       |                                 | g |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03TechId  | Domain tech id if required      | S |          |
+      |                       |                                 | t |          |
+      |                       |                                 | r |          |
+      |                       |                                 | i |          |
+      |                       |                                 | n |          |
+      |                       |                                 | g |          |
+      +-----------------------+---------------------------------+---+----------+
+      | Ep                    | Domain billing id if required   | S |          |
+      | pDomCreate03BillingId |                                 | t |          |
+      |                       |                                 | r |          |
+      |                       |                                 | i |          |
+      |                       |                                 | n |          |
+      |                       |                                 | g |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EpPDomCreate03AuthPw  | Authentication password if      | S |          |
+      |                       | required                        | t |          |
+      |                       |                                 | r |          |
+      |                       |                                 | i |          |
+      |                       |                                 | n |          |
+      |                       |                                 | g |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03Ns01    | Host Object name for ns01       |   | String   |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03Ns02    | Host Object name for ns02       |   | String   |
+      +-----------------------+---------------------------------+---+----------+
+      | E                     | Extension 01 object URI         |   | String   |
+      | ppDomCreate03Ext01Uri |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03Ext01Sl | Extension 01 schema location    |   | String   |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDo                 | Extension 01 name               | S |          |
+      | mCreate03Ext01ExtName |                                 | t |          |
+      |                       |                                 | r |          |
+      |                       |                                 | i |          |
+      |                       |                                 | n |          |
+      |                       |                                 | g |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDom                | Extension 01 value for direct   |   | String   |
+      | Create03Ext01ExtValue | text node                       |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDo                 | Extension 01 field name 01      |   | String   |
+      | mCreate03Ext01Field01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDo                 | Extension 01 field value 01     |   | String   |
+      | mCreate03Ext01Value01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | ...                   | Repeat for max y fields         |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | ...                   | Repeat for max x extensions     |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03KeyType | D for dsData specification      |   | String   |
+      |                       |                                 |   |          |
+      |                       | K for keyData specification     |   |          |
+      |                       |                                 |   |          |
+      |                       | DK for dsData and keyData       |   |          |
+      |                       | specification                   |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | Epp                   | Value for dsData 01 keytag      |   | String   |
+      | DomCreate03DsKeyTag01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03DsAlg01 | Value for dsData 01 alg         |   | Number   |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomC               | Value for dsData 01 digest type |   | Number   |
+      | reate03DsDigestType01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | Epp                   | Value for dsData 01 digest      |   | String   |
+      | DomCreate03DsDigest01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | ...                   | Repeat for max x dsData records |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | Ep                    | Value for keyData 01 flags      |   | Number   |
+      | pDomCreate03KdFlags01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDo                 | Value for keyData 01 protocol   |   | Number   |
+      | mCreate03KdProtocol01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | EppDomCreate03KdAlg01 | Value for keyData 01 alg        |   | Number   |
+      +-----------------------+---------------------------------+---+----------+
+      | Epp                   | Value for keyData 01 pubKey     |   | String   |
+      | DomCreate03KdPubKey01 |                                 |   |          |
+      +-----------------------+---------------------------------+---+----------+
+      | ...                   | Repeat for max x keyData        |   |          |
+      |                       | records                         |   |          |
+      +-----------------------+---------------------------------+---+----------+
+
+      ## Outcome(s)
+
+      Initial DNS lookup MUST return NXDOMAIN for *EppDomCreate03Name*. \*
+
+      The domain create command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      *EppDomCreate03Name* MUST be visible in the zone with correct DNS
+      records within 24 hours.
+
+      *Requirements marked with \* are not considered in test case
+      EPPDomCreate02A.*
+
+      ## Environmental needs
+
+      -   DNS test script
+
+      ```{=html}
+      <!-- -->
+      ```
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomCreate03Name* MUST NOT exist in the DNS zone.
+
+      -   *EppDomCreate03RegistrantId* MUST exist in contact database
+
+      -   *EppDomCreate03Ns01* MUST exist in host database, and be configured
+          to serve domain *EppDomCreate03Name* with correct DNSSEC records.
+
+      -   *EppDomCreate03Ns02* MUST exist in host database, and be configured
+          to serve domain *EppDomCreate03Name* with correct DNSSEC records.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform a DNS lookup for *EppDomCreate03Name* domain name.\
+          The result MUST be NXDOMAIN. \*
+
+      2.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      3.  Create a domain create command with *EppDomCreate03Name*.
+
+          a.  Use period name from *EppDomCreate03Period* and period value
+              from *EppDomCreate03PeriodValue*.
+
+          b.  Use name server 1 from *EppDomCreate03Ns01* and name server 2
+              from *EppDomCreate03Ns02*.
+
+          c.  Add one or more secDNS records with dsData or keyData or both,
+              depending on the value of *EppDomUpdate01KeyType*. Use
+              appropriate values from *EppDomUpdate01DsKeyTag01*,
+              *EppDomUpdate01DsAlg01*, *EppDomUpdate01DsDigestType01*,
+              *EppDomUpdate01DsDigest01*, *EppDomUpdate01KdFlags01*,
+              *EppDomUpdate01KdProtocol01*, *EppDomUpdate01KdAlg01*,
+              *EppDomUpdate01kdPubKey01*.
+
+          d.  If domain create requires extra extension and values, create an
+              extension part from *EppDomCreate03Ext01Uri* and fill in field
+              name from *EppDomCreate03Ext01Field01* and values from
+              *EppDomCreate03Ext01Value01*.
+
+      > The domain create command MUST complete with result code 1000 or 1001.
+
+      4.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+
+      5.  Verify that the *EppDomCreate03Name* domain is visible, with the
+          correct DNSSEC records, in the zone within 24 hours. \*
+
+      *Steps marked with \* are not included in test case EppDomCreate03A.*
+  EPPDomCreate03A:
+    Summary: ''
+    Description: |
+      ## Objective
+
+      This is a subset of test case EPPDomCreate03. See section 10, "Test Case
+      EPPDomCreate03: Create a signed domain", for details.
+  EPPDomRenew01:
+    Summary: Renew a domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, renewing a domain object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        ---------------------------------------------------------------------------
+        Id                           Description                       Type
+        ---------------------------- --------------------------------- ------------
+        EppDomRenew01Name            Domain name to renew              String
+
+        EppDomRenew01Period          Domain period type                Y/M
+
+        EppDomRenew01PeriodValue     Domain period value               Number
+
+        EppDomRenew01ExpDate         Domain current expiry date        String
+
+        EppDomRenew01Ext01Uri        Object URI for extension 01       String
+
+        EppDomRenew01Ext01Sl         Extension 01 schema location      String
+
+        EppDomRenew01Ext01ExtName    Extension 01 name                 String
+
+        EppDomRenew01Ext01ExtValue   Extension 01 value for direct     String
+                                     text node
+
+        EppDomRenew01Ext01Field01    Extension 01 field name 01        String
+
+        EppDomRenew01Ext01Value01    Extension 01 field value 01       String
+
+        ...                          Repeat for max y fields
+
+        ...                          Repeat for max x extensions
+        ---------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The renew command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4Connectivity
+
+      -   *EppDomRenew01Name* domain MUST exist in the domain database, and be
+          ready for renewal
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a domain renew command with *EppDomRenew01Name*.
+
+          a.  Use period name from *EppDomRenew01Period* and period value from
+              *EppDomRenew01PeriodValue*.
+
+          b.  If domain renew requires extra extension and values, create an
+              extension part from *EppDomRenew01Ext01Uri* and fill in field
+              name from *EppDomRenewe01Ext01Field01* and values from
+              *EppDomRenew01Ext01Value01*.
+
+      The domain renew command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPDomTransfer01:
+    Summary: Request transfer of a domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, requesting a transfer of a domain object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                              Description                      Type
+        ------------------------------- -------------------------------- ------------
+        EppDomTransfer01Name            Domain name to transfer          String
+
+        EppDomTransfer01AddPeriod       Yes if the Registry Operator     Boolean
+                                        supports adding a period to
+                                        transfer
+
+        EppDomTransfer01Period          Domain period type               Y/M
+
+        EppDomTransfer01PeriodValue     Domain period value              Number
+
+        EppDomTransfer01AuthInfo        Authorization info for domain,   String
+                                        registrant or associated
+                                        contacts
+
+        EppDomTransfer01AuthRoid        Roid for registrant or contact   String
+                                        if EppDomTransfer01AuthInfo is
+                                        associated with registrant or
+                                        contact object
+
+        EppDomTransfer01Ext01Uri        Extension 01 object URI          String
+
+        EppDomTransfer01Ext01Sl         Extension 01 schema location     String
+
+        EppDomTransfer01Ext01ExtName    Extension 01 name                String
+
+        EppDomTransfer01Ext01ExtValue   Extension 01 value for direct    String
+                                        text node
+
+        EppDomTransfer01Ext01Field01    Extension 01 field name 01       String
+
+        EppDomTransfer01Ext01Value01    Extension 01 field value 01      String
+
+        ...                             Repeat for max y fields
+
+        ...                             Repeat for max x extensions
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The domain transfer command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomTransfer01Name* domain MUST exist in the domain database, and
+          be available for transfer.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a domain transfer command with *EppDomTransfer01Name*.
+
+          a.  Add an Op attribute in transfer command with the value
+              "request".
+
+          b.  If *EppDomTransfer01AddPeriod* is true, add period part with
+              Period name from *EppDomTransfer01Period* and period value from
+              *EppDomTransfer01PeriodValue*.
+
+          c.  Add authinfo part with *EppDomTransfer01AuthInfo*.
+
+          d.  If *EppDomTransfer01AuthRoid* is defined, add a roid attribute
+              to pw part with the value *EppDomTransfer01AuthRoid*.
+
+          e.  If domain renew requires extra extension and values, create an
+              extension part from *EppDomTransfer01Ext01Uri* and
+              *EppDomTransfer01Ext01Sl* and fill in field name from
+              *EppDomTransfer01Ext01Field01* and values from
+              *EppDomTransfer01Ext01Value01*.
+
+      The domain transfer command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPDomTransfer02:
+    Summary: Approve a requested domain transfer
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, approving a transfer of a domain object if the registry supports
+      this operation via EPP, and logging out.
+
+      This test will only be run if the *EppDomTransfer02Approve* is set to
+      yes.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                              Description                      Type
+        ------------------------------- -------------------------------- ------------
+        EppDomTransfer02Approve         Yes if the Registry Operator     Boolean
+                                        supports the Approve operation
+
+        EppDomTransfer02Name            Domain name to transfer          String
+
+        EppDomTransfer02AddPeriod       Yes if the Registry Operator     Boolean
+                                        supports adding a period to
+                                        transfer
+
+        EppDomTransfer02Period          Domain period type               Y/M
+
+        EppDomTransfer02PeriodValue     Domain period value              Number
+
+        EppDomTransfer02AuthInfo        Authorization info for domain,   String
+                                        registrant or associated
+                                        contacts if required
+
+        EppDomTransfer02AuthRoid        Roid for registrant or contact   String
+                                        if EppDomTransfer01AuthInfo is
+                                        associated with registrant or
+                                        contact object
+
+        EppDomTransfer02Ext01Uri        Extension 01 object URI          String
+
+        EppDomTransfer02Ext01Sl         Extension 01 schema location     String
+
+        EppDomTransfer02Ext01ExtName    Extension 01 name                String
+
+        EppDomTransfer02Ext01ExtValue   Extension 01 value for direct    String
+                                        text node
+
+        EppDomTransfer02Ext01Field01    Extension 01 field name 01       String
+
+        EppDomTransfer02Ext01Value01    Extension 01 field value 01      String
+
+        ...                             Repeat for max y fields
+
+        ...                             Repeat for max x extensions
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The domain transfer command MUST complete with result code 1000 or 1001.
+
+      The logout MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomTransfer02Name* domain MUST exist in the domain database, and
+          be available for transfer approve.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a domain transfer command with *EppDomTransfer02Name*.
+
+          a.  Add an Op attribute in transfer command with the value
+              "approve".
+
+          b.  If *EppDomTransfer02AddPeriod* is true, add period part with
+              period name from *EppDomTransfer02Period* and period value from
+              *EppDomTransfer02PeriodValue.*
+
+          c.  Add authinfo part with *EppDomTransfer01AuthInfo*.
+
+          d.  If *EppDomTransfer02AuthRoid* is defined add a roid attribute to
+              pw part with the value *EppDomTransfer02AuthRoid*.
+
+          e.  If domain transfer requires extra extension and values, create
+              an extension part from *EppDomTransfer02Ext01Uri* and
+              *EppDomTransfer02Ext01Sl* and fill in field name from
+              *EppDomTransfer02Ext01Field01* and values from
+              *EppDomTransfer02Ext01Value01*.
+
+      The domain transfer command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPDomDelete01:
+    Summary: Delete a domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, deleting a domain object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        ----------------------------------------------------------------------------
+        Id                            Description                       Type
+        ----------------------------- --------------------------------- ------------
+        EppDomDelete01Name            Domain name to delete             String
+
+        EppDomDelete01Ext01Uri        Extension 01 object URI           String
+
+        EppDomDelete01Ext01Sl         Extension 01 schema location      String
+
+        EppDomDelete01Ext01ExtName    Extension 01 name                 String
+
+        EppDomDelete01Ext01ExtValue   Extension 01 value for direct     String
+                                      text node
+
+        EppDomDelete01Ext01Field01    Extension 01 field name 01        String
+
+        EppDomDelete01Ext01Value01    Extension 01 field value 01       String
+
+        ...                           Repeat for max y fields
+
+        ...                           Repeat for max x extensions
+        ----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The domain delete command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomDelete01Name* domain MUST exist in the domain database, and
+          be available for delete.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a domain delete command with *EppDomDelete01Name*.
+
+          a.  If domain delete requires extra extension and values, create an
+              extension part from *EppDomDelete01Ext01Uri* and
+              *EppDomDelete01Ext01Sl* and fill in field name from
+              *EppDomDelete01Ext01Field01* and values from
+              *EppDomDelete01Ext01Value01*.
+
+      The domain delete command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPConCreate01:
+    Summary: Create a contact object
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, creating a contact object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        ------------------------------------------------------------------------------
+        Id                            Description                        Type
+        ----------------------------- ---------------------------------- -------------
+        EppConCreate01Id              Contact ID to create               String
+
+        EppConCreate01PIntMand        Yes if PostalInfo type INT is      Boolean
+                                      mandatory
+
+        EppConCreate01PIntName        Contact PostalInfo Int Name        String
+
+        EppConCreate01PIntOrg         Contact PostalInfo Int Org         String
+
+        EppConCreate01PIntStreet1     Contact PostalInfo Int Street1     String
+
+        EppConCreate01PIntStreet2     Contact PostalInfo Int Street2, if String
+                                      mandatory
+
+        EppConCreate01PIntStreet3     Contact PostalInfo Int Street3, if String
+                                      mandatory
+
+        EppConCreate01PIntCity        Contact PostalInfo Int City        String
+
+        EppConCreate01PIntSp          Contact PostalInfo Int State or    String
+                                      Province, if mandatory
+
+        EppConCreate01PIntPc          Contact PostalInfo Int Postcode,   String
+                                      if mandatory
+
+        EppConCreate01PIntCc          Contact PostalInfo Int Country     String
+                                      Code
+
+        EppConCreate01PLocMand        Yes if PostalInfo type LOC is      Boolean
+                                      mandatory
+
+        EppConCreate01PLocName        Contact PostalInfo Loc Name        String
+
+        EppConCreate01PLocOrg         Contact PostalInfo Loc Org         String
+
+        EppConCreate01PLocStreet1     Contact PostalInfo Loc Street1     String
+
+        EppConCreate01PLocStreet2     Contact PostalInfo Loc Street2, if String
+                                      mandatory
+
+        EppConCreate01PLocStreet3     Contact PostalInfo Loc Street3, if String
+                                      mandatory
+
+        EppConCreate01PLocCity        Contact PostalInfo Loc City        String
+
+        EppConCreate01PLocSp          Contact PostalInfo Loc State or    String
+                                      Province, if mandatory
+
+        EppConCreate01PLocPc          Contact PostalInfo Loc Postcode,   String
+                                      if mandatory
+
+        EppConCreate01PLocCc          Contact PostalInfo Loc Country     String
+                                      Code
+
+        EppConCreate01Voice           Contact Voice telephone number, if String
+                                      mandatory
+
+        EppConCreate01Fax             Contact Fax telephone number, if   String
+                                      mandatory
+
+        EppConCreate01Email           Contact Email address              String
+
+        EppConCreate01Auth            Contact Auth Info, if mandatory    String
+
+        EppConCreate01Ext01Uri        Extension 01 object URI            String
+
+        EppConCreate01Ext01Sl         Extension 01 schema location       String
+
+        EppConCreate01Ext01ExtName    Extension 01 name                  String
+
+        EppConCreate01Ext01ExtValue   Extension 01 value for direct text String
+                                      node
+
+        EppConCreate01Ext01Field01    Extension 01 field name 01         String
+
+        EppConCreate01Ext01Value01    Extension 01 field value 01        String
+
+        ...                           Repeat for max y fields
+
+        ...                           Repeat for max x extensions
+        ------------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The contact create command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppConCreate01Id* domain MUST NOT exist in the domain database.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a contact create command with *EppConCreate01Id*.
+
+          a.  If *EppConCreate01PIntMand* is yes, create a Postal Info type
+              Int with appropriate fields from *EppConCreate01PIntName*,
+              *EppConCreate01PIntOrg*, *EppConCreate01PIntStreet1*,
+              *EppConCreate01PIntStreet2*, *EppConCreate01PIntStreet3*,
+              *EppConCreate01PIntCity*, *EppConCreate01PIntSp*,
+              *EppConCreate01PIntPc* and *EppConCreate01PIntCc*.
+
+          b.  If *EppConCreate01PLocMand* is yes, create a Postal Info type
+              Loc with appropriate fields from *EppConCreate01PLocName*,
+              *EppConCreate01PLocOrg*, *EppConCreate01PLocStreet1*,
+              *EppConCreate01PLocStreet2*, *EppConCreate01PLocStreet3*,
+              *EppConCreate01PLocCity*, *EppConCreate01PLocSp*,
+              *EppConCreate01PLOcPc* and *EppConCreate01PLocCc*.
+
+          c.  Add *EppConCreate01Voice*, *EppConCreate01Fax*,
+              *EppConCreate01Email* and *EppConCreate01Auth* fields.
+
+          d.  If contact create requires extra extension and values, create an
+              extension part from *EppConCreate01Ext01Uri* and
+              *EppConCreate01Ext01Sl* and fill in field name from
+              *EppConCreate01Ext01Field01* and values from
+              *EppConCreate01Ext01Value01*.
+
+      The contact create command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPConDelete01:
+    Summary: Delete a contact
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, deleting a contact object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                            Description                        Type
+        ----------------------------- ---------------------------------- ------------
+        EppConDelete01Id              ContactID to delete                String
+
+        EppConDelete01Ext01Uri        Extension 01 object URI            String
+
+        EppConDelete01Ext01Sl         Extension 01 schema location       String
+
+        EppConDelete01Ext01ExtName    Extension 01 name                  String
+
+        EppConDelete01Ext01ExtValue   Extension 01 value for direct text String
+                                      node
+
+        EppConDelete01Ext01Field01    Extension 01 field name 01         String
+
+        EppConDelete01Ext01Value01    Extension 01 field value 01        String
+
+        ...                           Repeat for max y fields
+
+        ...                           Repeat for max x extensions
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The contact delete command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppConDelete01Id* domain MUST exist in the domain database, and be
+          available for delete.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a contact delete command with *EppConDelete01Id*.
+
+          a.  If contact delete requires extra extension and values, create an
+              extension part from *EppConDelete01Ext01Uri* and
+              *EppConDelete01Ext01Sl* and fill in field name from
+              *EppConDelete01Ext01Field01* and values from
+              *EppConDelete01Ext01Value01*.
+
+      The contact delete command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPHostDelete01:
+    Summary: Delete a host
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, deleting a Host Object and logging out.
+
+      If the Registry Operator does not support Host Objects, this test will
+      not be performed.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                             Description                       Type
+        ------------------------------ --------------------------------- ------------
+        EppHostDelete01Name            Host name to delete               String
+
+        EppHostDelete01Ext01Uri        Extension 01 object URI           String
+
+        EppHostDelete01Ext01Sl         Extension 01 schema location      String
+
+        EppHostDelete01Ext01ExtName    Extension 01 name                 String
+
+        EppHostDelete01Ext01ExtValue   Extension 01 value for direct     String
+                                       text node
+
+        EppHostDelete01Ext01Field01    Extension 01 field name 01        String
+
+        EppHostDelete01Ext01Value01    Extension 01 field value 01       String
+
+        ...                            Repeat for max y fields
+
+        ...                            Repeat for max x extensions
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The host delete command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppHostDelete01Name* host MUST exist in the domain database, and be
+          available for delete.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a contact delete command with *EppHostDelete01Id*.
+
+          a.  If contact delete requires extra extension and values, create an
+              extension part from *EppHostDelete01Ext01Uri* and
+              *EppHostDelete01Ext01Sl* and fill in field name from
+              *EppHostDelete01Ext01Field01* and values from
+              *EppHostDelete01Ext01Value01*.
+
+      The contact delete command MUST complete with result code 1000 or 1001.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPHostUpdate01:
+    Summary: Update a host
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, updating a Host Object and logging out.
+
+      If the Registry Operator does not support Host Objects, this test will
+      not be performed.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        -----------------------------------------------------------------------------
+        Id                             Description                       Type
+        ------------------------------ --------------------------------- ------------
+        EppHostUpdate01Name            Host name to update               String
+
+        EppHostUpdate01Ipv4            IPv4 address to add               String
+
+        EppHostUpdate01Ext01Uri        Extension 01 object URI           String
+
+        EppHostUpdate01Ext01Sl         Extension 01 schema location      String
+
+        EppHostUpdate01Ext01ExtName    Extension 01 name                 String
+
+        EppHostUpdate01Ext01ExtValue   Extension 01 value for direct     String
+                                       text node
+
+        EppHostUpdate01Ext01Field01    Extension 01 field name 01        String
+
+        EppHostUpdate01Ext01Value01    Extension 01 field value 01       String
+
+        ...                            Repeat for max y fields
+
+        ...                            Repeat for max x extensions
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The host update command MUST complete with result code 1000.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppHostUpdate01Name* host MUST exist in the domain database, and be
+          available for update.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a host update command with *EppHostUpdate01Name* and add IPv4
+          address *EppHostUpdate01Ipv4*
+
+          a.  If host update requires extra extension and values, create an
+              extension part from *EppHostUpdate01Ext01Uri* and
+              *EppHostUpdate01Ext01Sl* and fill in field name from
+              *EppHostUpdate01Ext01Field01* and values from
+              *EppHostUpdate01Ext01Value01*.
+
+      The host update command MUST complete with result code 1000.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPContactUpdate01:
+    Summary: Update a contact
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, updating a contact object and logging out.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The full information from the input table in 5.3 is also used for login.
+
+        --------------------------------------------------------------------------------------------
+        Id                                Description                                   Type
+        --------------------------------- ------------- ------------------------------- ------------
+        EppContactUpdate01Id              Contact ID to                                 String
+                                          update
+
+        EppContactUpdate01Email                         Email address to set            String
+
+        EppContactUpdate01Ext01Uri        Extension 01                                  String
+                                          object URI
+
+        EppContactUpdate01Ext01Sl         Extension 01                                  String
+                                          schema
+                                          location
+
+        EppContactUpdate01Ext01ExtName                  Extension 01 name               String
+
+        EppContactUpdate01Ext01ExtValue   Extension 01                                  String
+                                          value for
+                                          direct text
+                                          node
+
+        EppContactUpdate01Ext01Field01    Extension 01                                  String
+                                          field name 01
+
+        EppContactUpdate01Ext01Value01    Extension 01                                  String
+                                          field value
+                                          01
+
+        ...                               Repeat for
+                                          max y fields
+
+        ...                               Repeat for
+                                          max x
+                                          extensions
+        --------------------------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The login command MUST complete with result code 1000.
+
+      The contact update command MUST complete with result code 1000.
+
+      The logout command MUST complete with result code 1500.
+
+      ## Environmental needs
+
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppContactUpdate01Id* contact MUST exist in the domain database,
+          and be available for update.
+
+      ## Special procedural requirements
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      2.  Create a contact update command with *EppContactUpdate01Id* and set
+          *EppContactUpdate01Email*
+
+          a.  If contact update requires extra extension and values, create an
+              extension part from *EppContactUpdate01Ext01Uri* and
+              *EppContactUpdate01Ext01Sl* and fill in field name from
+              *EppContactUpdate01Ext01Field01* and values from
+              *EppContactUpdate01Ext01Value01*.
+
+      The contact update command MUST complete with result code 1000.
+
+      3.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+  EPPDomUpdate01:
+    Summary: Add DNSSEC records to a domain
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with RFC's for logging
+      in, update a domain object with DNSSEC records and logging out. The test
+      then verifies that the changes are visible in the zone within 60
+      minutes, both for DNS and Whois.
+
+      When executing this test case as EPPDomUpdate01A, DNS and Whois
+      verifications are not included. Requirements and test steps marked with
+      an asterisk (\*) should be disregarded for an 'A' test case.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      The IP address for the authoritative name server for the TLD zone is
+      required as the test verifies DNS visibility. It is fetched from the XML
+      data file submitted for the DNS tests.
+
+      As the test verifies Whois visibility, the IP address of a Whois server
+      that responds on port 43 is needed. The IP address of the Whois server
+      is extracted from the DNS zone by the Whois test and is also used for
+      this TC.
+
+      The full information from the input table in 5.3 is also used for login.
+
+      +------------------------+--------------------------------+----------+
+      | Id                     | Description                    | Type     |
+      +========================+================================+==========+
+      | DnsGlueRecord1         | IPv4 or IPv6 address of 1^st^  | String   |
+      |                        | authoritative name server      |          |
+      +------------------------+--------------------------------+----------+
+      | WhoisIPv4Port43        | The IPv4 address of the Whois  | String   |
+      |                        | service on port 43             |          |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01Name     | Domain name to update          | String   |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01Ext01Uri | Extension 01 object URI        | String   |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01Ext01Sl  | Extension 01 schema location   | String   |
+      +------------------------+--------------------------------+----------+
+      | EppD                   | Extension 01 name              | String   |
+      | omUpdate01Ext01ExtName |                                |          |
+      +------------------------+--------------------------------+----------+
+      | EppDo                  | Extension 01 value for direct  | String   |
+      | mUpdate01Ext01ExtValue | text node                      |          |
+      +------------------------+--------------------------------+----------+
+      | EppD                   | Extension 01 field name 01     | String   |
+      | omUpdate01Ext01Field01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | EppD                   | Extension 01 field value 01    | String   |
+      | omUpdate01Ext01Value01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | ...                    | Repeat for max y fields        |          |
+      +------------------------+--------------------------------+----------+
+      | ...                    | Repeat for max x extensions    |          |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01KeyType  | D for dsData specification     | String   |
+      |                        |                                |          |
+      |                        | K for keyData specification    |          |
+      |                        |                                |          |
+      |                        | DK for dsData and keyData      |          |
+      |                        | specification                  |          |
+      +------------------------+--------------------------------+----------+
+      | Ep                     | Value for dsData 01 keytag     | String   |
+      | pDomUpdate01DsKeyTag01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01DsAlg01  | Value for dsData 01 alg        | Number   |
+      +------------------------+--------------------------------+----------+
+      | EppDom                 | Value for dsData 01 digest     | Number   |
+      | Update01DsDigestType01 | type                           |          |
+      +------------------------+--------------------------------+----------+
+      | Ep                     | Value for dsData 01 digest     | String   |
+      | pDomUpdate01DsDigest01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | ...                    | Repeat for max x dsData        |          |
+      |                        | records                        |          |
+      +------------------------+--------------------------------+----------+
+      | E                      | Value for keyData 01 flags     | Number   |
+      | ppDomUpdate01KdFlags01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | EppD                   | Value for keyData 01 protocol  | Number   |
+      | omUpdate01KdProtocol01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | EppDomUpdate01KdAlg01  | Value for keyData 01 alg       | Number   |
+      +------------------------+--------------------------------+----------+
+      | Ep                     | Value for keyData 01 pubKey    | String   |
+      | pDomUpdate01KdPubKey01 |                                |          |
+      +------------------------+--------------------------------+----------+
+      | ...                    | Repeat for max x keyData       |          |
+      |                        | records                        |          |
+      +------------------------+--------------------------------+----------+
+
+      ## Outcome(s)
+
+      The initial DNS lookup MUST NOT return NXDOMAIN for
+      *EppDomUpdate01Name*. \*
+
+      The initial Whois lookup MUST NOT return any DNSSEC Signed information
+      about *EppDomUpdate01Name*. \*
+
+      The domain update command MUST complete with result code 1000 or 1001.
+
+      The logout command MUST complete with result code 1500.
+
+      *EppDomUpdate01Name* MUST be visible in the zone with correct DNS
+      records within 60 minutes. \*
+
+      *EppDomUpdate01Name* MUST be visible as a DNSSEC signed domain in Whois
+      within 60 minutes. \*
+
+      *Requirements marked with \* are not considered in test case
+      EPPDomUpdate01A.*
+
+      ## Environmental needs
+
+      -   DNS test script
+
+      ```{=html}
+      <!-- -->
+      ```
+      -   EPP test script
+
+      -   IPv4 connectivity
+
+      -   *EppDomUpdate01Name* MUST exist in the DNS zone without DNSSEC
+          records.
+
+      -   *EppDomUpdate01RegistrantId* MUST exist in contact database
+
+      -   *EppDomUpdate01Ns01* MUST exist in host database, and be configured
+          to serve domain *EppDomUpdate01Name* with correct DNSSEC records.
+
+      -   *EppDomUpdate01Ns02* MUST exist in host database, and be configured
+          to serve domain *EppDomUpdate01Name* with correct DNSSEC records.
+
+      ## Special procedural requirements
+
+      Abort the test if any Whois query takes longer than 10 seconds.
+
+      Abort the test if any EPP operation takes longer than 30 seconds.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Perform a DNS lookup for *EppDomUpdate01Name* domain name.\
+          The result MUST NOT be NXDOMAIN. \*
+
+      2.  Perform the same login as the login step in 5.8.\
+          The login command MUST complete with result code 1000.
+
+      3.  Create a domain update command with *EppDomUpdate01Name*.
+
+          a.  Add one or more secDNS records with dsData or keyData or both,
+              depending on the value of *EppDomUpdate01KeyType*. Use
+              appropriate values from *EppDomUpdate01DsKeyTag01*,
+              *EppDomUpdate01DsAlg01*, *EppDomUpdate01DsDigestType01*,
+              *EppDomUpdate01DsDigest01*, *EppDomUpdate01KdFlags01*,
+              *EppDomUpdate01KdProtocol01*, *EppDomUpdate01KdAlg01*,
+              *EppDomUpdate01kdPubKey01*.
+
+          b.  If domain update requires extra extension and values, create an
+              extension part from *EppDomUpdate01Ext01Uri* and fill in field
+              name from *EppDomUpdate01Ext01Field01* and values from
+              *EppDomUpdate01Ext01Value01*.
+
+      The domain update command MUST complete with result code 1000 or 1001.
+
+      4.  Create a logout command.\
+          The logout command MUST complete with result code 1500.
+
+      5.  Verify that the *EppDomUpdate01Name* domain is updated, with the
+          correct DNSSEC records in the zone within 60 minutes. \*
+
+      6.  Verify that the *EPPDomUpdate01Name* is visible in Whois as a DNSSEC
+          signed domain within 60 minutes. \*
+
+      *Steps marked with \* are not included in test case EppDomUpdate01A.*
+  EPPDomUpdate01A:
+    Summary: ''
+    Description: |
+      ## Objective
+
+      This is a subset of test case EPPDomUpdate01. See section 21, "Test Case
+      EPPDomUpdate01: Add DNSSEC to a domain", for details.
+  EPPExtensions:
+    Summary: Verify required EPP extensions
+    Description: |
+      ## Objective
+
+      This test verifies compliance of the EPP server with extensions required
+      by registry agreement.
+
+      ## Inputs
+
+      The following information is needed as input for this test case:
+
+      -   The extensions required by the Registry Agreement.
+
+      -   Logfiles from login in any of the previous tests.
+
+      ## Outcome(s)
+
+      Each extension in the Registry Agreement stated to be mandatory must be
+      listed in the EPP greeting.
+
+      ## Environmental needs
+
+      N/A
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      A result log from any of the previous tests MUST be available.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Verify that each extension in the Registry Agreement that is stated
+          to be mandatory is listed in the EPP greeting.
+
+  idn-valid00:
+    Summary: IDN documentation validation
+    Description: |
+      ## Objective
+
+      This test verifies that the IDN tables and documents listed in Exhibit A
+      of the TLD Registry Agreement have all been submitted to PDT for testing
+      and that no submitted IDN tables or documents are unlisted in the
+      Registry Agreement.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------------
+        Id                Description                            Type
+        ----------------- -------------------------------------- --------------------
+        TableList         A list of all script and language IDN  File, Registry
+                          tables cited in the Exhibit A of the   Agreement.
+                          Registry Agreement.
+
+        PolicyStatement   The IDN policies declared by the       File, IDN
+                          registry in section 4 of the IDN       Self-Certification
+                          Self-Certification Document,           Document.
+                          corresponding to TableList.
+
+        EPPtags           A list of all IDN EPP extensions, as   File
+                          well as language and script tags,
+                          needed for the registration of an IDN
+                          label.
+
+        TestTable         The IDN table under scrutiny.          File or files.
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/non-applicable
+      determination. If this test case ends with \"not applicable\", then no
+      further test cases will be performed.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      idn-valid01 to extract "language" element from LGR IDN table, if any.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Determine whether the registry is authorized to support IDNs based
+          on Exhibit A of the Registry Agreement, and if it is not, abort the
+          remaining sequence of IDN tests.
+
+      2.  Verify that every submitted TestTable corresponds to an item in
+          TableList and that every item in TableList corresponds to a
+          submitted TestTable.
+
+      3.  Verify that the PolicyStatement in section 4 of the IDN
+          Self-Certification Document correlates to TestTable(s) in a manner
+          that unambiguously indicates:
+
+          a.  How requests for registration of IDN labels will be processed.
+
+          b.  How the Registry handles comingling of scripts.
+
+          c.  How the Registry handles variants.
+
+          d.  How the Registry handles contextual rules.
+
+      4.  For the IDN tables listed in the response to Section 1 of the IDN
+          Self-Certification Document, verify that the corresponding IDN
+          tables are listed in Section 3 of that document, that every element
+          of EPPtags corresponds to a specific TestTable and that there are no
+          orphaned extensions or IDN tables.
+
+      5.  Verify that all IDN tables have been submitted as TXT or XML (LGR)
+          files and that any which include non-ASCII text are encoded in
+          Unicode UTF-8.
+
+      6.  For each IDN table in LGR format (RFC 7940), verify that the
+          language or script stated in the "language" element matches the
+          intended language and/or script from TableList.
+
+      Criteria for N/A:
+
+      -   Exhibit A of the Registry Agreement does not declare support for IDN
+          labels (Step 1).
+
+      Criteria for PASS:
+
+      -   Each script or language listed in Exhibit A corresponds to a
+          submitted IDN table and no submitted IDN table is unlisted (Step 2),
+
+      -   PolicyStatement unambiguously indicates how IDN labels are processed
+          (Step 3a-3d),
+
+      -   all IDN tables are listed in the IDN Self-Certification Document
+          Section 1 and 3; that all elements of EPPtags correspond to specific
+          IDN tables; that there are no orphaned extensions or IDN tables
+          (Step 4),
+
+      -   all IDN tables are submitted as TXT in UTF-8 (Step 5).
+
+      Criteria for FAIL:
+
+      -   The conditions in Steps 2-5 are not met or if part of the
+          information is unclear or missing.
+
+      If this test fails, further testing will be suspended pending remedial
+      action. If this is not undertaken within the prescribed time, the
+      failure will be confirmed, none of the subsequent tests will be
+      conducted, and all will fail by default.
+  idn-valid01:
+    Summary: IDN Table validation
+    Description: |
+      ## Objective
+
+      This test verifies that the format of an IDN table either conforms to
+      RFC 4290, RFC 3743, or RFC 7940. The test is repeated for all IDN
+      tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ----------------------------------------------------------------------------------
+        Id                        Description                         Type
+        ------------------------- ----------------------------------- --------------------
+        TestTable                 The IDN table under scrutiny.       File
+
+        LocalTableFormat          Describes the IDN table format in   File, IDN
+                                  Section 2 of the IDN                Self-Certification
+                                  Self-Certification Document if it   Document
+                                  does not comply with either of the
+                                  reference RFCs.
+
+        LocalTableJustification   Verifiable warrant in Section 2 of  File, IDN
+                                  the IDN Self-Certification Document Self-Certification
+                                  for using a local format instead of Document
+                                  either of the reference RFCs.
+        ----------------------------------------------------------------------------------
+
+      None of the reference RFCs for text IDN table formats (RFC 4290 and RFC
+      3743) specifies a rigorous enough format for TestTable to be
+      automatically parsed for conformance, and there is no way to predict the
+      details of an instance of LocalTableFormat. Manual examination of a IDN
+      table is necessary in order to validate the format.
+
+      An IDN table in LGR format (RFC 7940) has a machine-readable format that
+      can be automatically checked for conformance.
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/warn determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      The person running this test must understand the elements of an IDN
+      table format, both as described in the reference RFCs, and in order to
+      assess the sufficiency of a locally defined alternative and the
+      justification for its use.
+
+      ### Requirement of LGR IDN table
+
+      An IDN table in LGR format must, besides what is stated in RFC, meet the
+      following requirements:
+
+      -   The Unicode version must be set in the "version element" in the
+          metadata section.
+
+      -   The Unicode version must be a valid Unicode version 5.2.0 or higher.
+
+      -   All code points in the LGR must be included in the given Unicode
+          version.
+
+      -   The "validity-end" element (if present) in the metadata section must
+          be in future time.
+
+      -   The "validity-start" element in the metadata section must be in
+          earlier in time than the "validity-end" element (if both are
+          present).
+
+      -   The "language" element in the metadata section must be present.
+
+      -   All dispositions (\"Label Generation Ruleset Dispositions\") must be
+          registered Standard Dispositions as defined in RFC 7940, section
+          11.3 and in the IANA registry "Label Generation Ruleset (LGR)
+          Dispositions",
+          <https://www.iana.org/assignments/lgr-dispositions/lgr-dispositions.xhtml>.
+
+      ## Intercase dependencies
+
+      None.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Verify that the response to Section 2 of the IDN Self-Certification
+          Document indicates whether the IDN table format used follows the
+          guidelines of RFC 4290, RFC 3743 or RFC 7940.
+
+      2.  If RFC 7940 IDN table is used, then all contextual rules and variant
+          rules must be included in the "data" and "rules" elements of the LGR
+          IDN table. Any information outside the LGR, or within the
+          "description" element of the LGR IDN table, will be ignored if it
+          can be included in the "data" and "rules" elements.
+
+      3.  If the response to Section 2 of the IDN Self-Certification Document
+          indicates that the IDN table is in RFC 4290 format verify that:
+
+          a.  each code point in the IDN table appears in Unicode U+nnnn
+              notation.
+
+          b.  if the base character has any variants, the indication of its
+              code point is followed by a VERTICAL LINE.
+
+          c.  if the base character has more than one variant, the code points
+              for the variants are separated by a COLON.
+
+          d.  if the base character has a variant composed of a sequence of
+              characters they are indicated with a HYPHEN MINUS between each
+              code point.
+
+          e.  comment lines in the IDN table are preceded with a NUMBER SIGN.
+
+      4.  If the response to Section 2 of the IDN Self-Certification Document
+          indicates that the IDN table is in RFC 3743 format verify that:
+
+          a.  each code point in the IDN table appears without the Unicode U+
+              prefix, or if the general exception permitting the use of the
+              Unicode \"U+\" prefix is invoked, that each code point in the
+              IDN table appears in correct U+nnnn notation.
+
+          b.  if the valid code point has any variants, the columns are
+              separated by a SEMICOLON.
+
+          c.  if there are multiple preferred or character variants, they are
+              separated by a COMMA.
+
+          d.  if a variant is composed of a sequence of code points they are
+              separated by a SPACE.
+
+          e.  if references are indicated, the reference number is listed in
+              PARENTHESIS directly after the code point it and that the source
+              is included in the list in the beginning of the IDN table.
+
+          f.  comments in the IDN table are preceded with a NUMBER SIGN.
+
+          g.  that the version number and release date are indicated.
+
+      5.  If the response to Section 2 of the IDN Self-Certification Document
+          indicates that the IDN table is in RFC 7940 format verify that:
+
+          a.  the IDN table is a well-formed XML document that conforms to the
+              schema defined in Appendix D of RFC 7940,
+
+          b.  the IDN table meets the requirements of RFC 7940 (besides
+              conforming to the XML schema),
+
+          c.  the IDN table meets the requirement stated in section
+              "Requirement of LGR table" (7.6.1).
+
+      Criteria for PASS:
+
+      -   Section 2 of the IDN Self-Certification Document indicates the IDN
+          table format used for the IDN table (Step 1 and 4),
+
+      -   if the IDN table is in RFC 4290 format, that it conforms to those
+          guidelines (steps under 3 above),
+
+      -   if the IDN table is in RFC 3743 format, that it conforms to those
+          guidelines (steps under 4 above),
+
+      -   if the IDN table is in RFC 7940 format, that is conforms to its
+          format and requirements (steps under 5 above).
+
+      Criteria for WARN:
+
+      -   Meets the PASS criteria, and
+
+      -   Some variant relation has been found to be asymmetrical or
+          intransitive.
+
+      Criteria for FAIL:
+
+      -   Section 2 of the IDN Self-Certification Document does not indicate
+          the selected IDN table format was used,
+
+      -   the conditions in Step 2-4 are not met,
+
+      -   part of the information is unclear or missing.
+
+      If this test fails, none of the subsequent tests will be conducted and
+      all will fail by default.
+  idn-valid02:
+    Summary: IDNA Code Point validation
+    Description: |
+      ## Objective
+
+      This test verifies that the status of each tabulated code point is
+      PROTOCOL VALID (PVALID) or CONTEXTUAL RULE REQUIRED (CONTEXTn) as
+      defined in RFC 5892 when its algorithms are applied to an appropriate
+      version of the Unicode Standard. The test is repeated for all IDN
+      tables.
+
+      The IDNA Derived Property (PVALID, CONTEXTO, CONTEXTJ, DISALLOWED or
+      UNASSIGNED) can be found for each code point on
+      <http://www.iana.org/assignments/idna-tables-6.3.0/idna-tables-6.3.0.xhtml>
+      for Unicode version 6.3. For higher version of Unicode the IDNA
+      properties can be calculated from the Unicode database by the algorithm
+      found in IDNA2008.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        --------------------------------------------------------------------------
+        Id                        Description                         Type
+        ------------------------- ----------------------------------- ------------
+        TestTable                 The IDN table under scrutiny.       File
+
+        ExtendedTestTable         IDN table generated by Test Case    File
+                                  idn-valid02.
+
+        AvailableCodepointTable   A tabular listing of all PVALID and File
+                                  CONTEXTn code points in Unicode.
+        --------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The outcome of the Test Case is PASS or FAIL.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      -   Text sorting and comparison utilities.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      idn-valid01.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      For every code point in every ExtendedTestTable, extract the IDNA
+      Derived Property value for that code point.
+
+      1.  Examine ExtendedTestTable, and verify that each code point has one
+          of the three derived IDNA property values PVALID, CONTEXTJ, or
+          CONTEXTO.
+
+      Criteria for PASS:
+
+      -   Each code point in ExtendedTestTable has one of the three derived
+          IDNA property values PVALID, CONTEXTJ, or CONTEXTO (Step 1).
+
+      Criteria for FAIL:
+
+      -   ExtendedTestTable includes one or more code points indicating IDNA
+          property values other than PVALID, CONTEXTJ or CONTEXTO (Step 1).
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary. If this test fails, none of the
+      subsequent tests will be conducted and all will fail by default.
+  idn-valid03:
+    Summary: Contextual Rule validation
+    Description: |
+      ## Objective
+
+      This test verifies that a tabulated code point that require contextual
+      rules can only be used according to those rules. The test is repeated
+      for all IDN tables. This concerns:
+
+      1.  Code points with the IDN property CONTEXTJ or CONTEXTO can only be
+          used according to the contextual rule given in RFC 5892.
+
+      2.  The contextual prohibitions on mixing Arabic and European digits in
+          right-to-left labels, and on digits at the start of such labels
+          given in RFC 5893.
+
+      3.  Combining marks (non-space, spacing or enclosing marks) can never
+          start a label (RFC 5891).
+
+      4.  Required contextual rules for Modifier Letter. More on Modifier
+          Letters below.
+
+      5.  Most COMMON and INHERITED code points are usually restricted to be
+          used with certain explicit Unicode scripts (UAX#24 and
+          ScriptExtensions.txt of the Unicode database).
+
+      6.  Code points with restricted context (e.g. must not be initial)
+          according to Unicode.
+
+      7.  All strings must be in Normalization Form C (see
+          <http://unicode.org/reports/tr15/#Norm_Forms>).
+
+      8.  Additional contexual rules in relevant ICANN Second-Level LGR
+          Reference table, not covered above, should be included where
+          applicable.
+
+      Each Modifier Letter (General Unicode category value Modifier_Letter,
+      Lm) must be accompanied with a contextual rule restricting it to
+      relevant positions or be accompanied with a statement that no such rule
+      is needed for that Modifier Letter. If ICANN has published requirements
+      on a certain Modifier Letter, those must be followed. Stricter rules are
+      permitted. Each rule or non-rule should be justified with documentation
+      showing the Modifier Letters use in the language in question (for
+      language based IDN tables) or some language using that script (for
+      script based IDN tables). If ICANN has published requirements or
+      recommendation on contextual rules for a certain Modifier Letter, it is
+      valid to refer to that document.
+
+      For many languages Second-Level LGR Reference tables are available at
+      <https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en>.
+      Besides code point repertoire and variant rules, those IDN tables
+      contain the expected contextual rules to meet both the IDNA 2008
+      standards but also the security and stability requirements of IDN.
+      Registries are welcome to use those as a reference both for LGR tables
+      and IDN text tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -------------------------------------------------------------------------------
+        Id                    Description                        Type
+        --------------------- ---------------------------------- ----------------------
+        TestTable             The IDN table under scrutiny.      File
+
+        ExtendedTestTable     Table generated by test            File
+                              idn-valid02.
+
+        IDNAContextualRules   The contextual rules listed in RFC File, RFC 5892.
+                              5892, Appendix A.
+
+        BidiDigitRules        The contextual rules given in RFC  File, RFC 5893.
+                              5893, Section 2.
+
+        UnicodeContextRules   The contextual rules given in      Unicode (UAX#24 and
+                              Unicode                            ScriptExtensions.txt
+                                                                 of the Unicode
+                                                                 database,
+                                                                 Normalization Form C)
+
+        PolicyStatement       The IDN policies submitted for     File, IDN
+                              idn-valid00.                        Self-Certification
+                                                                 Document.
+        -------------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/non-applicable/warn
+      determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      The person conducting this test must understand the application of the
+      CONTEXTn rules in RFC 5892, the Bidi rule in RFC 5893, and Unicode.
+
+      ## Intercase dependencies
+
+      This test effectively extends into idn-valid11.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Examine ExtendedTestTable. If the IDN property CONTEXTO or CONTEXTJ
+          does not appear on any row in it, the IDN table does not contain
+          code points that can form RTL labels, and the IDN table contains no
+          other code points requiring contextual rules, end this test as
+          non-applicable.
+
+      2.  For every code point with the IDN properties CONTEXTO or CONTEXTJ,
+          verify that the availability is restricted as required by RFC 5892
+          (see Appendix A).
+
+      3.  If the label is RTL as defined in RFC 5893:
+
+          a.  if it contains any code point in the range 0030..0039, ensure
+              that no code point is in the range 0660..0669, and vice versa,
+
+          b.  if the literal component of the label consists of code points
+              taken with the explicit script property value Arabic, ensure
+              that no ARABIC DIGIT, EXTENDED ARABIC DIGIT, or European DIGIT
+              is in the initial position.
+
+      4.  For every code point in the General Unicode category Combining mark,
+          verify that the availability is restricted to non-initial position.
+
+      5.  For every code point in the General Unicode category Modifier
+          Letter, verify that the availability is restricted by relevant
+          contextual rule or accompanied with a statement that no rule is
+          required.
+
+      6.  For every code point in the General Unicode category Modifier Letter
+          verify that supporting documentation of such use is provided; or if
+          no contextual rule is given it is shown that unrestricted placement
+          is permissible for that code point through supporting documentation.
+
+      7.  For every code point with special property COMMON or INHERITED
+          (except for HYPHEN-MINUS U+002D and ASCII digits 0030..0039) verify
+          that it has the restrictions that the Unicode Standard prescribes,
+          if any.
+
+      8.  Verify that there exist contextual rules, if needed, to prevent any
+          string to be registered unless it is in Normalization Form C.
+
+      9.  Verify that applicable contextual rules found in relvevant ICANN
+          Second-Level LGR Reference table are included in the IDN table.
+
+      For every code point besides those mentioned above, verify if the
+      Unicode standard prescribes any restrictions, and if so, that those are
+      followed (e.g. U+0E40).
+
+      Criteria for N/A:
+
+      -   There are no code points in the IDN table with IDN properties
+          CONTEXTO or CONTEXTJ, nor are there any other code points that
+          require contextual rules.
+
+      Criteria for PASS:
+
+      -   All code points with IDN property CONTEXTO or CONTEXTJ in the IDN
+          tables are assigned rules that restrict them as required by RFC 5892
+          (step 2).
+
+      -   The restrictions on digits in RTL labels required by RFC 5893 are
+          observed (step 3).
+
+      -   Other code points requiring contextual rules have appropriate rules
+          (steps 4-6)
+
+      Criteria for WARN
+
+      -   The criteria for PASS are fulfilled except that the justification
+          for the contextual rule(s) or absence of contextual rule(s) for any
+          Modifier Letter is missing, incomplete or unable to be validated by
+          the testing provider. The TC will end with a warning accompanied
+          with a comment explaining the warning. A warning is a not a failure
+          condition.
+
+      Criteria for FAIL:
+
+      -   There are code points with IDN property CONTEXTO or CONTEXTJ in one
+          or more IDN tables that lack the rules required by RFC 5892 (step
+          2).
+
+      -   ARABIC-INDIC digits and European digits appear together in an RTL
+          label.
+
+      -   An RTL label begins with an ARABIC-INDIC DIGIT, or an EXTENDED
+          ARABIC-INDIC DIGIT, or a European DIGIT.
+
+      -   Combining mark appears in the IDN table, but without contextual
+          rules restricting it from initial position.
+
+      -   Modifier Letter appears in the IDN table, without contextual rule
+          restricting its use or without statement that no contextual rules
+          are needed.
+
+      -   Modifier Letter appears in the IDN table that ICANN has published
+          with a requirement for contextual rules on that Modifier Letter and
+          the provided contextual rule does not meet the requirement.
+
+      -   Code points with property COMMON or INHERITED appear in the IDN
+          table without contextual rules that the Unicode standard requires.
+
+      -   The code point repertoire and rules make it possible to construct a
+          string not in Normalization Form C that would be accepted.
+
+      -   Applicable contextual rule from relevant ICANN Second-Level LGR
+          Reference table is missing.
+
+      -   Other code point without proper restriction.
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary. If this test fails, none of the
+      subsequent tests will be conducted and all will fail by default.
+  idn-valid04:
+    Summary: IDN Script validation
+    Description: |
+      ## Objective
+
+      This test verifies that the code point array in a script IDN table is
+      restricted to a single explicit Unicode script property value as defined
+      in the Unicode Standard Annex #24, that code points with the special
+      script property values COMMON or INHERITED are correctly associated with
+      the designated script, and that regardless of script property value, no
+      code point is used in a manner alien to the designated script. The test
+      is repeated for all IDN tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        --------------------------------------------------------------------------
+        Id                        Description                         Type
+        ------------------------- ----------------------------------- ------------
+        TestTable                 The IDN table under scrutiny.       File
+
+        ExtendedTestTable         Table generated by test idn-valid02. File
+
+        AvailableCodepointTable   A tabular listing of all PVALID and File
+                                  CONTEXTn code points in Unicode,
+                                  with separate columns indicating
+                                  the IDN status and the Unicode
+                                  script property value for the code
+                                  point that keys every row. This
+                                  file is provided internally.
+
+        ScriptIntegrityPolicies   The script integrity policies       File
+                                  declared by the registry.
+
+        UAX#24                    Unicode Standard Annex #24; Unicode File
+                                  Script Property.
+        --------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/warning determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      The person conducting this test must understand Unicode script
+      properties designating specific scripts, as well as the values COMMON
+      and INHERITED. These are described in UAX #24, which states that COMMON
+      and INHERITED are assigned to code points that are used with more than
+      one script but that this does not imply usability with all scripts. UAX
+      #24 does not provide unequivocal guidance on how to apply such
+      restrictions but does illustrate correct and incorrect use of those
+      properties.
+
+      The underlying principles are to be applied in a contextually
+      appropriate manner. For the purpose of the IDN level of the RST
+      framework this is taken to mean that any script identifier appearing in
+      the Unicode character name given to a COMMON or INHERITED code point
+      must be congruent with the identifier of the IDN table being tested. For
+      example, a Cyrillic script IDN table may not include the code point
+      named ARABIC FATHATAN, nor would that code point be permissible in a
+      Danish language IDN table.
+
+      Similar constraints apply to combining marks and modifier letters.
+      Regardless of their script property values, these may not be randomly
+      interspersed in a string. The appearance, for example, of U+0483
+      (COMBINING CYRILLIC TITLO) must be restricted to contexts where it is
+      appropriate, which do not include U+047D (CYRILLIC SMALL LETTER OMEGA
+      WITH TITLO).
+
+      The only code points with the COMMON script property that may be
+      accepted in any IDN table are 0030..0039 DIGIT ZERO..DIGIT NINE, and
+      U+002D HYPEN-MINUS. This is the digit and hyphen component of the basic
+      ASCII LDH repertoire and will be referred to as \"DH\" in the following
+      text. The full LDH repertoire (DH plus 0061..007A) will also be accepted
+      if a script IDN table is primarily based on CJK Unified Ideographs or
+      Hangul Syllables.
+
+      Any other use of COMMON or INHERITED code points in a language IDN table
+      will require justification as being necessary to support the established
+      orthographic practice of that language.
+
+      A script-based IDN table that indiscriminately includes all COMMON and
+      INHERITED code points will fail.
+
+      ## Intercase dependencies
+
+      The outcome of this test may be contingent upon idn-valid05. It also
+      effectively extends into idn-valid11.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Examine ExtendedTestTable. If the column indicating the script
+          property value contains the same explicit script property value for
+          every row in the IDN table and the IDN table is labeled as
+          supporting the designated script, end the test with pass.
+
+      2.  If the special script property value COMMON appears in the IDN table
+          and the value INHERITED does not, verify that every COMMON code
+          point is in the DH cluster.
+
+      3.  If the explicit script property value is Han, Hangul, Hiragana or
+          Katakana, and Latin code points are included in the IDN table,
+          verify that they are in range 0061..007A and that idn-valid05 is
+          pass.
+
+      4.  If a code point that is not in the DH cluster has the value COMMON
+          or if any code points have the value INHERITED, verify that the
+          conditions discussed in UAX#24 are met.
+
+      Criteria for PASS:
+
+      -   ExtendedTestTable indicates the same explicit Unicode script
+          property value for every listed code point and the IDN table is
+          correctly labeled as supporting that script (Step 1).
+
+      -   If the special script property value COMMON appears in an IDN table
+          and the value INHERITED does not, every code point is in the DH
+          cluster (Step 2).
+
+      -   If the explicit script property value is Han, Hangul, Hiragana or
+          Katakana, and Latin code points in the range 0061..007A are included
+          in the IDN table, idn-valid05 is pass (Step 3).
+
+      -   If the Unicode script property values COMMON or INHERITED appear,
+          the conditions discussed in Section 10.6, above, are met (Step 4).
+
+      Criteria for FAIL:
+
+      -   The Unicode script property values COMMON or INHERITED appear, and
+          the conditions discussed in Section 10.6, above, are not met (Step
+          4).
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary.
+  idn-valid05:
+    Summary: IDN Script Mixing Rule validation
+    Description: |
+      ## Objective
+
+      This test verifies that an IDN table including code points with more
+      than one script property value is associated with rules that enforce the
+      constraints on script mixing specified in the IDN Guidelines. The test
+      is repeated for all IDN tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------------
+        Id                  Description                          Type
+        ------------------- ------------------------------------ --------------------
+        TestTable           The IDN table under scrutiny.        File
+
+        ExtendedTestTable   Table generated by test idn-valid02.  File
+
+        PolicyStatement     The IDN policies submitted for       File, IDN
+                            idn-valid00.                          Self-Certification
+                                                                 Document.
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/warning determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      This test may determine the outcome of idn-valid04. It also effectively
+      extends into idn-valid11.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Examine ExtendedTestTable. If the column indicating the Unicode
+          script property contains only one explicit script designator and no
+          COMMON or INHERITED code points, end this test with pass.
+
+      2.  If that column contains one explicit script property value and
+          COMMON or INHERITED code points are present, verify that they are
+          appropriate to that script.
+
+      3.  If that column contains more than one explicit script property
+          value, verify that one of the following conditions is met:
+
+          a.  The mixing of scripts in an IDN table is restricted to LDH code
+              points with Hangul Syllables.
+
+          b.  The mixing of scripts in an IDN table is restricted to LDH code
+              points with Unified CJK Ideographs.
+
+          c.  The mixing of scripts in an IDN table is restricted to LDH code
+              points with Unified CJK Ideographs intermingled with Hiragana or
+              Katakana.
+
+          d.  PolicyStatement in Section 4 of the IDN Self-Certification
+              Document explain and justify the conditions under which the
+              intermingling of the indicated scripts is permitted.
+
+      Criteria for PASS:
+
+      -   The IDN table contains only code points with the same explicit
+          script property value and no COMMON or INHERITED code points.
+
+      -   The column indicating the Unicode script property of
+          ExtendedTestTable contains only one explicit script property value
+          and all listed COMMON or INHERITED code points are appropriate to
+          that script (Step 2), or,
+
+      -   The column indicating the Unicode script property of
+          ExtendedTestTable contains more than one explicit script property
+          value and one of the conditions in Step 3a-3d is met.
+
+      Criteria for FAIL:
+
+      -   The column indicating the Unicode script property of
+          ExtendedTestTable contains only one explicit script property value
+          but COMMON or INHERITED code points are incongruous with the
+          explicitly designated script (Step 2).
+
+      -   The column indicating the Unicode script property of
+          ExtendedTestTable contains more than one explicit script property
+          value and none of the conditions in Step 3a-3d is met.
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary.
+  idn-valid06:
+    Summary: IDN Language validation
+    Description: |
+      ## Objective
+
+      This test verifies that an IDN table associated with a language rather
+      than a script is consistent with the script-based constraints in the
+      preceding test cases, and that linguistic warrant is demonstrated in any
+      policy statement permitting the intermingled use of multiple scripts in
+      individual labels. The test is repeated for all IDN tables.
+
+      For many languages Second-Level LGR Reference tables are available at
+      <https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en>.
+      When such an IDN table is available for the languages in question it is
+      consulted to determine if the code points in the TestTable are
+      consistent with the language use (even if the TestTable is in text
+      format). If the TestTable contains code points beyond those in the
+      relevant reference IDN table, those code points will be considered
+      before this TC is run based on the evidence of use provided.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------------------------------------------------
+        Id                  Description                                                              Type
+        ------------------- ------------------------------------------------------------------------ ---------------------
+        TestTable           The IDN table under scrutiny.                                            File
+
+        ExtendedTestTable   Table generated by test idn-valid02.                                      File
+
+        PolicyStatement     The IDN policies submitted for idn-valid00.                               File, IDN
+                                                                                                     Self-Certification
+                                                                                                     Document.
+
+        IDN Reference Table IDN table found at
+                            <https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en>
+        ------------------------------------------------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/non-applicable/warn
+      determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      The person conducting this test must be familiar with basic concepts of
+      writing systems and have access to reference material about the code
+      point repertoires associated with the languages figuring in the PDT.
+      Special care is needed in situations where a language uses multiple
+      scripts but only one of them appears in a label. For example, although
+      the Japanese writing system includes both the Latin and Katakana
+      scripts, in a label consisting exclusively of Latin code points, U+30FC
+      (KATAKANA-HIRAGANA PROLONGED SOUND MARK) would not be permissible.
+
+      ## Intercase dependencies
+
+      None.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  If TestTable is labeled as supporting a script rather than a
+          language, end this test as non-applicable.
+
+      2.  If TestTable supports a language, examine ExtendedTestTable and
+          verify that:
+
+          a.  one explicit script property value is indicated and it is
+              appropriate to the writing system for the designated language,
+              and that the supported repertoire is used for that writing
+              system. If available, an IDN Reference Table will be used to
+              evaluate the ExtendedTestTable.
+
+          b.  more than one explicit script property value is indicated and
+              the IDN table is declared to support a language with a writing
+              system that uses all of those scripts, that PolicyStatement in
+              Section 4 of the IDN Self-Certification Document provides
+              verifiable warrant for that assertion.
+
+      Criteria for N/A:
+
+      -   If TestTable is labeled as supporting a script rather than a
+          language, end this test as non-applicable (Step 1).
+
+      Criteria for PASS:
+
+      -   The code point repertoire in a language IDN table is appropriate to
+          the writing system of the indicated language (Step 2a). Broad
+          allowance will be made for documentable orthographic variation.
+
+      -   The code point repertoire in a language IDN table is declared to
+          support a language with a writing system that uses multiple scripts
+          and PolicyStatement in Section 4 of the IDN Self-Certification
+          Document provides verifiable warrant for that assertion (Step 2b).
+
+      Criteria for FAIL:
+
+      -   The code point repertoire in a language IDN table is not appropriate
+          to the writing system of the indicated language (Step 2a) or the
+          indiscriminate inclusion of additional code points from the
+          script(s) used for that writing system.
+
+      -   The code point repertoire in a language IDN table is declared to
+          support language with a writing system that uses multiple scripts
+          and PolicyStatement in Section 4 of the IDN Self-Certification
+          Document does not provide verifiable warrant for that assertion
+          (Step 2b).
+
+      NOTE: the only writing system thus far figuring in the discussion of IDN
+      repertoires that uses multiple scripts is Japanese, which intermingles
+      elements of the Han, Hiragana, Katakana, and the Basic Latin scripts
+      (\"a..z\"). As noted in idn-valid04, the RST also accepts the Basic Latin
+      repertoire together with Unified CJK Ideographs or Hangul Syllables
+      without need for separate justification.
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary.
+  idn-valid07:
+    Summary: Variant Code Point validation
+    Description: |
+      ## Objective
+
+      This test verifies that policies for the processing of variant
+      relationships between listed code points are described in sufficient
+      detail, and that all code points listed in a submitted IDN table as
+      having variant relationships are concordant with those policies. The
+      test is repeated for all IDN tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------------
+        Id                  Description                          Type
+        ------------------- ------------------------------------ --------------------
+        TestTable           The IDN table under scrutiny.        File
+
+        VariantAlgorithms   The IDN policies submitted for       File, IDN
+                            idn-valid00 that describe the variant Self-Certification
+                            generation algorithms used by the    Document
+                            registry.
+
+        VariantPolicies     The IDN policies submitted for       File, IDN
+                            idn-valid00 that describe the variant Self-Certification
+                            management policies declared by the  Document
+                            registry.
+
+        GRsupport           The yes/no response to the question  File, IDN
+                            in Section 1 of the Registry         Self-Certification
+                            Operator\'s IDN Self-Certification   Document
+                            Document regarding support for IDN
+                            at the start of General
+                            Registration.
+
+        EPPtags             A list of all EPP extensions needed  File
+                            to submit a request for the
+                            registration of an IDN label.
+        -----------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/non-applicable/warning
+      determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      -   EPP client.
+
+      -   IPv4 or IPv6 connectivity.
+
+      ## Special procedural requirements
+
+      The person conducting this test must understand the concept of variant
+      code points that ICANN applies to IDN repertoires and the associated
+      registration policies. Further procedural constraints are discussed in
+      Section 2.3.2 of this document. Special care needs to be taken with
+      scripts that have single-code point and multiple-code point
+      representations of the same character (i.e. both precomposed and
+      combining forms, without the one canonically being replaced by the
+      other). If both forms are included in an IDN table, variant policies
+      must be provided to ensure that they cannot be separately delegated.
+
+      ## Intercase dependencies
+
+      None.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Examine TestTable. If there is no indication of variant rules of any
+          code point in the IDN tables, end this Test Case as non-applicable.
+
+      2.  If correlations between two code points are indicated ("variant
+          relationships"), verify that
+
+          a.  VariantPolicies in Section 4 of the IDN Self-Certification
+              Document explains each such relationship and the constraints
+              that attach to it, or VariantAlgorithms in Section 4 of the IDN
+              Self-Certification Document describes the processing of each
+              such relationship. If neither is available, end the test as
+              failed.
+
+          b.  VariantPolicies in Section 4 of the IDN Self-Certification
+              Document describe how the Registry Operator activates variants
+              and that it correlates with what is stated in Exhibit A of the
+              TLD Registry Agreement regarding the activation of variants. If
+              there are any discrepancies, issue a warning to the Registry
+              Operator.
+
+      3.  If GRsupport is negative, the remaining steps in this test are
+          omitted. If GRsupport is positive, proceed with the test sequence
+          but restrict it to the IDN tables that are explicitly listed in
+          Section 1 of the IDN Self-Certification Document and are also listed
+          in Exhibit A of the TLD Registry Agreement.
+
+      4.  If there is any uncertainty about how variant management policies
+          are applied to an IDN table in a regard that is significant to the
+          pass/fail determination, construct a label including a code point
+          that is expected to be replaced by another code point upon
+          registration and submit an EPP request for it. If the request is
+          accepted without any indication of that transformation having been
+          applied, end the test as failed.
+
+      5.  If there is similar uncertainty about the variant management process
+          blocking the registration of a label in one variant form if a label
+          in another variant form has already been registered, construct a
+          second test label in a form that should cause such blocking, and
+          submit an EPP request for it. A further test label in a form that is
+          not expected to be blocked may also be submitted for registration.
+
+      This EPP component of this test is only applicable to IDN tables that
+      are listed both in Exhibit A of the Registry Agreement *and* Section 1
+      of their IDN Self-Certification Document.
+
+      Criteria for N/A:
+
+      -   This test is not applicable to IDN tables that do not declare
+          variant relationships between listed code points and where no such
+          relationships are otherwise apparent (Step 1).
+
+      Criteria for PASS:
+
+      -   Any IDN table that indicates variant relationships between code
+          points must be accompanied by documentation that clearly explains
+          how those relationships are managed in the registry (Step 2).
+
+      ```{=html}
+      <!-- -->
+      ```
+      -   If EPP tests are conducted, the registry must accept EPP requests
+          for the registration of labels so that the behavior expected on the
+          basis of the documentation can be verified. EPP extensions that are
+          required in this process is included in the documentation.
+
+      -   If the registry accepts and rejects test labels in accordance with
+          the anticipated behavior, or the documentation of variant management
+          is sufficient without EPP testing (Step 4 and 5).
+
+      Criteria for FAIL:
+
+      -   The Section 4 of the IDN Self-Certification Document does not
+          explain the variant management in sufficient detail to support the
+          test (Step 2).
+
+      -   Required EPP extensions are not included in the documentation.
+
+      -   Expected EPP responses are not returned (Step 4 and 5).
+  idn-valid09:
+    Summary: Variant Management Policy
+    Description: |
+      ## Objective
+
+      This test verifies that the variant management as described in the
+      policy is compliant with the regulation of variant management in the
+      Registry Agreement for that TLD.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                Description                    Type
+        ----------------- ------------------------------ -----------------------
+        PolicyStatement   The IDN policies submitted for File, IDN
+                          idn-valid00.                    Self-Certification
+                                                         Document.
+
+        ExhibitA          Exhibit A of the Registry      File
+                          Agreement between ICANN and
+                          the Registry Operator for the
+                          TLD tested.
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/not applicable
+      determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      idn-valid07 must be completed before this test case.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  If idn-valid07 has resulted in \"not applicable\" then end with N/A.
+
+      2.  Examine PolicyStatement and determine what the policy for variant
+          management is.
+
+      3.  Examine ExhibitA and determine if the TLD is permitted to have any
+          variant management.
+
+      4.  Examine ExhibitA and determine if the TLD is permitted to activate
+          any variants and what rules there are for activation.
+
+      5.  Compare the results of step 3 and 4 with the result of step 2.
+
+      6.  If the variant management in the PolicyStatement is compliant with
+          the permissible variant management, end with PASS.
+
+      7.  If the variant management in the PolicyStatement is NOT compliant
+          with the permissible variant management, end with FAIL.
+
+      Criteria for N/A:
+
+      -   idn-valid07 is N/A (Step 1).
+
+      Criteria for PASS:
+
+      -   PolicyStatement is compliant with ExhibitA (Step 6).
+
+      Criteria for FAIL:
+
+      -   PolicyStatement is not compliant with ExhibitA (Step 7).
+  idn-valid10:
+    Summary: Basic IDN compliance
+    Description: |
+      ## Objective
+
+      This test verifies that the registry system is compliant with basic IDN
+      requirements by not accepting registration of neither IDN strings in
+      U-label format with HYPHEN in position three and four nor non-IDN ASCII
+      strings with HYPHEN in position three and four. It also verifies that an
+      IDN string in U-label format is rejected if it has HYPHEN in initial or
+      final position.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                Description                    Type
+        ----------------- ------------------------------ -----------------------
+        PolicyStatement   The IDN policies submitted for File, IDN
+                          idn-valid00.                    Self-Certification
+                                                         Document.
+
+        GRsupport         The yes/no response to the     File, IDN
+                          question in Section 1 of the   Self-Certification
+                          Registry Operator\'s           Document
+                          Self-Certification Document
+                          regarding support for IDN at
+                          the start of General
+                          Registration (see also
+                          idn-valid11).
+
+        EPPtags           A list of all IDN EPP          File
+                          extensions, such as language
+                          and script tags, needed to
+                          submit a request for the
+                          registration of an IDN label.
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      -   EPP client.
+
+      -   IPv4 or IPv6 connectivity.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      idn-valid11.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Inspect PolicyStatement to determine if the TLD accepts registration
+          of ASCII domains without any EPP/IDN extension. Unless it explicitly
+          says that registration of ASCII domains are not supported, assume
+          that it is.
+
+      2.  The following test strings are to be registered without any EPPtag.
+
+          a.  Construct TL91 as a unique, valid ASCII label and \"expect
+              accept\". TL91 is skipped if ASCII domains are not registerable.
+
+          b.  Construct TL92 as a unique, otherwise valid non-IDN ASCII label,
+              but with HYPHEN in third and fourth positions and set \"expect
+              reject\". TL92 is always included.
+
+      3.  If GRsupport is negative, skip the following steps.
+
+      4.  If GRsupport is positive, select one of the IDN tables that are
+          explicitly listed in Section 1 of the IDN Self-Certification
+          Document.
+
+      5.  Determine the EPPtag used for the IDN table, if any.
+
+      6.  The following test strings are to be registered as other IDN labels
+          in idn-valid11.
+
+          a.  Construct TL93 as a unique, otherwise valid IDN label matching
+              all other restrictions of the selected IDN table, but with
+              HYPHEN in third and fourth positions of the U-label.
+
+          b.  Construct TL94 as a unique, otherwise valid IDN label matching
+              all other restrictions of the selected IDN table, but with
+              HYPHEN in the initial position of the U-label.
+
+          c.  Construct TL95 as a unique, otherwise valid IDN label matching
+              all other restrictions of the selected IDN table, but with
+              HYPHEN in the final position of the U-label.
+
+      7.  Submit a request to register TL91 to TL95. This is done together
+          with the test labels from idn-valid11, if applicable.
+
+      Criteria for PASS:
+
+      -   Expected result is returned. All the following applies (only
+          constructed labels are considered):
+
+          a.  TL91 is accepted.
+
+          b.  TL92 is rejected.
+
+          c.  TL93 is rejected.
+
+          d.  TL94 is rejected.
+
+          e.  TL95 is rejected.
+
+      Criteria for FAIL:
+
+      -   Expected result is not returned. Any of the following applies (only
+          constructed labels are considered):
+
+          a.  TL91 is rejected.
+
+          b.  TL92 is accepted.
+
+          c.  TL93 is accepted.
+
+          d.  TL94 is accepted.
+
+          e.  TL95 is accepted.
+  idn-valid11:
+    Summary: IDN online registry response validation
+    Description: |
+      ## Objective
+
+      This test verifies that the online registry correctly processes test
+      strings needed for preceding tests. The test is repeated for all IDN
+      tables.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                Description                    Type
+        ----------------- ------------------------------ -----------------------
+        TestTable         The IDN table under scrutiny.  File
+
+        PolicyStatement   The IDN policies submitted for File, IDN
+                          idn-valid00.                    Self-Certification
+                                                         Document.
+
+        GRsupport         The yes/no response to the     File, IDN
+                          question in Section 1 of the   Self-Certification
+                          Registry Operator\'s           Document
+                          Self-Certification Document
+                          regarding support for IDN at
+                          the start of General
+                          Registration.
+
+        EPPtags           A list of all IDN EPP          File
+                          extensions, such as language
+                          and script tags, needed to
+                          submit a request for the
+                          registration of an IDN label.
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail/warning determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      -   EPP client.
+
+      -   IPv4 or IPv6 connectivity.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      This test is an effective extension of idn-valid03, idn-valid04, and
+      idn-valid05. It is, however, only applied to those IDN tables listed in
+      Exhibit A of the TLD Registry Agreement that are also listed in their
+      response to Section 1 of the corresponding IDN Self-Certification
+      Document. If no IDN tables are listed in that section, this test is not
+      applicable.
+
+      Test labels constructed in this test case are registered together with
+      the test labels constructed in test case idn-valid10.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  If GRsupport is negative, terminate this test as not applicable. If
+          GRsupport is positive, proceed with the test sequence but restrict
+          it to the IDN tables that are explicitly listed in Section 1 of the
+          IDN Self-Certification Document and are also listed in Exhibit A of
+          the TLD Registry Agreement.
+
+      2.  Examine ExtendedTestTable, for every code point or group of code
+          points that the execution of idn-valid03 has shown to have contextual
+          rules, construct three test labels including the code point with
+          that property.
+
+          a.  The first test label, TL1 will place the code point in the
+              context required by the associated rule.
+
+          b.  The second, TL2, will place the code point in a context that
+              violates the rule.
+
+          c.  The third, TL3, will include two instances of the code point, of
+              which one will respect the contextual rule and the other will
+              violate it, if applicable.
+
+      3.  Examine ExtendedTestTable and construct three test labels or sets of
+          labels:
+
+          a.  The first, TL4 consists solely of listed code points.
+
+          b.  The second, TL5, includes one code point that is not listed.
+
+          c.  The third, TL6, includes at least one code point with an
+              explicit script property value that both differs from any listed
+              in the IDN table, and is not allowed in PolicyStatement.
+
+      4.  Examine ExtendedTestTable and if it contains code points in both the
+          range 0030..0039 and the range 0660..0669, and is an RTL label
+          according to RFC 5893, construct a test label:
+
+          a.  that includes code points from both ranges, TL7.
+
+      5.  Examine ExtendedTest, and if it includes code points from any Arabic
+          script block construct three test labels:
+
+          a.  The first, TL8, begins with a code point in the range 0030..0039
+              and is followed by code points with the explicit script property
+              value Arabic.
+
+          b.  The second, TL9, begins with a code point in the range
+              0660..0699 and is followed by code points with the explicit
+              script property value Arabic.
+
+          c.  The third, TL10, begins with a code point in the range
+              06F0..06F9 and is followed by code points with the explicit
+              script property value Arabic.
+
+      6.  Submit a request to register (use any elements of EPPtags that may
+          be necessary) TL1 through TL10. Include applicable test strings from
+          idn-valid10.
+
+      This test is only applicable to IDN tables that are listed both in
+      Exhibit A of the TLD Registry Agreement *and* Section 1 of their IDN
+      Self-Certification Document. Any EPP extensions required for the
+      submission of a registration request must be included in the
+      documentation.
+
+      Criteria for N/A:
+
+      -   GRsupport is negative (Step 1).
+
+      Criteria for PASS:
+
+      -   EPP extensions required for the submission of a registration request
+          is included in the documentation.
+
+      -   Expected result is returned (Step 4).
+
+          a.  TL1 is accepted.
+
+          b.  TL2 is rejected.
+
+          c.  TL3 is rejected.
+
+          d.  TL4 is accepted.
+
+          e.  TL5 is rejected.
+
+          f.  TL6 is rejected.
+
+          g.  TL7 is rejected.
+
+          h.  TL8 is rejected.
+
+          i.  TL9 is rejected.
+
+          j.  TL10 is rejected.
+
+      -   The expected EPP result code is returned for each test label derived
+          from a preceding test case.
+
+      Criteria for FAIL:
+
+      -   EPP extensions required for the submission of a registration request
+          are not included in the documentation.
+
+      -   Expected result is not returned (Step 4).
+
+          a.  TL1 is rejected.
+
+          b.  TL2 is accepted.
+
+          c.  TL3 is accepted.
+
+          d.  TL4 is rejected.
+
+          e.  TL5 is accepted.
+
+          f.  TL6 is accepted.
+
+          g.  TL7 is accepted.
+
+          h.  TL8 is accepted.
+
+          i.  TL9 is accepted.
+
+          j.  TL10 is accepted.
+
+      -   The expected EPP result code is not returned for each test label
+          derived from a preceding test case.
+
+      A warning will be issued if failure is not directly indicated but a
+      qualifying remark is necessary or if the response to the request
+      indicates that IDN registration is not yet supported in the registry.
+  idn-valid12:
+    Summary: Asymmetrical and intransitive variant rule verification
+    Description: |
+      ## Objective
+
+      This test verifies that any asymmetrical or intransitive variant rules
+      do note create any security or stability issues.
+
+      Example of asymmetrical variant rules that create security and stability
+      issues:
+
+      -   Both *A* and *B* are code point that are permitted to be included in
+          labels by an IDN table, and *A* is a variant of *B* but *B* is not a
+          variant of *A*.
+
+      This Test Case will verify that all discovered asymmetrical or
+      intransitive variant rules can not create security or stability issues.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------
+        Id               Description                    Type
+        ---------------- ------------------------------ -----------------------
+        TestTable        The IDN table under scrutiny.  File
+
+        VariantRules     Result from idn-valid01,        Data
+                         whether the IDN table contains
+                         variant rules that are
+                         asymmetrical or intransitive.
+        -----------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      This test is an effective extension of idn-valid01. If that Test Case
+      does not report of any IDN table containing any asymmetrical or
+      intransitive variant rule then this Test Case is not applicable.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  If VariantRules is negative (no asymmetry or intransitivity),
+          terminate this test as not applicable.
+
+      2.  Examine each asymmetrical or intransitive variant rule or rule set
+          reported by idn-valid01.
+
+      3.  If a specific variant rule or rule set can create security or
+          stability issues, then this Test Case will conclude with FAIL.
+
+      Criteria for N/A:
+
+      -   idn-valid01 did not report any asymmetrical or intransitive variant
+          rules.
+
+      Criteria for PASS:
+
+      -   No asymmetrical or intransitive variant rule or rule set will create
+          security or stability issues.
+
+      Criteria for FAIL:
+
+      -   At least one asymmetrical or intransitive variant rule or rule set
+          have been found to potentially create security or stability issue.
+  idn-valid13:
+    Summary: Pre-composed vs. decomposed character equivalence verification
+    Description: |
+      ## Objective
+
+      This Test Case verifies that the IDN table correctly handles cases where
+      the same character can be represented either by a single code point
+      representing a pre-composed glyph or by a sequence of code points
+      representing a decomposed glyph. What this exactly means is illustrated
+      in the table below.
+
+      This Test Case does not cover cases where the decomposed glyph is
+      defined by Unicode to be in Normalization Form D, since that is already
+      covered by Test Case idn-valid03.
+
+      If an IDN table include all code points of the members of a
+      pre-composed/decomposed pair, then this Test Case will verify that there
+      are contextual rules that prevent both members to appear in the same
+      context or that there are variant rules that handle those as "same".
+
+        -----------------------------------------------------------------------------------------------------------------------------
+        Pre-composed glyph                                                    Pre-composed code  Decomposed glyph Decomposed code
+                                                                              point                               point sequence
+        --------------------------------------------------------------------- ------------------ ---------------- -------------------
+        [ځ]{dir="rtl"}                                                        0681               [حٔ]{dir="rtl"}   062D 0654
+
+        ![mage of                                                             08A1               [بٔ]{dir="rtl"}   0628 0654
+        U+08A1](media/image2.png){style="width:0.45276in;height:0.44488in"}
+
+        ƚ                                                                     019A               l̵                006C 0335
+        -----------------------------------------------------------------------------------------------------------------------------
+
+      The pre-composed/decomposed pairs considered in this Test Case includes
+      all such pairs listed in the table above, but is not limited to those.
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------
+        Id               Description                    Type
+        ---------------- ------------------------------ -----------------------
+        TestTable        The IDN table under scrutiny.  File
+
+        VariantRules     Variant rules for the IDN      Data
+                         table
+
+        ContextRules     Contextual rules for the IDN   Data
+                         table
+        -----------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The response to this test will be a pass/fail determination.
+
+      ## Environmental needs
+
+      -   Basic desktop.
+
+      ## Special procedural requirements
+
+      None.
+
+      ## Intercase dependencies
+
+      None.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  If none of the IDN tables contains all code points of
+          pre-composed/decomposed pair, then this TC will end with N/A.
+
+      2.  Inspect all such pairs in the IDN table.
+
+      3.  If not all such pairs are controlled by contextual rules or variant
+          rules, as described above, then this TC ends with FAIL.
+
+      4.  If all such pairs are controlled, then it ends with PASS.
+
+      Criteria for N/A:
+
+      -   There are no pre-composed/decomposed pairs to verify.
+
+      Criteria for PASS:
+
+      -   All pre-composed/decomposed pairs are controlled by contextual or
+          variant rules.
+
+      Criteria for FAIL:
+
+      -   At least one pre-composed/decomposed pair lacks necessary rules.
