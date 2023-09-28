@@ -227,6 +227,12 @@ Plans:
       EPP:
       IDN:
       RDE:
+        - rde-FileName01
+        - rde-FileName02
+        - rde-Verify01
+        - rde-Verify02
+        - rde-Content01
+        - rde-Content02
 
   StandardRSPChangeTest:
     Order: 2
@@ -373,6 +379,12 @@ Plans:
       EPP:
       IDN:
       RDE:
+        - rde-FileName01
+        - rde-FileName02
+        - rde-Verify01
+        - rde-Verify02
+        - rde-Content01
+        - rde-Content02
 
   DNSRSPChangeTest:
     Order: 3
@@ -634,6 +646,12 @@ Plans:
       EPP:
       IDN:
       RDE:
+        - rde-FileName01
+        - rde-FileName02
+        - rde-Verify01
+        - rde-Verify02
+        - rde-Content01
+        - rde-Content02
 
   DNSRSPEvaluationTest:
     Order: 7
@@ -970,3 +988,508 @@ Test-Cases:
     Summary: validation of nameserver status codes
   rdap-rdapResponseProfile_2_7_5_3_Validation:
     Summary: proper redaction of domain entities
+  rde-FileName01:
+    Summary: Verify file names, full escrow
+    Description: |
+      ## Objective
+
+      The test will receive one full deposit of sample data. The objective is
+      to verify file names.
+
+      Requirements from the test plan: \[R21\], \[AGB1\], \[RS5\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                      Description                         Type
+        ----------------------- ----------------------------------- ------------
+        TLD                     The ASCII compatible name of the    String
+                                TLD
+
+        DataFileFull-\[1..n\]   The files containing the full       Files
+                                deposit
+
+        DataSigFull-\[1..n\]    The files containing the signature  Files
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      Files MUST be named according to the following convention:
+
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      All of the checks are case insensitive.
+
+      The data files MUST follow this format
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      For each **\<DataFileFull\>**, check that:
+
+      1.  {gTLD} is equal to **\<TLD\>**. If it is an IDN-TLD, then this MUST
+          be the A-label.
+
+      2.  {YYYY-MM-DD} is equal to year, month, and day. The file MUST be
+          maximum 40 days old.
+
+      3.  {type} is equal to "full".
+
+      4.  {#} is a number greater than or equal to 1. Leading zeroes are not
+          allowed.
+
+      5.  {rev} is a number greater than or equal to 0. Leading zeroes are not
+          allowed.
+
+      6.  {ext} is equal to "ryde".
+
+      The signature files MUST follow this format
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      For each **\<DataSigFull\>**, check that:
+
+      1.  {gTLD} is equal to **\<TLD\>**. If it is an IDN-TLD, then this MUST
+          be the A-label.
+
+      2.  {YYYY-MM-DD} is equal to year, month, and day. The file MUST be
+          maximum 40 days old.
+
+      3.  {type} is equal to "full".
+
+      4.  {#} is a number greater than or equal to 1. Leading zeroes are not
+          allowed.
+
+      5.  {rev} is a number greater than or equal to 0. Leading zeroes are not
+          allowed.
+
+      6.  {ext} is equal to "sig".
+  rde-FileName02:
+    Summary: Verify file names, differential escrow
+    Description: |
+      ## Objective
+
+      This test is optional and will only be performed if the Registry
+      Operator has supplied a differential deposit.
+
+      The test will receive one differential deposit of sample data. The
+      objective is to verify file names.
+
+      Requirements from the test plan: \[R21\], \[AGB2\], \[RS5\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                      Description                         Type
+        ----------------------- ----------------------------------- ------------
+        TLD                     The ASCII compatible name of the    String
+                                TLD
+
+        DataFileDiff-\[1..n\]   The files containing the            Files
+                                differential deposit
+
+        DataSigDiff-\[1..n\]    The files containing the signature  Files
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      Files MUST be named according to the following convention:
+
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      This test has no intercase dependencies.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      All of the checks are case insensitive.
+
+      The data files MUST follow this format
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      For each **\<DataFileDiff\>**, check that:
+
+      1.  {gTLD} is equal to **\<TLD\>**. If it is an IDN-TLD, then this MUST
+          be the A-label.
+
+      2.  {YYYY-MM-DD} is equal to year, month, and day. The file MUST be
+          maximum 40 days old.
+
+      3.  {type} is equal to "diff".
+
+      4.  {#} is a number greater than or equal to 1. Leading zeroes are not
+          allowed.
+
+      5.  {rev} is a number greater than or equal to 0. Leading zeroes are not
+          allowed.
+
+      6.  {ext} is equal to "ryde".
+
+      The signature files MUST follow this format
+      {gTLD}\_{YYYY-MM-DD}\_{type}\_S{#}\_R{rev}.{ext}
+
+      For each **\<DataSigDiff\>**, check that:
+
+      1.  {gTLD} is equal to **\<TLD\>**. If it is an IDN-TLD, then this MUST
+          be the A-label.
+
+      2.  {YYYY-MM-DD} is equal to year, month, and day. The file MUST be
+          maximum 40 days old.
+
+      3.  {type} is equal to "diff".
+
+      4.  {#} is a number greater than or equal to1. Leading zeroes are not
+          allowed.
+
+      5.  {rev} is a number greater than or equal to 0. Leading zeroes are not
+          allowed.
+
+      6.  {ext} is equal to "sig".
+  rde-Verify01:
+    Summary: Verify signatures, full escrow
+    Description: |
+      ## Objective
+
+      The test will verify the signatures of the received files. If it is a
+      multi-part transmission, then the files are reassembled. Decrypt and
+      uncompress the result.
+
+      Requirements from the test plan: \[R21\], \[AGB1\], \[RS4\], \[RS8-1\],
+      \[RS8-2\], \[RS8-3\], \[ALGO\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                      Description                         Type
+        ----------------------- ----------------------------------- ------------
+        DataFileFull-\[1..n\]   The files containing the full       Files
+                                deposit
+
+        DataSigFull-\[1..n\]    The files containing the signature  Files
+
+        DataRegPubKey           The public key used for             File
+                                verification
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      -   The signature, encryption, and compression are done in accordance
+          with RFC 4880.
+
+      -   The files MUST be signed using RSA, DSA, or ECDSA with SHA1,
+          RIPEMD160, SHA224, SHA256, SHA384, or SHA512.
+
+      -   If multi-part files, then all files MUST be present.
+
+      -   The files MUST be encrypted using RSA, Elgamal, or ECDH with IDEA,
+          TripleDES, CAST5, Blowfish, AES128, AES192, AES256, or Twofish.
+
+      -   The decrypted and uncompressed file will be used in upcoming test.
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      rde-FileName01 must first have been executed successfully.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      All operations are done in accordance with RFC 4880.
+
+      For each **\<DataSigFull\>**:
+
+      1.  Validate the signature. It MUST be possible to validate the
+          **\<DataFileFull\>** using the signature and the
+          **\<DataRegPubKey\>**.
+
+      2.  Check the properties of the signature:
+
+          a.  Digest algorithm SHA1, RIPEMD160, SHA224, SHA256, SHA384, or
+              SHA512 MUST be used. MD5 is deprecated and MUST NOT be used.
+
+          b.  Public key algorithm RSA, DSA or ECDSA MUST be used.
+
+      If there is more than one **\<DataFileFull\>**:
+
+      1.  All file parts MUST be present. See {#} in the file name and that
+          they form a sequence of numbers starting with 1.
+
+      2.  Concatenate the files in order.
+
+      Decrypt and uncompress the (concatenated) file:
+
+      1.  Decrypt the file using the private test key. The file will be
+          uncompressed automatically by the client software.
+
+      2.  Check the properties of the encrypted file:
+
+          a.  Symmetric algorithm IDEA, TripleDES, CAST5, Blowfish, AES128,
+              AES192, AES256, or Twofish MUST be used.
+
+          b.  Public key algorithm RSA, Elgamal or ECDH MUST be used. (Note
+              that this will always be RSA because of the RST Provider's
+              public key.)
+
+      3.  Check the original file name of the unencrypted file. It MUST be the
+          same as the encrypted deposit but with extension tar.
+
+      Untar the decrypted archive and check that there is an XML file. It MUST
+      be named as the deposit but with the extension xml. The XML file MUST
+      NOT be placed in any subdirectory within the archive.
+  rde-Verify02:
+    Summary: Verify signatures, differential escrow
+    Description: |
+      ## Objective
+
+      This test is optional and will only be performed if the Registry
+      Operator has supplied a differential deposit.
+
+      The test will verify the signature of the received files. If it is a
+      multi-part transmission, then the files are reassembled. Decrypt and
+      uncompress the result.
+
+      Requirements from the test plan: \[R21\], \[AGB2\], \[RS4\], \[RS8-1\],
+      \[RS8-2\], \[RS8-3\], \[ALGO\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        ------------------------------------------------------------------------
+        Id                      Description                         Type
+        ----------------------- ----------------------------------- ------------
+        DataFileDiff-\[1..n\]   The files containing the            Files
+                                differential deposit
+
+        DataSigDiff-\[1..n\]    The files containing the signature  Files
+
+        DataRegPubKey           The public key used for             File
+                                verification
+        ------------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      -   The signature, encryption, and compression are done in accordance
+          with RFC 4880.
+
+      -   The files MUST be signed using RSA, DSA, or ECDSA with SHA1,
+          RIPEMD160, SHA224, SHA256, SHA384, or SHA512.
+
+      -   If multi-part files, then all files MUST be present.
+
+      -   The files MUST be encrypted using RSA, Elgamal, or ECDH with IDEA,
+          TripleDES, CAST5, Blowfish, AES128, AES192, AES256, or Twofish.
+
+      -   The decrypted and uncompressed file will be used in upcoming test.
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      rde-FileName02 must first have been executed successfully.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      All operations are done in accordance with RFC 4880.
+
+      For each **\<DataSigDiff\>**:
+
+      1.  Validate the signature. It MUST be possible to validate the
+          **\<DataFileDiff\>** using the signature and the
+          **\<DataRegPubKey\>**.
+
+      2.  Check the properties of the signature:
+
+          a.  Digest algorithm SHA1, RIPEMD160, SHA224, SHA256, SHA384, or
+              SHA512 MUST be used. MD5 is deprecated and MUST NOT be used.
+
+          b.  Public key algorithm RSA, DSA or ECDSA MUST be used.
+
+      If there is more than one **\<DataFileDiff\>**:
+
+      1.  All file parts MUST be present. See {#} in the file name and that
+          they form a sequence of numbers starting with 1.
+
+      2.  Concatenate the files in order.
+
+      Decrypt and uncompress the (concatenated) file:
+
+      1.  Decrypt the file using the private test key. The file will be
+          uncompressed automatically by the client software.
+
+      2.  Check the properties of the encrypted file:
+
+          a.  Symmetric algorithm IDEA, TripleDES, CAST5, Blowfish, AES128,
+              AES192, AES256, or Twofish MUST be used.
+
+          b.  Public key algorithm RSA, Elgamal or ECDH MUST be used. (Note
+              that this will always be RSA because of the RST Provider's
+              public key.)
+
+      3.  Check the original file name of the unencrypted file. It MUST be the
+          same as the encrypted deposit but with extension tar.
+
+      Untar the decrypted archive and check that there is an XML file. It MUST
+      be named as the deposit but with the extension xml. The XML file MUST
+      NOT be placed in any subdirectory within the archive.
+  rde-Content01:
+    Summary: Validate content, full escrow
+    Description: |
+      ## Objective
+
+      This test will validate the full deposit against the profile.
+
+      Requirements from the test plan: \[R21\], \[R22\], \[AGB1\], \[RS3\],
+      \[RS8-4\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------
+        Id                     Description                         Type
+        ---------------------- ----------------------------------- ------------
+        DataFileFull           The unencrypted file containing the File
+                               full deposit
+
+        DataProfile            The data escrow profile described   XML file
+                               using W3C XML Schema. Provided by
+                               ICANN.
+        -----------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The full deposit MUST have valid XML and contain required and valid
+      attributes.
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      rde-Verify01 must first have been executed successfully.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Check if it is an XML or CSV deposit.
+
+          a.  If CSV deposit, then the corresponding XML in the tests below.
+
+      2.  Validate the **\<DataFileFull\>** XML file against the
+          **\<DataProfile\>** XML schema provided by ICANN. The Registry
+          Operator MUST use extensions which have been agreed upon with ICANN.
+
+      3.  Check the content of the XML:
+
+          a.  The type MUST be "FULL".
+
+          b.  The date part of the watermark MUST match the date in the file
+              name.
+
+          c.  There MUST NOT be a "deletes" element in the file.
+  rde-Content02:
+    Summary: Validate content, differential escrow
+    Description: |
+      ## Objective
+
+      This test is optional and will only be performed if the Registry
+      Operator has supplied a differential deposit.
+
+      This test will validate the differential deposit against the profile.
+
+      Requirements from the test plan: \[R21\], \[R22\], \[AGB2\], \[RS3\],
+      \[RS8-4\]
+
+      ## Inputs
+
+      The following information will be needed as input for this test case:
+
+        -----------------------------------------------------------------------
+        Id                     Description                         Type
+        ---------------------- ----------------------------------- ------------
+        DataFileDiff           The unencrypted file containing the File
+                               differential deposit
+
+        DataProfile            The data escrow profile described   XML file
+                               using W3C XML Schema. Provided by
+                               ICANN.
+        -----------------------------------------------------------------------
+
+      ## Outcome(s)
+
+      The differential deposit MUST have valid XML and contain required and
+      valid attributes.
+
+      ## Environmental needs
+
+      This test has no environmental needs.
+
+      ## Special procedural requirements
+
+      This test has no special procedural requirements.
+
+      ## Intercase dependencies
+
+      rde-Verify02 must first have been executed successfully.
+
+      ## Ordered description of steps to be taken to execute the test case
+
+      1.  Check if it is an XML or CSV deposit.
+
+          a.  If CSV deposit, then the corresponding XML in the tests below.
+
+      2.  Validate the **\<DataFilediff\>** XML file against the
+          **\<DataProfile\>** XML schema provided by ICANN. The Registry
+          Operator MUST use extensions which have been agreed upon with ICANN.
+
+      3.  Check the content of the XML:
+
+          a.  The type MUST be "DIFF".
+
+          b.  The prevId attribute MUST be present.
+
+          c.  The date part of the watermark MUST match the date in the file
+              name.
