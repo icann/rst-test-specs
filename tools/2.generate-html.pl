@@ -155,7 +155,11 @@ foreach my $case (grep { length($_) > 0 && $_ !~ /^Doc/ } sort(keys(%{$struct->{
 
     }
 
-    print md2html($struct->{'Test-Cases'}->{$case}->{'Description'}, 2);
+    print $h->h4('Test Case Identifier');
+    print $h->pre($case);
+
+    print $h->h4('Description');
+    print md2html($struct->{'Test-Cases'}->{$case}->{'Description'}, 2) || $h->p('No information available.');
 
     print $h->h4('Test Plans this Test Case is used in:');
     print $h->open('ol');
@@ -240,6 +244,10 @@ dd {
 
 code,tt,pre {
     font-family: "Courier New", Courier, monospace;
+}
+
+pre {
+    margin: auto auto auto 2em;
 }
 
 .toc-link {
