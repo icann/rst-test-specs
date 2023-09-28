@@ -69,6 +69,13 @@ Preamble: |
   the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may
   not be listed in the test suites in this document.
 
+  ### 2.3. Note about RDAP test suite
+
+  The RDAP test suite is derived from the test specification of the [RDAP
+  Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
+  As with the DNS and DNSSEC tests, the test IDs can be mapped to the test IDs
+  in this document by removing the `rdap-` prefix.
+
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -153,6 +160,70 @@ Plans:
         - dnssec18
 
       RDDS:
+        - rdap-ipv4Validation
+        - rdap-ipv6Validation
+        - rdap-domainNameValidation
+        - rdap-webUriValidation
+        - rdap-domainCaseFoldingValidation
+        - rdap-Standard RDAP Common Data Structures Validations
+        - rdap-stdRdapConformanceValidation
+        - rdap-stdRdapLinksValidation
+        - rdap-stdRdapNoticesRemarksValidation
+        - rdap-stdRdapLanguageIdentifierValidation
+        - rdap-stdRdapEventsValidation
+        - rdap-stdRdapStatusValidation
+        - rdap-stdRdapPort43WhoisServerValidation
+        - rdap-stdRdapPublicIdsValidation
+        - rdap-stdRdapAsEventActorValidation
+        - rdap-stdRdapIpAddressesValidation
+        - rdap-stdRdapVariantsValidation
+        - rdap-stdRdapUnicodeNameValidation
+        - rdap-stdRdapLdhNameValidation
+        - rdap-stdRdapRolesValidation
+        - rdap-stdRdapEntitiesValidation
+        - rdap-stdRdapSecureDnsValidation
+        - rdap-stdRdapErrorResponseBodyValidation
+        - rdap-stdRdapDomainLookupValidation
+        - rdap-stdRdapEntityLookupValidation
+        - rdap-stdRdapNameserverLookupValidation
+        - rdap-stdRdapHelpValidation
+        - rdap-stdRdapNameserversSearchValidation
+        - rdap-tigSection_1_2_Validation
+        - rdap-tigSection_1_3_Validation
+        - rdap-tigSection_1_6_Validation
+        - rdap-tigSection_1_8_Validation
+        - rdap-tigSection_1_13_Validation
+        - rdap-tigSection_1_14_Validation
+        - rdap-tigSection_3_3_and_3_4_Validation
+        - rdap-tigSection_4_1_Validation
+        - rdap-tigSection_7_1_and_7_2_Validation
+        - rdap-tigSection_1_11_1_Validation
+        - rdap-tigSection_3_2_Validation
+        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
+        - rdap-rdapResponseProfile_1_2_2_Validation
+        - rdap-rdapResponseProfile_1_3_Validation
+        - rdap-rdapResponseProfile_1_4_Validation
+        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
+        - rdap-rdapResponseProfile_2_1_Validation
+        - rdap-rdapResponseProfile_2_2_Validation
+        - rdap-rdapResponseProfile_2_3_1_1_Validation
+        - rdap-rdapResponseProfile_2_3_1_2_Validation
+        - rdap-rdapResponseProfile_notices_included_Validation
+        - rdap-rdapResponseProfile_2_6_3_Validation
+        - rdap-rdapResponseProfile_2_11_Validation
+        - rdap-rdapResponseProfile_2_10_Validation
+        - rdap-rdapResponseProfile_rfc5731_Validation
+        - rdap-rdapResponseProfile_rfc3915_Validation
+        - rdap-rdapResponseProfile_2_6_1_Validation
+        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
+        - rdap-rdapResponseProfile_2_4_1_Validation
+        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
+        - rdap-rdapResponseProfile_2_4_5_Validation
+        - rdap-rdapResponseProfile_4_1_Validation
+        - rdap-rdapResponseProfile_4_3_Validation
+        - rdap-nameserver_status
+        - rdap-rdapResponseProfile_2_7_5_3_Validation
+
       EPP:
       IDN:
       RDE:
@@ -235,6 +306,70 @@ Plans:
         - dnssec18
 
       RDDS:
+        - rdap-ipv4Validation
+        - rdap-ipv6Validation
+        - rdap-domainNameValidation
+        - rdap-webUriValidation
+        - rdap-domainCaseFoldingValidation
+        - rdap-Standard RDAP Common Data Structures Validations
+        - rdap-stdRdapConformanceValidation
+        - rdap-stdRdapLinksValidation
+        - rdap-stdRdapNoticesRemarksValidation
+        - rdap-stdRdapLanguageIdentifierValidation
+        - rdap-stdRdapEventsValidation
+        - rdap-stdRdapStatusValidation
+        - rdap-stdRdapPort43WhoisServerValidation
+        - rdap-stdRdapPublicIdsValidation
+        - rdap-stdRdapAsEventActorValidation
+        - rdap-stdRdapIpAddressesValidation
+        - rdap-stdRdapVariantsValidation
+        - rdap-stdRdapUnicodeNameValidation
+        - rdap-stdRdapLdhNameValidation
+        - rdap-stdRdapRolesValidation
+        - rdap-stdRdapEntitiesValidation
+        - rdap-stdRdapSecureDnsValidation
+        - rdap-stdRdapErrorResponseBodyValidation
+        - rdap-stdRdapDomainLookupValidation
+        - rdap-stdRdapEntityLookupValidation
+        - rdap-stdRdapNameserverLookupValidation
+        - rdap-stdRdapHelpValidation
+        - rdap-stdRdapNameserversSearchValidation
+        - rdap-tigSection_1_2_Validation
+        - rdap-tigSection_1_3_Validation
+        - rdap-tigSection_1_6_Validation
+        - rdap-tigSection_1_8_Validation
+        - rdap-tigSection_1_13_Validation
+        - rdap-tigSection_1_14_Validation
+        - rdap-tigSection_3_3_and_3_4_Validation
+        - rdap-tigSection_4_1_Validation
+        - rdap-tigSection_7_1_and_7_2_Validation
+        - rdap-tigSection_1_11_1_Validation
+        - rdap-tigSection_3_2_Validation
+        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
+        - rdap-rdapResponseProfile_1_2_2_Validation
+        - rdap-rdapResponseProfile_1_3_Validation
+        - rdap-rdapResponseProfile_1_4_Validation
+        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
+        - rdap-rdapResponseProfile_2_1_Validation
+        - rdap-rdapResponseProfile_2_2_Validation
+        - rdap-rdapResponseProfile_2_3_1_1_Validation
+        - rdap-rdapResponseProfile_2_3_1_2_Validation
+        - rdap-rdapResponseProfile_notices_included_Validation
+        - rdap-rdapResponseProfile_2_6_3_Validation
+        - rdap-rdapResponseProfile_2_11_Validation
+        - rdap-rdapResponseProfile_2_10_Validation
+        - rdap-rdapResponseProfile_rfc5731_Validation
+        - rdap-rdapResponseProfile_rfc3915_Validation
+        - rdap-rdapResponseProfile_2_6_1_Validation
+        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
+        - rdap-rdapResponseProfile_2_4_1_Validation
+        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
+        - rdap-rdapResponseProfile_2_4_5_Validation
+        - rdap-rdapResponseProfile_4_1_Validation
+        - rdap-rdapResponseProfile_4_3_Validation
+        - rdap-nameserver_status
+        - rdap-rdapResponseProfile_2_7_5_3_Validation
+
       EPP:
       IDN:
       RDE:
@@ -432,6 +567,70 @@ Plans:
         - dnssec18
 
       RDDS:
+        - rdap-ipv4Validation
+        - rdap-ipv6Validation
+        - rdap-domainNameValidation
+        - rdap-webUriValidation
+        - rdap-domainCaseFoldingValidation
+        - rdap-Standard RDAP Common Data Structures Validations
+        - rdap-stdRdapConformanceValidation
+        - rdap-stdRdapLinksValidation
+        - rdap-stdRdapNoticesRemarksValidation
+        - rdap-stdRdapLanguageIdentifierValidation
+        - rdap-stdRdapEventsValidation
+        - rdap-stdRdapStatusValidation
+        - rdap-stdRdapPort43WhoisServerValidation
+        - rdap-stdRdapPublicIdsValidation
+        - rdap-stdRdapAsEventActorValidation
+        - rdap-stdRdapIpAddressesValidation
+        - rdap-stdRdapVariantsValidation
+        - rdap-stdRdapUnicodeNameValidation
+        - rdap-stdRdapLdhNameValidation
+        - rdap-stdRdapRolesValidation
+        - rdap-stdRdapEntitiesValidation
+        - rdap-stdRdapSecureDnsValidation
+        - rdap-stdRdapErrorResponseBodyValidation
+        - rdap-stdRdapDomainLookupValidation
+        - rdap-stdRdapEntityLookupValidation
+        - rdap-stdRdapNameserverLookupValidation
+        - rdap-stdRdapHelpValidation
+        - rdap-stdRdapNameserversSearchValidation
+        - rdap-tigSection_1_2_Validation
+        - rdap-tigSection_1_3_Validation
+        - rdap-tigSection_1_6_Validation
+        - rdap-tigSection_1_8_Validation
+        - rdap-tigSection_1_13_Validation
+        - rdap-tigSection_1_14_Validation
+        - rdap-tigSection_3_3_and_3_4_Validation
+        - rdap-tigSection_4_1_Validation
+        - rdap-tigSection_7_1_and_7_2_Validation
+        - rdap-tigSection_1_11_1_Validation
+        - rdap-tigSection_3_2_Validation
+        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
+        - rdap-rdapResponseProfile_1_2_2_Validation
+        - rdap-rdapResponseProfile_1_3_Validation
+        - rdap-rdapResponseProfile_1_4_Validation
+        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
+        - rdap-rdapResponseProfile_2_1_Validation
+        - rdap-rdapResponseProfile_2_2_Validation
+        - rdap-rdapResponseProfile_2_3_1_1_Validation
+        - rdap-rdapResponseProfile_2_3_1_2_Validation
+        - rdap-rdapResponseProfile_notices_included_Validation
+        - rdap-rdapResponseProfile_2_6_3_Validation
+        - rdap-rdapResponseProfile_2_11_Validation
+        - rdap-rdapResponseProfile_2_10_Validation
+        - rdap-rdapResponseProfile_rfc5731_Validation
+        - rdap-rdapResponseProfile_rfc3915_Validation
+        - rdap-rdapResponseProfile_2_6_1_Validation
+        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
+        - rdap-rdapResponseProfile_2_4_1_Validation
+        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
+        - rdap-rdapResponseProfile_2_4_5_Validation
+        - rdap-rdapResponseProfile_4_1_Validation
+        - rdap-rdapResponseProfile_4_3_Validation
+        - rdap-nameserver_status
+        - rdap-rdapResponseProfile_2_7_5_3_Validation
+
       EPP:
       IDN:
       RDE:
@@ -646,3 +845,128 @@ Test-Cases:
     Summary: Validate CDNSKEY
   dnssec18:
     Summary: Validate trust from DS to CDS and CDNSKEY
+
+  rdap-ipv4Validation:
+    Summary: IPv4 address validation
+  rdap-ipv6Validation:
+    Summary: IPv6 address validation
+  rdap-domainNameValidation:
+    Summary: Domain Name validation
+  rdap-webUriValidation:
+    Summary: Web URI validation
+  rdap-domainCaseFoldingValidation:
+    Summary: Domain label case folding validation
+  rdap-stdRdapConformanceValidation:
+    Summary: RDAP Conformance validation
+  rdap-stdRdapLinksValidation:
+    Summary: Links validation
+  rdap-stdRdapNoticesRemarksValidation:
+    Summary: Notices and Remarks Validation
+  rdap-stdRdapLanguageIdentifierValidation:
+    Summary: Language Identifier Validation
+  rdap-stdRdapEventsValidation:
+    Summary: Events Validation
+  rdap-stdRdapStatusValidation:
+    Summary: Status validation
+  rdap-stdRdapPort43WhoisServerValidation:
+    Summary: Port 43 WHOIS Server
+  rdap-stdRdapPublicIdsValidation:
+    Summary: Public IDs validation
+  rdap-stdRdapAsEventActorValidation:
+    Summary: asEventActor Validation
+  rdap-stdRdapIpAddressesValidation:
+    Summary: IP Addresses Validation
+  rdap-stdRdapVariantsValidation:
+    Summary: Variants validation
+  rdap-stdRdapUnicodeNameValidation:
+    Summary: Unicode name
+  rdap-stdRdapLdhNameValidation:
+    Summary: LDH name
+  rdap-stdRdapRolesValidation:
+    Summary: Roles validation
+  rdap-stdRdapEntitiesValidation:
+    Summary: Entities validation
+  rdap-stdRdapSecureDnsValidation:
+    Summary: Secure DNS validation
+  rdap-stdRdapErrorResponseBodyValidation:
+    Summary: Error Response Body
+  rdap-stdRdapDomainLookupValidation:
+    Summary: Domain Lookup Validation
+  rdap-stdRdapEntityLookupValidation:
+    Summary: Entity lookup validation
+  rdap-stdRdapNameserverLookupValidation:
+    Summary: Nameserver lookup validation
+  rdap-stdRdapHelpValidation:
+    Summary: Help validation
+  rdap-stdRdapNameserversSearchValidation:
+    Summary: Nameservers search validation
+  rdap-tigSection_1_2_Validation:
+    Summary: use of HTTPS
+  rdap-tigSection_1_3_Validation:
+    Summary: use of obsolete SSL/TLS versions
+  rdap-tigSection_1_6_Validation:
+    Summary: support for HEAD
+  rdap-tigSection_1_8_Validation:
+    Summary: IPv4/IPv6 resolvability
+  rdap-tigSection_1_13_Validation:
+    Summary: Access-Control-Allow-Origin header
+  rdap-tigSection_1_14_Validation:
+    Summary: presence of "icann_rdap_technical_implementation_guide_0" in "rdapConformance"
+  rdap-tigSection_3_3_and_3_4_Validation:
+    Summary: presence of link object(s) in notice(s)
+  rdap-tigSection_4_1_Validation:
+    Summary: structured addresses in entity jCards
+  rdap-tigSection_7_1_and_7_2_Validation:
+    Summary: voice/fax type for tel nodes in entity jCards
+  rdap-tigSection_1_11_1_Validation:
+    Summary: bootstrap registration
+  rdap-tigSection_3_2_Validation:
+    Summary: rel="related" link in topmost object
+  rdap-tigSection_6_1_Validation:
+    Summary: publicIds property of registrar entity
+  rdap-rdapResponseProfile_1_2_2_Validation:
+    Summary: no JavaScript
+  rdap-rdapResponseProfile_1_3_Validation:
+    Summary: presence of "icann_rdap_response_profile_0" in "rdapConformance"
+  rdap-rdapResponseProfile_1_4_Validation:
+    Summary: empty country name parameter of entity jCards
+  rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation:
+    Summary: presence of "last update of RDAP database" event
+  rdap-rdapResponseProfile_2_1_Validation:
+    Summary: presence of ldhName/unicodeName property for A-label/U-label domain lookup responses, respectively
+  rdap-rdapResponseProfile_2_2_Validation:
+    Summary: format of handle property
+  rdap-rdapResponseProfile_2_3_1_1_Validation:
+    Summary: presence of "registration" event
+  rdap-rdapResponseProfile_2_3_1_2_Validation:
+    Summary: presence of "expiration" event
+  rdap-rdapResponseProfile_notices_included_Validation:
+    Summary: presence of "notices" property
+  rdap-rdapResponseProfile_2_6_3_Validation:
+    Summary: presence of "Status Codes" notice
+  rdap-rdapResponseProfile_2_11_Validation:
+    Summary: presence of "RDDS Inaccuracy Complaint Form" notice
+  rdap-rdapResponseProfile_2_10_Validation:
+    Summary: presence of secureDNS property
+  rdap-rdapResponseProfile_rfc5731_Validation:
+    Summary: domain status code validation
+  rdap-rdapResponseProfile_rfc3915_Validation:
+    Summary: RGP status code validation
+  rdap-rdapResponseProfile_2_6_1_Validation:
+    Summary: at least one status code
+  rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation:
+    Summary: presence and validity of ldhName, handle, status properties in domain nameservers
+  rdap-rdapResponseProfile_2_4_1_Validation:
+    Summary: presence and validity of the registrar entity
+  rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation:
+    Summary: validation of the publicIds and handle properties of the registrar entity
+  rdap-rdapResponseProfile_2_4_5_Validation:
+    Summary: abuse role for the registrar entity
+  rdap-rdapResponseProfile_4_1_Validation:
+    Summary: presence of ldhName/unicodeName property for A-label/U-label nameserver lookup responses, respectively
+  rdap-rdapResponseProfile_4_3_Validation:
+    Summary: presence and validity of the registrar entity
+  rdap-nameserver_status:
+    Summary: validation of nameserver status codes
+  rdap-rdapResponseProfile_2_7_5_3_Validation:
+    Summary: proper redaction of domain entities
