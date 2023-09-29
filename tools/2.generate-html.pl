@@ -203,7 +203,6 @@ sub md2html {
 __DATA__
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: small;
     font-weight: 300;
     line-height: 150%;
 }
