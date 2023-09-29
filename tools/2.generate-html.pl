@@ -32,9 +32,9 @@ print $h->open('body');
 
 print $h->header([
     $h->h1('Registry System Testing - Test Specifications'),
-    $h->p(sprintf('Version %s', $struct->{'Version'})),
-    $h->p(sprintf('Last Updated: %s', $struct->{'Last-Updated'})),
-    $h->p($h->a({'href' => 'mailto:'.$struct->{'Contact'}->{'Email'}}, $struct->{'Contact'}->{'Name'}.', '.$struct->{'Contact'}->{'Organization'}))
+    $h->p(sprintf('Version %s', e($struct->{'Version'}))),
+    $h->p(sprintf('Last Updated: %s', e($struct->{'Last-Updated'}))),
+    $h->p($h->a({'href' => 'mailto:'.$struct->{'Contact'}->{'Email'}}, e($struct->{'Contact'}->{'Name'}.', '.$struct->{'Contact'}->{'Organization'})))
 ]);
 
 print $h->open('nav');
@@ -52,7 +52,7 @@ print $h->a({'href' => '#test-plans'}, 'Test Plans');
 
 print $h->open('ol');
 foreach my $plan (sort({$struct->{'Plans'}->{$a}->{'Order'} cmp $struct->{'Plans'}->{$b}->{'Order'}} keys(%{$struct->{'Plans'}}))) {
-    print $h->li($h->a({'href' => sprintf('#Test-Plan-%s', $plan)}, $struct->{'Plans'}->{$plan}->{'Name'}));
+    print $h->li($h->a({'href' => sprintf('#Test-Plan-%s', $plan)}, e($struct->{'Plans'}->{$plan}->{'Name'})));
 }
 print $h->close('ol');
 
@@ -71,7 +71,7 @@ foreach my $case (grep { $_ !~ /^Doc/ } sort(keys(%{$struct->{'Test-Cases'}}))) 
         $title = $case;
 
     }
-    print $h->li($h->a({'href' => sprintf('#Test-Case-%s', $case)}, $title));
+    print $h->li($h->a({'href' => sprintf('#Test-Case-%s', $case)}, e($title)));
 }
 print $h->close('ol');
 
@@ -107,7 +107,7 @@ my $i = 0;
 foreach my $plan (sort({$struct->{'Plans'}->{$a}->{'Order'} cmp $struct->{'Plans'}->{$b}->{'Order'} } keys(%{$struct->{'Plans'}}))) {
     print $h->open('section');
     print $h->a({'name' => sprintf('Test-Plan-%s', $plan)});
-    print $h->h3(sprintf('3.%u. %s', ++$i, $struct->{'Plans'}->{$plan}->{'Name'}));
+    print $h->h3(sprintf('3.%u. %s', ++$i, e($struct->{'Plans'}->{$plan}->{'Name'})));
 
     print $h->h4('Description');
     print md2html($struct->{'Plans'}->{$plan}->{'Description'}, 3);
@@ -128,7 +128,7 @@ foreach my $plan (sort({$struct->{'Plans'}->{$a}->{'Order'} cmp $struct->{'Plans
                 $title = $case;
 
             }
-            print $h->li($h->a({'href' => sprintf('#Test-Case-%s', $case)}, $title));
+            print $h->li($h->a({'href' => sprintf('#Test-Case-%s', $case)}, e($title)));
         }
         print $h->close('ol');
 
@@ -148,15 +148,15 @@ foreach my $case (grep { length($_) > 0 && $_ !~ /^Doc/ } sort(keys(%{$struct->{
     print $h->a({'name' => sprintf('Test-Case-%s', $case)});
 
     if ($struct->{'Test-Cases'}->{$case}->{'Summary'}) {
-        print $h->h3(sprintf('4.%u. %s - %s', ++$i, $case, $struct->{'Test-Cases'}->{$case}->{'Summary'}));
+        print $h->h3(sprintf('4.%u. %s - %s', ++$i, e($case), e($struct->{'Test-Cases'}->{$case}->{'Summary'})));
 
     } else {
-        print $h->h3(sprintf('4.%u. %s', ++$i, $case));
+        print $h->h3(sprintf('4.%u. %s', ++$i, e($case)));
 
     }
 
     print $h->h4('Test Case Identifier');
-    print $h->pre($case);
+    print $h->pre(e($case));
 
     print $h->h4('Description');
     print md2html($struct->{'Test-Cases'}->{$case}->{'Description'}, 2) || $h->p('No information available.');
@@ -166,7 +166,7 @@ foreach my $case (grep { length($_) > 0 && $_ !~ /^Doc/ } sort(keys(%{$struct->{
     foreach my $plan (sort(keys(%{$struct->{'Plans'}}))) {
         foreach my $suite (sort(keys(%{$struct->{'Plans'}->{$plan}->{'Test-Suites'}}))) {
             if (any { $_ eq $case } @{$struct->{'Plans'}->{$plan}->{'Test-Suites'}->{$suite}}) {
-                print $h->li($h->a({'href' => sprintf('#Test-Plan-%s', $plan)}, $struct->{'Plans'}->{$plan}->{'Name'}));
+                print $h->li($h->a({'href' => sprintf('#Test-Plan-%s', $plan)}, e($struct->{'Plans'}->{$plan}->{'Name'})));
             }
         }
     }
@@ -199,6 +199,8 @@ sub md2html {
 
     return $html;
 }
+
+sub e { $h->entity_encode(shift) }
 
 __DATA__
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
