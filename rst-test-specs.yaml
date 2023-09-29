@@ -261,6 +261,9 @@ Plans:
         - epp-34
         - epp-35
         - epp-36
+        - epp-37
+        - epp-38
+        - epp-39
       IDN:
         - idn-valid00
         - idn-valid01
@@ -471,6 +474,9 @@ Plans:
         - epp-34
         - epp-35
         - epp-36
+        - epp-37
+        - epp-38
+        - epp-39
 
       IDN:
         - idn-valid00
@@ -798,6 +804,9 @@ Plans:
         - epp-34
         - epp-35
         - epp-36
+        - epp-37
+        - epp-38
+        - epp-39
 
       IDN:
         - idn-valid00
@@ -1193,77 +1202,83 @@ Test-Cases:
   rde15:
     Summary: validate policy object
 
-  epp-01:
+  EPP-01:
     Summary: EPP server must have at least one A record
-  epp-02:
+  EPP-02:
     Summary: EPP server must have at least one AAAA record
-  epp-03:
+  EPP-03:
     Summary: All IP addresses must accept TCP connections on port 700
-  epp-04:
+  EPP-04:
     Summary: All service ports support TLSv1.2 or higher
-  epp-05:
+  EPP-05:
     Summary: All service ports must not support TLSv1.1 or earlier
-  epp-06:
+  EPP-06:
     Summary: All service ports must offer a valid certificate issued by a trusted CA
-  epp-07:
+  EPP-07:
     Summary: TLS certificate must be valid
-  epp-08:
+  EPP-08:
     Summary: TLS certificate must be valid for the server name
-  epp-09:
+  EPP-09:
     Summary: All service ports must send a <greeting> frame after successful connection
-  epp-10:
+  EPP-10:
     Summary: All server responses must validate against the XML schema
-  epp-11:
+  EPP-11:
     Summary: <svID> element in the <greeting> must be valid
-  epp-12:
+  EPP-12:
     Summary: <svDate> element in the <greeting> must be valid
-  epp-13:
+  EPP-13:
     Summary: <version> element in the <greeting> must be valid
-  epp-14:
+  EPP-14:
     Summary: <lang> element(s) in the <greeting> must be valid
-  epp-15:
+  EPP-15:
     Summary: <objURI> element(s) in the <greeting> must be valid
-  epp-16:
+  EPP-16:
     Summary: <extURI> element(s) in the <greeting> must be valid
-  epp-17:
+  EPP-17:
     Summary: <login> command must return a successful response
-  epp-18:
+  EPP-18:
     Summary: <hello> command must return a <greeting>
-  epp-19:
+  EPP-19:
     Summary: domain <check> command test
-  epp-20:
+  EPP-20:
     Summary: domain sunrise <check> command test
-  epp-21:
+  EPP-21:
     Summary: domain trademark claims <check> command test
-  epp-22:
+  EPP-22:
     Summary: host <check> command test
-  epp-23:
+  EPP-23:
     Summary: contact <check> command test
-  epp-24:
+  EPP-24:
     Summary: contact <create> command test
-  epp-25:
+  EPP-25:
+    Summary: contact <info> command test
+  EPP-26:
     Summary: contact <update> command test
-  epp-26:
+  EPP-27:
     Summary: contact <delete> command test
-  epp-27:
+  EPP-28:
     Summary: host <create> command test
-  epp-28:
+  EPP-29:
+    Summary: host <info> command test
+  EPP-30:
     Summary: host <update> command test
-  epp-29:
+  EPP-31:
     Summary: host <delete> command test
-  epp-30:
+  EPP-32:
     Summary: domain <create> command test
-  epp-31:
+  EPP-33:
     Summary: domain sunrise <create> command test
-  epp-32:
+  EPP-34:
     Summary: domain trademark claims <create> command test
-  epp-33:
+  EPP-35:
+    Summary: domain <info> command test
+  EPP-36:
     Summary: domain <update> command test
-  epp-34:
+  EPP-37:
     Summary: domain <renew> command test
-  epp-35:
+  EPP-38:
     Summary: domain <delete> command test
-  epp-36:
+  EPP-39:
     Summary: domain <transfer> command test
 
   idn-valid00:
