@@ -6,7 +6,7 @@ The `rde-test-specs.yaml` file in this repository conforms to the following sche
 
 The top-level object has the following properties:
 
-* `RST-Test-Plan-Schema-Version`: this is always `1.1`.
+* `RST-Test-Plan-Schema-Version`: this is always `1.2`.
 * `Version`: a string containing a version number, conforming to Semantic Versioning.
 * `Last-Updated`: the date when the document was last updated, in `YYYY-MM-DD` format.
 * `Preamble`: a description of the contents of the file, in Markdown format.
@@ -37,7 +37,9 @@ A `Test Suite` object has the following properties:
 
 * `Name`: the name of the suite.
 * `Description`: a description of the suite, in Markdown format.
-* `Test-Cases`: an array of Test Case IDs, which must match a key in the `Test-Cases` property of the top-level object.
+* `Test-Cases`: either:
+	* an array of Test Case IDs, which must match a key in the `Test-Cases` property of the top-level object, or
+	* a string containing a regular expression to match Test Case IDs against.
 
 # `Test Case` object
 
