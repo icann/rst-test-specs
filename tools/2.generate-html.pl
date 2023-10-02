@@ -16,7 +16,6 @@ use constant {
     'ul'            => 'ul',
     'li'            => 'li',
     'section'       => 'section',
-    'Description'   => 'Description',
     'name'          => 'name'
 };
 use open qw(:std :encoding(UTF-8));
@@ -216,10 +215,10 @@ sub print_plans {
         print $h->a({name => sprintf('Test-Plan-%s', $plan)});
         print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($plans->{$plan}->{'Name'})));
 
-        print $h->h4(Description);
+        print $h->h4('Description:');
         print md2html($plans->{$plan}->{Description}, 3);
 
-        print $h->h4('Test Suite(s) used in this Plan');
+        print $h->h4('Test Suite(s) used in this Plan:');
 
         print $h->open(ol);
         foreach my $suite (sort(@{$plans->{$plan}->{'Test-Suites'}})) {
@@ -258,16 +257,26 @@ sub print_suites {
             $suites->{$suite}->{'Name'} || $suite,
         )));
 
-        print $h->h4('Test Suite Identifier');
+        print $h->h4('Test Suite Identifier:');
         print $h->pre(e($suite));
 
-        print $h->h4(Description);
+        print $h->h4('Description:');
         print md2html($suites->{$suite}->{Description}, 2) || $h->p('No information available.');
 
-        print $h->h4('Test Cases(s) used in this Suite');
+        print $h->h4('Test Cases(s) used in this Suite:');
 
         print $h->open('ol');
-        foreach my $case (sort @{$suites->{$suite}->{'Test-Cases'} || []}) {
+
+        my @cases;
+        if ('ARRAY' eq ref($suites->{$suite}->{'Test-Cases'})) {
+            @cases = sort @{$suites->{$suite}->{'Test-Cases'} || []};
+
+        } else {
+            @cases = sort grep { $_ =~ /$suites->{$suite}->{'Test-Cases'}/i } keys(%{$cases});
+
+        }
+
+        foreach my $case (@cases) {
             my $anchor = sprintf('#Test-Case-%s', $case);
 
             my $title;
@@ -308,16 +317,23 @@ sub print_cases {
 
         }
 
-        print $h->h4('Test Case Identifier');
+        print $h->h4('Test Case Identifier:');
         print $h->pre(e($case));
 
-        print $h->h4(Description);
+        print $h->h4('Description:');
         print md2html($cases->{$case}->{Description}, $section-3) || $h->p('No information available.');
 
         print $h->h4('Test Suite(s) this Test Case is used in:');
         print $h->open(ul);
         foreach my $suite (sort({ $suites->{$a}->{'Order'} <=> $suites->{$b}->{'Order'} } keys(%{$suites}))) {
-            if (any { $_ eq $case } @{$suites->{$suite}->{'Test-Cases'} || []}) {
+            if ('ARRAY' eq ref($suites->{$suite}->{'Test-Cases'})) {
+                if (any { $_ eq $case } @{$suites->{$suite}->{'Test-Cases'} || []}) {
+                    print $h->li($h->a(
+                        { href => sprintf('#Test-Suite-%s', $suite) },
+                        e($suites->{$suite}->{'Name'}),
+                    ));
+                }
+            } elsif ($case =~ /$suites->{$suite}->{'Test-Cases'}/i) {
                 print $h->li($h->a(
                     { href => sprintf('#Test-Suite-%s', $suite) },
                     e($suites->{$suite}->{'Name'}),
@@ -348,7 +364,7 @@ sub md2html {
 
     waitpid($pid, 0);
 
-    return $html;
+    return '<div class="markdown-content">'.$html.'</div>';
 }
 
 sub e { $h->entity_encode(shift) }
@@ -382,7 +398,7 @@ strong,h1,h2,h3,h4,h5,h6 {
 
 header,nav,body,main,section {
     padding:0 1em;
-    border-bottom: 0.125em solid #ccc;
+    border-bottom: 0.0625em solid #ddd;
 }
 
 body {
@@ -406,10 +422,10 @@ dd {
 }
 
 code,tt,pre {
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Fira Code", "Menlo", "Consolas", "Andale Mono", "Courier New", Courier, monospace;
 }
 
-pre {
+pre,.markdown-content {
     margin: auto auto auto 2em;
 }
 
