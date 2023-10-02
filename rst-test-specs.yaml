@@ -234,7 +234,7 @@ Test-Suites:
       Since Zonemaster is designed to perform testing of domain names anywhere
       in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
       may not be listed in the test suites in this document.
-    Test-Cases: ^dnssec*
+    Test-Cases: ^dnssec-
 
   StandardRDDS:
     Order: 3
