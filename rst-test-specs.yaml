@@ -524,6 +524,14 @@ Test-Cases:
     Summary: validation of nameserver status codes
   rdap-rdapResponseProfile_2_7_5_3_Validation:
     Summary: proper redaction of domain entities
+  rdap-rdaptigSection_1_1_3_redactionExtension:
+    Summary: use of Redacted Fields extension, validation of redacted paths
+  rdap-rdaptigSection_3_3_3_termsOfService:
+    Summary: presence of terms-of-service link
+  rdap-rdapResponseProfile_1_6_contactReprestentation:
+    Summary: validate use of jCard and presence of alternative format(s)
+  rdap-rdapResponseProfile_2_4_6_registrarAboutLink:
+    Summary: presence of "about" link in registrar entity
 
   rde01:
     Summary: validate filename format
