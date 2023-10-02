@@ -621,20 +621,22 @@ Test-Cases:
   epp-32:
     Summary: domain <create> command test
   epp-33:
-    Summary: domain sunrise <create> command test
+    Summary: domain/launch application sunrise <create> command test
   epp-34:
     Summary: domain trademark claims <create> command test
   epp-35:
     Summary: domain <info> command test
   epp-36:
-    Summary: domain <update> command test
+    Summary: launch application sunrise <info> command test (if applicable)
   epp-37:
-    Summary: domain <renew> command test
+    Summary: domain <update> command test
   epp-38:
-    Summary: domain <transfer> command test
+    Summary: domain <renew> command test
   epp-39:
-    Summary: domain <delete> command test
+    Summary: domain <transfer> command test
   epp-40:
-    Summary: host rename test
+    Summary: domain <delete> command test
   epp-41:
+    Summary: host rename test
+  epp-42:
     Summary: domain restore test
