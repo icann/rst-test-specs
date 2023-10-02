@@ -1,7 +1,7 @@
 ---
-RST-Test-Plan: 1.0
+RST-Test-Plan-Schema-Version: 1.1
 Version: 3.0
-Last-Updated: 2023-09-27
+Last-Updated: 2023-10-02
 
 Preamble: |
   The Test System consists of several *test plans*, each of which addresses a
@@ -58,30 +58,12 @@ Preamble: |
   LGR
   : Label Generation Ruleset
 
-  ### 2.2. Note about DNS and DNSSEC test suites
-
-  The DNS and DNSSEC test plans are taken from the test plans that are part of
-  the [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
-  version v4.7.3). Test case IDs from this document can be mapped to the
-  Zonemaster test IDs by removing the `dns-` or `dnssec-` prefix.
-
-  Since Zonemaster is designed to perform testing of domain names anywhere in
-  the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may
-  not be listed in the test suites in this document.
-
-  ### 2.3. Note about RDAP test suite
-
-  The RDAP test suite is derived from the test specification of the [RDAP
-  Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
-  As with the DNS and DNSSEC tests, the test IDs can be mapped to the test IDs
-  in this document by removing the `rdap-` prefix.
-
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
   Email: rst@icann.org
 
-Plans:
+Test-Plans:
   StandardPreDelegationTest:
     Order: 1
     Name: Standard Pre-Delegation Test Plan
@@ -94,206 +76,13 @@ Plans:
 
       The Pre-Delegation Test covers all critical registry services and IDNs,
       and therefore uses all test suites.
-
     Test-Suites:
-      DNS:
-        - dns-address01
-        - dns-address02
-        - dns-address03
-        - dns-connectivity01
-        - dns-connectivity02
-        - dns-connectivity03
-        - dns-connectivity04
-        - dns-consistency01
-        - dns-consistency02
-        - dns-consistency03
-        - dns-consistency04
-        - dns-consistency05
-        - dns-consistency06
-        - dns-delegation01
-        - dns-delegation02
-        - dns-delegation03
-        - dns-delegation04
-        - dns-delegation05
-        - dns-delegation06
-        - dns-nameserver01
-        - dns-nameserver02
-        - dns-nameserver04
-        - dns-nameserver05
-        - dns-nameserver06
-        - dns-nameserver07
-        - dns-nameserver08
-        - dns-nameserver09
-        - dns-nameserver10
-        - dns-nameserver11
-        - dns-nameserver12
-        - dns-nameserver13
-        - dns-syntax05
-        - dns-syntax06
-        - dns-syntax07
-        - dns-zone01
-        - dns-zone02
-        - dns-zone03
-        - dns-zone04
-        - dns-zone05
-        - dns-zone06
-        - dns-zone07
-        - dns-zone10
-
-      DNSSEC:
-        - dnssec01
-        - dnssec02
-        - dnssec03
-        - dnssec04
-        - dnssec05
-        - dnssec06
-        - dnssec07
-        - dnssec08
-        - dnssec09
-        - dnssec10
-        - dnssec11
-        - dnssec13
-        - dnssec14
-        - dnssec15
-        - dnssec16
-        - dnssec17
-        - dnssec18
-
-      RDDS:
-        - rdap-ipv4Validation
-        - rdap-ipv6Validation
-        - rdap-domainNameValidation
-        - rdap-webUriValidation
-        - rdap-domainCaseFoldingValidation
-        - rdap-Standard RDAP Common Data Structures Validations
-        - rdap-stdRdapConformanceValidation
-        - rdap-stdRdapLinksValidation
-        - rdap-stdRdapNoticesRemarksValidation
-        - rdap-stdRdapLanguageIdentifierValidation
-        - rdap-stdRdapEventsValidation
-        - rdap-stdRdapStatusValidation
-        - rdap-stdRdapPort43WhoisServerValidation
-        - rdap-stdRdapPublicIdsValidation
-        - rdap-stdRdapAsEventActorValidation
-        - rdap-stdRdapIpAddressesValidation
-        - rdap-stdRdapVariantsValidation
-        - rdap-stdRdapUnicodeNameValidation
-        - rdap-stdRdapLdhNameValidation
-        - rdap-stdRdapRolesValidation
-        - rdap-stdRdapEntitiesValidation
-        - rdap-stdRdapSecureDnsValidation
-        - rdap-stdRdapErrorResponseBodyValidation
-        - rdap-stdRdapDomainLookupValidation
-        - rdap-stdRdapEntityLookupValidation
-        - rdap-stdRdapNameserverLookupValidation
-        - rdap-stdRdapHelpValidation
-        - rdap-stdRdapNameserversSearchValidation
-        - rdap-tigSection_1_2_Validation
-        - rdap-tigSection_1_3_Validation
-        - rdap-tigSection_1_6_Validation
-        - rdap-tigSection_1_8_Validation
-        - rdap-tigSection_1_13_Validation
-        - rdap-tigSection_1_14_Validation
-        - rdap-tigSection_3_3_and_3_4_Validation
-        - rdap-tigSection_4_1_Validation
-        - rdap-tigSection_7_1_and_7_2_Validation
-        - rdap-tigSection_1_11_1_Validation
-        - rdap-tigSection_3_2_Validation
-        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
-        - rdap-rdapResponseProfile_1_2_2_Validation
-        - rdap-rdapResponseProfile_1_3_Validation
-        - rdap-rdapResponseProfile_1_4_Validation
-        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
-        - rdap-rdapResponseProfile_2_1_Validation
-        - rdap-rdapResponseProfile_2_2_Validation
-        - rdap-rdapResponseProfile_2_3_1_1_Validation
-        - rdap-rdapResponseProfile_2_3_1_2_Validation
-        - rdap-rdapResponseProfile_notices_included_Validation
-        - rdap-rdapResponseProfile_2_6_3_Validation
-        - rdap-rdapResponseProfile_2_11_Validation
-        - rdap-rdapResponseProfile_2_10_Validation
-        - rdap-rdapResponseProfile_rfc5731_Validation
-        - rdap-rdapResponseProfile_rfc3915_Validation
-        - rdap-rdapResponseProfile_2_6_1_Validation
-        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
-        - rdap-rdapResponseProfile_2_4_1_Validation
-        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
-        - rdap-rdapResponseProfile_2_4_5_Validation
-        - rdap-rdapResponseProfile_4_1_Validation
-        - rdap-rdapResponseProfile_4_3_Validation
-        - rdap-nameserver_status
-        - rdap-rdapResponseProfile_2_7_5_3_Validation
-
-      EPP:
-        - epp-01
-        - epp-02
-        - epp-03
-        - epp-04
-        - epp-05
-        - epp-06
-        - epp-07
-        - epp-08
-        - epp-09
-        - epp-10
-        - epp-11
-        - epp-12
-        - epp-13
-        - epp-14
-        - epp-15
-        - epp-16
-        - epp-17
-        - epp-18
-        - epp-19
-        - epp-20
-        - epp-21
-        - epp-22
-        - epp-23
-        - epp-24
-        - epp-25
-        - epp-26
-        - epp-27
-        - epp-28
-        - epp-29
-        - epp-30
-        - epp-31
-        - epp-32
-        - epp-33
-        - epp-34
-        - epp-35
-        - epp-36
-        - epp-37
-        - epp-38
-        - epp-39
-      IDN:
-        - idn-valid00
-        - idn-valid01
-        - idn-valid02
-        - idn-valid03
-        - idn-valid04
-        - idn-valid05
-        - idn-valid06
-        - idn-valid07
-        - idn-valid09
-        - idn-valid10
-        - idn-valid11
-        - idn-valid12
-        - idn-valid13
-      RDE:
-        - rde01
-        - rde02
-        - rde03
-        - rde04
-        - rde05
-        - rde06
-        - rde07
-        - rde08
-        - rde09
-        - rde10
-        - rde11
-        - rde12
-        - rde13
-        - rde14
-        - rde15
+      - StandardDNS
+      - StandardDNSSEC
+      - StandardEPP
+      - StandardRDDS
+      - StandardIDN
+      - StandardRDE
 
   StandardRSPChangeTest:
     Order: 2
@@ -307,208 +96,13 @@ Plans:
 
       The RSP Change Test covers all critical registry services and IDNs, and
       therefore uses all test suites.
-
     Test-Suites:
-      DNS:
-        - dns-address01
-        - dns-address02
-        - dns-address03
-        - dns-connectivity01
-        - dns-connectivity02
-        - dns-connectivity03
-        - dns-connectivity04
-        - dns-consistency01
-        - dns-consistency02
-        - dns-consistency03
-        - dns-consistency04
-        - dns-consistency05
-        - dns-consistency06
-        - dns-delegation01
-        - dns-delegation02
-        - dns-delegation03
-        - dns-delegation04
-        - dns-delegation05
-        - dns-delegation06
-        - dns-nameserver01
-        - dns-nameserver02
-        - dns-nameserver04
-        - dns-nameserver05
-        - dns-nameserver06
-        - dns-nameserver07
-        - dns-nameserver08
-        - dns-nameserver09
-        - dns-nameserver10
-        - dns-nameserver11
-        - dns-nameserver12
-        - dns-nameserver13
-        - dns-syntax05
-        - dns-syntax06
-        - dns-syntax07
-        - dns-zone01
-        - dns-zone02
-        - dns-zone03
-        - dns-zone04
-        - dns-zone05
-        - dns-zone06
-        - dns-zone07
-        - dns-zone10
-
-      DNSSEC:
-        - dnssec01
-        - dnssec02
-        - dnssec03
-        - dnssec04
-        - dnssec05
-        - dnssec06
-        - dnssec07
-        - dnssec08
-        - dnssec09
-        - dnssec10
-        - dnssec11
-        - dnssec13
-        - dnssec14
-        - dnssec15
-        - dnssec16
-        - dnssec17
-        - dnssec18
-
-      RDDS:
-        - rdap-ipv4Validation
-        - rdap-ipv6Validation
-        - rdap-domainNameValidation
-        - rdap-webUriValidation
-        - rdap-domainCaseFoldingValidation
-        - rdap-Standard RDAP Common Data Structures Validations
-        - rdap-stdRdapConformanceValidation
-        - rdap-stdRdapLinksValidation
-        - rdap-stdRdapNoticesRemarksValidation
-        - rdap-stdRdapLanguageIdentifierValidation
-        - rdap-stdRdapEventsValidation
-        - rdap-stdRdapStatusValidation
-        - rdap-stdRdapPort43WhoisServerValidation
-        - rdap-stdRdapPublicIdsValidation
-        - rdap-stdRdapAsEventActorValidation
-        - rdap-stdRdapIpAddressesValidation
-        - rdap-stdRdapVariantsValidation
-        - rdap-stdRdapUnicodeNameValidation
-        - rdap-stdRdapLdhNameValidation
-        - rdap-stdRdapRolesValidation
-        - rdap-stdRdapEntitiesValidation
-        - rdap-stdRdapSecureDnsValidation
-        - rdap-stdRdapErrorResponseBodyValidation
-        - rdap-stdRdapDomainLookupValidation
-        - rdap-stdRdapEntityLookupValidation
-        - rdap-stdRdapNameserverLookupValidation
-        - rdap-stdRdapHelpValidation
-        - rdap-stdRdapNameserversSearchValidation
-        - rdap-tigSection_1_2_Validation
-        - rdap-tigSection_1_3_Validation
-        - rdap-tigSection_1_6_Validation
-        - rdap-tigSection_1_8_Validation
-        - rdap-tigSection_1_13_Validation
-        - rdap-tigSection_1_14_Validation
-        - rdap-tigSection_3_3_and_3_4_Validation
-        - rdap-tigSection_4_1_Validation
-        - rdap-tigSection_7_1_and_7_2_Validation
-        - rdap-tigSection_1_11_1_Validation
-        - rdap-tigSection_3_2_Validation
-        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
-        - rdap-rdapResponseProfile_1_2_2_Validation
-        - rdap-rdapResponseProfile_1_3_Validation
-        - rdap-rdapResponseProfile_1_4_Validation
-        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
-        - rdap-rdapResponseProfile_2_1_Validation
-        - rdap-rdapResponseProfile_2_2_Validation
-        - rdap-rdapResponseProfile_2_3_1_1_Validation
-        - rdap-rdapResponseProfile_2_3_1_2_Validation
-        - rdap-rdapResponseProfile_notices_included_Validation
-        - rdap-rdapResponseProfile_2_6_3_Validation
-        - rdap-rdapResponseProfile_2_11_Validation
-        - rdap-rdapResponseProfile_2_10_Validation
-        - rdap-rdapResponseProfile_rfc5731_Validation
-        - rdap-rdapResponseProfile_rfc3915_Validation
-        - rdap-rdapResponseProfile_2_6_1_Validation
-        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
-        - rdap-rdapResponseProfile_2_4_1_Validation
-        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
-        - rdap-rdapResponseProfile_2_4_5_Validation
-        - rdap-rdapResponseProfile_4_1_Validation
-        - rdap-rdapResponseProfile_4_3_Validation
-        - rdap-nameserver_status
-        - rdap-rdapResponseProfile_2_7_5_3_Validation
-
-      EPP:
-        - epp-01
-        - epp-02
-        - epp-03
-        - epp-04
-        - epp-05
-        - epp-06
-        - epp-07
-        - epp-08
-        - epp-09
-        - epp-10
-        - epp-11
-        - epp-12
-        - epp-13
-        - epp-14
-        - epp-15
-        - epp-16
-        - epp-17
-        - epp-18
-        - epp-19
-        - epp-20
-        - epp-21
-        - epp-22
-        - epp-23
-        - epp-24
-        - epp-25
-        - epp-26
-        - epp-27
-        - epp-28
-        - epp-29
-        - epp-30
-        - epp-31
-        - epp-32
-        - epp-33
-        - epp-34
-        - epp-35
-        - epp-36
-        - epp-37
-        - epp-38
-        - epp-39
-
-      IDN:
-        - idn-valid00
-        - idn-valid01
-        - idn-valid02
-        - idn-valid03
-        - idn-valid04
-        - idn-valid05
-        - idn-valid06
-        - idn-valid07
-        - idn-valid09
-        - idn-valid10
-        - idn-valid11
-        - idn-valid12
-        - idn-valid13
-
-      RDE:
-        - rde01
-        - rde02
-        - rde03
-        - rde04
-        - rde05
-        - rde06
-        - rde07
-        - rde08
-        - rde09
-        - rde10
-        - rde11
-        - rde12
-        - rde13
-        - rde14
-        - rde15
+      - StandardDNS
+      - StandardDNSSEC
+      - StandardEPP
+      - StandardIDN
+      - StandardRDDS
+      - StandardRDE
 
   DNSRSPChangeTest:
     Order: 3
@@ -523,70 +117,9 @@ Plans:
       requirements of the Registry Agreement.
 
       The DNS RSP Change Test uses the DNS test suite only.
-
     Test-Suites:
-      DNS:
-        - dns-address01
-        - dns-address02
-        - dns-address03
-        - dns-connectivity01
-        - dns-connectivity02
-        - dns-connectivity03
-        - dns-connectivity04
-        - dns-consistency01
-        - dns-consistency02
-        - dns-consistency03
-        - dns-consistency04
-        - dns-consistency05
-        - dns-consistency06
-        - dns-delegation01
-        - dns-delegation02
-        - dns-delegation03
-        - dns-delegation04
-        - dns-delegation05
-        - dns-delegation06
-        - dns-nameserver01
-        - dns-nameserver02
-        - dns-nameserver04
-        - dns-nameserver05
-        - dns-nameserver06
-        - dns-nameserver07
-        - dns-nameserver08
-        - dns-nameserver09
-        - dns-nameserver10
-        - dns-nameserver11
-        - dns-nameserver12
-        - dns-nameserver13
-        - dns-syntax05
-        - dns-syntax06
-        - dns-syntax07
-        - dns-zone01
-        - dns-zone02
-        - dns-zone03
-        - dns-zone04
-        - dns-zone05
-        - dns-zone06
-        - dns-zone07
-        - dns-zone10
-
-      DNSSEC:
-        - dnssec01
-        - dnssec02
-        - dnssec03
-        - dnssec04
-        - dnssec05
-        - dnssec06
-        - dnssec07
-        - dnssec08
-        - dnssec09
-        - dnssec10
-        - dnssec11
-        - dnssec13
-        - dnssec14
-        - dnssec15
-        - dnssec16
-        - dnssec17
-        - dnssec18
+      - StandardDNS
+      - StandardDNSSEC
 
   IDNTest:
     Order: 4
@@ -601,7 +134,7 @@ Plans:
 
       The IDN Test uses the IDN test suite only.
     Test-Suites:
-      IDN:
+      - StandardIDN
 
   SRSGatewayTest:
     Order: 5
@@ -622,8 +155,7 @@ Plans:
       The SRS Gateway Test Change Test uses the RDDS and EPP test suites.
 
     Test-Suites:
-      RDDS:
-      EPP:
+      - StandardSRSGateway
 
   StandardRSPEvaluationTest:
     Order: 6
@@ -639,206 +171,12 @@ Plans:
       operations, and is substantially similar to the Standard Pre-Delegation
       Test and Standard RSP Change Test.
     Test-Suites:
-      DNS:
-        - dns-address01
-        - dns-address02
-        - dns-address03
-        - dns-connectivity01
-        - dns-connectivity02
-        - dns-connectivity03
-        - dns-connectivity04
-        - dns-consistency01
-        - dns-consistency02
-        - dns-consistency03
-        - dns-consistency04
-        - dns-consistency05
-        - dns-consistency06
-        - dns-delegation01
-        - dns-delegation02
-        - dns-delegation03
-        - dns-delegation04
-        - dns-delegation05
-        - dns-delegation06
-        - dns-nameserver01
-        - dns-nameserver02
-        - dns-nameserver04
-        - dns-nameserver05
-        - dns-nameserver06
-        - dns-nameserver07
-        - dns-nameserver08
-        - dns-nameserver09
-        - dns-nameserver10
-        - dns-nameserver11
-        - dns-nameserver12
-        - dns-nameserver13
-        - dns-syntax05
-        - dns-syntax06
-        - dns-syntax07
-        - dns-zone01
-        - dns-zone02
-        - dns-zone03
-        - dns-zone04
-        - dns-zone05
-        - dns-zone06
-        - dns-zone07
-        - dns-zone10
-
-      DNSSEC:
-        - dnssec01
-        - dnssec02
-        - dnssec03
-        - dnssec04
-        - dnssec05
-        - dnssec06
-        - dnssec07
-        - dnssec08
-        - dnssec09
-        - dnssec10
-        - dnssec11
-        - dnssec13
-        - dnssec14
-        - dnssec15
-        - dnssec16
-        - dnssec17
-        - dnssec18
-
-      RDDS:
-        - rdap-ipv4Validation
-        - rdap-ipv6Validation
-        - rdap-domainNameValidation
-        - rdap-webUriValidation
-        - rdap-domainCaseFoldingValidation
-        - rdap-Standard RDAP Common Data Structures Validations
-        - rdap-stdRdapConformanceValidation
-        - rdap-stdRdapLinksValidation
-        - rdap-stdRdapNoticesRemarksValidation
-        - rdap-stdRdapLanguageIdentifierValidation
-        - rdap-stdRdapEventsValidation
-        - rdap-stdRdapStatusValidation
-        - rdap-stdRdapPort43WhoisServerValidation
-        - rdap-stdRdapPublicIdsValidation
-        - rdap-stdRdapAsEventActorValidation
-        - rdap-stdRdapIpAddressesValidation
-        - rdap-stdRdapVariantsValidation
-        - rdap-stdRdapUnicodeNameValidation
-        - rdap-stdRdapLdhNameValidation
-        - rdap-stdRdapRolesValidation
-        - rdap-stdRdapEntitiesValidation
-        - rdap-stdRdapSecureDnsValidation
-        - rdap-stdRdapErrorResponseBodyValidation
-        - rdap-stdRdapDomainLookupValidation
-        - rdap-stdRdapEntityLookupValidation
-        - rdap-stdRdapNameserverLookupValidation
-        - rdap-stdRdapHelpValidation
-        - rdap-stdRdapNameserversSearchValidation
-        - rdap-tigSection_1_2_Validation
-        - rdap-tigSection_1_3_Validation
-        - rdap-tigSection_1_6_Validation
-        - rdap-tigSection_1_8_Validation
-        - rdap-tigSection_1_13_Validation
-        - rdap-tigSection_1_14_Validation
-        - rdap-tigSection_3_3_and_3_4_Validation
-        - rdap-tigSection_4_1_Validation
-        - rdap-tigSection_7_1_and_7_2_Validation
-        - rdap-tigSection_1_11_1_Validation
-        - rdap-tigSection_3_2_Validation
-        - rdap-tigSection_6_1_Validation publicIds property of registrar entity
-        - rdap-rdapResponseProfile_1_2_2_Validation
-        - rdap-rdapResponseProfile_1_3_Validation
-        - rdap-rdapResponseProfile_1_4_Validation
-        - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
-        - rdap-rdapResponseProfile_2_1_Validation
-        - rdap-rdapResponseProfile_2_2_Validation
-        - rdap-rdapResponseProfile_2_3_1_1_Validation
-        - rdap-rdapResponseProfile_2_3_1_2_Validation
-        - rdap-rdapResponseProfile_notices_included_Validation
-        - rdap-rdapResponseProfile_2_6_3_Validation
-        - rdap-rdapResponseProfile_2_11_Validation
-        - rdap-rdapResponseProfile_2_10_Validation
-        - rdap-rdapResponseProfile_rfc5731_Validation
-        - rdap-rdapResponseProfile_rfc3915_Validation
-        - rdap-rdapResponseProfile_2_6_1_Validation
-        - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
-        - rdap-rdapResponseProfile_2_4_1_Validation
-        - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
-        - rdap-rdapResponseProfile_2_4_5_Validation
-        - rdap-rdapResponseProfile_4_1_Validation
-        - rdap-rdapResponseProfile_4_3_Validation
-        - rdap-nameserver_status
-        - rdap-rdapResponseProfile_2_7_5_3_Validation
-
-      EPP:
-        - epp-01
-        - epp-02
-        - epp-03
-        - epp-04
-        - epp-05
-        - epp-06
-        - epp-07
-        - epp-08
-        - epp-09
-        - epp-10
-        - epp-11
-        - epp-12
-        - epp-13
-        - epp-14
-        - epp-15
-        - epp-16
-        - epp-17
-        - epp-18
-        - epp-19
-        - epp-20
-        - epp-21
-        - epp-22
-        - epp-23
-        - epp-24
-        - epp-25
-        - epp-26
-        - epp-27
-        - epp-28
-        - epp-29
-        - epp-30
-        - epp-31
-        - epp-32
-        - epp-33
-        - epp-34
-        - epp-35
-        - epp-36
-        - epp-37
-        - epp-38
-        - epp-39
-
-      IDN:
-        - idn-valid00
-        - idn-valid01
-        - idn-valid02
-        - idn-valid03
-        - idn-valid04
-        - idn-valid05
-        - idn-valid06
-        - idn-valid07
-        - idn-valid09
-        - idn-valid10
-        - idn-valid11
-        - idn-valid12
-        - idn-valid13
-
-      RDE:
-        - rde01
-        - rde02
-        - rde03
-        - rde04
-        - rde05
-        - rde06
-        - rde07
-        - rde08
-        - rde09
-        - rde10
-        - rde11
-        - rde12
-        - rde13
-        - rde14
-        - rde15
+      - StandardDNS
+      - StandardDNSSEC
+      - StandardEPP
+      - StandardIDN
+      - StandardRDDS
+      - StandardRDE
 
   DNSRSPEvaluationTest:
     Order: 7
@@ -851,49 +189,7 @@ Plans:
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
 
     Test-Suites:
-      DNS:
-        - dns-address01
-        - dns-address02
-        - dns-address03
-        - dns-connectivity01
-        - dns-connectivity02
-        - dns-connectivity03
-        - dns-connectivity04
-        - dns-consistency01
-        - dns-consistency02
-        - dns-consistency03
-        - dns-consistency04
-        - dns-consistency05
-        - dns-consistency06
-        - dns-delegation01
-        - dns-delegation02
-        - dns-delegation03
-        - dns-delegation04
-        - dns-delegation05
-        - dns-delegation06
-        - dns-nameserver01
-        - dns-nameserver02
-        - dns-nameserver04
-        - dns-nameserver05
-        - dns-nameserver06
-        - dns-nameserver07
-        - dns-nameserver08
-        - dns-nameserver09
-        - dns-nameserver10
-        - dns-nameserver11
-        - dns-nameserver12
-        - dns-nameserver13
-        - dns-syntax05
-        - dns-syntax06
-        - dns-syntax07
-        - dns-zone01
-        - dns-zone02
-        - dns-zone03
-        - dns-zone04
-        - dns-zone05
-        - dns-zone06
-        - dns-zone07
-        - dns-zone10
+      - StandardDNS
 
   DNSSECRSPEvaluationTest:
     Order: 8
@@ -906,25 +202,278 @@ Plans:
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
 
     Test-Suites:
+      - StandardDNSSEC
 
-      DNSSEC:
-        - dnssec01
-        - dnssec02
-        - dnssec03
-        - dnssec04
-        - dnssec05
-        - dnssec06
-        - dnssec07
-        - dnssec08
-        - dnssec09
-        - dnssec10
-        - dnssec11
-        - dnssec13
-        - dnssec14
-        - dnssec15
-        - dnssec16
-        - dnssec17
-        - dnssec18
+Test-Suites:
+  StandardDNS:
+    Order: 1
+    Name: Standard DNS Test
+    Description: |
+      The DNS test suite validates the authoritative DNS services for the TLD
+      or RSP.
+
+      The DNS test suite is taken from the test plans that are part of the
+      [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
+      version v4.7.3). Test case IDs from this document can be mapped to the
+      Zonemaster test IDs by removing the `dns-` prefix.
+
+      Since Zonemaster is designed to perform testing of domain names anywhere
+      in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
+      may not be listed in the test suites in this document.
+
+    Test-Cases:
+      - dns-address01
+      - dns-address02
+      - dns-address03
+      - dns-connectivity01
+      - dns-connectivity02
+      - dns-connectivity03
+      - dns-connectivity04
+      - dns-consistency01
+      - dns-consistency02
+      - dns-consistency03
+      - dns-consistency04
+      - dns-consistency05
+      - dns-consistency06
+      - dns-delegation01
+      - dns-delegation02
+      - dns-delegation03
+      - dns-delegation04
+      - dns-delegation05
+      - dns-delegation06
+      - dns-nameserver01
+      - dns-nameserver02
+      - dns-nameserver04
+      - dns-nameserver05
+      - dns-nameserver06
+      - dns-nameserver07
+      - dns-nameserver08
+      - dns-nameserver09
+      - dns-nameserver10
+      - dns-nameserver11
+      - dns-nameserver12
+      - dns-nameserver13
+      - dns-syntax05
+      - dns-syntax06
+      - dns-syntax07
+      - dns-zone01
+      - dns-zone02
+      - dns-zone03
+      - dns-zone04
+      - dns-zone05
+      - dns-zone06
+      - dns-zone07
+      - dns-zone10
+
+  StandardDNSSEC:
+    Order: 2
+    Name: Standard DNSSEC Test
+    Description: |
+      The DNSSEC test suite validates the DNSSEC signing service for the TLD or
+      RSP.
+
+      The DNSSEC test suite is taken from the test plans that are part of the
+      [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
+      version v4.7.3). Test case IDs from this document can be mapped to the
+      Zonemaster test IDs by removing the `dnssec-` prefix.
+
+      Since Zonemaster is designed to perform testing of domain names anywhere
+      in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
+      may not be listed in the test suites in this document.
+    Test-Cases:
+      - dnssec01
+      - dnssec02
+      - dnssec03
+      - dnssec04
+      - dnssec05
+      - dnssec06
+      - dnssec07
+      - dnssec08
+      - dnssec09
+      - dnssec10
+      - dnssec11
+      - dnssec13
+      - dnssec14
+      - dnssec15
+      - dnssec16
+      - dnssec17
+      - dnssec18
+
+  StandardRDDS:
+    Order: 3
+    Name: Standard RDDS Test
+    Description: |
+      The DNSSEC test suite validates the RDDS service(s) of the TLD or RSP.
+
+      The RDAP test suite is derived from the test specification of the [RDAP
+      Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
+      As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
+      IDs in this document by removing the `rdap-` prefix.
+
+    Test-Cases:
+      - rdap-ipv4Validation
+      - rdap-ipv6Validation
+      - rdap-domainNameValidation
+      - rdap-webUriValidation
+      - rdap-domainCaseFoldingValidation
+      - rdap-Standard RDAP Common Data Structures Validations
+      - rdap-stdRdapConformanceValidation
+      - rdap-stdRdapLinksValidation
+      - rdap-stdRdapNoticesRemarksValidation
+      - rdap-stdRdapLanguageIdentifierValidation
+      - rdap-stdRdapEventsValidation
+      - rdap-stdRdapStatusValidation
+      - rdap-stdRdapPort43WhoisServerValidation
+      - rdap-stdRdapPublicIdsValidation
+      - rdap-stdRdapAsEventActorValidation
+      - rdap-stdRdapIpAddressesValidation
+      - rdap-stdRdapVariantsValidation
+      - rdap-stdRdapUnicodeNameValidation
+      - rdap-stdRdapLdhNameValidation
+      - rdap-stdRdapRolesValidation
+      - rdap-stdRdapEntitiesValidation
+      - rdap-stdRdapSecureDnsValidation
+      - rdap-stdRdapErrorResponseBodyValidation
+      - rdap-stdRdapDomainLookupValidation
+      - rdap-stdRdapEntityLookupValidation
+      - rdap-stdRdapNameserverLookupValidation
+      - rdap-stdRdapHelpValidation
+      - rdap-stdRdapNameserversSearchValidation
+      - rdap-tigSection_1_2_Validation
+      - rdap-tigSection_1_3_Validation
+      - rdap-tigSection_1_6_Validation
+      - rdap-tigSection_1_8_Validation
+      - rdap-tigSection_1_13_Validation
+      - rdap-tigSection_1_14_Validation
+      - rdap-tigSection_3_3_and_3_4_Validation
+      - rdap-tigSection_4_1_Validation
+      - rdap-tigSection_7_1_and_7_2_Validation
+      - rdap-tigSection_1_11_1_Validation
+      - rdap-tigSection_3_2_Validation
+      - rdap-tigSection_6_1_Validation publicIds property of registrar entity
+      - rdap-rdapResponseProfile_1_2_2_Validation
+      - rdap-rdapResponseProfile_1_3_Validation
+      - rdap-rdapResponseProfile_1_4_Validation
+      - rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation
+      - rdap-rdapResponseProfile_2_1_Validation
+      - rdap-rdapResponseProfile_2_2_Validation
+      - rdap-rdapResponseProfile_2_3_1_1_Validation
+      - rdap-rdapResponseProfile_2_3_1_2_Validation
+      - rdap-rdapResponseProfile_notices_included_Validation
+      - rdap-rdapResponseProfile_2_6_3_Validation
+      - rdap-rdapResponseProfile_2_11_Validation
+      - rdap-rdapResponseProfile_2_10_Validation
+      - rdap-rdapResponseProfile_rfc5731_Validation
+      - rdap-rdapResponseProfile_rfc3915_Validation
+      - rdap-rdapResponseProfile_2_6_1_Validation
+      - rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation
+      - rdap-rdapResponseProfile_2_4_1_Validation
+      - rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation
+      - rdap-rdapResponseProfile_2_4_5_Validation
+      - rdap-rdapResponseProfile_4_1_Validation
+      - rdap-rdapResponseProfile_4_3_Validation
+      - rdap-nameserver_status
+      - rdap-rdapResponseProfile_2_7_5_3_Validation
+
+  StandardEPP:
+    Order: 4
+    Name: Standard EPP Test
+    Description: |
+      The EPP test suite validates the EPP service of the TLD or RSP.
+    Test-Cases:
+      - EPP-01
+      - EPP-02
+      - EPP-03
+      - EPP-04
+      - EPP-05
+      - EPP-06
+      - EPP-07
+      - EPP-08
+      - EPP-09
+      - EPP-10
+      - EPP-11
+      - EPP-12
+      - EPP-13
+      - EPP-14
+      - EPP-15
+      - EPP-16
+      - EPP-17
+      - EPP-18
+      - EPP-19
+      - EPP-20
+      - EPP-21
+      - EPP-22
+      - EPP-23
+      - EPP-24
+      - EPP-25
+      - EPP-26
+      - EPP-27
+      - EPP-28
+      - EPP-29
+      - EPP-30
+      - EPP-31
+      - EPP-32
+      - EPP-33
+      - EPP-34
+      - EPP-35
+      - EPP-36
+      - EPP-37
+      - EPP-38
+      - EPP-39
+
+  StandardRDE:
+    Order: 5
+    Name: Standard RDE Test
+    Description: |
+      The RDE test suite validates Registry Data Escrow deposits generated for
+      the TLD or RSP.
+
+    Test-Cases:
+      - rde01
+      - rde02
+      - rde03
+      - rde04
+      - rde05
+      - rde06
+      - rde07
+      - rde08
+      - rde09
+      - rde10
+      - rde11
+      - rde12
+      - rde13
+      - rde14
+      - rde15
+
+  StandardIDN:
+    Order: 6
+    Name: Standard IDN Test
+    Description: |
+      The RDE test suite validates the IDN table(s) for a TLD or RSP.
+
+    Test-Cases:
+      - idn-valid00
+      - idn-valid01
+      - idn-valid02
+      - idn-valid03
+      - idn-valid04
+      - idn-valid05
+      - idn-valid06
+      - idn-valid07
+      - idn-valid09
+      - idn-valid10
+      - idn-valid11
+      - idn-valid12
+      - idn-valid13
+
+  StandardSRSGateway:
+    Order: 7
+    Name: Standard SRS Gateway Test
+    Description: |
+      The SRS Gateway test suite validates the conformance of the Gateway
+      registry infrastructure of a TLD or RSP, and the synchronisation between
+      primary and gateway systems.
+    Test-Cases:
 
 Test-Cases:
   dns-address01:
@@ -1011,6 +560,7 @@ Test-Cases:
     Summary: Verify that SOA master is not an alias (CNAME)
   dns-zone10:
     Summary: Verify that the zone of the domain to be tested return exactly one SOA record
+
   dnssec01:
     Summary: Verifies that all DS records have digest types registered with IANA
   dnssec02:
@@ -1231,7 +781,7 @@ Test-Cases:
   EPP-14:
     Summary: <lang> element(s) in the <greeting> must be valid
   EPP-15:
-    Summary: <objURI> element(s) in the <greeting> must be valid
+    Summary: <objURI> element(s) in the <greeting> must be valid for the registry type
   EPP-16:
     Summary: <extURI> element(s) in the <greeting> must be valid
   EPP-17:
@@ -1247,15 +797,15 @@ Test-Cases:
   EPP-22:
     Summary: host <check> command test
   EPP-23:
-    Summary: contact <check> command test
+    Summary: contact <check> command test (if applicable for the registry type)
   EPP-24:
-    Summary: contact <create> command test
+    Summary: contact <create> command test (if applicable for the registry type)
   EPP-25:
-    Summary: contact <info> command test
+    Summary: contact <info> command test (if applicable for the registry type)
   EPP-26:
-    Summary: contact <update> command test
+    Summary: contact <update> command test (if applicable for the registry type)
   EPP-27:
-    Summary: contact <delete> command test
+    Summary: contact <delete> command test (if applicable for the registry type)
   EPP-28:
     Summary: host <create> command test
   EPP-29:
@@ -1277,9 +827,13 @@ Test-Cases:
   EPP-37:
     Summary: domain <renew> command test
   EPP-38:
-    Summary: domain <delete> command test
-  EPP-39:
     Summary: domain <transfer> command test
+  EPP-39:
+    Summary: domain <delete> command test
+  EPP-40:
+    Summary: host rename test
+  EPP-41:
+    Summary: domain restore test
 
   idn-valid00:
     Summary: IDN documentation validation
