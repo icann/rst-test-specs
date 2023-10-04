@@ -429,6 +429,14 @@ Test-Cases:
     Summary: Validate CDNSKEY
 #  dnssec-18:
 #    Summary: Validate trust from DS to CDS and CDNSKEY
+  dnssecRSP-ZSKRollover01:
+    Summary: test ZSK rollover
+    Input-Parameters:
+    Dependencies:
+  dnssecRSP-KSKRollover01:
+    Summary: test KSK rollover
+    Input-Parameters:
+    Dependencies:
 
   rdap-ipv4Validation:
     Summary: IPv4 address validation
@@ -725,72 +733,184 @@ Test-Cases:
     Summary: All server responses must validate against the XML schema
   epp-11:
     Summary: <svID> element in the <greeting> must be valid
+    Dependencies:
+      - epp-09
   epp-12:
     Summary: <svDate> element in the <greeting> must be valid
+    Dependencies:
+      - epp-09
   epp-13:
     Summary: <version> element in the <greeting> must be valid
+    Dependencies:
+      - epp-09
   epp-14:
     Summary: <lang> element(s) in the <greeting> must be valid
+    Dependencies:
+      - epp-09
   epp-15:
     Summary: <objURI> element(s) in the <greeting> must be valid for the registry type
+    Dependencies:
+      - epp-09
+    Input-Parameters:
+      - epp.objectURIs
+      - epp.hostModel
+      - general.registryType
   epp-16:
     Summary: <extURI> element(s) in the <greeting> must be valid
+    Dependencies:
+      - epp-09
+    Input-Parameters:
+      - epp.extensionURIs
+      - epp.hostModel
+      - general.registryType
   epp-17:
     Summary: <login> command must return a successful response
+    Dependencies:
+      - epp-09
+    Input-Parameters:
+      - epp.clid
+      - epp.pwd
+      - epp.extensionURIs
   epp-18:
     Summary: <hello> command must return a <greeting>
+    Dependencies:
+      - epp-09
   epp-19:
     Summary: domain <check> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-20:
     Summary: domain sunrise <check> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-21:
     Summary: domain trademark claims <check> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-22:
-    Summary: host <check> command test
+    Summary: host <check> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-23:
     Summary: contact <check> command test (if applicable for the registry type)
+    Input-Parameters:
+      - general.registryType
+    Dependencies:
+      - epp-17
   epp-24:
     Summary: contact <create> command test (if applicable for the registry type)
+    Input-Parameters:
+      - general.registryType
+    Dependencies:
+      - epp-17
   epp-25:
     Summary: contact <info> command test (if applicable for the registry type)
+    Input-Parameters:
+      - general.registryType
+    Dependencies:
+      - epp-17
   epp-26:
     Summary: contact <update> command test (if applicable for the registry type)
+    Input-Parameters:
+      - general.registryType
+    Dependencies:
+      - epp-17
   epp-27:
     Summary: contact <delete> command test (if applicable for the registry type)
+    Input-Parameters:
+      - general.registryType
+    Dependencies:
+      - epp-17
   epp-28:
-    Summary: host <create> command test
+    Summary: host <create> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-29:
-    Summary: host <info> command test
+    Summary: host <info> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-30:
-    Summary: host <update> command test
+    Summary: host <update> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-31:
-    Summary: host <delete> command test
+    Summary: host <delete> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-32:
-    Summary: domain <create> command test
+    Summary: domain <create> command test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-33:
-    Summary: domain/launch application sunrise <create> command test
+    Summary: |
+      domain/launch application sunrise <create> command test (if applicable)
+    Input-Parameters:
+      - epp.sunriseModel
+    Dependencies:
+      - epp-17
   epp-34:
     Summary: domain trademark claims <create> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-35:
     Summary: domain <info> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-36:
     Summary: launch application sunrise <info> command test (if applicable)
+    Input-Parameters:
+      - epp.sunriseModel
+    Dependencies:
+      - epp-17
   epp-37:
     Summary: domain <update> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-38:
     Summary: domain <renew> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-39:
     Summary: domain <transfer> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-40:
     Summary: domain <delete> command test
+    Input-Parameters:
+    Dependencies:
+      - epp-17
   epp-41:
-    Summary: host rename test
+    Summary: host rename test (if applicable)
+    Input-Parameters:
+      - epp.hostModel
+    Dependencies:
+      - epp-17
   epp-42:
-    Summary: domain restore test
-  dnssecRSP-ZSKRollover01:
-    Summary: test ZSK rollover
-  dnssecRSP-KSKRollover01:
-    Summary: test KSK rollover
+    Summary: domain restore test (if applicable)
+    Input-Parameters:
+      - epp.extensionURIs
+    Dependencies:
+      - epp-17
 
 Input-Parameters:
   epp.hostname:
@@ -846,3 +966,8 @@ Input-Parameters:
     Example:
       - urn:ietf:params:xml:ns:epp:loginSec-1.0
       - urn:ietf:params:xml:ns:epp:fee-1.0
+  epp.sunriseModel:
+    Description: |
+      whether the EPP server supports `startDate` or `endDate` sunrises.
+    Type: string
+    Example: startDate
