@@ -596,7 +596,8 @@ Test-Cases:
       the header object must reference the correct object XML namespace URIs.
     Input-Parameters:
       - rde.deposit
-      - common.registryType
+      - general.registryType
+      - epp.objectURIs
   rde-06:
     Summary: validate object counts
     Description: |
@@ -609,8 +610,12 @@ Test-Cases:
     Description: |
       domain objects (whether CSV or XML) must have the required object 
       properties, and the values of those object properties must be well-formed.
+
+      Contact and/or host objects which are referenced in domain objects must be
+      present in the deposit.
     Input-Parameters:
       - rde.deposit
+      - general.registryType
   rde-08:
     Summary: validate host objects (if applicable)
     Description: |
@@ -626,7 +631,7 @@ Test-Cases:
       properties, and the values of those object properties must be well-formed.
     Input-Parameters:
       - rde.deposit
-      - common.registryType
+      - general.registryType
   rde-10:
     Summary: validate registrar objects
     Description: |
@@ -639,6 +644,10 @@ Test-Cases:
     Description: |
       IDN table objects (whether CSV or XML) must have the required object 
       properties, and the values of those object properties must be well-formed.
+
+      All IDN table objects present in the deposit must correspond to IDN tables
+      approved for the TLD, and all approved tables must have a corresponding
+      object in the deposit.
     Input-Parameters:
       - rde.deposit
       - idn.tableIDs
@@ -661,14 +670,14 @@ Test-Cases:
       - epp.objectURIs
       - epp.extensionURIs
       - epp.hostModel
-      - common.registryType
+      - general.registryType
   rde-14:
     Summary: validate policy object
     Description: |
       The object policies included in the `<rdePolicy:policy>` object must
       conform to the Registration Data Policy and the applicable data model.
     Input-Parameters:
-      - common.registryType
+      - general.registryType
 
   epp-01:
     Summary: EPP server must have at least one A record
@@ -680,20 +689,38 @@ Test-Cases:
       - epp.hostname
   epp-03:
     Summary: All IP addresses must accept TCP connections on port 700
-    Input-Parameters:
-      - epp.hostname
+    Dependencies:
+      - epp-01
+      - epp-02
   epp-04:
     Summary: All service ports support TLSv1.2 or higher
+    Dependencies:
+      - epp-03
   epp-05:
     Summary: All service ports must not support TLSv1.1 or earlier
+    Dependencies:
+      - epp-03
   epp-06:
     Summary: All service ports must offer a valid certificate issued by a trusted CA
+    Dependencies:
+      - epp-03
   epp-07:
     Summary: TLS certificate must be valid
+    Dependencies:
+      - epp-03
   epp-08:
     Summary: TLS certificate must be valid for the server name
+    Dependencies:
+      - epp-03
   epp-09:
     Summary: All service ports must send a <greeting> frame after successful connection
+    Input-Parameters:
+      - epp.hostname
+      - epp.port
+      - epp.objectURIs
+      - epp.extensionURIs
+      - epp.hostModel
+      - general.registryType
   epp-10:
     Summary: All server responses must validate against the XML schema
   epp-11:
@@ -790,7 +817,7 @@ Input-Parameters:
     Description: an RDE deposit signature.
     Type: file
     Example: example_20231004_FULL_S1_R0.sig
-  common.registryType:
+  general.registryType:
     Description: whether the registry is `thick` or `thin`.
     Type: string
     Example: thick
