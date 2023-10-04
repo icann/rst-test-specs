@@ -10,6 +10,7 @@ use HTML::Tiny;
 use IPC::Open2;
 use List::Util qw(any);
 use YAML::XS;
+use JSON::XS;
 use constant {
     'href'          => 'href',
     'ol'            => 'ol',
@@ -30,6 +31,7 @@ my $contact = $spec->{'Contact'};
 my $plans   = $spec->{'Test-Plans'};
 my $suites  = $spec->{'Test-Suites'};
 my $cases   = $spec->{'Test-Cases'};
+my $inputs  = $spec->{'Input-Parameters'};
 
 my $h = HTML::Tiny->new;
 
@@ -105,11 +107,17 @@ sub print_toc {
     print_test_case_toc_list();
     print $h->close(li);
 
+    print $h->open(li);
+    print_input_parameter_toc_list();
+    print $h->close(li);
+
     print $h->close(ol);
 }
 
 sub print_test_plan_toc_list {
-    print $h->a({href => '#test-plans'}, 'Test Plans');
+    print $h->open('details');
+
+    print $h->summary($h->a({href => '#test-plans'}, 'Test Plans'));
 
     print $h->open(ol);
 
@@ -128,10 +136,14 @@ sub print_test_plan_toc_list {
     }
 
     print $h->close(ol);
+
+    print $h->close('details');
 }
 
 sub print_test_suite_toc_list {
-    print $h->a({href => '#test-cases'}, 'Test Suites');
+    print $h->open('details');
+
+    print $h->summary($h->a({href => '#test-cases'}, 'Test Suites'));
 
     print $h->open(ol);
 
@@ -150,12 +162,17 @@ sub print_test_suite_toc_list {
     }
 
     print $h->close(ol);
+
+    print $h->close('details');
 }
 
 sub print_test_case_toc_list {
-    print $h->a({href => '#test-cases'}, 'Test Cases');
+    print $h->open('details');
+
+    print $h->summary($h->a({href => '#test-cases'}, 'Test Cases'));
 
     print $h->open(ol);
+
     foreach my $case (grep { $_ !~ /^Doc/ } sort(keys(%{$cases}))) {
         my $title;
         if ($cases->{$case}->{'Summary'}) {
@@ -173,7 +190,31 @@ sub print_test_case_toc_list {
             e($title)
         ));
     }
+
     print $h->close(ol);
+
+    print $h->close('details');
+}
+
+sub print_input_parameter_toc_list {
+    print $h->open('details');
+
+    print $h->summary($h->a({href => '#input-parameters'}, 'Input Parameters'));
+
+    print $h->open(ol);
+
+    foreach my $input (sort(keys(%{$inputs}))) {
+        my $anchor = sprintf('#Input-Parameter-%s', $input);
+
+        print $h->li($h->a(
+            {href => $anchor},
+            e($input)
+        ));
+    }
+
+    print $h->close(ol);
+
+    print $h->close('details');
 }
 
 sub print_main {
@@ -186,6 +227,8 @@ sub print_main {
     print_suites();
 
     print_cases();
+
+    print_inputs();
 
     print $h->close('main');
 }
@@ -220,6 +263,8 @@ sub print_plans {
 
         print $h->h4('Test Suite(s) used in this Plan:');
 
+        my %inputs;
+
         print $h->open(ol);
         foreach my $suite (sort(@{$plans->{$plan}->{'Test-Suites'}})) {
             my $anchor = sprintf('#Test-Suite-%s', $suite);
@@ -230,6 +275,8 @@ sub print_plans {
             ));
         }
         print $h->close(ol);
+
+        print $h->h4('Input Parameters(s) required for this Suite:');
 
         print $h->close(section);
     }
@@ -263,6 +310,8 @@ sub print_suites {
         print $h->h4('Description:');
         print md2html($suites->{$suite}->{Description}, 2) || $h->p('No information available.');
 
+        my %inputs;
+
         print $h->h4('Test Cases(s) used in this Suite:');
 
         print $h->open('ol');
@@ -292,7 +341,24 @@ sub print_suites {
                 { href => $anchor },
                 e($title),
             ));
+
+            foreach my $input (sort(@{$cases->{$case}->{'Input-Parameters'} || []})) {
+                $inputs{$input} = 1;
+            }
         }
+        print $h->close('ol');
+
+        print $h->h4('Input Parameters(s) required for this Suite:');
+
+        print $h->open('ol');
+
+        foreach my $input (sort(keys(%inputs))) {
+            print $h->li($h->a(
+                { href => sprintf('#Input-Parameter-%s', $input) },
+                e($input),
+            ));
+        }
+
         print $h->close('ol');
 
         print $h->close(section);
@@ -323,6 +389,16 @@ sub print_cases {
         print $h->h4('Description:');
         print md2html($cases->{$case}->{Description}, $section-3) || $h->p('No information available.');
 
+        print $h->h4('Input Parameters:');
+        print $h->open(ul);
+        foreach my $input (sort(@{$cases->{$case}->{'Input-Parameters'} || []})) {
+            print $h->li($h->a(
+                { href => sprintf('#Input-Parameter-%s', $input) },
+                e($input),
+            ));
+        }
+        print $h->close(ul);
+
         print $h->h4('Test Suite(s) this Test Case is used in:');
         print $h->open(ul);
         foreach my $suite (sort({ $suites->{$a}->{'Order'} <=> $suites->{$b}->{'Order'} } keys(%{$suites}))) {
@@ -346,6 +422,63 @@ sub print_cases {
     }
 }
 
+sub print_inputs {
+    print $h->a({name => 'input-parameters'});
+    print $h->h2(sprintf('%d. Input Parameters', ++$section));
+
+    my $i = 0;
+    foreach my $input (sort(keys(%{$inputs}))) {
+        print $h->open(section);
+
+        print $h->a({name => sprintf('Input-Parameter-%s', $input)});
+
+        print $h->h4('Description:');
+        print md2html($inputs->{$input}->{Description}, $section-3) || $h->p('No information available.');
+
+        print $h->h4('Type:');
+        my $type = $inputs->{$input}->{'Type'};
+        print $h->p(e($type.'.'));
+
+        print $h->h4('Example:');
+        my $value;
+        if ('integer' eq $type) {
+            $value = int($inputs->{$input}->{'Example'});
+
+        } elsif ('number' eq $type) {
+            $value = 0 + int($inputs->{$input}->{'Example'});
+
+        } else {
+            $value = $inputs->{$input}->{'Example'};
+
+        }
+        print $h->pre(e(JSON::XS->new->pretty->encode({$input => $value})));
+
+        print $h->h4('Test Cases this parameter is required by:');
+        print $h->open(ul);
+        foreach my $case (sort(keys(%{$cases}))) {
+            if (any { $_ eq $input } @{$cases->{$case}->{'Input-Parameters'}}) {
+                my $title;
+                if ($cases->{$case}->{'Summary'}) {
+                    $title = sprintf('%s - %s', $case, $cases->{$case}->{'Summary'});
+
+                } else {
+                    $title = $case;
+
+                }
+
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Case-%s', $case) },
+                    e($title),
+                ));
+            }
+        }
+        
+        print $h->close(ul);
+
+        print $h->close(section);
+    }
+}
+  
 sub md2html {
     my ($md, $shift) = @_;
 
@@ -371,21 +504,19 @@ sub e { $h->entity_encode(shift) }
 
 __DATA__
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    line-height: 150%;
+  background: #fefefe;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #333333;
 }
 
 a {
-    color: #00c;
+    color: #036aa6;
 }
 
 a:active,a:hover {
-    color: #c4c;
-}
-
-.toc-link:active,.toc-link:hover {
-    border: 1px solid #c4c;
+    text-decoration: none;
 }
 
 header {

@@ -6,7 +6,7 @@ The `rde-test-specs.yaml` file in this repository conforms to the following sche
 
 The top-level object has the following properties:
 
-* `RST-Test-Plan-Schema-Version`: this is always `1.2`.
+* `RST-Test-Plan-Schema-Version`: this is always `1.3`.
 * `Version`: a string containing a version number, conforming to Semantic Versioning.
 * `Last-Updated`: the date when the document was last updated, in `YYYY-MM-DD` format.
 * `Preamble`: a description of the contents of the file, in Markdown format.
@@ -14,7 +14,7 @@ The top-level object has the following properties:
 * `Test-Plans`: an object containing one or more `Test Plan` objects, keyed by a unique ID.
 * `Test-Suites`: an object containing one or more `Test Suite` objects, keyed by a unique ID.
 * `Test-Cases`: an object containing one or more `Test Cases` objects, keyed by a unique ID.
-
+* `Input-Parameters`: an object containing one or more `Input Parameter` objects, keyed by a unique ID.
 # `Contact` object
 
 The `Contact` object has the following properties:
@@ -48,3 +48,12 @@ A `Test Case` object has the following properties:
 * `Summary`: a short description of the test case.
 * `Description`: a detailed description of the test case in Markdown format.
 * `Dependencies`: an **OPTIONAL** array of Test Case IDs, which must match a key in the `Test-Cases` property of the top-level object.
+* `Input-Parameters`: an array of Input Parameter IDs, which must match a key in the `Input-Parameters` property of the top-level object.
+
+# `Input Parameter` object
+
+An `Input Parameter` object has the following properties:
+
+* `Type`: one of `file`, `string`, `integer`, `number`, `boolean`, `null` or `array`.
+* `Description`: a description of the input parameter in Markdown format.
+* `Example`: an example value.
