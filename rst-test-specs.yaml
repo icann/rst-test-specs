@@ -1,62 +1,84 @@
 ---
-RST-Test-Plan-Schema-Version: 1.1
+RST-Test-Plan-Schema-Version: 1.3
 Version: 3.0
 Last-Updated: 2023-10-02
 
 Preamble: |
   The Test System consists of several *test plans*, each of which addresses a
   particular scenario. The test plans follow a standard structure and
-  methodology derived from IEEE 829-2008 *(which has since been superseded by
-  ISO/IEC 29119)*.
+  methodology derived from ISO/IEC 29119 *(formerly IEEE 829-2008)*.
 
-  Each *test plan* includes one or more *test suites* which in turn include
+  Each *test plan* includes one or more *test suites*, which in turn include
   one or more *test cases*. For a test to succeed, every test case has to pass.
 
   This file describes each test plan, suite and case in the RST system.
 
-  ### 2.1. Key Acronyms
+  ### 2.1. Key acronyms and terms
 
   RST
-  : Registry System Testing
+  : Registry System Testing. This system.
 
   PDT
-  : Pre-Delegation Testing
+  : Pre-Delegation Test. A test carried out prior to the delegation of a new TLD
+  into the DNS root zone.
 
   RSP
-  : Registry Service Provider
+  : Registry Service Provider. A specialist provider of critical registry
+  services.
 
   DNS
-  : Domain Name System
+  : Domain Name System. The internet's system of globally unique identifiers.
 
   TLD
-  : Top-level domain
+  : Top-level domain. The highest level of the DNS namespace hierarchy.
 
   gTLD
-  : generic top-level domain
+  : generic top-level domain.
 
   DNSSEC
-  : DNS Security Extensions
+  : DNS Security Extensions.
 
   EPP
-  : Extensible Provisioning Protocol
+  : Extensible Provisioning Protocol. The protocol used by registrars to create
+  and manage domain name registrations in an SRS.
 
   SRS
-  : Shared Registry System
+  : Shared Registry System. A TLD registry in which registrations are managed
+  by one or more registrars, using EPP.
 
   RDDS
-  : Registration Data Directory Services
+  : Registration Data Directory Services. A service to provide access to
+  data about domain registrations to third parties.
 
   RDAP
-  : Registration Data Access Protocol
+  : Registration Data Access Protocol. The protocol used to deliver the RDDS.
 
   RDE
-  : Registry Data Escrow
+  : Registry Data Escrow. A system whereby the registration data stored in a
+  Shared Registry System is backed up to a trusted third party.
 
   IDN
-  : Internationalized Domain Name
+  : Internationalized Domain Name. A domain name that contains characters not in
+  the ASCII character set.
 
   LGR
-  : Label Generation Ruleset
+  : Label Generation Ruleset. The rules by which IDN domain names are validated.
+
+  RO
+  : Registry Operator. The entity which ICANN has granted the right to operate a
+  gTLD.
+
+  RA
+  : Registry Agreement. The contract between a Registry Operator and ICANN.
+
+  KSK
+  : Key Signing Key. A cryptographic key which acts as the Secure Entry Point
+  for a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is
+  published in the parent zone (ie. the root zone for a TLD).
+
+  ZSK
+  : Zone Signing Key. A cryptographic key which signs a DNS zone's resource
+  records.
 
 Contact:
   Name: GDS Technical Services
@@ -200,6 +222,7 @@ Test-Plans:
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
     Test-Suites:
       - StandardDNSSEC
+      - dnssecKeyRollovers
 
 Test-Suites:
   StandardDNS:
@@ -278,6 +301,13 @@ Test-Suites:
       registry infrastructure of a TLD or RSP, and the synchronisation between
       primary and gateway systems.
     Test-Cases: ^srsgw-
+
+  dnssecKeyRollovers:
+    Order: 8
+    Name: DNS RSP DNSSEC Key Rollover Test
+    Test-Cases:
+      - dnssecRSP-ZSKRollover01
+      - dnssecRSP-KSKRollover01
 
 Test-Cases:
   dns-address01:
@@ -365,40 +395,40 @@ Test-Cases:
   dns-zone10:
     Summary: Verify that the zone of the domain to be tested return exactly one SOA record
 
-  dnssec01:
+  dnssec-01:
     Summary: Verifies that all DS records have digest types registered with IANA
-  dnssec02:
+  dnssec-02:
     Summary: Verifies that all DS records have a matching DNSKEY
-  dnssec03:
+  dnssec-03:
     Summary: Check iteration counts for NSEC3
-  dnssec04:
+  dnssec-04:
     Summary: Checks the durations of the signatures for the DNSKEY and SOA RRsets
-  dnssec05:
+  dnssec-05:
     Summary: Check DNSKEY algorithms
-  dnssec06:
+  dnssec-06:
     Summary: Check for DNSSEC extra processing at child nameservers
-  dnssec07:
-    Summary: Check that both DS and DNSKEY are present
-  dnssec08:
+#  dnssec-07:
+#    Summary: Check that both DS and DNSKEY are present
+  dnssec-08:
     Summary: Check that the DNSKEY RRset is signed
-  dnssec09:
+  dnssec-09:
     Summary: Check that the SOA RRset is signed
-  dnssec10:
+  dnssec-10:
     Summary: Check for the presence of either NSEC or NSEC3, with proper coverage and signatures
-  dnssec11:
-    Summary: Check that the delegation step from parent is properly signed
-  dnssec13:
+#  dnssec-11:
+#    Summary: Check that the delegation step from parent is properly signed
+  dnssec-13:
     Summary: Check that all DNSKEY algorithms are used to sign the zone
-  dnssec14:
+  dnssec-14:
     Summary: Check for valid RSA DNSKEY key size
-  dnssec15:
+  dnssec-15:
     Summary: Check existence of CDS and CDNSKEY
-  dnssec16:
+  dnssec-16:
     Summary: Validate CDS
-  dnssec17:
+  dnssec-17:
     Summary: Validate CDNSKEY
-  dnssec18:
-    Summary: Validate trust from DS to CDS and CDNSKEY
+#  dnssec-18:
+#    Summary: Validate trust from DS to CDS and CDNSKEY
 
   rdap-ipv4Validation:
     Summary: IPv4 address validation
@@ -533,43 +563,125 @@ Test-Cases:
   rdap-rdapResponseProfile_2_4_6_registrarAboutLink:
     Summary: presence of "about" link in registrar entity
 
-  rde01:
+  rde-01:
     Summary: validate filename format
-  rde02:
+    Description: |
+      the deposit filename must conform to the format specified in the RA.
+    Input-Parameters:
+      - rde.deposit
+  rde-02:
     Summary: validate signature(s)
-  rde03:
+    Description: |
+      the signature must be valid for the deposit file and the RSP's key.
+    Input-Parameters:
+      - rde.deposit
+      - rde.signature
+  rde-03:
     Summary: decrypt deposit file(s)
-  rde04:
-    Summary: validate XML
-  rde05:
-    Summary: validate CSV
-  rde06:
+    Description: |
+      it must be possible to decrypt the deposit file using the RST key.
+    Input-Parameters:
+      - rde.deposit
+  rde-04:
+    Summary: validate XML/CSV
+    Description: |
+      * XML deposit files must be well-formed and validate against the XML
+        schema.
+      * CSV files must conform to RFC 4180.
+    Input-Parameters:
+      - rde.deposit
+  rde-04:
     Summary: validate object types
-  rde07:
+    Description: |
+      the header object must reference the correct object XML namespace URIs.
+    Input-Parameters:
+      - rde.deposit
+      - common.registryType
+  rde-06:
     Summary: validate object counts
-  rde08:
+    Description: |
+      the number of each type of object must match the number of objects
+      actually present in the deposit file.
+    Input-Parameters:
+      - rde.deposit
+  rde-07:
     Summary: validate domain objects
-  rde09:
-    Summary: validate host objects
-  rde10:
-    Summary: validate contact objects
-  rde11:
+    Description: |
+      domain objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+    Input-Parameters:
+      - rde.deposit
+  rde-08:
+    Summary: validate host objects (if applicable)
+    Description: |
+      host objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+    Input-Parameters:
+      - rde.deposit
+      - epp.hostModel
+  rde-09:
+    Summary: validate contact objects (if applicable)
+    Description: |
+      contact objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+    Input-Parameters:
+      - rde.deposit
+      - common.registryType
+  rde-10:
     Summary: validate registrar objects
-  rde12:
+    Description: |
+      registrar objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+    Input-Parameters:
+      - rde.deposit
+  rde-11:
     Summary: validate IDN table objects
-  rde13:
+    Description: |
+      IDN table objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+    Input-Parameters:
+      - rde.deposit
+      - idn.tableIDs
+  rde-12:
     Summary: validate NNDN objects
-  rde14:
+    Description: |
+      NNDN table objects (whether CSV or XML) must have the required object 
+      properties, and the values of those object properties must be well-formed.
+
+      The aName property of NNDN objects must not match the name property of a
+      domain object.
+    Input-Parameters:
+      - rde.deposit
+  rde-13:
     Summary: validate EPP parameters object
-  rde15:
+    Description: |
+      The EPP Parameters object must match the `<greeting>` element returned by
+      the EPP server.
+    Input-Parameters:
+      - epp.objectURIs
+      - epp.extensionURIs
+      - epp.hostModel
+      - common.registryType
+  rde-14:
     Summary: validate policy object
+    Description: |
+      The object policies included in the `<rdePolicy:policy>` object must
+      conform to the Registration Data Policy and the applicable data model.
+    Input-Parameters:
+      - common.registryType
 
   epp-01:
     Summary: EPP server must have at least one A record
+    Input-Parameters:
+      - epp.hostname
   epp-02:
     Summary: EPP server must have at least one AAAA record
+    Input-Parameters:
+      - epp.hostname
   epp-03:
     Summary: All IP addresses must accept TCP connections on port 700
+    Input-Parameters:
+      - epp.hostname
   epp-04:
     Summary: All service ports support TLSv1.2 or higher
   epp-05:
@@ -648,3 +760,62 @@ Test-Cases:
     Summary: host rename test
   epp-42:
     Summary: domain restore test
+  dnssecRSP-ZSKRollover01:
+    Summary: test ZSK rollover
+  dnssecRSP-KSKRollover01:
+    Summary: test KSK rollover
+
+Input-Parameters:
+  epp.hostname:
+    Description: the fully-qualified domain name of the EPP server.
+    Type: string
+    Example: epp.rsp.tech
+  epp.port:
+    Description: the TCP port of the EPP service.
+    Type: integer
+    Example: 700
+  epp.clid:
+    Description: the username used to log in to the EPP server.
+    Type: string
+    Example: clid-01
+  epp.pwd:
+    Description: the password used to log in to the EPP server.
+    Type: string
+    Example: foo2bar
+  rde.deposit:
+    Description: an RDE deposit file.
+    Type: file
+    Example: example_20231004_FULL_S1_R0.ryde
+  rde.signature:
+    Description: an RDE deposit signature.
+    Type: file
+    Example: example_20231004_FULL_S1_R0.sig
+  common.registryType:
+    Description: whether the registry is `thick` or `thin`.
+    Type: string
+    Example: thick
+  idn.tableIDs:
+    Description: the list of supported IDN tables.
+    Type: array
+    Example:
+      - latn
+      - arab
+      - zh
+      - fr_FR
+  epp.hostModel:
+    Description: |
+      whether the EPP server supports host `objects` or host `attributes`.
+    Type: string
+    Example: objects
+  epp.objectURIs:
+    Description: the list of supported object namespace URIs.
+    Type: array
+    Example:
+      - urn:ietf:params:xml:ns:domain-1.0
+      - urn:ietf:params:xml:ns:host-1.0
+  epp.extensionURIs:
+    Description: the list of supported extension namespace URIs.
+    Type: array
+    Example:
+      - urn:ietf:params:xml:ns:epp:loginSec-1.0
+      - urn:ietf:params:xml:ns:epp:fee-1.0
