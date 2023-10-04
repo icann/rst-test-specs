@@ -258,12 +258,15 @@ sub print_plans {
         print $h->a({name => sprintf('Test-Plan-%s', $plan)});
         print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($plans->{$plan}->{'Name'})));
 
-        print $h->h4('Description:');
-        print md2html($plans->{$plan}->{Description}, 3);
+        print $h->h4('Plan ID');
+        print $h->p('The following Test Plan ID may be used with the RST API:');
+        print $h->pre(e($plan));
 
-        print $h->h4('Test Suite(s) used in this Plan:');
+        print $h->h4('Description');
+        print md2html($plans->{$plan}->{'Description'}, 3);
 
-        my %inputs;
+        print $h->h4('Test suites');
+        print $h->p('This plan uses the following test suites:');
 
         print $h->open(ol);
         foreach my $suite (sort(@{$plans->{$plan}->{'Test-Suites'}})) {
@@ -275,8 +278,6 @@ sub print_plans {
             ));
         }
         print $h->close(ol);
-
-        print $h->h4('Input Parameters(s) required for this Suite:');
 
         print $h->close(section);
     }
@@ -304,15 +305,13 @@ sub print_suites {
             $suites->{$suite}->{'Name'} || $suite,
         )));
 
-        print $h->h4('Test Suite Identifier:');
-        print $h->pre(e($suite));
-
-        print $h->h4('Description:');
-        print md2html($suites->{$suite}->{Description}, 2) || $h->p('No information available.');
+        print $h->h4('Description');
+        print md2html($suites->{$suite}->{'Description'}, 2) || $h->p('No information available.');
 
         my %inputs;
 
-        print $h->h4('Test Cases(s) used in this Suite:');
+        print $h->h4('Test cases');
+        print $h->p('This suite uses the following test cases:');
 
         print $h->open('ol');
 
@@ -348,7 +347,8 @@ sub print_suites {
         }
         print $h->close('ol');
 
-        print $h->h4('Input Parameters(s) required for this Suite:');
+        print $h->h4('Input parameters');
+        print $h->p('The test cases used by this suite require the following input parameters:');
 
         print $h->open('ol');
 
@@ -383,13 +383,54 @@ sub print_cases {
 
         }
 
-        print $h->h4('Test Case Identifier:');
-        print $h->pre(e($case));
+        print $h->h4('Description');
+        print md2html($cases->{$case}->{'Description'}, $section-3) || $h->p('No information available.');
 
-        print $h->h4('Description:');
-        print md2html($cases->{$case}->{Description}, $section-3) || $h->p('No information available.');
+        print $h->h4('Dependencies');
+        print $h->p('This test case requires the following test cases to have successfully passed:');
+        print $h->open(ul);
+        foreach my $dep (sort(@{$cases->{$case}->{'Dependencies'} || []})) {
+            my $title;
+            if ($cases->{$dep}->{'Summary'}) {
+                $title = sprintf('%s - %s', $dep, $cases->{$dep}->{'Summary'});
 
-        print $h->h4('Input Parameters:');
+            } else {
+                $title = $dep;
+
+            }
+
+            print $h->li($h->a(
+                { href => sprintf('#Test-Case-%s', $dep) },
+                e($title),
+            ));
+        }
+        print $h->close(ul);
+
+        print $h->h4('Dependants');
+        print $h->p('The following test cases require this test case to have successfully passed:');
+        print $h->open(ul);
+
+        foreach my $dep (sort(keys(%{$cases}))) {
+            if (any { $_ eq $case } @{$cases->{$dep}->{'Dependencies'} || []}) {
+                my $title;
+                if ($cases->{$dep}->{'Summary'}) {
+                    $title = sprintf('%s - %s', $dep, $cases->{$dep}->{'Summary'});
+
+                } else {
+                    $title = $dep;
+
+                }
+
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Case-%s', $dep) },
+                    e($title),
+                ));
+            }
+        }
+        print $h->close(ul);
+
+        print $h->h4('Input parameters');
+        print $h->p('This test case requires the following input parameters:');
         print $h->open(ul);
         foreach my $input (sort(@{$cases->{$case}->{'Input-Parameters'} || []})) {
             print $h->li($h->a(
@@ -399,7 +440,9 @@ sub print_cases {
         }
         print $h->close(ul);
 
-        print $h->h4('Test Suite(s) this Test Case is used in:');
+        print $h->h4('Test suites');
+        print $h->p('This test case is used in the following test suites:');
+
         print $h->open(ul);
         foreach my $suite (sort({ $suites->{$a}->{'Order'} <=> $suites->{$b}->{'Order'} } keys(%{$suites}))) {
             if ('ARRAY' eq ref($suites->{$suite}->{'Test-Cases'})) {
@@ -432,14 +475,14 @@ sub print_inputs {
 
         print $h->a({name => sprintf('Input-Parameter-%s', $input)});
 
-        print $h->h4('Description:');
-        print md2html($inputs->{$input}->{Description}, $section-3) || $h->p('No information available.');
+        print $h->h4('Description');
+        print md2html($inputs->{$input}->{'Description'}, $section-3) || $h->p('No information available.');
 
-        print $h->h4('Type:');
+        print $h->h4('Type');
         my $type = $inputs->{$input}->{'Type'};
-        print $h->p(e($type.'.'));
+        print $h->pre(e($type));
 
-        print $h->h4('Example:');
+        print $h->h4('Example');
         my $value;
         if ('integer' eq $type) {
             $value = int($inputs->{$input}->{'Example'});
@@ -453,7 +496,9 @@ sub print_inputs {
         }
         print $h->pre(e(JSON::XS->new->pretty->encode({$input => $value})));
 
-        print $h->h4('Test Cases this parameter is required by:');
+        print $h->h4('Test cases');
+        print $h->p('This input parameter is used in the following test cases:');
+
         print $h->open(ul);
         foreach my $case (sort(keys(%{$cases}))) {
             if (any { $_ eq $input } @{$cases->{$case}->{'Input-Parameters'}}) {
@@ -503,12 +548,15 @@ sub md2html {
 sub e { $h->entity_encode(shift) }
 
 __DATA__
+html {
+    background-color: #fefefe;
+    font-size: 15px;
+}
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
-  background: #fefefe;
-  font-family: "Noto Sans", sans-serif;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #333333;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
 }
 
 a {
@@ -533,7 +581,12 @@ header,nav,body,main,section {
 }
 
 body {
-    margin: 0.5em 5em;
+    max-width: 70ch;
+    margin: 0.5em auto;
+    padding: 1em;
+    background-color: #f6f6f6;
+    border:1px solid #ddd;
+    border-radius: 0.5em;
 }
 
 dl {
