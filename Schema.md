@@ -1,6 +1,6 @@
 # YAML Schema for RST Test Specifications
 
-The [`rde-test-specs.yaml` file in this repository](rde-test-specs.yaml) conforms to the following schema.
+The [`rst-test-specs.yaml` file in this repository](rst-test-specs.yaml) conforms to the following schema.
 
 # Top-level object
 
