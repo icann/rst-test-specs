@@ -440,128 +440,4070 @@ Test-Cases:
 
   rdap-ipv4Validation:
     Summary: IPv4 address validation
+    Description: |
+      **The following steps should be used to test that an IPv4 address is
+      valid:**
+
+      1.  The IPv4 address is syntactically valid in dot-decimal notation.
+
+      {
+
+      \"code\": -10099-10100,
+
+      \"value\": \"\<IPv4 address string\>\",
+
+      \"message\": \"The IPv4 address is not syntactically valid in
+      dot-decimal notation.\"
+
+      }
+
+      The IPv4 address MUST be part of a prefix categorized as \"ALLOCATED\"
+      or \"LEGACY\" in the \"Status\" field in the **ipv4AddressSpace**.{
+
+      \"code\": -10101,
+
+      \"value\": \"\<IPv4 address string\>\",
+
+      \"message\": \"The IPv4 address is not included in a prefix
+      categorized as ALLOCATED or LEGACY in the IANA IPv4 Address Space
+      Registry. Dataset: ipv4AddressSpace\"
+
+      }
+
+      The IPv4 address MUST NOT be part of the **specialIPv4Addresses**.{
+
+      \"code\": -10102,
+
+      \"value\": \"\<IPv4 address string\>\",
+
+      \"message\": \"The IPv4 address is included in the IANA IPv4
+      Special-Purpose Address Registry. Dataset: specialIPv4Addresses\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC791
+    Input-Parameters:
+    Dependencies:
   rdap-ipv6Validation:
     Summary: IPv6 address validation
+    Description: |
+      **The following steps should be used to test that an IPv6 address is
+      valid:**
+
+      The IPv6 address is in canonical textual representation format.{
+
+      \"code\": -10199-10200,
+
+      \"value\": \"\<IPv6 address string\>\",
+
+      \"message\": \"The IPv6 address is not syntactically valid.\"
+
+      }
+
+      The IPv6 address MUST be part of an allocation of type \"Global
+      Unicast\" in the **ipv6AddressSpace**.{
+
+      \"code\": -10201,
+
+      \"value\": \"\<IPv6 address string\>\",
+
+      \"message\": \"The IPv6 address is not included in a prefix
+      categorized as Global Unicast in the Internet Protocol Version 6
+      Address Space. Dataset: ipv6AddressSpace\"
+
+      }
+
+      The IPv6 address MUST NOT be part of the **specialIPv6Addresses**.{
+
+      \"code\": -10202,
+
+      \"value\": \"\<IPv6 address string\>\",
+
+      \"message\": \"The IPv6 address is included in the IANA IPv6
+      Special-Purpose Address Registry. Dataset: specialIPv6Addresses\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC5952
+    Input-Parameters:
+    Dependencies:
   rdap-domainNameValidation:
     Summary: Domain Name validation
+    Description: |
+      **The following steps should be used to test that a domain name is
+      valid:**
+
+      The length of each label is between 1 and 63.{
+
+      \"code\": -10299-10300,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A DNS label with length not between 1 and 63 was
+      found.\"
+
+      }
+
+      A maximum total length of 253 characters not including the last
+      \".\".{
+
+      \"code\": -10301,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name of more than 253 characters was found. \"
+
+      }
+
+      At least two labels shall exist in the domain name. See,
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10.{
+
+      \"code\": -10302,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name with less than two labels was found. See
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10\"
+
+      }
+
+      Each label of the domain name is a valid \"A-label\", \"U-label\", or
+      \"NR-LDH label\".{
+
+      \"code\": -10303,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A DNS label not being a valid \"A-label\", \"U-label\",
+      or \"NR-LDH label\" was found.\"
+
+      }
+
+      Note: the latest version of the IANA IDNA Rules and Derived Property
+      Values shall be used. See,
+      <https://www.iana.org/assignments/idna-tables-11.0.0/idna-tables-11.0.0.xml>
+
+      **The following normative references are required to understand this
+      test group:**
+
+      DNS_RFCsIDNA_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-webUriValidation:
     Summary: Web URI validation
+    Description: |
+      **The following steps should be used to test that a *Web URI* is
+      valid:**
+
+      The URI shall be syntactically valid according to RFC3986.{
+
+      \"code\": -10399-10400,
+
+      \"value\": \"\<URI\>\",
+
+      \"message\": \"The URI is not syntactically valid according to
+      RFC3986.\"
+
+      }
+
+      The scheme of the URI shall be \"http\" or \"https\".{
+
+      \"code\": -10401,
+
+      \"value\": \"\<URI\>\",
+
+      \"message\": \"The scheme of the URI is not \'http\' nor \'https\'\".
+
+      }
+
+      The host of the URI shall pass the test Domain Name validation
+      \[domainNameValidation\], IPv4 address validation \[ipv4Validation\]
+      or IPv6 address validation \[ipv6Validation\].{
+
+      \"code\": -10402,
+
+      \"value\": \"\<URI\>\",
+
+      \"message\": \"The host does not pass Domain Name validation
+      \[domainNameValidation\], IPv4 address validation \[ipv4Validation\]
+      nor IPv6 address validation \[ipv6Validation\]\".
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC3986
+    Input-Parameters:
+    Dependencies:
   rdap-domainCaseFoldingValidation:
     Summary: Domain label case folding validation
+    Description: "**The following steps should be used to test that an RDAP server
+      is\nprocessing label case conversion correctly for domain name lookups:**\n\n1.
+      \ \n\nA subsequent RDAP lookup may be performed in the case of a domain name\nlookup
+      to validate correct support for case insensitive label\nmatching:For any \\\"NR-LDH
+      label\\\" or \\\"A-label\\\" present, the RDAP\nresponse must match the response
+      of a subsequent request converting\nany \\\"NR-LDH label\\\" or \\\"A-label\\\"
+      alternating uppercase and\nlowercase characters (e.g., if the domain is \\\"test.example\\\"
+      the RDAP\nresponse must match also for converted domain name\n\\\"tEsT.ExAmPlE\\\").For
+      any \\\"U-Label\\\" present, in case that any of the\ncode points support case
+      folding, the u-label should be case-folded\nfor the subsequent request. (e.g.,
+      if the domain is \\\"CAF\xC9.EXAMPLE\\\"\nthe RDAP response must match also
+      for converted domain name\n\\\"caf\xE9.ExAmPlE\\\").In case that the domain
+      name in the query contains\nall u-labels and none of the labels can be case-folded
+      (i.e., the\nscript or code points do not support case folding) a subsequent
+      query\nis not required.In case that the domain name in the query contains all\nu-labels
+      and the resulting domain name to query after case-folding is\nthe same as the
+      original, a subsequent query is not required.{\n\n\\\"code\\\": -10399-10403,\n\n\\\"value\\\":
+      \\\"\\<converted domain name\\>\\\",\n\n\\\"message\\\": \\\"RDAP responses
+      do not match when handling domain label\ncase folding.\\\"\n\n}\n\n**The following
+      normative references are required to understand this\ntest group:**\n\nDNS_RFCsIDNA_RFCs\n\n##
+      Standard RDAP Common Data Structures Validations\n"
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapConformanceValidation:
     Summary: RDAP Conformance validation
+    Description: |
+      **The following steps should be used to test that an *RDAP
+      Conformance* data structure is valid:**
+
+      The *RDAP Conformance* data structure must be a syntactically valid
+      [JSON array]{.underline}.{
+
+      \"code\": -10499-10500,
+
+      \"value\": \"\<rdapConformance structure\>\",
+
+      \"message\": \"The RDAP Conformance structure is not syntactically
+      valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10501,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      Each of the [JSON string]{.underline} values in the [JSON
+      array]{.underline}, with the exception of \"rdap_level_0\", shall be
+      included as an Extension Identifier in **RDAPExtensions**.{
+
+      \"code\": -10502,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as an Extension
+      Identifier in RDAPExtensions.\"
+
+      }
+
+      The [JSON string]{.underline} value \"rdap_level_0\" is not included
+      in the *RDAP Conformance* data structure.{
+
+      \"code\": -10503,
+
+      \"value\": \"\<rdapConformance\>\",
+
+      \"message\": \"The RDAP Conformance data structure does not include
+      rdap_level_0.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs**\
+      **
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapLinksValidation:
     Summary: Links validation
+    Description: |
+      **The following steps should be used to test that a links data
+      structure is valid:**
+
+      The *links* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -10599-10600,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The links structure is not syntactically valid.\"
+
+      }
+
+      For every object (i.e. link) of the [JSON array]{.underline}, verify
+      that the *link* structure complies with:
+
+      The name of every name/value pair shall be *value*, *rel*, *href*,
+      *hreflang*, *title*, *media* or *type*.{
+
+      \"code\": -10601,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: value, rel,
+      href, hreflang, title, media or type.\"
+
+      }
+
+      The JSON name/value pairs of *rel*, *href*, *hreflang*, *title*,
+      *media* and *type* shall appear only once.{
+
+      \"code\": -10602,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      If the JSON name *media* exists, the allowed values are: screen, tty,
+      tv, projection, handheld, print, braille, embossed, speech, and all.{
+
+      \"code\": -10603,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name media is not of: screen,
+      tty, tv, projection, handheld, print, braille, embossed, speech, or
+      all.\"
+
+      }
+
+      If the JSON name *rel* exists, the value shall be included as a
+      \"Relation Name\" in **linkRelations**.{
+
+      \"code\": -10604,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not included as a Relation Name in
+      linkRelations.\"
+
+      }
+
+      If the JSON name *type* exists, the value shall be included as a
+      \"Name\" in **mediaTypes**.{
+
+      \"code\": -10605,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not included as a Name in
+      mediaTypes.\"
+
+      }
+
+      If the JSON name *title* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10606,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *hreflang* exists, the value shall be [a JSON
+      string]{.underline} data type or a valid [JSON array]{.underline}
+      where every value is a [JSON string]{.underline} data type.{
+
+      \"code\": -10607,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name hreflang is not a JSON
+      string data type or a valid JSON array where every value is a JSON
+      string data type.\"
+
+      }
+
+      If the JSON name *hreflang* exists, every one of the *JSON string*
+      data values shall conform to the Language-Tag syntax. {
+
+      \"code\": -10608,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value of the JSON string data in the hreflang does
+      not conform to Language-Tag syntax.\"
+
+      }
+
+      If the JSON name *value* exists, the value shall pass the test Web URI
+      validation \[webUriValidation\] defined in this document.{
+
+      \"code\": -10609,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Web URI
+      validation \[webUriValidation\].\"
+
+      }
+
+      The JSON name *href* shall exist.{
+
+      \"code\": -10610,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The href element does not exist.\"
+
+      }
+
+      For the JSON name *href*, the value shall pass the test Web URI
+      validation \[webUriValidation\] defined in this document.{
+
+      \"code\": -10611,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name href does not pass Web URI
+      validation \[webUriValidation\].\"
+
+      }
+
+      **\
+      **
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC5646RFC7159RFC8288RDAP_RFCsMedia_Queries
+
+      **\
+      **
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapNoticesRemarksValidation:
     Summary: Notices and Remarks Validation
+    Description: |
+      **The following steps should be used to test that a notices or remarks
+      data structure is valid:**
+
+      The *notices* or *remarks* data structure must be a syntactically
+      valid [JSON array]{.underline}.{
+
+      \"code\": -10699-10700,
+
+      \"value\": \"\<notices or remarks structure\>\",
+
+      \"message\": \"The notices or remarks structure is not syntactically
+      valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      The name of every name/value pair shall be *title*, *type*,
+      *description* or *links*. {
+
+      \"code\": -10701,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: title, type,
+      description or links.\"
+
+      }
+
+      The JSON name/values of *title*, *type*, *description* and *links*
+      shall exist only once. {
+
+      \"code\": -10702,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      If the JSON name *title* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10703,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -10704,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      If the JSON name *type* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10705,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *type* exists, the value shall be included in the
+      **RDAPJSONValues** with Type=\"notice and remark type\".{
+
+      \"code\": -10706,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"notice and remark type\" in the RDAPJSONValues dataset.
+
+      }
+
+      The JSON name *description* shall exist.{
+
+      \"code\": -10707,
+
+      \"value\": \"\<notices or remarks structure\>\",
+
+      \"message\": \"The description element does not exist.\"
+
+      }
+
+      The *description* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -10708,
+
+      \"value\": \"\<description structure\>\",
+
+      \"message\": \"The description structure is not syntactically valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} of the *description* data
+      structure shall be a [JSON string]{.underline} data type.{
+
+      \"code\": -10709,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapLanguageIdentifierValidation:
     Summary: Language Identifier Validation
+    Description: |
+      **The following steps should be used to test that a lang data
+      structure is valid:**
+
+      For the JSON name *lang*, the value shall conform to the Language-Tag
+      syntax.{
+
+      \"code\": -10799-10800,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value of the JSON string data in lang does not
+      conform to Language-Tag syntax.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC5646RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapEventsValidation:
     Summary: Events Validation
+    Description: |
+      **The following steps should be used to test that a events data
+      structure is valid:**
+
+      The *events* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -10899-10900,
+
+      \"value\": \"\<events structure\>\",
+
+      \"message\": \"The events structure is not syntactically valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      The name of every name/value pair shall be any of: *eventAction*,
+      *eventActor*, *eventDate* or *links*. {
+
+      \"code\": -10901,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: eventAction,
+      eventActor, eventDate or links.\"
+
+      }
+
+      The JSON name/value pairs of *eventAction*, *eventActor*, *eventDate*
+      and *links* shall exist only once. {
+
+      \"code\": -10902,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once. \"
+
+      }
+
+      The JSON name *eventAction* shall exist.{
+
+      \"code\": -10903,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The eventAction element does not exist.\"
+
+      }
+
+      For the JSON name *eventAction*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10904,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      For the JSON name *eventAction*, the value shall be included in the
+      **RDAPJSONValues** with Type=\"event action\".{
+
+      \"code\": -10905,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"event action\" in the RDAPJSONValues data set.
+
+      }
+
+      The JSON name *eventDate* shall exist.{
+
+      \"code\": -10906,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The eventDate element does not exist.\"
+
+      }
+
+      For the JSON name *eventDate*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10907,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      For the JSON name *eventDate*, the value shall be syntactically valid
+      time and date according to RFC3339.{
+
+      \"code\": -10908,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value shall be a syntactically valid time and
+      date according to RFC3339.\"
+
+      }
+
+      If the JSON name *eventActor* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -10909,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *links* exists, the JSON name *eventActor* shall also
+      exist.{
+
+      \"code\": -10910,
+
+      \"value\": \"\<events structure\>\",
+
+      \"message\": \"A links structure was found but an eventActor was
+      not.\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -10911,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      An *eventAction* value shall only appears once within the events
+      array.{
+
+      \"code\": -10912,
+
+      \"value\": \"\<events structure\>\",
+
+      \"message\": \"An eventAction value exists more than once within the
+      events array.\"
+
+      }
+
+      **\
+      **
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC3339RFC7159RDAP_RFCs**\
+      **
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapStatusValidation:
     Summary: Status validation
+    Description: |
+      **The following steps should be used to test that a status data
+      structure is valid:**
+
+      The *status* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -10999-11000,
+
+      \"value\": \"\<status structure\>\",
+
+      \"message\": \"The status structure is not syntactically valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11001,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      Each of the [JSON string]{.underline} values in the [JSON
+      array]{.underline} shall be included in the **RDAPJSONValues** with
+      Type=\"status\".{
+
+      \"code\": -11002,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"status\".\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapPort43WhoisServerValidation:
     Summary: Port 43 WHOIS Server
+    Description: |
+      **The following steps should be used to test that a port43 data
+      structure is valid:**
+
+      For the JSON name *port43*, the value shall pass the test
+      \[IPv4Validation\], \[IPv6Validation\] or \[DomainNameValidation\]
+      defined in this document.{
+
+      \"code\": -11099-11100,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name port43 does not pass
+      \[IPv4Validation\], \[IPv6Validation\] or \[DomainNameValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapPublicIdsValidation:
     Summary: Public IDs validation
+    Description: |
+      **The following steps should be used to test that a publicIds data
+      structure is valid:**
+
+      The *publicIds* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11199-11200,
+
+      \"value\": \"\<publicIds structure\>\",
+
+      \"message\": \"The publicIds structure is not syntactically valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      The name of every name/value pairs shall be *type* or *identifier*. {
+
+      \"code\": -11201,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: type or
+      identifier.\"
+
+      }
+
+      The JSON name/values of *type* or *identifier* shall appear only once.
+      {
+
+      \"code\": -11202,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a domain structure
+      was found more than once.\"
+
+      }
+
+      The JSON name/values of *type* and *identifier* shall appear. {
+
+      \"code\": -11203,
+
+      \"value\": \"\<publicIds structure\>\",
+
+      \"message\": \"The following name/values shall exist: type or
+      identifier.\"
+
+      }
+
+      For the JSON name *type*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11204,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      For the JSON name *identifier*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11205,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapAsEventActorValidation:
     Summary: asEventActor Validation
+    Description: |
+      **The following steps should be used to test that an asEventActor data
+      structure is valid:**
+
+      The *asEventActor* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11299-11300,
+
+      \"value\": \"\<asEventActor structure\>\",
+
+      \"message\": \"The asEventActor structure is not syntactically
+      valid.\"
+
+      }
+
+      The *asEventActor* data structure must be embedded within an entity
+      object, and the entity object must be embedded within another object.{
+
+      \"code\": -11301,
+
+      \"value\": \"\<asEventActor structure\>\",
+
+      \"message\": \"The asEventActor structure is not embedded within an
+      entity object and the entity object is not embedded within another
+      object.\"
+
+      }
+
+      For every object of the JSON array, verify that the structure complies
+      with:
+
+      The name of every name/value pair shall be any of: *eventAction* or
+      *eventDate*. {
+
+      \"code\": -11302,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: eventAction
+      and eventDate.\"
+
+      }
+
+      The JSON name/values of *eventAction* or *eventDate* shall appear only
+      once. {
+
+      \"code\": -11303,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      The JSON name *eventAction* shall exist.{
+
+      \"code\": -11304,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The eventAction element does not exist.\"
+
+      }
+
+      For the JSON name *eventAction*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11305,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      For the JSON name *eventAction*, the value shall be included in the
+      **RDAPJSONValues** with Type=\"event action\".{
+
+      \"code\": -11306,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"event action\" in the RDAPJSONValues dataset.\"
+
+      }
+
+      The JSON name *eventDate* shall exist.{
+
+      \"code\": -11307,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The eventDate element does not exist.\"
+
+      }
+
+      For the JSON name *eventDate*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11308,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      For the JSON name *eventDate*, the value shall be syntactically valid
+      time and date according to RFC3339.{
+
+      \"code\": -11309,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value shall be a syntactically valid time and
+      date according to RFC3339.\"
+
+      }
+
+      An *eventAction* shall only appear once within the events array.{
+
+      \"code\": -11310,
+
+      \"value\": \"\<events structure\>\",
+
+      \"message\": \"An *eventAction* exists more than once within the
+      events array.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC3339RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapIpAddressesValidation:
     Summary: IP Addresses Validation
+    Description: |
+      **The following steps should be used to test that an ipAddresses data
+      structure is valid:**
+
+      The *ipAddresses* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -11399-11400,
+
+      \"value\": \"\<ipAddresses structure\>\",
+
+      \"message\": \"The ipAddresses structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pair shall be any of: *v4* or *v6*. {
+
+      \"code\": -11401,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: v4 or v6.\"
+
+      }
+
+      The JSON name/values of *v4* and *v6* shall appear only once. {
+
+      \"code\": -11402,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of an ipAddresses
+      structure was found more than once.\"
+
+      }
+
+      One *v4* name/values or one *v6* name/value shall appear. {
+
+      \"code\": -11403,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"v4 nor v6 name/value pair exists.\"
+
+      }
+
+      If the JSON name *v4* exists, the value shall pass the following:
+
+      The *v4* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11404,
+
+      \"value\": \"\<v4 structure\>\",
+
+      \"message\": \"The v4 structure is not syntactically valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11405,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      The IPv4 address is syntactically valid in dot-decimal notation.{
+
+      \"code\": -11406,
+
+      \"value\": \"\<IPv4 address string\>\",
+
+      \"message\": \"The IPv4 address is not syntactically valid in
+      dot-decimal notation.\"
+
+      }
+
+      If the JSON name *v6* exists, the value shall pass the following:
+
+      The *v6* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11407,
+
+      \"value\": \"\<v6 structure\>\",
+
+      \"message\": \"The v6 structure is not syntactically valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11408,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      The IPv6 address is syntactically valid.{
+
+      \"code\": -11409,
+
+      \"value\": \"\<IPv6 address string\>\",
+
+      \"message\": \"The IPv6 address is not syntactically valid.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC791RFC5952RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapVariantsValidation:
     Summary: Variants validation
+    Description: |
+      **The following steps should be used to test that a variants data
+      structure is valid:**
+
+      The *variants* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11499-11500,
+
+      \"value\": \"\<variants structure\>\",
+
+      \"message\": \"The variants structure is not syntactically valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      The name of every name/value pair shall be *relation*, *idnTable* or
+      *variantNames*. {
+
+      \"code\": -11501,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: relation,
+      idnTable or variantNames.\"
+
+      }
+
+      The JSON name/value pairs of *relation*, *idnTable* and *variantNames*
+      shall appear only once. {
+
+      \"code\": -11502,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      The RDAP *relation* data structure must be a syntactically valid *JSON
+      array*.{
+
+      \"code\": -11503,
+
+      \"value\": \"\<relation structure\>\",
+
+      \"message\": \"The RDAP Conformance structure is not syntactically
+      valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11504,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      Each of the [JSON string]{.underline} values in the [JSON
+      array]{.underline} shall be included in the **RDAPJSONValues** with
+      Type=\"domain variant relation\".{
+
+      \"code\": -11505,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"domain variant relation \".\"
+
+      }
+
+      If the JSON name *idnTable* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11506,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      The *variantNames* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11507,
+
+      \"value\": \"\<variantNames structure\>\",
+
+      \"message\": \"The variantNames structure is not syntactically
+      valid.\"
+
+      }
+
+      For every object of the [JSON array]{.underline}, verify that the
+      structure complies with:
+
+      The name of every name/value pair shall be any of: *ldhName* or
+      *unicodeName*{
+
+      \"code\": -11508,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: ldhName or
+      unicodeName.\"
+
+      }
+
+      The JSON name/value pairs of *ldhName* or *unicodeName* shall exist
+      only once. {
+
+      \"code\": -11509,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      If the JSON name title *ldhName* exists, the value shall pass the test
+      LDH name \[stdRdapLdhNameValidation\] defined in this document.{
+
+      \"code\": -11510,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \" The value for the JSON name value does not pass LDH
+      name \[stdRdapLdhNameValidation\].\"
+
+      }
+
+      If the JSON name *unicodeName* exists, the value shall pass the test
+      Unicode name \[stdRdapUnicodeNameValidation\] defined in this
+      document.{
+
+      \"code\": -11511,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Unicode
+      name \[stdRdapUnicodeNameValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapUnicodeNameValidation:
     Summary: Unicode name
+    Description: |
+      **The following steps should be used to test that a unicodeName is
+      valid:**
+
+      The length of each label is between 1 and 63.{
+
+      \"code\": -11599-11600,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A DNS label with length not between 1 and 63 was
+      found.\"
+
+      }
+
+      A maximum total length of 253 characters not including the last
+      \".\".{
+
+      \"code\": -11601,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name of more than 253 characters was found.\"
+
+      }
+
+      At least two labels shall exist in the domain name. See,
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10.{
+
+      \"code\": -11602,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name with less than two labels was found. See
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10\"
+
+      }
+
+      Each label of the domain name is a valid \"U-label or \"NR-LDH
+      label\". {
+
+      \"code\": -11603,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A label not being a valid \"U-label\" or \"NR-LDH
+      label\" was found.\"
+
+      }
+
+      Note: the latest version of the IANA IDNA Rules and Derived Property
+      Values shall be used. See,
+      <https://www.iana.org/assignments/idna-tables-11.0.0/idna-tables-11.0.0.xml>
+
+      Note: some legacy gTLDs may fail this test, because they have a few
+      domain name registrations that comply with IDNA2003 but not IDNA2018.
+      Such names are not recommended to be used when testing an RDAP
+      response with this tool.
+
+      **The following normative references are required to understand this
+      test group:**
+
+      DNS_RFCsIDNA_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapLdhNameValidation:
     Summary: LDH name
+    Description: |
+      **The following steps should be used to test that a ldhName is
+      valid:**
+
+      The length of each label is between 1 and 63.{
+
+      \"code\": -11699-11700,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A DNS label with length not between 1 and 63 was
+      found.\"
+
+      }
+
+      A maximum total length of 253 characters not including the last
+      \".\".{
+
+      \"code\": -11701,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name of more than 253 characters was found.\"
+
+      }
+
+      At least two labels shall exist in the domain name. See,
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10.{
+
+      \"code\": -11702,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A domain name with less than two labels was found. See
+      RDAP_Technical_Implementation_Guide_2_1 section 1.10\"
+
+      }
+
+      Each label of the domain name is a valid \"A-label or \"NR-LDH
+      label\".{
+
+      \"code\": -11703,
+
+      \"value\": \"\<domain name\>\",
+
+      \"message\": \"A label not being a valid \"A-label\" or \"NR-LDH
+      label\" was found.\"
+
+      }
+
+      Note: the latest version of the IANA IDNA Rules and Derived Property
+      Values shall be used. See,
+      <https://www.iana.org/assignments/idna-tables-11.0.0/idna-tables-11.0.0.xml>
+
+      Note: some legacy gTLDs may fail this test, because they have a few
+      domain name registrations that comply with IDNA2003 but not IDNA2018.
+      Such names are not recommended to be used when testing an RDAP
+      response with this tool.
+
+      **The following normative references are required to understand this
+      test group:**
+
+      DNS_RFCsIDNA_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapRolesValidation:
     Summary: Roles validation
+    Description: |
+      **The following steps should be used to test that a roles data
+      structure is valid:**
+
+      The *roles* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11799-11800,
+
+      \"value\": \"\<roles structure\>\",
+
+      \"message\": \"The roles structure is not syntactically valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -11801,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      Each of the [JSON string]{.underline} values in the [JSON
+      array]{.underline} shall be included in the **RDAPJSONValues** with
+      Type=\"role\".{
+
+      \"code\": -11802,
+
+      \"value\": \"\<JSON string\>\",
+
+      \"message\": \"The JSON string is not included as a Value with
+      Type=\"role\".\"
+
+      }
+
+      The role value shall only appear once in the [JSON
+      array]{.underline}.{
+
+      \"code\": -11803,
+
+      \"value\": \"\<roles structure\>\",
+
+      \"message\": \"A role value appeared more than once.\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapEntitiesValidation:
     Summary: Entities validation
+    Description: |
+      **The following steps should be used to test that an entities data
+      structure is valid:**
+
+      The *entities* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -11899-11900,
+
+      \"value\": \"\<entities structure\>\",
+
+      \"message\": \"The entities structure is not syntactically valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} shall pass the test Entity
+      lookup validation \[stdRdapEntityLookupValidation\] defined in this
+      document.{
+
+      \"code\": -11901,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value does not pass Entity lookup validation
+      \[stdRdapEntityLookupValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapSecureDnsValidation:
     Summary: Secure DNS validation
+    Description: |
+      **The following steps should be used to test that a secureDNS data
+      structure is valid:**
+
+      The *secureDNS* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -11999-12000,
+
+      \"value\": \"\<secureDNS structure\>\",
+
+      \"message\": \"The domain structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be *zoneSigned*,
+      *delegationSigned*, *maxSigLife*, *dsData* or *keyData*. {
+
+      \"code\": -12001,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: zoneSigned,
+      delegationSigned, maxSigLife, dsData or keyData.\"
+
+      }
+
+      The JSON name/values of *zoneSigned*, *delegationSigned*,
+      *maxSigLife*, *dsData* and *keyData* shall appear only once. {
+
+      \"code\": -12002,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a domain structure
+      was found more than once.\"
+
+      }
+
+      If the JSON name *zoneSigned* appears, the value shall be a [JSON
+      boolean]{.underline} data type.{
+
+      \"code\": -12003,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a boolean.\"
+
+      }
+
+      The JSON name *delegationSigned* shall appear.{
+
+      \"code\": -12004,
+
+      \"value\": \"\<links structure\>\",
+
+      \"message\": \"The delegationSigned element does not exist.\"
+
+      }
+
+      For the JSON name *delegationSigned*, the value shall be a [JSON
+      boolean]{.underline} data type.{
+
+      \"code\": -12005,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a boolean.\"
+
+      }
+
+      If the JSON name *maxSigLife* exists, the value shall be a [JSON
+      number]{.underline} data type between 1 and 2147483647.{
+
+      \"code\": -12006,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a number between 1 and
+      2147483647.\"
+
+      }
+
+      One *dsData* name/values or one *keyData* name/value shall appear. {
+
+      \"code\": -12007,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"dsData nor keyData name/value pair exists.\"
+
+      }
+
+      If the JSON name *dsData* appears, the value shall pass the following:
+
+      The *dsData* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -12008,
+
+      \"value\": \"\<dsData structure\>\",
+
+      \"message\": \"The dsData structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pair shall be any of: *keyTag*,
+      *algorithm*, *digest*, *digestType*, *events* or *links*. {
+
+      \"code\": -12009,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: keyTag,
+      algorithm, digest, digestType, events or links.\"
+
+      }
+
+      The JSON name/values of *keyTag*, *algorithm*, *digest*, *digestType*,
+      *events* or *links* shall appear only once. {
+
+      \"code\": -12010,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a dsData structure
+      was found more than once.\"
+
+      }
+
+      The JSON name/values of *keyTag*, *algorithm*, *digest* and
+      *digestType* shall appear. {
+
+      \"code\": -12011,
+
+      \"value\": \"\<dsData structure\>\",
+
+      \"message\": \"The following name/values shall exist: keyTag,
+      algorithm, digest and digestType.\"
+
+      }
+
+      For the JSON name *keyTag*, the value shall be a JSON number data type
+      between 1 and 65535.{
+
+      \"code\": -12012,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a number between 1 and 65535.\"
+
+      }
+
+      For the JSON name *algorithm*, the value shall be a [JSON
+      number]{.underline} listed with Zone Signing=Y in
+      **dnsSecAlgNumbers**. The values 253 and 254 are not valid for this
+      test.{
+
+      \"code\": -12013,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not listed with Zone Signing=Y in
+      dnsSecAlgNumbers, or it\'s 253 or 254.\"
+
+      }
+
+      For the JSON name *digest*, the value shall be a [JSON
+      string]{.underline} of case-insensitive hexadecimal digits. Whitespace
+      is allowed within the hexadecimal text.{
+
+      \"code\": -12014,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string of case-insensitive
+      hexadecimal digits. Whitespace is allowed within the hexadecimal
+      test.\"
+
+      }
+
+      For the JSON name *digestType*, the value shall be a [JSON
+      number]{.underline} assigned in **dsRrTypes**. {
+
+      \"code\": -12015,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not assigned in dsRrTypes.\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12016,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -12017,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      If the JSON name *keyData* exists, the value shall pass the following:
+
+      The *keyData* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -12018,
+
+      \"value\": \"\<keyData structure\>\",
+
+      \"message\": \"The keyData structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pair shall be *flags*, *protocol*,
+      *publicKey*, *algorithm*, *events* or *links*. {
+
+      \"code\": -12019,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: flags,
+      protocol, publicKey, algorithm, events or links.\"
+
+      }
+
+      The JSON name/values of *flags*, *protocol*, *publicKey*, *algorithm*,
+      *events* or *links* shall appear only once. {
+
+      \"code\": -12020,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a keyData structure
+      was found more than once.\"
+
+      }
+
+      The JSON name/values of *flags*, *protocol*, *publicKey* and
+      *algorithm* shall appear. {
+
+      \"code\": -12021,
+
+      \"value\": \"\<dsData structure\>\",
+
+      \"message\": \"The following name/values shall exist: flags, protocol,
+      publicKey and algorithm.\"
+
+      }
+
+      For the JSON name *flags*, the value shall be a [JSON
+      number]{.underline} data type with values: 256 or 257.{
+
+      \"code\": -12022,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not 256 or 257.\"
+
+      }
+
+      For the JSON name *protocol*, the value shall be a [JSON
+      number]{.underline} data type with value: 3.{
+
+      \"code\": -12023,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not 3.\"
+
+      }
+
+      For the JSON name *publicKey*, the value shall be a [JSON
+      string]{.underline}, and the key is represented as a Base64.
+      Whitespace is allowed within the text.{
+
+      \"code\": -12024,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string of case-insensitive
+      hexadecimal digits. Whitespace is allowed within the hexadecimal
+      text.\"
+
+      }
+
+      For the JSON name *algorithm*, the value shall be a JSON number listed
+      with Zone Signing=Y in **dnsSecAlgNumbers**. The values 253 and 254
+      are not valid for this test.{
+
+      \"code\": -12025,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not listed with Zone Signing=Y in
+      dnsSecAlgNumbers, or it\'s 253 or 254.\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12026,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -12027,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCsDNSSEC_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapErrorResponseBodyValidation:
     Summary: Error Response Body
+    Description: |
+      **The following steps should be used to test that an error data
+      structure is valid:**
+
+      The *error* data structure must be a syntactically valid JSON object.{
+
+      \"code\": -12099-12100,
+
+      \"value\": \"\<error structure\>\",
+
+      \"message\": \"The error structure is not syntactically valid.\"
+
+      }
+
+      At least the following name/value pairs shall appear: *errorCode*,
+      *title* and *description*. {
+
+      \"code\": -12101,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"At least the following name/value pairs shall exist:
+      errorCode, title and description.\"
+
+      }
+
+      The JSON name/values of *errorCode*, *title*, and *description* shall
+      appear only once. {
+
+      \"code\": -12102,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of an error structure
+      was found more than once.\"
+
+      }
+
+      For the JSON name *errorCode*, the value shall be a [JSON
+      number]{.underline} data type.{
+
+      \"code\": -12103,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a number.\"
+
+      }
+
+      For the JSON name *title*, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -12104,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      The *description* data structure must be a syntactically valid [JSON
+      array]{.underline}.{
+
+      \"code\": -12105,
+
+      \"value\": \"\<description structure\>\",
+
+      \"message\": \"The description structure is not syntactically valid.\"
+
+      }
+
+      Every value of the [JSON array]{.underline} of the *description* data
+      structure shall be a [JSON string]{.underline} data type.{
+
+      \"code\": -12106,
+
+      \"value\": \"\<JSON value\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      **\
+      **
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+
+      ## Standard RDAP Object Classes Validations
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapDomainLookupValidation:
     Summary: Domain Lookup Validation
+    Description: |
+      **The following steps should be used to test that a domain data
+      structure is valid:**
+
+      The *domain* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -12199-12200,
+
+      \"value\": \"\<domain structure\>\",
+
+      \"message\": \"The domain structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be any of: *objectClassName*,
+      *handle*, *ldhName*, *unicodeName*, *variants*, *nameservers*,
+      *secureDNS*, *entities*, *status*, *publicIds*, *remarks*, *links*,
+      *port43*, *events*, *notices* or *rdapConformance*. {
+
+      \"code\": -12201,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of:
+      objectClassName, handle, ldhName, unicodeName, variants, nameservers,
+      secureDNS, entities, status, publicIds, remarks, links, port43,
+      events, notices or rdapConformance.\"
+
+      }
+
+      The JSON name/values of *objectClassName*, *handle*, *ldhName*,
+      *unicodeName*, *variants*, *nameservers*, *secureDNS*, *entities*,
+      *status*, *publicIds*, *remarks*, *links*, *port43*, *events*,
+      *notices* or *rdapConformance* shall appear only once. {
+
+      \"code\": -12202,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a domain structure
+      was found more than once.\"
+
+      }
+
+      For the JSON name *objectClassName*, the value shall be \"domain\".{
+
+      \"code\": -12203,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not \"domain\".\"
+
+      }
+
+      If the JSON name *handle* exists, the value shall be a JSON string
+      data type.{
+
+      \"code\": -12204,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *ldhName*, the value shall pass the test LDH name
+      \[stdRdapLdhNameValidation\] defined in this document.{
+
+      \"code\": -12205,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \" The value for the JSON name value does not pass LDH
+      name \[stdRdapLdhNameValidation\].\"
+
+      }
+
+      If the JSON name *unicodeName* exists, the value shall pass the test
+      Unicode name \[stdRdapUnicodeNameValidation\] defined in this
+      document.{
+
+      \"code\": -12206,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Unicode
+      name \[stdRdapUnicodeNameValidation\].\"
+
+      }
+
+      If the JSON name *variants* exists, the value shall pass the test
+      Variants validation \[stdRdapVariantsValidation\] defined in this
+      document.{
+
+      \"code\": -12207,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      Variants validation \[stdRdapVariantsValidation\].\"
+
+      }
+
+      If the JSON name *nameservers* exists, the value shall pass the test
+      Nameserver lookup validation \[stdRdapNameserverLookupValidation\]
+      defined in this document.{
+
+      \"code\": -12208,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      Nameserver lookup validation \[stdRdapNameserverLookupValidation\].\"
+
+      }
+
+      If the JSON name *secureDNS* exists, the value shall pass the test
+      Secure DNS validation \[stdRdapSecureDnsValidation\] defined in this
+      document.{
+
+      \"code\": -12209,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Secure
+      DNS validation \[stdRdapSecureDnsValidation\].\"
+
+      }
+
+      If the JSON name *entities* exists, the value shall pass the test
+      Entities validation \[stdRdapEntitiesValidation\] defined in this
+      document.{
+
+      \"code\": -12210,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      Entities validation \[stdRdapEntitiesValidation\].\"
+
+      }
+
+      If the JSON name *status* exists, the value shall pass the test Status
+      validation \[stdRdapStatusValidation\] defined in this document.{
+
+      \"code\": -12211,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Status
+      validation \[stdRdapStatusValidation\].\"
+
+      }
+
+      [\
+      ]{.mark}
+
+      If the JSON name *publicIds* exists, the value shall pass the test
+      Public IDs validation \[stdRdapPublicIdsValidation\] defined in this
+      document.{
+
+      \"code\": -12212,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Public
+      IDs validation \[stdRdapPublicIdsValidation\].\"
+
+      }
+
+      If the JSON name *remarks* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12213,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -12214,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      If the JSON name *port43* exists, the value shall pass the test Port
+      43 WHOIS Server \[stdRdapPort43WhoisServerValidation\] defined in this
+      document.{
+
+      \"code\": -12215,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Port 43
+      WHOIS Server \[stdRdapPort43WhoisServerValidation\].\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12216,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12217,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists and the domain object is not the
+      topmost JSON object.{
+
+      \"code\": -12218,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name notices exists but
+      nameserver object is not the topmost JSON object.\"
+
+      }
+
+      If the JSON name *rdapConformance* exists, the value shall pass the
+      test RDAP Conformance validation \[stdRdapConformanceValidation\]
+      defined in this document.{
+
+      \"code\": -12219,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass RDAP
+      Conformance validation \[stdRdapConformanceValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapEntityLookupValidation:
     Summary: Entity lookup validation
+    Description: |
+      **The following steps should be used to test that an entity data
+      structure is valid:**
+
+      The *entity* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -12299-12300,
+
+      \"value\": \"\<entity structure\>\",
+
+      \"message\": \"The entity structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be any of: *objectClassName*,
+      *handle*, *vcardArray*, *roles*, *publicIds*, *entities*, *remarks*,
+      *links*, *events*, *asEventActor*, *status*, *port43*, *notices* or
+      *rdapConformance*. {
+
+      \"code\": -12301,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of:
+      objectClassName, handle, vcardArray, roles, publicIds, entities,
+      remarks, links, events, asEventActor, status, port43, notices or
+      rdapConformance.\"
+
+      }
+
+      The JSON name/values of *objectClassName*, *handle*, *vcardArray*,
+      *roles*, *publicIds*, *entities*, *remarks*, *links*, *events*,
+      *asEventActor*, *status*, *port43*, *notices* or *rdapConformance*
+      shall exist only once. {
+
+      \"code\": -12302,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a domain structure
+      was found more than once.\"
+
+      }
+
+      For the JSON name *objectClassName*, the value shall be \"entity\".{
+
+      \"code\": -12303,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not \"entity\".\"
+
+      }
+
+      If the JSON name *handle* exists, the value shall be a [JSON
+      string]{.underline} data type.{
+
+      \"code\": -12304,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name title *vcardArray* exists, the value shall be
+      syntactically valid.{
+
+      \"code\": -12305,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \" The value for the JSON name value is not a
+      syntactically valid vcardArray.\"
+
+      }
+
+      Note: it\'s expected that a library for testing jCard objects will be
+      used.
+
+      If the JSON name *roles* exists, the value shall pass the test Roles
+      validation \[stdRdapRolesValidation\] defined in this document.{
+
+      \"code\": -12306,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Roles
+      validation \[stdRdapRolesValidation\].\"
+
+      }
+
+      If the JSON name *publicIds* exists, the value shall pass the test
+      Public IDs validation \[stdRdapPublicIdsValidation\] defined in this
+      document.{
+
+      \"code\": -12307,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Public
+      IDs validation \[stdRdapPublicIdsValidation\].\"
+
+      }
+
+      If the JSON name *entities* exists, the value shall pass the test
+      Entities validation \[stdRdapEntitiesValidation\] defined in this
+      document.{
+
+      \"code\": -12308,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      Entities validation \[stdRdapEntitiesValidation\].\"
+
+      }
+
+      If the JSON name *remarks* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12309,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -12310,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12311,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *asEventActor* exists, the value shall pass the test
+      asEventActor Validation \[stdRdapAsEventActorValidation\] defined in
+      this document.{
+
+      \"code\": -12312,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      asEventActor Validation \[stdRdapAsEventActorValidation\].\"
+
+      }
+
+      If the JSON name *status* exists, the value shall pass the test Status
+      validation \[stdRdapStatusValidation\] defined in this document.{
+
+      \"code\": -12313,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Status
+      validation \[stdRdapStatusValidation\].\"
+
+      }
+
+      If the JSON name *port43* exists, the value shall pass the test Port
+      43 WHOIS Server \[stdRdapPort43WhoisServerValidation\] defined in this
+      document.{
+
+      \"code\": -12314,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Port 43
+      WHOIS Server \[stdRdapPort43WhoisServerValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12315,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists and the entity object is not the
+      topmost JSON object.{
+
+      \"code\": -12316,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name notices exists but entity
+      object is not the topmost JSON object.\"
+
+      }
+
+      If the JSON name *rdapConformance* exists, the value shall pass the
+      test RDAP Conformance validation \[stdRdapConformanceValidation\]
+      defined in this document.{
+
+      \"code\": -12317,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass RDAP
+      Conformance validation \[stdRdapConformanceValidation\].\"
+
+      }
+
+      **\
+      **
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapNameserverLookupValidation:
     Summary: Nameserver lookup validation
+    Description: |
+      **The following steps should be used to test that a nameserver data
+      structure is valid:**
+
+      The *nameserver* data structure must be a syntactically valid JSON
+      object.{
+
+      \"code\": -12399-12400,
+
+      \"value\": \"\<nameserver structure\>\",
+
+      \"message\": \"The nameserver structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be any of: *objectClassName*,
+      *handle*, *ldhName*, *unicodeName*, *ipAddresses*, *entities*,
+      *status*, *remarks*, *links*, *port43*, *events*, *notices* or
+      *rdapConformance*. {
+
+      \"code\": -12401,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of:
+      objectClassName, handle, ldhName, unicodeName, ipAddresses, entities,
+      status, remarks, links, port43, events, notices or rdapConformance.\"
+
+      }
+
+      The JSON name/values of *objectClassName*, *handle*, *ldhName*,
+      *unicodeName*, *ipAddresses*, *entities*, *status*, *remarks*,
+      *links*, *port43*, *events*, *notices* or *rdapConformance* shall
+      exist only once. {
+
+      \"code\": -12402,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      For the JSON name *objectClassName*, the value shall be
+      \"nameserver\".{
+
+      \"code\": -12403,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not \"nameserver\".\"
+
+      }
+
+      If the JSON name *handle* exists, the value shall be a JSON string
+      data type.{
+
+      \"code\": -12404,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The JSON value is not a string.\"
+
+      }
+
+      If the JSON name *ldhName* exists, the value shall pass the test LDH
+      name \[stdRdapLdhNameValidation\] defined in this document.{
+
+      \"code\": -12405,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \" The value for the JSON name value does not pass LDH
+      name \[stdRdapLdhNameValidation\].\"
+
+      }
+
+      If the JSON name *unicodeName* exists, the value shall pass the test
+      Unicode name \[stdRdapUnicodeNameValidation\] defined in this
+      document.{
+
+      \"code\": -12406,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Unicode
+      name \[stdRdapUnicodeNameValidation\].\"
+
+      }
+
+      If the JSON name *ipAddresses* exists, the value shall pass the test
+      IP Addresses Validation \[stdRdapIpAddressesValidation\] defined in
+      this document.{
+
+      \"code\": -12407,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass IP
+      Addresses Validation \[stdRdapIpAddressesValidation\].\"
+
+      }
+
+      If the JSON name *entities* exists, the value shall pass the test
+      Entities validation \[stdRdapEntitiesValidation\] defined in this
+      document.{
+
+      \"code\": -12408,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass
+      Entities validation \[stdRdapEntitiesValidation\].\"
+
+      }
+
+      If the JSON name *status* exists, the value shall pass the test Status
+      validation \[stdRdapStatusValidation\] defined in this document.{
+
+      \"code\": -12409,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Status
+      validation \[stdRdapStatusValidation\].\"
+
+      }
+
+      If the JSON name *remarks* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12410,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *links* exists, the value shall pass the test Links
+      validation \[stdRdapLinksValidation\] defined in this document.{
+
+      \"code\": -12411,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Links
+      validation \[stdRdapLinksValidation\].\"
+
+      }
+
+      If the JSON name *port43* exists, the value shall pass the test Port
+      43 WHOIS Server \[stdRdapPort43WhoisServerValidation\] defined in this
+      document.{
+
+      \"code\": -12412,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Port 43
+      WHOIS Server \[stdRdapPort43WhoisServerValidation\].\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12413,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12414,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists and the entity object is not the
+      topmost JSON object.{
+
+      \"code\": -12415,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name notices exists but entity
+      object is not the topmost JSON object.\"
+
+      }
+
+      If the JSON name *rdapConformance* exists, the value shall pass the
+      test RDAP Conformance validation \[stdRdapConformanceValidation\]
+      defined in this document.{
+
+      \"code\": -12416,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass RDAP
+      Conformance validation \[stdRdapConformanceValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapHelpValidation:
     Summary: Help validation
+    Description: |
+      **The following steps should be used to test that a help data
+      structure is valid:**
+
+      The *help* data structure must be a syntactically valid JSON object.{
+
+      \"code\": -12499-12500,
+
+      \"value\": \"\<help structure\>\",
+
+      \"message\": \"The help structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be *notices* or
+      *rdapConformance*. {
+
+      \"code\": -12501,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of: notices or
+      rdapConformance.\"
+
+      }
+
+      The JSON name/values of *notices* or *rdapConformance* shall exist
+      only once. {
+
+      \"code\": -12502,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      If the JSON name *notices* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12503,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists and the entity object is not the
+      topmost JSON object.{
+
+      \"code\": -12504,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name notices exists but entity
+      object is not the topmost JSON object.\"
+
+      }
+
+      If the JSON name *rdapConformance* exists, the value shall pass the
+      test RDAP Conformance validation \[stdRdapConformanceValidation\]
+      defined in this document.{
+
+      \"code\": -12505,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass RDAP
+      Conformance validation \[stdRdapConformanceValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+    Input-Parameters:
+    Dependencies:
   rdap-stdRdapNameserversSearchValidation:
     Summary: Nameservers search validation
+    Description: |
+      **The following steps should be used to test that a
+      nameserverSearchResults data structure is valid:**
+
+      The *nameserverSearchResults* data structure must be a syntactically
+      valid JSON object.{
+
+      \"code\": -12599-12600,
+
+      \"value\": \"\<nameserver structure\>\",
+
+      \"message\": \"The nameserver structure is not syntactically valid.\"
+
+      }
+
+      The name of every name/value pairs shall be any of:
+      *nameserverSearchResults*, *remarks*, *events*, *notices* or
+      *rdapConformance*. {
+
+      \"code\": -12601,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair is not of:
+      nameserverSearchResults, remarks, events, notices or
+      rdapConformance.\"
+
+      }
+
+      The JSON name/values of *nameserverSearchResults*, *remarks*,
+      *events*, *notices* or *rdapConformance* shall exist only once. {
+
+      \"code\": -12602,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The name in the name/value pair of a link structure was
+      found more than once.\"
+
+      }
+
+      The *nameserverSearchResults* data structure must be a syntactically
+      valid JSON array.{
+
+      \"code\": -12603,
+
+      \"value\": \"\<nameserverSearchResults structure\>\",
+
+      \"message\": \"The nameserverSearchResults structure is not
+      syntactically valid.\"
+
+      }
+
+      For every object (i.e. nameserver) of the [JSON array]{.underline},
+      verify that the *nameserverSearchResults* structure complies with:
+
+      The object (i.e. nameserver) shall pass the Nameserver lookup
+      validation \[stdRdapNameserverLookupValidation\] test.{
+
+      \"code\": -12604,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The nameserver object does not pass Nameserver lookup
+      validation \[stdRdapNameserverLookupValidation\].\"
+
+      }
+
+      If the JSON name *remarks* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12605,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *events* exists, the value shall pass the test Events
+      Validation \[stdRdapEventsValidation\] defined in this document.{
+
+      \"code\": -12606,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Events
+      Validation \[stdRdapEventsValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists, the value shall pass the test
+      Notices and Remarks Validation \[stdRdapNoticesRemarksValidation\]
+      defined in this document.{
+
+      \"code\": -12607,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass Notices
+      and Remarks Validation \[stdRdapNoticesRemarksValidation\].\"
+
+      }
+
+      If the JSON name *notices* exists and the entity object is not the
+      topmost JSON object.{
+
+      \"code\": -12608,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name notices exists but entity
+      object is not the topmost JSON object.\"
+
+      }
+
+      If the JSON name *rdapConformance* exists, the value shall pass the
+      test RDAP Conformance validation \[stdRdapConformanceValidation\]
+      defined in this document.{
+
+      \"code\": -12609,
+
+      \"value\": \"\<name/value pair\>\",
+
+      \"message\": \"The value for the JSON name value does not pass RDAP
+      Conformance validation \[stdRdapConformanceValidation\].\"
+
+      }
+
+      **The following normative references are required to understand this
+      test group:**
+
+      RFC7159RDAP_RFCs
+
+      # Collection of RDAP Profile February-2019 tests
+
+      ## Technical Implementation Guide -- General
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_2_Validation:
     Summary: use of HTTPS
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.2 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      If the scheme of the URI to be tested is \"http\":{
+
+      \"code\": -20099-20100,
+
+      \"value\": \"\<URI\>\",
+
+      \"message\": \"The URL is HTTP, per section 1.2 of the
+      RDAP_Technical_Implementation_Guide_2_1 shall be HTTPS only.\"
+
+      }
+
+      If the scheme of the URI to be tested is \"https\", perform the same
+      RDAP query using \"http\". If the RDAP response provided over \"HTTP\"
+      and \"HTTPS\" without considering the value of \"last update of RDAP
+      database\" is the same: {
+
+      \"code\": -20101,
+
+      \"value\": \"\<RDAP response provided over HTTP\> + \"\\n/\\n\" +
+      \<RDAP response provided over HTTPS\>\",
+
+      \"message\": \"The RDAP response was provided over HTTP, per section
+      1.2 of the RDAP_Technical_Implementation_Guide_2_1 shall be HTTPS
+      only.\"
+
+      }
+
+      Note: the test \[tigSection_1_2_Validation\] shall be performed on the
+      URL on every HTTP redirect.
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_3_Validation:
     Summary: use of obsolete SSL/TLS versions
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.3 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      If the scheme of the URI to be tested is \"https\", verify that SSLv2
+      and SSLv3 are not offered by the RDAP server.{
+
+      \"code\": -20199-20200,
+
+      \"value\": \"\<URI\>\",
+
+      \"message\": \"The RDAP server is offering SSLv2 and/or SSLv3.\"
+
+      }
+
+      Note: the test \[tigSection_1_3_Validation\] shall be performed on the
+      URL on every HTTP redirect.
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_6_Validation:
     Summary: support for HEAD
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.6 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      The tool shall use the HTTP HEAD method on the URI to be tested. If
+      the HTTP Status code is different from the status code obtained when
+      doing the GET method:{
+
+      \"code\": -20299-20300,
+
+      \"value\": \"\<HTTP Status code when using the GET method\> +
+      \"\\n/\\n\" \"\<HTTP Status code when using the HEAD method\>\",
+
+      \"message\": \"The HTTP Status code obtained when using the HEAD
+      method is different from the GET method. See section 1.6 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_8_Validation:
     Summary: IPv4/IPv6 resolvability
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.8 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Obtain the Resource Record for the A QTYPE for the host in the URI.
+      Validate that the status of the DNS response is not NOERROR. Validate
+      that all IPv4 addresses in the RDATA pass IPv4 address validation
+      \[ipv4Validation\]:{
+
+      \"code\": -20399-20400,
+
+      \"value\": \"\<IPv4 addresses\>\",
+
+      \"message\": \"The RDAP service is not provided over IPv4. See section
+      1.8 of the RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      Obtain the Resource Record for the AAAA QTYPE for the host in the URI.
+      Validate that the status of the DNS response is not NOERROR. Validate
+      that all IPv6 addresses in the RDATA pass IPv6 address validation
+      \[ipv6Validation\]:{
+
+      \"code\": -20401,
+
+      \"value\": \"\<IPv6 addresses\>\",
+
+      \"message\": \"The RDAP service is not provided over IPv6. See section
+      1.8 of the RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      Note: the test \[tigSection_1_8_Validation\] shall be performed on the
+      URL on every HTTP redirect.
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_13_Validation:
     Summary: Access-Control-Allow-Origin header
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.13 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Validate that the HTTP header \"Access-Control-Allow-Origin: \*\" is
+      included in the RDAP response.{
+
+      \"code\": -20499-20500,
+
+      \"value\": \"\<HTTP headers\>\",
+
+      \"message\": \"The HTTP header \"Access-Control-Allow-Origin: \*\" is
+      not included in the HTTP headers. See section 1.13 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      Note: the test \[tigSection_1_13_Validation\] shall be performed on
+      the URL on every HTTP redirect.
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_14_Validation:
     Summary: presence of "icann_rdap_technical_implementation_guide_0" in "rdapConformance"
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.14 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Validate that the JSON string value
+      \"icann_rdap_technical_implementation_guide_0\" is included in the
+      RDAP Conformance data structure.{
+
+      \"code\": -20599-20600,
+
+      \"value\": \"\<rdapConformance data structure\>\",
+
+      \"message\": \"The RDAP Conformance data structure does not include
+      icann_rdap_technical_implementation_guide_0. See section 1.14 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_3_3_and_3_4_Validation:
     Summary: presence of link object(s) in notice(s)
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      3.3 and 3.4 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Validate that at least one links data structure exists within the
+      notices object in the topmost object.{
+
+      \"code\": -20699-20700,
+
+      \"value\": \"\<notices data structure\>\",
+
+      \"message\": \"A links object was not found in the notices object in
+      the topmost object. See section 3.3 and 3.4 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      [\
+      ]{.mark}
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_4_1_Validation:
     Summary: structured addresses in entity jCards
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      4.1 of the TIG:**
+
+      Validate that all the *entities* in the RDAP Response contain
+      structured address. If a street address has more than one line, it
+      MUST be structured as an array of strings. {
+
+      \"code\": -20799-20800,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"An entity with a non-structured address was found. See
+      section 4.1 of the TIG.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_7_1_and_7_2_Validation:
     Summary: voice/fax type for tel nodes in entity jCards
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      7.1 and 7.2 of the TIG:**
+
+      Validate that at all the *tel* properties in the *entities* in the
+      RDAP Response contain voice or fax as type parameter. {
+
+      \"code\": -20899-20900,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"An entity with a tel property without a voice or fax
+      type was found. See section 7.1 and 7.2 of the TIG.\"
+
+      }
+
+      ## Technical Implementation Guide - Registry
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_1_11_1_Validation:
     Summary: bootstrap registration
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.11.1 and 1.2 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Verify that the TLD of the domain name is listed in the
+      bootstrapDomainNameSpace.{
+
+      \"code\": -23099-23100,
+
+      \"value\": \"\<TLD\> + \"\\n/\\n\" \<bootstrapDomainNameSpace\>\",
+
+      \"message\": \"The TLD is not included in the
+      bootstrapDomainNameSpace. See section 1.11.1 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      Validate that at least one base URL exists in the
+      bootstrapDomainNameSpace for the TLD.{
+
+      \"code\": -23101,
+
+      \"value\": \"\<TLD element in bootstrapDomainNameSpace\>\",
+
+      \"message\": \"The TLD entry in bootstrapDomainNameSpace does not
+      contain a base URL. See section 1.11.1 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      For the entry of the TLD in bootstrapDomainNameSpace verify that every
+      of the base URLs contain a schema of \"https\".{
+
+      \"code\": -23102,
+
+      \"value\": \"\<TLD entry in bootstrapDomainNameSpace\>\",
+
+      \"message\": \"One or more of the base URLs for the TLD contain a
+      schema different from https. See section 1.2 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_3_2_Validation:
     Summary: rel="related" link in topmost object
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      3.2 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      Validate that a links data structure in the topmost object exists, and
+      the links object shall contain the elements *rel*:related and *href*.{
+
+      \"code\": -23199-23200,
+
+      \"value\": \"\<links data structure\>\",
+
+      \"message\": \"A links data structure in the topmost object exists,
+      and the links object shall contain the elements rel:related and href,
+      but they were not found. See section 3.2 of the
+      RDAP_Technical_Implementation_Guide_2_1.\"
+
+      }
+
+      [\
+      ]{.mark}
+    Input-Parameters:
+    Dependencies:
   rdap-tigSection_6_1_Validation:
     Summary: publicIds property of registrar entity
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      6.1 of the RDAP_Technical_Implementation_Guide_2_1:**
+
+      For the *entity* with the registrar role within the domain object,
+      validate that a *publicIds* member is included. {
+
+      \"code\": -23299-23300,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"A publicIds member is not included in the entity with
+      the registrar role.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object, if
+      a *publicIds* member is included, validate that the identifier member
+      is a positive integer.{
+
+      \"code\": -23301,
+
+      \"value\": \"\<publicIds data structure\>\",
+
+      \"message\": \"The identifier of the publicIds member of the entity
+      with the registrar role is not a positive integer.\"
+
+      }
+
+      ## Technical Implementation Guide -- Registrar
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_1_2_2_Validation:
     Summary: no JavaScript
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.2.2 of the RDAP_Response_Profile_2_1:**
+
+      Validate that the RDAP response does not contain browser executable
+      code (e.g., JavaScript).{
+
+      \"code\": -40099-40100,
+
+      \"value\": \"\<rdap response\>\",
+
+      \"message\": \"The RDAP response contains browser executable code
+      (e.g., JavaScript). See section 1.2.2 of the
+      RDAP_Response_Profile_2_1.\"\"
+
+      }
+
+      Note: a library for HTML sanitizing
+      (<https://en.wikipedia.org/wiki/HTML_sanitization>) may be used for
+      this test.
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_1_3_Validation:
     Summary: presence of "icann_rdap_response_profile_0" in "rdapConformance"
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.3 of the RDAP_Response_Profile_2_1:**
+
+      Validate that the JSON string value \"icann_rdap_response_profile_0\"
+      is included in the *RDAP Conformance* data structure.{
+
+      \"code\": -40199-40200,
+
+      \"value\": \"\<rdapConformance data structure\>\",
+
+      \"message\": \"The RDAP Conformance data structure does not include
+      icann_rdap_response_profile_0. See section 1.3 of the
+      RDAP_Response_Profile_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_1_4_Validation:
     Summary: empty country name parameter of entity jCards
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      1.4 of the RDAP_Response_Profile_2_1:**
+
+      Validate that the country name parameter is empty in the *adr* of all
+      the jCard objects in the RDAP response.{
+
+      \"code\": -40399-40400,
+
+      \"value\": \"\<vcard object\>\",
+
+      \"message\": \"A vcard object with a country name parameter with data
+      was found. \"
+
+      }
+
+      ## RDAP Response Profile - Miscellaneous
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_3_1_3_and_2_7_6_and_3_3_and_4_4_Validation:
     Summary: presence of "last update of RDAP database" event
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.3.1.3, 2.7.6, 3.3 and 4.4 of the RDAP_Response_Profile_2_1:**
+
+      Validate that an *eventAction* type \"last update of RDAP database\"
+      exists in events structure included in the topmost object.{
+
+      \"code\": -43099-43100,
+
+      \"value\": \"\<events data structure\>\",
+
+      \"message\": \"An eventAction type last update of RDAP database does
+      not exists in the topmost events data structure. See section 2.3.1.3,
+      2.7.6, 3.3 and 4.4 of the RDAP_Response_Profile_2_1.\"
+
+      }
+
+      ## RDAP Response Profile - Domain
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_1_Validation:
-    Summary: presence of ldhName/unicodeName property for A-label/U-label domain lookup responses, respectively
+    Summary: presence of ldhName/unicodeName property for A-label/U-label domain lookup
+      responses, respectively
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.1 of the RDAP_Response_Profile_2_1:**
+
+      If domain/\<domain name\> in the RDAP Query URI contains only A-label
+      or NR-LDH labels, the topmost domain object shall contain a
+      *ldhName*.{
+
+      \"code\": -46099-46100,
+
+      \"value\": \"\<domain object\>\",
+
+      \"message\": \"The RDAP Query URI contains only A-label or NR-LDH
+      labels, the topmost domain object does not contain a ldhName member.
+      See section 2.1 of the RDAP_Response_Profile_2_1.\"
+
+      }
+
+      If domain/\<domain name\> in the RDAP Query URI contains one or more
+      U-label, the topmost domain object shall contain an *unicodeName*.{
+
+      \"code\": -46101,
+
+      \"value\": \"\<domain object\>\",
+
+      \"message\": \" The RDAP Query URI contains one or more U-label, the
+      topmost domain object does not contain a unicodeName member. See
+      section 2.1 of the RDAP_Response_Profile_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_2_Validation:
     Summary: format of handle property
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.2 of the RDAP_Response_Profile_2_1:**
+
+      The handle in the topmost *domain* object shall comply with the
+      following format specified in RFC5730: \"(\\w\|\_){1,80}-\\w{1,8}\". {
+
+      \"code\": -46199-46200,
+
+      \"value\": \"\<domain object\>\",
+
+      \"message\": \"The handle in the domain object does not comply with
+      the format (\\w\|\_){1,80}-\\w{1,8} specified in RFC5730\".\"
+
+      }
+
+      If the handle in the topmost *domain* object comply with the format:
+      \"(\\w\|\_){1,80}-\\w{1,8}\", validate that the string followed by a
+      hyphen (\"-\", ASCII value 0x002D) is registered in **EPPROID**.{
+
+      \"code\": -46201,
+
+      \"value\": \"\<domain object\>\",
+
+      \"message\": \"The globally unique identifier in the domain object
+      handle is not registered in EPPROID.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_3_1_1_Validation:
     Summary: presence of "registration" event
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.3.1.1 of the RDAP_Response_Profile_2_1:**
+
+      Validate that an *eventAction* of type \"registration\" exists in the
+      topmost events structure.{
+
+      \"code\": -46299-46300,
+
+      \"value\": \"\<events data structure\>\",
+
+      \"message\": \"An eventAction of type registration does not exists in
+      the topmost events data structure. See section 2.3.1.1 of the
+      RDAP_Response_Profile_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_3_1_2_Validation:
     Summary: presence of "expiration" event
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.3.1.2 of the RDAP_Response_Profile_2_1:**
+
+      Validate that an *eventAction* type \"expiration\" exists in the
+      topmost events structure.{
+
+      \"code\": -46399-46400,
+
+      \"value\": \"\<events data structure\>\",
+
+      \"message\": \"An eventAction of type expiration does not exists in
+      the topmost events data structure. See section 2.3.1.2 of the
+      RDAP_Response_Profile_2_1.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_notices_included_Validation:
     Summary: presence of "notices" property
+    Description: |
+      **The following steps should be used to test that a notices member
+      appear in the RDAP response:**
+
+      Validate that a *notices* member appears in the RDAP response.{
+
+      \"code\": -46499-46500,
+
+      \"value\": \"\<RDAP response\>\",
+
+      \"message\": \"A notices members does not appear in the RDAP
+      response.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_6_3_Validation:
     Summary: presence of "Status Codes" notice
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.6.3 of the RDAP_Response_Profile_2_1:**
+
+      Validate that the *notices* member contains an element in the [JSON
+      array]{.underline} with a title "Status Codes", a description
+      containing the string "For more information on domain status codes,
+      please visit https://icann.org/epp" and a links member with an *href*
+      containing \"https://icann.org/epp\".{
+
+      \"code\": -46599-46600,
+
+      \"value\": \"\<notices structure\>\",
+
+      \"message\": \"The notice for <https://icann.org/epp> was not found.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_11_Validation:
     Summary: presence of "RDDS Inaccuracy Complaint Form" notice
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.11 of the RDAP_Response_Profile_2_1:**
+
+      Validate that the *notices* member contains an element in the [JSON
+      array]{.underline} with a title "RDDS Inaccuracy Complaint Form", a
+      description containing the string "URL of the ICANN RDDS Inaccuracy
+      Complaint Form: https://icann.org/wicf" and a links member with an
+      *href* containing \"https://icann.org/wicf\".{
+
+      \"code\": -46699-46700,
+
+      \"value\": \"\<notices structure\>\",
+
+      \"message\": \"The notice for <https://icann.org/wicf> was not
+      found.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_10_Validation:
     Summary: presence of secureDNS property
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.10 of the RDAP_Response_Profile_2_1:**
+
+      Validate that a *secureDNS* member is included in the domain object.{
+
+      \"code\": -46799-46800,
+
+      \"value\": \"\<domain object\>\",
+
+      \"message\": \"A secureDNS member does not appear in the domain
+      object.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_rfc5731_Validation:
     Summary: domain status code validation
+    Description: "**The following steps should be used to test that the status values\ncomply
+      with RFC5731:**\n\n1.  \n\nValidate that the values of the *status* member in
+      the topmost object\ncomply with the following:\\\"active\\\" status MUST NOT
+      be combined with\nany other status.\\\"pending delete\\\" status MUST NOT be
+      combined with\neither \\\"client delete prohibited\\\" or \\\"server delete
+      prohibited\\\"\nstatus.\\\"pending renew\\\" status MUST NOT be combined with
+      either\n\\\"client renew prohibited\\\" or \\\"server renew prohibited\\\"\nstatus.\\\"pending
+      transfer\\\" status MUST NOT be combined with either\n\\\"client transfer prohibited\\\"
+      or \\\"server transfer prohibited\\\"\nstatus.\\\"pending update\\\" status
+      MUST NOT be combined with either\n\\\"client update prohibited\\\" or \\\"server
+      update prohibited\\\"\nstatus.The pending create, pending delete, pending renew,
+      pending\ntransfer, and pending update status values MUST NOT be combined with\neach
+      other.{\n\n\\\"code\\\": -46899-46900,\n\n\\\"value\\\": \\\"\\<status data
+      structure\\>\\\",\n\n\\\"message\\\": \\\"The values of the status data structure
+      does not comply\nwith RFC5731.\\\"\n\n}\n"
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_rfc3915_Validation:
     Summary: RGP status code validation
+    Description: "**The following steps should be used to test that the status values\ncomply
+      with RFC3915:**\n\n1.  \n\nValidate that the values of the *status* member in
+      the topmost object\ncomply with the following:\\\"redemption period\\\" status
+      MUST only be\ncombined with \\\"pending delete\\\".\\\"pending restore\\\" status
+      MUST only\nbe combined with \\\"pending delete\\\".{\n\n\\\"code\\\": -46999-47000,\n\n\\\"value\\\":
+      \\\"\\<status data structure\\>\\\",\n\n\\\"message\\\": \\\"The values of the
+      status data structure does not comply\nwith RFC3915.\\\"\n\n}\n"
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_6_1_Validation:
     Summary: at least one status code
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.6.1 of the RDAP_Response_Profile_2_1:**
+
+      Validate that a *status* member in the topmost object contain at least
+      one value.{
+
+      \"code\": -47099-47100,
+
+      \"value\": \"\<status data structure\>\",
+
+      \"message\": \"The status member does not contain at least one
+      value.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_9_1_and_2_9_2_Validation:
-    Summary: presence and validity of ldhName, handle, status properties in domain nameservers
+    Summary: presence and validity of ldhName, handle, status properties in domain
+      nameservers
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.9.1 and 2.9.2 of the RDAP_Response_Profile_2_1:**
+
+      If the *nameservers* member is included within the *domain* object,
+      validate that all nameserver objects contain the *ldhName* element.{
+
+      \"code\": -47199-47200,
+
+      \"value\": \"\<nameservers data structure\>\",
+
+      \"message\": \"A nameserver object without ldhName was found.\"
+
+      }
+
+      If the *nameservers* member is included within the *domain* object,
+      validate that all handles in the nameserver objects comply with the
+      following format specified in RFC5730: \"(\\w\|\_){1,80}-\\w{1,8}\". {
+
+      \"code\": -47201,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The handle in the nameserver object does not comply
+      with the format (\\w\|\_){1,80}-\\w{1,8} specified in RFC5730\".\"
+
+      }
+
+      If the *nameservers* member is included within the *domain* object,
+      validate that the string followed by a hyphen (\"-\", ASCII value
+      0x002D) is registered in **EPPROID** for all the handles that comply
+      with the format \"(\\w\|\_){1,80}-\\w{1,8}\".{
+
+      \"code\": -47202,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The globally unique identifier in the nameserver object
+      handle is not registered in EPPROID.\"
+
+      }
+
+      If the *nameservers* member is included within the *domain* object and
+      at least one nameserver object contains a *handle* or a *status*
+      element, validate that all nameserver objects include a *handle* and a
+      *status* element. {
+
+      \"code\": -47203,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The handle or status in the nameserver object is not
+      included.\"
+
+      }
+
+      If the *nameservers* member is included within the domain object,
+      validate that all *status* elements included in the nameserver objects
+      comply with the following:\"active\" status MAY only be combined with
+      \"associated\" status.\"associated\" status MAY be combined with any
+      status.\"pending delete\" status MUST NOT be combined with either
+      \"client delete prohibited\" or \"server delete prohibited\"
+      status.\"pending update\" status MUST NOT be combined with either
+      \"client update prohibited\" or \"server update prohibited\"
+      status.The pending create, pending delete, pending renew, pending
+      transfer, and pending update status values MUST NOT be combined with
+      each other.{
+
+      \"code\": -47204,
+
+      \"value\": \"\<status data structure\>\",
+
+      \"message\": \"The values of the status data structure does not comply
+      with RFC5732.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_4_1_Validation:
     Summary: presence and validity of the registrar entity
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.4.1 of the RDAP_Response_Profile_2_1:**
+
+      An *entity* with the registrar role within the topmost domain object
+      shall exist. {
+
+      \"code\": -47299-47300,
+
+      \"value\": \"\<domain object data structure\>\",
+
+      \"message\": \"An entity with the registrar role was not found in the
+      domain topmost object.\"
+
+      }
+
+      Only one *entity* with the registrar role within the topmost domain
+      object shall exist. {
+
+      \"code\": -47301,
+
+      \"value\": \"\<domain object data structure\>\",
+
+      \"message\": \"More than one entities with the registrar role were
+      found in the domain topmost object.\"
+
+      }
+
+      For the *entity* with the registrar role within the topmost domain
+      object, validate that a *fn* member is included in all of the vcard
+      objects. {
+
+      \"code\": -47302,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"An fn member was not found in one or more vcard objects
+      of the entity with the registrar role.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_4_2_and_2_4_3_Validation:
     Summary: validation of the publicIds and handle properties of the registrar entity
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.4.2 and 2.4.3 of the RDAP_Response_Profile_2_1:**
+
+      For the *entity* with the registrar role within the topmost object,
+      validate that a *publicIds* member is included. {
+
+      \"code\": -47399-47400,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"A publicIds member is not included in the entity with
+      the registrar role.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object, if
+      a *publicIds* member is included, validate that the identifier member
+      is a positive integer.{
+
+      \"code\": -47401,
+
+      \"value\": \"\<publicIds data structure\>\",
+
+      \"message\": \"The identifier of the publicIds member of the entity
+      with the registrar role is not a positive integer.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object,
+      validate that the *handle* member is a positive integer.{
+
+      \"code\": -47402,
+
+      \"value\": \"\<publicIds data structure\>\",
+
+      \"message\": \"The handle of the entity with the registrar role is not
+      a positive integer.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object, if
+      a *publicIds* member is included, validate that the *identifier*
+      member equals the *handle* member.{
+
+      \"code\": -47403,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"The identifier of the publicIds member of the entity
+      with the registrar role is not equal to the handle member.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object,
+      validate that the value of the *handle* member exists in the
+      **registrarId**.{
+
+      \"code\": -47404,
+
+      \"value\": \"\<handle\> + \"\\n/\\n\" + \<registrarId\>\",
+
+      \"message\": \"The handle references an IANA Registrar ID that does
+      not exist in the **registrarId**.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_4_5_Validation:
     Summary: abuse role for the registrar entity
+    Description: |
+      For the *entity* with the registrar role within the *domain* object,
+      validate that an *entity* with the abuse role is included, and the
+      entity with the abuse role includes a *tel* and *email* members in all
+      the vcard objects.{
+
+      \"code\": -47499-47500,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"Tel and email members were not found for the entity
+      within the entity with the abuse role in the topmost domain object.\"
+
+      }
+
+      ## RDAP Response Profile - Nameserver
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_4_1_Validation:
-    Summary: presence of ldhName/unicodeName property for A-label/U-label nameserver lookup responses, respectively
+    Summary: presence of ldhName/unicodeName property for A-label/U-label nameserver
+      lookup responses, respectively
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      4.1 of the RDAP_Response_Profile_2_1:**
+
+      If nameserver/\<nameserver name\> in the RDAP Query URI contains only
+      A-label or NR-LDH labels, the topmost domain object shall contain a
+      *ldhName*.{
+
+      \"code\": -49099-49100,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The RDAP Query URI contains only A-label or NR-LDH
+      labels, the topmost nameserver object does not contain a ldhName
+      member. See section 2.1 of the RDAP_Response_Profile_2_1.\"
+
+      }
+
+      If nameserver/\<nameserver name\> in the RDAP Query URI contains one
+      or more U-label, the topmost domain object shall contain an
+      *unicodeName*.{
+
+      \"code\": -49101,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \" The RDAP Query URI contains one or more U-label, the
+      topmost nameserver object does not contain a unicodeName member. See
+      section 2.1 of the RDAP_Response_Profile_2_1.\"
+
+      }
+
+      The handle in the topmost *nameserver* object shall comply with the
+      following format specified in RFC5730: \"(\\w\|\_){1,80}-\\w{1,8}\". {
+
+      \"code\": -49102,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The handle in the nameserver object does not comply
+      with the format (\\w\|\_){1,80}-\\w{1,8} specified in RFC5730\".\"
+
+      }
+
+      If the handle in the topmost *nameserver* object comply with the
+      format: \"(\\w\|\_){1,80}-\\w{1,8}\", validate that the string
+      followed by a hyphen (\"-\", ASCII value 0x002D) is registered in
+      **EPPROID**.{
+
+      \"code\": -49103,
+
+      \"value\": \"\<nameserver object\>\",
+
+      \"message\": \"The globally unique identifier in the nameserver object
+      handle is not registered in EPPROID.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_4_3_Validation:
     Summary: presence and validity of the registrar entity
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      4.3 of the RDAP_Response_Profile_2_1.**
+
+      **The following steps shall only be executed if an entity with the
+      registrar role exists within the topmost object, and the handle is
+      different from \"not applicable\":**
+
+      For the *entity* with the registrar role within the topmost object,
+      validate that a *publicIds* member is included. {
+
+      \"code\": -49199-49200,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"A publicIds member is not included in the entity with
+      the registrar role.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object, if
+      a *publicIds* member is included, validate that the identifier member
+      is a positive integer.{
+
+      \"code\": -49201,
+
+      \"value\": \"\<publicIds data structure\>\",
+
+      \"message\": \"The identifier of the publicIds member of the entity
+      with the registrar role is not a positive integer.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object,
+      validate that the *handle* member is a positive integer.{
+
+      \"code\": -49202,
+
+      \"value\": \"\<publicIds data structure\>\",
+
+      \"message\": \"The handle of the entity with the registrar role is not
+      a positive integer.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object, if
+      a *publicIds* member is included, validate that the *identifier*
+      member equals the *handle* member.{
+
+      \"code\": -49203,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"The identifier of the publicIds member of the entity
+      with the registrar role is not equal to the handle member.\"
+
+      }
+
+      For the *entity* with the registrar role within the domain object,
+      validate that the value of the *handle* member exists in the
+      **registrarId**.{
+
+      \"code\": -49204,
+
+      \"value\": \"\<handle\> + \"\\n/\\n\" + \<registrarId\>\",
+
+      \"message\": \"The handle references an IANA Registrar ID that does
+      not exist in the **registrarId**.\"
+
+      }
+
+      **\
+      **
+
+      **The following steps shall only be executed if an entity with the
+      registrar role exists within the topmost object, and the handle is
+      \"not applicable\":**
+
+      For the *entity* with the registrar role within the topmost object,
+      validate that a *publicIds* member is not included. {
+
+      \"code\": -49205,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"A publicIds member is included in the entity with the
+      registrar role.\"
+
+      }
+    Input-Parameters:
+    Dependencies:
   rdap-nameserver_status:
     Summary: validation of nameserver status codes
+    Description: |
+
+      If a *status* element is included in the nameserver object, validate
+      that it complies with the following:\"active\" status MAY only be
+      combined with \"associated\" status.\"associated\" status MAY be
+      combined with any status.\"pending delete\" status MUST NOT be
+      combined with either \"client delete prohibited\" or \"server delete
+      prohibited\" status.\"pending update\" status MUST NOT be combined
+      with either \"client update prohibited\" or \"server update
+      prohibited\" status.The pending create, pending delete, pending renew,
+      pending transfer, and pending update status values MUST NOT be
+      combined with each other.{
+
+      \"code\": -49299-49300,
+
+      \"value\": \"\<status data structure\>\",
+
+      \"message\": \"The values of the status data structure does not comply
+      with RFC5732.\"
+
+      }
+
+      ## RDAP Response Profile -- Entities within Domain
+    Input-Parameters:
+    Dependencies:
   rdap-rdapResponseProfile_2_7_5_3_Validation:
     Summary: proper redaction of domain entities
+    Description: |
+      **The following steps should be used to test the RDAP protocol section
+      2.7.5.3 of the RDAP_Response_Profile_2_1:**
+
+      For the *entities* with the registrant, administrative, technical and
+      billing role within the domain object, if the *email* property is
+      omitted, validate that a remarks element containing a title member
+      with a value \"EMAIL REDACTED FOR PRIVACY\" and a type member with a
+      value \"object redacted due to authorization\" is included in the
+      entity object.{
+
+      \"code\": -54999-55000,
+
+      \"value\": \"\<entity data structure\>\",
+
+      \"message\": \"An entity with the administrative, technical, or
+      billing role without a valid \"EMAIL REDACTED FOR PRIVACY\" remark was
+      found. See section 2.7.5.3 of the RDAP_Response_Profile_2_1.\"
+
+      }
+
+      Note: this test also includes 2.7.5.1.
+
+      ## RDAP Response Profile - Entities within Domain - Registrar
+    Input-Parameters:
+    Dependencies:
   rdap-rdaptigSection_1_1_3_redactionExtension:
     Summary: use of Redacted Fields extension, validation of redacted paths
   rdap-rdaptigSection_3_3_3_termsOfService:
