@@ -349,10 +349,6 @@ Test-Cases:
       ### Special procedural requirements
 
       The registries listed in bullet 2 above must be fetched prior to testing
-
-      ### Intercase dependencies
-
-      None.
   dns-address02:
     Summary: Verify reverse DNS entries exist for nameserver IP addresses
     Description: |
@@ -387,15 +383,6 @@ Test-Cases:
       hostnames which are the result of the PTR queries performed.
       The result could be represented as a hash table where the keys are the IP
       addresses and the values their corresponding hostnames.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      The outcomes of this test is used as the input of [ADDRESS03](address03.md) test case.
-
   dns-address03:
     Summary: Verify that reverse DNS entries match nameserver names
     Description: |
@@ -443,17 +430,8 @@ Test-Cases:
       succeeds if every name server address has one or more PTR records
       and one of these records matches the server name.
       If one address doesn't match, the whole test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      Some of the input of this test comes as the result of test case
-      [ADDRESS02](address02.md). [ADDRESS02](address02.md) must succeed
-      prior to proceed with this test case [ADDRESS03](address03.md).
-
+    Dependencies:
+      - dns-address02
   dns-connectivity01:
     Summary: Verify nameserver UDP port 53 reachability
     Description: |
@@ -593,13 +571,11 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, skip sending queries over that
       transport protocol.
-      ## Intercase dependencies
-
-      None.
   dns-connectivity02:
     Summary: Verify nameserver TCP port 53 reachability
     Description: |
@@ -719,13 +695,11 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, skip sending queries over that
       transport protocol.
-      ## Intercase dependencies
-
-      None.
   dns-connectivity03:
     Summary: Verify that all nameservers do not belong to the same AS
     Description: |
@@ -799,6 +773,7 @@ Test-Cases:
       IPV6_ONE_ASN       |WARNING
       IPV6_SAME_ASN      |NOTICE
       IPV6_DIFFERENT_ASN |INFO
+
       ## Special procedural requirements
 
       This test case is dependent on one of two possible services that can provide
@@ -887,30 +862,6 @@ Test-Cases:
 
       8. Create the ASN set, for the IP address, from the ASN or ASNs from
          the steps above and use it for the further processing.
-
-      ## Intercase dependencies
-
-      None
-      [Cymru database]:       #cymru-asn-lookup
-      [EMPTY_ASN_SET]:        #outcomes
-      [ERROR_ASN_DATABASE]:   #outcomes
-      [IP to ASN Mapping]:    https://www.team-cymru.com/ip-asn-mapping
-      [IPV4_DIFFERENT_ASN]:   #outcomes
-      [IPV4_ONE_ASN]:         #outcomes
-      [IPV4_SAME_ASN]:        #outcomes
-      [IPV6_DIFFERENT_ASN]:   #outcomes
-      [IPV6_ONE_ASN]:         #outcomes
-      [IPV6_SAME_ASN]:        #outcomes
-      [Method4]:              ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:              ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [RFC 1035#3.5]:         https://datatracker.ietf.org/doc/html/rfc1035#section-3.5
-      [RFC 1930]:             https://datatracker.ietf.org/doc/html/rfc1930
-      [RFC 2182#3.1]:         https://datatracker.ietf.org/doc/html/rfc2182#section-3.1
-      [RFC 3596#2.5]:         https://datatracker.ietf.org/doc/html/rfc3596#section-2.5
-      [RIPE database]:        #ripe-asn-lookup
-      [RISwhois]:             https://www.ripe.net/analyse/archived-projects/ris-tools-web-interfaces/riswhois
-      [Wikipedia]:            https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
-
   dns-connectivity04:
     Summary: Verify that name servers are not announced in the same IP prefix
     Description: |
@@ -1095,10 +1046,6 @@ Test-Cases:
             output *[CN04_ERROR_PREFIX_DATABASE]* and exit this lookup.
 
       6. Return the IP prefix.
-
-      ## Intercase dependencies
-
-      None
   dns-consistency01:
     Summary: Query all nameservers for SOA, and verify that they all have the same SOA serial number
     Description: |
@@ -1196,6 +1143,7 @@ Test-Cases:
       MULTIPLE_SOA_SERIALS_OK       | NOTICE
       SOA_SERIAL                    | INFO
       SOA_SERIAL_VARIATION          | NOTICE
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -1208,22 +1156,6 @@ Test-Cases:
 
       When comparing SOA serial it must be done using the arithmetic defined in
       [RFC 1982].
-      ## Intercase dependencies
-
-      None
-      [Connectivity01]:             ../Connectivity-TP/connectivity01.md
-      [MULTIPLE_SOA_SERIALS]:       #outcomes
-      [MULTIPLE_SOA_SERIALS_OK]:    #outcomes
-      [Method4]:                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:                #outcomes
-      [NO_RESPONSE_SOA_QUERY]:      #outcomes
-      [ONE_SOA_SERIAL]:             #outcomes
-      [RFC 1034]:                   https://datatracker.ietf.org/doc/html/rfc1035
-      [RFC 1035]:                   https://datatracker.ietf.org/doc/html/rfc1035
-      [RFC 1982]:                   https://datatracker.ietf.org/doc/html/rfc1982
-      [SOA_SERIAL]:                 #outcomes
-      [SOA_SERIAL_VARIATION]:       #outcomes
   dns-consistency02:
     Summary: Query all nameservers for SOA, and verify that they all have the same SOA rname
     Description: |
@@ -1277,25 +1209,12 @@ Test-Cases:
       NO_RESPONSE_SOA_QUERY         | DEBUG
       ONE_SOA_RNAME                 | INFO
       MULTIPLE_SOA_RNAMES           | NOTICE
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ## Intercase dependencies
-
-      None
-      [Connectivity01]:             ../Connectivity-TP/connectivity01.md
-      [MULTIPLE_SOA_RNAMES]:        #outcomes
-      [Method4]:                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:                #outcomes
-      [NO_RESPONSE_SOA_QUERY]:      #outcomes
-      [ONE_SOA_RNAME]:              #outcomes
-      [RFC 1034]:                   https://datatracker.ietf.org/doc/html/rfc1034
-      [RFC 1035]:                   https://datatracker.ietf.org/doc/html/rfc1035
-      [RFC 1982]:                   https://datatracker.ietf.org/doc/html/rfc1982
   dns-consistency03:
     Summary: Query all nameservers for SOA, and verify that they all have the same time parameters (REFRESH/RETRY/EXPIRE/MINIMUM)
     Description: |
@@ -1362,25 +1281,12 @@ Test-Cases:
       NO_RESPONSE_SOA_QUERY            | DEBUG
       ONE_SOA_TIME_PARAMETER_SET       | INFO
       MULTIPLE_SOA_TIME_PARAMETER_SET  | NOTICE
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ## Intercase dependencies
-
-      None.
-      [Connectivity01]:                    ../Connectivity-TP/connectivity01.md
-      [CONSISTENCY01]:                     consistency01.md
-      [CONSISTENCY02]:                     consistency02.md
-      [CONSISTENCY06]:                     consistency06.md
-      [MULTIPLE_SOA_TIME_PARAMETER_SET]:   #outcomes
-      [Method4]:                           ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                           ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:                       #outcomes
-      [NO_RESPONSE_SOA_QUERY]:             #outcomes
-      [ONE_SOA_TIME_PARAMETER_SET]:        #outcomes
   dns-consistency04:
     Summary: Query all nameservers for the NS set, and verify that they have all the same content
     Description: |
@@ -1440,23 +1346,12 @@ Test-Cases:
       NO_RESPONSE_NS_QUERY          | DEBUG
       ONE_NS_SET                    | INFO
       MULTIPLE_NS_SET               | NOTICE
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-      ## Intercase dependencies
-
-      None
-      [Connectivity01]:             ../Connectivity-TP/connectivity01.md
-      [MULTIPLE_NS_SET]:            #outcomes
-      [Method4]:                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:                #outcomes
-      [NO_RESPONSE_NS_QUERY]:       #outcomes
-      [ONE_NS_SET]:                 #outcomes
-      [RFC 1034]:                   https://datatracker.ietf.org/doc/html/rfc1034
-      [RFC 1035]:                   https://datatracker.ietf.org/doc/html/rfc1035
   dns-consistency05:
     Summary: Verify that the glue records are consistent with authoritative data
     Description: |
@@ -1610,9 +1505,6 @@ Test-Cases:
       It is assumed that the name servers of the parent zone behave the same way
       for the parent zone as when [BASIC01] was run.
 
-      ## Intercase dependencies
-
-      None
       ## Terminology
 
       The terms "in-bailiwick" and "out-of-bailiwick" are used as defined
@@ -1693,15 +1585,12 @@ Test-Cases:
       NO_RESPONSE_SOA_QUERY         | DEBUG
       ONE_SOA_MNAME                 | INFO
       MULTIPLE_SOA_MNAMES           | NOTICE
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ## Intercase dependencies
-
-      None
   dns-delegation01:
     Summary: Verify that there are more than two nameservers
     Description: |
@@ -1796,39 +1685,6 @@ Test-Cases:
       NO_IPV4_NS_DEL                | WARNING
       NO_IPV6_NS_CHILD              | NOTICE
       NO_IPV6_NS_DEL                | NOTICE
-      ## Special procedural requirements
-
-      None
-
-      ## Intercase dependencies
-
-      None
-
-      [RFC 1034]: https://datatracker.ietf.org/doc/html/rfc1034
-      [RFC 3901]: https://datatracker.ietf.org/doc/html/rfc3901
-      [RFC 4472]: https://datatracker.ietf.org/doc/html/rfc4472
-
-      [Method2]:  ../Methods.md#method-2-obtain-glue-name-records-from-parent
-      [Method3]:  ../Methods.md#method-3-obtain-name-servers-from-child
-      [Method4]:  ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:  ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
-      [ENOUGH_IPV4_NS_CHILD]: #outcomes
-      [ENOUGH_IPV4_NS_DEL]: #outcomes
-      [ENOUGH_IPV6_NS_CHILD]: #outcomes
-      [ENOUGH_IPV6_NS_DEL]: #outcomes
-      [ENOUGH_NS_CHILD]: #outcomes
-      [ENOUGH_NS_DEL]: #outcomes
-      [NOT_ENOUGH_IPV4_NS_CHILD]: #outcomes
-      [NOT_ENOUGH_IPV4_NS_DEL]: #outcomes
-      [NOT_ENOUGH_IPV6_NS_CHILD]: #outcomes
-      [NOT_ENOUGH_IPV6_NS_DEL]: #outcomes
-      [NOT_ENOUGH_NS_CHILD]: #outcomes
-      [NOT_ENOUGH_NS_DEL]: #outcomes
-      [NO_IPV4_NS_CHILD]: #outcomes
-      [NO_IPV4_NS_DEL]: #outcomes
-      [NO_IPV6_NS_CHILD]: #outcomes
-      [NO_IPV6_NS_DEL]: #outcomes
   dns-delegation02:
     Summary: Verify that name servers have distinct IP addresses
     Description: |
@@ -1878,31 +1734,6 @@ Test-Cases:
       CHILD_NS_SAME_IP      | ERROR
       DEL_DISTINCT_NS_IP    | INFO
       CHILD_DISTINCT_NS_IP  | INFO
-
-      ## Special procedural requirements
-
-      None
-
-      ## Intercase dependencies
-
-      None
-      [RFC 1034]: https://datatracker.ietf.org/doc/html/rfc1034
-
-      [Method2]:  ../Methods.md#method-2-obtain-glue-name-records-from-parent
-
-      [Method3]:  ../Methods.md#method-3-obtain-name-servers-from-child
-
-      [Method4]:  ../Methods.md#method-4-obtain-glue-address-records-from-parent
-
-      [Method5]:  ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
-      [DEL_NS_SAME_IP]: #outcomes
-
-      [CHILD_NS_SAME_IP]: #outcomes
-
-      [DEL_DISTINCT_NS_IP]: #outcomes
-
-      [CHILD_DISTINCT_NS_IP]: #outcomes
   dns-delegation03:
     Summary: Verify that there is no truncation on referrals
     Description: |
@@ -1980,13 +1811,6 @@ Test-Cases:
       :---------------------------------|:-----------------------------------
       REFERRAL_SIZE_TOO_LARGE           | WARNING
       REFERRAL_SIZE_OK                  | INFO
-      ## Special procedural requirements
-
-      None
-
-      ## Intercase dependencies
-
-      None
 
       ## Terminology
 
@@ -2042,11 +1866,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ### Intercase dependencies
-
-      None
-
   dns-delegation05:
     Summary: Verify that NS RRs do not point to CNAMEs
     Description: |
@@ -2124,14 +1943,12 @@ Test-Cases:
       UNEXPECTED_RCODE      | WARNING
       NS_IS_CNAME           | ERROR
       NO_NS_CNAME           | INFO
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-      ## Intercase dependencies
-
-      None
 
       ## Terminology
 
@@ -2173,11 +1990,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ### Intercase dependencies
-
-      None
-
   dns-nameserver01:
     Summary: Verify that nameserver does not provide recursive service
     Description: |
@@ -2250,10 +2062,6 @@ Test-Cases:
       [IDNA 2008 specification] under SLDs (second-level domains) expected to
       respect that specification. The SLDs are selected so that the chance that
       they are all hosted on the same servers is low.
-
-      ## Intercase dependencies
-
-      None.
 
       ## Terminology
 
@@ -2364,22 +2172,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol and log a message reporting
       the ignored result.
-
-      ## Intercase dependencies
-
-      None
-      [Connectivity01]:                ../Connectivity-TP/connectivity01.md
-      [BREAKS_ON_EDNS]:                #outcomes
-      [EDNS_RESPONSE_WITHOUT_EDNS]:    #outcomes
-      [EDNS_VERSION_ERROR]:            #outcomes
-      [Method4]:                       ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                       ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_EDNS_SUPPORT]:               #outcomes
-      [NO_RESPONSE]:                   #outcomes
-      [NS_ERROR]:                      #outcomes
-      [RFC 6891, section 6.1.1]:       https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.1
-      [RFC 6891, section 7]:           https://datatracker.ietf.org/doc/html/rfc6891#section-7
-      [RFC 6891]:                      https://datatracker.ietf.org/doc/html/rfc6891
   dns-nameserver04:
     Summary: Verify that replies from nameserver comes from the expected IP address
     Description: |
@@ -2410,11 +2202,6 @@ Test-Cases:
       If there are many authoritative DNS nodes behind the IP adress the query
       is sent to, there could be multiple answers with possibly different source
       addresses for the query. This special case is currently ignored.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-nameserver05:
     Summary: Verify behaviour against AAAA queries
     Description: |
@@ -2478,25 +2265,12 @@ Test-Cases:
       AAAA_WELL_PROCESSED           | INFO
       A_UNEXPECTED_RCODE            | WARNING
       NO_RESPONSE                   | DEBUG
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-      ## Intercase dependencies
-
-      None.
-      [AAAA_BAD_RDATA]:        #outcomes
-      [AAAA_QUERY_DROPPED]:    #outcomes
-      [AAAA_UNEXPECTED_RCODE]: #outcomes
-      [AAAA_WELL_PROCESSED]:   #outcomes
-      [A_UNEXPECTED_RCODE]:    #outcomes
-      [Connectivity01]:        ../Connectivity-TP/connectivity01.md
-      [Method4]:               ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:               ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:           #outcomes
-      [RFC 4074]:              https://datatracker.ietf.org/doc/html/rfc4074
-
   dns-nameserver06:
     Summary: Verify that each nameserver can be resolved to an IP address
     Description: |
@@ -2536,11 +2310,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of
       the result of any test using this transport protocol. Log a message
       reporting on the ignored result.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-nameserver07:
     Summary: Check whether authoritative name servers return an upward referral
     Description: |
@@ -2562,13 +2331,6 @@ Test-Cases:
 
       ### Outcome(s)
       The test case is Ok only if there are no responses in the authority section
-
-      ### Special procedural requirements
-      None.
-
-      ### Intercase dependencies
-      None.
-
   dns-nameserver08:
     Summary: Check whether authoritative name servers responses match the case of every letter in QNAME
     Description: |
@@ -2600,13 +2362,6 @@ Test-Cases:
          sensitivity, the test fails.
       ### Outcome(s)
       The test case is Ok only if there are no responses in the authority section
-
-      ### Special procedural requirements
-      None.
-
-      ### Intercase dependencies
-      None.
-
   dns-nameserver09:
     Summary: Check whether authoritative name servers return same results for equivalent names with different cases in the request
     Description: |
@@ -2633,13 +2388,6 @@ Test-Cases:
 
       ### Outcome(s)
       The test case passes only if the results of all queries are exactly the same.
-
-      ### Special procedural requirements
-      None.
-
-      ### Intercase dependencies
-      None.
-
   dns-nameserver10:
     Summary: Check whether authoritative name servers respond correctly to queries with undefined EDNS version
     Description: |
@@ -2737,14 +2485,12 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol and log a message reporting
       the ignored result.
-      ## Intercase dependencies
-
-      None
   dns-nameserver11:
     Summary: Check whether authoritative name servers responses doe not include unknown EDNS OPTION-CODE used in query
     Description: |
@@ -2882,10 +2628,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, skip sending queries over that
       transport protocol. A message will be outputted reporting that the transport
       protocol has been skipped.
-
-      ## Intercase dependencies
-
-      None.
   dns-nameserver12:
     Summary: Check whether authoritative name servers responses has "Z" bits cleared even if they are set in the query
     Description: |
@@ -2959,21 +2701,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol and log a message reporting
       the ignored result.
-
-      ## Intercase dependencies
-
-      None.
-      [Connectivity01]:               ../Connectivity-TP/connectivity01.md
-      [EDNS Header Flags]:            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-13
-      [IANA]:                         https://www.iana.org/
-      [Method4]:                      ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                      ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_EDNS_SUPPORT]:              #outcomes
-      [NO_RESPONSE]:                  #outcomes
-      [NS_ERROR]:                     #outcomes
-      [RCF 6891#section-6.1.4]:       https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.4
-      [RFC 6891]:                     https://datatracker.ietf.org/doc/html/rfc6891
-      [Z_FLAGS_NOTCLEAR]:             #outcomes
   dns-nameserver13:
     Summary: Verify that if the response to a query with an OPT record is truncated, then the response will contain an OPT record
     Description: |
@@ -3048,21 +2775,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol and log a message reporting
       the ignored result.
-
-      ## Intercase dependencies
-
-      None.
-
-      [Connectivity01]:        ../Connectivity-TP/connectivity01.md
-      [MISSING_OPT_IN_TRUNCATED]: #outcomes
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_EDNS_SUPPORT]: #outcomes
-      [NO_RESPONSE]: #outcomes
-      [NS_ERROR]: #outcomes
-      [RFC 6891, section 7]: https://datatracker.ietf.org/doc/html/rfc6891#section-7
-      [RFC 6891]: https://datatracker.ietf.org/doc/html/rfc6891
-
   dns-syntax05:
     Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given has a conform usage of at sign (@)
     Description: |
@@ -3085,20 +2797,6 @@ Test-Cases:
       ### Outcome(s)
 
       If there is any '@' character in any SOA/RNAME field, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      The de-escaped output from this test is used by [SYNTAX08](syntax08.md).
-
-      -------
-
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
   dns-syntax06:
     Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given is RFC822 compliant
     Description: |
@@ -3216,11 +2914,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-
-      ## Intercase dependencies
-
-      None.
-
       ## Terminology
 
       * "Using Method" - When the term is used, names and IP addresses are fetched
@@ -3267,10 +2960,6 @@ Test-Cases:
 
       If any of the steps 4 to 8 in the ordered description of this test case fails,
       the whole test case fails.
-
-      ### Special procedural requirements
-
-      None.
 
       ### Intercase dependencies
 
@@ -3474,10 +3163,6 @@ Test-Cases:
       transport protocol. A message will be outputted reporting that the transport
       protocol has been skipped.
 
-      ## Intercase dependencies
-
-      None.
-
       ## Terminology
 
       * "DNS Lookup" - The term is used when a recursive lookup is used, though
@@ -3518,15 +3203,6 @@ Test-Cases:
       ### Outcome(s)
 
       If the SOA refresh value is less than 14400 this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-zone03:
     Summary: Verify SOA 'retry' value is lower than SOA 'refresh' value
     Description: |
@@ -3558,15 +3234,6 @@ Test-Cases:
 
       If the SOA retry value is higher than or equal to the refresh value,
       this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-zone04:
     Summary: Verify SOA 'retry' minimum value
     Description: |
@@ -3599,15 +3266,6 @@ Test-Cases:
       ### Outcome(s)
 
       If the retry value is less than 3600 seconds, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-zone05:
     Summary: Verify SOA 'expire' minimum value
     Description: |
@@ -3646,15 +3304,6 @@ Test-Cases:
 
       If the expire value is less than 604800 seconds or if the expire value is
       lower than the refresh value, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-zone06:
     Summary: Verify SOA 'minimum' (default TTL) value
     Description: |
@@ -3698,19 +3347,6 @@ Test-Cases:
 
       If the minimum value is larger than 86400 seconds or if the minimum value is
       lower than 300 seconds, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
-      -------
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
   dns-zone07:
     Summary: Verify that SOA master is not an alias (CNAME)
     Description: |
@@ -3745,15 +3381,6 @@ Test-Cases:
       ### Outcome(s)
 
       If the SOA MNAME field is pointing to a CNAME, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      None.
-
   dns-zone10:
     Summary: Verify that the zone of the domain to be tested return exactly one SOA record
     Description: |
@@ -3805,14 +3432,13 @@ Test-Cases:
       NO_SOA_IN_RESPONSE            | DEBUG
       ONE_SOA                       | INFO
       WRONG_SOA                     | DEBUG
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       on the ignored result.
-      ## Intercase dependencies
 
-      None.
       ## Terminology
 
       When the term "using Method" is used, names and IP addresses are fetched
@@ -3989,6 +3615,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -3996,9 +3623,6 @@ Test-Cases:
       on the ignored result.
 
       See the [DNSSEC README] document about DNSSEC algorithms.
-      ## Intercase dependencies
-
-      None.
   dnssec-02:
     Summary: Verifies that all DS records have a matching DNSKEY
     Description: |
@@ -4230,6 +3854,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, skip sending queries over that
@@ -4237,9 +3862,6 @@ Test-Cases:
       been disabled.
 
       See the [DNSSEC README] document about DNSSEC algorithms.
-      ## Intercase dependencies
-
-      None.
   dnssec-03:
     Summary: Check iteration counts for NSEC3
     Description: |
@@ -4304,10 +3926,6 @@ Test-Cases:
       This test is only fully performed if the zone uses NSEC3 (has the
       NSEC3PARAM RR in the zone).
 
-      ### Intercase dependencies
-
-      None.
-
   dnssec-04:
     Summary: Checks the durations of the signatures for the DNSKEY and SOA RRsets
     Description: |
@@ -4353,15 +3971,6 @@ Test-Cases:
       ### Special procedural requirements
 
       Test case is only performed if RRSIG RRs are found in the answers.
-
-      ### Intercase dependencies
-
-      None.
-
-      -------
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
   dnssec-05:
     Summary: Check DNSKEY algorithms
     Description: |
@@ -4468,6 +4077,7 @@ Test-Cases:
       ALGORITHM_PRIVATE             | ERROR
       ALGORITHM_NOT_ZONE_SIGN       | ERROR
       ALGORITHM_OK                  | INFO
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -4478,27 +4088,6 @@ Test-Cases:
 
       The test case is only performed if some DNSKEY record is found in the
       *Child Zone*.
-      ## Intercase dependencies
-
-      None.
-
-      [Connectivity01]:        ../Connectivity-TP/connectivity01.md
-      [RFC 8624]: https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1
-      [IANA registry]: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml
-
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-
-      [DNSSEC README]: ./README.md
-      [NO_RESPONSE]: #outcomes
-      [NO_RESPONSE_DNSKEY]: #outcomes
-      [ALGORITHM_DEPRECATED]: #outcomes
-      [ALGORITHM_RESERVED]: #outcomes
-      [ALGORITHM_UNASSIGNED]: #outcomes
-      [ALGORITHM_NOT_RECOMMENDED]: #outcomes
-      [ALGORITHM_PRIVATE]: #outcomes
-      [ALGORITHM_NOT_ZONE_SIGN]: #outcomes
-      [ALGORITHM_OK]: #outcomes
   dnssec-06:
     Summary: Check for DNSSEC extra processing at child nameservers
     Description: |
@@ -4524,16 +4113,6 @@ Test-Cases:
 
       If any of the name servers configured for the domains fail to answer with
       DNSSEC data, this test case fails.
-
-      ### Special procedural requirements
-
-      None.
-
-      ### Intercase dependencies
-
-      This test should only run if [DNSSEC07](dnssec07.md) has been successful
-      in finding a DNSKEY for the domain.
-
   dnssec-08:
     Summary: Check that the DNSKEY RRset is signed
     Description: |
@@ -4654,6 +4233,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -4661,9 +4241,6 @@ Test-Cases:
       on the ignored result.
 
       See the [DNSSEC README] document about DNSSEC algorithms.
-      ## Intercase dependencies
-
-      None.
   dnssec-09:
     Summary: Check that the SOA RRset is signed
     Description: |
@@ -4802,6 +4379,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -4809,9 +4387,6 @@ Test-Cases:
       on the ignored result.
 
       See the [DNSSEC README] document about DNSSEC algorithms.
-      ## Intercase dependencies
-
-      None.
   dnssec-10:
     Summary: Check for the presence of either NSEC or NSEC3, with proper coverage and signatures
     Description: |
@@ -5068,6 +4643,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -5075,9 +4651,7 @@ Test-Cases:
       on the ignored result.
 
       See the [DNSSEC README] document about DNSSEC algorithms.
-      ## Intercase dependencies
 
-      None.
       ## Terminology
 
       ### The Non-Existent Query Name
@@ -5225,6 +4799,7 @@ Test-Cases:
 
       In other cases, no message or only messages with severity level
       *[INFO]* or *[NOTICE]*, the outcome of this Test Case is "pass".
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -5234,9 +4809,6 @@ Test-Cases:
       See the [DNSSEC README] document about DNSSEC algorithms.
 
       Test case is only performed if DNSKEY records are found.
-      ## Intercase dependencies
-
-      None.
   dnssec-14:
     Summary: Check for valid RSA DNSKEY key size
     Description: |
@@ -5329,6 +4901,7 @@ Test-Cases:
       DNSKEY_TOO_SMALL_FOR_ALGO     | ERROR
       DNSKEY_TOO_LARGE_FOR_ALGO     | ERROR
       KEY_SIZE_OK                   | INFO
+
       ## Special procedural requirements
 
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
@@ -5339,28 +4912,6 @@ Test-Cases:
 
       The test case is only performed if some DNSKEY record is found in the
       *Child Zone*.
-      ## Intercase dependencies
-
-      None.
-
-      [Connectivity01]:                                        ../Connectivity-TP/connectivity01.md
-      [DNSKEY_SMALLER_THAN_REC]:                               #outcomes
-      [DNSKEY_TOO_LARGE_FOR_ALGO]:                             #outcomes
-      [DNSKEY_TOO_SMALL_FOR_ALGO]:                             #outcomes
-      [DNSSEC README]:                                         ./README.md
-      [DNSSEC05]:                                              ./dnssec05.md
-      [IANA registry]:                                         https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml
-      [KEY_SIZE_OK]:                                           #outcomes
-      [Method4]:                                               ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                               ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NIST SP 800-57 Part 1 Rev. 4]:                          https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-4/archive/2016-01-28
-      [NO_RESPONSE]:                                           #outcomes
-      [NO_RESPONSE_DNSKEY]:                                    #outcomes
-      [RFC 3110]:                                              https://datatracker.ietf.org/doc/html/rfc3110
-      [RFC 5155]:                                              https://datatracker.ietf.org/doc/html/rfc5155
-      [RFC 5702]:                                              https://datatracker.ietf.org/doc/html/rfc5702#section-2
-      [RFC 8624]:                                              https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1
-      [Recommendation for key Management, part 1, revision 4]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r4.pdf
   dnssec-15:
     Summary: Check existence of CDS and CDNSKEY
     Description: |
@@ -5524,30 +5075,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       the ignored protocol.
-
-      ## Intercase dependencies
-
-      None.
-      [Connectivity01]:             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                   ../SeverityLevelDefinitions.md#critical
-      [DS15_HAS_CDNSKEY_NO_CDS]:    #summary
-      [DS15_HAS_CDS_AND_CDNSKEY]:   #summary
-      [DS15_HAS_CDS_NO_CDNSKEY]:    #summary
-      [DS15_INCONSISTENT_CDNSKEY]:  #summary
-      [DS15_INCONSISTENT_CDS]:      #summary
-      [DS15_MISMATCH_CDS_CDNSKEY]:  #summary
-      [DS15_NO_CDS_CDNSKEY]:        #summary
-      [Default level]:              ../SeverityLevelDefinitions.md
-      [ERROR]:                      ../SeverityLevelDefinitions.md#error
-      [INFO]:                       ../SeverityLevelDefinitions.md#info
-      [Method4]:                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                     ../SeverityLevelDefinitions.md#notice
-      [RFC 7344#4]:                 https://datatracker.ietf.org/doc/html/rfc7344#section-4
-      [RFC 7344]:                   https://datatracker.ietf.org/doc/html/rfc7344
-      [RFC 8078]:                   https://datatracker.ietf.org/doc/html/rfc8078
-      [WARNING]:                    ../SeverityLevelDefinitions.md#warning
-
   dnssec-16:
     Summary: Validate CDS
     Description: |
@@ -5776,37 +5303,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       the ignored protocol.
-
-      ## Intercase dependencies
-
-      None.
-      [Connectivity01]:                        ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                              ../SeverityLevelDefinitions.md#critical
-      [DNSSEC15]:                              dnssec15.md
-      [DNSSEC17]:                              dnssec17.md
-      [DS16_CDS_INVALID_RRSIG]:                #summary
-      [DS16_CDS_MATCHES_NON_SEP_DNSKEY]:       #summary
-      [DS16_CDS_MATCHES_NON_ZONE_DNSKEY]:      #summary
-      [DS16_CDS_MATCHES_NO_DNSKEY]:            #summary
-      [DS16_CDS_NOT_SIGNED_BY_CDS]:            #summary
-      [DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY]:     #summary
-      [DS16_CDS_UNSIGNED]:                     #summary
-      [DS16_CDS_WITHOUT_DNSKEY]:               #summary
-      [DS16_DELETE_CDS]:                       #summary
-      [DS16_DNSKEY_NOT_SIGNED_BY_CDS]:         #summary
-      [DS16_MIXED_DELETE_CDS]:                 #summary
-      [Default level]:                         ../SeverityLevelDefinitions.md
-      [ERROR]:                                 ../SeverityLevelDefinitions.md#error
-      [INFO]:                                  ../SeverityLevelDefinitions.md#info
-      [Key Tag Calculation]:                   https://datatracker.ietf.org/doc/html/rfc4034#appendix-B
-      [Method4]:                               ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                               ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                ../SeverityLevelDefinitions.md#notice
-      [RFC 7344, section 4]:                   https://datatracker.ietf.org/doc/html/rfc7344#section-4
-      [RFC 7344]:                              https://datatracker.ietf.org/doc/html/rfc7344
-      [RFC 8078]:                              https://datatracker.ietf.org/doc/html/rfc8078
-      [WARNING]:                               ../SeverityLevelDefinitions.md#warning
-
   dnssec-17:
     Summary: Validate CDNSKEY
     Description: |
@@ -6039,37 +5535,6 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       the ignored protocol.
-
-      ## Intercase dependencies
-
-      None.
-      [Connectivity01]:                        ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                              ../SeverityLevelDefinitions.md#critical
-      [DNSSEC15]:                              dnssec15.md
-      [DNSSEC16]:                              dnssec16.md
-      [DS17_CDNSKEY_INVALID_RRSIG]:            #summary
-      [DS17_CDNSKEY_IS_NON_SEP]:               #summary
-      [DS17_CDNSKEY_IS_NON_ZONE]:              #summary
-      [DS17_CDNSKEY_MATCHES_NO_DNSKEY]:        #summary
-      [DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY]:    #summary
-      [DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY]: #summary
-      [DS17_CDNSKEY_UNSIGNED]:                 #summary
-      [DS17_CDNSKEY_WITHOUT_DNSKEY]:           #summary
-      [DS17_DELETE_CDNSKEY]:                   #summary
-      [DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY]:     #summary
-      [DS17_MIXED_DELETE_CDNSKEY]:             #summary
-      [Default level]:                         ../SeverityLevelDefinitions.md
-      [ERROR]:                                 ../SeverityLevelDefinitions.md#error
-      [INFO]:                                  ../SeverityLevelDefinitions.md#info
-      [Key Tag Calculation]:                   https://datatracker.ietf.org/doc/html/rfc4034#appendix-B
-      [Method4]:                               ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                               ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                ../SeverityLevelDefinitions.md#notice
-      [RFC 7344, section 4]:                   https://datatracker.ietf.org/doc/html/rfc7344#section-4
-      [RFC 7344]:                              https://datatracker.ietf.org/doc/html/rfc7344
-      [RFC 8078]:                              https://datatracker.ietf.org/doc/html/rfc8078
-      [WARNING]:                               ../SeverityLevelDefinitions.md#warning
-
   dnssecRSP-ZSKRollover01:
     Summary: test ZSK rollover
     Input-Parameters:
