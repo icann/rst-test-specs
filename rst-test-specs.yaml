@@ -313,13 +313,6 @@ Test-Cases:
   dns-address01:
     Summary: Verify that IPv4 addresse are not in private networks
     Description: |
-      ## ADDRESS01: Name server address must be globally routable
-
-      ### Test case identifier
-      **ADDRESS01** Name server address must be globally routable
-
-      ### Objective
-
       In order for the domain and its resources to be accessible, authoritative
       name servers must have addresses in the routable public addressing space.
 
@@ -363,13 +356,6 @@ Test-Cases:
   dns-address02:
     Summary: Verify reverse DNS entries exist for nameserver IP addresses
     Description: |
-      ## ADDRESS02: Reverse DNS entry exists for name server IP address
-
-      ### Test case identifier
-      **ADDRESS02** Reverse DNS entry should exist for name server IP address
-
-      ### Objective
-
       Some anti-spam techniques use reverse DNS lookup to allow incoming traffic.
       In order to prevent name servers to be blocked or blacklisted, DNS
       administrators should publish PTR records associated to name server
@@ -413,13 +399,6 @@ Test-Cases:
   dns-address03:
     Summary: Verify that reverse DNS entries match nameserver names
     Description: |
-      ## ADDRESS03: Reverse DNS entry matches name server name
-
-      ### Test case identifier
-      **ADDRESS03** Reverse DNS entry matches name server name
-
-      ### Objective
-
       Some anti-spam techniques use reverse DNS lookup to allow incoming traffic.
       In order to prevent name servers to be blocked or blacklisted, DNS
       administrators should publish PTR records associated with the name server
@@ -478,23 +457,6 @@ Test-Cases:
   dns-connectivity01:
     Summary: Verify nameserver UDP port 53 reachability
     Description: |
-      # CONNECTIVITY01: UDP connectivity to name servers
-
-      ## Test case identifier
-      **CONNECTIVITY01**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       UDP is the fundamental protocol to reach a general purpose name server hosting
       a zone, "DNS servers MUST be able to service UDP [...]" ([RFC 1123], section
       6.1.3.2, page 75), also restated in [RFC 7766][RFC 7766#5], section 5.
@@ -638,62 +600,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                                                  https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Basic02]:                                                        basic02.md
-      [CN01_IPV4_DISABLED]:                                             #summary
-      [CN01_IPV6_DISABLED]:                                             #summary
-      [CN01_MISSING_NS_RECORD_UDP]:                                     #summary
-      [CN01_MISSING_SOA_RECORD_UDP]:                                    #summary
-      [CN01_NO_RESPONSE_NS_QUERY_UDP]:                                  #summary
-      [CN01_NO_RESPONSE_SOA_QUERY_UDP]:                                 #summary
-      [CN01_NO_RESPONSE_UDP]:                                           #summary
-      [CN01_NS_RECORD_NOT_AA_UDP]:                                      #summary
-      [CN01_SOA_RECORD_NOT_AA_UDP]:                                     #summary
-      [CN01_UNEXPECTED_RCODE_NS_QUERY_UDP]:                             #summary
-      [CN01_UNEXPECTED_RCODE_SOA_QUERY_UDP]:                            #summary
-      [CN01_WRONG_NS_RECORD_UDP]:                                       #summary
-      [CN01_WRONG_SOA_RECORD_UDP]:                                      #summary
-      [CRITICAL]:                                                       ../SeverityLevelDefinitions.md#critical
-      [DEBUG]:                                                          ../SeverityLevelDefinitions.md#notice
-      [DNS Query and Response Defaults]:                                ../DNSQueryAndResponseDefaults.md
-      [DNS Query]:                                                      ../DNSQueryAndResponseDefaults.md#default-setting-in-dns-query
-      [DNS Response]:                                                   ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dns-response
-      [ERROR]:                                                          ../SeverityLevelDefinitions.md#error
-      [INFO]:                                                           ../SeverityLevelDefinitions.md#info
-      [Method4]:                                                        ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                                        ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                                         ../SeverityLevelDefinitions.md#notice
-      [RCODE Name]:                                                     https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [RFC 1035#4.2.1]:                                                 https://www.rfc-editor.org/rfc/rfc1035#section-4.2.1
-      [RFC 1123]:                                                       https://www.rfc-editor.org/rfc/rfc1123
-      [RFC 7766#5]:                                                     https://www.rfc-editor.org/rfc/rfc7766#section-5
-      [Severity Level Definitions]:                                     ../SeverityLevelDefinitions.md
-      [WARNING]:                                                        ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                                      ../../../configuration/profiles.md
-
   dns-connectivity02:
     Summary: Verify nameserver TCP port 53 reachability
     Description: |
-      # CONNECTIVITY02: TCP connectivity to name servers
-
-      ## Test case identifier
-      **CONNECTIVITY02**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       TCP is a protocol to reach a general purpose name server hosting a zone, "All
       general-purpose DNS implementations MUST support [...] TCP transport"
       ([RFC 7766][RFC 7766#5], section 5).
@@ -817,50 +726,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this Test Case.
-      [Argument list]:                                                  https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [CN02_MISSING_NS_RECORD_TCP]:                                     #summary
-      [CN02_MISSING_SOA_RECORD_TCP]:                                    #summary
-      [CN02_NO_RESPONSE_NS_QUERY_TCP]:                                  #summary
-      [CN02_NO_RESPONSE_SOA_QUERY_TCP]:                                 #summary
-      [CN02_NO_RESPONSE_TCP]:                                           #summary
-      [CN02_NS_RECORD_NOT_AA_TCP]:                                      #summary
-      [CN02_SOA_RECORD_NOT_AA_TCP]:                                     #summary
-      [CN02_UNEXPECTED_RCODE_NS_QUERY_TCP]:                             #summary
-      [CN02_UNEXPECTED_RCODE_SOA_QUERY_TCP]:                            #summary
-      [CN02_WRONG_NS_RECORD_TCP]:                                       #summary
-      [CN02_WRONG_SOA_RECORD_TCP]:                                      #summary
-      [CRITICAL]:                                                       ../SeverityLevelDefinitions.md#critical
-      [Connectivity01]:                                                 connectivity01.md
-      [DEBUG]:                                                          ../SeverityLevelDefinitions.md#notice
-      [DNS Query and Response Defaults]:                                ../DNSQueryAndResponseDefaults.md
-      [DNS Query]:                                                      ../DNSQueryAndResponseDefaults.md#default-setting-in-dns-query
-      [DNS Response]:                                                   ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dns-response
-      [ERROR]:                                                          ../SeverityLevelDefinitions.md#error
-      [INFO]:                                                           ../SeverityLevelDefinitions.md#info
-      [Method4]:                                                        ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                                        ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                                         ../SeverityLevelDefinitions.md#notice
-      [RCODE Name]:                                                     https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [RFC 1035#4.2.1]:                                                 https://www.rfc-editor.org/rfc/rfc1035#section-4.2.1
-      [RFC 7766#5]:                                                     https://www.rfc-editor.org/rfc/rfc7766#section-5
-      [Severity Level Definitions]:                                     ../SeverityLevelDefinitions.md
-      [WARNING]:                                                        ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                                      ../../../configuration/profiles.md
-
   dns-connectivity03:
     Summary: Verify that all nameservers do not belong to the same AS
     Description: |
-      # CONNECTIVITY03: AS Diversity
-
-      ## Test case identifier
-
-      **CONNECTIVITY03**
-
-      ## Objective
-
       The objective in this test is to verify that all IP addresses of the domain's
       authoritative name servers are announced from different ASNs (autonomous system
       number). See [RFC 1930] and [Wikipedia] for an explanation of AS (autonomous
@@ -1046,28 +914,6 @@ Test-Cases:
   dns-connectivity04:
     Summary: Verify that name servers are not announced in the same IP prefix
     Description: |
-      # CONNECTIVITY04: IP Prefix Diversity
-
-      ## Test case identifier
-      **CONNECTIVITY04**
-
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Prefix lookup methods](#prefix-lookup-methods)
-        * [Cymru prefix lookup](#cymru-prefix-lookup)
-        * [RIPE prefix lookup](#ripe-prefix-lookup)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-
-      ## Objective
-
       The objective in this Test Case is to verify that all IP addresses of the domain's
       authoritative name servers are announced from different IP prefixes.
 
@@ -1253,63 +1099,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None
-
-      ## Terminology
-
-      * "Concatenate" - The term is used to refer to the conversion of a TXT
-        resource record’s data to a single contiguous string, as specified in [RFC
-        7208, section 3.3][RFC7208#3.3].
-
-      * "Send" - The term is used when a query is sent to
-        a specific server (server IP address).
-
-      [Argument List]:                                                https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [CN04_EMPTY_PREFIX_SET]:                                        #outcomes
-      [CN04_ERROR_PREFIX_DATABASE]:                                   #outcomes
-      [CN04_IPV4_DIFFERENT_PREFIX]:                                   #outcomes
-      [CN04_IPV4_SAME_PREFIX]:                                        #outcomes
-      [CN04_IPV6_DIFFERENT_PREFIX]:                                   #outcomes
-      [CN04_IPV6_SAME_PREFIX]:                                        #outcomes
-      [Concatenate]:                                                  #terminology
-      [Connectivity01]:                                               connectivity01.md
-      [CRITICAL]:                                                     ../SeverityLevelDefinitions.md#critical
-      [Cymru Database]:                                               #cymru-prefix-lookup
-      [DEBUG]:                                                        ../SeverityLevelDefinitions.md#notice
-      [DNS Query and Response Defaults]:                              ../DNSQueryAndResponseDefaults.md
-      [DNS Query]:                                                    ../DNSQueryAndResponseDefaults.md#default-setting-in-dns-query
-      [DNS Response]:                                                 ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dns-response
-      [ERROR]:                                                        ../SeverityLevelDefinitions.md#error
-      [INFO]:                                                         ../SeverityLevelDefinitions.md#info
-      [IP to ASN Mapping]:                                            https://www.team-cymru.com/ip-asn-mapping
-      [Method4]:                                                      ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                                      ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [Methods]:                                                      ../Methods.md
-      [NOTICE]:                                                       ../SeverityLevelDefinitions.md#notice
-      [Prefix Lookup Methods]:                                        #prefix-lookup-methods
-      [RCODE Name]:                                                   https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [Requirements and normalization of domain names in input]:      ../RequirementsAndNormalizationOfDomainNames.md
-      [RFC 1035#3.5]:                                                 https://datatracker.ietf.org/doc/html/rfc1035#section-3.5
-      [RFC 2182#3.1]:                                                 https://datatracker.ietf.org/doc/html/rfc2182#section-3.1
-      [RFC 3596#2.5]:                                                 https://datatracker.ietf.org/doc/html/rfc3596#section-2.5
-      [RFC7208#3.3]:                                                  https://datatracker.ietf.org/doc/html/rfc7208#section-3.3
-      [RIPE Database]:                                                #ripe-prefix-lookup
-      [RISwhois]:                                                     https://www.ripe.net/analyse/archived-projects/ris-tools-web-interfaces/riswhois
-      [Send]:                                                         #terminology
-      [Severity Level Definitions]:                                   ../SeverityLevelDefinitions.md
-      [WARNING]:                                                      ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine Profile]:                                    ../../../configuration/profiles.md
-
   dns-consistency01:
     Summary: Query all nameservers for SOA, and verify that they all have the same SOA serial number
     Description: |
-      # CONSISTENCY01: SOA serial number consistency
-
-      ## Test case identifier
-
-      **CONSISTENCY01**
-
-      ## Objective
-
       For the data served by the authoritative name servers for a designated zone
       to be consistent, all authoritative name servers must serve the same SOA
       record for the designated zone.
@@ -1435,14 +1227,6 @@ Test-Cases:
   dns-consistency02:
     Summary: Query all nameservers for SOA, and verify that they all have the same SOA rname
     Description: |
-      # CONSISTENCY02: SOA RNAME consistency
-
-      ## Test case identifier
-
-      **CONSISTENCY02**
-
-      ## Objective
-
       All authoritative name servers must serve the same SOA record for the
       tested domain  (section 4.2.1 of [RFC 1034]). As per section 3.3.13 of [RFC 1035],
       the RNAME field in the SOA RDATA refers to the administrative contact. An inconsistency in
@@ -1515,14 +1299,6 @@ Test-Cases:
   dns-consistency03:
     Summary: Query all nameservers for SOA, and verify that they all have the same time parameters (REFRESH/RETRY/EXPIRE/MINIMUM)
     Description: |
-      # CONSISTENCY03: SOA timers consistency
-
-      ## Test case identifier
-
-      **CONSISTENCY03**
-
-      ## Objective
-
       All SOA record timer fields must be consistent across all authoritative
       name servers. An inconsistency in these fields might result in operational
       inconsistencies for the designated zone.
@@ -1608,14 +1384,6 @@ Test-Cases:
   dns-consistency04:
     Summary: Query all nameservers for the NS set, and verify that they have all the same content
     Description: |
-      # CONSISTENCY04: Name server NS consistency
-
-      ## Test case identifier
-
-      **CONSISTENCY04**
-
-      ## Objective
-
       All authoritative name servers must serve the same NS record set
       for the tested domain, child zone ([RFC 1034], section 4.2.2).
       Any inconsistencies in NS records described in [RFC 1035],
@@ -1692,14 +1460,6 @@ Test-Cases:
   dns-consistency05:
     Summary: Verify that the glue records are consistent with authoritative data
     Description: |
-      # CONSISTENCY05: Consistency between glue and authoritative data
-
-      ## Test case identifier
-
-      **CONSISTENCY05**
-
-      ## Objective
-
       For name servers that have IP addresses listed as glue, the IP addresses must
       match the authoritative A and AAAA records for that host. This is an IANA
       [name server requirement].
@@ -1870,37 +1630,9 @@ Test-Cases:
       The term "DNS Lookup" is used when a recursive lookup is used, though
       any changes to the DNS tree introduced by an [undelegated test] must be
       respected.
-      [ADDRESSES_MATCH]:                #outcomes
-      [BASIC01]:                        ../Basic-TP/basic01.md
-      [Connectivity01]:                 ../Connectivity-TP/connectivity01.md
-      [CHILD_NS_FAILED]:                #outcomes
-      [CHILD_ZONE_LAME]:                #outcomes
-      [DELEGATION05]:                   ../Delegation-TP/delegation05.md
-      [EXTRA_ADDRESS_CHILD]:            #outcomes
-      [IN_BAILIWICK_ADDR_MISMATCH]:     #outcomes
-      [Method2]:                        ../Methods.md#method-2-obtain-glue-name-records-from-parent
-      [Method3]:                        ../Methods.md#method-3-obtain-name-servers-from-child
-      [Method4]:                        ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                        ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [Methods]:                        ../Methods.md
-      [NO_RESPONSE]:                    #outcomes
-      [OUT_OF_BAILIWICK_ADDR_MISMATCH]: #outcomes
-      [RFC 7719]:                       https://datatracker.ietf.org/doc/html/rfc7719
-      [UNDEL_OOB_ADDR_MISMATCH]:        #outcomes
-      [name server requirement]:        https://www.iana.org/help/nameserver-requirements
-      [terminology]:                    #terminology
-      [undelegated test]:               ../../test-types/undelegated-test.md
   dns-consistency06:
     Summary: Query all nameservers for SOA, and verify that they all have the same SOA mname
     Description: |
-      # CONSISTENCY06: SOA MNAME consistency
-
-      ## Test case identifier
-
-      **CONSISTENCY06**
-
-      ## Objective
-
       All authoritative name servers must serve the same SOA record (section
       4.2.1) of [RFC 1034] for the tested domain. As per section 3.3.13 of
       [RFC 1035] the MNAME field in the SOA RDATA refers to the name of
@@ -1970,26 +1702,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None
-      [Connectivity01]:           ../Connectivity-TP/connectivity01.md
-      [MULTIPLE_SOA_MNAMES]:      #outcomes
-      [Method4]:                  ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                  ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RESPONSE]:              #outcomes
-      [NO_RESPONSE_SOA_QUERY]:    #outcomes
-      [ONE_SOA_MNAME]:            #outcomes
-      [RFC 1034]:                 https://datatracker.ietf.org/doc/html/rfc1035
-      [RFC 1035]:                 https://datatracker.ietf.org/doc/html/rfc1035
   dns-delegation01:
     Summary: Verify that there are more than two nameservers
     Description: |
-      # DELEGATION01: Minimum number of name servers
-
-      ## Test case identifier
-
-      **DELEGATION01**
-
-      ## Objective
-
       Section 4.1 of [RFC 1034] specifies that there must be a minimum of two name servers
       for a domain. This test is done to verify this condition.
 
@@ -2117,14 +1832,6 @@ Test-Cases:
   dns-delegation02:
     Summary: Verify that name servers have distinct IP addresses
     Description: |
-      # DELEGATION02: Name servers must have distinct IP addresses
-
-      ## Test case identifier
-
-      **DELEGATION02:** Name servers must have distinct IP addresses
-
-      ## Objective
-
       If the domain's name servers use several different names, they can all
       be using the same IP address. This may be due to a configuration error, or
       a workaround for a certain policy restriction. This test case checks that
@@ -2199,14 +1906,6 @@ Test-Cases:
   dns-delegation03:
     Summary: Verify that there is no truncation on referrals
     Description: |
-      # DELEGATION03: No truncation of referrals
-
-      ## Test case identifier
-
-      **DELEGATION03**
-
-      ## Objective
-
       The Domain Name System defaults to using UDP for queries and answers with a
       DNS payload limit of 512 octets (bytes). Larger replies cause an initial
       truncation indication leading to a subsequent handling via TCP with
@@ -2309,29 +2008,9 @@ Test-Cases:
       [RFC 1035]: https://datatracker.ietf.org/doc/html/rfc1035
 
       [IANA]: https://www.iana.org/help/nameserver-requirements
-
-      [in-bailiwick]:     #terminology
-
-      [In-Bailiwick of Parent]: #in-bailiwick-of-parent
-      [Method1]: ../Methods.md#method-1-obtain-the-parent-domain
-      [Method2]: ../Methods.md#method-2-obtain-glue-name-records-from-parent
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-
-      [REFERRAL_SIZE_TOO_LARGE]: #outcomes
-
-      [REFERRAL_SIZE_OK]: #outcomes
-
   dns-delegation04:
     Summary: Verify that nameservers are authoritative
     Description: |
-      ## DELEGATION04: Name server is authoritative
-
-      ### Test case identifier
-
-      **DELEGATION04:** Name server is authoritative
-
-      ### Objective
-
       Subsection 6.1 of [RFC 2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies
       that the nameservers must answer authoritatively for the domain. Answers
       to queries to the name servers for the designated zone must have the "AA"
@@ -2371,14 +2050,6 @@ Test-Cases:
   dns-delegation05:
     Summary: Verify that NS RRs do not point to CNAMEs
     Description: |
-      # DELEGATION05: Name server must not point at CNAME alias
-
-      ## Test case identifier
-
-      **DELEGATION05**
-
-      ## Objective
-
       Name servers for a zone are defined in NS records. An NS record points
       at a name, i.e. the RDATA for an NS record is a domain name. That
       name is the name of the name server. [RFC 2181][RFC 2181#10.3], section
@@ -2472,36 +2143,9 @@ Test-Cases:
       The term "DNS Lookup" is used when a recursive lookup is used, though
       any changes to the DNS tree introduced by an [undelegated test] must be
       respected.
-      [Connectivity01]:        ../Connectivity-TP/connectivity01.md
-      [DNS Lookup]:            #terminology
-      [Method2]:               ../Methods.md#method-2-obtain-glue-name-records-from-parent
-      [Method3]:               ../Methods.md#method-3-obtain-name-servers-from-child
-      [Method4]:               ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:               ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_NS_CNAME]:           #outcomes
-      [NO_RESPONSE]:           #outcomes
-      [NS_IS_CNAME]:           #outcomes
-      [RFC 2181#10.3]:         https://datatracker.ietf.org/doc/html/rfc2181#section-10.3
-      [RFC 8499#7]:            https://datatracker.ietf.org/doc/html/rfc8499#section-7
-      [UNEXPECTED_RCODE]:      #outcomes
-      [in-bailiwick]:          #terminology
-      [in-domain]:             #terminology
-      [out-of-bailiwick]:      #terminology
-      [sibling domain]:        #terminology
-      [terminology]:           #terminology
-      [undelegated test]:      ../../test-types/undelegated-test.md
-
   dns-delegation06:
     Summary: Verify existence of SOA
     Description: |
-      ## DELEGATION06: Existence of SOA
-
-      ### Test case identifier
-
-      **DELEGATION06:** Existence of SOA
-
-      ### Objective
-
       Section 6.1 of the [RFC 2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies
       that the SOA record is mandatory for every zone.
 
@@ -2537,13 +2181,6 @@ Test-Cases:
   dns-nameserver01:
     Summary: Verify that nameserver does not provide recursive service
     Description: |
-      # NAMESERVER01: A name server should not be a recursor
-
-      ## Test case identifier
-      **NAMESERVER01**
-
-      ## Objective
-
       To ensure consistency in DNS, an authoritative name server should not be
       configured to do recursive lookups. Also, open recursive resolvers are
       considered bad internet practice due to their capability of assisting in
@@ -2622,29 +2259,9 @@ Test-Cases:
 
       Valid domain names according to the "IDNA 2008 specification" is found in
       [RFC 5890], section 2.3.1, page 7.
-
-      [Connectivity01]:        ../Connectivity-TP/connectivity01.md
-      [D.J. Bernstein]: https://cr.yp.to/djbdns/separation.html
-      [IDNA 2008 specification]: #terminology
-      [IS_A_RECURSOR]: #outcomes
-      [Method4]: ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]: ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NO_RECURSOR]: #outcomes
-      [NO_RESPONSE]: #outcomes
-      [RFC 2870]: https://datatracker.ietf.org/doc/html/rfc2870
-      [RFC 5358]: https://datatracker.ietf.org/doc/html/rfc5358
-      [RFC 5890]: https://datatracker.ietf.org/doc/html/rfc5890
-
   dns-nameserver02:
     Summary: Verify EDNS0 support
     Description: |
-      # NAMESERVER02: Test of EDNS0 support
-
-      ## Test case identifier
-      **NAMESERVER02**
-
-      ## Objective
-
       EDNS(0) is a mechanism to announce capabilities of a DNS implementation,
       and is now basically required by any new functionality in DNS such as
       DNSSEC. EDNS(0) is standardized in [RFC 6891].
@@ -2766,13 +2383,6 @@ Test-Cases:
   dns-nameserver04:
     Summary: Verify that replies from nameserver comes from the expected IP address
     Description: |
-      ## NAMESERVER04: Same source address
-
-      ### Test case identifier
-      **NAMESERVER04** Same source address
-
-      ### Objective
-
       Responses from the authoritative name servers must contain same source IP
       address as the destination IP address of the initial query. This has been
       clarified in section 4 of
@@ -2808,13 +2418,6 @@ Test-Cases:
   dns-nameserver05:
     Summary: Verify behaviour against AAAA queries
     Description: |
-      # NAMESERVER05: Behaviour against AAAA query
-
-      ## Test case identifier
-      **NAMESERVER05**
-
-      ## Objective
-
       Older implementations of authoritative name servers have shown different
       misbehaviours trying to answer queries for AAAA records, as described in
       [RFC 4074]. This test case is intended to find out if the name server
@@ -2897,13 +2500,6 @@ Test-Cases:
   dns-nameserver06:
     Summary: Verify that each nameserver can be resolved to an IP address
     Description: |
-      ## NAMESERVER06: NS can be resolved
-
-      ### Test case identifier
-      **NAMESERVER06** NS can be resolved
-
-      ### Objective
-
       All name servers names listed for a delegation must be resolvable in DNS.
       If they are not resolvable using DNS this is a sign of misconfiguration,
       and raises the risk of unreachability for the domain. It could also lower
@@ -2948,12 +2544,6 @@ Test-Cases:
   dns-nameserver07:
     Summary: Check whether authoritative name servers return an upward referral
     Description: |
-      ## NAMESERVER07:  To check whether authoritative name servers return an upward referral
-
-      ### Test case identifier
-      NAMESERVER07 To check whether authoritative name servers return an upward
-      referral
-      ### Objective
       The configuration and/or implementation of some authoritative name servers
       causes them to return an upward referral to the root zone. There are proofs that
       such a [behaviour could be used for DDoS attacks](
@@ -2982,12 +2572,6 @@ Test-Cases:
   dns-nameserver08:
     Summary: Check whether authoritative name servers responses match the case of every letter in QNAME
     Description: |
-      ## NAMESERVER08: Testing QNAME case insensitivity
-
-      ### Test case identifier
-      NAMESERVER08 Verify whether the authoritative nameserver response match the
-      case of every letter in the query name
-      ### Objective
       The DNS standards require that nameservers treat names with case insensitivity.
       That is, the names example.com and EXAMPLE.COM should resolve to the same IP
       address. However, in the response, most nameservers echo back the name as it
@@ -3026,12 +2610,6 @@ Test-Cases:
   dns-nameserver09:
     Summary: Check whether authoritative name servers return same results for equivalent names with different cases in the request
     Description: |
-      ## NAMESERVER09: Testing QNAME case sensitivity
-
-      ### Test case identifier
-      NAMESERVER09 Verify whether the authoritative nameserver returns same results
-      for equivalent names with different cases in the request.
-      ### Objective
       There has been cases where the nameservers respond with complete
       case-sensitivity (in violation of the DNS standards): that is, they match the
       exact case of the name in the response; but return different results for
@@ -3065,23 +2643,6 @@ Test-Cases:
   dns-nameserver10:
     Summary: Check whether authoritative name servers respond correctly to queries with undefined EDNS version
     Description: |
-      # NAMESERVER10: Test for undefined EDNS version
-      ## Test case identifier
-
-      **NAMESERVER10**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       EDNS ([RFC 6891]) is a mechanism to announce capabilities of a DNS
       implementation, and is required by new functionality in DNS such as DNSSEC
       ([RFC 4033][RFC 4033#section-3], section 3).
@@ -3184,52 +2745,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                           https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                          ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                ../SeverityLevelDefinitions.md#critical
-      [ERROR]:                                   ../SeverityLevelDefinitions.md#error
-      [IANA RCODE Registry]:                     https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [INFO]:                                    ../SeverityLevelDefinitions.md#info
-      [Method4]:                                 ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                 ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [N10_EDNS_RESPONSE_ERROR]:                 #summary
-      [N10_NO_RESPONSE_EDNS1_QUERY]:             #summary
-      [N10_UNEXPECTED_RCODE]:                    #summary
-      [NOTICE]:                                  ../SeverityLevelDefinitions.md#notice
-      [Nameserver02]:                            ../Nameserver-TP/nameserver02.md
-      [RFC 1035#section-4.1.1]:                  https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1
-      [RFC 4033#section-3]:                      https://datatracker.ietf.org/doc/html/rfc4033#section-3
-      [RFC 6891#section-6.1.3]:                  https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3
-      [RFC 6891]:                                https://datatracker.ietf.org/doc/html/rfc6891
-      [Severity Level Definitions]:              ../SeverityLevelDefinitions.md
-      [WARNING]:                                 ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:               ../../../configuration/profiles.md
-
   dns-nameserver11:
     Summary: Check whether authoritative name servers responses doe not include unknown EDNS OPTION-CODE used in query
     Description: |
-      # NAMESERVER11: Test for unknown EDNS OPTION-CODE
-
-      ## Test case identifier
-      **NAMESERVER11**
-
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-
-      ## Objective
-
       EDNS is a mechanism to announce capabilities of a DNS implementation,
       and is now basically required by any new functionality in DNS such as
       DNSSEC ([RFC 6891]).
@@ -3368,49 +2886,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                        https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                       ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                             ../SeverityLevelDefinitions.md#critical
-      [DNS Query and Response Defaults]:      ../DNSQueryAndResponseDefaults.md
-      [EDNS Query]:                            ../DNSQueryAndResponseDefaults.md#default-setting-in-edns-query
-      [EDNS Response]:                         ../DNSQueryAndResponseDefaults.md#default-handling-of-an-edns-response
-      [ERROR]:                                ../SeverityLevelDefinitions.md#error
-      [IANA-DNSSYSTEM-PARAMETERS]:            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11
-      [INFO]:                                 ../SeverityLevelDefinitions.md#info
-      [Message Tag Specification]:            MessageTagSpecification.md
-      [Method4]:                              ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                              ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [Methods]:                              ../Methods.md
-      [N11_NO_EDNS]:                          #summary
-      [N11_NO_RESPONSE]:                      #summary
-      [N11_RETURNS_UNKNOWN_OPTION_CODE]:      #summary
-      [N11_UNEXPECTED_ANSWER_SECTION]:        #summary
-      [N11_UNEXPECTED_RCODE]:                 #summary
-      [N11_UNSET_AA]:                         #summary
-      [NOTICE]:                               ../SeverityLevelDefinitions.md#notice
-      [Nameserver02]:                         ../Nameserver-TP/nameserver02.md
-      [RCODE Name]:                           https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [RFC 6891, section 6.1.2]:              https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.2
-      [RFC 6891]:                             https://datatracker.ietf.org/doc/html/rfc6891
-      [Severity Level Definitions]:           ../SeverityLevelDefinitions.md
-      [Test Case Identifier Specification]:   TestCaseIdentifierSpecification.md
-      [WARNING]:                              ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:            ../../../configuration/profiles.md
-
   dns-nameserver12:
     Summary: Check whether authoritative name servers responses has "Z" bits cleared even if they are set in the query
     Description: |
-      # NAMESERVER12: Test for unknown EDNS flags
-
-      ## Test case identifier
-      **NAMESERVER12**
-
-      ## Objective
-
       EDNS is a mechanism to announce capabilities of a dns implementation,
       and is now basically required by any new functionality in dns such as
       DNSSEC ([RFC 6891]).
@@ -3499,14 +2977,6 @@ Test-Cases:
   dns-nameserver13:
     Summary: Verify that if the response to a query with an OPT record is truncated, then the response will contain an OPT record
     Description: |
-      # NAMESERVER13: Test for truncated response on EDNS query
-
-      ## Test case identifier
-
-      **NAMESERVER13**
-
-      ## Objective
-
       EDNS is a mechanism to announce capabilities of a DNS implementation,
       and is now basically required by any new functionality in DNS such as
       DNSSEC ([RFC 6891]).
@@ -3596,13 +3066,6 @@ Test-Cases:
   dns-syntax05:
     Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given has a conform usage of at sign (@)
     Description: |
-      ## SYNTAX05: Misuse of '@' character in the SOA RNAME field
-
-      ### Test case identifier
-      **SYNTAX05** There must be no misused '@' character in the SOA RNAME field
-
-      ### Objective
-
       The SOA RNAME field does not allow the '@' characters to be used for
       describing a mailbox. The first dot ('.') is thus translated into the
       '@' character. This is a common mistake. The rules are defined in
@@ -3639,13 +3102,6 @@ Test-Cases:
   dns-syntax06:
     Summary: Verify that a SOA rname (Zonemaster::Engine::DNSName) given is RFC822 compliant
     Description: |
-      # SYNTAX06: No illegal characters in the SOA RNAME field
-
-      ## Test case identifier
-      **SYNTAX06**
-
-      ## Objective
-
       The SOA RNAME field is a mailbox address. The SOA RNAME field is defined
       in [RFC 1035][RFC 1035#3.3.13], section 3.3.13 and in
       [RFC 1912][RFC 1912#2.2], section 2.2. The RNAME
@@ -3776,37 +3232,9 @@ Test-Cases:
       * "DNS Lookup" - The term is used when a recursive lookup is used, though
       any changes to the DNS tree introduced by an [undelegated test] must be
       respected.
-
-      [Connectivity01]:             ../Connectivity-TP/connectivity01.md
-      [Method4]:                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [Methods]:                    ../Methods.md
-      [NO_RESPONSE]:                #outcomes
-      [NO_RESPONSE_SOA_QUERY]:      #outcomes
-      [RFC 1035#3.3.13]:            https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13
-      [RFC 1035#5.1]:               https://datatracker.ietf.org/doc/html/rfc1035#section-5.1
-      [RFC 1035#5.3]:               https://datatracker.ietf.org/doc/html/rfc1035#section-5.3
-      [RFC 1035#8]:                 https://datatracker.ietf.org/doc/html/rfc1035#section-8
-      [RFC 1035]:                   https://datatracker.ietf.org/doc/html/rfc1035
-      [RFC 1912#2.2]:               https://datatracker.ietf.org/doc/html/rfc1912#section-2.2
-      [RFC 5322#3.4.1]:             https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1
-      [RNAME_MAIL_DOMAIN_INVALID]:  #outcomes
-      [RNAME_MAIL_DOMAIN_LOCALHOST]:#outcomes
-      [RNAME_MAIL_ILLEGAL_CNAME]:   #outcomes
-      [RNAME_RFC822_INVALID]:       #outcomes
-      [RNAME_RFC822_VALID]:         #outcomes
-      [terminology]:                #terminology
-      [undelegated test]:           ../../test-types/undelegated-test.md
   dns-syntax07:
     Summary: Verify that SOA mname of zone given conforms to syntax rules
     Description: |
-      ## SYNTAX07: No illegal characters in the SOA MNAME field
-
-      ### Test case identifier
-      **SYNTAX07** There must be no illegal characters in the SOA MNAME field
-
-      ### Objective
-
       The SOA MNAME field is a hostname. Hostnames are valid according to the
       rules defined in [RFC 952](https://datatracker.ietf.org/doc/html/rfc952),
       in section 2.1 in [RFC 1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),
@@ -3851,25 +3279,6 @@ Test-Cases:
   dns-zone01:
     Summary: Check that master nameserver in SOA is fully qualified
     Description: |
-      ## ZONE01: Fully qualified master nameserver in SOA
-
-      ### Test case identifier
-      **ZONE01** Fully qualified master nameserver in SOA
-
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-
-      ## Objective
-
       The MNAME field from the SOA record of a zone is supposed to contain the master
       name server for that zone. The hostname of the MNAME field may not be listed
       in the NS records in the zone among the delegated name servers, but should
@@ -4074,58 +3483,9 @@ Test-Cases:
       * "DNS Lookup" - The term is used when a recursive lookup is used, though
       any changes to the DNS tree introduced by an [undelegated test] must be
       respected.
-
-      [Argument list]:                        https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [CONNECTIVITY01]:                       ../Connectivity-TP/connectivity01.md
-      [CONSISTENCY06]:                        ../Consistency-TP/consistency06.md
-      [CRITICAL]:                             ../SeverityLevelDefinitions.md#critical
-      [DNS Lookup]:                           #terminology
-      [DNS Query and Response Defaults]:      ../DNSQueryAndResponseDefaults.md
-      [DNS Query]:                            ../DNSQueryAndResponseDefaults.md#default-setting-in-dns-query
-      [DNS Response]:                         ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dns-response
-      [draft-jabley-dnsop-missing-mname]:     https://www.ietf.org/archive/id/draft-jabley-dnsop-missing-mname-00.html
-      [ERROR]:                                ../SeverityLevelDefinitions.md#error
-      [INFO]:                                 ../SeverityLevelDefinitions.md#info
-      [Message Tag Specification]:            MessageTagSpecification.md
-      [Methods]:                              ../Methods.md
-      [Method3]:                              ../Methods.md#method-3-obtain-name-servers-from-child
-      [Method4]:                              ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                              ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                               ../SeverityLevelDefinitions.md#notice
-      [RCODE Name]:                           https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [RFC1035]:                              https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13
-      [RFC1982]:                              https://datatracker.ietf.org/doc/html/rfc1982
-      [RFC1996]:                              https://datatracker.ietf.org/doc/html/rfc1996#section-2
-      [RFC2136]:                              https://datatracker.ietf.org/doc/html/rfc2136#section-1
-      [RFC2181]:                              https://datatracker.ietf.org/doc/html/rfc2181#section-7.3
-      [Severity Level Definitions]:           ../SeverityLevelDefinitions.md
-      [SYNTAX07]:                             ../Syntax-TP/syntax07.md
-      [Test Case Identifier Specification]:   TestCaseIdentifierSpecification.md
-      [Undelegated test]:                     ../../test-types/undelegated-test.md
-      [WARNING]:                              ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:            ../../../configuration/profiles.md
-      [Z01_MNAME_HAS_LOCALHOST_ADDR]:         #summary
-      [Z01_MNAME_IS_DOT]:                     #summary
-      [Z01_MNAME_IS_LOCALHOST]:               #summary
-      [Z01_MNAME_IS_MASTER]:                  #summary
-      [Z01_MNAME_MISSING_SOA_RECORD]:         #summary
-      [Z01_MNAME_NO_RESPONSE]:                #summary
-      [Z01_MNAME_NOT_AUTHORITATIVE]:          #summary
-      [Z01_MNAME_NOT_IN_NS_LIST]:             #summary
-      [Z01_MNAME_NOT_MASTER]:                 #summary
-      [Z01_MNAME_NOT_RESOLVE]:                #summary
-      [Z01_MNAME_UNEXPECTED_RCODE]:           #summary
-
   dns-zone02:
     Summary: Verify SOA 'refresh' minimum value
     Description: |
-      ## ZONE02: SOA 'refresh' minimum value
-
-      ### Test case identifier
-      **ZONE02** SOA 'refresh' minimum value
-
-      ### Objective
-
       The SOA refresh value is the number of seconds that describes
       how often a secondary name server will poll the primary name server
       to see if there is any updates. The SOA refresh value is described
@@ -4170,13 +3530,6 @@ Test-Cases:
   dns-zone03:
     Summary: Verify SOA 'retry' value is lower than SOA 'refresh' value
     Description: |
-      ## ZONE03: SOA 'retry' lower than 'refresh'
-
-      ### Test case identifier
-      **ZONE03** SOA 'retry' lower than 'refresh'
-
-      ### Objective
-
       The SOA retry value is the number of seconds that describes
       minimum time elapsed since a failed zone refresh from the primary
       name server. The SOA refresh value is described
@@ -4217,13 +3570,6 @@ Test-Cases:
   dns-zone04:
     Summary: Verify SOA 'retry' minimum value
     Description: |
-      ## ZONE04: SOA 'retry' at least 1 hour
-
-      ### Test case identifier
-      **ZONE04** SOA 'retry' at least 1 hour
-
-      ### Objective
-
       The SOA retry value is the number of seconds that describes
       minimum time elapsed since a failed zone refresh from the primary
       name server. The SOA refresh value is described
@@ -4265,13 +3611,6 @@ Test-Cases:
   dns-zone05:
     Summary: Verify SOA 'expire' minimum value
     Description: |
-      ## ZONE05: SOA 'expire' minimum value
-
-      ### Test case identifier
-      **ZONE05** SOA 'expire' minimum value
-
-      ### Objective
-
       The SOA expire value specifies for how long any secondary name server
       keeps the zone valid without any contact with the primary name server.
       This value should be greater than how long a major outage would
@@ -4319,13 +3658,6 @@ Test-Cases:
   dns-zone06:
     Summary: Verify SOA 'minimum' (default TTL) value
     Description: |
-      ## ZONE06: SOA 'minimum' maximum value
-
-      ### Test case identifier
-      **ZONE06** SOA 'minimum' maximum value
-
-      ### Objective
-
       The SOA minimum field sets the default TTL for all records in a zone.
       The recommended value is to be "cache-friendly". However, for a zone
       that changes content often, there is a need to keep the TTL values
@@ -4382,13 +3714,6 @@ Test-Cases:
   dns-zone07:
     Summary: Verify that SOA master is not an alias (CNAME)
     Description: |
-      ## ZONE07: SOA master is not an alias
-
-      ### Test case identifier
-      **ZONE07** SOA master is not an alias
-
-      ### Objective
-
       Any NS type record should not be a CNAME. The SOA MNAME should in this
       respect not be a CNAME.
 
@@ -4432,11 +3757,6 @@ Test-Cases:
   dns-zone10:
     Summary: Verify that the zone of the domain to be tested return exactly one SOA record
     Description: |
-      # ZONE10: No multiple SOA records
-      ## Test case identifier
-      **ZONE10**
-      ## Objective
-
       The SOA record is crucial for the DNS zone and "exactly one SOA RR should
       be present at the top of the zone" ([RFC 1035][RFC 1035#5.2], section 5.2).
       This test case will verify that the zone of the domain to be tested return
@@ -4500,36 +3820,9 @@ Test-Cases:
 
       The term "send" (to an IP address) is used when a DNS query is sent to
       a specific name server.
-      [Connectivity01]:            ../Connectivity-TP/connectivity01.md
-      [MULTIPLE_SOA]:              #outcomes
-      [Method4]:                   ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                   ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [Methods]:                   ../Methods.md
-      [NO_RESPONSE]:               #outcomes
-      [NO_SOA_IN_RESPONSE]:        #outcomes
-      [ONE_SOA]:                   #outcomes
-      [RFC 1035#5.2]:              https://datatracker.ietf.org/doc/html/rfc1035#section-5.2
-      [WRONG_SOA]:                 #outcomes
-      [terminology]:               #terminology
   dnssec-01:
     Summary: Verifies that all DS records have digest types registered with IANA
     Description: |
-      # DNSSEC01: Legal values for the DS hash digest algorithm
-      ## Test case identifier
-      **DNSSEC01**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       The list of allowed Digest Algorithms in a DS record published by the parent is
       specified by [RFC 8624][RFC 8624#3.3], section 3.3, and is published in the
       [IANA registry][IANA registry on DS Digest Algorithm] of
@@ -4706,52 +3999,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                                      https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [CRITICAL]:                                           ../SeverityLevelDefinitions.md#critical
-      [DNS Query and Response Defaults]:                    ../DNSQueryAndResponseDefaults.md
-      [DNSSEC Query]:                                       ../DNSQueryAndResponseDefaults.md#default-setting-in-dnssec-query
-      [DNSSEC README]:                                      README.md
-      [DNSSEC Response]:                                    ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dnssec-response
-      [DS01_DIGEST_NOT_SUPPORTED_BY_ZM]:                    #summary
-      [DS01_DS_ALGO_2_MISSING]:                             #summary
-      [DS01_DS_ALGO_DEPRECATED]:                            #summary
-      [DS01_DS_ALGO_NOT_DS]:                                #summary
-      [DS01_DS_ALGO_RESERVED]:                              #summary
-      [ERROR]:                                              ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                                    https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [IANA registry on DS Digest Algorithm]:               https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml
-      [INFO]:                                               ../SeverityLevelDefinitions.md#info
-      [Method1]:                                            ../Methods.md#method-1-obtain-the-parent-domain
-      [NOTICE]:                                             ../SeverityLevelDefinitions.md#notice
-      [RFC 8624#3.3]:                                       https://datatracker.ietf.org/doc/html/rfc8624#section-3.3
-      [Severity Level Definitions]:                         ../SeverityLevelDefinitions.md
-      [Undelegated]:                                        ../../test-types/undelegated-test.md
-      [WARNING]:                                            ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                          ../../../configuration/profiles.md
-
   dnssec-02:
     Summary: Verifies that all DS records have a matching DNSKEY
     Description: |
-      # DNSSEC02: DS must match a valid DNSKEY in the child zone
-
-      ## Test case identifier
-      **DNSSEC02**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       DNS delegations from a parent to a child are secured with DNSSEC by
       publishing one or several Delegation Signer (DS) records in the parent
       zone, along with the NS records for the delegation.
@@ -4990,51 +4240,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                              https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                   ../SeverityLevelDefinitions.md#critical
-      [DNS Query and Response Defaults]:            ../DNSQueryAndResponseDefaults.md
-      [DNSSEC Query]:                               ../DNSQueryAndResponseDefaults.md#default-setting-in-dnssec-query
-      [DNSSEC README]:                              README.md
-      [DNSSEC Response]:                            ../DNSQueryAndResponseDefaults.md#default-handling-of-a-dnssec-response
-      [DNSSEC11]:                                   dnssec11.md
-      [DS02_ALGO_NOT_SUPPORTED_BY_ZM]:              #summary
-      [DS02_DNSKEY_NOT_FOR_ZONE_SIGNING]:           #summary
-      [DS02_DNSKEY_NOT_SEP]:                        #summary
-      [DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS]:           #summary
-      [DS02_NO_DNSKEY_FOR_DS]:                      #summary
-      [DS02_NO_MATCHING_DNSKEY_RRSIG]:              #summary
-      [DS02_NO_MATCH_DS_DNSKEY]:                    #summary
-      [DS02_NO_VALID_DNSKEY_FOR_ANY_DS]:            #summary
-      [DS02_RRSIG_NOT_VALID_BY_DNSKEY]:             #summary
-      [ERROR]:                                      ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [INFO]:                                       ../SeverityLevelDefinitions.md#info
-      [Method1]:                                    ../Methods.md#method-1-obtain-the-parent-domain
-      [Method4]:                                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                     ../SeverityLevelDefinitions.md#notice
-      [RFC 4034#section-2.1.1]:                     https://datatracker.ietf.org/doc/html/rfc4034#section-2.1.1
-      [RFC 4034#section-5.2]:                       https://datatracker.ietf.org/doc/html/rfc4034#section-5.2
-      [RFC 4035#section-5]:                         https://datatracker.ietf.org/doc/html/rfc4035#section-5
-      [Severity Level Definitions]:                 ../SeverityLevelDefinitions.md
-      [Undelegated]:                                ../../test-types/undelegated-test.md
-      [WARNING]:                                    ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                  ../../../configuration/profiles.md
-
   dnssec-03:
     Summary: Check iteration counts for NSEC3
     Description: |
-      ## DNSSEC03: Check for too many NSEC3 iterations
-
-      ### Test case identifier
-      **DNSSEC03** Check for too many NSEC3 iterations
-
-      ### Objective
-
       For an authoritative name server an increased number of NSEC3 iterations
       have a negative impact on performance.
 
@@ -5103,13 +4311,6 @@ Test-Cases:
   dnssec-04:
     Summary: Checks the durations of the signatures for the DNSKEY and SOA RRsets
     Description: |
-      ## DNSSEC04: Check for too short or too long RRSIG lifetimes
-
-      ### Test case identifier
-      **DNSSEC04** Check for too short or too long RRSIG lifetimes
-
-      ### Objective
-
       Having RRSIG signature lifetimes last for too long opens up for DNS replay
       attacks. Having too short RRSIG signature lifetimes is likely to have
       a major operational impact if the master name server is down for that long.
@@ -5164,13 +4365,6 @@ Test-Cases:
   dnssec-05:
     Summary: Check DNSKEY algorithms
     Description: |
-      # DNSSEC05: Check for invalid DNSKEY algorithms
-
-      ## Test case identifier
-      **DNSSEC05**
-
-      ## Objective
-
       A domain name (zone) should only use DNSKEY algorithms that are specified
       by [RFC 8624], section 3.1 and the [IANA registry] of *DNSSEC Algorithm
       Numbers* to be used for DNSSEC signing. A public domain name (zone) should not use
@@ -5308,13 +4502,6 @@ Test-Cases:
   dnssec-06:
     Summary: Check for DNSSEC extra processing at child nameservers
     Description: |
-      ## DNSSEC06: Verify DNSSEC additional processing
-
-      ### Test case identifier
-      **DNSSEC06** Verify DNSSEC additional processing
-
-      ### Objective
-
       In order for an authoritative name server to be DNSSEC compliant,
       it must serve DNSSEC signatures (RRSIG) as additional data in a DNS answer.
       This additional processing is described in section 3.1 of [RFC 4035](
@@ -5350,22 +4537,6 @@ Test-Cases:
   dnssec-08:
     Summary: Check that the DNSKEY RRset is signed
     Description: |
-      # DNSSEC08: Valid RRSIG for DNSKEY
-      ## Test case identifier
-      **DNSSEC08**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       A DNSSEC signed zone should have a DNSKEY RRset in the zone apex
       ([RFC 4035][RFC 4035#section-2.1], section 2.1) and that RRset
       should be signed by a key that matches one of the records in the
@@ -5493,52 +4664,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                              https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                   ../SeverityLevelDefinitions.md#critical
-      [DNSSEC README]:                              ./README.md
-      [DNSSEC README]:                              README.md
-      [DS08_ALGO_NOT_SUPPORTED_BY_ZM]:              #summary
-      [DS08_DNSKEY_RRSIG_EXPIRED]:                  #summary
-      [DS08_DNSKEY_RRSIG_NOT_YET_VALID]:            #summary
-      [DS08_MISSING_RRSIG_IN_RESPONSE]:             #summary
-      [DS08_NO_MATCHING_DNSKEY]:                    #summary
-      [DS08_RRSIG_NOT_VALID_BY_DNSKEY]:             #summary
-      [ERROR]:                                      ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [INFO]:                                       ../SeverityLevelDefinitions.md#info
-      [Method4]:                                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                     ../SeverityLevelDefinitions.md#notice
-      [RFC 4035#section-2.1]:                       https://datatracker.ietf.org/doc/html/rfc4035#section-2.1
-      [RFC 4035#section-2.2]:                       https://datatracker.ietf.org/doc/html/rfc4035#section-2.2
-      [Severity Level Definitions]:                 ../SeverityLevelDefinitions.md
-      [WARNING]:                                    ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                  ../../../configuration/profiles.md
-
   dnssec-09:
     Summary: Check that the SOA RRset is signed
     Description: |
-      # DNSSEC09: RRSIG(SOA) must be valid and created by a valid DNSKEY
-
-      ## Test case identifier
-      **DNSSEC09**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       If the zone is signed, the SOA RR should be signed with a valid RRSIG
       using a DNSKEY from the DNSKEY RR set. This is described
       in [RFC 4035][RFC 4035#section-2.2], section 2.2.
@@ -5684,54 +4812,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                              https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                   ../SeverityLevelDefinitions.md#critical
-      [Consistency01]:                              ../Consistency-TP/consistency01.md
-      [Consistency02]:                              ../Consistency-TP/consistency02.md
-      [Consistency03]:                              ../Consistency-TP/consistency03.md
-      [Consistency06]:                              ../Consistency-TP/consistency06.md
-      [DNSSEC README]:                              ./README.md
-      [DNSSEC08]:                                   ../DNSSEC-TP/dnssec08.md
-      [DS09_ALGO_NOT_SUPPORTED_BY_ZM]:              #summary
-      [DS09_MISSING_RRSIG_IN_RESPONSE]:             #summary
-      [DS09_NO_MATCHING_DNSKEY]:                    #summary
-      [DS09_RRSIG_NOT_VALID_BY_DNSKEY]:             #summary
-      [DS09_SOA_RRSIG_EXPIRED]:                     #summary
-      [DS09_SOA_RRSIG_NOT_YET_VALID]:               #summary
-      [ERROR]:                                      ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [INFO]:                                       ../SeverityLevelDefinitions.md#info
-      [Method4]:                                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                     ../SeverityLevelDefinitions.md#notice
-      [RFC 4035#section-2.2]:                       https://datatracker.ietf.org/doc/html/rfc4035#section-2.2
-      [Severity Level Definitions]:                 ../SeverityLevelDefinitions.md
-      [WARNING]:                                    ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                  ../../../configuration/profiles.md
-
   dnssec-10:
     Summary: Check for the presence of either NSEC or NSEC3, with proper coverage and signatures
     Description: |
-      # DNSSEC10: Zone contains NSEC or NSEC3 records
-      ## Test case identifier
-      **DNSSEC10**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       When DNSSEC is enabled, NSEC or NSEC3 records provide a secure denial
       of existence for records not present in the zone. This test case
       verifies that correct NSEC or NSEC3 records with valid signatures are
@@ -6003,61 +5086,9 @@ Test-Cases:
       just below apex constructed for this test case to, with high certainty, not
       exist, as a directly defined name. The first label starts with "xx--" which
       should not be used as of [RFC 5890][RFC 5890#section-2.3.1], section 2.3.1.
-      [Argument list]:                              https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                   ../SeverityLevelDefinitions.md#critical
-      [DNSSEC README]:                              README.md
-      [DS10_ALGO_NOT_SUPPORTED_BY_ZM]:              #summary
-      [DS10_ANSWER_VERIFY_ERROR]:                   #summary
-      [DS10_HAS_NSEC3]:                             #summary
-      [DS10_HAS_NSEC]:                              #summary
-      [DS10_INCONSISTENT_NSEC_NSEC3]:               #summary
-      [DS10_MISSING_NSEC_NSEC3]:                    #summary
-      [DS10_MIXED_NSEC_NSEC3]:                      #summary
-      [DS10_NAME_NOT_COVERED_BY_NSEC3]:             #summary
-      [DS10_NAME_NOT_COVERED_BY_NSEC]:              #summary
-      [DS10_NON_EXISTENT_RESPONSE_ERROR]:           #summary
-      [DS10_NSEC3_MISSING_SIGNATURE]:               #summary
-      [DS10_NSEC3_RRSIG_VERIFY_ERROR]:              #summary
-      [DS10_NSEC_MISSING_SIGNATURE]:                #summary
-      [DS10_NSEC_RRSIG_VERIFY_ERROR]:               #summary
-      [DS10_UNSIGNED_ANSWER]:                       #summary
-      [ERROR]:                                      ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [IANA RR Type List]:                          https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4
-      [INFO]:                                       ../SeverityLevelDefinitions.md#info
-      [Method4]:                                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                     ../SeverityLevelDefinitions.md#notice
-      [Non-Existent Query Name]:                    #the-non-existent-query-name
-      [RFC 4034#section-4]:                         https://datatracker.ietf.org/doc/html/rfc4034#section-4
-      [RFC 4035#section-3.1.3]:                     https://datatracker.ietf.org/doc/html/rfc4035#section-3.1.3
-      [RFC 5155#section-3]:                         https://datatracker.ietf.org/doc/html/rfc5155#section-3
-      [RFC 5155#section-7.2]:                       https://datatracker.ietf.org/doc/html/rfc5155#section-7.2
-      [RFC 5890#section-2.3.1]:                     https://datatracker.ietf.org/doc/html/rfc5890#section-2.3.1
-      [Severity Level Definitions]:                 ../SeverityLevelDefinitions.md
-      [WARNING]:                                    ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                  ../../../configuration/profiles.md
-
   dnssec-13:
     Summary: Check that all DNSKEY algorithms are used to sign the zone
     Description: |
-      # DNSSEC13: All DNSKEY algorithms used to sign the zone
-      ## Test case identifier
-      **DNSSEC13**
-      ## Table of contents
-
-      * [Objective](#objective)
-      * [Scope](#scope)
-      * [Inputs](#inputs)
-      * [Summary](#summary)
-      * [Test procedure](#test-procedure)
-      * [Outcome(s)](#outcomes)
-      * [Special procedural requirements](#special-procedural-requirements)
-      * [Intercase dependencies](#intercase-dependencies)
-      * [Terminology](#terminology)
-      ## Objective
-
       From [RFC 6840][RFC 6840#section-5.11], section 5.11:
 
       > The DS RRset and DNSKEY RRset are used to signal which algorithms are used to
@@ -6206,39 +5237,9 @@ Test-Cases:
       ## Intercase dependencies
 
       None.
-      ## Terminology
-
-      No special terminology for this test case.
-      [Argument list]:                              https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md
-      [Connectivity01]:                             ../Connectivity-TP/connectivity01.md
-      [CRITICAL]:                                   ../SeverityLevelDefinitions.md#critical
-      [DNSSEC README]:                              README.md
-      [DNSSEC08]:                                   dnssec08.md
-      [DNSSEC09]:                                   dnssec09.md
-      [DS13_ALGO_NOT_SIGNED_DNSKEY]:                #summary
-      [DS13_ALGO_NOT_SIGNED_NS]:                    #summary
-      [DS13_ALGO_NOT_SIGNED_SOA]:                   #summary
-      [ERROR]:                                      ../SeverityLevelDefinitions.md#error
-      [IANA RCODE List]:                            https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6
-      [INFO]:                                       ../SeverityLevelDefinitions.md#info
-      [Method4]:                                    ../Methods.md#method-4-obtain-glue-address-records-from-parent
-      [Method5]:                                    ../Methods.md#method-5-obtain-the-name-server-address-records-from-child
-      [NOTICE]:                                     ../SeverityLevelDefinitions.md#notice
-      [RFC 6840#section-5.11]:                      https://datatracker.ietf.org/doc/html/rfc6840#section-5.11
-      [Severity Level Definitions]:                 ../SeverityLevelDefinitions.md
-      [WARNING]:                                    ../SeverityLevelDefinitions.md#warning
-      [Zonemaster-Engine profile]:                  ../../../configuration/profiles.md
-
   dnssec-14:
     Summary: Check for valid RSA DNSKEY key size
     Description: |
-      # DNSSEC14: Check for valid RSA DNSKEY key size
-
-      ## Test case identifier
-      **DNSSEC14**
-
-      ## Objective
-
       The DNSKEYs based on RSA have different minimum and maximum key sizes,
       which must be followed. This test case will validate the keys size of
       such keys. RSA based algorithms that are deprecated or else not suitable
@@ -6363,13 +5364,6 @@ Test-Cases:
   dnssec-15:
     Summary: Check existence of CDS and CDNSKEY
     Description: |
-      # DNSSEC15: Existence of CDS and CDNSKEY
-
-      ## Test case identifier
-      **DNSSEC15**
-
-      ## Objective
-
       CDS and CDNSKEY record types are defined in [RFC 7344] and [RFC 8078].
       Both record types are optional in a zone. The objective of this test
       case is to verify that they are correctly set-up, if included in the
@@ -6557,13 +5551,6 @@ Test-Cases:
   dnssec-16:
     Summary: Validate CDS
     Description: |
-      # DNSSEC16: Validate CDS
-
-      ## Test case identifier
-      **DNSSEC16**
-
-      ## Objective
-
       CDS and CDNSKEY record types are defined in [RFC 7344] and [RFC 8078].
       Both record types are optional in a zone. The objective of this test
       case is to verify that the CDS RRset is valid. This test case is
@@ -6823,13 +5810,6 @@ Test-Cases:
   dnssec-17:
     Summary: Validate CDNSKEY
     Description: |
-      # DNSSEC17: Validate CDNSKEY
-
-      ## Test case identifier
-      **DNSSEC17**
-
-      ## Objective
-
       CDS and CDNSKEY record types are defined in [RFC 7344] and [RFC 8078].
       Both record types are optional in a zone. The objective of this test
       case is to verify that the CDNSKEY RRset is valid. This test case is
