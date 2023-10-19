@@ -313,15 +313,15 @@ Test-Suites:
 
   DNSSECOperations:
     Order: 8
-    Name: DNSSEC RSP - Operations
+    Name: DNSSEC Operations
     Description: |
       This test suite verifies the ability of an RSP to carry out standard
       DNSSEC operational procedures while maintaining a chain of trust to the
       parent zone.
     Test-Cases:
-      - dnssecRSP01-ZSKRollover
-      - dnssecRSP02-KSKRollover
-      - dnssecRSP03-AlgorithmRollover
+      - dnssecOps01-ZSKRollover
+      - dnssecOps02-KSKRollover
+      - dnssecOps03-AlgorithmRollover
 
   LaunchExtensionAndTMCH:
     Order: 9
@@ -5557,21 +5557,21 @@ Test-Cases:
       If either IPv4 or IPv6 transport is disabled, ignore the evaluation of the
       result of any test using this transport protocol. Log a message reporting
       the ignored protocol.
-  dnssecRSP01-ZSKRollover:
+  dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
     Description: |
       This test case verifies the RSP's ability to perform a ZSK rollover for a
       zone.
     Input-Parameters:
     Dependencies:
-  dnssecRSP02-KSKRollover:
+  dnssecOps02-KSKRollover:
     Summary: KSK rollover
     Description: |
       This test case verifies the RSP's ability to perform a KSK rollover for a
       zone.
     Input-Parameters:
     Dependencies:
-  dnssecRSP03-AlgorithmRollover:
+  dnssecOps03-AlgorithmRollover:
     Summary: algorithm rollover
     Description: |
       This test case verifies the RSP's ability to perform an algorithm rollover
