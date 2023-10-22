@@ -128,7 +128,7 @@ Test-Plans:
 
   DNSRSPChangeTest:
     Order: 3
-    Name: DNS Registry Service Provider Change Test
+    Name: DNS RSP Change Test
     Description: |
       A Registry Operator may apply to ICANN to change a Material Subcontracting
       Arrangement (MSA) and appoint a new provider of authoritative DNS services
@@ -145,7 +145,7 @@ Test-Plans:
 
   IDNTest:
     Order: 4
-    Name: Internationalized Domain Name Test
+    Name: IDN Test
     Description: |
       A Registry Operator may apply to ICANN to amend its Registry Agreement
       to offer new scripts and/or languages for Internationalized Domain Names.
@@ -221,6 +221,18 @@ Test-Plans:
     Test-Suites:
       - StandardDNSSEC
       - DNSSECOperations
+
+  SRSGatewayRSPTest:
+    Order: 9
+    Name: SRS Gateway RSP Evaluation Test
+    Description: |
+      SRS Gateway RSPs provide a proxy between a subset of Registrars and the
+      Registry. It uses a local cache to speed up EPP query commands, but
+      forwards all EPP transform commands to the TLD Registry System. TLD
+      registries need to deploy a proxy setup in order to operate in certain
+      markets worldwide.
+    Test-Suites:
+      - StandardSRSGateway
 
 Test-Suites:
   StandardDNS:
@@ -325,11 +337,11 @@ Test-Suites:
 
   LaunchExtensionAndTMCH:
     Order: 9
-    Name: Main RSP - Launch Extension & Trademark Clearinghouse (TMCH) Support
+    Name: Launch Extension & Trademark Clearinghouse (TMCH)
     Description: |
       This test suite verifies an RSP's support for the Launch Extension (RFC
       8334) and the Trademark Clearinghouse.
-    Test-Cases:
+    Test-Cases: ^eppLaunch-
 
 Test-Cases:
   dns-address01:
