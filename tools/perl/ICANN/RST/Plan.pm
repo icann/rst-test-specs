@@ -1,5 +1,4 @@
 package ICANN::RST::Plan;
-use List::Util qw(any);
 use base qw(ICANN::RST::Base);
 use strict;
 
@@ -31,7 +30,7 @@ sub cases {
         }
     }
 
-    return sort { $a->id <=> $b->id } values(%cases);
+    return sort { $a->id cmp $b->id } values(%cases);
 }
 
 sub inputs {
@@ -45,7 +44,7 @@ sub inputs {
         }
     }
 
-    return sort { $a->id <=> $b->id } values(%inputs);
+    return sort { $a->id cmp $b->id } values(%inputs);
 }
 
 1;

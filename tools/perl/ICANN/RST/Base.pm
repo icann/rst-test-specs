@@ -15,7 +15,7 @@ sub new {
 }
 
 sub id      { $_[0]->{'id'} }
-sub order   { int($_[0]->{'order'}) }
+sub order   { int($_[0]->{'Order'}) }
 sub spec    { $_[0]->{'spec'} }
 
 1;

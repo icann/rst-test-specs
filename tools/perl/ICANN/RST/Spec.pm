@@ -22,14 +22,14 @@ sub new {
 sub schemaVersion   { $_[0]->{'spec'}->{'RST-Test-Plan-Schema-Version'}     }
 sub version         { $_[0]->{'spec'}->{'Version'}                          }
 sub lastUpdated     { $_[0]->{'spec'}->{'Last-Updated'}                     }
-sub preamble        { ICANN::RST::Text->new($_[0]->{'spec'}->{'Preamble'})  }
 sub contactName     { $_[0]->{'spec'}->{'Contact'}->{'Name'}                }
 sub contactOrg      { $_[0]->{'spec'}->{'Contact'}->{'Organization'}        }
 sub contactEmail    { $_[0]->{'spec'}->{'Contact'}->{'Email'}               }
-sub plans           { my $self = shift ; return sort { $a->id cmp $b->id } pairmap { ICANN::RST::Plan->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Plans'}}         }
-sub suites          { my $self = shift ; return sort { $a->id cmp $b->id } pairmap { ICANN::RST::Suite->new($a, $b, $self) } %{$self->{'spec'}->{'Test-Suites'}}        }
-sub cases           { my $self = shift ; return sort { $a->id cmp $b->id } pairmap { ICANN::RST::Case->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Cases'}}         }
-sub inputs          { my $self = shift ; return sort { $a->id cmp $b->id } pairmap { ICANN::RST::Input->new($a, $b, $self) } %{$self->{'spec'}->{'Input-Parameters'}}   }
+sub preamble        { ICANN::RST::Text->new($_[0]->{'spec'}->{'Preamble'})  }
+sub plans           { my $self = shift ; return sort { $a->order <=> $b-> order } pairmap { ICANN::RST::Plan->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Plans'}}      }
+sub suites          { my $self = shift ; return sort { $a->order <=> $b-> order } pairmap { ICANN::RST::Suite->new($a, $b, $self) } %{$self->{'spec'}->{'Test-Suites'}}     }
+sub cases           { my $self = shift ; return sort { $a->id cmp $b->id        } pairmap { ICANN::RST::Case->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Cases'}}      }
+sub inputs          { my $self = shift ; return sort { $a->id cmp $b->id        } pairmap { ICANN::RST::Input->new($a, $b, $self) } %{$self->{'spec'}->{'Input-Parameters'}}}
 
 1;
 

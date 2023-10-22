@@ -1,10 +1,25 @@
 package ICANN::RST::Suite;
 use List::Util qw(any);
 use base qw(ICANN::RST::Base);
+use feature qw(say);
 use strict;
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
+
+sub plans {
+    my $self = shift;
+
+    my %plans;
+
+    foreach my $plan ($self->spec->plans) {
+        foreach my $suite ($plan->suites) {
+            $plans{$plan->id} = $plan if ($self->id eq $suite->id && !defined($plans{$plan->id}));
+        }
+    }
+
+    return sort { $a->order <=> $b->order } values(%plans);
+}
 
 sub cases {
     my $self = shift;
@@ -22,7 +37,7 @@ sub cases {
 
     }
 
-    return sort { $a->id <=> $b->id } @cases;
+    return sort { $a->id cmp $b->id } @cases;
 }
 
 sub inputs {
@@ -36,7 +51,7 @@ sub inputs {
         }
     }
 
-    return sort { $a->id <=> $b->id } values(%inputs);
+    return sort { $a->id cmp $b->id } values(%inputs);
 }
 
 1;
