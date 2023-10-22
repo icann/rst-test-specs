@@ -133,7 +133,7 @@ sub print_test_plan_toc_list {
 sub print_test_suite_toc_list {
     print $h->open(details, {'open' => 1});
 
-    print $h->summary($h->a({href => '#test-cases'}, 'Test Suites'));
+    print $h->summary($h->a({href => '#test-suites'}, 'Test Suites'));
 
     print $h->open(ol);
 
