@@ -296,6 +296,26 @@ sub print_suites {
         print $h->h4('Description');
         print $suite->description->html(2);
 
+        print $h->h4('Test plans');
+        print $h->p('This suite is used by the following test plans:');
+
+        my @plans = $suite->plans;
+        if (scalar(@plans) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open('ol');
+
+            foreach my $plan (@plans) {
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Plan-%s', $plan->id) },
+                    e($plan->name),
+                ));
+            }
+
+            print $h->close('ol');
+        }
+
         print $h->h4('Test cases');
         print $h->p('This suite uses the following test cases:');
 
