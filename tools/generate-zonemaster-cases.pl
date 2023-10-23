@@ -109,9 +109,9 @@ foreach my $row ($doc->getElementsByTagName('tr')) {
 
     my $description = sprintf(
         'This test case comes from Zonemaster. ' .
-        'For more information, see ' .
-        'https://github.com/zonemaster/zonemaster/blob/master/docs/public/' .
-        'specifications/tests/%s/%s.md',
+        "For more information, see\n" .
+        '    https://github.com/zonemaster/zonemaster/blob' .
+        '/master/docs/public/specifications/tests/%s/%s.md',
         $plan,
         lc($id)
     );
@@ -138,7 +138,8 @@ foreach my $case (sort grep { $_->{'id'} =~ /^dnssec/ } @cases) {
     printf(
         "%s:\n".
         "  Summary: %s\n".
-        "  Description: %s\n",
+        "  Description: |\n".
+        "    %s\n",
         $case->{'id'},
         $case->{'summary'},
         $case->{'description'},
