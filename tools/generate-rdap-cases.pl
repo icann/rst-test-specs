@@ -41,8 +41,7 @@ and prints a YAML fragment which can be pasted into C<rst-test-specs.yaml>.
 
 my $file = $ARGV[0] || pod2usage(1);
 
-open2(my $out, my $in, qw(pandoc --metadata title=html --standalone -f docx -t html), $file);
-$in->close;
+open2(my $out, undef, qw(pandoc --metadata title=html --standalone -f docx -t html), $file);
 
 my $html;
 $html .= $out->getline while (!$out->eof);
@@ -70,7 +69,6 @@ my $description = 'This test case comes from the RDAP Conformance Tool. ' .
                     "For more information, see\n" .
                     '    https://github.com/icann/rdap-conformance-tool/blob'.
                     '/master/doc/RDAPConformanceToolSpecifications.pdf';
-
 
 binmode(STDOUT, 'encoding(utf-8)');
 
