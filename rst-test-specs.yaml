@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.3
 Version: 3.0
-Last-Updated: 2023-10-02
+Last-Updated: 2023-10-23
 
 Contact:
   Name: GDS Technical Services
@@ -102,7 +102,7 @@ Test-Plans:
       - StandardDNS
       - StandardDNSSEC
       - StandardEPP
-      - StandardRDDS
+      - StandardRDAP
       - StandardIDN
       - StandardRDE
 
@@ -123,7 +123,7 @@ Test-Plans:
       - StandardDNSSEC
       - StandardEPP
       - StandardIDN
-      - StandardRDDS
+      - StandardRDAP
       - StandardRDE
 
   DNSRSPChangeTest:
@@ -174,7 +174,7 @@ Test-Plans:
       Guidebook (AGB). Furthermore, it must keep its own database synchronized
       with that of the TLD registry.
 
-      The SRS Gateway Test Change Test uses the RDDS and EPP test suites.
+      The SRS Gateway Test Change Test uses the RDAP and EPP test suites.
     Test-Suites:
       - StandardSRSGateway
 
@@ -189,12 +189,11 @@ Test-Plans:
       to policies regarding the use and transparency domain name registrations
       through reporting, the Registration Data Access Protocol (RDAP), and other
       mechanisms.
-
     Test-Suites:
       - StandardEPP
       - LaunchExtensionAndTMCH
       - StandardIDN
-      - StandardRDDS
+      - StandardRDAP
       - StandardRDE
 
   DNSRSPEvaluationTest:
@@ -257,7 +256,6 @@ Test-Suites:
       unicast adresses of their nodes, all tests carried out over the network
       will be performed from multiple vantage points. All vantage points must
       receive the same response in order for the tests to pass.
-
     Test-Cases: ^dns-
 
   StandardDNSSEC:
@@ -277,11 +275,11 @@ Test-Suites:
       may not be listed in the test suites in this document.
     Test-Cases: ^dnssec-
 
-  StandardRDDS:
+  StandardRDAP:
     Order: 3
-    Name: Registration Data Directory Services (RDDS)
+    Name: Registration Data Acess Protocol (RDAP)
     Description: |
-      The DNSSEC test suite validates the RDDS service(s) of the TLD or RSP.
+      The DNSSEC test suite validates the RDAP service of the TLD or RSP.
 
       The RDAP test suite is derived from the test specification of the [RDAP
       Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
@@ -712,21 +710,60 @@ Test-Cases:
     Description: |
       This test case verifies the RSP's ability to perform a ZSK rollover for a
       zone.
+
+      The system will monitor the SOA record in the domain name specified in the
+      `dnssec.zskRolloverZone` input parameter. The domain may be present
+      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+      MUST have a secure chain of trust up to the root zone, so that it can be
+      validated using the root zone trust anchor.
+
+      During the test period (currently defined as 24 hours) the operator must
+      successfully carry out a ZSK rollover for the domain, where the Zone
+      Signing Key is replaced, without disrupting the chain of trust.
+
+      To simplify testing, applicants may wish to provision domain that is
+      configured with short TTLs and a short ZSK lifetime, so that a ZSK
+      rollover is guaranteed to occur within the 24 test period.
     Input-Parameters:
+      - dnssecOps.zskRolloverZone
     Dependencies:
   dnssecOps02-KSKRollover:
     Summary: KSK rollover
     Description: |
       This test case verifies the RSP's ability to perform a KSK rollover for a
       zone.
+
+      The system will monitor the SOA record in the domain name specified in the
+      `dnssec.kskRolloverZone` input parameter. The domain may be present
+      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+      MUST have a secure chain of trust up to the root zone, so that it can be
+      validated using the root zone trust anchor.
+
+      During the test period (currently defined as 24 hours) the operator must
+      successfully carry out a KSK rollover for the domain, where the Key
+      Signing Key is replaced, and the DS record in the parent zone is updated,
+      without disrupting the chain of trust.
     Input-Parameters:
+      - dnssecOps.kskRolloverZone
     Dependencies:
   dnssecOps03-AlgorithmRollover:
     Summary: algorithm rollover
     Description: |
       This test case verifies the RSP's ability to perform an algorithm rollover
       for a zone.
+
+      The system will monitor the SOA record in the domain name specified in the
+      `dnssec.algorithmRolloverZone` input parameter. The domain may be present
+      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+      MUST have a secure chain of trust up to the root zone, so that it can be
+      validated using the root zone trust anchor.
+
+      During the test period (currently defined as 72 hours) the operator must
+      successfully carry out an algorithm rollover for the domain, where the
+      algorithm used to secure the domain is changed, without disrupting the
+      chain of trust.
     Input-Parameters:
+      - dnssecOps.algorithmRolloverZone
     Dependencies:
 
   rdap-01-domainCaseFoldingValidation:
@@ -866,24 +903,26 @@ Test-Cases:
       https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
 
   rde-01:
-    Summary: validate filename format
+    Summary: validate deposit filename format
     Description: |
-      the deposit filename must conform to the format specified in the RA.
+      The deposit filename must conform to the format specified in the RA.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-02:
-    Summary: validate signature(s)
+    Summary: validate signature over deposit file
     Description: |
-      the signature must be valid for the deposit file and the RSP's key.
+      The signature must be valid for the deposit file and the RSP's key.
     Input-Parameters:
-      - rde.deposit
-      - rde.signature
+      - rde.publicKey
+      - rde.depositFile
+      - rde.signatureFile
   rde-03:
     Summary: decrypt deposit file(s)
     Description: |
-      it must be possible to decrypt the deposit file using the RST key.
+      It must be possible to decrypt the deposit file using the RST key. The PGP
+      key for which the deposit must be encrypted will be provided separately.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-04:
     Summary: validate XML/CSV
     Description: |
@@ -891,56 +930,109 @@ Test-Cases:
         schema.
       * CSV files must conform to RFC 4180.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-04:
     Summary: validate object types
     Description: |
-      the header object must reference the correct object XML namespace URIs.
+      The header object must reference the correct object XML namespace URIs.
+
+      The correct URIs is determined by the `general.minimumPublicDataSet` input
+      parameter and the URIs listed in `epp.objectURIs`.
+
+      All expected URIs must be present in the header, and the header must not
+      contain any unexpected URIs.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
       - general.minimumPublicDataSet
       - epp.objectURIs
   rde-06:
     Summary: validate object counts
     Description: |
-      the number of each type of object must match the number of objects
+      The number of each type of object must match the number of objects
       actually present in the deposit file.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-07:
     Summary: validate domain objects
     Description: |
-      domain objects (whether CSV or XML) must have the required object
+      Domain objects (whether CSV or XML) must have the required object
       properties, and the values of those object properties must be well-formed.
+
+      The required properties are:
+
+        * domain name
+        * ROID
+        * at least one status code
+        * registrant (if applicable)
+        * clID (sponsoring registrar ID)
+        * crDate (creation date)
+        * exDate (expiry date)
 
       Contact and/or host objects which are referenced in domain objects must be
       present in the deposit.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
       - general.minimumPublicDataSet
   rde-08:
     Summary: validate host objects (if applicable)
     Description: |
-      host objects (whether CSV or XML) must have the required object
+      Host objects (whether CSV or XML) must have the required object
       properties, and the values of those object properties must be well-formed.
+
+      The required properties are:
+
+        * host name
+        * ROID
+        * at least one status code
+        * one or more `<addr>` elements (if the host name is subordinate to
+          the TLD)
+        * clID (sponsoring registrar ID)
+
+      If the applicant uses the host attribute model, then this test will be
+      skipped.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
       - epp.hostModel
   rde-09:
     Summary: validate contact objects (if applicable)
     Description: |
-      contact objects (whether CSV or XML) must have the required object
+      Contact objects (whether CSV or XML) must have the required object
       properties, and the values of those object properties must be well-formed.
+
+      The required properties are:
+
+        * contact ID
+        * ROID
+        * at least one status code
+        * 1-2 `<postalInfo>` elements containing the following:
+            * a "type" attribute of "int" or "loc"
+            * name
+            * an `<addr>` element containing the following:
+              * 1-3 street elements
+              * city
+              * cc
+        * voice
+        * email
+        * clID (sponsoring registrar ID)
+
+      If the applicant uses the "thin" registry model, then this test will be
+      skipped.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
       - general.minimumPublicDataSet
   rde-10:
     Summary: validate registrar objects
     Description: |
-      registrar objects (whether CSV or XML) must have the required object
+      Registrar objects (whether CSV or XML) must have the required object
       properties, and the values of those object properties must be well-formed.
+
+      The required properties are:
+
+        * id
+        * name
+        * gurid (IANA ID)
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-11:
     Summary: validate IDN table objects
     Description: |
@@ -951,8 +1043,7 @@ Test-Cases:
       approved for the TLD, and all approved tables must have a corresponding
       object in the deposit.
     Input-Parameters:
-      - rde.deposit
-      - idn.tableIDs
+      - rde.depositFile
   rde-12:
     Summary: validate NNDN objects
     Description: |
@@ -962,7 +1053,7 @@ Test-Cases:
       The aName property of NNDN objects must not match the name property of a
       domain object.
     Input-Parameters:
-      - rde.deposit
+      - rde.depositFile
   rde-13:
     Summary: validate EPP parameters object
     Description: |
@@ -970,7 +1061,6 @@ Test-Cases:
       the EPP server.
     Input-Parameters:
       - epp.objectURIs
-      - epp.extensionURIs
       - epp.hostModel
       - general.minimumPublicDataSet
   rde-14:
@@ -987,14 +1077,14 @@ Test-Cases:
       At least one `A` record must be published in the DNS for the EPP hostname,
       to allow IPv4-only hosts to connect to the EPP service.
     Input-Parameters:
-      - epp.hostname
+      - epp.hostName
   epp-02:
     Summary: EPP server must have at least one AAAA record
     Description: |
       At least one `A` record must be published in the DNS for the EPP hostname,
       to allow IPv6-only hosts to connect to the EPP service.
     Input-Parameters:
-      - epp.hostname
+      - epp.hostName
   epp-03:
     Summary: All IP addresses must accept TCP connections on port 700
     Description: |
@@ -1003,6 +1093,8 @@ Test-Cases:
 
       Since the EPP specification requires IP-based access control, the RSP must
       configure their firewall to allow access from the RST system.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-01
       - epp-02
@@ -1012,6 +1104,8 @@ Test-Cases:
       EPP uses TLS to secure the channel between client and server. The server
       must support TLSv1.2 and optionally any subsequent protocol published by
       the IETF.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-03
   epp-05:
@@ -1019,14 +1113,19 @@ Test-Cases:
     Description: |
       TLSv1.1 and all previous versions have known security issues and should
       not be supported by the server.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-03
   epp-06:
-    Summary: All service ports must offer a valid certificate issued by a trusted CA
+    Summary: |
+      All service ports must offer a valid certificate issued by a trusted CA
     Description: |
       To ensure that the connection can be trusted, the server must present a
       certificate issued by a trusted CA, such as those supported by major
       browsers.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-03
   epp-07:
@@ -1034,6 +1133,8 @@ Test-Cases:
     Description: |
       The TLS certificate must not have expired, and must be presented with any
       additional intermediate certificates.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-03
   epp-08:
@@ -1041,20 +1142,18 @@ Test-Cases:
     Description: |
       The EPP server name must match at least one subjectAltName fields in the
       certificate (either exact match or wildcard).
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-03
   epp-09:
-    Summary: All service ports must send a <greeting> frame after successful connection
+    Summary: |
+      All service ports must send a <greeting> frame after successful connection
     Description: |
-      Once the connection is estanblished the server must send a `<greeting>`
+      Once the connection is established the server must send a `<greeting>`
       frame to the client.
     Input-Parameters:
-      - epp.hostname
-      - epp.port
-      - epp.objectURIs
-      - epp.extensionURIs
-      - epp.hostModel
-      - general.minimumPublicDataSet
+      - epp.hostName
   epp-10:
     Summary: All server responses must validate against the XML schema
     Description: |
@@ -1065,19 +1164,26 @@ Test-Cases:
     Summary: <svID> element in the <greeting> must be valid
     Description: |
       The `<svID>` element in the `<greeting>` must identify the EPP server.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-09
   epp-12:
     Summary: <svDate> element in the <greeting> must be valid
     Description: |
       The `<svDate>` element in the `<greeting>` must specify a time within
-      close proximity to the current date and time.
+      close proximity to the current date and time as received from the NTP
+      network.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-09
   epp-13:
     Summary: <version> element in the <greeting> must be valid
     Description: |
-      The <version> element in the <greeting> must be exactly `1.0`.
+      The `<version>` element in the <greeting> must be exactly `1.0`.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-09
   epp-14:
@@ -1085,187 +1191,258 @@ Test-Cases:
     Description: |
       All `<lang>` element(s) in the `<greeting>` must contain valid language
       codes.
+    Input-Parameters:
+      - epp.hostName
     Dependencies:
       - epp-09
   epp-15:
-    Summary: <objURI> element(s) in the <greeting> must be valid for the registry type
+    Summary: |
+      <objURI> element(s) in the <greeting> must be valid for the registry type
     Description: |
       All `<objURI>` element(s) in the `<greeting>` must contain XML namespace
-      URIs TODO
+      URIs that are appropriate.
+
+      For example, the presence of the host and  contact namespace URIs may be
+      required depending on the `epp.hostModel` and
+      `general.minimumPublicDataSet` parameters.
     Dependencies:
       - epp-09
     Input-Parameters:
-      - epp.objectURIs
+      - epp.hostName
       - epp.hostModel
       - general.minimumPublicDataSet
   epp-16:
     Summary: <extURI> element(s) in the <greeting> must be valid
+    Description: |
+      All `<extURI>` element(s) in the `<greeting>` must contain XML namespace
+      URIs that have been registered in the IANA registry.
     Dependencies:
       - epp-09
     Input-Parameters:
-      - epp.extensionURIs
+      - epp.hostName
       - epp.hostModel
       - general.minimumPublicDataSet
   epp-17:
     Summary: <login> command must return a successful response
+    Description: |
+      The EPP server must return a `1000` result in response to a `<login>`
+      command.
+
+      The client will use the object and extension XML namespaces from the
+      server's `<greeting>` as part of the `<login>` command.
     Dependencies:
       - epp-09
     Input-Parameters:
+      - epp.hostName
       - epp.clid
       - epp.pwd
-      - epp.extensionURIs
   epp-18:
     Summary: <hello> command must return a <greeting>
+    Description: |
+      The EPP server must respond to a `<hello>` command with a `<greeting>`.
     Dependencies:
       - epp-09
   epp-19:
     Summary: domain <check> command test
+    Description: |
+      The client will perform a series of `<check>` commands and will validate
+      the `avail` attribute of the `<domain:name>` elements in the server
+      response, as follows:
+
+        * syntactically invalid domain: `avail` attribute must be `0`
+        * valid but registered domain: `avail` attribute must be `0`. The domain
+          will be generated using random characters.
+        * valid and unregistered domain: `avail` attribute must be `1`
     Input-Parameters:
+      - epp.registeredName
     Dependencies:
       - epp-17
   epp-20:
     Summary: domain sunrise <check> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-21:
     Summary: domain trademark claims <check> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-22:
     Summary: host <check> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-23:
     Summary: contact <check> command test (if applicable for the registry type)
+    Description: |
+      TODO.
     Input-Parameters:
       - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-24:
     Summary: contact <create> command test (if applicable for the registry type)
+    Description: |
+      TODO.
     Input-Parameters:
       - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-25:
     Summary: contact <info> command test (if applicable for the registry type)
+    Description: |
+      TODO.
     Input-Parameters:
       - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-26:
     Summary: contact <update> command test (if applicable for the registry type)
+    Description: |
+      TODO.
     Input-Parameters:
       - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-27:
     Summary: contact <delete> command test (if applicable for the registry type)
+    Description: |
+      TODO.
     Input-Parameters:
       - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-28:
     Summary: host <create> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-29:
     Summary: host <info> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-30:
     Summary: host <update> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-31:
     Summary: host <delete> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-32:
     Summary: domain <create> command test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-33:
     Summary: domain <info> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-34:
     Summary: domain <update> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-35:
     Summary: domain <renew> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-36:
     Summary: domain <transfer> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-37:
     Summary: domain <delete> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
       - epp-17
   epp-38:
     Summary: host rename test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
       - epp.hostModel
     Dependencies:
       - epp-17
   epp-39:
     Summary: domain restore test (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
-      - epp.extensionURIs
     Dependencies:
       - epp-17
 
   eppLaunch-01:
     Summary: launch application sunrise <info> command test
+    Description: |
+      TODO.
     Input-Parameters:
       - general.sunriseModel
     Dependencies:
   eppLaunch-02:
     Summary: |
       domain/launch application sunrise <create> command test
+    Description: |
+      TODO.
     Input-Parameters:
       - general.sunriseModel
     Dependencies:
   eppLaunch-03:
     Summary: domain trademark claims <create> command test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
   eppLaunch-04:
     Summary: LORDN submission test
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
 
 Input-Parameters:
-  epp.hostname:
+  epp.hostName:
     Description: the fully-qualified domain name of the EPP server.
     Type: string
     Example: epp.rsp.tech
-  epp.port:
-    Description: the TCP port of the EPP service.
-    Type: integer
-    Example: 700
   epp.clid:
     Description: the username used to log in to the EPP server.
     Type: string
@@ -1274,14 +1451,20 @@ Input-Parameters:
     Description: the password used to log in to the EPP server.
     Type: string
     Example: foo2bar
-  rde.deposit:
-    Description: an RDE deposit file.
+  rde.depositFile:
+    Description: |
+      an RDE deposit file. The TLD to which the deposit relates must match one
+      of the TLDs that are associated with the test object.
     Type: file
     Example: example_20231004_FULL_S1_R0.ryde
-  rde.signature:
-    Description: an RDE deposit signature.
+  rde.signatureFile:
+    Description: an ASCII-armoured OpenPGP signature covering the deposit file.
     Type: file
     Example: example_20231004_FULL_S1_R0.sig
+  rde.publicKey:
+    Description: a PGP public key block
+    Type: file
+    Example: rsp-rde-signing-key.asc
   general.minimumPublicDataSet:
     Description: |
       if true, then the registry only supports the minimum public data set, and
@@ -1289,34 +1472,43 @@ Input-Parameters:
       registrars.
     Type: boolean
     Example: true
-  idn.tableIDs:
-    Description: the list of supported IDN tables.
-    Type: array
-    Example:
-      - latn
-      - arab
-      - zh
-      - fr_FR
   epp.hostModel:
     Description: |
-      whether the EPP server supports host `objects` or host `attributes`.
+      The host model supported by the EPP server. The possible values for this
+      parameter are:
+        * `objects`
+        * `attributes`
     Type: string
     Example: objects
-  epp.objectURIs:
-    Description: the list of supported object namespace URIs.
-    Type: array
-    Example:
-      - urn:ietf:params:xml:ns:domain-1.0
-      - urn:ietf:params:xml:ns:host-1.0
-  epp.extensionURIs:
-    Description: the list of supported extension namespace URIs.
-    Type: array
-    Example:
-      - urn:ietf:params:xml:ns:epp:loginSec-1.0
-      - urn:ietf:params:xml:ns:epp:fee-1.0
+  epp.registeredName:
+    Description: |
+      A domain name that exists in the EPP server and which is therefore
+      unavailable for registration.
+    Type: string
+    Example: example.com
   general.sunriseModel:
     Description: |
-      whether the EPP server supports `startDate` or `endDate` sunrises.
+      The sunrise model supported by the EPP server. The possible values for
+      this parameter are:
+        * `start-date`      
+        * `end-date`      
     Type: string
-    Example: startDate
-
+    Example: start-date
+  dnssecOps.zskRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of a ZSK
+      rollover.
+    Type: string
+    Example: example.com
+  dnssecOps.kskRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of a KSK
+      rollover.
+    Type: string
+    Example: example.com
+  dnssecOps.algorithmRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of an algorithm
+      rollover.
+    Type: string
+    Example: example.com
