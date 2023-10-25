@@ -67,7 +67,7 @@ for (my $i = 0 ; $i < scalar(@nodes) ; $i++) {
 
 my $description = 'This test case comes from the RDAP Conformance Tool. ' .
                     "For more information, see\n" .
-                    '    https://github.com/icann/rdap-conformance-tool/blob'.
+                    '      https://github.com/icann/rdap-conformance-tool/blob'.
                     '/master/doc/RDAPConformanceToolSpecifications.pdf';
 
 binmode(STDOUT, 'encoding(utf-8)');
@@ -75,10 +75,10 @@ binmode(STDOUT, 'encoding(utf-8)');
 my $i = 0;
 foreach my $case (sort keys(%cases)) {
     printf(
-        "rdap-%02u-%s:\n".
-        "  Summary: %s\n".
-        "  Description: |\n".
-        "    %s\n",
+        "  rdap-%02u-%s:\n".
+        "    Summary: %s\n".
+        "    Description: |\n".
+        "      %s\n",
         ++$i,
         $case,
         $cases{$case},
