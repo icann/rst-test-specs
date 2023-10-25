@@ -257,6 +257,8 @@ Test-Suites:
       will be performed from multiple vantage points. All vantage points must
       receive the same response in order for the tests to pass.
     Test-Cases: ^dns-
+    Input-Parameters:
+      - dns.nameservers
 
   StandardDNSSEC:
     Order: 2
@@ -274,6 +276,9 @@ Test-Suites:
       in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
       may not be listed in the test suites in this document.
     Test-Cases: ^dnssec-
+    Input-Parameters:
+      - dns.nameservers
+      - dnssec.dsRecords
 
   StandardRDAP:
     Order: 3
@@ -286,6 +291,11 @@ Test-Suites:
       As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
       IDs in this document by removing the `rdap-NN` prefix.
     Test-Cases: ^rdap-
+    Input-Parameters:
+      - rdap.baseURLs
+      - rdap.testDomains
+      - rdap.testEntities
+      - rdap.testNameservers
 
   StandardEPP:
     Order: 4
@@ -346,14 +356,6 @@ Test-Cases:
 # run!
 #
 
-  dns-address03:
-    Summary: Reverse DNS entry matches name server name
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md
-  dns-address02:
-    Summary: Reverse DNS entry exists for name server IP address
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md
   dns-consistency02:
     Summary: SOA RNAME consistency
     Description: This test case comes from Zonemaster. For more information, see
@@ -522,6 +524,14 @@ Test-Cases:
     Summary: Name server address must be globally routable
     Description: This test case comes from Zonemaster. For more information, see
       https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md
+  dns-address02:
+    Summary: Reverse DNS entry exists for name server IP address
+    Description: This test case comes from Zonemaster. For more information, see
+      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md
+  dns-address03:
+    Summary: Reverse DNS entry matches name server name
+    Description: This test case comes from Zonemaster. For more information, see
+      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md
   dns-basic02:
     Summary: The domain must have at least one working name server
     Description: This test case comes from Zonemaster. For more information, see
@@ -1493,7 +1503,7 @@ Input-Parameters:
       therefore unavailable for registration. The array must contain one member
       for each TLD in the TLD set.
     Type: array
-    Example: ["example.com", "example.org"]
+    Example: ["example.example1", "example.example2"]
   general.sunriseModel:
     Description: |
       The sunrise model supported by the EPP server. The possible values for
@@ -1520,3 +1530,59 @@ Input-Parameters:
       rollover.
     Type: string
     Example: example.com
+
+  dns.nameservers:
+    Description: |
+      The set of nameservers that will be authoritative for the TLD(s).
+
+      This input parameter is an array where the object properties are the
+      TLD names, and the values are objects. For these objects, the properties
+      are the nameserver names, and the values are arrays of IPv4 and IPv6
+      addresses.
+
+      There MUST be at least two nameservers, and at least two nameservers MUST
+      have at least IPv6 address.
+    Type: object
+    Example: {"example": {"ns1.example.com": ["192.168.53.1", "2001:DB8::53:1"], "ns2.example.com": ["192.168.53.2", "2001:DB8::53:2"]}}
+
+  dnssec.dsRecords:
+    Description: |
+      The DS record(s) that may be used to validate the DNSSEC signature for the
+      TLD(s). This input parameter is an object where the object properties are
+      the TLD names and the values are arrays of objects representing DS
+      records.
+
+      There MUST be an entry for every TLD in the TLD set and there MUST be
+      at least one DS record for each TLD.
+    Type: object
+    Example: {"example": [{"keyTag": 12345, "alg": 8, "digestType": 2, "digest": "E2D3...5766"}]}
+
+  rdap.baseURLs:
+    Descrption: |
+      The RDAP base URL(s) for the TLD(s). This input parameter is an object,
+      where the object properties are the TLD names and the values are strings
+      containing the base URL. The URL MUST end with a slash ("/").
+    Type: object
+    Example: {"example": "https://rdap.example.com/example/"}
+
+  rdap.testDomains:
+    Description: |
+      The domain(s) that will be queried to validate domain responses. This
+      input parameter is an object, where the object properties are the TLD
+      names and the values domain names.
+    Type: string
+    Example: {"example": "example.example"}
+  rdap.testEntities:
+    Description: |
+      The entities(s) that will be queried to validate entity responses. This
+      input parameter is an object, where the object properties are the TLD
+      names and the values entity handles.
+    Type: string
+    Example: {"example": "9999"}
+  rdap.testNameservers:
+    Description: |
+      The nameservers(s) that will be queried to validate nameserver responses.
+      This input parameter is an object, where the object properties are the TLD
+      names and the values host names.
+    Type: string
+    Example: {"example": "ns1.example.com"}
