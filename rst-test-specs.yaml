@@ -191,7 +191,7 @@ Test-Plans:
       mechanisms.
     Test-Suites:
       - StandardEPP
-      - LaunchExtensionAndTMCH
+      - MandatoryRPMs
       - StandardIDN
       - StandardRDAP
       - StandardRDE
@@ -284,11 +284,8 @@ Test-Suites:
       The RDAP test suite is derived from the test specification of the [RDAP
       Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
       As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
-      IDs in this document by removing the `rdap-` prefix.
-
-      Due to the upcoming retirement of Nicname/Whois, port-43 services are not
-      tested.
-    Test-Cases: ^rdap
+      IDs in this document by removing the `rdap-NN` prefix.
+    Test-Cases: ^rdap-
 
   StandardEPP:
     Order: 4
@@ -309,7 +306,9 @@ Test-Suites:
     Order: 6
     Name: Internationalized Domain Names (IDN)
     Description: |
-      The RDE test suite validates the IDN table(s) for a TLD or RSP.
+      The RDE test suite validates the IDN table(s) for a TLD or RSP, including
+      compliance with specifications for variant labels at the top- or second-
+      level.
     Test-Cases: ^idn-
 
   StandardSRSGateway:
@@ -330,13 +329,14 @@ Test-Suites:
       parent zone.
     Test-Cases: ^dnssecOps
 
-  LaunchExtensionAndTMCH:
+  MandatoryRPMs:
     Order: 9
-    Name: Launch Extension & Trademark Clearinghouse (TMCH)
+    Name: Mandatory Rights Protection Mechanisms
     Description: |
-      This test suite verifies an RSP's support for the Launch Extension (RFC
-      8334) and the Trademark Clearinghouse.
-    Test-Cases: ^eppLaunch-
+      This test suite verifies an RSP's support for the mandatory Rights
+      Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if
+      supported.
+    Test-Cases: ^mandatoryRPMs-
 
 Test-Cases:
   dns-address02:
@@ -936,15 +936,15 @@ Test-Cases:
     Description: |
       The header object must reference the correct object XML namespace URIs.
 
-      The correct URIs is determined by the `general.minimumPublicDataSet` input
-      parameter and the URIs listed in `epp.objectURIs`.
+      The correct URIs is determined by the `general.minimumPublicDataSet` and
+      `epp.hostModel` input parameters.
 
       All expected URIs must be present in the header, and the header must not
       contain any unexpected URIs.
     Input-Parameters:
       - rde.depositFile
       - general.minimumPublicDataSet
-      - epp.objectURIs
+      - epp.hostModel
   rde-06:
     Summary: validate object counts
     Description: |
@@ -960,19 +960,20 @@ Test-Cases:
 
       The required properties are:
 
-        * domain name
-        * ROID
-        * at least one status code
-        * registrant (if applicable)
-        * clID (sponsoring registrar ID)
-        * crDate (creation date)
-        * exDate (expiry date)
+        * `<domain:name>`
+        * `<domain:roid>` (which must have a repository ID registered with IANA)
+        * at least one `<domain:status>` element
+        * `<domain:registrant>` (if applicable)
+        * `<domain:clID>` (sponsoring registrar ID)
+        * `<domain:crDate>` (creation date)
+        * `<domain:exDate>` (expiry date)
 
       Contact and/or host objects which are referenced in domain objects must be
       present in the deposit.
     Input-Parameters:
       - rde.depositFile
       - general.minimumPublicDataSet
+      - epp.hostModel
   rde-08:
     Summary: validate host objects (if applicable)
     Description: |
@@ -981,12 +982,12 @@ Test-Cases:
 
       The required properties are:
 
-        * host name
-        * ROID
-        * at least one status code
+        * `<host:name>`
+        * `<host:roid>` (which must have a repository ID registered with IANA)
+        * at least one `<domain:status>` element
         * one or more `<addr>` elements (if the host name is subordinate to
           the TLD)
-        * clID (sponsoring registrar ID)
+        * `<host:clID>` (sponsoring registrar ID)
 
       If the applicant uses the host attribute model, then this test will be
       skipped.
@@ -1001,19 +1002,20 @@ Test-Cases:
 
       The required properties are:
 
-        * contact ID
-        * ROID
-        * at least one status code
-        * 1-2 `<postalInfo>` elements containing the following:
+        * `<contact:id>`
+        * `<contact:roid>` (which must have a repository ID registered with
+          IANA)
+        * at least one `<contact:status>` element
+        * 1-2 `<contact:postalInfo>` elements containing the following:
             * a "type" attribute of "int" or "loc"
-            * name
-            * an `<addr>` element containing the following:
-              * 1-3 street elements
-              * city
-              * cc
-        * voice
-        * email
-        * clID (sponsoring registrar ID)
+            * `<contact:name>` element
+            * an `<contact:addr>` element containing the following:
+              * at least one 1 `<contact:street>` element
+              * `<contact:city>` element
+              * `<contact:cc>` element
+        * `<contact:voice>`
+        * `<contact:email>`
+        * `<contact:clID>` (sponsoring registrar ID)
 
       If the applicant uses the "thin" registry model, then this test will be
       skipped.
@@ -1028,9 +1030,9 @@ Test-Cases:
 
       The required properties are:
 
-        * id
-        * name
-        * gurid (IANA ID)
+        * `<rdeRegistrar:id>`
+        * `<rdeRegistrar:name>`
+        * `<rdeRegistrar:gurid>` (IANA ID)
     Input-Parameters:
       - rde.depositFile
   rde-11:
@@ -1060,16 +1062,20 @@ Test-Cases:
       The EPP Parameters object must match the `<greeting>` element returned by
       the EPP server.
     Input-Parameters:
-      - epp.objectURIs
-      - epp.hostModel
-      - general.minimumPublicDataSet
+      - epp.hostName
   rde-14:
     Summary: validate policy object
     Description: |
       The object policies included in the `<rdePolicy:policy>` object must
       conform to the Registration Data Policy and the applicable data model.
+
+      * If the `general.minimumPublicDataSet` input parameter is `true`, then
+        contact objects MUST NOT be present in the deposit.
+      * If the `epp.hostModelt` input parameter is `attributes`, then
+        host objects MUST NOT be present in the deposit.
     Input-Parameters:
       - general.minimumPublicDataSet
+      - epp.hostModel
 
   epp-01:
     Summary: EPP server must have at least one A record
@@ -1253,8 +1259,10 @@ Test-Cases:
         * valid but registered domain: `avail` attribute must be `0`. The domain
           will be generated using random characters.
         * valid and unregistered domain: `avail` attribute must be `1`
+
+      These checks will be carried out for each TLD in the TLD set.
     Input-Parameters:
-      - epp.registeredName
+      - epp.registeredNames
     Dependencies:
       - epp-17
   epp-20:
@@ -1354,30 +1362,92 @@ Test-Cases:
   epp-32:
     Summary: domain <create> command test (if applicable)
     Description: |
-      TODO.
+      This test performs a series domain `<create>` commands, using pseudo-
+      random ASCII domain names under each TLD in the TLD set. If the
+      `general.minimumPublicDataSet` input parameter is `false` then a contact
+      object (containing pseudo-random contact information) will be created
+      beforehand and used as the registrant. If the `epp.hostModel` parameter is
+      `objects`, then two host objects with pseudo-random names will be created
+      and used as the nameservers (otherwise the names will be provided) as
+      attributes.
+
+      The client will perform several `<create>` commands, each of which will
+      test certain aspects of the server's processing of those commands, for
+      example:
+
+        * to confirm the server supports all permitted client-assigned status
+          codes
+        * to confirm that the server rejects a `<create>` command which
+          specifies a contact object (where the `general.minimumPublicDataSet`)
+          input parameter is `true`
+        * to confirm that the server rejects a `<create>` command which does not
+          specify a contact object (where the `general.minimumPublicDataSet`)
+          input parameter is `false`
+        * to confirm that the server rejects a `<create>` command containing
+          host objects when the `epp.hostModel` parameter is `attributes`
+        * to confirm that the server rejects a `<create>` command containing
+          host attributes when the `epp.hostModel` parameter is `objects`
+        * to confirm that the the server which implements RFC9154 accepts a
+          `<create>` command without an authInfo command.          
+
     Input-Parameters:
       - epp.hostModel
+      - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-33:
     Summary: domain <info> command test
     Description: |
-      TODO.
+      This test performs a series of `<info>` commands on the domain objects
+      created in `epp-32`. This test checks that (a) the domain names are
+      present in the repository, and (b) that the expected object properties are
+      present and valid.
+
+      The responses will confirm that:
+
+        * the `<roid>` element is valid and contains a repository ID registered
+          with IANA;
+        * the `<crDate>` and `<exDate>` elements are present valid;
+        * the `<crID>` and `<clID>` elements match the client ID used to create
+          the domain.
+        * DNSSEC information provided in the `<create>` command is present and
+          correct.
+
     Input-Parameters:
+      - epp.clid
     Dependencies:
-      - epp-17
+      - epp-32
   epp-34:
     Summary: domain <update> command test
     Description: |
-      TODO.
+      This test will confirm that the client is able to perform an `<update>`
+      command on domain names, including:
+
+        * adding and removing client-assigned status codes
+        * adding and removing nameservers (whether objects or attributes)
+        * changing registrant object (if applicable)
+        * adding and remove DNSSEC information
+
     Input-Parameters:
+      - epp.clid
+      - epp.hostModel
+      - general.minimumPublicDataSet
     Dependencies:
       - epp-17
   epp-35:
     Summary: domain <renew> command test
     Description: |
-      TODO.
+      This test will confirm that the client is able to renew domain names.
+
+        * Following a succesful `<renew>` command, the expiry date of the domain
+          must have been increased by the period specified by the client;
+        * Where a server supports RFC 3915, the domain must have an RGP status
+          of `renewPeriod`;
+        * The server must reject a `<renew>` command if it would result in the
+          expiry date being more than 10 years into the future.
+
     Input-Parameters:
+      - general.gracePeriodsSupported
     Dependencies:
       - epp-17
   epp-36:
@@ -1410,14 +1480,14 @@ Test-Cases:
     Dependencies:
       - epp-17
 
-  eppLaunch-01:
+  mandatoryRPMs-01:
     Summary: launch application sunrise <info> command test
     Description: |
       TODO.
     Input-Parameters:
       - general.sunriseModel
     Dependencies:
-  eppLaunch-02:
+  mandatoryRPMs-02:
     Summary: |
       domain/launch application sunrise <create> command test
     Description: |
@@ -1425,13 +1495,13 @@ Test-Cases:
     Input-Parameters:
       - general.sunriseModel
     Dependencies:
-  eppLaunch-03:
+  mandatoryRPMs-03:
     Summary: domain trademark claims <create> command test
     Description: |
       TODO.
     Input-Parameters:
     Dependencies:
-  eppLaunch-04:
+  mandatoryRPMs-04:
     Summary: LORDN submission test
     Description: |
       TODO.
@@ -1472,6 +1542,11 @@ Input-Parameters:
       registrars.
     Type: boolean
     Example: true
+  general.gracePeriodsSupported:
+    Description: |
+      Whether or not the registry supports grace periods as defined in RFC 3915.
+    Type: boolean
+    Example: true
   epp.hostModel:
     Description: |
       The host model supported by the EPP server. The possible values for this
@@ -1480,12 +1555,13 @@ Input-Parameters:
         * `attributes`
     Type: string
     Example: objects
-  epp.registeredName:
+  epp.registeredNames:
     Description: |
-      A domain name that exists in the EPP server and which is therefore
-      unavailable for registration.
-    Type: string
-    Example: example.com
+      An array of domain names that exists in the EPP server and which are
+      therefore unavailable for registration. The array must contain one member
+      for each TLD in the TLD set.
+    Type: array
+    Example: ["example.com", "example.org"]
   general.sunriseModel:
     Description: |
       The sunrise model supported by the EPP server. The possible values for
