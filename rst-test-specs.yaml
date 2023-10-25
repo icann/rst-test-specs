@@ -236,7 +236,7 @@ Test-Plans:
 Test-Suites:
   StandardDNS:
     Order: 1
-    Name: Authoritative DNS
+    Name: Authoritative DNS Service
     Description: |
       The DNS test suite validates the authoritative DNS services for the TLD
       or RSP.
@@ -341,7 +341,7 @@ Test-Suites:
 
   MandatoryRPMs:
     Order: 9
-    Name: Mandatory Rights Protection Mechanisms
+    Name: Mandatory Rights Protection Mechanisms (RPMs)
     Description: |
       This test suite verifies an RSP's support for the mandatory Rights
       Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if
