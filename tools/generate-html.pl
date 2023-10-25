@@ -16,12 +16,15 @@ use constant {
     'name'          => 'name',
     'details'       => 'details',
 };
+use bytes;
 use utf8;
 use strict;
 
 my $s = ICANN::RST::Spec->new($ARGV[0]);
 
 my $h = HTML::Tiny->new;
+
+my $j = JSON::XS->new->pretty->canonical;
 
 my $section = 0;
 
@@ -255,6 +258,7 @@ sub print_plans {
         print $h->h4('Input parameters');
         print $h->p('This plan requires the following input parameters:');
 
+        my %params;
         my @inputs = $plan->inputs;
         if (scalar(@inputs) < 1) {
             print $h->ul($h->li($h->em('None specified.')));
@@ -267,10 +271,20 @@ sub print_plans {
                     { href => sprintf('#Input-Parameter-%s', $input->id) },
                     e(sprintf('%s (%s)', $input->id, $input->type)),
                 ));
+                $params{$input->id} = $input->jsonExample;
             }
 
             print $h->close(ul);
         }
+
+        print $h->h4('RST-API example');
+
+        my $json = $j->encode(\%params);
+        print $h->pre(e(sprintf(
+            "POST /test/987654/inputs HTTP/1.1\nContent-Type: application/json\nContent-Length: %u\n\n%s",
+            length($json),
+            $json
+        )));
 
         print $h->close(section);
     }
@@ -483,21 +497,7 @@ sub print_inputs {
         print $h->pre(e($input->type));
 
         print $h->h4('Example');
-        my $value;
-        if ('integer' eq $input->type) {
-            $value = int($input->example);
-
-        } elsif ('number' eq $input->type) {
-            $value = 0 + int($input->example);
-
-        } elsif ('boolean' eq $input->type) {
-            $value = ($input->example ? \1 : \0);
-
-        } else {
-            $value = $input->example;
-
-        }
-        print $h->pre(e(JSON::XS->new->pretty->encode({$input->id => $value})));
+        print $h->pre(e($j->encode({$input->id => $input->jsonExample})));
 
         print $h->h4('Test cases');
         print $h->p('This input parameter is used in the following test cases:');

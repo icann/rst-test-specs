@@ -38,8 +38,8 @@ sub inputs {
 
     my %inputs;
 
-    foreach my $case ($self->cases) {
-        foreach my $input ($case->inputs) {
+    foreach my $suite ($self->suites) {
+        foreach my $input ($suite->inputs) {
             $inputs{$input->id} = $input unless (defined($inputs{$input->id}));
         }
     }

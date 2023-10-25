@@ -6,6 +6,23 @@ sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub type        { $_[0]->{'Type'} }
 sub example     { $_[0]->{'Example'} }
 
+sub jsonExample {
+    my $self = shift;
+
+    if ('integer' eq $self->type) {
+        return int($self->example);
+
+    } elsif ('number' eq $self->type) {
+        return 0 + int($self->example);
+
+    } elsif ('boolean' eq $self->type) {
+        return ($self->example ? \1 : \0);
+
+    }
+
+    return $self->example;
+}
+
 sub cases {
     my $self = shift;
 
@@ -46,6 +63,12 @@ A string containing the input type.
 =head2 example()
 
 A string containing an example value.
+
+=head2 jsonExample()
+
+A scalar containing the example value coerced into a type that L<JSON::XS>
+understands. This ensures that numbers and booleans are properly represented
+when encoded into JSON.
 
 =head2 cases()
 
