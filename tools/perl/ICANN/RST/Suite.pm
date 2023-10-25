@@ -42,6 +42,10 @@ sub inputs {
 
     my %inputs;
 
+    foreach my $id (@{$self->{'Input-Parameters'}}) {
+        $inputs{$id} = $self->spec->input($id);
+    }
+
     foreach my $case ($self->cases) {
         foreach my $input ($case->inputs) {
             $inputs{$input->id} = $input unless (defined($inputs{$input->id}));
