@@ -72,6 +72,9 @@ A **Test Suite** object has the following properties:
 `Test-Cases`
 : either an array of [Test Case](#test-case-object) IDs, which must match a key in the `Test-Cases` property of the [top-level object](#top-level-object), or a string containing a regular expression to match Test Case IDs against.
 
+`Input-Parameters`
+: an array of [Input Parameter](#input-parameter-object) IDs which must be provided in addition to the input parameters specified by the test cases for the suite.
+
 # Test Case object
 
 A **Test Case** object has the following properties:
