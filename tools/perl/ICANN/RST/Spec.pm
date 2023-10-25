@@ -26,10 +26,26 @@ sub contactName     { $_[0]->{'spec'}->{'Contact'}->{'Name'}                }
 sub contactOrg      { $_[0]->{'spec'}->{'Contact'}->{'Organization'}        }
 sub contactEmail    { $_[0]->{'spec'}->{'Contact'}->{'Email'}               }
 sub preamble        { ICANN::RST::Text->new($_[0]->{'spec'}->{'Preamble'})  }
-sub plans           { my $self = shift ; return sort { $a->order <=> $b-> order } pairmap { ICANN::RST::Plan->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Plans'}}      }
-sub suites          { my $self = shift ; return sort { $a->order <=> $b-> order } pairmap { ICANN::RST::Suite->new($a, $b, $self) } %{$self->{'spec'}->{'Test-Suites'}}     }
-sub cases           { my $self = shift ; return sort { $a->id cmp $b->id        } pairmap { ICANN::RST::Case->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Cases'}}      }
-sub inputs          { my $self = shift ; return sort { $a->id cmp $b->id        } pairmap { ICANN::RST::Input->new($a, $b, $self) } %{$self->{'spec'}->{'Input-Parameters'}}}
+sub plans           { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Plans'}}      }
+sub suites          { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self) } %{$self->{'spec'}->{'Test-Suites'}}     }
+sub cases           { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Cases'}}      }
+sub inputs          { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self) } %{$self->{'spec'}->{'Input-Parameters'}}}
+sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)  };
+sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites) };
+sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)  };
+sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs) };
+
+sub find {
+    my ($self, $needle, @haystack) = @_;
+
+    foreach my $stick (@haystack) {
+        return $stick if ($stick->id eq $needle);
+    }
+
+    warn("object '$needle' not found");
+
+    return undef;
+}
 
 1;
 
@@ -79,16 +95,32 @@ Returns a string containing the contact email.
 
 Returns an array of L<ICANN::RST::Plan> objects.
 
+=head2 plan($id);
+
+Returns the L<ICANN::RST::Plan> object with the given ID.
+
 =head2 suites()
 
 Returns an array of L<ICANN::RST::Suite> objects.
+
+=head2 suite($id);
+
+Returns the L<ICANN::RST::Suite> object with the given ID.
 
 =head2 cases()
 
 Returns an array of L<ICANN::RST::Case> objects.
 
+=head2 case($id);
+
+Returns the L<ICANN::RST::Case> object with the given ID.
+
 =head2 inputs()
 
 Returns an array of L<ICANN::RST::Input> objects.
+
+=head2 input($id);
+
+Returns the L<ICANN::RST::Input> object with the given ID.
 
 =cut

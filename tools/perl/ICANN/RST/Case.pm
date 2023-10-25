@@ -21,25 +21,13 @@ sub title {
 sub inputs {
     my $self = shift;
 
-    my @inputs;
-
-    foreach my $input ($self->spec->inputs) {
-        push(@inputs, $input) if (any { $_ eq $input->id } @{$self->{'Input-Parameters'}});
-    }
-
-    return sort { $a->id <=> $b->id } @inputs;    
+    return sort { $a->id <=> $b->id } map { $self->spec->input($_) } @{$self->{'Input-Parameters'}};
 }
 
 sub dependencies {
     my $self = shift;
 
-    my @cases;
-
-    foreach my $case ($self->spec->cases) {
-        push(@cases, $case) if (any { $_ eq $case->id } @{$self->{'Dependencies'}});
-    }
-
-    return sort { $a->id <=> $b->id } @cases;
+    return sort { $a->id <=> $b->id } map { $self->spec->case($_) } @{$self->{'Dependencies'}};
 }
 
 sub dependants {

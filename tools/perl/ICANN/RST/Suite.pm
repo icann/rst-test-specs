@@ -27,10 +27,7 @@ sub cases {
     my @cases;
 
     if ('ARRAY' eq ref($self->{'Test-Cases'})) {
-        my @ids = @{$self->{'Test-Cases'}};
-        foreach my $case ($self->spec->cases) {
-            push(@cases, $case) if (any { $_ eq $case->id } @ids);
-        }
+        @cases = map { $self->spec->case($_) } @{$self->{'Test-Cases'}};
 
     } elsif (defined($self->{'Test-Cases'})) {
         @cases = grep { $_->id =~ /$self->{'Test-Cases'}/ } $self->spec->cases;
