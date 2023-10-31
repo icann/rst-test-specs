@@ -364,410 +364,410 @@ Test-Cases:
 # run!
 #
 
-  dns-syntax07:
-    Summary: No illegal characters in the SOA MNAME field
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax07.md
-  dns-zone03:
-    Summary: SOA ‘retry’ lower than ‘refresh’
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone03.md
-  dns-zone01:
-    Summary: Fully qualified master nameserver in SOA
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone01.md
-  dns-zone04:
-    Summary: SOA ‘retry’ at least 1 hour
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone04.md
-  dns-zone05:
-    Summary: SOA ‘expire’ minimum value
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone05.md
-  dns-zone06:
-    Summary: SOA ‘minimum’ maximum value
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone06.md
-  dns-zone07:
-    Summary: SOA master is not an alias
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone07.md
-  dns-zone10:
-    Summary: No multiple SOA records
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone10.md
-  dns-delegation03:
-    Summary: No truncation of referrals
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation03.md
-  dns-nameserver03:
-    Summary: Test availability of zone transfer (AXFR)
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver03.md
-  dns-delegation01:
-    Summary: Minimum number of name servers
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation01.md
-  dns-delegation02:
-    Summary: Name servers must have distinct IP addresses
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation02.md
-  dns-delegation04:
-    Summary: Name server is authoritative
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation04.md
-  dns-delegation05:
-    Summary: Name server must not point at CNAME alias
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation05.md
-  dns-delegation06:
-    Summary: Existence of SOA
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation06.md
-  dns-delegation07:
-    Summary: Parent glue name records present in child
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation07.md
-  dns-zone02:
-    Summary: SOA ‘refresh’ minimum value
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone02.md
-  dns-nameserver01:
-    Summary: A name server should not be a recursor
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver01.md
-  dns-nameserver02:
-    Summary: Test of EDNS0 support
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver02.md
-  dns-nameserver04:
-    Summary: Same source address
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver04.md
-  dns-nameserver05:
-    Summary: Behaviour against AAAA query
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver05.md
-  dns-nameserver06:
-    Summary: NS can be resolved
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver06.md
-  dns-nameserver07:
-    Summary: To check whether authoritative name servers return an upward referral
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver07.md
-  dns-nameserver08:
-    Summary: Testing QNAME case insensitivity
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver08.md
-  dns-nameserver09:
-    Summary: Testing QNAME case sensitivity
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver09.md
-  dns-nameserver10:
-    Summary: Test for undefined EDNS version
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver10.md
-  dns-nameserver11:
-    Summary: Test for unknown EDNS OPTION-CODE
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver11.md
-  dns-nameserver12:
-    Summary: Test for unknown EDNS flags
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver12.md
-  dns-nameserver13:
-    Summary: Test for truncated response on EDNS query
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver13.md
-  dns-nameserver14:
-    Summary: Test for unknown version with unknown OPTION-CODE
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver14.md
-  dns-nameserver15:
-    Summary: Checking for revealed software version
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver15.md
-  dns-syntax04:
-    Summary: The NS name must have a valid domain/hostname
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax04.md
-  dns-syntax05:
-    Summary: Misuse of ‘@’ character in the SOA RNAME field
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax05.md
-  dns-syntax06:
-    Summary: No illegal characters in the SOA RNAME field
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax06.md
-  dns-consistency04:
-    Summary: Name server NS consistency
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency04.md
-  dns-consistency05:
-    Summary: Consistency between glue and authoritative data
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency05.md
-  dns-consistency06:
-    Summary: SOA MNAME consistency
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency06.md
-  dns-address01:
-    Summary: Name server address must be globally routable
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md
-  dns-address02:
-    Summary: Reverse DNS entry exists for name server IP address
-    Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md
   dns-address03:
     Summary: Reverse DNS entry matches name server name
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md>.
   dns-connectivity02:
     Summary: TCP connectivity to name servers
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity02.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
   dns-connectivity03:
     Summary: AS Diversity
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity03.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.
   dns-consistency03:
     Summary: SOA timers consistency
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency03.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency03.md>.
   dns-connectivity01:
     Summary: UDP connectivity to name servers
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity01.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.
   dns-connectivity04:
     Summary: IP Prefix Diversity
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity04.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity04.md>.
   dns-consistency01:
     Summary: SOA serial number consistency
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency01.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency01.md>.
   dns-consistency02:
     Summary: SOA RNAME consistency
     Description: This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md
-  dnssec08:
-    Summary: Valid RRSIG for DNSKEY
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md
-  dnssec09:
-    Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md
-  dnssec12:
-    Summary: Test for DNSSEC Algorithm Completeness
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md
-  dnssec13:
-    Summary: All DNSKEY algorithms used to sign the zone
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md
-  dnssec15:
-    Summary: Existence of CDS and CDNSKEY
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md
-  dnssec16:
-    Summary: Validate CDS
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md
-  dnssec17:
-    Summary: Validate CDNSKEY
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md
-  dnssec18:
-    Summary: Validate trust from DS to CDS and CDNSKEY
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md
-  dnssec01:
-    Summary: Legal values for the DS hash digest algorithm
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md
-  dnssec02:
-    Summary: DS must match a valid DNSKEY in the child zone
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md
-  dnssec10:
-    Summary: Zone contains NSEC or NSEC3 records
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec10.md
-  dnssec04:
-    Summary: Check for too short or too long RRSIG lifetimes
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec04.md
-  dnssec05:
-    Summary: Check for invalid DNSKEY algorithms
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md
-  dnssec06:
-    Summary: Verify DNSSEC additional processing
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md
-  dnssec14:
-    Summary: Check for valid RSA DNSKEY key size
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
+  dns-address01:
+    Summary: Name server address must be globally routable
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
+  dns-address02:
+    Summary: Reverse DNS entry exists for name server IP address
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
+  dns-consistency04:
+    Summary: Name server NS consistency
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency04.md>.
+  dns-consistency05:
+    Summary: Consistency between glue and authoritative data
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency05.md>.
+  dns-consistency06:
+    Summary: SOA MNAME consistency
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
+  dns-delegation03:
+    Summary: No truncation of referrals
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation03.md>.
+  dns-nameserver03:
+    Summary: Test availability of zone transfer (AXFR)
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver03.md>.
+  dns-delegation01:
+    Summary: Minimum number of name servers
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation01.md>.
+  dns-delegation02:
+    Summary: Name servers must have distinct IP addresses
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation02.md>.
+  dns-delegation04:
+    Summary: Name server is authoritative
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation04.md>.
+  dns-delegation05:
+    Summary: Name server must not point at CNAME alias
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation05.md>.
+  dns-delegation06:
+    Summary: Existence of SOA
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation06.md>.
+  dns-delegation07:
+    Summary: Parent glue name records present in child
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Delegation-TP/delegation07.md>.
+  dns-zone02:
+    Summary: SOA ‘refresh’ minimum value
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone02.md>.
+  dns-nameserver01:
+    Summary: A name server should not be a recursor
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver01.md>.
+  dns-nameserver02:
+    Summary: Test of EDNS0 support
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver02.md>.
+  dns-nameserver04:
+    Summary: Same source address
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver04.md>.
+  dns-nameserver05:
+    Summary: Behaviour against AAAA query
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.
+  dns-nameserver06:
+    Summary: NS can be resolved
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver06.md>.
+  dns-nameserver07:
+    Summary: To check whether authoritative name servers return an upward referral
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver07.md>.
+  dns-nameserver08:
+    Summary: Testing QNAME case insensitivity
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver08.md>.
+  dns-nameserver09:
+    Summary: Testing QNAME case sensitivity
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver09.md>.
+  dns-nameserver10:
+    Summary: Test for undefined EDNS version
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.
+  dns-nameserver11:
+    Summary: Test for unknown EDNS OPTION-CODE
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.
+  dns-nameserver12:
+    Summary: Test for unknown EDNS flags
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver12.md>.
+  dns-nameserver13:
+    Summary: Test for truncated response on EDNS query
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.
+  dns-nameserver14:
+    Summary: Test for unknown version with unknown OPTION-CODE
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.
+  dns-nameserver15:
+    Summary: Checking for revealed software version
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Nameserver-TP/nameserver15.md>.
+  dns-syntax04:
+    Summary: The NS name must have a valid domain/hostname
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax04.md>.
+  dns-syntax05:
+    Summary: Misuse of ‘@’ character in the SOA RNAME field
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax05.md>.
+  dns-syntax06:
+    Summary: No illegal characters in the SOA RNAME field
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax06.md>.
+  dns-syntax07:
+    Summary: No illegal characters in the SOA MNAME field
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Syntax-TP/syntax07.md>.
+  dns-zone03:
+    Summary: SOA ‘retry’ lower than ‘refresh’
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone03.md>.
+  dns-zone01:
+    Summary: Fully qualified master nameserver in SOA
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone01.md>.
+  dns-zone04:
+    Summary: SOA ‘retry’ at least 1 hour
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone04.md>.
+  dns-zone05:
+    Summary: SOA ‘expire’ minimum value
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone05.md>.
+  dns-zone06:
+    Summary: SOA ‘minimum’ maximum value
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone06.md>.
+  dns-zone07:
+    Summary: SOA master is not an alias
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone07.md>.
+  dns-zone10:
+    Summary: No multiple SOA records
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone10.md>.
   dnssec03:
     Summary: Check for too many NSEC3 iterations
     Description: |
       This test case comes from Zonemaster. For more information, see
-      https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.
+  dnssec01:
+    Summary: Legal values for the DS hash digest algorithm
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.
+  dnssec02:
+    Summary: DS must match a valid DNSKEY in the child zone
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md>.
+  dnssec10:
+    Summary: Zone contains NSEC or NSEC3 records
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec10.md>.
+  dnssec04:
+    Summary: Check for too short or too long RRSIG lifetimes
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec04.md>.
+  dnssec05:
+    Summary: Check for invalid DNSKEY algorithms
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md>.
+  dnssec06:
+    Summary: Verify DNSSEC additional processing
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md>.
+  dnssec14:
+    Summary: Check for valid RSA DNSKEY key size
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md>.
+  dnssec08:
+    Summary: Valid RRSIG for DNSKEY
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md>.
+  dnssec09:
+    Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md>.
+  dnssec12:
+    Summary: Test for DNSSEC Algorithm Completeness
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.
+  dnssec13:
+    Summary: All DNSKEY algorithms used to sign the zone
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md>.
+  dnssec15:
+    Summary: Existence of CDS and CDNSKEY
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.
+  dnssec16:
+    Summary: Validate CDS
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.
+  dnssec17:
+    Summary: Validate CDNSKEY
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.
+  dnssec18:
+    Summary: Validate trust from DS to CDS and CDNSKEY
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
 
   rdap-01-domainCaseFoldingValidation:
     Summary: Domain label case folding validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-02-domainNameValidation:
     Summary: Domain Name validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-03-ipv4Validation:
     Summary: IPv4 address validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-04-ipv6Validation:
     Summary: IPv6 address validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-05-stdRdapAsEventActorValidation:
     Summary: asEventActor Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-06-stdRdapConformanceValidation:
     Summary: RDAP Conformance validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-07-stdRdapDomainLookupValidation:
     Summary: Domain Lookup Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-08-stdRdapEntitiesValidation:
     Summary: Entities validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-09-stdRdapEntityLookupValidation:
     Summary: Entity lookup validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-10-stdRdapErrorResponseBodyValidation:
     Summary: Error Response Body 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-11-stdRdapEventsValidation:
     Summary: Events Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-12-stdRdapHelpValidation:
     Summary: Help validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-13-stdRdapIpAddressesValidation:
     Summary: IP Addresses Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-14-stdRdapLanguageIdentifierValidation:
     Summary: Language Identifier Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-15-stdRdapLdhNameValidation:
     Summary: LDH name 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-16-stdRdapLinksValidation:
     Summary: Links validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-17-stdRdapNameserverLookupValidation:
     Summary: Nameserver lookup validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-18-stdRdapNameserversSearchValidation:
     Summary: RFC7159RDAP_RFCsNameservers search validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-19-stdRdapNoticesRemarksValidation:
     Summary: Notices and Remarks Validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-20-stdRdapPort43WhoisServerValidation:
     Summary: Port 43 WHOIS Server 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-21-stdRdapPublicIdsValidation:
     Summary: Public IDs validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-22-stdRdapRolesValidation:
     Summary: Roles validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-23-stdRdapSecureDnsValidation:
     Summary: Secure DNS validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-24-stdRdapStatusValidation:
     Summary: Status validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-25-stdRdapUnicodeNameValidation:
     Summary: RFC7159RDAP_RFCsIDNA_RFCsUnicode name 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-26-stdRdapVariantsValidation:
     Summary: Variants validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   rdap-27-webUriValidation:
     Summary: Web URI validation 
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
 
 ### END AUTO-GENERATED SECTION ###
 

@@ -115,8 +115,8 @@ foreach my $row ($doc->getElementsByTagName('tr')) {
     my $description = sprintf(
         'This test case comes from Zonemaster. ' .
         "For more information, see\n" .
-        '      https://github.com/zonemaster/zonemaster/blob' .
-        '/master/docs/public/specifications/tests/%s/%s.md',
+        '      <https://github.com/zonemaster/zonemaster/blob' .
+        '/master/docs/public/specifications/tests/%s/%s.md>.',
         $plan,
         lc($id)
     );

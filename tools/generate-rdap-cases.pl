@@ -67,8 +67,8 @@ for (my $i = 0 ; $i < scalar(@nodes) ; $i++) {
 
 my $description = 'This test case comes from the RDAP Conformance Tool. ' .
                     "For more information, see\n" .
-                    '      https://github.com/icann/rdap-conformance-tool/blob'.
-                    '/master/doc/RDAPConformanceToolSpecifications.pdf';
+                    '      <https://github.com/icann/rdap-conformance-tool/blob'.
+                    '/master/doc/RDAPConformanceToolSpecifications.pdf>.';
 
 binmode(STDOUT, 'encoding(utf-8)');
 
