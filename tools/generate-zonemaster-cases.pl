@@ -44,10 +44,15 @@ C<rst-test-specs.yaml>.
 # any test listed here will be ignored
 #
 my @skip = qw(
+    basic00
     basic01
+    basic02
     basic03
     dnssec07
     dnssec11
+    syntax01
+    syntax02
+    syntax03
     syntax08
     zone08
     zone09

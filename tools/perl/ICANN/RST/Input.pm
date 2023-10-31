@@ -34,7 +34,7 @@ sub cases {
         }
     }
 
-    return sort { $a->id <=> $b->id } values(%cases);
+    return sort { $a->id cmp $b->id } values(%cases);
 }
 
 1;

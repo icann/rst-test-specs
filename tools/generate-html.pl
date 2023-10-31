@@ -4,6 +4,7 @@
 #
 # Usage: perl 2.generate-html.pl rst-test-specs.yaml > rst-test-specs.html
 #
+use HTTP::Request::Common;
 use HTML::Tiny;
 use JSON::XS;
 use ICANN::RST::Spec;
@@ -259,6 +260,7 @@ sub print_plans {
         print $h->p('This plan requires the following input parameters:');
 
         my %params;
+        my @files;
         my @inputs = $plan->inputs;
         if (scalar(@inputs) < 1) {
             print $h->ul($h->li($h->em('None specified.')));
@@ -271,7 +273,9 @@ sub print_plans {
                     { href => sprintf('#Input-Parameter-%s', $input->id) },
                     e(sprintf('%s (%s)', $input->id, $input->type)),
                 ));
+
                 $params{$input->id} = $input->jsonExample;
+                push(@files, $input) if ('file' eq $input->type);
             }
 
             print $h->close(ul);
@@ -285,6 +289,21 @@ sub print_plans {
             length($json),
             $json
         )));
+
+        print $h->h4('Required files');
+        if (scalar(@files) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+            foreach my $file (@files) {
+                print $h->li($h->a(
+                    { href => sprintf('#Input-Parameter-%s', $file->id) },
+                    e($file->id),
+                ));
+            }
+            print $h->close(ul);
+        }
 
         print $h->close(section);
     }
