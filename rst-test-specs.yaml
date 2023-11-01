@@ -369,42 +369,18 @@ Test-Cases:
 # run!
 #
 
-  dns-address03:
-    Summary: Reverse DNS entry matches name server name
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md>.
-  dns-connectivity02:
-    Summary: TCP connectivity to name servers
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
-  dns-connectivity03:
-    Summary: AS Diversity
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.
-  dns-consistency03:
-    Summary: SOA timers consistency
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency03.md>.
-  dns-connectivity01:
-    Summary: UDP connectivity to name servers
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.
-  dns-connectivity04:
-    Summary: IP Prefix Diversity
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity04.md>.
-  dns-consistency01:
-    Summary: SOA serial number consistency
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency01.md>.
-  dns-consistency02:
-    Summary: SOA RNAME consistency
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
   dns-address02:
     Summary: Reverse DNS entry exists for name server IP address
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
+  dns-address03:
+    Summary: Reverse DNS entry matches name server name
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address03.md>.
+  dns-address01:
+    Summary: Name server address must be globally routable
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
   dns-consistency04:
     Summary: Name server NS consistency
     Description: This test case comes from Zonemaster. For more information, see
@@ -417,10 +393,6 @@ Test-Cases:
     Summary: SOA MNAME consistency
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
-  dns-address01:
-    Summary: Name server address must be globally routable
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
   dns-delegation03:
     Summary: No truncation of referrals
     Description: This test case comes from Zonemaster. For more information, see
@@ -557,11 +529,34 @@ Test-Cases:
     Summary: No multiple SOA records
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone10.md>.
-  dnssec03:
-    Summary: Check for too many NSEC3 iterations
-    Description: |
-      This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.
+  dns-connectivity02:
+    Summary: TCP connectivity to name servers
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
+  dns-connectivity03:
+    Summary: AS Diversity
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.
+  dns-consistency03:
+    Summary: SOA timers consistency
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency03.md>.
+  dns-connectivity01:
+    Summary: UDP connectivity to name servers
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.
+  dns-connectivity04:
+    Summary: IP Prefix Diversity
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Connectivity-TP/connectivity04.md>.
+  dns-consistency01:
+    Summary: SOA serial number consistency
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency01.md>.
+  dns-consistency02:
+    Summary: SOA RNAME consistency
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
   dnssec01:
     Summary: Legal values for the DS hash digest algorithm
     Description: |
@@ -637,6 +632,11 @@ Test-Cases:
     Description: |
       This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
+  dnssec03:
+    Summary: Check for too many NSEC3 iterations
+    Description: |
+      This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.
 
   rdap-01-domainCaseFoldingValidation:
     Summary: Domain label case folding validation 

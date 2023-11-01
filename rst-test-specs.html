@@ -3,6 +3,7 @@
     background-color: #fefefe;
     font-size: 15px;
 }
+
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
     font-family: "Noto Sans", sans-serif;
     font-weight: normal;
@@ -75,6 +76,11 @@ summary h4 {
 
 summary:has(> h4) {
     margin: 1em 0;
+}
+
+summary h4:active, summary h4:hover {
+    text-decoration: underline;
+    color: #036aa6;
 }
 
 .toc-link {
@@ -254,17 +260,17 @@ database of validated and registered trademarks which is used to enforce
 Rights Protection Mechanisms (RPMs) in gTLDs.
 </dd>
 </dl>
-</div></section><a name="test-plans"></a><h2>3. Test Plans</h2><section><a name="Test-Plan-StandardPreDelegationTest"></a><h3>3.1. Pre-Delegation Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>StandardPreDelegationTest</pre><h4>Description</h4><div class="markdown-content"><p>The purpose of the Pre-Delegation Test is to verify that the
+</div></section><a name="test-plans"></a><h2>3. Test Plans</h2><section><a name="Test-Plan-StandardPreDelegationTest"></a><h3>3.1. Pre-Delegation Test</h3><h4>Description</h4><div class="markdown-content"><p>The purpose of the Pre-Delegation Test is to verify that the
 applicant has met its commitment to establish registry operations in
 accordance with the technical and operational criteria described in the
 gTLD Applicant Guidebook (AGB). Each applicant will be required to
 complete PDT as a prerequisite to delegation into the root zone.</p>
 <p>The Pre-Delegation Test covers all critical registry services and
 IDNs, and therefore uses all test suites.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>StandardPreDelegationTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li><li><a href="#Test-Suite-StandardRDAP">Registration Data Acess Protocol (RDAP)</a></li><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li><li><a href="#Test-Suite-StandardRDE">Registry Data Escrow (RDE)</a></li><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 1477
 
@@ -328,17 +334,17 @@ Content-Length: 1477
    &#34;rde.publicKey&#34; : &#34;rsp-rde-signing-key.asc&#34;,
    &#34;rde.signatureFile&#34; : &#34;example_20231004_FULL_S1_R0.sig&#34;
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details></section><section><a name="Test-Plan-StandardRSPChangeTest"></a><h3>3.2. RSP Change Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>StandardRSPChangeTest</pre><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to change a Material
+</pre></details></section><section><a name="Test-Plan-StandardRSPChangeTest"></a><h3>3.2. RSP Change Test</h3><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to change a Material
 Subcontracting Arrangement (MSA) and appoint a new Registry Services
 Provider. Before this change can be approved, the new RSP MUST complete
 Registry System Testing to ensure their systems comply with the
 technical and operational requirements of the Registry Agreement.</p>
 <p>The RSP Change Test covers all critical registry services and IDNs,
 and therefore uses all test suites.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>StandardRSPChangeTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li><li><a href="#Test-Suite-StandardRDAP">Registration Data Acess Protocol (RDAP)</a></li><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li><li><a href="#Test-Suite-StandardRDE">Registry Data Escrow (RDE)</a></li><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 1477
 
@@ -402,8 +408,7 @@ Content-Length: 1477
    &#34;rde.publicKey&#34; : &#34;rsp-rde-signing-key.asc&#34;,
    &#34;rde.signatureFile&#34; : &#34;example_20231004_FULL_S1_R0.sig&#34;
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details></section><section><a name="Test-Plan-DNSRSPChangeTest"></a><h3>3.3. DNS RSP Change Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>DNSRSPChangeTest</pre><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to change a Material
+</pre></details></section><section><a name="Test-Plan-DNSRSPChangeTest"></a><h3>3.3. DNS RSP Change Test</h3><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to change a Material
 Subcontracting Arrangement (MSA) and appoint a new provider of
 authoritative DNS services instead of or in addition to any existing
 provider(s).</p>
@@ -411,9 +416,10 @@ provider(s).</p>
 complete testing to ensure their systems comply with the technical and
 operational requirements of the Registry Agreement.</p>
 <p>The DNS RSP Change Test uses the DNS test suite only.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>DNSRSPChangeTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 469
 
@@ -441,23 +447,22 @@ Content-Length: 469
       ]
    }
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><section><a name="Test-Plan-IDNTest"></a><h3>3.4. IDN Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>IDNTest</pre><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to amend its Registry
+</pre></details></section><section><a name="Test-Plan-IDNTest"></a><h3>3.4. IDN Test</h3><h4>Description</h4><div class="markdown-content"><p>A Registry Operator may apply to ICANN to amend its Registry
 Agreement to offer new scripts and/or languages for Internationalized
 Domain Names.</p>
 <p>The purpose of an IDN RST test is to verify that the Registry
 Operator’s registry system handles IDN registrations in accordance with
 the submitted policy statements and IDN tables.</p>
 <p>The IDN Test uses the IDN test suite only.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>IDNTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 3
 
 {}
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><section><a name="Test-Plan-SRSGatewayTest"></a><h3>3.5. SRS Gateway Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>SRSGatewayTest</pre><h4>Description</h4><div class="markdown-content"><p>An SRS Gateway service is a Shared Registry System implementation
+</pre></details></section><section><a name="Test-Plan-SRSGatewayTest"></a><h3>3.5. SRS Gateway Test</h3><h4>Description</h4><div class="markdown-content"><p>An SRS Gateway service is a Shared Registry System implementation
 that acts as a proxy between a subset of Registrars and the Registry. It
 uses a local cache to speed up EPP query commands, but forwards all EPP
 transform commands to the primary registry system. TLD registries need
@@ -470,24 +475,25 @@ Guidebook (AGB). Furthermore, it MUST keep its own database synchronized
 with that of the TLD registry.</p>
 <p>The SRS Gateway Test Change Test uses the SRS gateway test suite
 only.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>SRSGatewayTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardSRSGateway">SRS Gateway</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 3
 
 {}
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><section><a name="Test-Plan-MainRSPEvaluationTest"></a><h3>3.6. Main RSP Evaluation Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>MainRSPEvaluationTest</pre><h4>Description</h4><div class="markdown-content"><p>The Main RSP is responsible for the creation and maintenance of
+</pre></details></section><section><a name="Test-Plan-MainRSPEvaluationTest"></a><h3>3.6. Main RSP Evaluation Test</h3><h4>Description</h4><div class="markdown-content"><p>The Main RSP is responsible for the creation and maintenance of
 domain name registrations in a Shared Registration System (SRS). This
 encompasses the lifecycle of a domain name registration using domain
 registrars and protocols such as the Extensible Provisioning Protocol
 (EPP) and adherence to policies regarding the use and transparency
 domain name registrations through reporting, the Registration Data
 Access Protocol (RDAP), and other mechanisms.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>MainRSPEvaluationTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardRDAP">Registration Data Acess Protocol (RDAP)</a></li><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li><li><a href="#Test-Suite-StandardRDE">Registry Data Escrow (RDE)</a></li><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-general.sunriseModels">general.sunriseModels (string)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-epp.clid">epp.clid (string)</a></li><li><a href="#Input-Parameter-epp.hostModel">epp.hostModel (string)</a></li><li><a href="#Input-Parameter-epp.hostName">epp.hostName (string)</a></li><li><a href="#Input-Parameter-epp.pwd">epp.pwd (string)</a></li><li><a href="#Input-Parameter-epp.registeredContacts">epp.registeredContacts (array)</a></li><li><a href="#Input-Parameter-epp.registeredNames">epp.registeredNames (array)</a></li><li><a href="#Input-Parameter-epp.registeredNameservers">epp.registeredNameservers (array)</a></li><li><a href="#Input-Parameter-epp.restoreReportRequired">epp.restoreReportRequired (boolean)</a></li><li><a href="#Input-Parameter-epp.transferClid">epp.transferClid (string)</a></li><li><a href="#Input-Parameter-epp.transferPwd">epp.transferPwd (string)</a></li><li><a href="#Input-Parameter-general.gracePeriodsSupported">general.gracePeriodsSupported (boolean)</a></li><li><a href="#Input-Parameter-general.minimumPublicDataSet">general.minimumPublicDataSet (boolean)</a></li><li><a href="#Input-Parameter-general.sunriseModels">general.sunriseModels (string)</a></li><li><a href="#Input-Parameter-rdap.baseURLs">rdap.baseURLs (object)</a></li><li><a href="#Input-Parameter-rdap.testDomains">rdap.testDomains (object)</a></li><li><a href="#Input-Parameter-rdap.testEntities">rdap.testEntities (object)</a></li><li><a href="#Input-Parameter-rdap.testNameservers">rdap.testNameservers (object)</a></li><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile (file)</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey (file)</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile (file)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 1054
 
@@ -530,15 +536,15 @@ Content-Length: 1054
    &#34;rde.publicKey&#34; : &#34;rsp-rde-signing-key.asc&#34;,
    &#34;rde.signatureFile&#34; : &#34;example_20231004_FULL_S1_R0.sig&#34;
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><a href="#Input-Parameter-rde.depositFile">rde.depositFile</a></li><li><a href="#Input-Parameter-rde.publicKey">rde.publicKey</a></li><li><a href="#Input-Parameter-rde.signatureFile">rde.signatureFile</a></li></ul></details></section><section><a name="Test-Plan-DNSRSPEvaluationTest"></a><h3>3.7. DNS RSP Evaluation Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>DNSRSPEvaluationTest</pre><h4>Description</h4><div class="markdown-content"><p>DNS RSPs provide primary or secondary authoritative DNS services.
+</pre></details></section><section><a name="Test-Plan-DNSRSPEvaluationTest"></a><h3>3.7. DNS RSP Evaluation Test</h3><h4>Description</h4><div class="markdown-content"><p>DNS RSPs provide primary or secondary authoritative DNS services.
 Therefore, this test plan only covers the DNS area.</p>
 <p>RSPs wishing to offer DNSSEC services in addition to authoritative
 DNS will also be evaluated using the DNSSEC RSP Evaluation Test
 below.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>DNSRSPEvaluationTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 261
 
@@ -556,15 +562,15 @@ Content-Length: 261
       }
    }
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><section><a name="Test-Plan-DNSSECRSPEvaluationTest"></a><h3>3.8. DNSSEC RSP Evaluation Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>DNSSECRSPEvaluationTest</pre><h4>Description</h4><div class="markdown-content"><p>DNSSEC RSPs provide signing of TLD zone files as a service. They do
+</pre></details></section><section><a name="Test-Plan-DNSSECRSPEvaluationTest"></a><h3>3.8. DNSSEC RSP Evaluation Test</h3><h4>Description</h4><div class="markdown-content"><p>DNSSEC RSPs provide signing of TLD zone files as a service. They do
 not provide primary or secondary authoritative DNS services.</p>
 <p>RSPs wishing to offer DNSSEC services in addition to authoritative
 DNS will also be evaluated using the DNSSEC RSP Evaluation Test
 below.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>DNSSECRSPEvaluationTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-dnssecOps.algorithmRolloverZone">dnssecOps.algorithmRolloverZone (string)</a></li><li><a href="#Input-Parameter-dnssecOps.kskRolloverZone">dnssecOps.kskRolloverZone (string)</a></li><li><a href="#Input-Parameter-dnssecOps.zskRolloverZone">dnssecOps.zskRolloverZone (string)</a></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><a href="#Input-Parameter-dns.nameservers">dns.nameservers (object)</a></li><li><a href="#Input-Parameter-dnssec.dsRecords">dnssec.dsRecords (object)</a></li><li><a href="#Input-Parameter-dnssecOps.algorithmRolloverZone">dnssecOps.algorithmRolloverZone (string)</a></li><li><a href="#Input-Parameter-dnssecOps.kskRolloverZone">dnssecOps.kskRolloverZone (string)</a></li><li><a href="#Input-Parameter-dnssecOps.zskRolloverZone">dnssecOps.zskRolloverZone (string)</a></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 619
 
@@ -595,20 +601,20 @@ Content-Length: 619
    &#34;dnssecOps.kskRolloverZone&#34; : &#34;example.com&#34;,
    &#34;dnssecOps.zskRolloverZone&#34; : &#34;example.com&#34;
 }
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><section><a name="Test-Plan-SRSGatewayRSPTest"></a><h3>3.9. SRS Gateway RSP Evaluation Test</h3><h4>Plan ID</h4><p>The following Test Plan ID may be used with the RST API:</p>
-<pre>SRSGatewayRSPTest</pre><h4>Description</h4><div class="markdown-content"><p>SRS Gateway RSPs provide a proxy between a subset of Registrars and
+</pre></details></section><section><a name="Test-Plan-SRSGatewayRSPTest"></a><h3>3.9. SRS Gateway RSP Evaluation Test</h3><h4>Description</h4><div class="markdown-content"><p>SRS Gateway RSPs provide a proxy between a subset of Registrars and
 the Registry. It uses a local cache to speed up EPP query commands, but
 forwards all EPP transform commands to the primary registry system. TLD
 registries need to deploy a proxy setup in order to operate in certain
 markets worldwide.</p>
-</div><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
+</div><details><summary><h4>Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
+<pre>SRSGatewayRSPTest</pre></details><details><summary><h4>Test suites</h4></summary><p>This plan uses the following test suites:</p>
 <ol><li><a href="#Test-Suite-StandardSRSGateway">SRS Gateway</a></li></ol></details><details><summary><h4>Input parameters</h4></summary><p>This plan requires the following input parameters:</p>
-<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
+<ul><li><em>None specified.</em></li></ul></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details><details><summary><h4>RST-API example</h4></summary><pre>POST /test/987654/inputs HTTP/1.1
 Content-Type: application/json
 Content-Length: 3
 
 {}
-</pre></details><details><summary><h4>Required files</h4></summary><ul><li><em>None specified.</em></li></ul></details></section><a name="test-suites"></a><h2>4. Test Suites</h2><section><a name="Test-Suite-StandardDNS"></a><h3>4.1. Authoritative DNS Service</h3><h4>Description</h4><div class="markdown-content"><p>The DNS test suite validates the authoritative DNS services for the
+</pre></details></section><a name="test-suites"></a><h2>4. Test Suites</h2><section><a name="Test-Suite-StandardDNS"></a><h3>4.1. Authoritative DNS Service</h3><h4>Description</h4><div class="markdown-content"><p>The DNS test suite validates the authoritative DNS services for the
 TLD or RSP.</p>
 <p>The DNS test suite is taken from the test plans that are part of the
 <a href="https://github.com/zonemaster">Zonemaster software</a>

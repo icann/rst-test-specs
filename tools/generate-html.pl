@@ -239,12 +239,16 @@ sub print_plans {
         print $h->a({name => sprintf('Test-Plan-%s', $plan->id)});
         print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($plan->name)));
 
-        print $h->h4('Plan ID');
+        print $h->h4('Description');
+        print $plan->description->html(3);
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('Plan ID'));
         print $h->p('The following Test Plan ID may be used with the RST API:');
         print $h->pre(e($plan->id));
 
-        print $h->h4('Description');
-        print $plan->description->html(3);
+        print $h->close('details');
 
         print $h->open('details');
 
@@ -300,19 +304,6 @@ sub print_plans {
 
         print $h->open('details');
 
-        print $h->summary($h->h4('RST-API example'));
-
-        my $json = $j->encode(\%params);
-        print $h->pre(e(sprintf(
-            "POST /test/987654/inputs HTTP/1.1\nContent-Type: application/json\nContent-Length: %u\n\n%s",
-            length($json),
-            $json
-        )));
-
-        print $h->close('details');
-
-        print $h->open('details');
-
         print $h->summary($h->h4('Required files'));
         if (scalar(@files) < 1) {
             print $h->ul($h->li($h->em('None specified.')));
@@ -327,6 +318,19 @@ sub print_plans {
             }
             print $h->close(ul);
         }
+
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('RST-API example'));
+
+        my $json = $j->encode(\%params);
+        print $h->pre(e(sprintf(
+            "POST /test/987654/inputs HTTP/1.1\nContent-Type: application/json\nContent-Length: %u\n\n%s",
+            length($json),
+            $json
+        )));
 
         print $h->close('details');
 
@@ -598,6 +602,7 @@ html {
     background-color: #fefefe;
     font-size: 15px;
 }
+
 html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
     font-family: "Noto Sans", sans-serif;
     font-weight: normal;
@@ -670,6 +675,11 @@ summary h4 {
 
 summary:has(> h4) {
     margin: 1em 0;
+}
+
+summary h4:active, summary h4:hover {
+    text-decoration: underline;
+    color: #036aa6;
 }
 
 .toc-link {
