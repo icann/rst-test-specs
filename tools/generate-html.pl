@@ -38,10 +38,20 @@ undef $/;
 
 my $title = 'Registry System Testing - Test Specifications';
 
+my $js = <<"END";
+window.addEventListener('beforeprint', (event) => {
+    var els = document.getElementsByTagName('details');
+    for (var i = 0 ; i < els.length ; i++) {
+        els.item(i).setAttribute('open', true);
+    }
+});
+END
+
 print $h->head([
     $h->meta({'charset' => 'UTF-8'}),
     $h->meta({name => 'viewport', 'content' => 'width=device-width'}),
     $h->style(<DATA>),
+    $h->script($js),
     $h->title($title),
 ]);
 
@@ -236,7 +246,9 @@ sub print_plans {
         print $h->h4('Description');
         print $plan->description->html(3);
 
-        print $h->h4('Test suites');
+        print $h->open('details');
+
+        print $h->summary($h->h4('Test suites'));
         print $h->p('This plan uses the following test suites:');
 
         my @suites = $plan->suites;
@@ -256,7 +268,10 @@ sub print_plans {
             print $h->close(ol);
         }
 
-        print $h->h4('Input parameters');
+        print $h->close('details');
+
+        print $h->open('details');
+        print $h->summary($h->h4('Input parameters'));
         print $h->p('This plan requires the following input parameters:');
 
         my %params;
@@ -281,7 +296,11 @@ sub print_plans {
             print $h->close(ul);
         }
 
-        print $h->h4('RST-API example');
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('RST-API example'));
 
         my $json = $j->encode(\%params);
         print $h->pre(e(sprintf(
@@ -290,7 +309,11 @@ sub print_plans {
             $json
         )));
 
-        print $h->h4('Required files');
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('Required files'));
         if (scalar(@files) < 1) {
             print $h->ul($h->li($h->em('None specified.')));
 
@@ -304,6 +327,8 @@ sub print_plans {
             }
             print $h->close(ul);
         }
+
+        print $h->close('details');
 
         print $h->close(section);
     }
@@ -329,26 +354,6 @@ sub print_suites {
         print $h->h4('Description');
         print $suite->description->html(2);
 
-        print $h->h4('Test plans');
-        print $h->p('This suite is used by the following test plans:');
-
-        my @plans = $suite->plans;
-        if (scalar(@plans) < 1) {
-            print $h->ul($h->li($h->em('None specified.')));
-
-        } else {
-            print $h->open('ol');
-
-            foreach my $plan (@plans) {
-                print $h->li($h->a(
-                    { href => sprintf('#Test-Plan-%s', $plan->id) },
-                    e($plan->name),
-                ));
-            }
-
-            print $h->close('ol');
-        }
-
         print $h->h4('Test cases');
         print $h->p('This suite uses the following test cases:');
 
@@ -369,7 +374,33 @@ sub print_suites {
             print $h->close('ol');
         }
 
-        print $h->h4('Input parameters');
+        print $h->open('details');
+
+        print $h->summary($h->h4('Test plans'));
+        print $h->p('This suite is used by the following test plans:');
+
+        my @plans = $suite->plans;
+        if (scalar(@plans) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open('ol');
+
+            foreach my $plan (@plans) {
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Plan-%s', $plan->id) },
+                    e($plan->name),
+                ));
+            }
+
+            print $h->close('ol');
+        }
+
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('Input parameters'));
         print $h->p('The test cases used by this suite require the following input parameters:');
 
         my @inputs = $suite->inputs;
@@ -388,6 +419,8 @@ sub print_suites {
 
             print $h->close('ol');
         }
+
+        print $h->close('details');
 
         print $h->close(section);
     }
@@ -415,46 +448,6 @@ sub print_cases {
         print $h->h4('Description');
         print $case->description->html($section-3);
 
-        print $h->h4('Dependencies');
-        print $h->p('This test case requires the following test cases to have successfully passed:');
-
-        my @deps = $case->dependencies;
-        if (scalar(@deps) < 1) {
-            print $h->ul($h->li($h->em('None specified.')));
-
-        } else {
-            print $h->open(ul);
-
-            foreach my $dep (@deps) {
-                print $h->li($h->a(
-                    { href => sprintf('#Test-Case-%s', $dep->id) },
-                    e($dep->title),
-                ));
-            }
-
-            print $h->close(ul);
-        }
-
-        print $h->h4('Dependants');
-        print $h->p('The following test cases require this test case to have successfully passed:');
-
-        my @deps = $case->dependants;
-        if (scalar(@deps) < 1) {
-            print $h->ul($h->li($h->em('None specified.')));
-
-        } else {
-            print $h->open(ul);
-
-            foreach my $dep (@deps) {
-                print $h->li($h->a(
-                    { href => sprintf('#Test-Case-%s', $dep->id) },
-                    e($dep->title),
-                ));
-            }
-
-            print $h->close(ul);
-        }
-
         print $h->h4('Input parameters');
         print $h->p('This test case requires the following input parameters:');
 
@@ -475,7 +468,57 @@ sub print_cases {
             print $h->close(ul);
         }
 
-        print $h->h4('Test suites');
+        print $h->open('details');
+
+        print $h->summary($h->h4('Dependencies'));
+        print $h->p('This test case requires the following test cases to have successfully passed:');
+
+        my @deps = $case->dependencies;
+        if (scalar(@deps) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $dep (@deps) {
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Case-%s', $dep->id) },
+                    e($dep->title),
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('Dependants'));
+        print $h->p('The following test cases require this test case to have successfully passed:');
+
+        my @deps = $case->dependants;
+        if (scalar(@deps) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $dep (@deps) {
+                print $h->li($h->a(
+                    { href => sprintf('#Test-Case-%s', $dep->id) },
+                    e($dep->title),
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close('details');
+
+        print $h->open('details');
+
+        print $h->summary($h->h4('Test suites'));
         print $h->p('This test case is used in the following test suites:');
 
         my @suites = $case->suites;
@@ -494,6 +537,8 @@ sub print_cases {
 
             print $h->close(ul);
         }
+
+        print $h->close('details');
 
         print $h->close(section);
     }
@@ -518,7 +563,9 @@ sub print_inputs {
         print $h->h4('Example');
         print $h->pre(e($j->encode({$input->id => $input->jsonExample})));
 
-        print $h->h4('Test cases');
+        print $h->open('details');
+
+        print $h->summary($h->h4('Test cases'));
         print $h->p('This input parameter is used in the following test cases:');
 
         my @cases = $input->cases;
@@ -537,6 +584,8 @@ sub print_inputs {
         
             print $h->close(ul);
         }
+
+        print $h->close('details');
 
         print $h->close(section);
     }
@@ -570,14 +619,6 @@ header {
 
 strong,h1,h2,h3,h4,h5,h6 {
     font-weight: 600;
-}
-
-body {
-    margin: 0.5em 5em;
-    padding: 1em;
-    background-color: #f6f6f6;
-    border:1px solid #ddd;
-    border-radius: 0.5em;
 }
 
 header,nav,main,section {
@@ -616,6 +657,19 @@ code,tt,pre {
 
 pre {
     margin: auto auto auto 2em;
+}
+
+summary {
+    cursor: pointer;
+}
+
+summary h4 {
+    display:inline;
+    margin:0;
+}
+
+summary:has(> h4) {
+    margin: 1em 0;
 }
 
 .toc-link {

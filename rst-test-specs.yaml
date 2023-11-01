@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.3
 Version: 3.0
-Last-Updated: 2023-10-31
+Last-Updated: 2023-11-01
 
 Contact:
   Name: GDS Technical Services
@@ -396,14 +396,6 @@ Test-Cases:
     Summary: SOA RNAME consistency
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
-  dns-address01:
-    Summary: Name server address must be globally routable
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
-  dns-address02:
-    Summary: Reverse DNS entry exists for name server IP address
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
   dns-consistency04:
     Summary: Name server NS consistency
     Description: This test case comes from Zonemaster. For more information, see
@@ -552,6 +544,14 @@ Test-Cases:
     Summary: No multiple SOA records
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Zone-TP/zone10.md>.
+  dns-address01:
+    Summary: Name server address must be globally routable
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
+  dns-address02:
+    Summary: Reverse DNS entry exists for name server IP address
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
   dnssec03:
     Summary: Check for too many NSEC3 iterations
     Description: |
