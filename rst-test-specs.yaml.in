@@ -178,7 +178,7 @@ Test-Plans:
       An SRS Gateway service is a Shared Registry System implementation that
       acts as a proxy between a subset of Registrars and the Registry. It uses
       a local cache to speed up EPP query commands, but forwards all EPP
-      transform commands to the TLD Registry System. TLD registries need to
+      transform commands to the primary registry system. TLD registries need to
       deploy a proxy setup in order to operate in certain markets worldwide.
 
       The purpose of an SRS Gateway Test is to verify that the Registry
@@ -240,7 +240,7 @@ Test-Plans:
     Description: |
       SRS Gateway RSPs provide a proxy between a subset of Registrars and the
       Registry. It uses a local cache to speed up EPP query commands, but
-      forwards all EPP transform commands to the TLD Registry System. TLD
+      forwards all EPP transform commands to the primary registry system. TLD
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
     Test-Suites:
@@ -1340,19 +1340,178 @@ Test-Cases:
       This test confirms the RSP's support for the `yd` interface of the TMCH
       functional specification, as described in Section 4.3.7 of RFC9361.
 
-      Within 24 hours, the RSP MUST submit a LORDN file to the TMCH's test
-      interface, containing all the domain names created and activated as part
-      of the `minimumRPMs-04` and `minimumRPMs-06` tests.
+      Within 24 hours of the completion of the `minimumRPMs-06` test, the RSP
+      MUST submit LORDN file(s) to the TMCH's test interface, containing all the
+      domain names created and activated as part of the `minimumRPMs-04` and
+      `minimumRPMs-06` tests.
     Input-Parameters:
     Dependencies:
       - minimumRPMs-04
       - minimumRPMs-06
 
-  srsgw-00:
-    Summary: Placeholder
+  srsgw-01:
+    Summary: |
+      Verify that the SRS Gateway IP address(es) are routed to the country the
+      gateway is supposed to reside in
     Description: |
-      This is a placeholder, which will be expanded (and additional cases added)
-      soon.
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-02:
+    Summary: |
+      Verify connectivity to the SRS Gateway EPP provisioning system over IPv4
+      and IPv6
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-03:
+    Summary: |
+      Verify that a domain name created through the SRS Gateway EPP system is
+      correctly synchronized with the primary registry system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-04:
+    Summary: |
+      Verify that subordinate Host objects created for a domain through the
+      SRS Gateway EPP system are correctly synchronized with the primary
+      registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-05:
+    Summary: |
+      Verify that a domain object with DNSSEC records created through the SRS
+      Gateway EPP system is correctly synchronized with the primary registry
+      system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-06:
+    Summary: |
+      Verify that a domain object renewed through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system.
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-07:
+    Summary: |
+      Verify that a transfer of a domain object requested through the SRS
+      Gateway EPP system is correctly synchronized with the primary registry
+      system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-08:
+    Summary: |
+      Verify that a transfer of a domain object approved through the SRS
+      Gateway EPP system is correctly synchronized with the primary registry
+      system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-09:
+    Summary: |
+      Verify that a domain object deleted through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-11:
+    Summary: |
+      Verify that a contact object created through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-12:
+    Summary: |
+      Verify that a contact object deleted through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-13:
+    Summary: |
+      Verify that deleting a host object through the SRS Gateway EPP system is
+      correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-14:
+    Summary: |
+      Verify that updating a host object through the SRS Gateway EPP system is
+      correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-15:
+    Summary: |
+      Verify that updating a contact object through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-16:
+    Summary: |
+      Verify that updating a domain object through the SRS Gateway EPP system
+      is correctly synchronized with the primary registry system (if applicable)
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-17:
+    Summary: |
+      Verify that a domain name object is synchronized between the Gateway
+      Registry System and the primary registry system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-18:
+    Summary: |
+      Verify that a registrar object is synchronized between the Gateway
+      Registry System and the primary registry system
+    Description: |
+      TODO.
+    Input-Parameters:
+    Dependencies:
+
+  srsgw-19:
+    Summary: |
+      Verify that a host object is synchronized between the Gateway
+      Registry System and the primary registry system (if applicable)
+    Description: |
+      TODO.
     Input-Parameters:
     Dependencies:
 
@@ -1366,23 +1525,23 @@ Test-Cases:
 
 Input-Parameters:
   epp.hostName:
-    Description: the fully-qualified domain name of the EPP server.
+    Description: the fully-qualified domain name of the EPP server
     Type: string
     Example: epp.rsp.tech
   epp.clid:
-    Description: the username used to log in to the EPP server.
+    Description: the username used to log in to the EPP server
     Type: string
     Example: clid-01
   epp.pwd:
-    Description: the password used to log in to the EPP server.
+    Description: the password used to log in to the EPP server
     Type: string
     Example: foo2bar
   epp.transferClid:
-    Description: the username used for transfer tests.
+    Description: the username used for transfer tests
     Type: string
     Example: clid-02
   epp.transferPwd:
-    Description: the password used for transfer tests.
+    Description: the password used for transfer tests
     Type: string
     Example: foo3bar
   rde.depositFile:
@@ -1392,7 +1551,7 @@ Input-Parameters:
     Type: file
     Example: example_20231004_FULL_S1_R0.ryde
   rde.signatureFile:
-    Description: an ASCII-armoured OpenPGP signature covering the deposit file.
+    Description: an ASCII-armoured OpenPGP signature covering the deposit file
     Type: file
     Example: example_20231004_FULL_S1_R0.sig
   rde.publicKey:
@@ -1408,7 +1567,7 @@ Input-Parameters:
     Example: true
   general.gracePeriodsSupported:
     Description: |
-      Whether or not the registry supports grace periods as defined in RFC3915.
+      Whether or not the registry supports grace periods as defined in RFC3915
     Type: boolean
     Example: true
   epp.hostModel:
