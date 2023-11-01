@@ -93,6 +93,11 @@ Preamble: |
   include (but are not limited to): (1) Sunrise Periods, and (2) Trademark
   Claims Periods.
 
+  TMCH
+  : Trademark Clearinghouse. The system established by ICANN to maintain a
+  database of validated and registered trademarks which is used to enforce
+  Rights Protection Mechanisms (RPMs) in gTLDs.
+
 Test-Plans:
   StandardPreDelegationTest:
     Order: 1
@@ -352,7 +357,7 @@ Test-Suites:
     Name: Minimum Rights Protection Mechanisms (RPMs)
     Description: |
       This test suite verifies an RSP's support for the minimum Rights
-      Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if
+      Protection Mechanisms (RPMs), and the Launch Extension (RFC8334) if
       supported.
     Test-Cases: ^minimumRPMs-
 
@@ -457,7 +462,7 @@ Test-Cases:
     Description: |
       * XML deposit files MUST be well-formed and validate against the XML
         schema.
-      * CSV files MUST conform to RFC 4180.
+      * CSV files MUST conform to RFC4180.
     Input-Parameters:
       - rde.depositFile
   rde-05:
@@ -733,7 +738,9 @@ Test-Cases:
       All `<objURI>` element(s) in the `<greeting>` MUST contain XML namespace
       URIs that are appropriate.
 
-      For example, the presence of the host and  contact namespace URIs may be
+      The only mandatory URI that MUST be present is the domain namespace URI.
+
+      For example, the presence of the host and contact namespace URIs may be
       required depending on the `epp.hostModel` and
       `general.minimumPublicDataSet` parameters.
     Dependencies:
@@ -745,11 +752,13 @@ Test-Cases:
     Summary: <extURI> element(s) in the <greeting> MUST be valid
     Description: |
       All `<extURI>` element(s) in the `<greeting>` MUST contain XML namespace
-      URIs that have been registered in the IANA registry.
+      URIs that have been registered in the IANA registry, and that the
+      mandatory extensions are also included.
     Dependencies:
     Input-Parameters:
       - epp.hostName
       - epp.hostModel
+      - general.gracePeriodsSupported
       - general.minimumPublicDataSet
   epp-17:
     Summary: <login> command MUST return a successful response
@@ -1084,7 +1093,7 @@ Test-Cases:
 
         * Following a succesful `<renew>` command, the expiry date of the domain
           MUST have been increased by the period specified by the client;
-        * Where a server supports RFC 3915, the domain MUST have an RGP status
+        * Where a server supports RFC3915, the domain MUST have an RGP status
           of `renewPeriod`;
         * The server MUST reject a `<renew>` command if it would result in the
           expiry date being more than 10 years into the future.
@@ -1123,7 +1132,7 @@ Test-Cases:
 
       * the domain is now under the sponsorship of the gaining registrar
       * the authInfo code has been reset by the server (if the server supports
-        RFC 9154).
+        RFC9154).
     Input-Parameters:
       - epp.transferClid
       - epp.transferPwd
@@ -1197,40 +1206,147 @@ Test-Cases:
       confirm that the server returns an appropriate
       response:
 
-      * TODO
+      * a `<check>` response for a domain that is present on the DNL contains
+        the correct `<launch:claimKey>` element;
+      * a `<check>` response for a domain that is NOT present on the DNL
+        does not contain a `<launch:claimKey>` element.
     Input-Parameters:
       - epp.hostName
       - epp.clid
       - epp.pwd
     Dependencies:
-# Trademark Check: used to determine whether or not there are any matching trademarks, independent of the active launch phase of the server and whether the "Claims Create Form" is required on a Domain Create Command
   minimumRPMs-03:
+    Summary: Trademark <check> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Trademark Check Form, as described in Section
+      3.1.3 of RFC8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC9361) from the TMCH test environment.
+
+      The client will connect to the EPP server using the provided credentials
+      and will then perform a series of `<check>` commands, using the Launch
+      extension to specify a value of `trademark` for the `type` attribute of
+      the `<launch:check>` element. It will then confirm that the server returns
+      an appropriate response:
+
+      * a `<check>` response for a domain that is present on the DNL contains
+        the correct `<launch:claimKey>` element;
+      * a `<check>` response for a domain that is NOT present on the DNL
+        does not contain a `<launch:claimKey>` element.
+    Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+    Dependencies:
+  minimumRPMs-04:
     Summary: |
       Sunrise domain/launch application <create> command test
     Description: |
-      TODO.
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Sunrise Create Form, as described in Section
+      3.3.1 of RFC8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC9361) from the TMCH test environment.
+
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names and SMD files present in the TMCH test
+      environment.
+
+      If the server supports Start Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `zz--edsct` TLD (eg `example.zz-edsct`). The Server MUST respond with a
+      1000 or 1001 result code, however, if the client receives a 2302 "object
+      exists" result code, it will retry with a different domain name.
+
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server MUST reject.
+
+      If the server supports End Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `zz-sdsct` TLD (eg `example.zz-sdsct`). The Server MUST respond with a
+      1000 or 1001 result code.
+
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server MUST reject.
+
+      If the server supports both modes, then both of the above tests will be
+      performed.
     Input-Parameters:
-      - general.sunriseModel
-    Dependencies:
-  minimumRPMs-04:
-    Summary: Sunrise launch application <info> command test
-    Description: |
-      TODO.
-    Input-Parameters:
-      - general.sunriseModel
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.minimumPublicDataSet
+      - epp.hostModel
+      - general.sunriseModels
     Dependencies:
   minimumRPMs-05:
+    Summary: Sunrise launch application <info> command test
+    Description: |
+      In this test, the client will perform `<info>` commands on the objects
+      created in `minimumRPMs-04` and will confirm that they have successfully
+      been created in the repository and have the correct object properties.
+
+      * a start-date sunrise `<create>` command MUST result in the creation of
+        a domain object;
+      * an end-date sunrise `<create>` command MUST result in the creation of
+        a launch application.
+    Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.minimumPublicDataSet
+      - epp.hostModel
+      - general.sunriseModels
+    Dependencies:
+      - minimumRPMs-04
+  minimumRPMs-06:
     Summary: Trademark claims domain <create> command test
     Description: |
-      TODO.
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Claims Create Form, as described in Section
+      3.3.2 of RFC8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC9361) from the TMCH test environment.
+
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names present in the TMCH test environment.
+
+      The domain name will be constructed using a label from the DNL, and the
+      `zz-tcdct` TLD (eg `example.zz--tcdct`). The client will perform a
+      Trademark Claims `<check>` command beforehand to obtain the claim key, and
+      will then synthesise a trademark claims acknowledgement. The server MUST
+      respond with a 1000 or 10001 response.
+
+      The client will also perform `<create>` command using an invalid
+      claims acknowledgements. The server MUST respond with a 2xxx error.
     Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.minimumPublicDataSet
+      - epp.hostModel
+      - general.sunriseModels
     Dependencies:
-  minimumRPMs-06:
+  minimumRPMs-07:
     Summary: LORDN submission test
     Description: |
-      TODO.
+      This test confirms the RSP's support for the `yd` interface of the TMCH
+      functional specification, as described in Section 4.3.7 of RFC9361.
+
+      Within 24 hours, the RSP MUST submit a LORDN file to the TMCH's test
+      interface, containing all the domain names created and activated as part
+      of the `minimumRPMs-04` and `minimumRPMs-06` tests.
     Input-Parameters:
     Dependencies:
+      - minimumRPMs-04
+      - minimumRPMs-06
 
   srsgw-00:
     Summary: Placeholder
@@ -1292,7 +1408,7 @@ Input-Parameters:
     Example: true
   general.gracePeriodsSupported:
     Description: |
-      Whether or not the registry supports grace periods as defined in RFC 3915.
+      Whether or not the registry supports grace periods as defined in RFC3915.
     Type: boolean
     Example: true
   epp.hostModel:
@@ -1340,12 +1456,13 @@ Input-Parameters:
     Type: boolean
     Example: false
 
-  general.sunriseModel:
+  general.sunriseModels:
     Description: |
-      The sunrise model supported by the EPP server. The possible values for
+      The sunrise models supported by the EPP server. The possible values for
       this parameter are:
         * `start-date`
         * `end-date`
+        * `both`
     Type: string
     Example: start-date
   dnssecOps.zskRolloverZone:
