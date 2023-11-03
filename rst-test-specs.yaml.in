@@ -1788,6 +1788,9 @@ Test-Cases:
       This test confirms that the EPP server correctly accepts or rejects domain
       `<create>` commands for valid and invalid IDN labels, respectively.
 
+      If there are no IDN tables supported under any of the TLDs associated with
+      the test, then this test will be skipped.
+
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
       required, the client will create any contact object(s) needed.

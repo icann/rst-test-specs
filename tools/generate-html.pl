@@ -336,7 +336,7 @@ sub print_plans {
 
         print $h->open('details');
 
-        print $h->summary($h->h4('Sequence Diagram'));
+        print $h->summary($h->h4('Sequence diagram'));
 
         my $file = File::Temp::tempnam(File::Spec->tmpdir, '').'.svg';
         $plan->graph->run('format' => 'svg', 'output_file' => $file);
@@ -441,7 +441,7 @@ sub print_suites {
 
         print $h->open('details');
 
-        print $h->summary($h->h4('Sequence Diagram'));
+        print $h->summary($h->h4('Sequence diagram'));
 
         my $file = File::Temp::tempnam(File::Spec->tmpdir, '').'.svg';
         $suite->graph->run('format' => 'svg', 'output_file' => $file);

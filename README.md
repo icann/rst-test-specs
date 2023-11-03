@@ -1,18 +1,23 @@
-The `rst-test-specs.yaml` file in this repository was assembled from a set of
-Word documents originally created by IIS (.SE), who created the original
-Pre-Delegation Testing (PDT, now called Registry System Testing or RST) System.
+# Registry System Testing v2.0 Test Specifications
 
-The Test System consists of several *test plans*, each of which addresses a
-particular scenario. The test plans follow a standard structure and methodology
-derived from IEEE 829-2008 (which has since been superseded by ISO/IEC 29119).
+This repository contains the specifications for the RST v2.0 system.
 
-Each *test plan* includes one or more *test suites* which in turn include
-one or more *test cases*. For a test to succeed, every test case has to pass.
+This system will replace the original Pre-Delegation Testing (later renamed to Registry System
+Testing). Unlike its predecessor, the new system is fully automated. All interaction with the system 
+is via the RST-API, which is documented at [icann/rst-api-spec](https://github.com/icann/rst-api-spec)
 
-`rst-test-specs.yaml` describes each test plan, suite and case in the RST system
-in a machine-readable format, suitable for version tracking and reliable and
-repeatable (a) documentation generation, (b) code generation, and (c)
-orchestrating registry system testing.
+## Repository Contents
 
-The business rationale for Registry System Testing originates in [Section 5.2 of
-the Applicant Guidebook](./AGB-5.2.md).
+* [rst-api-specs.html](rst-api-specs.html) is the human-readable version of the RST test specification.
+
+* [rst-api-specs.yaml](rst-api-specs.yaml) is the machine-readable version, intended to be consumed by the Test Orchestration System (TOS). Like the HTML file above, this file is a build artefact.
+
+* [rst-api-specs.yaml.in](rst-api-specs.yaml.in) is what you need to edit if you want to make changes to the test specifications.
+
+* [Schema.md](Schema.md) documents the schema for the YAML files.
+
+* [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML file.
+
+## Copyright Statement
+
+This repository is (c) 2023 Internet Corporation for Assigned Names and Numbers (ICANN). All rights reserved.

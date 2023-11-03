@@ -389,14 +389,6 @@ Test-Cases:
 # run!
 #
 
-  dns-ADDRESS01:
-    Summary: Name server address must be globally routable
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
-  dns-ADDRESS02:
-    Summary: Reverse DNS entry exists for name server IP address
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
   dns-ADDRESS03:
     Summary: Reverse DNS entry matches name server name
     Description: This test case comes from Zonemaster. For more information, see
@@ -429,6 +421,14 @@ Test-Cases:
     Summary: SOA RNAME consistency
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
+  dns-ADDRESS02:
+    Summary: Reverse DNS entry exists for name server IP address
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
+  dns-ADDRESS01:
+    Summary: Name server address must be globally routable
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
   dns-CONSISTENCY04:
     Summary: Name server NS consistency
     Description: This test case comes from Zonemaster. For more information, see
@@ -2188,6 +2188,9 @@ Test-Cases:
     Description: |
       This test confirms that the EPP server correctly accepts or rejects domain
       `<create>` commands for valid and invalid IDN labels, respectively.
+
+      If there are no IDN tables supported under any of the TLDs associated with
+      the test, then this test will be skipped.
 
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
