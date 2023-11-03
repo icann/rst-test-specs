@@ -4,6 +4,7 @@ use strict;
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
+sub graph       { ICANN::RST::Graph->new($_[0]->cases) }
 
 sub suites {
     my $self = shift;

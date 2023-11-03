@@ -4,6 +4,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Case;
 use ICANN::RST::Input;
 use ICANN::RST::Text;
+use ICANN::RST::Graph;
 use YAML::XS;
 use List::Util qw(pairmap);
 use strict;

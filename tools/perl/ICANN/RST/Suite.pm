@@ -1,5 +1,4 @@
 package ICANN::RST::Suite;
-use HTML::Tiny;
 use List::Util qw(any);
 use GraphViz2;
 use base qw(ICANN::RST::Base);
@@ -8,6 +7,7 @@ use strict;
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
+sub graph       { ICANN::RST::Graph->new($_[0]->cases) }
 
 sub plans {
     my $self = shift;
@@ -55,55 +55,6 @@ sub inputs {
     }
 
     return sort { $a->id cmp $b->id } values(%inputs);
-}
-
-sub graph {
-    my $self = shift;
-
-    my $graph = GraphViz2->new(
-        'global' => {
-            'directed'  => 1,
-        },
-        'graph' => {
-            'layout'    => 'dot',
-            'rankdir'   => 'LR',
-        }
-    );
-
-    my @cases = $self->cases;
-
-    foreach my $case (@cases) {
-        $graph->add_node(
-            'name'      => $case->id,
-            'href'      => sprintf('#Test-Case-%s', $case->id),
-            'tooltip'   => HTML::Tiny->entity_encode($case->summary),
-            'shape'     => 'box',
-        );
-    }
-
-    for (my $i = 0 ; $i < scalar(@cases) ; $i++) {
-        my $case = $cases[$i];
-
-        my @deps = $case->dependencies;
-
-        if (scalar(@deps) < 1 && $i > 0) {
-            my $prev = $cases[$i-1];
-            $graph->add_edge(
-                'from'  => $prev->id,
-                'to'    => $case->id,
-            );
-
-        } else {
-            foreach my $dep (@deps) {
-                $graph->add_edge(
-                    'from'  => $dep->id,
-                    'to'    => $case->id,
-                );
-            }
-        }
-    }
-
-    return $graph;
 }
 
 1;
