@@ -4,7 +4,9 @@
 #
 # Usage: perl 2.generate-html.pl rst-test-specs.yaml > rst-test-specs.html
 #
-use HTTP::Request::Common;
+use File::Spec;
+use File::Temp;
+use File::Slurp;
 use HTML::Tiny;
 use JSON::XS;
 use ICANN::RST::Spec;
@@ -34,8 +36,6 @@ binmode(STDOUT, ':encoding(UTF-8)');
 print "<!doctype html>\n";
 print $h->open('html');
 
-undef $/;
-
 my $title = 'Registry System Testing - Test Specifications';
 
 my $js = <<"END";
@@ -50,7 +50,7 @@ END
 print $h->head([
     $h->meta({'charset' => 'UTF-8'}),
     $h->meta({name => 'viewport', 'content' => 'width=device-width'}),
-    $h->style(<DATA>),
+    $h->style(join("\n", <DATA>)),
     $h->script($js),
     $h->title($title),
 ]);
@@ -426,6 +426,19 @@ sub print_suites {
 
         print $h->close('details');
 
+        print $h->open('details');
+
+        print $h->summary($h->h4('Sequence Diagram'));
+
+        my $file = File::Temp::tempnam(File::Spec->tmpdir, '').'.svg';
+        $suite->graph->run('format' => 'svg', 'output_file' => $file);
+
+        print read_file($file);
+
+        unlink($file);
+
+        print $h->close('details');
+
         print $h->close(section);
     }
 }
@@ -694,4 +707,11 @@ summary h4:active, summary h4:hover {
     line-height:100%;
     text-decoration:none;
     border: 1px solid #00c;
+}
+
+svg {
+    display:block;
+    max-width:100%;
+    max-height:100vh;
+    margin:1em auto;
 }
