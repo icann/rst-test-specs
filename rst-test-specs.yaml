@@ -389,6 +389,10 @@ Test-Cases:
 # run!
 #
 
+  dns-ADDRESS01:
+    Summary: Name server address must be globally routable
+    Description: This test case comes from Zonemaster. For more information, see
+      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
   dns-ADDRESS03:
     Summary: Reverse DNS entry matches name server name
     Description: This test case comes from Zonemaster. For more information, see
@@ -425,10 +429,6 @@ Test-Cases:
     Summary: Reverse DNS entry exists for name server IP address
     Description: This test case comes from Zonemaster. For more information, see
       <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address02.md>.
-  dns-ADDRESS01:
-    Summary: Name server address must be globally routable
-    Description: This test case comes from Zonemaster. For more information, see
-      <https://github.com/zonemaster/zonemaster/blob/master/docs/public/specifications/tests/Address-TP/address01.md>.
   dns-CONSISTENCY04:
     Summary: Name server NS consistency
     Description: This test case comes from Zonemaster. For more information, see

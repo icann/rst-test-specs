@@ -50,7 +50,7 @@ END
 print $h->head([
     $h->meta({'charset' => 'UTF-8'}),
     $h->meta({name => 'viewport', 'content' => 'width=device-width'}),
-    $h->style(join("\n", <DATA>)),
+    $h->style(join('', <DATA>)),
     $h->script($js),
     $h->title($title),
 ]);
