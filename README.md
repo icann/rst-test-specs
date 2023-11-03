@@ -8,11 +8,11 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://github.c
 
 ## Repository Contents
 
-* [rst-api-specs.html](rst-api-specs.html) is the human-readable version of the RST test specification.
+* [rst-test-specs.html](rst-test-specs.html) is the human-readable version of the RST test specification.
 
-* [rst-api-specs.yaml](rst-api-specs.yaml) is the machine-readable version, intended to be consumed by the Test Orchestration System (TOS). Like the HTML file above, this file is a build artefact.
+* [rst-test-specs.yaml](rst-test-specs.yaml) is the machine-readable version, intended to be consumed by the Test Orchestration System (TOS). Like the HTML file above, this file is a build artefact.
 
-* [rst-api-specs.yaml.in](rst-api-specs.yaml.in) is what you need to edit if you want to make changes to the test specifications.
+* [rst-test-specs.yaml.in](rst-test-specs.yaml.in) is what you need to edit if you want to make changes to the test specifications.
 
 * [Schema.md](Schema.md) documents the schema for the YAML files.
 
