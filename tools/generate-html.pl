@@ -334,6 +334,19 @@ sub print_plans {
 
         print $h->close('details');
 
+        print $h->open('details');
+
+        print $h->summary($h->h4('Sequence Diagram'));
+
+        my $file = File::Temp::tempnam(File::Spec->tmpdir, '').'.svg';
+        $plan->graph->run('format' => 'svg', 'output_file' => $file);
+
+        print read_file($file);
+
+        unlink($file);
+
+        print $h->close('details');
+
         print $h->close(section);
     }
 }
