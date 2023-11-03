@@ -98,6 +98,10 @@ Preamble: |
   database of validated and registered trademarks which is used to enforce
   Rights Protection Mechanisms (RPMs) in gTLDs.
 
+  SLA
+  : Service Level Agreement. The registry performance specifications laid out in
+  Specification 10 of the Registry Agreement.
+
 Test-Plans:
   StandardPreDelegationTest:
     Order: 1
@@ -118,6 +122,7 @@ Test-Plans:
       - StandardRDAP
       - StandardIDN
       - StandardRDE
+      - StandardIntegrationTest
 
   StandardRSPChangeTest:
     Order: 2
@@ -138,6 +143,7 @@ Test-Plans:
       - StandardIDN
       - StandardRDAP
       - StandardRDE
+      - StandardIntegrationTest
 
   DNSRSPChangeTest:
     Order: 3
@@ -190,6 +196,7 @@ Test-Plans:
       The SRS Gateway Test Change Test uses the SRS gateway test suite only.
     Test-Suites:
       - StandardSRSGateway
+      - SRSGatewayIntegrationTest
 
   MainRSPEvaluationTest:
     Order: 6
@@ -283,7 +290,7 @@ Test-Suites:
       The DNSSEC test suite is taken from the test plans that are part of the
       [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
       version v4.7.3). Test case IDs from this document can be mapped to the
-      Zonemaster test IDs by removing the `dnssec-` prefix.
+      Zonemaster test IDs by removing the hyphen-minus.
 
       Since Zonemaster is designed to perform testing of domain names anywhere
       in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
@@ -297,12 +304,12 @@ Test-Suites:
     Order: 3
     Name: Registration Data Acess Protocol (RDAP)
     Description: |
-      The DNSSEC test suite validates the RDAP service of the TLD or RSP.
+      The RDAP test suite validates the RDAP service of the TLD or RSP.
 
       The RDAP test suite is derived from the test specification of the [RDAP
       Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
       As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
-      IDs in this document by removing the `rdap-NN` prefix.
+      IDs in this document by removing the `rdap-NN-` prefix.
     Test-Cases: ^rdap-
     Input-Parameters:
       - rdap.baseURLs
@@ -314,7 +321,10 @@ Test-Suites:
     Order: 4
     Name: Extensible Provisioning Protocol (EPP)
     Description: |
-      The EPP test suite validates the EPP service of the TLD or RSP.
+      The EPP test suite validates the EPP service of the TLD or RSP. It
+      verifies that the EPP server properly implements the query and transform
+      commands specified for domain names (and optionally host and contact
+      objects) and the mandatory extensions.
     Test-Cases: ^epp-
 
   StandardRDE:
@@ -322,7 +332,8 @@ Test-Suites:
     Name: Registry Data Escrow (RDE)
     Description: |
       The RDE test suite validates Registry Data Escrow deposits generated for
-      the TLD or RSP.
+      the TLD or RSP. These deposits must comply with the specifications in the
+      Registry Agreement and with RFC8909 and RFC9022.
     Test-Cases: ^rde-
 
   StandardIDN:
@@ -331,7 +342,7 @@ Test-Suites:
     Description: |
       The RDE test suite validates the IDN table(s) for a TLD or RSP, including
       compliance with specifications for variant labels at the top- or second-
-      level.
+      level, and conformance with the IDN Guidelines.
     Test-Cases: ^idn-
 
   StandardSRSGateway:
@@ -360,6 +371,15 @@ Test-Suites:
       Protection Mechanisms (RPMs), and the Launch Extension (RFC8334) if
       supported.
     Test-Cases: ^minimumRPMs-
+
+  StandardIntegrationTest:
+    Order: 10
+    Name: Standard Integration Test
+    Description: |
+      This test suite verifies that the critical registry services of the TLD
+      are properly integrated and functioning within the requirements of the
+      Service Level Agreement.
+    Test-Cases: ^integration-
 
 Test-Cases:
 
@@ -470,14 +490,14 @@ Test-Cases:
     Description: |
       The header object MUST reference the correct object XML namespace URIs.
 
-      The correct URIs is determined by the `general.minimumPublicDataSet` and
+      The correct URIs is determined by the `general.minimalPublicDataSet` and
       `epp.hostModel` input parameters.
 
       All expected URIs MUST be present in the header, and the header MUST NOT
       contain any unexpected URIs.
     Input-Parameters:
       - rde.depositFile
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
   rde-06:
     Summary: validate object counts
@@ -506,7 +526,7 @@ Test-Cases:
       present in the deposit.
     Input-Parameters:
       - rde.depositFile
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
   rde-08:
     Summary: validate host objects (if applicable)
@@ -555,7 +575,7 @@ Test-Cases:
       skipped.
     Input-Parameters:
       - rde.depositFile
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
   rde-10:
     Summary: validate registrar objects
     Description: |
@@ -603,12 +623,12 @@ Test-Cases:
       The object policies included in the `<rdePolicy:policy>` object MUST
       conform to the Registration Data Policy and the applicable data model.
 
-      * If the `general.minimumPublicDataSet` input parameter is `true`, then
+      * If the `general.minimalPublicDataSet` input parameter is `true`, then
         contact objects MUST NOT be present in the deposit.
       * If the `epp.hostModelt` input parameter is `attributes`, then
         host objects MUST NOT be present in the deposit.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
 
   epp-01:
@@ -742,12 +762,12 @@ Test-Cases:
 
       For example, the presence of the host and contact namespace URIs may be
       required depending on the `epp.hostModel` and
-      `general.minimumPublicDataSet` parameters.
+      `general.minimalPublicDataSet` parameters.
     Dependencies:
     Input-Parameters:
       - epp.hostName
       - epp.hostModel
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
   epp-16:
     Summary: <extURI> element(s) in the <greeting> MUST be valid
     Description: |
@@ -759,7 +779,7 @@ Test-Cases:
       - epp.hostName
       - epp.hostModel
       - general.gracePeriodsSupported
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
   epp-17:
     Summary: <login> command MUST return a successful response
     Description: |
@@ -821,7 +841,7 @@ Test-Cases:
         * valid and unregistered ID: `avail` attribute MUST be `1`. The
           ID will be generated using random characters.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.registeredContacts
     Dependencies:
   epp-24:
@@ -849,10 +869,10 @@ Test-Cases:
       * `<contact:voice>`
       * `<contact:email>`
 
-      If the `general.minimumPublicDataSet` input parameter is `true`, this
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
   epp-25:
     Summary: contact <info> command test (if applicable for the registry type)
@@ -861,10 +881,10 @@ Test-Cases:
       created during `epp-24` and will confirm that the server has correctly
       stored the provided values.
 
-      If the `general.minimumPublicDataSet` input parameter is `true`, this
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
       - epp-24
   epp-26:
@@ -888,10 +908,10 @@ Test-Cases:
       * `<contact:voice>`
       * `<contact:email>`
 
-      If the `general.minimumPublicDataSet` input parameter is `true`, this
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
       - epp-25
   epp-27:
@@ -901,10 +921,10 @@ Test-Cases:
       `epp-24` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
 
-      If the `general.minimumPublicDataSet` input parameter is `true`, this
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
     Input-Parameters:
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
       - epp-26
   epp-28:
@@ -1015,7 +1035,7 @@ Test-Cases:
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
       random ASCII domain names under each TLD in the TLD set. If the
-      `general.minimumPublicDataSet` input parameter is `false` then a contact
+      `general.minimalPublicDataSet` input parameter is `false` then a contact
       object (containing pseudo-random contact information) will be created
       beforehand and used as the registrant. If the `epp.hostModel` parameter is
       `objects`, then two host objects with pseudo-random names will be created
@@ -1034,10 +1054,10 @@ Test-Cases:
         * to confirm the server supports all permitted client-assigned status
           codes
         * to confirm that the server rejects a `<create>` command which
-          specifies a contact object (where the `general.minimumPublicDataSet`)
+          specifies a contact object (where the `general.minimalPublicDataSet`)
           input parameter is `true`
         * to confirm that the server rejects a `<create>` command which does not
-          specify a contact object (where the `general.minimumPublicDataSet`)
+          specify a contact object (where the `general.minimalPublicDataSet`)
           input parameter is `false`
         * to confirm that the server rejects a `<create>` command containing
           host objects when the `epp.hostModel` parameter is `attributes`
@@ -1047,7 +1067,7 @@ Test-Cases:
           `<create>` command without an authInfo command.
     Input-Parameters:
       - epp.hostModel
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
   epp-33:
     Summary: domain <info> command test
@@ -1083,8 +1103,9 @@ Test-Cases:
     Input-Parameters:
       - epp.clid
       - epp.hostModel
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
     Dependencies:
+      - epp-32
       - epp-33
   epp-35:
     Summary: domain <renew> command test
@@ -1100,6 +1121,7 @@ Test-Cases:
     Input-Parameters:
       - general.gracePeriodsSupported
     Dependencies:
+      - epp-32
       - epp-34
   epp-36:
     Summary: domain <transfer> command test
@@ -1137,6 +1159,7 @@ Test-Cases:
       - epp.transferClid
       - epp.transferPwd
     Dependencies:
+      - epp-32
       - epp-35
   epp-37:
     Summary: domain <delete> command test
@@ -1146,6 +1169,7 @@ Test-Cases:
       with a `1xxx` response code.
     Input-Parameters:
     Dependencies:
+      - epp-32
       - epp-36
   epp-39:
     Summary: domain restore test (if applicable)
@@ -1153,6 +1177,9 @@ Test-Cases:
       This test will perform RGP restore operations on the objects deleted
       during `epp-37`, in order to confirm the correct operation of the server's
       implementation of RFC3915.
+
+      If the value of the `general.gracePeriodsSupported` parameter is false,
+      this test will be skipped.
     Input-Parameters:
       - general.gracePeriodsSupported
       - epp.restoreReportRequired
@@ -1280,7 +1307,7 @@ Test-Cases:
       - epp.hostName
       - epp.clid
       - epp.pwd
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
       - general.sunriseModels
     Dependencies:
@@ -1299,7 +1326,7 @@ Test-Cases:
       - epp.hostName
       - epp.clid
       - epp.pwd
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
       - general.sunriseModels
     Dependencies:
@@ -1330,7 +1357,7 @@ Test-Cases:
       - epp.hostName
       - epp.clid
       - epp.pwd
-      - general.minimumPublicDataSet
+      - general.minimalPublicDataSet
       - epp.hostModel
       - general.sunriseModels
     Dependencies:
@@ -1350,170 +1377,410 @@ Test-Cases:
       - minimumRPMs-06
 
   srsgw-01:
-    Summary: |
-      Verify that the SRS Gateway IP address(es) are routed to the country the
-      gateway is supposed to reside in
+    Summary: IPv4 and IPv6 connectivity
     Description: |
-      TODO.
+      This test confirms that the SRS Gateway EPP system is reachable over IPv4
+      and IPv6.
+
+      The SRS Gateway EPP server host name will be resolved to obtain its
+      IPv4 and IPv6 addresses. The client will then attempt to connect to TCP
+      port 700 on these addresses.
     Input-Parameters:
+      - srsgw.eppHostName
     Dependencies:
 
   srsgw-02:
-    Summary: |
-      Verify connectivity to the SRS Gateway EPP provisioning system over IPv4
-      and IPv6
+    Summary: Host <create> synchronization (if applicable)
     Description: |
-      TODO.
+      This test confirms that host objects created in the SRS Gateway EPP system
+      are correctly synchronized with the primary registry system.
+
+      If the value of the `epp.hostModel` input parameter is `attributes`, then
+      this test will be skipped.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      submit a `<create>` command for a pseudo-randomly generated host name. 
+      IP address information will be provided if required. The server MUST
+      respond with a 1000 or 1001 response. The client will then perform an
+      `<info>` command and will capture the response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the object created in the first step. If the
+      server responds with a 2303 response, it will wait for 30 seconds and
+      retry. The server MUST respond to the first or second `<info>` command
+      with a 1000 response.
+
+      The two `<info>` responses will then be compared and MUST be identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostModel
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
 
   srsgw-03:
-    Summary: |
-      Verify that a domain name created through the SRS Gateway EPP system is
-      correctly synchronized with the primary registry system
+    Summary: Contact <create> synchronization (if applicable)
     Description: |
-      TODO.
+      This test confirms that contact objects created in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      If the value of the `general.minimalPublicDataSet` input parameter is
+      `true`, then this test will be skipped.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      submit a `<create>` command for a pseudo-randomly generated contact
+      object. The client will then perform an `<info>` command and will capture
+      the response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the object created in the first step. If the
+      server responds with a 2303 response, it will wait for 30 seconds and
+      retry. The server MUST respond to the first or second `<info>` command
+      with a 1000 response.
+
+      The two `<info>` responses will then be compared and MUST be identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - general.minimalPublicDataSet
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
 
   srsgw-04:
-    Summary: |
-      Verify that subordinate Host objects created for a domain through the
-      SRS Gateway EPP system are correctly synchronized with the primary
-      registry system (if applicable)
+    Summary: Domain <create> synchronization
     Description: |
-      TODO.
+      This test confirms that domain objects created in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      submit `<create>` commands for a pseudo-randomly generated domain names. 
+      Contact and nameserver objects created in `srsgw-02` and `srsgw-03` will
+      be used if required. The server MUST respond with 1000 or 1001 responses.
+      The client will then perform `<info>` commands and will capture the
+      responses.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      `<info>` commands for the domains created in the first step. If the
+      server responds with a 2303 response, it will wait for 30 seconds and
+      retry. The server MUST respond to the first or second `<info>` command
+      with a 1000 response.
+
+      The pairs of `<info>` responses will then be compared and MUST be
+      identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostModel
+      - general.minimalPublicDataSet
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-02
+      - srsgw-03
 
   srsgw-05:
-    Summary: |
-      Verify that a domain object with DNSSEC records created through the SRS
-      Gateway EPP system is correctly synchronized with the primary registry
-      system
+    Summary: Domain <renew> synchronisation
     Description: |
-      TODO.
+      This test confirms that the expiry dates of domain objects renewed in the
+      SRS Gateway EPP system are correctly synchronized with the primary
+      registry system.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      submit a `<renew>` command for the domain created in `srsgw-04`. The
+      server MUST respond with a 1000 or 1001 response. The client will then
+      perform an `<info>` command and will capture the response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the domain renewed in the first step.
+      The server MUST respond with a 1000 response.
+
+      The `<exDate>` element of the two `<info>` responses will then be compared
+      and MUST be identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-04
 
   srsgw-06:
-    Summary: |
-      Verify that a domain object renewed through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system.
+    Summary: Domain <transfer> synchronisation
     Description: |
-      TODO.
+      This test confirms that transfer requests submitted in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      perform an `<update>` command to specify an authInfo code for the domain
+      created in `srsgw-04`. The server MUST respond with a 1000 or 1001
+      response.
+
+      It will then reconnect to the SRS Gateway EPP system using the credentials
+      of a second registrar account and submit a `<transfer op="request">`
+      command using the authInfo command set for the domain in the first step.
+      The server MUST respond with a 1000 or 1001 response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the domain. The server MUST respond with a 1000
+      response.
+
+      * if the response to the `<transfer op="request">` command was 1000, then
+        the `<domain:clID>` element MUST contain the value of the 
+        `srsgw.eppTransferClid` input parameter.
+      * if the response to the `<transfer op="request">` command was 1001, then
+        the domain MUST have the `pendingTransfer` status.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - srsgw.eppTransferClid
+      - srsgw.eppTransferPwd
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-05
 
   srsgw-07:
-    Summary: |
-      Verify that a transfer of a domain object requested through the SRS
-      Gateway EPP system is correctly synchronized with the primary registry
-      system
+    Summary: Domain <transfer> approval synchronisation
     Description: |
-      TODO.
+      This test confirms that transfer request approvals submitted in the SRS
+      Gateway EPP system are correctly synchronized with the primary registry
+      system.
+
+      If the response to the `<transfer op="request">` command performed in
+      `srsgw-07` was 1000, then this test will be skipped.
+
+      The client will connect to the SRS Gateway EPP system, authenticate, and
+      perform an `<transfer op="approve">` command for the domain for which a
+      transfer was requested in `srsgw-04`. The server MUST respond with a 1000
+      or 1001 response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the domain. The server MUST respond with a 1000
+      response. The `<domain:clID>` element MUST contain the value of the 
+      `srsgw.eppTransferClid` input parameter.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - srsgw.eppTransferClid
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-06
 
   srsgw-08:
-    Summary: |
-      Verify that a transfer of a domain object approved through the SRS
-      Gateway EPP system is correctly synchronized with the primary registry
-      system
+    Summary: Domain <delete> synchronisation
     Description: |
-      TODO.
+      This test confirms that domain objects deleted in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      The client will connect to the SRS Gateway EPP system, authenticate using
+      the credentials provided in `epp.transferClid` and `epp.transferPwd`, and
+      submit a `<delete>` command for the domain transferred in `srsgw-07`.
+      If the value of the `general.gracePeriodsSupported` input parameter is
+      `false`, the server MUST respond with a 1000 response. Otherwise it MUST
+      respond with a 1001 response.
+
+      It will then connect to the primary EPP system, authenticate, and perform
+      an `<info>` command for the domain renewed in the first step.
+
+      * if `general.gracePeriodsSupported` is false, the server MUST
+        respond to the `<info>` command with a 2303 ("object does not exist")
+        result code.
+      * If `general.gracePeriodsSupported` is true, the domain object MUST have
+        the `pendingDelete` status and have an RGP status of
+        `pendingDeleteRestorable`.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.gracePeriodsSupported
     Dependencies:
+      - srsgw-07
 
   srsgw-09:
-    Summary: |
-      Verify that a domain object deleted through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system
+    Summary: Host <update> synchronization (if applicable)
     Description: |
-      TODO.
+      This test confirms that host objects updated in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      If the value of the `epp.hostModel` input parameter is `attributes`, then
+      this test will be skipped.
+
+      The test client will connect to the SRS Gateway EPP server and perform
+      `<update>` commands on the objects created in `srsgw-02`, specifically
+      to add and remove status codes and IP addresses. It will then perform
+      `<info>` commands on those objects.
+
+      The client will then connect to the primary registry EPP server and
+      perform `<info>` commands for those objects.
+
+      The two sets of `<info>` responses MUST be identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostModel
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-02
+
+  srsgw-10:
+    Summary: Host <delete> synchronization (if applicable)
+    Description: |
+      This test confirms that host objects deleted in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      If the value of the `epp.hostModel` input parameter is `attributes`, then
+      this test will be skipped.
+
+      The test client will connect to the SRS Gateway EPP server and perform
+      `<delete>` commands on objects created in `srsgw-02`. The server MUST
+      respond with a 1000 response.
+
+      The client will then connect to the primary registry EPP server and
+      perform `<info>` commands for those objects. The server MUST
+      respond with a 2303 "object does not exist" response.
+    Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - epp.hostModel
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+    Dependencies:
+      - srsgw-09
 
   srsgw-11:
-    Summary: |
-      Verify that a contact object created through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system (if applicable)
+    Summary: Contact <update> synchronization (if applicable)
     Description: |
-      TODO.
+      This test confirms that contact objects updated in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      If the value of the `general.minimalPublicDataSet` input parameter is
+      `true`, then this test will be skipped.
+
+      The test client will connect to the SRS Gateway EPP server and perform
+      `<update>` commands on the objects created in `srsgw-03`. It will then
+      perform `<info>` commands on those objects.
+
+      The client will then connect to the primary registry EPP server and
+      perform `<info>` commands for those objects.
+
+      The two sets of `<info>` responses MUST be identical.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - general.minimalPublicDataSet
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-03
 
   srsgw-12:
-    Summary: |
-      Verify that a contact object deleted through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system (if applicable)
+    Summary: Contact <delete> synchronization (if applicable)
     Description: |
-      TODO.
+      This test confirms that contact objects delete in the SRS Gateway EPP
+      system are correctly synchronized with the primary registry system.
+
+      If the value of the `general.minimalPublicDataSet` input parameter is
+      `true`, then this test will be skipped.
+
+      The test client will connect to the SRS Gateway EPP server and perform
+      `<delete>` commands on objects created in `srsgw-03`. The server MUST
+      respond with a 1000 response.
+
+      The client will then connect to the primary registry EPP server and
+      perform `<info>` commands for those objects. The server MUST
+      respond with a 2303 "object does not exist" response.
     Input-Parameters:
+      - srsgw.eppHostName
+      - srsgw.eppClid
+      - srsgw.eppPwd
+      - general.minimalPublicDataSet
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
     Dependencies:
+      - srsgw-11
 
   srsgw-13:
-    Summary: |
-      Verify that deleting a host object through the SRS Gateway EPP system is
-      correctly synchronized with the primary registry system (if applicable)
+    Summary: Domain RDAP synchronization
     Description: |
-      TODO.
+      This test confirms that the SRS Gateway's RDAP service provides responses
+      to domain lookups that match those of the primary registry RDAP server.
+
+      The test system will perform RDAP queries for some of the objects created
+      in `srsgw-04` against both the primary registry RDAP server and the SRS
+      Gateway RDAP server. After canonicalisation, the responses from each
+      server MUST be identical.
     Input-Parameters:
+      - rdap.baseURLs
+      - srsgw.rdapBaseURLs
     Dependencies:
+      - srsgw-04
 
   srsgw-14:
-    Summary: |
-      Verify that updating a host object through the SRS Gateway EPP system is
-      correctly synchronized with the primary registry system (if applicable)
+    Summary: Nameserver RDAP synchronization
     Description: |
-      TODO.
+      This test confirms that the SRS Gateway's RDAP service provides responses
+      to domain lookups that match those of the primary registry RDAP server.
+
+      If the value of the `epp.hostModel` input parameter is `attributes`, then
+      this test will be skipped.
+
+      The test system will perform RDAP queries for some of the objects created
+      in `srsgw-02` against both the primary registry RDAP server and the SRS
+      Gateway RDAP server. After canonicalisation, the JSON responses from each
+      server MUST be identical.
     Input-Parameters:
+      - rdap.baseURLs
+      - srsgw.rdapBaseURLs
     Dependencies:
+      - srsgw-02
 
   srsgw-15:
-    Summary: |
-      Verify that updating a contact object through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system (if applicable)
+    Summary: Registrar RDAP synchronization
     Description: |
-      TODO.
-    Input-Parameters:
-    Dependencies:
+      This test confirms that the SRS Gateway's RDAP service provides responses
+      to registrar (entity) lookups that match those of the primary registry
+      RDAP server.
 
-  srsgw-16:
-    Summary: |
-      Verify that updating a domain object through the SRS Gateway EPP system
-      is correctly synchronized with the primary registry system (if applicable)
-    Description: |
-      TODO.
-    Input-Parameters:
-    Dependencies:
+      The test system will perform RDAP queries for some of the objects created
+      in `srsgw-04` against the primary registry RDAP server in order to obtain
+      the `handle` property of the entity with the `registrar` role. It will
+      then construct two URLs using this value and the values of the
+      `rdap.baseURLs` and `srsgw.rdapBaseURLs` input parameters. It will then
+      retrieve those URLs.
 
-  srsgw-17:
-    Summary: |
-      Verify that a domain name object is synchronized between the Gateway
-      Registry System and the primary registry system
-    Description: |
-      TODO.
+      After canonicalisation, the JSON responses from each server MUST be
+      identical.
     Input-Parameters:
+      - rdap.baseURLs
+      - srsgw.rdapBaseURLs
     Dependencies:
-
-  srsgw-18:
-    Summary: |
-      Verify that a registrar object is synchronized between the Gateway
-      Registry System and the primary registry system
-    Description: |
-      TODO.
-    Input-Parameters:
-    Dependencies:
-
-  srsgw-19:
-    Summary: |
-      Verify that a host object is synchronized between the Gateway
-      Registry System and the primary registry system (if applicable)
-    Description: |
-      TODO.
-    Input-Parameters:
-    Dependencies:
+      - srsgw-02
 
   idn-00:
     Summary: Placeholder
@@ -1522,6 +1789,43 @@ Test-Cases:
       soon.
     Input-Parameters:
     Dependencies:
+
+  integration-01:
+    Summary: EPP -> RDAP Integration Test
+    Description: |
+      This test confirms that the EPP and RDAP systems are properly integrated,
+      that is, that transform commands performed on objects in the EPP system
+      are reflected in the RDAP system within the Service Level Requirement of
+      the SLA.
+
+      The test system will perform RDAP queries to confirm that the RDAP server
+      provides responses for the domain and host objects created in `epp-32` and
+      `epp-28` (if applicable). The RDAP server MUST provide a 200 response
+      within 1 hour of the object's `<crDate>` or `<upDate>` element (whichever
+      is later).
+
+    Input-Parameters:
+      - rdap.baseURLs
+    Dependencies:
+      - epp-32
+      - epp-28
+
+  integration-02:
+    Summary: EPP -> DNS Integration Test
+    Description: |
+      This test confirms that the EPP and DNS systems are properly integrated,
+      that is, that transform commands performed on objects in the EPP system
+      are reflected in the RDAP system within the Service Level Requirement of
+      the SLA.
+
+      The test system will perform DNS queries to confirm that the DNS servers
+      provides responses for the domain names created in `epp-32`. All DNS
+      servers MUST provide the correct DNS response within 1 hour of the
+      object's `<crDate>` or `<upDate>` element (whichever is later).
+    Input-Parameters:
+      - dns.nameservers
+    Dependencies:
+      - epp-32
 
 Input-Parameters:
   epp.hostName:
@@ -1558,7 +1862,7 @@ Input-Parameters:
     Description: a PGP public key block
     Type: file
     Example: rsp-rde-signing-key.asc
-  general.minimumPublicDataSet:
+  general.minimalPublicDataSet:
     Description: |
       if true, then the registry only supports the minimum public data set, and
       does not collect registrant and/or technical contact information from
@@ -1600,7 +1904,7 @@ Input-Parameters:
       An array of contact IDs that exist in the EPP server and which are
       therefore unavailable for registration.
 
-      If the value of `general.minimumPublicDataSet` is `false`, this array
+      If the value of `general.minimalPublicDataSet` is `false`, this array
       MUST contain one member for each TLD in the TLD set. However, if it is
       `false`, the array MUST be empty.
     Type: array
@@ -1698,3 +2002,31 @@ Input-Parameters:
       names and the values host names.
     Type: object
     Example: {"example": "ns1.example.com"}
+
+  srsgw.eppHostName:
+    Description: the fully-qualified domain name of the SRS Gateway EPP server
+    Type: string
+    Example: epp.rsp.tech
+  srsgw.eppClid:
+    Description: the username used to log in to the SRS Gateway EPP server
+    Type: string
+    Example: clid-01
+  srsgw.eppPwd:
+    Description: the password used to log in to the SRS Gateway EPP server
+    Type: string
+    Example: foo2bar
+  srsgw.eppTransferClid:
+    Description: the username used for transfer tests
+    Type: string
+    Example: clid-02
+  srsgw.eppTransferPwd:
+    Description: the password used for transfer tests
+    Type: string
+    Example: foo3bar
+  srsgw.rdapBaseURLs:
+    Description: |
+      The RDAP base URL(s) for the TLD(s). This input parameter is an object,
+      where the object properties are the TLD names and the values are strings
+      containing the base URL. The URL MUST end with a slash ("/").
+    Type: object
+    Example: {"example": "https://rdap.example.com/example/"}
