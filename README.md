@@ -4,7 +4,7 @@ This repository contains the specifications for the RST v2.0 system.
 
 This system will replace the original Pre-Delegation Testing (later renamed to Registry System
 Testing). Unlike its predecessor, the new system is fully automated. All interaction with the system 
-is via the RST-API, which is documented at [icann/rst-api-spec](https://github.com/icann/rst-api-spec)
+is via the RST-API, which is documented at [icann/rst-api-spec](https://github.com/icann/rst-api-spec).
 
 ## Repository Contents
 
