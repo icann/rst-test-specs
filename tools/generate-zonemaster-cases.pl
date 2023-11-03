@@ -102,7 +102,14 @@ foreach my $row ($doc->getElementsByTagName('tr')) {
 
     next if (any { lc($id) eq lc($_) } @skip);
 
-    my $case_id = lc($id =~ /^dnssec/i ? $id : 'dns-'.$id);
+    my $case_id;
+    if ($id =~ /^dnssec(\d+)/i) {
+        $case_id = sprintf('dnssec-%02u', $1);
+
+    } else {
+        $case_id = 'dns-'.$id;
+
+    }
 
     next unless ($cells[1]);
 
