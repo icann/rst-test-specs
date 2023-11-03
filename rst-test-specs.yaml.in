@@ -1782,12 +1782,111 @@ Test-Cases:
     Dependencies:
       - srsgw-02
 
-  idn-00:
-    Summary: Placeholder
+  idn-01:
+    Summary: Label validation test
     Description: |
-      This is a placeholder, which will be expanded (and additional cases added)
-      soon.
+      This test confirms that the EPP server correctly accepts or rejects domain
+      `<create>` commands for valid and invalid IDN labels, respectively.
+
+      For each supported IDN table, the test client will perform a series of
+      `<create>` commands using a pre-defined catalogue of test labels. If
+      required, the client will create any contact object(s) needed.
+
+      The server MUST reject all `<create>` commands for invalid labels and
+      MUST accept all `<create>` commands for valid labels.
     Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.minimalPublicDataSet
+    Dependencies:
+
+  idn-02:
+    Summary: Level 1 variant handling test
+    Description: |
+      This test confirms the EPP server's conformance with the Level 1 variant
+      support (no support for variant activation, all variants are blocked).
+
+      If there are no IDN tables for which Level 1 support is claimed, this
+      test will be skipped.
+
+      For each supported IDN table, the test client will perform a series of
+      `<create>` commands using a pre-defined catalogue of test labels. If
+      required, the client will create any contact object(s) needed.
+
+      The client will then submit `<create>` commands for one or more labels
+      that are variants of the names created in the first step. The server MUST
+      reject these commands.
+    Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - general.minimalPublicDataSet
+    Dependencies:
+
+  idn-03:
+    Summary: Level 2 variant handling test
+    Description: |
+      This test confirms the EPP server's conformance with the Level 2 variant
+      support (variants are supported within the same TLD).
+
+      If there are no IDN tables for which Level 2 support is claimed, this
+      test will be skipped.
+
+      For each supported IDN table, the test client will perform a series of
+      `<create>` commands using a pre-defined catalogue of test labels. If
+      required, the client will create any contact object(s) needed.
+
+      The client will then submit `<create>` commands for one or more labels
+      that are variants of the names created in the first step. Some of these
+      commands will be made using the same registrar account as the first step,
+      while some will be made using alternate credentials. If the value of the
+      `general.minimalPublicDataSet` input parameter is `false`, then some
+      commands will also use a different registrant contact.
+
+      The server MUST reject `<create>` commands where the (a) registrar is
+      different from that of the primary label or (b) the registrant (if
+      applicable) is different.
+    Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - epp.transferClid
+      - epp.transferPwd
+      - general.minimalPublicDataSet
+    Dependencies:
+
+  idn-04:
+    Summary: Level 3 variant handling test
+    Description: |
+      This test confirms the EPP server's conformance with the Level 3 variant
+      support (variants are supported within variant TLD(s)).
+
+      If there are no IDN tables for which Level 3 support is claimed, this
+      test will be skipped.
+
+      For each supported IDN table, the test client will perform a series of
+      `<create>` commands using a pre-defined catalogue of test labels. If
+      required, the client will create any contact object(s) needed.
+
+      The client will then submit `<create>` commands for one or more labels
+      that are variants (at both second- and top-level) of the names created in
+      the first step. Some of these commands will be made using the same
+      registrar account as the first step, while some will be made using
+      alternate credentials. If the value of the `general.minimalPublicDataSet`
+      input parameter is `false`, then some commands will also use a different
+      registrant contact.
+
+      The server MUST reject `<create>` commands where the (a) registrar is
+      different from that of the primary label or (b) the registrant (if
+      applicable) is different.
+    Input-Parameters:
+      - epp.hostName
+      - epp.clid
+      - epp.pwd
+      - epp.transferClid
+      - epp.transferPwd
+      - general.minimalPublicDataSet
     Dependencies:
 
   integration-01:
