@@ -57,6 +57,23 @@ sub inputs {
     return sort { $a->id cmp $b->id } values(%inputs);
 }
 
+sub resources {
+    my $self = shift;
+
+    my %resources;
+    foreach my $id (@{$self->{'Resources'}}) {
+        $resources{$id} = $self->spec->resource($id);
+    }
+
+    foreach my $case ($self->cases) {
+        foreach my $resource ($case->resources) {
+            $resources{$resource->id} = $resource unless (defined($resources{$resource->id}));
+        }
+    }
+
+    return sort { $a->id cmp $b->id } values(%resources);
+}
+
 1;
 
 __END__

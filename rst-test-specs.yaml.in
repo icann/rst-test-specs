@@ -1,7 +1,12 @@
+#defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1 | tr -d "\n"
+#define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
+#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case.
+#define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+#define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
 ---
 RST-Test-Plan-Schema-Version: 1.3
 Version: 3.0
-Last-Updated: #exec gdate +%Y-%m-%d
+Last-Updated: #date %Y-%m-%d
 
 Contact:
   Name: GDS Technical Services
@@ -14,13 +19,20 @@ Preamble: |
   from ISO/IEC 29119 *(formerly IEEE 829-2008)*.
 
   Each *test plan* includes one or more *test suites*, which in turn include
-  one or more *test cases*. For a test to succeed, every test case in every
-  test suite has to pass.
+  one or more *test cases*.
 
-  This file describes each test plan, suite and case in the RST system, as well
-  as the input parameters required for each.
+  This file describes each test [plan](#test-plans), [suite](#test-suites) and
+  [case](#test-cases) in the RST system, as well as the
+  [input parameters](#input-parameters) required for each, relevant
+  [resources](#resources), and any inter-case dependencies.
 
-  ### 2.1. Key acronyms and terms
+  ### 2.1. Pass/fail criteria
+
+  In all cases, for a test to pass, **all** the test cases specified in the test
+  suite(s) for the test plan must pass: if **any** fail, then the test as a
+  whole will fail.
+
+  ### 2.2. Key acronyms and terms
 
   RST
   : Registry System Testing. This system.
@@ -87,6 +99,9 @@ Preamble: |
   : Zone Signing Key. A cryptographic key which signs a DNS zone's resource
   records.
 
+  CSK
+  : Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.
+
   RPMs
   : Rights Protection Mechanisms, intended to discourage or prevent registration
   of domain names that violate or abuse another party’s legal rights. These MUST
@@ -102,6 +117,14 @@ Preamble: |
   : Service Level Agreement. The registry performance specifications laid out in
   Specification 10 of the Registry Agreement.
 
+  RRI
+  : Registration Reporting Interfaces. The interfaces provided by ICANN to
+  contracted parties including Registry Operators to fulfill and monitor their
+  applicable reporting requirements, including per-registrar transaction
+  reports; registry functions activity reports; data escrow deposits reports and
+  data escrow deposits notifications. For registry operators, the relevant
+  interfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).
+
 Test-Plans:
   StandardPreDelegationTest:
     Order: 1
@@ -115,6 +138,10 @@ Test-Plans:
 
       The Pre-Delegation Test covers all critical registry services and IDNs,
       and therefore uses all test suites.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -136,6 +163,10 @@ Test-Plans:
 
       The RSP Change Test covers all critical registry services and IDNs, and
       therefore uses all test suites.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -158,6 +189,10 @@ Test-Plans:
       requirements of the Registry Agreement.
 
       The DNS RSP Change Test uses the DNS test suite only.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -174,6 +209,10 @@ Test-Plans:
       submitted policy statements and IDN tables.
 
       The IDN Test uses the IDN test suite only.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardIDN
 
@@ -194,6 +233,10 @@ Test-Plans:
       with that of the TLD registry.
 
       The SRS Gateway Test Change Test uses the SRS gateway test suite only.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardSRSGateway
       - SRSGatewayIntegrationTest
@@ -209,6 +252,10 @@ Test-Plans:
       to policies regarding the use and transparency domain name registrations
       through reporting, the Registration Data Access Protocol (RDAP), and other
       mechanisms.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardEPP
       - MinimumRPMs
@@ -225,6 +272,10 @@ Test-Plans:
 
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardDNS
 
@@ -237,6 +288,8 @@ Test-Plans:
 
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardDNSSEC
       - DNSSECOperations
@@ -250,6 +303,10 @@ Test-Plans:
       forwards all EPP transform commands to the primary registry system. TLD
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
     Test-Suites:
       - StandardSRSGateway
 
@@ -261,24 +318,29 @@ Test-Suites:
       The DNS test suite validates the authoritative DNS services for the TLD
       or RSP.
 
-      The DNS test suite is taken from the test plans that are part of the
-      [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
-      version v4.7.3). Test case IDs from this document can be mapped to the
-      Zonemaster test IDs by removing the `dns-` prefix.
+      The DNS test suite is derived from the test plans in version
+      **ZM_VERSION      ** of [Zonemaster](https://github.com/zonemaster). Test
+      case IDs from this document can be mapped to the Zonemaster test IDs by
+      removing the `dns-` prefix.
 
-      Since Zonemaster is designed to perform testing of domain names anywhere
-      in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
-      may not be listed in the test suites in this document.
+      ZM_NOTE
 
       ## Testing of Anycast networks using multiple vantage points
 
       In order to test anycast networks without requiring RSPs to provide the
-      unicast adresses of their nodes, all tests carried out over the network
-      will be performed from multiple vantage points. All vantage points MUST
-      receive the same response in order for the tests to pass.
+      unicast adresses of their nodes, tests carried out over the network will
+      be performed from multiple vantage points. All vantage points MUST receive
+      the same response in order for the tests to pass.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
+
+      ZM_PASSFAIL
     Test-Cases: ^dns-
     Input-Parameters:
       - dns.nameservers
+    Resources:
 
   StandardDNSSEC:
     Order: 2
@@ -287,18 +349,23 @@ Test-Suites:
       The DNSSEC test suite validates the DNSSEC signing service for the TLD or
       RSP.
 
-      The DNSSEC test suite is taken from the test plans that are part of the
-      [Zonemaster software](https://github.com/zonemaster) (`Zonemaster::Engine`
-      version v4.7.3). Test case IDs from this document can be mapped to the
-      Zonemaster test IDs by removing the hyphen-minus.
+      The DNSSEC test suite is derived from the test plans in version
+      **ZM_VERSION      ** of [Zonemaster](https://github.com/zonemaster). Test
+      case IDs from this document can be mapped to the Zonemaster test IDs by
+      removing the hyphen-minus.
 
-      Since Zonemaster is designed to perform testing of domain names anywhere
-      in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and
-      may not be listed in the test suites in this document.
+      ZM_NOTE
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
+
+      ZM_PASSFAIL
     Test-Cases: ^dnssec-
     Input-Parameters:
       - dns.nameservers
       - dnssec.dsRecords
+    Resources:
 
   StandardRDAP:
     Order: 3
@@ -310,12 +377,17 @@ Test-Suites:
       Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
       As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
       IDs in this document by removing the `rdap-NN-` prefix.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^rdap-
     Input-Parameters:
       - rdap.baseURLs
       - rdap.testDomains
       - rdap.testEntities
       - rdap.testNameservers
+    Resources:
 
   StandardEPP:
     Order: 4
@@ -325,7 +397,12 @@ Test-Suites:
       verifies that the EPP server properly implements the query and transform
       commands specified for domain names (and optionally host and contact
       objects) and the mandatory extensions.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^epp-
+    Resources:
 
   StandardRDE:
     Order: 5
@@ -334,6 +411,10 @@ Test-Suites:
       The RDE test suite validates Registry Data Escrow deposits generated for
       the TLD or RSP. These deposits must comply with the specifications in the
       Registry Agreement and with RFC8909 and RFC9022.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^rde-
 
   StandardIDN:
@@ -343,7 +424,12 @@ Test-Suites:
       The RDE test suite validates the IDN table(s) for a TLD or RSP, including
       compliance with specifications for variant labels at the top- or second-
       level, and conformance with the IDN Guidelines.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^idn-
+    Resources:
 
   StandardSRSGateway:
     Order: 7
@@ -352,7 +438,12 @@ Test-Suites:
       The SRS Gateway test suite validates the conformance of the Gateway
       registry infrastructure of a TLD or RSP, and the synchronisation between
       primary and gateway systems.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^srsgw-
+    Resources:
 
   DNSSECOperations:
     Order: 8
@@ -361,7 +452,12 @@ Test-Suites:
       This test suite verifies the ability of an RSP to carry out standard
       DNSSEC operational procedures while maintaining a chain of trust to the
       parent zone.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^dnssecOps
+    Resources:
 
   MinimumRPMs:
     Order: 9
@@ -370,7 +466,12 @@ Test-Suites:
       This test suite verifies an RSP's support for the minimum Rights
       Protection Mechanisms (RPMs), and the Launch Extension (RFC8334) if
       supported.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^minimumRPMs-
+    Resources:
 
   StandardIntegrationTest:
     Order: 10
@@ -379,7 +480,51 @@ Test-Suites:
       This test suite verifies that the critical registry services of the TLD
       are properly integrated and functioning within the requirements of the
       Service Level Agreement.
+
+      # Pass/fail criteria
+
+      TS_PASSFAIL
     Test-Cases: ^integration-
+    Resources:
+
+Resources:
+  rde.encryptionKey:
+    Description: |
+      RDE deposit files MUST be encrypted using OpenPGP (RFC 4880). The PGP key
+      that MUST be used to encrypt the escrow deposit file may be found at this
+      URL.
+    URL: https://rst.icann.org/v2/resources/rde.encryptionKey.asc
+  epp.clientCertificate:
+    Description: |
+      RFC 5734 requires servers to perform authentication of clients by means of
+      a client certificate. Operators MUST configure their systems to permit the
+      test client to connect using the certificate found at this URL.
+    URL: https://rst.icann.org/v2/resources/epp.clientCertificate.pem
+  epp.clientACL:
+    Description: |
+      A list of IPv4 and IPv6 address(es) from which client connections to the
+      operator's EPP server will be made. The list is a plain text file with
+      each IP address on a separate line.
+    URL: https://rst.icann.org/v2/resources/epp.clientACL.txt
+  integration.rdeSFTPPublicKey:
+    Description: |
+      The SSH public key that will be used to authenticate connections to the
+      operator's SFTP server.
+    URL: https://rst.icann.org/v2/resources/integration.rdeSFTPPublicKey.pem
+  integration.rdeSFTPACL:
+    Description: |
+      A list of IPv4 and IPv6 address(es) from which client connections to the
+      operator's SFTP server will be made. The list is a plain text file with
+      each IP address on a separate line.
+    URL: https://rst.icann.org/v2/resources/integration.rdeSFTPACL.txt
+  epp.tlsCertificateStore:
+    Description: |
+      A PEM-formatted file containing the CA certificates trusted by Mozilla.
+      For more information, see <https://curl.se/docs/caextract.html>.
+
+      EPP servers MUST use a certificate that has a chain of trust to one of the
+      CAs present in this file.
+    URL: https://rst.icann.org/v2/resources/epp.tlsCertificateStore.pem
 
 Test-Cases:
 
@@ -398,8 +543,13 @@ Test-Cases:
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
     Description: |
-      This test case verifies the RSP's ability to perform a ZSK rollover for a
-      zone.
+      This test case verifies the RSP's ability to perform a ZSK rollover (as
+      described in [Section 4.1.1 of
+      RFC6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1) for
+      a zone.
+
+      If the value of the `dnssecOps.csk` input parameter is `true`, then this
+      test will be skipped.
 
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.zskRolloverZone` input parameter. The domain may be present
@@ -415,13 +565,16 @@ Test-Cases:
       configured with short TTLs and a short ZSK lifetime, so that a ZSK
       rollover is guaranteed to occur within the 24 test period.
     Input-Parameters:
+      - dnssecOps.csk
       - dnssecOps.zskRolloverZone
     Dependencies:
   dnssecOps02-KSKRollover:
     Summary: KSK rollover
     Description: |
-      This test case verifies the RSP's ability to perform a KSK rollover for a
-      zone.
+      This test case verifies the RSP's ability to perform a CSK/KSK rollover
+      (as described in [Sections 4.1.2 and 4.13 of
+      RFC6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
+      a zone.
 
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.kskRolloverZone` input parameter. The domain may be present
@@ -440,7 +593,9 @@ Test-Cases:
     Summary: algorithm rollover
     Description: |
       This test case verifies the RSP's ability to perform an algorithm rollover
-      for a zone.
+      (as described in [Section 4.1.4 of
+      RFC6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
+      a zone.
 
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.algorithmRolloverZone` input parameter. The domain may be present
@@ -449,9 +604,16 @@ Test-Cases:
       validated using the root zone trust anchor.
 
       During the test period (currently defined as 72 hours) the operator MUST
-      successfully carry out an algorithm rollover for the domain, where the
-      algorithm used to secure the domain is changed, without disrupting the
-      chain of trust.
+      successfully carry out an algorithm rollover for the domain (including an
+      update to the DS record in the parent zone), where the algorithm used to
+      secure the domain is changed, without disrupting the chain of trust.
+
+      Note that the specific algorithms being rolled to and from are not
+      significant (although they must be present in the IANA registry); it is
+      not required that the new algorithm be more "secure" than the original
+      algorithm; only that they are different. So a rollover from algorithm 13
+      (`ECDSAP256SHA256`) to algorithm 8 (`RSASHA256`) will be accepted as well
+      as a rollover from `RSASHA256` to `ECDSAP256SHA256`.
     Input-Parameters:
       - dnssecOps.algorithmRolloverZone
     Dependencies:
@@ -459,13 +621,16 @@ Test-Cases:
   rde-01:
     Summary: validate deposit filename format
     Description: |
-      The deposit filename MUST conform to the format specified in the RA.
+      * The deposit filename MUST conform to the format specified in the RA.
+      * The type of the deposit MUST be `FULL`.
+      * The TLD in the filename MUST be present in the list of TLDs associated
+        with the test.
     Input-Parameters:
       - rde.depositFile
   rde-02:
     Summary: validate signature over deposit file
     Description: |
-      The signature MUST be valid for the deposit file and the RSP's key.
+      The PGP signature MUST be valid for the deposit file and the RSP's key.
     Input-Parameters:
       - rde.publicKey
       - rde.depositFile
@@ -474,15 +639,20 @@ Test-Cases:
     Summary: decrypt deposit file(s)
     Description: |
       It MUST be possible to decrypt the deposit file using the RST key. The PGP
-      key for which the deposit MUST be encrypted will be provided separately.
+      public key for which the deposit MUST be encrypted may be found in the
+      URL specified by the `rde.encryptionKey` resource.
     Input-Parameters:
       - rde.depositFile
+    Resources:
+      - rde.encryptionKey
   rde-04:
     Summary: validate XML/CSV
     Description: |
       * XML deposit files MUST be well-formed and validate against the XML
         schema.
       * CSV files MUST conform to RFC4180.
+      * Deposits MUST NOT contain a mix of XML and CSV files for the deposit
+        contents.
     Input-Parameters:
       - rde.depositFile
   rde-05:
@@ -517,12 +687,13 @@ Test-Cases:
         * `<domain:name>`
         * `<domain:roid>` (which MUST have a repository ID registered with IANA)
         * at least one `<domain:status>` element
-        * `<domain:registrant>` (if applicable)
+        * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
         * `<domain:clID>` (sponsoring registrar ID)
         * `<domain:crDate>` (creation date)
         * `<domain:exDate>` (expiry date)
 
-      Contact and/or host objects which are referenced in domain objects MUST be
+      Contact, host and registrar objects (including optional objects such as
+      admin and tech contacts) which are referenced in domain objects MUST be
       present in the deposit.
     Input-Parameters:
       - rde.depositFile
@@ -590,7 +761,7 @@ Test-Cases:
     Input-Parameters:
       - rde.depositFile
   rde-11:
-    Summary: validate IDN table objects
+    Summary: validate IDN table objects (if applicable)
     Description: |
       IDN table objects (whether CSV or XML) MUST have the required object
       properties, and the values of those object properties MUST be well-formed.
@@ -615,17 +786,20 @@ Test-Cases:
     Description: |
       The EPP Parameters object MUST match the `<greeting>` element returned by
       the EPP server.
+    Resources:
+      - epp.clientACL
+      - epp.clientCertificate
     Input-Parameters:
       - epp.hostName
   rde-14:
-    Summary: validate policy object
+    Summary: validate policy object (if applicable)
     Description: |
       The object policies included in the `<rdePolicy:policy>` object MUST
       conform to the Registration Data Policy and the applicable data model.
 
       * If the `general.minimalPublicDataSet` input parameter is `true`, then
         contact objects MUST NOT be present in the deposit.
-      * If the `epp.hostModelt` input parameter is `attributes`, then
+      * If the `epp.hostModel` input parameter is `attributes`, then
         host objects MUST NOT be present in the deposit.
     Input-Parameters:
       - general.minimalPublicDataSet
@@ -653,6 +827,8 @@ Test-Cases:
 
       Since the EPP specification requires IP-based access control, the RSP MUST
       configure their firewall to allow access from the RST system.
+    Resources:
+      - epp.clientACL
     Input-Parameters:
       - epp.hostName
     Dependencies:
@@ -668,6 +844,8 @@ Test-Cases:
       - epp.hostName
     Dependencies:
       - epp-03
+    Resources:
+      - epp.clientCertificate
   epp-05:
     Summary: All service ports MUST NOT support TLSv1.1 or earlier
     Description: |
@@ -684,6 +862,8 @@ Test-Cases:
       To ensure that the connection can be trusted, the server MUST present a
       certificate issued by a trusted CA, such as those supported by major
       browsers.
+    Resources:
+      - epp.tlsCertificateStore
     Input-Parameters:
       - epp.hostName
     Dependencies:
@@ -1375,7 +1555,6 @@ Test-Cases:
     Dependencies:
       - minimumRPMs-04
       - minimumRPMs-06
-
   srsgw-01:
     Summary: IPv4 and IPv6 connectivity
     Description: |
@@ -1385,10 +1564,12 @@ Test-Cases:
       The SRS Gateway EPP server host name will be resolved to obtain its
       IPv4 and IPv6 addresses. The client will then attempt to connect to TCP
       port 700 on these addresses.
+    Resources:
+      - epp.clientACL
+      - epp.clientCertificate
     Input-Parameters:
       - srsgw.eppHostName
     Dependencies:
-
   srsgw-02:
     Summary: Host <create> synchronization (if applicable)
     Description: |
@@ -1411,6 +1592,9 @@ Test-Cases:
       with a 1000 response.
 
       The two `<info>` responses will then be compared and MUST be identical.
+    Resources:
+      - epp.clientACL
+      - epp.clientCertificate
     Input-Parameters:
       - srsgw.eppHostName
       - srsgw.eppClid
@@ -1420,7 +1604,6 @@ Test-Cases:
       - epp.clid
       - epp.pwd
     Dependencies:
-
   srsgw-03:
     Summary: Contact <create> synchronization (if applicable)
     Description: |
@@ -1451,7 +1634,6 @@ Test-Cases:
       - epp.clid
       - epp.pwd
     Dependencies:
-
   srsgw-04:
     Summary: Domain <create> synchronization
     Description: |
@@ -1485,7 +1667,6 @@ Test-Cases:
     Dependencies:
       - srsgw-02
       - srsgw-03
-
   srsgw-05:
     Summary: Domain <renew> synchronisation
     Description: |
@@ -1513,7 +1694,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-04
-
   srsgw-06:
     Summary: Domain <transfer> synchronisation
     Description: |
@@ -1550,7 +1730,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-05
-
   srsgw-07:
     Summary: Domain <transfer> approval synchronisation
     Description: |
@@ -1580,7 +1759,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-06
-
   srsgw-08:
     Summary: Domain <delete> synchronisation
     Description: |
@@ -1613,7 +1791,6 @@ Test-Cases:
       - general.gracePeriodsSupported
     Dependencies:
       - srsgw-07
-
   srsgw-09:
     Summary: Host <update> synchronization (if applicable)
     Description: |
@@ -1642,7 +1819,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-02
-
   srsgw-10:
     Summary: Host <delete> synchronization (if applicable)
     Description: |
@@ -1669,7 +1845,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-09
-
   srsgw-11:
     Summary: Contact <update> synchronization (if applicable)
     Description: |
@@ -1697,7 +1872,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-03
-
   srsgw-12:
     Summary: Contact <delete> synchronization (if applicable)
     Description: |
@@ -1724,7 +1898,6 @@ Test-Cases:
       - epp.pwd
     Dependencies:
       - srsgw-11
-
   srsgw-13:
     Summary: Domain RDAP synchronization
     Description: |
@@ -1740,7 +1913,6 @@ Test-Cases:
       - srsgw.rdapBaseURLs
     Dependencies:
       - srsgw-04
-
   srsgw-14:
     Summary: Nameserver RDAP synchronization
     Description: |
@@ -1759,7 +1931,6 @@ Test-Cases:
       - srsgw.rdapBaseURLs
     Dependencies:
       - srsgw-02
-
   srsgw-15:
     Summary: Registrar RDAP synchronization
     Description: |
@@ -1803,7 +1974,6 @@ Test-Cases:
       - epp.pwd
       - general.minimalPublicDataSet
     Dependencies:
-
   idn-02:
     Summary: Level 1 variant handling test
     Description: |
@@ -1826,7 +1996,6 @@ Test-Cases:
       - epp.pwd
       - general.minimalPublicDataSet
     Dependencies:
-
   idn-03:
     Summary: Level 2 variant handling test
     Description: |
@@ -1858,7 +2027,6 @@ Test-Cases:
       - epp.transferPwd
       - general.minimalPublicDataSet
     Dependencies:
-
   idn-04:
     Summary: Level 3 variant handling test
     Description: |
@@ -1891,7 +2059,6 @@ Test-Cases:
       - epp.transferPwd
       - general.minimalPublicDataSet
     Dependencies:
-
   integration-01:
     Summary: EPP -> RDAP Integration Test
     Description: |
@@ -1903,15 +2070,12 @@ Test-Cases:
       The test system will perform RDAP queries to confirm that the RDAP server
       provides responses for the domain and host objects created in `epp-32` and
       `epp-28` (if applicable). The RDAP server MUST provide a 200 response
-      within 1 hour of the object's `<crDate>` or `<upDate>` element (whichever
-      is later).
-
+      within 1 hour of the object's `<crDate>` element.
     Input-Parameters:
       - rdap.baseURLs
     Dependencies:
       - epp-32
       - epp-28
-
   integration-02:
     Summary: EPP -> DNS Integration Test
     Description: |
@@ -1923,11 +2087,53 @@ Test-Cases:
       The test system will perform DNS queries to confirm that the DNS servers
       provides responses for the domain names created in `epp-32`. All DNS
       servers MUST provide the correct DNS response within 1 hour of the
-      object's `<crDate>` or `<upDate>` element (whichever is later).
+      object's `<crDate>` element.
     Input-Parameters:
       - dns.nameservers
     Dependencies:
       - epp-32
+  integration-03:
+    Summary: EPP -> RDE Integration Test
+    Description: |
+      This test confirms that the EPP and RDE systems are properly integrated,
+      that is, that objects created in the EPP system are reflected in a valid
+      RDE deposit file within the Service Level Requirement of the SLA.
+
+      The test system will periodically connect to the SFTP server specified by
+      the `integration.rdeSFTPHostname` input parameter, using the username
+      specified in the `integration.rdeSFTPUsername` input parameter and the SSH
+      key in the `integration.rdeSFTPPublicKey` resource, and look for .ryde
+      files in the directory specified by the `integration.rdeSFTPDirectory`
+      input parameter. Note that operators must ensure that the IP addresses
+      listed in the `integration.rdeSFTPACL` resource have been added to the
+      Access Control List for the SFTP server (if any).
+
+      All objects created in the `epp-32` and `epp-28` (if applicable) tests
+      MUST be found within a valid RDE deposit file (that is, the deposit passes
+      all the tests in the RDE test suite) within 24 hours of each object's
+      `<crDate>` element.
+
+      Furthermore, for each deposit found in the directory, the corresponding
+      RDE report (as described in [Section 2.1 of
+      draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))
+      MUST be recieved on the test RRI environment before 23:59:59 UTC on the
+      date specified in the Watermark element of the deposit file.
+
+      To facilitate submission of RDE reports, the RRI test environment will be
+      configured to accept submissions for the TLDs associated with the test
+      from clients using the same TLSA DNS hostnames that are configured for the
+      test.
+    Resources:
+      - integration.rdeSFTPPublicKey
+      - integration.rdeSFTPACL
+    Input-Parameters:
+      - integration.rdeSFTPHostname
+      - integration.rdeSFTPDirectory
+      - integration.rdeSFTPUsername
+      - integration.rriACL
+    Dependencies:
+      - epp-32
+      - epp-28
 
 Input-Parameters:
   epp.hostName:
@@ -2030,6 +2236,13 @@ Input-Parameters:
         * `both`
     Type: string
     Example: start-date
+  dnssecOps.csk:
+    Description: |
+      A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
+      also referred to as a "Single Type Signing Scheme") instead of a split
+      KSK/ZSK configuration.
+    Type: boolean
+    Example: false
   dnssecOps.zskRolloverZone:
     Description: |
       The domain name which will be monitored for the occurrence of a ZSK
@@ -2132,3 +2345,22 @@ Input-Parameters:
       containing the base URL. The URL MUST end with a slash ("/").
     Type: object
     Example: {"example": "https://rdap.example.com/example/"}
+
+  integration.rdeSFTPHostname:
+    Description: The hostname of the operator's SFTP server.
+    Type: string
+    Example: sftp.rsp.tech
+  integration.rdeSFTPDirectory:
+    Description: |
+      The directory on the SFTP server where deposit files may be found.
+    Type: string
+    Example: /path/to/deposits
+  integration.rdeSFTPUsername:
+    Description: The username that can be used to connect to the SFTP server.
+    Type: string
+    Example: icann
+  integration.rriACL:
+    Description: |
+      An array of IP addresses from which requests to the RRI will be sent.
+    Type: array
+    Example: ["192.168.22.1", "2001:DB8::22:1"]

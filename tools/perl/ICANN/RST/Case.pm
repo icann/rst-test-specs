@@ -24,6 +24,12 @@ sub inputs {
     return sort { $a->id <=> $b->id } map { $self->spec->input($_) } @{$self->{'Input-Parameters'}};
 }
 
+sub resources {
+    my $self = shift;
+
+    return sort { $a->id <=> $b->id } map { $self->spec->resource($_) } @{$self->{'Resources'}};
+}
+
 sub dependencies {
     my $self = shift;
 
@@ -81,7 +87,11 @@ case.
 
 =head2 inputs()
 
-A list of L<ICANN::RST::Inputs> required by this test case.
+A list of L<ICANN::RST::Input> objects required by this test case.
+
+=head2 resources
+
+A list of L<ICANN::RST::Resource> objects required by this test case.
 
 =head2 dependencies()
 

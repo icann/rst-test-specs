@@ -7,7 +7,7 @@ The [`rst-test-specs.yaml` file in this repository](rst-test-specs.yaml) conform
 The top-level object has the following properties:
 
 `RST-Test-Plan-Schema-Version`
-: this is always `1.3`. This property tracks the version of **this** document, and is updated whenever a material change to the schema is made.
+: this is always `1.4`. This property tracks the version of **this** document, and is updated whenever a material change to the schema is made.
 
 `Version`
 : a string containing a version number of the schema itself, conforming to Semantic Versioning.
@@ -32,6 +32,9 @@ The top-level object has the following properties:
 
 `Input-Parameters`
 : an object containing one or more [Input Parameter objects](#input-parameter-object), keyed by a unique ID.
+
+:`Resources`
+: an object containing one or more [Resource objects](#resource-object), keyed by a unique ID.
 
 # Contact object
 
@@ -75,6 +78,9 @@ A **Test Suite** object has the following properties:
 `Input-Parameters`
 : an array of [Input Parameter](#input-parameter-object) IDs which must be provided in addition to the input parameters specified by the test cases for the suite.
 
+`Resources`
+: an array of [Resource](#resource-object]) IDs which may be used to prepare for the tests in this test suite, in addition to those specified by the test cases for the suite.
+
 # Test Case object
 
 A **Test Case** object has the following properties:
@@ -91,6 +97,9 @@ A **Test Case** object has the following properties:
 `Input-Parameters`
 : an array of [Input Parameter](#input-parameter-object) IDs, which must match a key in the `Input-Parameters` property of the [top-level object](#top-level-object).
 
+`Resources`
+: an array of [Resource](#resource-object]) IDs which may be used to prepare for this test case.
+
 # Input Parameter object
 
 An **Input Parameter** object has the following properties:
@@ -103,3 +112,13 @@ An **Input Parameter** object has the following properties:
 
 `Example`
 : an example value.
+
+# Resource object
+
+A **Resource** object has the following properties:
+
+`Description`
+: a description of the resource in Markdown format.
+
+`URL`
+: the URL where the resource may be found.

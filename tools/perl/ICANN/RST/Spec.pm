@@ -1,10 +1,11 @@
 package ICANN::RST::Spec;
-use ICANN::RST::Plan;
-use ICANN::RST::Suite;
 use ICANN::RST::Case;
-use ICANN::RST::Input;
-use ICANN::RST::Text;
 use ICANN::RST::Graph;
+use ICANN::RST::Input;
+use ICANN::RST::Plan;
+use ICANN::RST::Resource;
+use ICANN::RST::Suite;
+use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
 use strict;
@@ -27,14 +28,16 @@ sub contactName     { $_[0]->{'spec'}->{'Contact'}->{'Name'}                }
 sub contactOrg      { $_[0]->{'spec'}->{'Contact'}->{'Organization'}        }
 sub contactEmail    { $_[0]->{'spec'}->{'Contact'}->{'Email'}               }
 sub preamble        { ICANN::RST::Text->new($_[0]->{'spec'}->{'Preamble'})  }
-sub plans           { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Plans'}}      }
-sub suites          { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self) } %{$self->{'spec'}->{'Test-Suites'}}     }
-sub cases           { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self) } %{$self->{'spec'}->{'Test-Cases'}}      }
-sub inputs          { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self) } %{$self->{'spec'}->{'Input-Parameters'}}}
-sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)  };
-sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites) };
-sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)  };
-sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs) };
+sub plans           { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self)       } %{$self->{'spec'}->{'Test-Plans'}}        }
+sub suites          { my $self = shift ; return sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self)       } %{$self->{'spec'}->{'Test-Suites'}}       }
+sub cases           { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self)       } %{$self->{'spec'}->{'Test-Cases'}}        }
+sub inputs          { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self)       } %{$self->{'spec'}->{'Input-Parameters'}}  }
+sub resources       { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Resource->new($a, $b, $self)    } %{$self->{'spec'}->{'Resources'}}         }
+sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)      };
+sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites)     };
+sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)      };
+sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs)     };
+sub resource        { my ($self, $id) = @_ ; return $self->find($id, $self->resources)  };
 
 sub find {
     my ($self, $needle, @haystack) = @_;
@@ -107,6 +110,14 @@ Returns an array of L<ICANN::RST::Suite> objects.
 =head2 suite($id);
 
 Returns the L<ICANN::RST::Suite> object with the given ID.
+
+=head2 resources
+
+Returns an array of L<ICANN::RST::Resource> objects.
+
+=head2 resource
+
+Returns the L<ICANN::RST::Resource> object with the given ID.
 
 =head2 cases()
 

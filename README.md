@@ -12,11 +12,13 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://github.c
 
 * [rst-test-specs.yaml](rst-test-specs.yaml) is the machine-readable version, intended to be consumed by the Test Orchestration System (TOS). Like the HTML file above, this file is a build artefact.
 
-* [rst-test-specs.yaml.in](rst-test-specs.yaml.in) is what you need to edit if you want to make changes to the test specifications.
+* [rst-test-specs.json](rst-test-specs.json) is the above file in JSON, in case you prefer that kind of thing. Note that the conversion from YAML causes keys in dictionaries to be reordered.
+
+* **[rst-test-specs.yaml.in](rst-test-specs.yaml.in) is what you need to edit if you want to make changes to the test specifications.**
 
 * [Schema.md](Schema.md) documents the schema for the YAML files.
 
-* [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML file.
+* [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, `perl` and a couple of modules to create the JSON file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
 
 ## Copyright Statement
 

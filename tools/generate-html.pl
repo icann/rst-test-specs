@@ -63,6 +63,8 @@ print_nav();
 
 print_main();
 
+print_footer();
+
 print $h->close('body');
 print $h->close('html');
 
@@ -110,6 +112,10 @@ sub print_toc {
 
     print $h->open(li);
     print_test_suite_toc_list();
+    print $h->close(li);
+
+    print $h->open(li);
+    print_resource_toc_list();
     print $h->close(li);
 
     print $h->open(li);
@@ -165,6 +171,27 @@ sub print_test_suite_toc_list {
     print $h->close(details);
 }
 
+sub print_resource_toc_list {
+    print $h->open(details, {'open' => 1});
+
+    print $h->summary($h->a({href => '#resources'}, 'Resources'));
+
+    print $h->open(ol);
+
+    foreach my $resource ($s->resources) {
+        my $anchor = sprintf('#Resource-%s', $resource->id);
+
+        print $h->li($h->a(
+            { href => $anchor },
+            e($resource->id)
+        ));
+    }
+
+    print $h->close(ol);
+
+    print $h->close(details);
+}
+
 sub print_test_case_toc_list {
     print $h->open(details, {'open' => 1});
 
@@ -212,6 +239,8 @@ sub print_main {
 
     print_suites();
 
+    print_resources();
+
     print_cases();
 
     print_inputs();
@@ -242,15 +271,15 @@ sub print_plans {
         print $h->h4('Description');
         print $plan->description->html(3);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Plan ID'));
         print $h->p('The following Test Plan ID may be used with the RST API:');
         print $h->pre(e($plan->id));
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Test suites'));
         print $h->p('This plan uses the following test suites:');
@@ -272,9 +301,32 @@ sub print_plans {
             print $h->close(ol);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
+        print $h->summary($h->h4('Resources'));
+        print $h->p('The following resources may be required to prepare for this test plan:');
+
+        my @resources = $plan->resources;
+        if (scalar(@resources) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $resource (@resources) {
+                print $h->li($h->a(
+                    { href => sprintf('#Resource-%s', $resource->id) },
+                    e($resource->id),
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close(details);
+
+        print $h->open(details, {'open' => 1});
         print $h->summary($h->h4('Input parameters'));
         print $h->p('This plan requires the following input parameters:');
 
@@ -300,9 +352,9 @@ sub print_plans {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Required files'));
         if (scalar(@files) < 1) {
@@ -319,9 +371,9 @@ sub print_plans {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('RST-API example'));
 
@@ -332,9 +384,9 @@ sub print_plans {
             $json
         )));
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Sequence diagram'));
 
@@ -345,7 +397,7 @@ sub print_plans {
 
         unlink($file);
 
-        print $h->close('details');
+        print $h->close(details);
 
         print $h->close(section);
     }
@@ -391,7 +443,7 @@ sub print_suites {
             print $h->close('ol');
         }
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Test plans'));
         print $h->p('This suite is used by the following test plans:');
@@ -413,9 +465,32 @@ sub print_suites {
             print $h->close('ol');
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
+        print $h->summary($h->h4('Resources'));
+        print $h->p('The following resources may be required to prepare for this test plan:');
+
+        my @resources = $suite->resources;
+        if (scalar(@resources) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $resource (@resources) {
+                print $h->li($h->a(
+                    { href => sprintf('#Resource-%s', $resource->id) },
+                    e($resource->id),
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close(details);
+
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Input parameters'));
         print $h->p('The test cases used by this suite require the following input parameters:');
@@ -437,9 +512,9 @@ sub print_suites {
             print $h->close('ol');
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Sequence diagram'));
 
@@ -450,7 +525,30 @@ sub print_suites {
 
         unlink($file);
 
-        print $h->close('details');
+        print $h->close(details);
+
+        print $h->close(section);
+    }
+}
+
+sub print_resources {
+    print $h->a({name => 'resources'});
+    print $h->h2(sprintf('%d. Resources', ++$section));
+
+    my $i = 0;
+    foreach my $resource ($s->resources) {
+        print $h->open(section);
+
+        print $h->a({name => sprintf('Resource-%s', $resource->id)});
+
+        print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($resource->id)));
+
+        print $h->h4('Description');
+        print $resource->description->html($section-3);
+
+        print $h->h4('URL');
+        my $url = $resource->url->as_string;
+        print $h->ul($h->li($h->a({href => $url}, e($url))));
 
         print $h->close(section);
     }
@@ -468,7 +566,8 @@ sub print_cases {
 
         my $summary = $case->summary;
         if ($summary) {
-            print $h->h3(sprintf('%u.%u. %s - %s', $section, ++$i, e($case->id), e($summary)));
+            print $h->h3(sprintf(
+                '%u.%u. %s - %s', $section, ++$i, e($case->id), e($summary)));
 
         } else {
             print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($case->id)));
@@ -498,7 +597,30 @@ sub print_cases {
             print $h->close(ul);
         }
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
+        print $h->summary($h->h4('Resources'));
+        print $h->p('The following resources may be required to prepare for this test plan:');
+
+        my @resources = $case->resources;
+        if (scalar(@resources) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $resource (@resources) {
+                print $h->li($h->a(
+                    { href => sprintf('#Resource-%s', $resource->id) },
+                    e($resource->id),
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close(details);
+
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Dependencies'));
         print $h->p('This test case requires the following test cases to have successfully passed:');
@@ -520,9 +642,9 @@ sub print_cases {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Dependants'));
         print $h->p('The following test cases require this test case to have successfully passed:');
@@ -544,9 +666,9 @@ sub print_cases {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Test suites'));
         print $h->p('This test case is used in the following test suites:');
@@ -568,7 +690,7 @@ sub print_cases {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
         print $h->close(section);
     }
@@ -593,7 +715,7 @@ sub print_inputs {
         print $h->h4('Example');
         print $h->pre(e($j->encode({$input->id => $input->jsonExample})));
 
-        print $h->open('details');
+        print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Test cases'));
         print $h->p('This input parameter is used in the following test cases:');
@@ -615,10 +737,18 @@ sub print_inputs {
             print $h->close(ul);
         }
 
-        print $h->close('details');
+        print $h->close(details);
 
         print $h->close(section);
     }
+}
+
+sub print_footer {
+    print $h->footer($h->p(e(sprintf(
+        'Copyright %u %s.',
+        substr($s->lastUpdated, 0, 4),
+        $s->contactOrg
+    ))));
 }
 
 sub e { $h->entity_encode(shift) }
@@ -727,4 +857,8 @@ svg {
     max-width:100%;
     max-height:100vh;
     margin:1em auto;
+}
+
+footer {
+    text-align:center;
 }

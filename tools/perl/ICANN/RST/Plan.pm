@@ -48,6 +48,20 @@ sub inputs {
     return sort { $a->id cmp $b->id } values(%inputs);
 }
 
+sub resources {
+    my $self = shift;
+
+    my %resources;
+
+    foreach my $suite ($self->suites) {
+        foreach my $resource ($suite->resources) {
+            $resources{$resource->id} = $resource unless (defined($resources{$resource->id}));
+        }
+    }
+
+    return sort { $a->id cmp $b->id } values(%resources);
+}
+
 1;
 
 __END__

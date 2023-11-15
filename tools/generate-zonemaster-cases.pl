@@ -1,10 +1,22 @@
 #!perl
+use Cwd;
+use File::Slurp;
 use File::Spec;
 use Getopt::Long 2.32; # enable auto_help
-use IPC::Open2;
+use IPC::Open3;
 use List::Util qw(any);
 use Pod::Usage;
+use Symbol qw(gensym);
+use Text::Unidecode;
 use XML::LibXML;
+use YAML::Node;
+use YAML::XS;
+use constant {
+    HTML_ENCODING   => 'UTF-8',
+    ZM_URL_FMT      => 'https://github.com/zonemaster/zonemaster/blob/%s/%s',
+};
+use utf8;
+use open qw(:std :utf8);
 use strict;
 
 =pod
@@ -59,38 +71,40 @@ my @skip = qw(
     zone11
 );
 
+my @wanted_sections = qw(objective summary outcomes);
+
+#
+# Human-readable names for test case documentation sections
+#
+my $snames = {
+    'outcomes'  => 'Pass/fail criteria',
+};
+
+$YAML::XS::UseHeader = undef;
+$YAML::XS::SortKeys = undef;
+
 my $base = $ARGV[0] || pod2usage(1);
 
-my $generator = File::Spec->catfile($base, qw(utils generateTestCaseList.pl));
-my $testdir = File::Spec->catdir($base, qw(docs public specifications tests));
+my @docpath = qw(docs public specifications tests);
 
-my $pid = open2(my $out, undef, $generator, '--dir='.$testdir);
-$out->binmode('encoding(utf-8)');
-
-my $markdown = join('', $out->getlines);
-$out->close;
-waitpid($pid, 0);
-
-$pid = open2($out, my $in, qw(pandoc -f markdown -t html));
-
-$in->binmode('encoding(utf-8)');
-$in->print($markdown);
-$in->close;
-
-$out->binmode('encoding(utf-8)');
-
-my $html = join('', $out->getlines);
-$out->close;
-waitpid($pid, 0);
-
-my $doc = XML::LibXML->load_html('string' => $html);
-
-binmode(STDOUT, 'encoding(utf-8)');
+my @md2html = qw(pandoc --ascii -f markdown -t html --standalone);
+my @html2md = qw(pandoc -f html -t markdown);
 
 my @cases;
 
+my $dir = getcwd;
+chdir($base);
+chomp(my $version = `git tag -l | tail -1`);
+chdir($dir);
+
+#
+# this returns an XML::LibXML::Element object representing the output
+# of the generateTestCaseList.pl script
+#
+my $list = generateTestCaseList(File::Spec->catdir($base, @docpath));
+
 my $plan;
-foreach my $row ($doc->getElementsByTagName('tr')) {
+foreach my $row ($list->getElementsByTagName('tr')) {
     my @cells = map { $_->textContent } $row->getElementsByTagName('td');
     next unless ($cells[0]);
 
@@ -104,56 +118,198 @@ foreach my $row ($doc->getElementsByTagName('tr')) {
 
     my $case_id;
     if ($id =~ /^dnssec(\d+)/i) {
-        $case_id = sprintf('dnssec-%02u', $1);
+        $case_id = lc(sprintf('dnssec-%02u', $1));
 
     } else {
-        $case_id = 'dns-'.$id;
+        $case_id = lc('dns-'.$id);
 
     }
 
     next unless ($cells[1]);
 
-    my $summary = $cells[1];
+    # next unless ('dns-zone03' eq $case_id);
 
-    $summary =~ s/\n/ /g;
-    chomp($summary);
-    next if (!$summary);
+    my $mdfile = File::Spec->catfile(@docpath, $plan, lc($id).'.md');
+    my $md = join('', read_file(File::Spec->catfile($base, $mdfile)));
 
-    my $description = sprintf(
-        'This test case comes from Zonemaster. ' .
-        "For more information, see\n" .
-        '      <https://github.com/zonemaster/zonemaster/blob' .
-        '/master/docs/public/specifications/tests/%s/%s.md>.',
-        $plan,
-        lc($id)
+    my $cdoc = XML::LibXML->load_html(
+        'string'    => md2html($md),
+        'encoding'  => HTML_ENCODING,
     );
+
+    my $section;
+    my $sections = {};
+    foreach my $el (($cdoc->getElementsByTagName('body'))[0]->childNodes) {
+        if ($el->localName =~ /^h\d$/) {
+            $section = $el->getAttribute('id');
+
+        } else {
+            push(@{$sections->{$section}}, $el);
+
+        }
+    }
+
+    my $summary = $cells[1];
+    chomp($summary);
+    $summary =~ s/\n/ /g;
+
+    my $url = sprintf(
+        ZM_URL_FMT,
+        $version,
+        $mdfile
+    );
+
+    my $idoc = createHTMLDocument();
+    my $body = $idoc->getElementsByTagName('body')->shift;
+
+    my $p = $body->appendChild($idoc->createElement('p'));
+    $p->appendText(sprintf(
+        'This test case comes from version %s of Zonemaster. '.
+        'For more information, see ',
+        $version
+    ));
+
+    my $a = $p->appendChild($idoc->createElement('a'));
+    $a->setAttribute('href' => $url);
+    $a->appendText($url);
+
+    $p->appendText('.');
+
+    foreach my $section (@wanted_sections) {
+        if (defined($sections->{$section}) && scalar(@{$sections->{$section}}) > 0) {
+
+            $body->appendTextChild(
+                'h1',
+                $snames->{$section} || ucfirst($section)
+            );
+
+            foreach my $el (@{$sections->{$section} || []}) {
+                $body->appendChild($idoc->importNode($el));
+            }
+        }
+    }
 
     push(@cases, {
         'id'            => $case_id,
-        'summary'       => $summary,
-        'description'   => $description,
+        'summary'       => unidecode($summary),
+        'description'   => unidecode(html2md($idoc->toStringHTML)),
     });
 }
 
 foreach my $case (sort grep { $_->{'id'} !~ /^dnssec/ } @cases) {
-    printf(
-        "  %s:\n".
-        "    Summary: %s\n".
-        "    Description: %s\n",
-        $case->{'id'},
-        $case->{'summary'},
-        $case->{'description'},
-    );
+    print_case($case);
 }
 
 foreach my $case (sort grep { $_->{'id'} =~ /^dnssec/ } @cases) {
-    printf(
-        "  %s:\n".
-        "    Summary: %s\n".
-        "    Description: |\n".
-        "      %s\n",
-        $case->{'id'},
-        $case->{'summary'},
-        $case->{'description'},
+    print_case($case);
+}
+
+#
+# convert Markdown to HTML
+#
+sub md2html {
+    my $markdown = shift;
+
+    my $err = gensym;
+    my $pid = open3(my $in, my $out, $err, @md2html);
+
+    $in->print($markdown);
+    $in->close;
+
+    my $html = join('', $out->getlines);
+
+    $out->close;
+
+    $err->close;
+
+    waitpid($pid, 0);
+
+    return $html;
+}
+
+#
+# convert HTML to Markdown
+#
+sub html2md {
+    my $html = shift;
+
+    my $err = gensym;
+    my $pid = open3(my $in, my $out, $err, @html2md);
+
+    $in->print($html);
+    $in->close;
+
+    my $md = join('', $out->getlines);
+    $out->close;
+
+    print STDERR join('', $err->getlines);
+    $err->close;
+
+    waitpid($pid, 0);
+
+    return $md;
+}
+
+sub print_case {
+    my $case = shift;
+
+    my $node = {
+        $case->{'id'} => {
+            'Summary'       => $case->{'summary'},
+            'Description'   => $case->{'description'},
+        }
+    };
+
+    print "  ".
+            join(
+                "\n  ",
+                grep { '---' ne $_ } split(/\n/, YAML::XS::Dump($node))
+            ).
+            "\n\n";
+}
+
+sub generateTestCaseList {
+    my $dir = shift;
+
+    my $err = gensym;
+    my $pid = open3(
+        my $in,
+        my $out,
+        $err,
+        File::Spec->catfile($base, qw(utils generateTestCaseList.pl)),
+        '--dir='.$dir,
     );
+
+    $in->close;
+
+    my $markdown = join('', $out->getlines);
+    $out->close;
+
+    print STDERR join('', $err->getlines);
+    $err->close;
+
+    waitpid($pid, 0);
+
+    my $doc = XML::LibXML->load_html(
+        'string'    => md2html($markdown),
+        'encoding'  => HTML_ENCODING,
+    );
+
+    return $doc->getElementsByTagName('table')->item(0);
+}
+
+sub createHTMLDocument {
+    my $doc = XML::LibXML::Document->createDocument('1.0', HTML_ENCODING);
+
+    $doc->createInternalSubset('html',undef, undef);
+
+    $doc->setDocumentElement($doc->createElement('html'));
+
+    $doc->documentElement->setAttribute('lang', 'en');
+    my $head = $doc->documentElement->appendChild($doc->createElement('head'));
+
+    $head->appendChild($doc->createElement('meta'))->setAttribute('charset', $doc->encoding);
+    my $body = $doc->documentElement->appendChild($doc->createElement('body'));
+
+    return $doc;
 }
