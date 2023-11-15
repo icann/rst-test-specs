@@ -530,6 +530,35 @@ Test-Cases:
 # run!
 #
 
+  dns-address01:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address01.md>.
+  
+      # Objective
+  
+      In order for the domain and its resources to be accessible,
+      authoritative name servers must have addresses in the routable public
+      addressing space.
+  
+      IANA is responsible for global coordination of the IP addressing system.
+      Aside its address allocation activities, it maintains reserved address
+      ranges for special uses. These ranges can be categorized into three
+      types : [Special purpose IPv4
+      addresses](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xml),
+      [Special purpose IPv6
+      addresses](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xml)
+      and [Multicast reserved
+      addresses](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xml).
+  
+      # Pass/fail criteria
+  
+      If one name server has one of its addresses matches a forbidden address
+      block, the test fails. If all the name server addresses are outside
+      these forbidden blocks, the test case succeeds.
+    Summary: Name server address must be globally routable
+
   dns-address02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -552,6 +581,31 @@ Test-Cases:
       performed. The result could be represented as a hash table where the
       keys are the IP addresses and the values their corresponding hostnames.
     Summary: Reverse DNS entry exists for name server IP address
+
+  dns-address03:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address03.md>.
+  
+      # Objective
+  
+      Some anti-spam techniques use reverse DNS lookup to allow incoming
+      traffic. In order to prevent name servers to be blocked or blacklisted,
+      DNS administrators should publish PTR records associated with the name
+      server addresses.
+  
+      Moreover, as mentioned in paragraph 2.1 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912) when a PTR record
+      exists, it must match the host name.
+  
+      # Pass/fail criteria
+  
+      Multiple addresses and multiple PTR records are allowed. The test
+      succeeds if every name server address has one or more PTR records and
+      one of these records matches the server name. If one address doesn't
+      match, the whole test case fails.
+    Summary: Reverse DNS entry matches name server name
 
   dns-connectivity01:
     Description: |
@@ -670,68 +724,82 @@ Test-Cases:
       Test Case is "pass".
     Summary: UDP connectivity to name servers
 
-  dns-nameserver11:
+  dns-connectivity02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
   
       # Objective
   
-      EDNS is a mechanism to announce capabilities of a DNS implementation,
-      and is now basically required by any new functionality in DNS such as
-      DNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).
+      TCP is a protocol to reach a general purpose name server hosting a zone,
+      "All general-purpose DNS implementations MUST support \[...\] TCP
+      transport" ([RFC
+      7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5).
   
-      [RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.2),
-      section 6.1.2, states that any OPTION-CODE values not understood by a
-      responder or requestor MUST be ignored. Unknown OPTION-CODE values must
-      be processed as though the OPTION-CODE was not even there.
+      This Test Case will verify if the name servers of *Child Zone* are
+      reachable over TCP. The name servers tested are both those in the
+      delegation of *Child Zone* and those in the NS records in the *Child
+      Zone* itself.
   
-      In this test case, we will query with an unknown EDNS OPTION-CODE and
-      expect that the OPTION-CODE is not present in the response for the
-      query.
+      This Test Case will mimic the tests done by
+      [Connectivity01](connectivity01.md), but over TCP instead:
+  
+      -   Name Server responding to a query.
+      -   Name Server including SOA record of *Child Zone* in the answer
+          section in the response on a SOA query for *Child Zone*.
+      -   Name Server including NS record of *Child Zone* in the answer
+          section in the response on an NS query for *Child Zone*.
+      -   Name Server setting the AA flag in a response with SOA or NS in
+          answer section.
+      -   Name Server responding with expected [RCODE
+          Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
+          ("NoError") on query for SOA or NS for *Child Zone*.
   
       # Summary
   
-        ---------------------------------------------------------------------------------------
-        Message Tag                       Level     Arguments     Message ID for message tag
-        --------------------------------- --------- ------------- -----------------------------
-        N11_NO_EDNS                       WARNING   ns_ip_list    The DNS response, on query
-                                                                  with unknown EDNS
-                                                                  option-code, does not contain
-                                                                  any EDNS from name servers
-                                                                  "{ns_ip_list}".
+        -------------------------------------------------------------------------------------------------------------
+        Message Tag                           Level     Arguments         Message ID for message tag
+        ------------------------------------- --------- ----------------- -------------------------------------------
+        CN02_MISSING_NS_RECORD_TCP            WARNING   ns                Nameserver {ns} reponds to a NS query with
+                                                                          no NS records in the answer section over
+                                                                          TCP.
   
-        N11_NO_RESPONSE                   WARNING   ns_ip_list    There is no response on query
-                                                                  with unknown EDNS option-code
-                                                                  from name servers
-                                                                  "{ns_ip_list}".
+        CN02_MISSING_SOA_RECORD_TCP           WARNING   ns                Nameserver {ns} reponds to a SOA query with
+                                                                          no SOA records in the answer section over
+                                                                          TCP.
   
-        N11_RETURNS_UNKNOWN_OPTION_CODE   WARNING   ns_ip_list    The DNS response, on query
-                                                                  with unknown EDNS
-                                                                  option-code, contains an
-                                                                  unknown EDNS option-code from
-                                                                  name servers "{ns_ip_list}".
+        CN02_NO_RESPONSE_NS_QUERY_TCP         WARNING   ns                Nameserver {ns} does not respond to NS
+                                                                          queries over TCP.
   
-        N11_UNEXPECTED_ANSWER_SECTION     WARNING   ns_ip_list    The DNS response, on query
-                                                                  with unknown EDNS
-                                                                  option-code, does not contain
-                                                                  the expected SOA record in
-                                                                  the answer section from name
-                                                                  servers "{ns_ip_list}".
+        CN02_NO_RESPONSE_SOA_QUERY_TCP        WARNING   ns                Nameserver {ns} does not respond to SOA
+                                                                          queries over TCP.
   
-        N11_UNEXPECTED_RCODE              WARNING   ns_ip_list,   The DNS response, on query
-                                                    rcode         with unknown EDNS
-                                                                  option-code, has unexpected
-                                                                  RCODE name "{rcode}" from
-                                                                  name servers "{ns_ip_list}".
+        CN02_NO_RESPONSE_TCP                  WARNING   ns                Nameserver {ns} does not respond to any
+                                                                          queries over TCP.
   
-        N11_UNSET_AA                      WARNING   ns_ip_list    The DNS response, on query
-                                                                  with unknown EDNS
-                                                                  option-code, is unexpectedly
-                                                                  not authoritative from name
-                                                                  servers "{ns_ip_list}".
-        ---------------------------------------------------------------------------------------
+        CN02_NS_RECORD_NOT_AA_TCP             WARNING   ns                Nameserver {ns} does not give an
+                                                                          authoritative response on an NS query over
+                                                                          TCP.
+  
+        CN02_SOA_RECORD_NOT_AA_TCP            WARNING   ns                Nameserver {ns} does not give an
+                                                                          authoritative response on an SOA query over
+                                                                          TCP.
+  
+        CN02_UNEXPECTED_RCODE_NS_QUERY_TCP    WARNING   ns, rcode         Nameserver {ns} responds with an unexpected
+                                                                          RCODE ({rcode}) on an NS query over TCP.
+  
+        CN02_UNEXPECTED_RCODE_SOA_QUERY_TCP   WARNING   ns, rcode         Nameserver {ns} responds with an unexpected
+                                                                          RCODE ({rcode}) on an SOA query over TCP.
+  
+        CN02_WRONG_NS_RECORD_TCP              WARNING   ns, ,             Nameserver {ns} responds with a wrong owner
+                                                        domain_found,     name ({domain_found} instead of
+                                                        domain_expected   {domain_expected}) on NS queries over TCP.
+  
+        CN02_WRONG_SOA_RECORD_TCP             WARNING   ns, ,             Nameserver {ns} responds with a wrong owner
+                                                        domain_found,     name ({domain_found} instead of
+                                                        domain_expected   {domain_expected}) on SOA queries over TCP.
+        -------------------------------------------------------------------------------------------------------------
   
       The value in the Level column is the default severity level of the
       message. The severity level can be changed in the [Zonemaster-Engine
@@ -757,7 +825,7 @@ Test-Cases:
       *[INFO](../SeverityLevelDefinitions.md#info)* or
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
-    Summary: Test for unknown EDNS OPTION-CODE
+    Summary: TCP connectivity to name servers
 
   dns-connectivity03:
     Description: |
@@ -805,117 +873,6 @@ Test-Cases:
         IPV6_SAME_ASN        NOTICE
         IPV6_DIFFERENT_ASN   INFO
     Summary: AS Diversity
-
-  dns-nameserver14:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.
-  
-      # Objective
-  
-      This test case actually combines the test options in test cases
-      [NAMESERVER10](nameserver10.md) and [NAMESERVER11](nameserver11.md).
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test case is "pass" in all other cases.
-  
-        -----------------------------------------------------------------------
-        Message                      Default severity level (Output message)
-        ---------------------------- ------------------------------------------
-        NO_RESPONSE                  DEBUG
-  
-        NO_EDNS_SUPPORT              WARNING
-  
-        NS_ERROR                     WARNING
-  
-        UNKNOWN_OPTION_CODE          WARNING
-  
-        UNSUPPORTED_EDNS_VER         WARNING
-        -----------------------------------------------------------------------
-    Summary: Test for unknown version with unknown OPTION-CODE
-
-  dns-consistency06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
-  
-      # Objective
-  
-      All authoritative name servers must serve the same SOA record (section
-      4.2.1) of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1035) for
-      the tested domain. As per section 3.3.13 of [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035) the MNAME field in
-      the SOA RDATA refers to the name of "the name server that was the
-      original or primary source of data for this zone". Inconsistency in
-      MNAME of the domain might result in operational failures for
-      applications that uses MNAME.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        ----------------------------------------------------------------------
-        Message                         Default severity level (if message is
-                                        emitted)
-        ------------------------------- --------------------------------------
-        NO_RESPONSE                     DEBUG
-  
-        NO_RESPONSE_SOA_QUERY           DEBUG
-  
-        ONE_SOA_MNAME                   INFO
-  
-        MULTIPLE_SOA_MNAMES             NOTICE
-        ----------------------------------------------------------------------
-    Summary: SOA MNAME consistency
-
-  dns-zone05:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone05.md>.
-  
-      # Objective
-  
-      The SOA expire value specifies for how long any secondary name server
-      keeps the zone valid without any contact with the primary name server.
-      This value should be greater than how long a major outage would
-      typically last. The expire value should also be larger than the refresh
-      and retry values, as described in section 3.3.13 in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
-      section 2.2 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912).
-  
-      Setting the expire value low will increase the risk of any unwanted
-      non-availability of the zone because of any failures in contacting the
-      primary name server.
-  
-      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
-      recommendation for the expire value is 1000 hours (roughly 41 days).
-      Older DNSCheck code had a 7 day minimum value (604800 seconds), and this
-      is the minimum value we recommend as an absolut minimum.
-  
-      # Pass/fail criteria
-  
-      If the expire value is less than 604800 seconds or if the expire value
-      is lower than the refresh value, this test case fails.
-    Summary: SOA 'expire' minimum value
 
   dns-connectivity04:
     Description: |
@@ -993,98 +950,6 @@ Test-Cases:
       Test Case is "pass".
     Summary: IP Prefix Diversity
 
-  dns-consistency04:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.
-  
-      # Objective
-  
-      All authoritative name servers must serve the same NS record set for the
-      tested domain, child zone ([RFC
-      1034](https://datatracker.ietf.org/doc/html/rfc1034), section 4.2.2).
-      Any inconsistencies in NS records described in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035), section 3.3.11,
-      might result in operational failures.
-  
-      The objective of this test is to verify that the NS records are
-      consistent between all authoritative name servers of the child zone.
-  
-      Two NS RR sets are considered to be equal if both sets have the same
-      number of NS records, and for each NS record in one of the sets there is
-      exactly one NS record with identical owner name, class, TTL and RDATA in
-      the other NS set.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        ----------------------------------------------------------------------
-        Message                         Default severity level (if message is
-                                        emitted)
-        ------------------------------- --------------------------------------
-        NO_RESPONSE                     DEBUG
-  
-        NO_RESPONSE_NS_QUERY            DEBUG
-  
-        ONE_NS_SET                      INFO
-  
-        MULTIPLE_NS_SET                 NOTICE
-        ----------------------------------------------------------------------
-    Summary: Name server NS consistency
-
-  dns-consistency02:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
-  
-      # Objective
-  
-      All authoritative name servers must serve the same SOA record for the
-      tested domain (section 4.2.1 of [RFC
-      1034](https://datatracker.ietf.org/doc/html/rfc1034)). As per section
-      3.3.13 of [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), the
-      RNAME field in the SOA RDATA refers to the administrative contact. An
-      inconsistency in the administrative contact for the domain might result
-      in operational failures being reported to different persons.
-  
-      The objective of this test is to verify that the administrative contact
-      is consistent between different authoritative name servers.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        ----------------------------------------------------------------------
-        Message                         Default severity level (if message is
-                                        emitted)
-        ------------------------------- --------------------------------------
-        NO_RESPONSE                     DEBUG
-  
-        NO_RESPONSE_SOA_QUERY           DEBUG
-  
-        ONE_SOA_RNAME                   INFO
-  
-        MULTIPLE_SOA_RNAMES             NOTICE
-        ----------------------------------------------------------------------
-    Summary: SOA RNAME consistency
-
   dns-consistency01:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -1144,79 +1009,24 @@ Test-Cases:
         ----------------------------------------------------------------------
     Summary: SOA serial number consistency
 
-  dns-nameserver15:
+  dns-consistency02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver15.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
   
       # Objective
   
-      This Test Case verifies if a name server responds to TXT queries in the
-      CHAOS class, specifically about its software version as it may sometimes
-      be desirable not to reveal that information.
+      All authoritative name servers must serve the same SOA record for the
+      tested domain (section 4.2.1 of [RFC
+      1034](https://datatracker.ietf.org/doc/html/rfc1034)). As per section
+      3.3.13 of [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), the
+      RNAME field in the SOA RDATA refers to the administrative contact. An
+      inconsistency in the administrative contact for the domain might result
+      in operational failures being reported to different persons.
   
-      A description of DNS classes can be found in
-      [RFC2929](https://datatracker.ietf.org/doc/html/rfc2929#section-3.2),
-      section 3.2.
-  
-      # Summary
-  
-        ------------------------------------------------------------------------------------------
-        Message Tag            Level   Arguments     Message ID for message tag
-        ---------------------- ------- ------------- ---------------------------------------------
-        N15_SOFTWARE_VERSION   INFO    ns_ip_list,   The following name server(s) respond to
-                                       query_name,   software version query "{query_name}" with
-                                       string        string "{string}". Returned from name
-                                                     servers: "{ns_ip_list}"
-  
-        N15_NO_VERSION         INFO    ns_ip_list    The following name server(s) do not respond
-                                                     to software version queries. Returned from
-                                                     name servers: "{ns_ip_list}"
-        ------------------------------------------------------------------------------------------
-  
-      The value in the Level column is the default severity level of the
-      message. The severity level can be changed in the [Zonemaster-Engine
-      Profile](../../../configuration/profiles.md). Also see the [Severity
-      Level Definitions](../SeverityLevelDefinitions.md) document.
-  
-      The argument names in the Arguments column lists the arguments used in
-      the message. The argument names are defined in the [Argument
-      List](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *[ERROR](../SeverityLevelDefinitions.md#error)* or
-      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Checking for revealed software version
-
-  dns-delegation02:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation02.md>.
-  
-      # Objective
-  
-      If the domain's name servers use several different names, they can all
-      be using the same IP address. This may be due to a configuration error,
-      or a workaround for a certain policy restriction. This test case checks
-      that the name servers used do not reuse the same IP addresses.
-  
-      Section 4.1 of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-      says at least two name servers must be used for a delegation.
+      The objective of this test is to verify that the administrative contact
+      is consistent between different authoritative name servers.
   
       # Pass/fail criteria
   
@@ -1229,181 +1039,19 @@ Test-Cases:
   
       In other cases the outcome of this Test Case is "pass".
   
-        Message                Default severity level (if message is emitted)
-        ---------------------- ------------------------------------------------
-        DEL_NS_SAME_IP         ERROR
-        CHILD_NS_SAME_IP       ERROR
-        DEL_DISTINCT_NS_IP     INFO
-        CHILD_DISTINCT_NS_IP   INFO
-    Summary: Name servers must have distinct IP addresses
-
-  dns-nameserver09:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver09.md>.
+        ----------------------------------------------------------------------
+        Message                         Default severity level (if message is
+                                        emitted)
+        ------------------------------- --------------------------------------
+        NO_RESPONSE                     DEBUG
   
-      # Objective
+        NO_RESPONSE_SOA_QUERY           DEBUG
   
-      There has been cases where the nameservers respond with complete
-      case-sensitivity (in violation of the DNS standards): that is, they
-      match the exact case of the name in the response; but return different
-      results for equivalent names with different cases in the request
-      (typically NXDOMAIN).
+        ONE_SOA_RNAME                   INFO
   
-      # Pass/fail criteria
-  
-      The test case passes only if the results of all queries are exactly the
-      same.
-    Summary: Testing QNAME case sensitivity
-
-  dns-zone04:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone04.md>.
-  
-      # Objective
-  
-      The SOA retry value is the number of seconds that describes minimum time
-      elapsed since a failed zone refresh from the primary name server. The
-      SOA refresh value is described in section 3.3.13 in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
-      section 2.2 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912).
-  
-      Setting the retry value low will increase the DNS traffic between the
-      servers, and also increase the load on the master name server.
-  
-      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
-      recommendation for the retry value is 2 hours (7200 seconds). Older
-      DNSCheck code had a one hour minimum value (3600 seconds), and this is
-      the minimum value we recommend.
-  
-      # Pass/fail criteria
-  
-      If the retry value is less than 3600 seconds, this test case fails.
-    Summary: SOA 'retry' at least 1 hour
-
-  dns-syntax06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.
-  
-      # Objective
-  
-      The SOA RNAME field is a mailbox address. The SOA RNAME field is defined
-      in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13),
-      section 3.3.13 and in [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912#section-2.2),
-      section 2.2. The RNAME field should follow the rules of an e-mail
-      address also defined in [RFC
-      5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1),
-      section 3.4.1.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        Message                       Default severity level
-        ----------------------------- ------------------------
-        NO_RESPONSE                   DEBUG
-        NO_RESPONSE_SOA_QUERY         DEBUG
-        RNAME_RFC822_INVALID          WARNING
-        RNAME_MAIL_DOMAIN_INVALID     WARNING
-        RNAME_MAIL_DOMAIN_LOCALHOST   WARNING
-        RNAME_MAIL_ILLEGAL_CNAME      WARNING
-        RNAME_RFC822_VALID            INFO
-    Summary: No illegal characters in the SOA RNAME field
-
-  dns-syntax07:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax07.md>.
-  
-      # Objective
-  
-      The SOA MNAME field is a hostname. Hostnames are valid according to the
-      rules defined in [RFC
-      952](https://datatracker.ietf.org/doc/html/rfc952), in section 2.1 in
-      [RFC 1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),
-      section 11 in [RFC
-      2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and
-      section 2 and 5 in [RFC
-      3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer
-      RFCs may override some rules defined in earlier documents.
-  
-      # Pass/fail criteria
-  
-      If any of the steps 4 to 8 in the ordered description of this test case
-      fails, the whole test case fails.
-    Summary: No illegal characters in the SOA MNAME field
-
-  dns-delegation05:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.
-  
-      # Objective
-  
-      Name servers for a zone are defined in NS records. An NS record points
-      at a name, i.e.A the RDATA for an NS record is a domain name. That name
-      is the name of the name server. [RFC
-      2181](https://datatracker.ietf.org/doc/html/rfc2181#section-10.3),
-      section 10.3, states that the name of the name server must not itself
-      point at a CNAME.
-  
-      The objective of this test is to verify that name servers of the tested
-      domain (zone) do not point at CNAME records.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        Message            Default severity level
-        ------------------ ------------------------
-        NO_RESPONSE        DEBUG
-        UNEXPECTED_RCODE   WARNING
-        NS_IS_CNAME        ERROR
-        NO_NS_CNAME        INFO
-    Summary: Name server must not point at CNAME alias
-
-  dns-nameserver07:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver07.md>.
-  
-      # Objective
-  
-      The configuration and/or implementation of some authoritative name
-      servers causes them to return an upward referral to the root zone. There
-      are proofs that such a [behaviour could be used for DDoS
-      attacks](https://www.dns-oarc.net/oarc/articles/upward-referrals-considered-harmful)
-  
-      # Pass/fail criteria
-  
-      The test case is Ok only if there are no responses in the authority
-      section
-    Summary: To check whether authoritative name servers return an upward referral
+        MULTIPLE_SOA_RNAMES             NOTICE
+        ----------------------------------------------------------------------
+    Summary: SOA RNAME consistency
 
   dns-consistency03:
     Description: |
@@ -1449,98 +1097,53 @@ Test-Cases:
         ----------------------------------------------------------------------
     Summary: SOA timers consistency
 
-  dns-delegation04:
+  dns-consistency04:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation04.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.
   
       # Objective
   
-      Subsection 6.1 of [RFC
-      2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the
-      nameservers must answer authoritatively for the domain. Answers to
-      queries to the name servers for the designated zone must have the "AA"
-      bit set.
+      All authoritative name servers must serve the same NS record set for the
+      tested domain, child zone ([RFC
+      1034](https://datatracker.ietf.org/doc/html/rfc1034), section 4.2.2).
+      Any inconsistencies in NS records described in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035), section 3.3.11,
+      might result in operational failures.
   
-      # Pass/fail criteria
+      The objective of this test is to verify that the NS records are
+      consistent between all authoritative name servers of the child zone.
   
-      If all the name servers answer with the AA-bit set, then the test
-      succeeds.
-    Summary: Name server is authoritative
-
-  dns-nameserver10:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.
-  
-      # Objective
-  
-      EDNS ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)) is a
-      mechanism to announce capabilities of a DNS implementation, and is
-      required by new functionality in DNS such as DNSSEC ([RFC
-      4033](https://datatracker.ietf.org/doc/html/rfc4033#section-3), section
-      3).
-  
-      [RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),
-      section 6.1.3, states that if a nameserver has implemented EDNS but has
-      not implemented the version level of the request, then it MUST respond
-      with RCODE "BADVERS". Only version "0" has been defined for EDNS.
-  
-      Note that RCODE "BADVERS" is an extended RCODE which is calculated from
-      the combination of the normal RCODE field in the DNS package header
-      ([RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1),
-      section 4.1.1) and the OPT record EXTENDED-RCODE field ([RFC
-      6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),
-      section 6.1.3). Also see [IANA RCODE
-      Registry](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).
-  
-      # Summary
-  
-      -   Only relevant for a zone whose name servers correctly support EDNS,
-          version 0.
-  
-        ------------------------------------------------------------------------------------
-        Message Tag outputted         Level     Arguments     Description of when message
-                                                              tag is outputted
-        ----------------------------- --------- ------------- ------------------------------
-        N10_NO_RESPONSE_EDNS1_QUERY   WARNING   ns_ip_list    Response when EDNS ver=0, but
-                                                              not when 1.
-  
-        N10_UNEXPECTED_RCODE          WARNING   ns_ip_list,   Unexpected RCODE value when
-                                                rcode         EDNS ver=1.
-  
-        N10_EDNS_RESPONSE_ERROR       WARNING   ns_ip_list    Expected RCODE value when EDNS
-                                                              ver=1, but error in response.
-        ------------------------------------------------------------------------------------
-  
-      The value in the Level column is the default severity level of the
-      message. The severity level can be changed in the [Zonemaster-Engine
-      profile](../../../configuration/profiles.md). Also see the [Severity
-      Level Definitions](../SeverityLevelDefinitions.md) document.
-  
-      The argument names in the Arguments column lists the arguments used in
-      the message. The argument names are defined in the [argument
-      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
+      Two NS RR sets are considered to be equal if both sets have the same
+      number of NS records, and for each NS record in one of the sets there is
+      exactly one NS record with identical owner name, class, TTL and RDATA in
+      the other NS set.
   
       # Pass/fail criteria
   
       The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+      with the severity level *ERROR* or *CRITICAL*.
   
       The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
   
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Test for undefined EDNS version
+      In other cases the outcome of this Test Case is "pass".
+  
+        ----------------------------------------------------------------------
+        Message                         Default severity level (if message is
+                                        emitted)
+        ------------------------------- --------------------------------------
+        NO_RESPONSE                     DEBUG
+  
+        NO_RESPONSE_NS_QUERY            DEBUG
+  
+        ONE_NS_SET                      INFO
+  
+        MULTIPLE_NS_SET                 NOTICE
+        ----------------------------------------------------------------------
+    Summary: Name server NS consistency
 
   dns-consistency05:
     Description: |
@@ -1590,143 +1193,22 @@ Test-Cases:
         -----------------------------------------------------------------------
     Summary: Consistency between glue and authoritative data
 
-  dns-syntax04:
+  dns-consistency06:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax04.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
   
       # Objective
   
-      The Name Server name must be a valid hostname according to the rules
-      defined in [RFC 952](https://datatracker.ietf.org/doc/html/rfc952), in
-      section 2.1 in [RFC
-      1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),
-      section 11 in [RFC
-      2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and
-      section 2 and 5 in [RFC
-      3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer
-      RFCs may override some rules defined in earlier documents.
-  
-      # Pass/fail criteria
-  
-      If any of the steps 3 to 5 in the ordered description of this test case
-      fails, the whole test case fails.
-    Summary: The NS name must have a valid domain/hostname
-
-  dns-delegation07:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation07.md>.
-  
-      # Objective
-  
-      If the list of name servers for a domain obtained from its parent are
-      not found in its its child zone, then it leads to an inconsistency
-      (section 2.3 of
-      [RIPE-114](https://www.ripe.net/publications/docs/ripe-114))
-  
-      # Pass/fail criteria
-  
-      If the set of glue name records obtained are found in the list of name
-      servers obtained from the child also, then the test succeeds
-    Summary: Parent glue name records present in child
-
-  dns-nameserver08:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver08.md>.
-  
-      # Objective
-  
-      The DNS standards require that nameservers treat names with case
-      insensitivity. That is, the names example.com and EXAMPLE.COM should
-      resolve to the same IP address. However, in the response, most
-      nameservers echo back the name as it appeared in the request, preserving
-      the original case.
-  
-      Therefore, another way to add entropy to requests is to randomly vary
-      the case of letters in domain names queried. This technique, also known
-      as "0x20" because bit 0x20 is used to set the case of of US-ASCII
-      letters, was first proposed in the [IETF internet
-      draft](https://datatracker.ietf.org/doc/html/draft-vixie-dnsext-dns0x20-00)
-      Use of Bit 0x20 in DNS Labels to Improve Transaction Identity. With this
-      technique, the nameserver response must match not only the query name,
-      but the case of every letter in the name string; for example,
-      wWw.eXaMpLe.CoM or WwW.ExamPLe.COm. This may add little or no entropy to
-      queries for the top-level and root domains, but it's effective for most
-      hostnames.
-  
-      # Pass/fail criteria
-  
-      The test case is Ok only if there are no responses in the authority
-      section
-    Summary: Testing QNAME case insensitivity
-
-  dns-delegation06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.
-  
-      # Objective
-  
-      Section 6.1 of the [RFC
-      2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the
-      SOA record is mandatory for every zone.
-  
-      This test is intended to verify the prescence of a SOA record for the
-      domain.
-  
-      # Pass/fail criteria
-  
-      If there is a SOA record present for the domain this test case succeeds.
-    Summary: Existence of SOA
-
-  dns-nameserver06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver06.md>.
-  
-      # Objective
-  
-      All name servers names listed for a delegation must be resolvable in
-      DNS. If they are not resolvable using DNS this is a sign of
-      misconfiguration, and raises the risk of unreachability for the domain.
-      It could also lower the performance for any resolver trying to resolve
-      the name.
-  
-      The objective of this test is to resolve the domain using all the listed
-      name servers used in the delegation. More information about resolver
-      behavior is in section 7 of [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035).
-  
-      # Pass/fail criteria
-  
-      If any of the name server names fails to resolve to an IP address, this
-      test case fails.
-    Summary: NS can be resolved
-
-  dns-delegation03:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.
-  
-      # Objective
-  
-      The Domain Name System defaults to using UDP for queries and answers
-      with a DNS payload limit of 512 octets (bytes). Larger replies cause an
-      initial truncation indication leading to a subsequent handling via TCP
-      with substantially higher overhead. EDNS0 is used to allow for larger
-      UDP responses thus reducing the need for use of TCP.
-  
-      But [IANA](https://www.iana.org/help/nameserver-requirements) still
-      maintains that referrals from the parent zone name servers must fit into
-      a non-EDNS0 UDP DNS packet.
+      All authoritative name servers must serve the same SOA record (section
+      4.2.1) of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1035) for
+      the tested domain. As per section 3.3.13 of [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035) the MNAME field in
+      the SOA RDATA refers to the name of "the name server that was the
+      original or primary source of data for this zone". Inconsistency in
+      MNAME of the domain might result in operational failures for
+      applications that uses MNAME.
   
       # Pass/fail criteria
   
@@ -1739,14 +1221,19 @@ Test-Cases:
   
       In other cases the outcome of this Test Case is "pass".
   
-        -----------------------------------------------------------------------
-        Message                            Default severity level of message
-        ---------------------------------- ------------------------------------
-        REFERRAL_SIZE_TOO_LARGE            WARNING
+        ----------------------------------------------------------------------
+        Message                         Default severity level (if message is
+                                        emitted)
+        ------------------------------- --------------------------------------
+        NO_RESPONSE                     DEBUG
   
-        REFERRAL_SIZE_OK                   INFO
-        -----------------------------------------------------------------------
-    Summary: No truncation of referrals
+        NO_RESPONSE_SOA_QUERY           DEBUG
+  
+        ONE_SOA_MNAME                   INFO
+  
+        MULTIPLE_SOA_MNAMES             NOTICE
+        ----------------------------------------------------------------------
+    Summary: SOA MNAME consistency
 
   dns-delegation01:
     Description: |
@@ -1803,30 +1290,21 @@ Test-Cases:
         NO_IPV6_NS_DEL             NOTICE
     Summary: Minimum number of name servers
 
-  dns-nameserver13:
+  dns-delegation02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation02.md>.
   
       # Objective
   
-      EDNS is a mechanism to announce capabilities of a DNS implementation,
-      and is now basically required by any new functionality in DNS such as
-      DNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).
+      If the domain's name servers use several different names, they can all
+      be using the same IP address. This may be due to a configuration error,
+      or a workaround for a certain policy restriction. This test case checks
+      that the name servers used do not reuse the same IP addresses.
   
-      [RFC 6891, section
-      7](https://datatracker.ietf.org/doc/html/rfc6891#section-7) states that
-      an OPT record must be included in a truncated response, if the query
-      includes an OPT pseudo record.
-  
-      This Test Case will try to verify that if the response to a query with
-      an OPT record is truncated, then the response will contain an OPT
-      record.
-  
-      To trigger a truncated response, the OPT pseudo record 'DO' bit is set
-      and the buffer size is limited to 512 bytes. If the zone is not signed
-      with DNSSEC, the response will probably not be truncated anyway.
+      Section 4.1 of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+      says at least two name servers must be used for a delegation.
   
       # Pass/fail criteria
   
@@ -1837,21 +1315,149 @@ Test-Cases:
       message with the severity level *WARNING*, but no message with severity
       level *ERROR* or *CRITICAL*.
   
-      The outcome of this Test case is "pass" in all other cases.
+      In other cases the outcome of this Test Case is "pass".
+  
+        Message                Default severity level (if message is emitted)
+        ---------------------- ------------------------------------------------
+        DEL_NS_SAME_IP         ERROR
+        CHILD_NS_SAME_IP       ERROR
+        DEL_DISTINCT_NS_IP     INFO
+        CHILD_DISTINCT_NS_IP   INFO
+    Summary: Name servers must have distinct IP addresses
+
+  dns-delegation03:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.
+  
+      # Objective
+  
+      The Domain Name System defaults to using UDP for queries and answers
+      with a DNS payload limit of 512 octets (bytes). Larger replies cause an
+      initial truncation indication leading to a subsequent handling via TCP
+      with substantially higher overhead. EDNS0 is used to allow for larger
+      UDP responses thus reducing the need for use of TCP.
+  
+      But [IANA](https://www.iana.org/help/nameserver-requirements) still
+      maintains that referrals from the parent zone name servers must fit into
+      a non-EDNS0 UDP DNS packet.
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *ERROR* or *CRITICAL*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
+  
+      In other cases the outcome of this Test Case is "pass".
   
         -----------------------------------------------------------------------
-        Message                      Default severity level (when message is
-                                     outputed)
-        ---------------------------- ------------------------------------------
-        NO_RESPONSE                  DEBUG
+        Message                            Default severity level of message
+        ---------------------------------- ------------------------------------
+        REFERRAL_SIZE_TOO_LARGE            WARNING
   
-        NO_EDNS_SUPPORT              WARNING
-  
-        NS_ERROR                     WARNING
-  
-        MISSING_OPT_IN_TRUNCATED     WARNING
+        REFERRAL_SIZE_OK                   INFO
         -----------------------------------------------------------------------
-    Summary: Test for truncated response on EDNS query
+    Summary: No truncation of referrals
+
+  dns-delegation04:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation04.md>.
+  
+      # Objective
+  
+      Subsection 6.1 of [RFC
+      2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the
+      nameservers must answer authoritatively for the domain. Answers to
+      queries to the name servers for the designated zone must have the "AA"
+      bit set.
+  
+      # Pass/fail criteria
+  
+      If all the name servers answer with the AA-bit set, then the test
+      succeeds.
+    Summary: Name server is authoritative
+
+  dns-delegation05:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.
+  
+      # Objective
+  
+      Name servers for a zone are defined in NS records. An NS record points
+      at a name, i.e.A the RDATA for an NS record is a domain name. That name
+      is the name of the name server. [RFC
+      2181](https://datatracker.ietf.org/doc/html/rfc2181#section-10.3),
+      section 10.3, states that the name of the name server must not itself
+      point at a CNAME.
+  
+      The objective of this test is to verify that name servers of the tested
+      domain (zone) do not point at CNAME records.
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *ERROR* or *CRITICAL*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
+  
+      In other cases the outcome of this Test Case is "pass".
+  
+        Message            Default severity level
+        ------------------ ------------------------
+        NO_RESPONSE        DEBUG
+        UNEXPECTED_RCODE   WARNING
+        NS_IS_CNAME        ERROR
+        NO_NS_CNAME        INFO
+    Summary: Name server must not point at CNAME alias
+
+  dns-delegation06:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.
+  
+      # Objective
+  
+      Section 6.1 of the [RFC
+      2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the
+      SOA record is mandatory for every zone.
+  
+      This test is intended to verify the prescence of a SOA record for the
+      domain.
+  
+      # Pass/fail criteria
+  
+      If there is a SOA record present for the domain this test case succeeds.
+    Summary: Existence of SOA
+
+  dns-delegation07:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation07.md>.
+  
+      # Objective
+  
+      If the list of name servers for a domain obtained from its parent are
+      not found in its its child zone, then it leads to an inconsistency
+      (section 2.3 of
+      [RIPE-114](https://www.ripe.net/publications/docs/ripe-114))
+  
+      # Pass/fail criteria
+  
+      If the set of glue name records obtained are found in the list of name
+      servers obtained from the child also, then the test succeeds
+    Summary: Parent glue name records present in child
 
   dns-nameserver01:
     Description: |
@@ -1961,32 +1567,6 @@ Test-Cases:
         -----------------------------------------------------------------------
     Summary: Test of EDNS0 support
 
-  dns-zone03:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone03.md>.
-  
-      # Objective
-  
-      The SOA retry value is the number of seconds that describes minimum time
-      elapsed since a failed zone refresh from the primary name server. The
-      SOA refresh value is described in section 3.3.13 in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
-      section 2.2 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912).
-  
-      > It's typically some fraction of the refresh interval.
-  
-      Setting the retry value low will increase the DNS traffic between the
-      servers, and also increase the load on the master name server.
-  
-      # Pass/fail criteria
-  
-      If the SOA retry value is higher than or equal to the refresh value,
-      this test case fails.
-    Summary: SOA 'retry' lower than 'refresh'
-
   dns-nameserver03:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -2010,55 +1590,6 @@ Test-Cases:
       this test case fails.
     Summary: Test availability of zone transfer (AXFR)
 
-  dns-syntax05:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax05.md>.
-  
-      # Objective
-  
-      The SOA RNAME field does not allow the '@' characters to be used for
-      describing a mailbox. The first dot ('.') is thus translated into the
-      '@' character. This is a common mistake. The rules are defined in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035).
-  
-      # Pass/fail criteria
-  
-      If there is any '@' character in any SOA/RNAME field, this test case
-      fails.
-    Summary: Misuse of '@' character in the SOA RNAME field
-
-  dns-zone02:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone02.md>.
-  
-      # Objective
-  
-      The SOA refresh value is the number of seconds that describes how often
-      a secondary name server will poll the primary name server to see if
-      there is any updates. The SOA refresh value is described in section
-      3.3.13 in [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), and
-      clarified in section 2.2 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912). Setting the
-      refresh value low will increase the DNS traffic between the servers, and
-      also increase the load on the master name server. The primary name
-      server will in most cases send DNS notifications to tell the secondary
-      name servers that zone content has been updated, as described in [RFC
-      1996](https://datatracker.ietf.org/doc/html/rfc1996).
-  
-      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
-      recommendation for the refresh value is 24 hours (86400 seconds). Older
-      DNSCheck code had a four hour minimum value, and this is the minimum
-      value we recommend.
-  
-      # Pass/fail criteria
-  
-      If the SOA refresh value is less than 14400 this test case fails.
-    Summary: SOA 'refresh' minimum value
-
   dns-nameserver04:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -2077,6 +1608,299 @@ Test-Cases:
       If any response comes from another IP address than the query was sent
       to, this test case fails.
     Summary: Same source address
+
+  dns-nameserver05:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.
+  
+      # Objective
+  
+      Older implementations of authoritative name servers have shown different
+      misbehaviours trying to answer queries for AAAA records, as described in
+      [RFC 4074](https://datatracker.ietf.org/doc/html/rfc4074). This test
+      case is intended to find out if the name server authoritative for the
+      domain shows any of these behaviours.
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *ERROR* or *CRITICAL*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
+  
+      In other cases the outcome of this Test Case is "pass".
+  
+        Message                 Default severity level
+        ----------------------- ------------------------
+        AAAA_BAD_RDATA          ERROR
+        AAAA_QUERY_DROPPED      ERROR
+        AAAA_UNEXPECTED_RCODE   ERROR
+        AAAA_WELL_PROCESSED     INFO
+        A_UNEXPECTED_RCODE      WARNING
+        NO_RESPONSE             DEBUG
+    Summary: Behaviour against AAAA query
+
+  dns-nameserver06:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver06.md>.
+  
+      # Objective
+  
+      All name servers names listed for a delegation must be resolvable in
+      DNS. If they are not resolvable using DNS this is a sign of
+      misconfiguration, and raises the risk of unreachability for the domain.
+      It could also lower the performance for any resolver trying to resolve
+      the name.
+  
+      The objective of this test is to resolve the domain using all the listed
+      name servers used in the delegation. More information about resolver
+      behavior is in section 7 of [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035).
+  
+      # Pass/fail criteria
+  
+      If any of the name server names fails to resolve to an IP address, this
+      test case fails.
+    Summary: NS can be resolved
+
+  dns-nameserver07:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver07.md>.
+  
+      # Objective
+  
+      The configuration and/or implementation of some authoritative name
+      servers causes them to return an upward referral to the root zone. There
+      are proofs that such a [behaviour could be used for DDoS
+      attacks](https://www.dns-oarc.net/oarc/articles/upward-referrals-considered-harmful)
+  
+      # Pass/fail criteria
+  
+      The test case is Ok only if there are no responses in the authority
+      section
+    Summary: To check whether authoritative name servers return an upward referral
+
+  dns-nameserver08:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver08.md>.
+  
+      # Objective
+  
+      The DNS standards require that nameservers treat names with case
+      insensitivity. That is, the names example.com and EXAMPLE.COM should
+      resolve to the same IP address. However, in the response, most
+      nameservers echo back the name as it appeared in the request, preserving
+      the original case.
+  
+      Therefore, another way to add entropy to requests is to randomly vary
+      the case of letters in domain names queried. This technique, also known
+      as "0x20" because bit 0x20 is used to set the case of of US-ASCII
+      letters, was first proposed in the [IETF internet
+      draft](https://datatracker.ietf.org/doc/html/draft-vixie-dnsext-dns0x20-00)
+      Use of Bit 0x20 in DNS Labels to Improve Transaction Identity. With this
+      technique, the nameserver response must match not only the query name,
+      but the case of every letter in the name string; for example,
+      wWw.eXaMpLe.CoM or WwW.ExamPLe.COm. This may add little or no entropy to
+      queries for the top-level and root domains, but it's effective for most
+      hostnames.
+  
+      # Pass/fail criteria
+  
+      The test case is Ok only if there are no responses in the authority
+      section
+    Summary: Testing QNAME case insensitivity
+
+  dns-nameserver09:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver09.md>.
+  
+      # Objective
+  
+      There has been cases where the nameservers respond with complete
+      case-sensitivity (in violation of the DNS standards): that is, they
+      match the exact case of the name in the response; but return different
+      results for equivalent names with different cases in the request
+      (typically NXDOMAIN).
+  
+      # Pass/fail criteria
+  
+      The test case passes only if the results of all queries are exactly the
+      same.
+    Summary: Testing QNAME case sensitivity
+
+  dns-nameserver10:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.
+  
+      # Objective
+  
+      EDNS ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)) is a
+      mechanism to announce capabilities of a DNS implementation, and is
+      required by new functionality in DNS such as DNSSEC ([RFC
+      4033](https://datatracker.ietf.org/doc/html/rfc4033#section-3), section
+      3).
+  
+      [RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),
+      section 6.1.3, states that if a nameserver has implemented EDNS but has
+      not implemented the version level of the request, then it MUST respond
+      with RCODE "BADVERS". Only version "0" has been defined for EDNS.
+  
+      Note that RCODE "BADVERS" is an extended RCODE which is calculated from
+      the combination of the normal RCODE field in the DNS package header
+      ([RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1),
+      section 4.1.1) and the OPT record EXTENDED-RCODE field ([RFC
+      6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),
+      section 6.1.3). Also see [IANA RCODE
+      Registry](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).
+  
+      # Summary
+  
+      -   Only relevant for a zone whose name servers correctly support EDNS,
+          version 0.
+  
+        ------------------------------------------------------------------------------------
+        Message Tag outputted         Level     Arguments     Description of when message
+                                                              tag is outputted
+        ----------------------------- --------- ------------- ------------------------------
+        N10_NO_RESPONSE_EDNS1_QUERY   WARNING   ns_ip_list    Response when EDNS ver=0, but
+                                                              not when 1.
+  
+        N10_UNEXPECTED_RCODE          WARNING   ns_ip_list,   Unexpected RCODE value when
+                                                rcode         EDNS ver=1.
+  
+        N10_EDNS_RESPONSE_ERROR       WARNING   ns_ip_list    Expected RCODE value when EDNS
+                                                              ver=1, but error in response.
+        ------------------------------------------------------------------------------------
+  
+      The value in the Level column is the default severity level of the
+      message. The severity level can be changed in the [Zonemaster-Engine
+      profile](../../../configuration/profiles.md). Also see the [Severity
+      Level Definitions](../SeverityLevelDefinitions.md) document.
+  
+      The argument names in the Arguments column lists the arguments used in
+      the message. The argument names are defined in the [argument
+      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Test for undefined EDNS version
+
+  dns-nameserver11:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.
+  
+      # Objective
+  
+      EDNS is a mechanism to announce capabilities of a DNS implementation,
+      and is now basically required by any new functionality in DNS such as
+      DNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).
+  
+      [RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.2),
+      section 6.1.2, states that any OPTION-CODE values not understood by a
+      responder or requestor MUST be ignored. Unknown OPTION-CODE values must
+      be processed as though the OPTION-CODE was not even there.
+  
+      In this test case, we will query with an unknown EDNS OPTION-CODE and
+      expect that the OPTION-CODE is not present in the response for the
+      query.
+  
+      # Summary
+  
+        ---------------------------------------------------------------------------------------
+        Message Tag                       Level     Arguments     Message ID for message tag
+        --------------------------------- --------- ------------- -----------------------------
+        N11_NO_EDNS                       WARNING   ns_ip_list    The DNS response, on query
+                                                                  with unknown EDNS
+                                                                  option-code, does not contain
+                                                                  any EDNS from name servers
+                                                                  "{ns_ip_list}".
+  
+        N11_NO_RESPONSE                   WARNING   ns_ip_list    There is no response on query
+                                                                  with unknown EDNS option-code
+                                                                  from name servers
+                                                                  "{ns_ip_list}".
+  
+        N11_RETURNS_UNKNOWN_OPTION_CODE   WARNING   ns_ip_list    The DNS response, on query
+                                                                  with unknown EDNS
+                                                                  option-code, contains an
+                                                                  unknown EDNS option-code from
+                                                                  name servers "{ns_ip_list}".
+  
+        N11_UNEXPECTED_ANSWER_SECTION     WARNING   ns_ip_list    The DNS response, on query
+                                                                  with unknown EDNS
+                                                                  option-code, does not contain
+                                                                  the expected SOA record in
+                                                                  the answer section from name
+                                                                  servers "{ns_ip_list}".
+  
+        N11_UNEXPECTED_RCODE              WARNING   ns_ip_list,   The DNS response, on query
+                                                    rcode         with unknown EDNS
+                                                                  option-code, has unexpected
+                                                                  RCODE name "{rcode}" from
+                                                                  name servers "{ns_ip_list}".
+  
+        N11_UNSET_AA                      WARNING   ns_ip_list    The DNS response, on query
+                                                                  with unknown EDNS
+                                                                  option-code, is unexpectedly
+                                                                  not authoritative from name
+                                                                  servers "{ns_ip_list}".
+        ---------------------------------------------------------------------------------------
+  
+      The value in the Level column is the default severity level of the
+      message. The severity level can be changed in the [Zonemaster-Engine
+      profile](../../../configuration/profiles.md). Also see the [Severity
+      Level Definitions](../SeverityLevelDefinitions.md) document.
+  
+      The argument names in the Arguments column lists the arguments used in
+      the message. The argument names are defined in the [argument
+      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Test for unknown EDNS OPTION-CODE
 
   dns-nameserver12:
     Description: |
@@ -2121,19 +1945,30 @@ Test-Cases:
         Z_FLAGS_NOTCLEAR   WARNING
     Summary: Test for unknown EDNS flags
 
-  dns-nameserver05:
+  dns-nameserver13:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.
   
       # Objective
   
-      Older implementations of authoritative name servers have shown different
-      misbehaviours trying to answer queries for AAAA records, as described in
-      [RFC 4074](https://datatracker.ietf.org/doc/html/rfc4074). This test
-      case is intended to find out if the name server authoritative for the
-      domain shows any of these behaviours.
+      EDNS is a mechanism to announce capabilities of a DNS implementation,
+      and is now basically required by any new functionality in DNS such as
+      DNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).
+  
+      [RFC 6891, section
+      7](https://datatracker.ietf.org/doc/html/rfc6891#section-7) states that
+      an OPT record must be included in a truncated response, if the query
+      includes an OPT pseudo record.
+  
+      This Test Case will try to verify that if the response to a query with
+      an OPT record is truncated, then the response will contain an OPT
+      record.
+  
+      To trigger a truncated response, the OPT pseudo record 'DO' bit is set
+      and the buffer size is limited to 512 bytes. If the zone is not signed
+      with DNSSEC, the response will probably not be truncated anyway.
   
       # Pass/fail criteria
   
@@ -2144,65 +1979,32 @@ Test-Cases:
       message with the severity level *WARNING*, but no message with severity
       level *ERROR* or *CRITICAL*.
   
-      In other cases the outcome of this Test Case is "pass".
+      The outcome of this Test case is "pass" in all other cases.
   
-        Message                 Default severity level
-        ----------------------- ------------------------
-        AAAA_BAD_RDATA          ERROR
-        AAAA_QUERY_DROPPED      ERROR
-        AAAA_UNEXPECTED_RCODE   ERROR
-        AAAA_WELL_PROCESSED     INFO
-        A_UNEXPECTED_RCODE      WARNING
-        NO_RESPONSE             DEBUG
-    Summary: Behaviour against AAAA query
+        -----------------------------------------------------------------------
+        Message                      Default severity level (when message is
+                                     outputed)
+        ---------------------------- ------------------------------------------
+        NO_RESPONSE                  DEBUG
+  
+        NO_EDNS_SUPPORT              WARNING
+  
+        NS_ERROR                     WARNING
+  
+        MISSING_OPT_IN_TRUNCATED     WARNING
+        -----------------------------------------------------------------------
+    Summary: Test for truncated response on EDNS query
 
-  dns-zone06:
+  dns-nameserver14:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone06.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.
   
       # Objective
   
-      The SOA minimum field sets the default TTL for all records in a zone.
-      The recommended value is to be "cache-friendly". However, for a zone
-      that changes content often, there is a need to keep the TTL values
-      shorter. The use of the SOA minimum value today is the negative cache
-      (where a resolver find content is missing).
-  
-      The SOA minimum field is described in section 3.3.13 in [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
-      section 2.2 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912). The description of
-      the implementation of negative caching is in [RFC
-      2308](https://datatracker.ietf.org/doc/html/rfc2308) (although it has
-      been updated by several DNSSEC related RFCs, it is still relevant for
-      this purpose).
-  
-      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
-      recommendation for the minimum value 2 days, but the negative caching is
-      now the norm. DNSCheck has a recommended value of between 300 seconds (5
-      minutes) and 86400 seconds (1 day).
-  
-      # Pass/fail criteria
-  
-      If the minimum value is larger than 86400 seconds or if the minimum
-      value is lower than 300 seconds, this test case fails.
-    Summary: SOA 'minimum' maximum value
-
-  dns-zone10:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.
-  
-      # Objective
-  
-      The SOA record is crucial for the DNS zone and "exactly one SOA RR
-      should be present at the top of the zone" ([RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-5.2),
-      section 5.2). This test case will verify that the zone of the domain to
-      be tested return exactly one SOA record.
+      This test case actually combines the test options in test cases
+      [NAMESERVER10](nameserver10.md) and [NAMESERVER11](nameserver11.md).
   
       # Pass/fail criteria
   
@@ -2213,46 +2015,187 @@ Test-Cases:
       message with the severity level *WARNING*, but no message with severity
       level *ERROR* or *CRITICAL*.
   
-      In other cases the outcome of this Test Case is "pass".
+      The outcome of this Test case is "pass" in all other cases.
   
-        Message              Default severity level
-        -------------------- ------------------------
-        MULTIPLE_SOA         ERROR
-        NO_RESPONSE          DEBUG
-        NO_SOA_IN_RESPONSE   DEBUG
-        ONE_SOA              INFO
-        WRONG_SOA            DEBUG
-    Summary: No multiple SOA records
+        -----------------------------------------------------------------------
+        Message                      Default severity level (Output message)
+        ---------------------------- ------------------------------------------
+        NO_RESPONSE                  DEBUG
+  
+        NO_EDNS_SUPPORT              WARNING
+  
+        NS_ERROR                     WARNING
+  
+        UNKNOWN_OPTION_CODE          WARNING
+  
+        UNSUPPORTED_EDNS_VER         WARNING
+        -----------------------------------------------------------------------
+    Summary: Test for unknown version with unknown OPTION-CODE
 
-  dns-zone07:
+  dns-nameserver15:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone07.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver15.md>.
   
       # Objective
   
-      Any NS type record should not be a CNAME. The SOA MNAME should in this
-      respect not be a CNAME.
+      This Test Case verifies if a name server responds to TXT queries in the
+      CHAOS class, specifically about its software version as it may sometimes
+      be desirable not to reveal that information.
   
-      Quote from 2.4 in [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912):
+      A description of DNS classes can be found in
+      [RFC2929](https://datatracker.ietf.org/doc/html/rfc2929#section-3.2),
+      section 3.2.
   
-      > Having NS records pointing to a CNAME is bad and may conflict badly
-      > with current BIND servers.
+      # Summary
   
-      The SOA MNAME field is described in section 3.3.13 in [RFC
+        ------------------------------------------------------------------------------------------
+        Message Tag            Level   Arguments     Message ID for message tag
+        ---------------------- ------- ------------- ---------------------------------------------
+        N15_SOFTWARE_VERSION   INFO    ns_ip_list,   The following name server(s) respond to
+                                       query_name,   software version query "{query_name}" with
+                                       string        string "{string}". Returned from name
+                                                     servers: "{ns_ip_list}"
+  
+        N15_NO_VERSION         INFO    ns_ip_list    The following name server(s) do not respond
+                                                     to software version queries. Returned from
+                                                     name servers: "{ns_ip_list}"
+        ------------------------------------------------------------------------------------------
+  
+      The value in the Level column is the default severity level of the
+      message. The severity level can be changed in the [Zonemaster-Engine
+      Profile](../../../configuration/profiles.md). Also see the [Severity
+      Level Definitions](../SeverityLevelDefinitions.md) document.
+  
+      The argument names in the Arguments column lists the arguments used in
+      the message. The argument names are defined in the [Argument
+      List](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *[ERROR](../SeverityLevelDefinitions.md#error)* or
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Checking for revealed software version
+
+  dns-syntax04:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax04.md>.
+  
+      # Objective
+  
+      The Name Server name must be a valid hostname according to the rules
+      defined in [RFC 952](https://datatracker.ietf.org/doc/html/rfc952), in
+      section 2.1 in [RFC
+      1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),
+      section 11 in [RFC
+      2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and
+      section 2 and 5 in [RFC
+      3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer
+      RFCs may override some rules defined in earlier documents.
+  
+      # Pass/fail criteria
+  
+      If any of the steps 3 to 5 in the ordered description of this test case
+      fails, the whole test case fails.
+    Summary: The NS name must have a valid domain/hostname
+
+  dns-syntax05:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax05.md>.
+  
+      # Objective
+  
+      The SOA RNAME field does not allow the '@' characters to be used for
+      describing a mailbox. The first dot ('.') is thus translated into the
+      '@' character. This is a common mistake. The rules are defined in [RFC
       1035](https://datatracker.ietf.org/doc/html/rfc1035).
   
-      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
-      recommendation for the minimum value 2 days, but the negative caching is
-      now the norm. DNSCheck has a recommended value of between 300 seconds (5
-      minutes) and 86400 seconds (1 day).
+      # Pass/fail criteria
+  
+      If there is any '@' character in any SOA/RNAME field, this test case
+      fails.
+    Summary: Misuse of '@' character in the SOA RNAME field
+
+  dns-syntax06:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.
+  
+      # Objective
+  
+      The SOA RNAME field is a mailbox address. The SOA RNAME field is defined
+      in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13),
+      section 3.3.13 and in [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912#section-2.2),
+      section 2.2. The RNAME field should follow the rules of an e-mail
+      address also defined in [RFC
+      5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1),
+      section 3.4.1.
   
       # Pass/fail criteria
   
-      If the SOA MNAME field is pointing to a CNAME, this test case fails.
-    Summary: SOA master is not an alias
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *ERROR* or *CRITICAL*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
+  
+      In other cases the outcome of this Test Case is "pass".
+  
+        Message                       Default severity level
+        ----------------------------- ------------------------
+        NO_RESPONSE                   DEBUG
+        NO_RESPONSE_SOA_QUERY         DEBUG
+        RNAME_RFC822_INVALID          WARNING
+        RNAME_MAIL_DOMAIN_INVALID     WARNING
+        RNAME_MAIL_DOMAIN_LOCALHOST   WARNING
+        RNAME_MAIL_ILLEGAL_CNAME      WARNING
+        RNAME_RFC822_VALID            INFO
+    Summary: No illegal characters in the SOA RNAME field
+
+  dns-syntax07:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax07.md>.
+  
+      # Objective
+  
+      The SOA MNAME field is a hostname. Hostnames are valid according to the
+      rules defined in [RFC
+      952](https://datatracker.ietf.org/doc/html/rfc952), in section 2.1 in
+      [RFC 1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),
+      section 11 in [RFC
+      2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and
+      section 2 and 5 in [RFC
+      3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer
+      RFCs may override some rules defined in earlier documents.
+  
+      # Pass/fail criteria
+  
+      If any of the steps 4 to 8 in the ordered description of this test case
+      fails, the whole test case fails.
+    Summary: No illegal characters in the SOA MNAME field
 
   dns-zone01:
     Description: |
@@ -2382,139 +2325,296 @@ Test-Cases:
       Test Case is "pass".
     Summary: Fully qualified master nameserver in SOA
 
-  dns-address03:
+  dns-zone02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address03.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone02.md>.
   
       # Objective
   
-      Some anti-spam techniques use reverse DNS lookup to allow incoming
-      traffic. In order to prevent name servers to be blocked or blacklisted,
-      DNS administrators should publish PTR records associated with the name
-      server addresses.
+      The SOA refresh value is the number of seconds that describes how often
+      a secondary name server will poll the primary name server to see if
+      there is any updates. The SOA refresh value is described in section
+      3.3.13 in [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), and
+      clarified in section 2.2 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912). Setting the
+      refresh value low will increase the DNS traffic between the servers, and
+      also increase the load on the master name server. The primary name
+      server will in most cases send DNS notifications to tell the secondary
+      name servers that zone content has been updated, as described in [RFC
+      1996](https://datatracker.ietf.org/doc/html/rfc1996).
   
-      Moreover, as mentioned in paragraph 2.1 of [RFC
-      1912](https://datatracker.ietf.org/doc/html/rfc1912) when a PTR record
-      exists, it must match the host name.
+      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
+      recommendation for the refresh value is 24 hours (86400 seconds). Older
+      DNSCheck code had a four hour minimum value, and this is the minimum
+      value we recommend.
   
       # Pass/fail criteria
   
-      Multiple addresses and multiple PTR records are allowed. The test
-      succeeds if every name server address has one or more PTR records and
-      one of these records matches the server name. If one address doesn't
-      match, the whole test case fails.
-    Summary: Reverse DNS entry matches name server name
+      If the SOA refresh value is less than 14400 this test case fails.
+    Summary: SOA 'refresh' minimum value
 
-  dns-address01:
+  dns-zone03:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address01.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone03.md>.
   
       # Objective
   
-      In order for the domain and its resources to be accessible,
-      authoritative name servers must have addresses in the routable public
-      addressing space.
+      The SOA retry value is the number of seconds that describes minimum time
+      elapsed since a failed zone refresh from the primary name server. The
+      SOA refresh value is described in section 3.3.13 in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
+      section 2.2 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912).
   
-      IANA is responsible for global coordination of the IP addressing system.
-      Aside its address allocation activities, it maintains reserved address
-      ranges for special uses. These ranges can be categorized into three
-      types : [Special purpose IPv4
-      addresses](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xml),
-      [Special purpose IPv6
-      addresses](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xml)
-      and [Multicast reserved
-      addresses](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xml).
+      > It's typically some fraction of the refresh interval.
+  
+      Setting the retry value low will increase the DNS traffic between the
+      servers, and also increase the load on the master name server.
   
       # Pass/fail criteria
   
-      If one name server has one of its addresses matches a forbidden address
-      block, the test fails. If all the name server addresses are outside
-      these forbidden blocks, the test case succeeds.
-    Summary: Name server address must be globally routable
+      If the SOA retry value is higher than or equal to the refresh value,
+      this test case fails.
+    Summary: SOA 'retry' lower than 'refresh'
 
-  dns-connectivity02:
+  dns-zone04:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone04.md>.
   
       # Objective
   
-      TCP is a protocol to reach a general purpose name server hosting a zone,
-      "All general-purpose DNS implementations MUST support \[...\] TCP
-      transport" ([RFC
-      7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5).
+      The SOA retry value is the number of seconds that describes minimum time
+      elapsed since a failed zone refresh from the primary name server. The
+      SOA refresh value is described in section 3.3.13 in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
+      section 2.2 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912).
   
-      This Test Case will verify if the name servers of *Child Zone* are
-      reachable over TCP. The name servers tested are both those in the
-      delegation of *Child Zone* and those in the NS records in the *Child
-      Zone* itself.
+      Setting the retry value low will increase the DNS traffic between the
+      servers, and also increase the load on the master name server.
   
-      This Test Case will mimic the tests done by
-      [Connectivity01](connectivity01.md), but over TCP instead:
+      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
+      recommendation for the retry value is 2 hours (7200 seconds). Older
+      DNSCheck code had a one hour minimum value (3600 seconds), and this is
+      the minimum value we recommend.
   
-      -   Name Server responding to a query.
-      -   Name Server including SOA record of *Child Zone* in the answer
-          section in the response on a SOA query for *Child Zone*.
-      -   Name Server including NS record of *Child Zone* in the answer
-          section in the response on an NS query for *Child Zone*.
-      -   Name Server setting the AA flag in a response with SOA or NS in
-          answer section.
-      -   Name Server responding with expected [RCODE
-          Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
-          ("NoError") on query for SOA or NS for *Child Zone*.
+      # Pass/fail criteria
+  
+      If the retry value is less than 3600 seconds, this test case fails.
+    Summary: SOA 'retry' at least 1 hour
+
+  dns-zone05:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone05.md>.
+  
+      # Objective
+  
+      The SOA expire value specifies for how long any secondary name server
+      keeps the zone valid without any contact with the primary name server.
+      This value should be greater than how long a major outage would
+      typically last. The expire value should also be larger than the refresh
+      and retry values, as described in section 3.3.13 in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
+      section 2.2 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912).
+  
+      Setting the expire value low will increase the risk of any unwanted
+      non-availability of the zone because of any failures in contacting the
+      primary name server.
+  
+      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
+      recommendation for the expire value is 1000 hours (roughly 41 days).
+      Older DNSCheck code had a 7 day minimum value (604800 seconds), and this
+      is the minimum value we recommend as an absolut minimum.
+  
+      # Pass/fail criteria
+  
+      If the expire value is less than 604800 seconds or if the expire value
+      is lower than the refresh value, this test case fails.
+    Summary: SOA 'expire' minimum value
+
+  dns-zone06:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone06.md>.
+  
+      # Objective
+  
+      The SOA minimum field sets the default TTL for all records in a zone.
+      The recommended value is to be "cache-friendly". However, for a zone
+      that changes content often, there is a need to keep the TTL values
+      shorter. The use of the SOA minimum value today is the negative cache
+      (where a resolver find content is missing).
+  
+      The SOA minimum field is described in section 3.3.13 in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in
+      section 2.2 of [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912). The description of
+      the implementation of negative caching is in [RFC
+      2308](https://datatracker.ietf.org/doc/html/rfc2308) (although it has
+      been updated by several DNSSEC related RFCs, it is still relevant for
+      this purpose).
+  
+      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
+      recommendation for the minimum value 2 days, but the negative caching is
+      now the norm. DNSCheck has a recommended value of between 300 seconds (5
+      minutes) and 86400 seconds (1 day).
+  
+      # Pass/fail criteria
+  
+      If the minimum value is larger than 86400 seconds or if the minimum
+      value is lower than 300 seconds, this test case fails.
+    Summary: SOA 'minimum' maximum value
+
+  dns-zone07:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone07.md>.
+  
+      # Objective
+  
+      Any NS type record should not be a CNAME. The SOA MNAME should in this
+      respect not be a CNAME.
+  
+      Quote from 2.4 in [RFC
+      1912](https://datatracker.ietf.org/doc/html/rfc1912):
+  
+      > Having NS records pointing to a CNAME is bad and may conflict badly
+      > with current BIND servers.
+  
+      The SOA MNAME field is described in section 3.3.13 in [RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035).
+  
+      The [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)
+      recommendation for the minimum value 2 days, but the negative caching is
+      now the norm. DNSCheck has a recommended value of between 300 seconds (5
+      minutes) and 86400 seconds (1 day).
+  
+      # Pass/fail criteria
+  
+      If the SOA MNAME field is pointing to a CNAME, this test case fails.
+    Summary: SOA master is not an alias
+
+  dns-zone10:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.
+  
+      # Objective
+  
+      The SOA record is crucial for the DNS zone and "exactly one SOA RR
+      should be present at the top of the zone" ([RFC
+      1035](https://datatracker.ietf.org/doc/html/rfc1035#section-5.2),
+      section 5.2). This test case will verify that the zone of the domain to
+      be tested return exactly one SOA record.
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *ERROR* or *CRITICAL*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level *WARNING*, but no message with severity
+      level *ERROR* or *CRITICAL*.
+  
+      In other cases the outcome of this Test Case is "pass".
+  
+        Message              Default severity level
+        -------------------- ------------------------
+        MULTIPLE_SOA         ERROR
+        NO_RESPONSE          DEBUG
+        NO_SOA_IN_RESPONSE   DEBUG
+        ONE_SOA              INFO
+        WRONG_SOA            DEBUG
+    Summary: No multiple SOA records
+
+  dnssec-01:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.
+  
+      # Objective
+  
+      The list of allowed Digest Algorithms in a DS record published by the
+      parent is specified by [RFC
+      8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3),
+      section 3.3, and is published in the [IANA
+      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)
+      of *DS RR Type Digest Algorithms*. No DS Digest Algorithm values, other
+      than those specified in the RFC and allocated by IANA, should be used in
+      public DNS.
+  
+      If [RFC 8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3)
+      and the [IANA
+      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)
+      disagree on the same DS digest algorithm, the RFC takes precedence until
+      the registry has a been updated with a reference to the RFC.
+  
+      The table of algorithms below is for reference only and is copied from
+      [IANA
+      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml).
+      It is here to make it easier to read the steps when symbolic names are
+      given. This is only an excerpt from the table. The full table is
+      available at the IANA registry.
+  
+        Algorithm number   Algorithm (or description)
+        ------------------ ----------------------------
+        0                  (Reserved)
+        1                  SHA-1
+        2                  SHA-256
+        3                  GOST R 34.11-94
+        4                  SHA-384
+        5-255              (Unassigned)
+  
+      This test case will verify that the Zonemaster implementation has
+      support for the DS digest algorithm of the DS record found, and if not
+      output a message tag. If the support is missing other test cases will
+      not be able to verify that DS record.
   
       # Summary
   
-        -------------------------------------------------------------------------------------------------------------
-        Message Tag                           Level     Arguments         Message ID for message tag
-        ------------------------------------- --------- ----------------- -------------------------------------------
-        CN02_MISSING_NS_RECORD_TCP            WARNING   ns                Nameserver {ns} reponds to a NS query with
-                                                                          no NS records in the answer section over
-                                                                          TCP.
+      -   At least one DS record must be found, or no further investigation
+          will be done and no messages will be outputted.
+      -   No messages will be outputted due to errors in the responses from
+          the parent name servers.
   
-        CN02_MISSING_SOA_RECORD_TCP           WARNING   ns                Nameserver {ns} reponds to a SOA query with
-                                                                          no SOA records in the answer section over
-                                                                          TCP.
+        -------------------------------------------------------------------------------------------
+        Message Tag outputted             Level    Arguments               Description of when
+                                                                           message tag is outputted
+        --------------------------------- -------- ----------------------- ------------------------
+        DS01_DIGEST_NOT_SUPPORTED_BY_ZM   NOTICE   ns_ip_list, algo_mnemo, DS Digest cannot be
+                                                   algo_num, keytag        validated by this
+                                                                           installation of
+                                                                           Zonemaster.
   
-        CN02_NO_RESPONSE_NS_QUERY_TCP         WARNING   ns                Nameserver {ns} does not respond to NS
-                                                                          queries over TCP.
+        DS01_DS_ALGO_DEPRECATED           ERROR    ns_ip_list, algo_mnemo, The DS digest algorithm
+                                                   algo_num, keytag        is deprecated.
   
-        CN02_NO_RESPONSE_SOA_QUERY_TCP        WARNING   ns                Nameserver {ns} does not respond to SOA
-                                                                          queries over TCP.
+        DS01_DS_ALGO_2_MISSING            NOTICE                           DS created with algo 2
+                                                                           (SHA-256) is missing.
   
-        CN02_NO_RESPONSE_TCP                  WARNING   ns                Nameserver {ns} does not respond to any
-                                                                          queries over TCP.
+        DS01_DS_ALGO_NOT_DS               ERROR    ns_ip_list, algo_mnemo, The DS digest algorithm
+                                                   algo_num, keytag        is not for DS.
   
-        CN02_NS_RECORD_NOT_AA_TCP             WARNING   ns                Nameserver {ns} does not give an
-                                                                          authoritative response on an NS query over
-                                                                          TCP.
-  
-        CN02_SOA_RECORD_NOT_AA_TCP            WARNING   ns                Nameserver {ns} does not give an
-                                                                          authoritative response on an SOA query over
-                                                                          TCP.
-  
-        CN02_UNEXPECTED_RCODE_NS_QUERY_TCP    WARNING   ns, rcode         Nameserver {ns} responds with an unexpected
-                                                                          RCODE ({rcode}) on an NS query over TCP.
-  
-        CN02_UNEXPECTED_RCODE_SOA_QUERY_TCP   WARNING   ns, rcode         Nameserver {ns} responds with an unexpected
-                                                                          RCODE ({rcode}) on an SOA query over TCP.
-  
-        CN02_WRONG_NS_RECORD_TCP              WARNING   ns, ,             Nameserver {ns} responds with a wrong owner
-                                                        domain_found,     name ({domain_found} instead of
-                                                        domain_expected   {domain_expected}) on NS queries over TCP.
-  
-        CN02_WRONG_SOA_RECORD_TCP             WARNING   ns, ,             Nameserver {ns} responds with a wrong owner
-                                                        domain_found,     name ({domain_found} instead of
-                                                        domain_expected   {domain_expected}) on SOA queries over TCP.
-        -------------------------------------------------------------------------------------------------------------
+        DS01_DS_ALGO_RESERVED             ERROR    ns_ip_list, algo_mnemo, No DS digest algorithm
+                                                   algo_num, keytag        defined for the digest
+                                                                           code.
+        -------------------------------------------------------------------------------------------
   
       The value in the Level column is the default severity level of the
-      message. The severity level can be changed in the [Zonemaster-Engine
+      message. The severity level can be overridden in the [Zonemaster-Engine
       profile](../../../configuration/profiles.md). Also see the [Severity
       Level Definitions](../SeverityLevelDefinitions.md) document.
   
@@ -2537,166 +2637,7 @@ Test-Cases:
       *[INFO](../SeverityLevelDefinitions.md#info)* or
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
-    Summary: TCP connectivity to name servers
-
-  dnssec-03:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.
-  
-      # Objective
-  
-      For an authoritative name server an increased number of NSEC3 iterations
-      have a negative impact on performance.
-  
-      Section 10.3 in [RFC
-      5155](https://datatracker.ietf.org/doc/html/rfc5155#section-10.3) sets a
-      maximum number of iterations depending on the DNSSEC key size -
-      regardless of which algorithm is used.
-  
-      > A zone owner MUST NOT use a value higher than shown in the table below
-      > for iterations for the given key size. A resolver MAY treat a response
-      > with a higher value as insecure, after the validator has verified that
-      > the signature over the NSEC3 RR is correct.
-  
-        Key Size   Iterations
-        ---------- ------------
-        1024       150
-        2048       500
-        4096       2,500
-  
-      Section 5.3.2 in [RFC
-      6781](https://datatracker.ietf.org/doc/html/rfc6781#section-5.3.2)
-      describes the consequences for an authoritative name server in more
-      detail, and references the [NSEC Hash
-      Performance](https://www.nlnetlabs.nl/downloads/publications/nsec3_hash_performance.pdf)
-      study from NLNet Labs.
-  
-      > Choosing a value of 100 iterations is deemed to be a sufficiently
-      > costly, yet not excessive, value: In the worst-case scenario, the
-      > performance of name servers would be halved, regardless of key size.
-  
-      # Pass/fail criteria
-  
-      If the NSEC3 iterations value is higher than 100, this test case gives a
-      warning. If it is higher than the number recommended for the
-      corresponding key size, this test case fails.
-    Summary: Check for too many NSEC3 iterations
-
-  dnssec-15:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that they are correctly set-up, if included in the zone.
-  
-      If a CDS record is included in the zone, the corresponding CDNSKEY
-      record should also be included ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-      4).
-  
-      The CDS and CDNSKEY RRsets should be consistent between all name servers
-      for the zone in question.
-  
-      If there are both CDS RRs and CDNSKEY RRs in the zone they must match in
-      content ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-      4). It means that both must be derived from the same DNSKEY or both
-      being "delete" CDS and CDNSKEY.
-  
-      # Summary
-  
-        -------------------------------------------------------------------------------------------------------
-        Message Tag outputted       [Default                                 Description of when message tag is
-                                    level](../SeverityLevelDefinitions.md)   outputted
-        --------------------------- ---------------------------------------- ----------------------------------
-        DS15_HAS_CDNSKEY_NO_CDS     NOTICE                                   CDNSKEY RRset is found, but no CDS
-                                                                             RRset.
-  
-        DS15_HAS_CDS_AND_CDNSKEY    INFO                                     CDNSKEY and CDS RRsets are found.
-  
-        DS15_HAS_CDS_NO_CDNSKEY     NOTICE                                   CDS RRset is found, but no CDNSKEY
-                                                                             RRset.
-  
-        DS15_INCONSISTENT_CDNSKEY   ERROR                                    All servers do not have the same
-                                                                             CDNSKEY RRset.
-  
-        DS15_INCONSISTENT_CDS       ERROR                                    All servers do not have the same
-                                                                             CDS RRset.
-  
-        DS15_MISMATCH_CDS_CDNSKEY   ERROR                                    Both CDS and CDNSKEY RRsets are
-                                                                             found but they do not match.
-  
-        DS15_NO_CDS_CDNSKEY         INFO                                     No CDS or CDNSKEY RRsets are found
-                                                                             on any name server.
-        -------------------------------------------------------------------------------------------------------
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Existence of CDS and CDNSKEY
-
-  dnssec-09:
-    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
-      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md>.\n\n#
-      Objective\n\nIf the zone is signed, the SOA RR should be signed with a valid RRSIG\nusing
-      a DNSKEY from the DNSKEY RR set. This is described in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
-      2.2.\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
-      Summary\n\n-   If no DNSKEY records are found, then further investigation will
-      not\n    be done and no messages will be outputted.\n\n  -------------------------------------------------------------------------------------\n
-      \ Message Tag outputted            Level    Arguments     Description of when
-      message\n                                                          tag is outputted\n
-      \ -------------------------------- -------- ------------- -----------------------------\n
-      \ DS09_ALGO_NOT_SUPPORTED_BY_ZM    NOTICE   ns_ip_list,   This installation of\n
-      \                                           algo_mnemo,   Zonemaster does not
-      support\n                                            algo_num,     the DNSKEY
-      algorithm.\n                                            keytag        \n\n  DS09_MISSING_RRSIG_IN_RESPONSE
-      \  ERROR    ns_ip_list    SOA is unsigned which is\n                                                          against
-      expectation\n\n  DS09_NO_MATCHING_DNSKEY          ERROR    ns_ip_list,   SOA is
-      signed with an RRSIG\n                                            keytag        that
-      does not match any\n                                                          DNSKEY\n\n
-      \ DS09_RRSIG_NOT_VALID_BY_DNSKEY   ERROR    ns_ip_list,   SOA is signed with an
-      RRSIG\n                                            keytag        that cannot be
-      validated by\n                                                          the matching
-      DNSKEY\n\n  DS09_SOA_RRSIG_EXPIRED           ERROR    ns_ip_list,   SOA is signed
-      with an RRSIG\n                                            keytag        that
-      has expired\n\n  DS09_SOA_RRSIG_NOT_YET_VALID     ERROR    ns_ip_list,   SOA is
-      signed with a not yet\n                                            keytag        valid
-      RRSIG\n  -------------------------------------------------------------------------------------\n\nThe
-      value in the Level column is the default severity level of the\nmessage. The severity
-      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
-      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
-      argument names in the Arguments column lists the arguments used in\nthe message.
-      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
-      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
-      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
-      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
-      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
-      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
-      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
-      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
-      Case is \"pass\".\n"
-    Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
+    Summary: Legal values for the DS hash digest algorithm
 
   dnssec-02:
     Description: |
@@ -2830,257 +2771,50 @@ Test-Cases:
       Test Case is "pass".
     Summary: DS must match a valid DNSKEY in the child zone
 
-  dnssec-10:
-    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
-      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec10.md>.\n\n#
-      Objective\n\nWhen DNSSEC is enabled, NSEC or NSEC3 records provide a secure denial
-      of\nexistence for records not present in the zone. This test case verifies\nthat
-      correct NSEC or NSEC3 records with valid signatures are returned\nfor a query
-      for an non-existent name.\n\nFurthermore, it is verified that the name servers
-      for the zone are\nconsistent about NSEC and NSEC3, i.e.A either all servers should
-      use NSEC\nor all servers should use NSEC3. It is never permitted to serve both\nNSEC
-      and NSEC3 for the same zone.\n\nThe use of the NSEC RR type is described in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1.3),\nsection
-      3.1.3, and the description of the NSEC RR itself is in [RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-4),
-      section\n4.\n\nThe description of the NSEC3 RR is in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-3),
-      section\n3, and its use in the DNS response is described in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-7.2),\nsection
-      7.2.\n\n# Summary\n\n-   If no DNSKEY records are found, then further investigation
-      will not\n    be done and no messages will be outputted.\n\n  -----------------------------------------------------------------------------------------\n
-      \ Message Tag outputted              Level    Arguments     Description of when
-      message tag\n                                                            is outputted\n
-      \ ---------------------------------- -------- ------------- -------------------------------\n
-      \ DS10_ALGO_NOT_SUPPORTED_BY_ZM      NOTICE   ns_ip_list,   This installation
-      of Zonemaster\n                                              algo_mnemo,   does
-      not support the DNSKEY\n                                              algo_num,
-      \    algorithm.\n                                              keytag        \n\n
-      \ DS10_ANSWER_VERIFY_ERROR           ERROR    ns_ip_list,   RRSIG on record or
-      records in\n                                              domain,       answer
-      section cannot be\n                                              rrtype        verified.\n\n
-      \ DS10_HAS_NSEC                      INFO                   Consistent NSEC returned
-      from\n                                                            servers.\n\n
-      \ DS10_HAS_NSEC3                     INFO                   Consistent NSEC3 returned
-      from\n                                                            servers.\n\n
-      \ DS10_INCONSISTENT_NSEC_NSEC3       ERROR    2 ns_ip_list  Some servers return
-      NSEC,\n                                                            others return
-      NSEC3.\n\n  DS10_MISSING_NSEC_NSEC3            ERROR    ns_ip_list    Missing
-      expected NSEC or NSEC3\n                                                            in
-      a signed zone.\n\n  DS10_MIXED_NSEC_NSEC3              ERROR    ns_ip_list    Both
-      NSEC and NSEC3 are\n                                                            returned
-      from the same server.\n\n  DS10_NAME_NOT_COVERED_BY_NSEC      ERROR    ns_ip_list
-      \   The non-existent name is not\n                                                            correctly
-      covered by the NSEC\n                                                            records.\n\n
-      \ DS10_NAME_NOT_COVERED_BY_NSEC3     ERROR    ns_ip_list    The non-existent name
-      is not\n                                                            correctly
-      covered by the NSEC3\n                                                            records.\n\n
-      \ DS10_NON_EXISTENT_RESPONSE_ERROR   ERROR    ns_ip_list    No or error in response
-      of an\n                                                            expected non-existent
-      name.\n\n  DS10_NSEC3_MISSING_SIGNATURE       ERROR    ns_ip_list    Missing signatures
-      for NSEC3\n                                                            record
-      or records.\n\n  DS10_NSEC3_RRSIG_VERIFY_ERROR      ERROR    ns_ip_list    The
-      signature or signatures on\n                                                            the
-      NSEC3 record or records\n                                                            cannot
-      be correctly verfied.\n\n  DS10_NSEC_MISSING_SIGNATURE        ERROR    ns_ip_list
-      \   Missing signatures for NSEC\n                                                            record
-      or records.\n\n  DS10_NSEC_RRSIG_VERIFY_ERROR       ERROR    ns_ip_list    The
-      signature or signatures on\n                                                            the
-      NSEC record or records\n                                                            cannot
-      be correctly verfied.\n\n  DS10_UNSIGNED_ANSWER               ERROR    ns_ip_list,
-      \  RRSIG is missing for record or\n                                              domain,
-      \      records in the answer section.\n                                              rrtype
-      \       \n  -----------------------------------------------------------------------------------------\n\nThe
-      value in the Level column is the default severity level of the\nmessage. The severity
-      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
-      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
-      argument names in the Arguments column lists the arguments used in\nthe message.
-      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
-      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
-      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
-      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
-      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
-      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
-      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
-      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
-      Case is \"pass\".\n"
-    Summary: Zone contains NSEC or NSEC3 records
-
-  dnssec-17:
+  dnssec-03:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.
   
       # Objective
   
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that the CDNSKEY RRset is valid. This test case is only relevant if the
-      zone has at least one CDNSKEY record. For tests of the CDS, see test
-      case [DNSSEC16](dnssec16.md).
+      For an authoritative name server an increased number of NSEC3 iterations
+      have a negative impact on performance.
   
-      # Summary
+      Section 10.3 in [RFC
+      5155](https://datatracker.ietf.org/doc/html/rfc5155#section-10.3) sets a
+      maximum number of iterations depending on the DNSSEC key size -
+      regardless of which algorithm is used.
   
-      -   If no CDNSKEY record is found, the test case will terminate early
-          with no message tag outputted.
-      -   If a CDNSKEY record is of "delete" type, then it can by definition
-          not match or point at any DNSKEY record.
+      > A zone owner MUST NOT use a value higher than shown in the table below
+      > for iterations for the given key size. A resolver MAY treat a response
+      > with a higher value as insecure, after the validator has verified that
+      > the signature over the NSEC3 RR is correct.
   
-        ------------------------------------------------------------------------------------------------------------------
-        Message Tag outputted                   [Default                                 Description of when message tag
-                                                level](../SeverityLevelDefinitions.md)   is outputted
-        --------------------------------------- ---------------------------------------- ---------------------------------
-        DS17_CDNSKEY_INVALID_RRSIG              ERROR                                    CDNSKEY RRset signed with an
-                                                                                         invalid RRSIG.
+        Key Size   Iterations
+        ---------- ------------
+        1024       150
+        2048       500
+        4096       2,500
   
-        DS17_CDNSKEY_IS_NON_SEP                 NOTICE                                   CDNSKEY record has the SEP bit
-                                                                                         (bit 15) unset.
+      Section 5.3.2 in [RFC
+      6781](https://datatracker.ietf.org/doc/html/rfc6781#section-5.3.2)
+      describes the consequences for an authoritative name server in more
+      detail, and references the [NSEC Hash
+      Performance](https://www.nlnetlabs.nl/downloads/publications/nsec3_hash_performance.pdf)
+      study from NLNet Labs.
   
-        DS17_CDNSKEY_IS_NON_ZONE                ERROR                                    CDNSKEY record has the zone bit
-                                                                                         (bit 7) unset.
-  
-        DS17_CDNSKEY_MATCHES_NO_DNSKEY          WARNING                                  CDNSKEY record does not match any
-                                                                                         DNSKEY in DNSKEY RRset.
-  
-        DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY      NOTICE                                   CDNSKEY RRset is not signed by
-                                                                                         the key that the CDNSKEY record
-                                                                                         points to.
-  
-        DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY   ERROR                                    CDNSKEY RRset is signed by a key
-                                                                                         not in DNSKEY RRset.
-  
-        DS17_CDNSKEY_UNSIGNED                   ERROR                                    CDNSKEY RRset is unsigned.
-  
-        DS17_CDNSKEY_WITHOUT_DNSKEY             ERROR                                    CDNSKEY RRset exists, but there
-                                                                                         is no DNSKEY RRset.
-  
-        DS17_DELETE_CDNSKEY                     INFO                                     CDNSKEY RRset has a "delete"
-                                                                                         CDNSKEY record as a single
-                                                                                         record.
-  
-        DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY       WARNING                                  DNSKEY RRset is not signed by the
-                                                                                         key or keys that the CDNSKEY
-                                                                                         records point to.
-  
-        DS17_MIXED_DELETE_CDNSKEY               ERROR                                    "Delete" CDNSKEY record is mixed
-                                                                                         with normal CDNSKEY record.
-        ------------------------------------------------------------------------------------------------------------------
+      > Choosing a value of 100 iterations is deemed to be a sufficiently
+      > costly, yet not excessive, value: In the worst-case scenario, the
+      > performance of name servers would be halved, regardless of key size.
   
       # Pass/fail criteria
   
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Validate CDNSKEY
-
-  dnssec-01:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.
-  
-      # Objective
-  
-      The list of allowed Digest Algorithms in a DS record published by the
-      parent is specified by [RFC
-      8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3),
-      section 3.3, and is published in the [IANA
-      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)
-      of *DS RR Type Digest Algorithms*. No DS Digest Algorithm values, other
-      than those specified in the RFC and allocated by IANA, should be used in
-      public DNS.
-  
-      If [RFC 8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3)
-      and the [IANA
-      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)
-      disagree on the same DS digest algorithm, the RFC takes precedence until
-      the registry has a been updated with a reference to the RFC.
-  
-      The table of algorithms below is for reference only and is copied from
-      [IANA
-      registry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml).
-      It is here to make it easier to read the steps when symbolic names are
-      given. This is only an excerpt from the table. The full table is
-      available at the IANA registry.
-  
-        Algorithm number   Algorithm (or description)
-        ------------------ ----------------------------
-        0                  (Reserved)
-        1                  SHA-1
-        2                  SHA-256
-        3                  GOST R 34.11-94
-        4                  SHA-384
-        5-255              (Unassigned)
-  
-      This test case will verify that the Zonemaster implementation has
-      support for the DS digest algorithm of the DS record found, and if not
-      output a message tag. If the support is missing other test cases will
-      not be able to verify that DS record.
-  
-      # Summary
-  
-      -   At least one DS record must be found, or no further investigation
-          will be done and no messages will be outputted.
-      -   No messages will be outputted due to errors in the responses from
-          the parent name servers.
-  
-        -------------------------------------------------------------------------------------------
-        Message Tag outputted             Level    Arguments               Description of when
-                                                                           message tag is outputted
-        --------------------------------- -------- ----------------------- ------------------------
-        DS01_DIGEST_NOT_SUPPORTED_BY_ZM   NOTICE   ns_ip_list, algo_mnemo, DS Digest cannot be
-                                                   algo_num, keytag        validated by this
-                                                                           installation of
-                                                                           Zonemaster.
-  
-        DS01_DS_ALGO_DEPRECATED           ERROR    ns_ip_list, algo_mnemo, The DS digest algorithm
-                                                   algo_num, keytag        is deprecated.
-  
-        DS01_DS_ALGO_2_MISSING            NOTICE                           DS created with algo 2
-                                                                           (SHA-256) is missing.
-  
-        DS01_DS_ALGO_NOT_DS               ERROR    ns_ip_list, algo_mnemo, The DS digest algorithm
-                                                   algo_num, keytag        is not for DS.
-  
-        DS01_DS_ALGO_RESERVED             ERROR    ns_ip_list, algo_mnemo, No DS digest algorithm
-                                                   algo_num, keytag        defined for the digest
-                                                                           code.
-        -------------------------------------------------------------------------------------------
-  
-      The value in the Level column is the default severity level of the
-      message. The severity level can be overridden in the [Zonemaster-Engine
-      profile](../../../configuration/profiles.md). Also see the [Severity
-      Level Definitions](../SeverityLevelDefinitions.md) document.
-  
-      The argument names in the Arguments column lists the arguments used in
-      the message. The argument names are defined in the [argument
-      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Legal values for the DS hash digest algorithm
+      If the NSEC3 iterations value is higher than 100, this test case gives a
+      warning. If it is higher than the number recommended for the
+      corresponding key size, this test case fails.
+    Summary: Check for too many NSEC3 iterations
 
   dnssec-04:
     Description: |
@@ -3108,113 +2842,6 @@ Test-Cases:
       If any of the signature expirations time is either shorter than 12 hours
       or longer than 180 days, this test case fails.
     Summary: Check for too short or too long RRSIG lifetimes
-
-  dnssec-12:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.
-  
-      # Objective
-  
-      The objectives for this Test Case has yet to be defined. This is a
-      placeholder for a complete defintion of the Test Case. The Test Case is
-      not yet implemented.
-  
-      Test for DNSSEC Algorithm Completeness (DS-\>DNSKEY-\>RRSIG)
-  
-      See issues [#588](https://github.com/zonemaster/zonemaster/issues/588),
-      [#528](https://github.com/zonemaster/zonemaster/issues/528),
-      [#529](https://github.com/zonemaster/zonemaster/issues/529) and
-      [#231](https://github.com/zonemaster/zonemaster/issues/231).
-  
-      # Pass/fail criteria
-  
-      TBD.
-    Summary: Test for DNSSEC Algorithm Completeness
-
-  dnssec-18:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that there is a correct chain of trust from DS, in the parent zone to
-      the CDS and CDNSKEY RRsets ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4.1),
-      section 4.1).
-  
-      As stated in [RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.4),
-      section 2.4: \> A DS RR SHOULD point to a DNSKEY RR that is present in
-      the child's \> apex DNSKEY RRset, and the child's apex DNSKEY RRset
-      SHOULD be \> signed by the corresponding private key."
-  
-      This Test case is only relevant if \* The *Child Zone* has either CDS or
-      CDNSKEY record or both, and \* The parent zone has a DS RRset for the
-      *Child Zone*.
-  
-      # Summary
-  
-      -   If no CDS or CDNSKEY records are found, this test case is not run
-          and no message will be outputted.
-      -   If no DS records are found at parent, this test case is not run and
-          no message will be outputted.
-  
-        --------------------------------------------------------------------------------------------------------------
-        Message Tag outputted            [Default                                 Description of when message tag is
-                                         level](../SeverityLevelDefinitions.md)   outputted
-        -------------------------------- ---------------------------------------- ------------------------------------
-        DS18_NO_MATCH_CDS_RRSIG_DS       ERROR                                    The CDS RRset is not signed with a
-                                                                                  DNSKEY record that a DS record
-                                                                                  points to.
-  
-        DS18_NO_MATCH_CDNSKEY_RRSIG_DS   ERROR                                    CDNSKEY RRset is not signed with a
-                                                                                  DNSKEY record that a DS record
-                                                                                  points to.
-        --------------------------------------------------------------------------------------------------------------
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Validate trust from DS to CDS and CDNSKEY
-
-  dnssec-06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md>.
-  
-      # Objective
-  
-      In order for an authoritative name server to be DNSSEC compliant, it
-      must serve DNSSEC signatures (RRSIG) as additional data in a DNS answer.
-      This additional processing is described in section 3.1 of [RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1).
-  
-      # Pass/fail criteria
-  
-      If any of the name servers configured for the domains fail to answer
-      with DNSSEC data, this test case fails.
-    Summary: Verify DNSSEC additional processing
 
   dnssec-05:
     Description: |
@@ -3296,84 +2923,207 @@ Test-Cases:
         ALGORITHM_OK                INFO
     Summary: Check for invalid DNSKEY algorithms
 
-  dnssec-16:
+  dnssec-06:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md>.
   
       # Objective
   
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that the CDS RRset is valid. This test case is only relevant if the zone
-      has at least one CDS record. For tests of the CDNSKEY, see test case
-      [DNSSEC17](dnssec17.md).
-  
-      # Summary
-  
-      -   If no CDS record is found, the test case will terminate early with
-          no message tag outputted.
-      -   If a CDS record is of "delete" type, then it can by definition not
-          match or point at any DNSKEY record.
-  
-        --------------------------------------------------------------------------------------------------------------
-        Message Tag outputted               [Default                                 Description of when message tag
-                                            level](../SeverityLevelDefinitions.md)   is outputted
-        ----------------------------------- ---------------------------------------- ---------------------------------
-        DS16_CDS_INVALID_RRSIG              ERROR                                    CDS RRset is signed with an
-                                                                                     invalid RRSIG.
-  
-        DS16_CDS_MATCHES_NON_SEP_DNSKEY     NOTICE                                   CDS record matches a DNSKEY with
-                                                                                     SEP bit (bit 15) unset.
-  
-        DS16_CDS_MATCHES_NON_ZONE_DNSKEY    ERROR                                    CDS record matches a DNSKEY with
-                                                                                     zone bit (bit 7) unset.
-  
-        DS16_CDS_MATCHES_NO_DNSKEY          WARNING                                  CDS record does not match any
-                                                                                     DNSKEY in DNSKEY RRset.
-  
-        DS16_CDS_NOT_SIGNED_BY_CDS          NOTICE                                   CDS RRset is not signed by the
-                                                                                     key that the CDS record points
-                                                                                     to.
-  
-        DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY   ERROR                                    CDS RRset is signed by a key not
-                                                                                     in DNSKEY RRset.
-  
-        DS16_CDS_UNSIGNED                   ERROR                                    CDS RRset is unsigned.
-  
-        DS16_CDS_WITHOUT_DNSKEY             ERROR                                    CDS RRset exists, but there is no
-                                                                                     DNSKEY RRset.
-  
-        DS16_DELETE_CDS                     INFO                                     CDS RRset has a "delete" CDS
-                                                                                     record as a single record.
-  
-        DS16_DNSKEY_NOT_SIGNED_BY_CDS       WARNING                                  DNSKEY RRset is not signed by the
-                                                                                     key or keys that the CDS records
-                                                                                     point to.
-  
-        DS16_MIXED_DELETE_CDS               ERROR                                    "Delete" CDS record is mixed with
-                                                                                     normal CDS record.
-        --------------------------------------------------------------------------------------------------------------
+      In order for an authoritative name server to be DNSSEC compliant, it
+      must serve DNSSEC signatures (RRSIG) as additional data in a DNS answer.
+      This additional processing is described in section 3.1 of [RFC
+      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1).
   
       # Pass/fail criteria
   
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+      If any of the name servers configured for the domains fail to answer
+      with DNSSEC data, this test case fails.
+    Summary: Verify DNSSEC additional processing
+
+  dnssec-08:
+    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
+      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md>.\n\n#
+      Objective\n\nA DNSSEC signed zone should have a DNSKEY RRset in the zone apex
+      ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.1),\nsection
+      2.1) and that RRset should be signed by a key that matches one\nof the records
+      in the DNSKEY RRset ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
+      2.2).\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
+      Summary\n\n-   If no DNSKEY records are found, then further investigation will
+      not\n    be done and no messages will be outputted.\n\n  --------------------------------------------------------------------------------------\n
+      \ Message Tag outputted             Level    Arguments     Description of when
+      message\n                                                           tag is outputted\n
+      \ --------------------------------- -------- ------------- -----------------------------\n
+      \ DS08_ALGO_NOT_SUPPORTED_BY_ZM     NOTICE   ns_ip_list,   This installation of\n
+      \                                            algo_mnemo,   Zonemaster does not
+      support\n                                             algo_num,     the DNSKEY
+      algorithm.\n                                             keytag        \n\n  DS08_DNSKEY_RRSIG_EXPIRED
+      \        ERROR    ns_ip_list,   DNSKEY RRset is signed with\n                                             keytag
+      \       an RRSIG that has expired.\n\n  DS08_DNSKEY_RRSIG_NOT_YET_VALID   ERROR
+      \   ns_ip_list,   DNSKEY RRset is signed with a\n                                             keytag
+      \       not yet valid RRSIG.\n\n  DS08_MISSING_RRSIG_IN_RESPONSE    ERROR    ns_ip_list
+      \   DNSKEY is unsigned which is\n                                                           against
+      expectation.\n\n  DS08_NO_MATCHING_DNSKEY           ERROR    ns_ip_list,   DNSKEY
+      RRset is signed with\n                                             keytag        an
+      RRSIG that does not match\n                                                           any
+      DNSKEY.\n\n  DS08_RRSIG_NOT_VALID_BY_DNSKEY    ERROR    ns_ip_list,   DNSKEY RRset
+      is signed with\n                                             keytag        an
+      RRSIG that cannot be\n                                                           validated
+      by the matching\n                                                           DNSKEY.\n
+      \ --------------------------------------------------------------------------------------\n\nThe
+      value in the Level column is the default severity level of the\nmessage. The severity
+      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
+      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
+      argument names in the Arguments column lists the arguments used in\nthe message.
+      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
+      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
+      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
+      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
+      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
+      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
+      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
+      Case is \"pass\".\n"
+    Summary: Valid RRSIG for DNSKEY
+
+  dnssec-09:
+    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
+      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md>.\n\n#
+      Objective\n\nIf the zone is signed, the SOA RR should be signed with a valid RRSIG\nusing
+      a DNSKEY from the DNSKEY RR set. This is described in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
+      2.2.\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
+      Summary\n\n-   If no DNSKEY records are found, then further investigation will
+      not\n    be done and no messages will be outputted.\n\n  -------------------------------------------------------------------------------------\n
+      \ Message Tag outputted            Level    Arguments     Description of when
+      message\n                                                          tag is outputted\n
+      \ -------------------------------- -------- ------------- -----------------------------\n
+      \ DS09_ALGO_NOT_SUPPORTED_BY_ZM    NOTICE   ns_ip_list,   This installation of\n
+      \                                           algo_mnemo,   Zonemaster does not
+      support\n                                            algo_num,     the DNSKEY
+      algorithm.\n                                            keytag        \n\n  DS09_MISSING_RRSIG_IN_RESPONSE
+      \  ERROR    ns_ip_list    SOA is unsigned which is\n                                                          against
+      expectation\n\n  DS09_NO_MATCHING_DNSKEY          ERROR    ns_ip_list,   SOA is
+      signed with an RRSIG\n                                            keytag        that
+      does not match any\n                                                          DNSKEY\n\n
+      \ DS09_RRSIG_NOT_VALID_BY_DNSKEY   ERROR    ns_ip_list,   SOA is signed with an
+      RRSIG\n                                            keytag        that cannot be
+      validated by\n                                                          the matching
+      DNSKEY\n\n  DS09_SOA_RRSIG_EXPIRED           ERROR    ns_ip_list,   SOA is signed
+      with an RRSIG\n                                            keytag        that
+      has expired\n\n  DS09_SOA_RRSIG_NOT_YET_VALID     ERROR    ns_ip_list,   SOA is
+      signed with a not yet\n                                            keytag        valid
+      RRSIG\n  -------------------------------------------------------------------------------------\n\nThe
+      value in the Level column is the default severity level of the\nmessage. The severity
+      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
+      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
+      argument names in the Arguments column lists the arguments used in\nthe message.
+      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
+      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
+      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
+      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
+      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
+      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
+      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
+      Case is \"pass\".\n"
+    Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
+
+  dnssec-10:
+    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
+      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec10.md>.\n\n#
+      Objective\n\nWhen DNSSEC is enabled, NSEC or NSEC3 records provide a secure denial
+      of\nexistence for records not present in the zone. This test case verifies\nthat
+      correct NSEC or NSEC3 records with valid signatures are returned\nfor a query
+      for an non-existent name.\n\nFurthermore, it is verified that the name servers
+      for the zone are\nconsistent about NSEC and NSEC3, i.e.A either all servers should
+      use NSEC\nor all servers should use NSEC3. It is never permitted to serve both\nNSEC
+      and NSEC3 for the same zone.\n\nThe use of the NSEC RR type is described in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1.3),\nsection
+      3.1.3, and the description of the NSEC RR itself is in [RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-4),
+      section\n4.\n\nThe description of the NSEC3 RR is in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-3),
+      section\n3, and its use in the DNS response is described in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-7.2),\nsection
+      7.2.\n\n# Summary\n\n-   If no DNSKEY records are found, then further investigation
+      will not\n    be done and no messages will be outputted.\n\n  -----------------------------------------------------------------------------------------\n
+      \ Message Tag outputted              Level    Arguments     Description of when
+      message tag\n                                                            is outputted\n
+      \ ---------------------------------- -------- ------------- -------------------------------\n
+      \ DS10_ALGO_NOT_SUPPORTED_BY_ZM      NOTICE   ns_ip_list,   This installation
+      of Zonemaster\n                                              algo_mnemo,   does
+      not support the DNSKEY\n                                              algo_num,
+      \    algorithm.\n                                              keytag        \n\n
+      \ DS10_ANSWER_VERIFY_ERROR           ERROR    ns_ip_list,   RRSIG on record or
+      records in\n                                              domain,       answer
+      section cannot be\n                                              rrtype        verified.\n\n
+      \ DS10_HAS_NSEC                      INFO                   Consistent NSEC returned
+      from\n                                                            servers.\n\n
+      \ DS10_HAS_NSEC3                     INFO                   Consistent NSEC3 returned
+      from\n                                                            servers.\n\n
+      \ DS10_INCONSISTENT_NSEC_NSEC3       ERROR    2 ns_ip_list  Some servers return
+      NSEC,\n                                                            others return
+      NSEC3.\n\n  DS10_MISSING_NSEC_NSEC3            ERROR    ns_ip_list    Missing
+      expected NSEC or NSEC3\n                                                            in
+      a signed zone.\n\n  DS10_MIXED_NSEC_NSEC3              ERROR    ns_ip_list    Both
+      NSEC and NSEC3 are\n                                                            returned
+      from the same server.\n\n  DS10_NAME_NOT_COVERED_BY_NSEC      ERROR    ns_ip_list
+      \   The non-existent name is not\n                                                            correctly
+      covered by the NSEC\n                                                            records.\n\n
+      \ DS10_NAME_NOT_COVERED_BY_NSEC3     ERROR    ns_ip_list    The non-existent name
+      is not\n                                                            correctly
+      covered by the NSEC3\n                                                            records.\n\n
+      \ DS10_NON_EXISTENT_RESPONSE_ERROR   ERROR    ns_ip_list    No or error in response
+      of an\n                                                            expected non-existent
+      name.\n\n  DS10_NSEC3_MISSING_SIGNATURE       ERROR    ns_ip_list    Missing signatures
+      for NSEC3\n                                                            record
+      or records.\n\n  DS10_NSEC3_RRSIG_VERIFY_ERROR      ERROR    ns_ip_list    The
+      signature or signatures on\n                                                            the
+      NSEC3 record or records\n                                                            cannot
+      be correctly verfied.\n\n  DS10_NSEC_MISSING_SIGNATURE        ERROR    ns_ip_list
+      \   Missing signatures for NSEC\n                                                            record
+      or records.\n\n  DS10_NSEC_RRSIG_VERIFY_ERROR       ERROR    ns_ip_list    The
+      signature or signatures on\n                                                            the
+      NSEC record or records\n                                                            cannot
+      be correctly verfied.\n\n  DS10_UNSIGNED_ANSWER               ERROR    ns_ip_list,
+      \  RRSIG is missing for record or\n                                              domain,
+      \      records in the answer section.\n                                              rrtype
+      \       \n  -----------------------------------------------------------------------------------------\n\nThe
+      value in the Level column is the default severity level of the\nmessage. The severity
+      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
+      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
+      argument names in the Arguments column lists the arguments used in\nthe message.
+      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
+      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
+      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
+      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
+      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
+      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
+      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
+      Case is \"pass\".\n"
+    Summary: Zone contains NSEC or NSEC3 records
+
+  dnssec-12:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.
   
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
+      # Objective
   
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
-    Summary: Validate CDS
+      The objectives for this Test Case has yet to be defined. This is a
+      placeholder for a complete defintion of the Test Case. The Test Case is
+      not yet implemented.
+  
+      Test for DNSSEC Algorithm Completeness (DS-\>DNSKEY-\>RRSIG)
+  
+      See issues [#588](https://github.com/zonemaster/zonemaster/issues/588),
+      [#528](https://github.com/zonemaster/zonemaster/issues/528),
+      [#529](https://github.com/zonemaster/zonemaster/issues/529) and
+      [#231](https://github.com/zonemaster/zonemaster/issues/231).
+  
+      # Pass/fail criteria
+  
+      TBD.
+    Summary: Test for DNSSEC Algorithm Completeness
 
   dnssec-13:
     Description: |
@@ -3511,50 +3261,300 @@ Test-Cases:
         KEY_SIZE_OK                 INFO
     Summary: Check for valid RSA DNSKEY key size
 
-  dnssec-08:
-    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
-      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md>.\n\n#
-      Objective\n\nA DNSSEC signed zone should have a DNSKEY RRset in the zone apex
-      ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.1),\nsection
-      2.1) and that RRset should be signed by a key that matches one\nof the records
-      in the DNSKEY RRset ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
-      2.2).\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
-      Summary\n\n-   If no DNSKEY records are found, then further investigation will
-      not\n    be done and no messages will be outputted.\n\n  --------------------------------------------------------------------------------------\n
-      \ Message Tag outputted             Level    Arguments     Description of when
-      message\n                                                           tag is outputted\n
-      \ --------------------------------- -------- ------------- -----------------------------\n
-      \ DS08_ALGO_NOT_SUPPORTED_BY_ZM     NOTICE   ns_ip_list,   This installation of\n
-      \                                            algo_mnemo,   Zonemaster does not
-      support\n                                             algo_num,     the DNSKEY
-      algorithm.\n                                             keytag        \n\n  DS08_DNSKEY_RRSIG_EXPIRED
-      \        ERROR    ns_ip_list,   DNSKEY RRset is signed with\n                                             keytag
-      \       an RRSIG that has expired.\n\n  DS08_DNSKEY_RRSIG_NOT_YET_VALID   ERROR
-      \   ns_ip_list,   DNSKEY RRset is signed with a\n                                             keytag
-      \       not yet valid RRSIG.\n\n  DS08_MISSING_RRSIG_IN_RESPONSE    ERROR    ns_ip_list
-      \   DNSKEY is unsigned which is\n                                                           against
-      expectation.\n\n  DS08_NO_MATCHING_DNSKEY           ERROR    ns_ip_list,   DNSKEY
-      RRset is signed with\n                                             keytag        an
-      RRSIG that does not match\n                                                           any
-      DNSKEY.\n\n  DS08_RRSIG_NOT_VALID_BY_DNSKEY    ERROR    ns_ip_list,   DNSKEY RRset
-      is signed with\n                                             keytag        an
-      RRSIG that cannot be\n                                                           validated
-      by the matching\n                                                           DNSKEY.\n
-      \ --------------------------------------------------------------------------------------\n\nThe
-      value in the Level column is the default severity level of the\nmessage. The severity
-      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
-      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
-      argument names in the Arguments column lists the arguments used in\nthe message.
-      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
-      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
-      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
-      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
-      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
-      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
-      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
-      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
-      Case is \"pass\".\n"
-    Summary: Valid RRSIG for DNSKEY
+  dnssec-15:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.
+  
+      # Objective
+  
+      CDS and CDNSKEY record types are defined in [RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
+      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
+      are optional in a zone. The objective of this test case is to verify
+      that they are correctly set-up, if included in the zone.
+  
+      If a CDS record is included in the zone, the corresponding CDNSKEY
+      record should also be included ([RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
+      4).
+  
+      The CDS and CDNSKEY RRsets should be consistent between all name servers
+      for the zone in question.
+  
+      If there are both CDS RRs and CDNSKEY RRs in the zone they must match in
+      content ([RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
+      4). It means that both must be derived from the same DNSKEY or both
+      being "delete" CDS and CDNSKEY.
+  
+      # Summary
+  
+        -------------------------------------------------------------------------------------------------------
+        Message Tag outputted       [Default                                 Description of when message tag is
+                                    level](../SeverityLevelDefinitions.md)   outputted
+        --------------------------- ---------------------------------------- ----------------------------------
+        DS15_HAS_CDNSKEY_NO_CDS     NOTICE                                   CDNSKEY RRset is found, but no CDS
+                                                                             RRset.
+  
+        DS15_HAS_CDS_AND_CDNSKEY    INFO                                     CDNSKEY and CDS RRsets are found.
+  
+        DS15_HAS_CDS_NO_CDNSKEY     NOTICE                                   CDS RRset is found, but no CDNSKEY
+                                                                             RRset.
+  
+        DS15_INCONSISTENT_CDNSKEY   ERROR                                    All servers do not have the same
+                                                                             CDNSKEY RRset.
+  
+        DS15_INCONSISTENT_CDS       ERROR                                    All servers do not have the same
+                                                                             CDS RRset.
+  
+        DS15_MISMATCH_CDS_CDNSKEY   ERROR                                    Both CDS and CDNSKEY RRsets are
+                                                                             found but they do not match.
+  
+        DS15_NO_CDS_CDNSKEY         INFO                                     No CDS or CDNSKEY RRsets are found
+                                                                             on any name server.
+        -------------------------------------------------------------------------------------------------------
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Existence of CDS and CDNSKEY
+
+  dnssec-16:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.
+  
+      # Objective
+  
+      CDS and CDNSKEY record types are defined in [RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
+      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
+      are optional in a zone. The objective of this test case is to verify
+      that the CDS RRset is valid. This test case is only relevant if the zone
+      has at least one CDS record. For tests of the CDNSKEY, see test case
+      [DNSSEC17](dnssec17.md).
+  
+      # Summary
+  
+      -   If no CDS record is found, the test case will terminate early with
+          no message tag outputted.
+      -   If a CDS record is of "delete" type, then it can by definition not
+          match or point at any DNSKEY record.
+  
+        --------------------------------------------------------------------------------------------------------------
+        Message Tag outputted               [Default                                 Description of when message tag
+                                            level](../SeverityLevelDefinitions.md)   is outputted
+        ----------------------------------- ---------------------------------------- ---------------------------------
+        DS16_CDS_INVALID_RRSIG              ERROR                                    CDS RRset is signed with an
+                                                                                     invalid RRSIG.
+  
+        DS16_CDS_MATCHES_NON_SEP_DNSKEY     NOTICE                                   CDS record matches a DNSKEY with
+                                                                                     SEP bit (bit 15) unset.
+  
+        DS16_CDS_MATCHES_NON_ZONE_DNSKEY    ERROR                                    CDS record matches a DNSKEY with
+                                                                                     zone bit (bit 7) unset.
+  
+        DS16_CDS_MATCHES_NO_DNSKEY          WARNING                                  CDS record does not match any
+                                                                                     DNSKEY in DNSKEY RRset.
+  
+        DS16_CDS_NOT_SIGNED_BY_CDS          NOTICE                                   CDS RRset is not signed by the
+                                                                                     key that the CDS record points
+                                                                                     to.
+  
+        DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY   ERROR                                    CDS RRset is signed by a key not
+                                                                                     in DNSKEY RRset.
+  
+        DS16_CDS_UNSIGNED                   ERROR                                    CDS RRset is unsigned.
+  
+        DS16_CDS_WITHOUT_DNSKEY             ERROR                                    CDS RRset exists, but there is no
+                                                                                     DNSKEY RRset.
+  
+        DS16_DELETE_CDS                     INFO                                     CDS RRset has a "delete" CDS
+                                                                                     record as a single record.
+  
+        DS16_DNSKEY_NOT_SIGNED_BY_CDS       WARNING                                  DNSKEY RRset is not signed by the
+                                                                                     key or keys that the CDS records
+                                                                                     point to.
+  
+        DS16_MIXED_DELETE_CDS               ERROR                                    "Delete" CDS record is mixed with
+                                                                                     normal CDS record.
+        --------------------------------------------------------------------------------------------------------------
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Validate CDS
+
+  dnssec-17:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.
+  
+      # Objective
+  
+      CDS and CDNSKEY record types are defined in [RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
+      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
+      are optional in a zone. The objective of this test case is to verify
+      that the CDNSKEY RRset is valid. This test case is only relevant if the
+      zone has at least one CDNSKEY record. For tests of the CDS, see test
+      case [DNSSEC16](dnssec16.md).
+  
+      # Summary
+  
+      -   If no CDNSKEY record is found, the test case will terminate early
+          with no message tag outputted.
+      -   If a CDNSKEY record is of "delete" type, then it can by definition
+          not match or point at any DNSKEY record.
+  
+        ------------------------------------------------------------------------------------------------------------------
+        Message Tag outputted                   [Default                                 Description of when message tag
+                                                level](../SeverityLevelDefinitions.md)   is outputted
+        --------------------------------------- ---------------------------------------- ---------------------------------
+        DS17_CDNSKEY_INVALID_RRSIG              ERROR                                    CDNSKEY RRset signed with an
+                                                                                         invalid RRSIG.
+  
+        DS17_CDNSKEY_IS_NON_SEP                 NOTICE                                   CDNSKEY record has the SEP bit
+                                                                                         (bit 15) unset.
+  
+        DS17_CDNSKEY_IS_NON_ZONE                ERROR                                    CDNSKEY record has the zone bit
+                                                                                         (bit 7) unset.
+  
+        DS17_CDNSKEY_MATCHES_NO_DNSKEY          WARNING                                  CDNSKEY record does not match any
+                                                                                         DNSKEY in DNSKEY RRset.
+  
+        DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY      NOTICE                                   CDNSKEY RRset is not signed by
+                                                                                         the key that the CDNSKEY record
+                                                                                         points to.
+  
+        DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY   ERROR                                    CDNSKEY RRset is signed by a key
+                                                                                         not in DNSKEY RRset.
+  
+        DS17_CDNSKEY_UNSIGNED                   ERROR                                    CDNSKEY RRset is unsigned.
+  
+        DS17_CDNSKEY_WITHOUT_DNSKEY             ERROR                                    CDNSKEY RRset exists, but there
+                                                                                         is no DNSKEY RRset.
+  
+        DS17_DELETE_CDNSKEY                     INFO                                     CDNSKEY RRset has a "delete"
+                                                                                         CDNSKEY record as a single
+                                                                                         record.
+  
+        DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY       WARNING                                  DNSKEY RRset is not signed by the
+                                                                                         key or keys that the CDNSKEY
+                                                                                         records point to.
+  
+        DS17_MIXED_DELETE_CDNSKEY               ERROR                                    "Delete" CDNSKEY record is mixed
+                                                                                         with normal CDNSKEY record.
+        ------------------------------------------------------------------------------------------------------------------
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Validate CDNSKEY
+
+  dnssec-18:
+    Description: |
+      This test case comes from version v2023.1.4 of Zonemaster. For more
+      information, see
+      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
+  
+      # Objective
+  
+      CDS and CDNSKEY record types are defined in [RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
+      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
+      are optional in a zone. The objective of this test case is to verify
+      that there is a correct chain of trust from DS, in the parent zone to
+      the CDS and CDNSKEY RRsets ([RFC
+      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4.1),
+      section 4.1).
+  
+      As stated in [RFC
+      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.4),
+      section 2.4: \> A DS RR SHOULD point to a DNSKEY RR that is present in
+      the child's \> apex DNSKEY RRset, and the child's apex DNSKEY RRset
+      SHOULD be \> signed by the corresponding private key."
+  
+      This Test case is only relevant if \* The *Child Zone* has either CDS or
+      CDNSKEY record or both, and \* The parent zone has a DS RRset for the
+      *Child Zone*.
+  
+      # Summary
+  
+      -   If no CDS or CDNSKEY records are found, this test case is not run
+          and no message will be outputted.
+      -   If no DS records are found at parent, this test case is not run and
+          no message will be outputted.
+  
+        --------------------------------------------------------------------------------------------------------------
+        Message Tag outputted            [Default                                 Description of when message tag is
+                                         level](../SeverityLevelDefinitions.md)   outputted
+        -------------------------------- ---------------------------------------- ------------------------------------
+        DS18_NO_MATCH_CDS_RRSIG_DS       ERROR                                    The CDS RRset is not signed with a
+                                                                                  DNSKEY record that a DS record
+                                                                                  points to.
+  
+        DS18_NO_MATCH_CDNSKEY_RRSIG_DS   ERROR                                    CDNSKEY RRset is not signed with a
+                                                                                  DNSKEY record that a DS record
+                                                                                  points to.
+        --------------------------------------------------------------------------------------------------------------
+  
+      # Pass/fail criteria
+  
+      The outcome of this Test Case is "fail" if there is at least one message
+      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
+      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
+  
+      The outcome of this Test Case is "warning" if there is at least one
+      message with the severity level
+      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
+      severity level *ERROR* or *CRITICAL*.
+  
+      In other cases, no message or only messages with severity level
+      *[INFO](../SeverityLevelDefinitions.md#info)* or
+      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
+      Test Case is "pass".
+    Summary: Validate trust from DS to CDS and CDNSKEY
 
 
   rdap-01-domainCaseFoldingValidation:
