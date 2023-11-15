@@ -1,4 +1,4 @@
-#defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1 | tr -d "\n"
+#defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1
 #define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
 #define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case.
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.

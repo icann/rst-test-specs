@@ -196,11 +196,11 @@ foreach my $row ($list->getElementsByTagName('tr')) {
     });
 }
 
-foreach my $case (sort grep { $_->{'id'} !~ /^dnssec/ } @cases) {
+foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} !~ /^dnssec/ } @cases) {
     print_case($case);
 }
 
-foreach my $case (sort grep { $_->{'id'} =~ /^dnssec/ } @cases) {
+foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} =~ /^dnssec/ } @cases) {
     print_case($case);
 }
 
