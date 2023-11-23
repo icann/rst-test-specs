@@ -917,6 +917,7 @@ sub e { $h->entity_encode(shift) }
 
 __DATA__
 __SCRIPT__
+
 window.addEventListener('beforeprint', (event) => {
     var els = document.getElementsByTagName('details');
     for (var i = 0 ; i < els.length ; i++) {
@@ -925,6 +926,7 @@ window.addEventListener('beforeprint', (event) => {
 });
 
 __META__
+
 This document was automatically generated from the formal specification for the
 RST system, which is available in
 [YAML](https://github.com/icann/rst-test-specs/blob/master/rst-test-specs.yaml)
@@ -938,10 +940,12 @@ YAML file is the normative reference, other representations are informational
 only.
 
 ICANN welcomes feedback and contributions from the community. Interested parties
-are encouraged to [fork](https://github.com/icann/rst-test-specs/fork) the
-repository and submit a [pull
+are encouraged to [fork the
+repository](https://github.com/icann/rst-test-specs/fork) and submit a [pull
 request](https://github.com/icann/rst-test-specs/pulls).
+
 __CSS__
+
 html {
     background-color: #fefefe;
     font-size: 15px;
