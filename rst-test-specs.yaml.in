@@ -35,13 +35,10 @@ Preamble: |
 
   #### 2.1.1. Error severity levels
 
-  1. `WARNING` - an issue which is not sufficiently severe to justify a
-     higher severity, but which may suggest an issue that should be
-     investigated.
-  2. `ERROR` - an issue which prevents the test from *passing*, but does not
+  1. `ERROR` - an issue which prevents the test from *passing*, but does not
      prevent the test from *continuing*. A test may produce multiple `ERROR`
      results.
-  3. `CRITICAL` - an issue which prevents the test from continuing any
+  2. `CRITICAL` - an issue which prevents the test from continuing any
      further. A test will only produce a single `CRITICAL` result and it
      will always be the last result in the log.
 
@@ -338,7 +335,7 @@ Test-Suites:
 
       ZM_NOTE
 
-      ## Testing of Anycast networks using multiple vantage points
+      # Testing of Anycast networks using multiple vantage points
 
       In order to test anycast networks without requiring RSPs to provide the
       unicast adresses of their nodes, tests carried out over the network will
@@ -541,7 +538,7 @@ Resources:
 
 Test-Cases:
 
-### BEGIN AUTO-GENERATED SECTION ###
+### BEGIN AUTO-GENERATED CASE SECTION ###
 #
 # Don't edit anything in this section, it will be clobbered when 'make' is next
 # run!
@@ -551,7 +548,7 @@ Test-Cases:
 
 #exec perl ./tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx"
 
-### END AUTO-GENERATED SECTION ###
+### END AUTO-GENERATED CASE SECTION ###
 
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
