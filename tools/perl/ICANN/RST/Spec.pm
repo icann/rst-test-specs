@@ -1,6 +1,7 @@
 package ICANN::RST::Spec;
 use Carp;
 use ICANN::RST::Case;
+use ICANN::RST::Error;
 use ICANN::RST::Graph;
 use ICANN::RST::Input;
 use ICANN::RST::Plan;
