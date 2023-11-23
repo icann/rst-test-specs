@@ -62,6 +62,20 @@ sub resources {
     return sort { $a->id cmp $b->id } values(%resources);
 }
 
+sub errors {
+    my $self = shift;
+
+    my %errors;
+
+    foreach my $suite ($self->suites) {
+        foreach my $error ($suite->errors) {
+            $errors{$error->id} = $error unless (defined($errors{$error->id}));
+        }
+    }
+
+    return sort { $a->id cmp $b->id } values(%errors);
+}
+
 1;
 
 __END__

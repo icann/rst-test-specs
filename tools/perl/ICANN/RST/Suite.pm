@@ -74,6 +74,23 @@ sub resources {
     return sort { $a->id cmp $b->id } values(%resources);
 }
 
+sub errors {
+    my $self = shift;
+
+    my %errors;
+    foreach my $id (@{$self->{'Errors'}}) {
+        $errors{$id} = $self->spec->error($id);
+    }
+
+    foreach my $case ($self->cases) {
+        foreach my $error ($case->errors) {
+            $errors{$error->id} = $error unless (defined($errors{$error->id}));
+        }
+    }
+
+    return sort { $a->id cmp $b->id } values(%errors);
+}
+
 1;
 
 __END__

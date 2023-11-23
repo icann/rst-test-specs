@@ -30,6 +30,12 @@ sub resources {
     return sort { $a->id <=> $b->id } map { $self->spec->resource($_) } @{$self->{'Resources'}};
 }
 
+sub errors {
+    my $self = shift;
+
+    return sort { $a->id <=> $b->id } map { $self->spec->error($_) } @{$self->{'Errors'}};
+}
+
 sub dependencies {
     my $self = shift;
 

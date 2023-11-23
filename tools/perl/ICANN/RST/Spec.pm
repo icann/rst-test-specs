@@ -40,11 +40,13 @@ sub suites          { my $self = shift ; return sort { $a->order <=> $b->order  
 sub cases           { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self)       } %{$self->{'spec'}->{'Test-Cases'}}        }
 sub inputs          { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self)       } %{$self->{'spec'}->{'Input-Parameters'}}  }
 sub resources       { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Resource->new($a, $b, $self)    } %{$self->{'spec'}->{'Resources'}}         }
+sub errors          { my $self = shift ; return sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Error->new($a, $b, $self)       } %{$self->{'spec'}->{'Errors'}}            }
 sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)      };
 sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites)     };
 sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)      };
 sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs)     };
 sub resource        { my ($self, $id) = @_ ; return $self->find($id, $self->resources)  };
+sub error           { my ($self, $id) = @_ ; return $self->find($id, $self->errors)     };
 
 sub find {
     my ($self, $needle, @haystack) = @_;
