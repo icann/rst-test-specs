@@ -1,36 +1,44 @@
 package ICANN::RST::Text;
 use Encode qw(decode_utf8);
+use File::Slurp;
+use File::Spec;
+use Digest::SHA qw(sha1_hex);
 use IPC::Open2;
+use Text::Unidecode;
 use utf8;
 use strict;
+
+my $CACHE;
 
 sub new {
     my ($package, $text) = @_;
     return bless({'text' => $text}, $package);
 }
 
+sub text { $_[0]->{'text'} }
+
 sub html {
     my ($self, $shift) = @_;
 
-    $shift = sprintf('--shift-heading-level-by=%u', $shift);
+    if (!defined($CACHE->{$self->text})) {
+        my $f = File::Spec->catfile(File::Spec->tmpdir, sha1_hex(unidecode($self->text))).'.html';
 
-    my ($out, $in, $html);
+        unless (-e $f) {
+            $shift = sprintf('--shift-heading-level-by=%u', $shift);
 
-    my $pid = open2($out, $in, qw(pandoc -f markdown -t html), $shift);
+            my $pid = open2(undef, my $in, qw(pandoc -f markdown -t html -o), $f, $shift);
 
-    binmode($out, ':encoding(UTF-8)');
-    binmode($in, ':encoding(UTF-8)');
+            $in->binmode(':encoding(UTF-8)');
+            $in->print($self->text),
+            $in->close;
 
-    $in->print($self->{'text'}),
-    $in->close;
+            waitpid($pid, 0);
+        }
 
-    $html .= $out->getline while (!$out->eof);
+        $CACHE->{$self->text} = '<div class="markdown-content">'.join('', read_file($f, 'binmode' => ':encoding(UTF-8)')).'</div>';
+    }
 
-    $out->close;
-
-    waitpid($pid, 0);
-
-    return '<div class="markdown-content">'.$html.'</div>';
+    return $CACHE->{$self->text};
 }
 
 1;
