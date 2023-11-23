@@ -15,11 +15,8 @@ Contact:
 
 Preamble: |
   The Test System consists of several *test plans*, each of which addresses a
-  particular scenario. The test plans follow a structure and methodology derived
-  from ISO/IEC 29119 *(formerly IEEE 829-2008)*.
-
-  Each *test plan* includes one or more *test suites*, which in turn include
-  one or more *test cases*.
+  particular scenario. Each *test plan* includes one or more *test suites*,
+  which in turn include one or more *test cases*.
 
   This file describes each test [plan](#test-plans), [suite](#test-suites) and
   [case](#test-cases) in the RST system, as well as the
