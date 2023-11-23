@@ -123,6 +123,14 @@ A list of L<ICANN::RST::Case> objects used by this suite.
 A list of L<ICANN::RST::Inputs> objects used by the test cases used by this
 suite.
 
+=head2 resources()
+
+A list of L<ICANN::RST::Resources> objects relevant to this suite.
+
+=head2 errors()
+
+A list of L<ICANN::RST::Error> objects which may be produced by this suite.
+
 =head2 graph()
 
 Returns a L<GraphViz2> object visualising the sequence of tests for this suite.

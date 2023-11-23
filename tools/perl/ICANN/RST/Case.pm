@@ -99,6 +99,10 @@ A list of L<ICANN::RST::Input> objects required by this test case.
 
 A list of L<ICANN::RST::Resource> objects required by this test case.
 
+=head2 errors
+
+A list of L<ICANN::RST::Error> objects which may be produced by this test case.
+
 =head2 dependencies()
 
 A list of test cases that this test case depends on.

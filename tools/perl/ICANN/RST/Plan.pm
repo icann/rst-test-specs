@@ -112,4 +112,12 @@ A list of L<ICANN::RST::Case> objects used by the suites used by this plan.
 A list of L<ICANN::RST::Inputs> objects used by the test cases used by the
 suites used by this plan.
 
+=head2 resources()
+
+A list of L<ICANN::RST::Resource> objects relevant to this plan.
+
+=head2 inputs()
+
+A list of L<ICANN::RST::Inputs> objects which may be produced by this plan.
+
 =cut

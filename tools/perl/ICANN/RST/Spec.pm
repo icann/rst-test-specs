@@ -108,7 +108,7 @@ Returns a string containing the contact email.
 
 Returns an array of L<ICANN::RST::Plan> objects.
 
-=head2 plan($id);
+=head2 plan($id)
 
 Returns the L<ICANN::RST::Plan> object with the given ID.
 
@@ -116,7 +116,7 @@ Returns the L<ICANN::RST::Plan> object with the given ID.
 
 Returns an array of L<ICANN::RST::Suite> objects.
 
-=head2 suite($id);
+=head2 suite($id)
 
 Returns the L<ICANN::RST::Suite> object with the given ID.
 
@@ -132,7 +132,7 @@ Returns the L<ICANN::RST::Resource> object with the given ID.
 
 Returns an array of L<ICANN::RST::Case> objects.
 
-=head2 case($id);
+=head2 case($id)
 
 Returns the L<ICANN::RST::Case> object with the given ID.
 
@@ -140,8 +140,16 @@ Returns the L<ICANN::RST::Case> object with the given ID.
 
 Returns an array of L<ICANN::RST::Input> objects.
 
-=head2 input($id);
+=head2 input($id)
 
 Returns the L<ICANN::RST::Input> object with the given ID.
+
+=head2 errors()
+
+Returns an array of L<ICANN::RST::Error> objects.
+
+=head2 error($id)
+
+Returns the L<ICANN::RST::Error> object with the given ID.
 
 =cut
