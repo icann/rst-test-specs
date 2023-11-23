@@ -1,4 +1,5 @@
 package ICANN::RST::Spec;
+use Carp;
 use ICANN::RST::Case;
 use ICANN::RST::Graph;
 use ICANN::RST::Input;
@@ -8,17 +9,23 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
+use constant SCHEMA_VERSION => 1.5;
 use strict;
 
 sub new {
     my ($package, $file) = @_;
-    return bless(
+    my $self = bless(
         {
             'spec' => YAML::XS::LoadFile($file),
             'file' => $file
         },
         $package,
     );
+
+    my $v = $self->{'spec'}->{'RST-Test-Plan-Schema-Version'};
+    croak(sprintf("Unsupported schema version '%s', must be %s", $v, SCHEMA_VERSION)) unless (SCHEMA_VERSION eq $v);
+
+    return $self;
 }
 
 sub schemaVersion   { $_[0]->{'spec'}->{'RST-Test-Plan-Schema-Version'}     }
