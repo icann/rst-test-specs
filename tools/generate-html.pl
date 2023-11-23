@@ -251,8 +251,8 @@ sub print_error_toc_list {
             {href => sprintf('#Error-%s', $error->id)},
             sprintf(
                 '%s (%s)',
-                e($error->id),
-                $h->code(e($error->severity)),
+                $h->code(e($error->id)),
+                e($error->severity),
             )
         ));
     }
@@ -391,8 +391,8 @@ sub print_plans {
                     { href => sprintf('#error-%s', $error->id) },
                     sprintf(
                         '%s (%s)',
-                        e($error->id),
-                        $h->code(e($error->severity)),
+                        $h->code(e($error->id)),
+                        e($error->severity),
                     )
                 ));
             }
@@ -588,8 +588,8 @@ sub print_suites {
                     { href => sprintf('#error-%s', $error->id) },
                     sprintf(
                         '%s (%s)',
-                        e($error->id),
-                        $h->code(e($error->severity)),
+                        $h->code(e($error->id)),
+                        e($error->severity),
                     )
                 ));
             }
@@ -704,8 +704,8 @@ sub print_cases {
                     { href => sprintf('#error-%s', $error->id) },
                     sprintf(
                         '%s (%s)',
-                        e($error->id),
-                        $h->code(e($error->severity)),
+                        $h->code(e($error->id)),
+                        e($error->severity),
                     )
                 ));
             }
