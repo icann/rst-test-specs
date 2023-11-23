@@ -126,6 +126,10 @@ sub print_toc {
     print_input_parameter_toc_list();
     print $h->close(li);
 
+    print $h->open(li);
+    print_error_toc_list();
+    print $h->close(li);
+
     print $h->close(ol);
 }
 
@@ -230,6 +234,29 @@ sub print_input_parameter_toc_list {
     print $h->close(details);
 }
 
+sub print_error_toc_list {
+    print $h->open(details, {'open' => 1});
+
+    print $h->summary($h->a({href => '#errors'}, 'Errors'));
+
+    print $h->open(ol);
+
+    foreach my $error ($s->errors) {
+        print $h->li($h->a(
+            {href => sprintf('#Error-%s', $error->id)},
+            sprintf(
+                '%s (%s)',
+                e($error->id),
+                $h->code(e($error->severity)),
+            )
+        ));
+    }
+
+    print $h->close(ol);
+
+    print $h->close(details);
+}
+
 sub print_main {
     print $h->open('main');
 
@@ -244,6 +271,8 @@ sub print_main {
     print_cases();
 
     print_inputs();
+
+    print_errors();
 
     print $h->close('main');
 }
@@ -265,6 +294,7 @@ sub print_plans {
     my $i = 0;
     foreach my $plan ($s->plans) {
         print $h->open(section);
+
         print $h->a({name => sprintf('Test-Plan-%s', $plan->id)});
         print $h->h3(sprintf('%u.%u. %s', $section, ++$i, e($plan->name)));
 
@@ -304,6 +334,7 @@ sub print_plans {
         print $h->close(details);
 
         print $h->open(details, {'open' => 1});
+
         print $h->summary($h->h4('Resources'));
         print $h->p('The following resources may be required to prepare for this test plan:');
 
@@ -323,10 +354,38 @@ sub print_plans {
 
             print $h->close(ul);
         }
+        print $h->close(details);
+
+        print $h->open(details, {'open' => 1});
+
+        print $h->summary($h->h4('Errors'));
+        print $h->p('This test plan may produce the following errors:');
+
+        my @errors = $plan->errors;
+        if (scalar(@errors) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $error (@errors) {
+                print $h->li($h->a(
+                    { href => sprintf('#error-%s', $error->id) },
+                    sprintf(
+                        '%s (%s)',
+                        e($error->id),
+                        $h->code(e($error->severity)),
+                    )
+                ));
+            }
+
+            print $h->close(ul);
+        }
 
         print $h->close(details);
 
         print $h->open(details, {'open' => 1});
+
         print $h->summary($h->h4('Input parameters'));
         print $h->p('This plan requires the following input parameters:');
 
@@ -492,6 +551,34 @@ sub print_suites {
 
         print $h->open(details, {'open' => 1});
 
+        print $h->summary($h->h4('Errors'));
+        print $h->p('This test suite may produce the following errors:');
+
+        my @errors = $suite->errors;
+        if (scalar(@errors) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $error (@errors) {
+                print $h->li($h->a(
+                    { href => sprintf('#error-%s', $error->id) },
+                    sprintf(
+                        '%s (%s)',
+                        e($error->id),
+                        $h->code(e($error->severity)),
+                    )
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close(details);
+
+        print $h->open(details, {'open' => 1});
+
         print $h->summary($h->h4('Input parameters'));
         print $h->p('The test cases used by this suite require the following input parameters:');
 
@@ -576,6 +663,34 @@ sub print_cases {
 
         print $h->h4('Description');
         print $case->description->html($section-3);
+
+        print $h->open(details, {'open' => 1});
+
+        print $h->summary($h->h4('Errors'));
+        print $h->p('This test case may produce the following errors:');
+
+        my @errors = $case->errors;
+        if (scalar(@errors) < 1) {
+            print $h->ul($h->li($h->em('None specified.')));
+
+        } else {
+            print $h->open(ul);
+
+            foreach my $error (@errors) {
+                print $h->li($h->a(
+                    { href => sprintf('#error-%s', $error->id) },
+                    sprintf(
+                        '%s (%s)',
+                        e($error->id),
+                        $h->code(e($error->severity)),
+                    )
+                ));
+            }
+
+            print $h->close(ul);
+        }
+
+        print $h->close(details);
 
         print $h->h4('Input parameters');
         print $h->p('This test case requires the following input parameters:');
@@ -738,6 +853,26 @@ sub print_inputs {
         }
 
         print $h->close(details);
+
+        print $h->close(section);
+    }
+}
+
+sub print_errors {
+    print $h->a({name => 'errors'});
+    print $h->h2(sprintf('%d. Errors', ++$section));
+
+    my $i = 0;
+    foreach my $error ($s->errors) {
+        print $h->open(section);
+
+        print $h->a({name => sprintf('Error-%s', $error->id)});
+
+        print $h->h4('Description');
+        print $error->description->html($section-3);
+
+        print $h->h4('Severity');
+        print $h->pre(e($error->severity));
 
         print $h->close(section);
     }
