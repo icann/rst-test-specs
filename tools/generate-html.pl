@@ -29,6 +29,17 @@ my $h = HTML::Tiny->new;
 
 my $j = JSON::XS->new->pretty->canonical;
 
+my ($_DATA, $section);
+while (<DATA>) {
+    if (/^__(.+?)__$/) {
+        $section = $1;
+
+    } elsif ($section) {
+        $_DATA->{$section} .= $_;
+
+    }
+}
+
 my $section = 0;
 
 binmode(STDOUT, ':encoding(UTF-8)');
@@ -38,20 +49,11 @@ print $h->open('html');
 
 my $title = 'Registry System Testing - Test Specifications';
 
-my $js = <<"END";
-window.addEventListener('beforeprint', (event) => {
-    var els = document.getElementsByTagName('details');
-    for (var i = 0 ; i < els.length ; i++) {
-        els.item(i).setAttribute('open', true);
-    }
-});
-END
-
 print $h->head([
     $h->meta({'charset' => 'UTF-8'}),
     $h->meta({name => 'viewport', 'content' => 'width=device-width'}),
-    $h->style(join('', <DATA>)),
-    $h->script($js),
+    $h->style($_DATA->{'CSS'}),
+    $h->script($_DATA->{'SCRIPT'}),
     $h->title($title),
 ]);
 
@@ -104,7 +106,10 @@ sub print_toc {
     print $h->open(ol);
 
     print $h->li($h->a({href => '#table-of-contents'}, 'Table of Contents'));
+
     print $h->li($h->a({href => '#preamble'}, 'Preamble'));
+
+    print $h->li($h->a({href => '#meta'}, 'About this document'));
 
     print $h->open(li);
     print_test_plan_toc_list();
@@ -262,6 +267,8 @@ sub print_main {
 
     print_preamble();
 
+    print_meta();
+
     print_plans();
 
     print_suites();
@@ -283,6 +290,16 @@ sub print_preamble() {
     print $h->h2(sprintf('%d. Preamble', ++$section));
 
     print $s->preamble->html;
+
+    print $h->close(section);
+}
+
+sub print_meta() {
+    print $h->open(section);
+    print $h->a({name => 'meta'});
+    print $h->h2(sprintf('%d. About this document', ++$section));
+
+    print ICANN::RST::Text->new($_DATA->{'META'})->html(2);
 
     print $h->close(section);
 }
@@ -336,7 +353,8 @@ sub print_plans {
         print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Resources'));
-        print $h->p('The following resources may be required to prepare for this test plan:');
+        print $h->p('The following resources may be required to prepare for this
+                        test plan:');
 
         my @resources = $plan->resources;
         if (scalar(@resources) < 1) {
@@ -438,7 +456,10 @@ sub print_plans {
 
         my $json = $j->encode(\%params);
         print $h->pre(e(sprintf(
-            "POST /test/987654/inputs HTTP/1.1\nContent-Type: application/json\nContent-Length: %u\n\n%s",
+            "POST /test/987654/inputs HTTP/1.1\n".
+                "Content-Type: application/json\n".
+                "Content-Length: %u\n\n".
+                "%s",
             length($json),
             $json
         )));
@@ -528,7 +549,8 @@ sub print_suites {
 
         print $h->open(details, {'open' => 1});
         print $h->summary($h->h4('Resources'));
-        print $h->p('The following resources may be required to prepare for this test plan:');
+        print $h->p('The following resources may be required to prepare for this
+                        test plan:');
 
         my @resources = $suite->resources;
         if (scalar(@resources) < 1) {
@@ -580,7 +602,8 @@ sub print_suites {
         print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Input parameters'));
-        print $h->p('The test cases used by this suite require the following input parameters:');
+        print $h->p('The test cases used by this suite require the following
+                        input parameters:');
 
         my @inputs = $suite->inputs;
         if (scalar(@inputs) < 1) {
@@ -714,7 +737,8 @@ sub print_cases {
 
         print $h->open(details, {'open' => 1});
         print $h->summary($h->h4('Resources'));
-        print $h->p('The following resources may be required to prepare for this test plan:');
+        print $h->p('The following resources may be required to prepare for this
+                        test plan:');
 
         my @resources = $case->resources;
         if (scalar(@resources) < 1) {
@@ -738,7 +762,8 @@ sub print_cases {
         print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Dependencies'));
-        print $h->p('This test case requires the following test cases to have successfully passed:');
+        print $h->p('This test case requires the following test cases to have
+                        successfully passed:');
 
         my @deps = $case->dependencies;
         if (scalar(@deps) < 1) {
@@ -762,7 +787,8 @@ sub print_cases {
         print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Dependants'));
-        print $h->p('The following test cases require this test case to have successfully passed:');
+        print $h->p('The following test cases require this test case to have
+                        successfully passed:');
 
         my @deps = $case->dependants;
         if (scalar(@deps) < 1) {
@@ -833,7 +859,8 @@ sub print_inputs {
         print $h->open(details, {'open' => 1});
 
         print $h->summary($h->h4('Test cases'));
-        print $h->p('This input parameter is used in the following test cases:');
+        print $h->p('This input parameter is used in the following test
+                        cases:');
 
         my @cases = $input->cases;
         if (scalar(@cases) < 1) {
@@ -889,6 +916,32 @@ sub print_footer {
 sub e { $h->entity_encode(shift) }
 
 __DATA__
+__SCRIPT__
+window.addEventListener('beforeprint', (event) => {
+    var els = document.getElementsByTagName('details');
+    for (var i = 0 ; i < els.length ; i++) {
+        els.item(i).setAttribute('open', true);
+    }
+});
+
+__META__
+This document was automatically generated from the formal specification for the
+RST system, which is available in
+[YAML](https://github.com/icann/rst-test-specs/blob/master/rst-test-specs.yaml)
+and
+[JSON](https://github.com/icann/rst-test-specs/blob/master/rst-test-specs.json)
+formats.
+
+The schema for the formal specification can be found in
+[Schema.md](https://github.com/icann/rst-test-specs/blob/master/Schema.md). The
+YAML file is the normative reference, other representations are informational
+only.
+
+ICANN welcomes feedback and contributions from the community. Interested parties
+are encouraged to [fork](https://github.com/icann/rst-test-specs/fork) the
+repository and submit a [pull
+request](https://github.com/icann/rst-test-specs/pulls).
+__CSS__
 html {
     background-color: #fefefe;
     font-size: 15px;
@@ -948,7 +1001,8 @@ dd {
 }
 
 code,tt,pre {
-    font-family: "Fira Code", "Menlo", "Consolas", "Andale Mono", "Courier New", Courier, monospace;
+    font-family: "Fira Code", "Menlo", "Consolas", "Andale Mono", "Courier New",
+        Courier, monospace;
 }
 
 pre {
