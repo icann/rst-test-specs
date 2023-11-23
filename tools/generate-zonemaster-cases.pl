@@ -127,8 +127,6 @@ foreach my $row ($list->getElementsByTagName('tr')) {
 
     next unless ($cells[1]);
 
-    # next unless ('dns-zone03' eq $case_id);
-
     my $mdfile = File::Spec->catfile(@docpath, $plan, lc($id).'.md');
     my $md = join('', read_file(File::Spec->catfile($base, $mdfile)));
 
@@ -183,7 +181,7 @@ foreach my $row ($list->getElementsByTagName('tr')) {
                 $snames->{$section} || ucfirst($section)
             );
 
-            foreach my $el (@{$sections->{$section} || []}) {
+            foreach my $el (@{$sections->{$section}}) {
                 $body->appendChild($idoc->importNode($el));
             }
         }
@@ -295,7 +293,7 @@ sub generateTestCaseList {
         'encoding'  => HTML_ENCODING,
     );
 
-    return $doc->getElementsByTagName('table')->item(0);
+    return $doc->getElementsByTagName('table')->shift;
 }
 
 sub createHTMLDocument {
