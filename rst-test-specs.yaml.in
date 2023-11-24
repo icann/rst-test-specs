@@ -1,6 +1,6 @@
 #defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1
 #define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
-#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case.
+#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
 ---
@@ -14,26 +14,52 @@ Contact:
   Email: rst@icann.org
 
 Preamble: |
-  The Test System consists of several *test plans*, each of which addresses a
-  particular scenario. Each *test plan* includes one or more *test suites*,
-  which in turn include one or more *test cases*.
-
   This file describes each test [plan](#test-plans), [suite](#test-suites) and
   [case](#test-cases) in the RST system, as well as the
   [input parameters](#input-parameters) required for each, relevant
   [resources](#resources), any inter-case dependencies, and the
   [errors](#errors) that might occur during testing.
 
-  ### 2.1. Pass/fail criteria
+  # 2.1. Test plans
 
-  In all cases, for a test to pass, **all** the test cases specified in the test
-  suite(s) for the test plan must pass: if **any** fail, then the test as a
+  An individual *Test Plan* addresses a particular scenario (for example, RSP
+  evaluation or Pre-Delegation Testing). Each plan consists of one or more *test
+  suites*, which in turn include one or more *test cases*.
+
+  # 2.2. Test suites
+
+  A *Test Suite* is a collection of *test cases* with a common theme or subject
+  matter, for example, Authoritative DNS or Registry Data Escrow.
+
+  # 2.3. Test cases
+
+  A *Test Case* describes a process for determining the conformance or
+  acceptability of a certain element of the system.
+
+  A test case consists of a *test procedure* which accepts zero or more **input
+  parameters**, and generates one or more **test results**.
+
+  ## 2.3.1. Input parameters
+
+  All test cases require some information about the subject of the test, for
+  example, service hostnames, credentials, and functional parameters. These
+  *input parameters* may be shared across multiple test cases.
+
+  ## 2.3.2. Test results
+
+  Test cases will generate one or more *test results*. Test results indicate the
+  outcome of the test and other relevant information.
+
+  ## 2.3.3. General pass/fail criteria
+
+  In general, for a test to pass, **all** the test cases specified in the test
+  suite(s) for the test plan must pass: if *any* fail, then the test as a
   whole will fail.
 
   A test case will fail if it produces one or more [errors](#errors) with the
   `ERROR` or `CRITICAL` severities.
 
-  #### 2.1.1. Error severity levels
+  ## 2.3.4. Error severity levels
 
   1. `ERROR` - an issue which prevents the test from *passing*, but does not
      prevent the test from *continuing*. A test may produce multiple `ERROR`
@@ -42,7 +68,17 @@ Preamble: |
      further. A test will only produce a single `CRITICAL` result and it
      will always be the last result in the log.
 
-  ### 2.2. Key acronyms and terms
+  ## 2.3.5. Common errors
+
+  For each test case, various errors and critical errors are defined which will
+  be used to signal why that the case might have failed.
+
+  In addition to these, there are a number of errors which any test case may
+  produce, which are:
+
+  * [TBA]
+
+  # 2.4. Key acronyms and terms
 
   RST
   : Registry System Testing. This system.
@@ -2376,3 +2412,12 @@ Input-Parameters:
     Example: ["192.168.22.1", "2001:DB8::22:1"]
 
 Errors:
+### BEGIN AUTO-GENERATED ERROR SECTION ###
+#
+# Don't edit anything in this section, it will be clobbered when 'make' is next
+# run!
+#
+
+#exec perl ./tools/generate-zonemaster-cases.pl ../../zonemaster/zonemaster --errors --devel
+
+### END AUTO-GENERATED ERROR SECTION ###
