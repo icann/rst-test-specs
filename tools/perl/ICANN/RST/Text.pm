@@ -21,12 +21,14 @@ sub html {
     my ($self, $shift) = @_;
 
     if (!defined($CACHE->{$self->text})) {
-        my $f = File::Spec->catfile(File::Spec->tmpdir, sha1_hex(unidecode($self->text))).'.html';
+        my $f = File::Spec->catfile(File::Spec->tmpdir, sha1_hex(unidecode($self->text))).sprintf('.%u.html', $shift);
 
         unless (-e $f) {
-            $shift = sprintf('--shift-heading-level-by=%u', $shift);
+            my @cmd = (qw(pandoc -f markdown -t html -o), $f);
 
-            my $pid = open2(undef, my $in, qw(pandoc -f markdown -t html -o), $f, $shift);
+            push(@cmd, sprintf('--shift-heading-level-by=%u', $shift)) if ($shift > 0);
+
+            my $pid = open2(undef, my $in, @cmd);
 
             $in->binmode(':encoding(UTF-8)');
             $in->print($self->text),
