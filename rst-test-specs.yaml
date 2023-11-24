@@ -55,6 +55,10 @@ Preamble: |
 
   ## 2.3.4. Error severity levels
 
+  1. `INFO` - an informational message.
+  1. `NOTICE` - a normal but significant condition.
+  2. `WARNING` - an issue which does not prevent the test from *passing*, but
+     which may benefit from further investigation.
   1. `ERROR` - an issue which prevents the test from *passing*, but does not
      prevent the test from *continuing*. A test may produce multiple `ERROR`
      results.
@@ -377,7 +381,7 @@ Test-Suites:
 
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
 
-      Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
+      Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dns-
     Input-Parameters:
       - dns.nameservers
@@ -402,7 +406,7 @@ Test-Suites:
 
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
 
-      Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
+      Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dnssec-
     Input-Parameters:
       - dns.nameservers
@@ -681,10 +685,14 @@ Test-Cases:
       disabled.\n\n# Summary\n\n  ----------------------------------------------------------------------------------------------------------------------\n
       \ Message Tag                                Level        Arguments         Message
       ID for message tag\n  ------------------------------------------ ------------
-      ----------------- --------------------------------------------\n  `ZM_CN01_MISSING_NS_RECORD_UDP`
-      \           `ERROR`      ns                Nameserver {ns} reponds to a NS query
-      with\n                                             (changed                       no
-      NS records in the answer section over\n                                             from
+      ----------------- --------------------------------------------\n  `ZM_CN01_IPV4_DISABLED`
+      \                   NOTICE       ns_list           IPv4 is disabled. No DNS queries
+      are sent to\n                                                                            these
+      name servers: \"{ns_list}\".\n\n  `ZM_CN01_IPV6_DISABLED`                    NOTICE
+      \      ns_list           IPv6 is disabled. No DNS queries are sent to\n                                                                            these
+      name servers: \"{ns_list}\".\n\n  `ZM_CN01_MISSING_NS_RECORD_UDP`            `ERROR`
+      \     ns                Nameserver {ns} reponds to a NS query with\n                                             (changed
+      \                      no NS records in the answer section over\n                                             from
       \                          UDP.\n                                             `WARNING`)
       \                    \n\n  `ZM_CN01_MISSING_SOA_RECORD_UDP`           `ERROR`
       \     ns                Nameserver {ns} reponds to a SOA query with\n                                             (changed
@@ -741,17 +749,19 @@ Test-Cases:
       or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
       Case is \"pass\".\n"
     Errors:
-    - ZM_CN01_MISSING_NS_RECORD_UDP
+    - ZM_CN01_IPV4_DISABLED
     - ZM_CN01_SOA_RECORD_NOT_AA_UDP
-    - ZM_CN01_NO_RESPONSE_UDP
-    - ZM_CN01_WRONG_SOA_RECORD_UDP
     - ZM_CN01_NO_RESPONSE_NS_QUERY_UDP
+    - ZM_CN01_WRONG_SOA_RECORD_UDP
+    - ZM_CN01_MISSING_NS_RECORD_UDP
     - ZM_CN01_UNEXPECTED_RCODE_SOA_QUERY_UDP
-    - ZM_CN01_NS_RECORD_NOT_AA_UDP
+    - ZM_CN01_NO_RESPONSE_UDP
     - ZM_CN01_UNEXPECTED_RCODE_NS_QUERY_UDP
-    - ZM_CN01_MISSING_SOA_RECORD_UDP
+    - ZM_CN01_IPV6_DISABLED
     - ZM_CN01_WRONG_NS_RECORD_UDP
     - ZM_CN01_NO_RESPONSE_SOA_QUERY_UDP
+    - ZM_CN01_MISSING_SOA_RECORD_UDP
+    - ZM_CN01_NS_RECORD_NOT_AA_UDP
     Summary: UDP connectivity to name servers
 
   dns-connectivity02:
@@ -886,12 +896,20 @@ Test-Cases:
         `ZM_EMPTY_ASN_SET`        ERROR
         `ZM_ERROR_ASN_DATABASE`   ERROR
         `ZM_IPV4_ONE_ASN`         `ERROR` (changed from `WARNING`)
+        `ZM_IPV4_SAME_ASN`        NOTICE
+        `ZM_IPV4_DIFFERENT_ASN`   INFO
         `ZM_IPV6_ONE_ASN`         `ERROR` (changed from `WARNING`)
+        `ZM_IPV6_SAME_ASN`        NOTICE
+        `ZM_IPV6_DIFFERENT_ASN`   INFO
     Errors:
     - ZM_EMPTY_ASN_SET
+    - ZM_IPV4_DIFFERENT_ASN
     - ZM_IPV4_ONE_ASN
+    - ZM_IPV6_SAME_ASN
     - ZM_ERROR_ASN_DATABASE
     - ZM_IPV6_ONE_ASN
+    - ZM_IPV4_SAME_ASN
+    - ZM_IPV6_DIFFERENT_ASN
     Summary: AS Diversity
 
   dns-connectivity04:
@@ -918,15 +936,31 @@ Test-Cases:
   
       # Summary
   
-        ------------------------------------------------------------------------------------------------
-        Message Tag                       Level   Arguments    Message ID for message tag
-        --------------------------------- ------- ------------ -----------------------------------------
-        `ZM_CN04_EMPTY_PREFIX_SET`        ERROR   ns_ip        Prefix database returned no information
-                                                               for IP address {ns_ip}.
+        --------------------------------------------------------------------------------------------------
+        Message Tag                       Level     Arguments    Message ID for message tag
+        --------------------------------- --------- ------------ -----------------------------------------
+        `ZM_CN04_EMPTY_PREFIX_SET`        ERROR     ns_ip        Prefix database returned no information
+                                                                 for IP address {ns_ip}.
   
-        `ZM_CN04_ERROR_PREFIX_DATABASE`   ERROR   ns_ip        Prefix database error. No data to analyze
-                                                               for IP address {ns_ip}.
-        ------------------------------------------------------------------------------------------------
+        `ZM_CN04_ERROR_PREFIX_DATABASE`   ERROR     ns_ip        Prefix database error. No data to analyze
+                                                                 for IP address {ns_ip}.
+  
+        `ZM_CN04_IPV4_SAME_PREFIX`        WARNING   ns_list,     The following name server(s) are
+                                                    ip_prefix    announced in the same IPv4 prefix
+                                                                 ({ip_prefix}): "{ns_list}"
+  
+        `ZM_CN04_IPV4_DIFFERENT_PREFIX`   INFO      ns_list      The following name server(s) are
+                                                                 announced in unique IPv4 prefix(es):
+                                                                 "{ns_list}"
+  
+        `ZM_CN04_IPV6_SAME_PREFIX`        WARNING   ns_list,     The following name server(s) are
+                                                    ip_prefix    announced in the same IPv6 prefix
+                                                                 ({ip_prefix}): "{ns_list}"
+  
+        `ZM_CN04_IPV6_DIFFERENT_PREFIX`   INFO      ns_list      The following name server(s) are
+                                                                 announced in unique IPv6 prefix(es):
+                                                                 "{ns_list}"
+        --------------------------------------------------------------------------------------------------
   
       The value in the Level column is the default severity level of the
       message. The severity level can be changed in the [Zonemaster-Engine
@@ -954,7 +988,11 @@ Test-Cases:
       Test Case is "pass".
     Errors:
     - ZM_CN04_EMPTY_PREFIX_SET
+    - ZM_CN04_IPV6_SAME_PREFIX
+    - ZM_CN04_IPV4_SAME_PREFIX
+    - ZM_CN04_IPV6_DIFFERENT_PREFIX
     - ZM_CN04_ERROR_PREFIX_DATABASE
+    - ZM_CN04_IPV4_DIFFERENT_PREFIX
     Summary: IP Prefix Diversity
 
   dns-consistency01:
@@ -1004,12 +1042,24 @@ Test-Cases:
   
         `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)
   
+        `ZM_ONE_SOA_SERIAL`             INFO
+  
         `ZM_MULTIPLE_SOA_SERIALS`       `ERROR` (changed from `WARNING`)
+  
+        `ZM_MULTIPLE_SOA_SERIALS_OK`    NOTICE
+  
+        `ZM_SOA_SERIAL`                 INFO
+  
+        `ZM_SOA_SERIAL_VARIATION`       NOTICE
         ----------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_SOA_SERIALS
+    - ZM_MULTIPLE_SOA_SERIALS_OK
+    - ZM_ONE_SOA_SERIAL
+    - ZM_SOA_SERIAL_VARIATION
     - ZM_NO_RESPONSE_SOA_QUERY
+    - ZM_SOA_SERIAL
+    - ZM_MULTIPLE_SOA_SERIALS
     Summary: SOA serial number consistency
 
   dns-consistency02:
@@ -1050,12 +1100,15 @@ Test-Cases:
   
         `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)
   
+        `ZM_ONE_SOA_RNAME`              INFO
+  
         `ZM_MULTIPLE_SOA_RNAMES`        `ERROR` (changed from `NOTICE`)
         ----------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_SOA_RNAMES
+    - ZM_ONE_SOA_RNAME
     - ZM_NO_RESPONSE_SOA_QUERY
+    - ZM_MULTIPLE_SOA_RNAMES
     Summary: SOA RNAME consistency
 
   dns-consistency03:
@@ -1096,12 +1149,15 @@ Test-Cases:
   
         `ZM_NO_RESPONSE_SOA_QUERY`             `ERROR` (changed from `DEBUG`)
   
+        `ZM_ONE_SOA_TIME_PARAMETER_SET`        INFO
+  
         `ZM_MULTIPLE_SOA_TIME_PARAMETER_SET`   `ERROR` (changed from `NOTICE`)
         ---------------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_SOA_TIME_PARAMETER_SET
+    - ZM_ONE_SOA_TIME_PARAMETER_SET
     - ZM_NO_RESPONSE_SOA_QUERY
+    - ZM_MULTIPLE_SOA_TIME_PARAMETER_SET
     Summary: SOA timers consistency
 
   dns-consistency04:
@@ -1146,12 +1202,15 @@ Test-Cases:
   
         `ZM_NO_RESPONSE_NS_QUERY`       `ERROR` (changed from `DEBUG`)
   
+        `ZM_ONE_NS_SET`                 INFO
+  
         `ZM_MULTIPLE_NS_SET`            `ERROR` (changed from `NOTICE`)
         ----------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_NS_SET
+    - ZM_ONE_NS_SET
     - ZM_NO_RESPONSE_NS_QUERY
+    - ZM_MULTIPLE_NS_SET
     Summary: Name server NS consistency
 
   dns-consistency05:
@@ -1197,13 +1256,16 @@ Test-Cases:
         `ZM_OUT_OF_BAILIWICK_ADDR_MISMATCH`   `ERROR` (changed from `ERROR`)
   
         `ZM_EXTRA_ADDRESS_CHILD`              `ERROR` (changed from `NOTICE`)
+  
+        `ZM_ADDRESSES_MATCH`                  INFO
         --------------------------------------------------------------------------
     Errors:
     - ZM_CHILD_NS_FAILED
     - ZM_OUT_OF_BAILIWICK_ADDR_MISMATCH
     - ZM_CHILD_ZONE_LAME
-    - ZM_EXTRA_ADDRESS_CHILD
+    - ZM_ADDRESSES_MATCH
     - ZM_NO_RESPONSE
+    - ZM_EXTRA_ADDRESS_CHILD
     - ZM_IN_BAILIWICK_ADDR_MISMATCH
     Summary: Consistency between glue and authoritative data
 
@@ -1243,12 +1305,15 @@ Test-Cases:
   
         `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)
   
+        `ZM_ONE_SOA_MNAME`              INFO
+  
         `ZM_MULTIPLE_SOA_MNAMES`        `ERROR` (changed from `NOTICE`)
         ----------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_SOA_MNAMES
+    - ZM_ONE_SOA_MNAME
     - ZM_NO_RESPONSE_SOA_QUERY
+    - ZM_MULTIPLE_SOA_MNAMES
     Summary: SOA MNAME consistency
 
   dns-delegation01:
@@ -1288,6 +1353,12 @@ Test-Cases:
   
         Message                         Default severity level
         ------------------------------- ----------------------------------
+        `ZM_ENOUGH_IPV4_NS_CHILD`       INFO
+        `ZM_ENOUGH_IPV4_NS_DEL`         INFO
+        `ZM_ENOUGH_IPV6_NS_CHILD`       INFO
+        `ZM_ENOUGH_IPV6_NS_DEL`         INFO
+        `ZM_ENOUGH_NS_CHILD`            INFO
+        `ZM_ENOUGH_NS_DEL`              INFO
         `ZM_NOT_ENOUGH_IPV4_NS_CHILD`   ERROR
         `ZM_NOT_ENOUGH_IPV4_NS_DEL`     ERROR
         `ZM_NOT_ENOUGH_IPV6_NS_CHILD`   ERROR
@@ -1299,16 +1370,22 @@ Test-Cases:
         `ZM_NO_IPV6_NS_CHILD`           `ERROR` (changed from `NOTICE`)
         `ZM_NO_IPV6_NS_DEL`             `ERROR` (changed from `NOTICE`)
     Errors:
-    - ZM_NOT_ENOUGH_IPV4_NS_CHILD
-    - ZM_NO_IPV4_NS_CHILD
-    - ZM_NOT_ENOUGH_NS_CHILD
-    - ZM_NO_IPV6_NS_CHILD
+    - ZM_ENOUGH_IPV4_NS_CHILD
     - ZM_NOT_ENOUGH_IPV6_NS_CHILD
-    - ZM_NO_IPV4_NS_DEL
-    - ZM_NOT_ENOUGH_NS_DEL
-    - ZM_NO_IPV6_NS_DEL
-    - ZM_NOT_ENOUGH_IPV4_NS_DEL
+    - ZM_ENOUGH_NS_CHILD
+    - ZM_NO_IPV4_NS_CHILD
+    - ZM_ENOUGH_IPV6_NS_CHILD
+    - ZM_NOT_ENOUGH_NS_CHILD
+    - ZM_NOT_ENOUGH_IPV4_NS_CHILD
+    - ZM_NO_IPV6_NS_CHILD
+    - ZM_ENOUGH_IPV4_NS_DEL
     - ZM_NOT_ENOUGH_IPV6_NS_DEL
+    - ZM_ENOUGH_NS_DEL
+    - ZM_NO_IPV4_NS_DEL
+    - ZM_ENOUGH_IPV6_NS_DEL
+    - ZM_NOT_ENOUGH_NS_DEL
+    - ZM_NOT_ENOUGH_IPV4_NS_DEL
+    - ZM_NO_IPV6_NS_DEL
     Summary: Minimum number of name servers
 
   dns-delegation02:
@@ -1338,13 +1415,17 @@ Test-Cases:
   
       In other cases the outcome of this Test Case is "pass".
   
-        Message                 Default severity level (if message is emitted)
-        ----------------------- ------------------------------------------------
-        `ZM_DEL_NS_SAME_IP`     ERROR
-        `ZM_CHILD_NS_SAME_IP`   ERROR
+        Message                     Default severity level (if message is emitted)
+        --------------------------- ------------------------------------------------
+        `ZM_DEL_NS_SAME_IP`         ERROR
+        `ZM_CHILD_NS_SAME_IP`       ERROR
+        `ZM_DEL_DISTINCT_NS_IP`     INFO
+        `ZM_CHILD_DISTINCT_NS_IP`   INFO
     Errors:
     - ZM_DEL_NS_SAME_IP
+    - ZM_DEL_DISTINCT_NS_IP
     - ZM_CHILD_NS_SAME_IP
+    - ZM_CHILD_DISTINCT_NS_IP
     Summary: Name servers must have distinct IP addresses
 
   dns-delegation03:
@@ -1375,7 +1456,17 @@ Test-Cases:
       level *ERROR* or *CRITICAL*.
   
       In other cases the outcome of this Test Case is "pass".
-    Errors: []
+  
+        -----------------------------------------------------------------------
+        Message                            Default severity level of message
+        ---------------------------------- ------------------------------------
+        `ZM_REFERRAL_SIZE_TOO_LARGE`       WARNING
+  
+        `ZM_REFERRAL_SIZE_OK`              INFO
+        -----------------------------------------------------------------------
+    Errors:
+    - ZM_REFERRAL_SIZE_TOO_LARGE
+    - ZM_REFERRAL_SIZE_OK
     Summary: No truncation of referrals
 
   dns-delegation04:
@@ -1428,13 +1519,17 @@ Test-Cases:
   
       In other cases the outcome of this Test Case is "pass".
   
-        Message            Default severity level
-        ------------------ --------------------------------
-        `ZM_NO_RESPONSE`   `ERROR` (changed from `DEBUG`)
-        `ZM_NS_IS_CNAME`   ERROR
+        Message                 Default severity level
+        ----------------------- --------------------------------
+        `ZM_NO_RESPONSE`        `ERROR` (changed from `DEBUG`)
+        `ZM_UNEXPECTED_RCODE`   WARNING
+        `ZM_NS_IS_CNAME`        ERROR
+        `ZM_NO_NS_CNAME`        INFO
     Errors:
     - ZM_NO_RESPONSE
     - ZM_NS_IS_CNAME
+    - ZM_UNEXPECTED_RCODE
+    - ZM_NO_NS_CNAME
     Summary: Name server must not point at CNAME alias
 
   dns-delegation06:
@@ -1517,9 +1612,12 @@ Test-Cases:
         `ZM_NO_RESPONSE`                `ERROR` (changed from `DEBUG`)
   
         `ZM_IS_A_RECURSOR`              ERROR
+  
+        `ZM_NO_RECURSOR`                INFO
         ----------------------------------------------------------------------
     Errors:
     - ZM_NO_RESPONSE
+    - ZM_NO_RECURSOR
     - ZM_IS_A_RECURSOR
     Summary: A name server should not be a recursor
 
@@ -1668,14 +1766,16 @@ Test-Cases:
         `ZM_AAAA_BAD_RDATA`          ERROR
         `ZM_AAAA_QUERY_DROPPED`      ERROR
         `ZM_AAAA_UNEXPECTED_RCODE`   ERROR
+        `ZM_AAAA_WELL_PROCESSED`     INFO
         `ZM_A_UNEXPECTED_RCODE`      `ERROR` (changed from `WARNING`)
         `ZM_NO_RESPONSE`             `ERROR` (changed from `DEBUG`)
     Errors:
     - ZM_AAAA_BAD_RDATA
-    - ZM_NO_RESPONSE
-    - ZM_AAAA_UNEXPECTED_RCODE
-    - ZM_AAAA_QUERY_DROPPED
     - ZM_A_UNEXPECTED_RCODE
+    - ZM_AAAA_UNEXPECTED_RCODE
+    - ZM_NO_RESPONSE
+    - ZM_AAAA_QUERY_DROPPED
+    - ZM_AAAA_WELL_PROCESSED
     Summary: Behaviour against AAAA query
 
   dns-nameserver06:
@@ -2087,6 +2187,19 @@ Test-Cases:
   
       # Summary
   
+        -----------------------------------------------------------------------------------------------
+        Message Tag                 Level   Arguments     Message ID for message tag
+        --------------------------- ------- ------------- ---------------------------------------------
+        `ZM_N15_SOFTWARE_VERSION`   INFO    ns_ip_list,   The following name server(s) respond to
+                                            query_name,   software version query "{query_name}" with
+                                            string        string "{string}". Returned from name
+                                                          servers: "{ns_ip_list}"
+  
+        `ZM_N15_NO_VERSION`         INFO    ns_ip_list    The following name server(s) do not respond
+                                                          to software version queries. Returned from
+                                                          name servers: "{ns_ip_list}"
+        -----------------------------------------------------------------------------------------------
+  
       The value in the Level column is the default severity level of the
       message. The severity level can be changed in the [Zonemaster-Engine
       Profile](../../../configuration/profiles.md). Also see the [Severity
@@ -2112,7 +2225,9 @@ Test-Cases:
       *[INFO](../SeverityLevelDefinitions.md#info)* or
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
-    Errors: []
+    Errors:
+    - ZM_N15_SOFTWARE_VERSION
+    - ZM_N15_NO_VERSION
     Summary: Checking for revealed software version
 
   dns-syntax04:
@@ -2197,12 +2312,14 @@ Test-Cases:
         `ZM_RNAME_MAIL_DOMAIN_INVALID`     `ERROR` (changed from `WARNING`)
         `ZM_RNAME_MAIL_DOMAIN_LOCALHOST`   `ERROR` (changed from `WARNING`)
         `ZM_RNAME_MAIL_ILLEGAL_CNAME`      `ERROR` (changed from `WARNING`)
+        `ZM_RNAME_RFC822_VALID`            INFO
     Errors:
     - ZM_NO_RESPONSE
     - ZM_RNAME_MAIL_DOMAIN_LOCALHOST
     - ZM_RNAME_RFC822_INVALID
-    - ZM_RNAME_MAIL_ILLEGAL_CNAME
+    - ZM_RNAME_RFC822_VALID
     - ZM_NO_RESPONSE_SOA_QUERY
+    - ZM_RNAME_MAIL_ILLEGAL_CNAME
     - ZM_RNAME_MAIL_DOMAIN_INVALID
     Summary: No illegal characters in the SOA RNAME field
 
@@ -2288,6 +2405,48 @@ Test-Cases:
   
       # Summary
   
+        ----------------------------------------------------------------------------------------------------
+        Message Tag                         Level     Arguments        Message ID for message tag
+        ----------------------------------- --------- ---------------- -------------------------------------
+        `ZM_Z01_MNAME_HAS_LOCALHOST_ADDR`   WARNING   nsname, ns_ip    SOA MNAME name server "{nsname}"
+                                                                       resolves to a localhost IP address
+                                                                       ({ns_ip}).
+  
+        `ZM_Z01_MNAME_IS_DOT`               NOTICE    ns_ip_list       SOA MNAME is specified as "." which
+                                                                       usually means "no server". Fetched
+                                                                       from name servers "{ns_ip_list}".
+  
+        `ZM_Z01_MNAME_IS_LOCALHOST`         WARNING   ns_ip_list       SOA MNAME name server is "localhost",
+                                                                       which is invalid. Fetched from name
+                                                                       servers "{ns_ip_list}".
+  
+        `ZM_Z01_MNAME_MISSING_SOA_RECORD`   WARNING   ns               SOA MNAME name server "{ns}" reponds
+                                                                       to an SOA query with no SOA records
+                                                                       in the answer section.
+  
+        `ZM_Z01_MNAME_NO_RESPONSE`          WARNING   ns               SOA MNAME name server "{ns}" does not
+                                                                       respond to an SOA query.
+  
+        `ZM_Z01_MNAME_NOT_AUTHORITATIVE`    WARNING   ns               SOA MNAME name server "{ns}" is not
+                                                                       authoritative for the zone.
+  
+        `ZM_Z01_MNAME_NOT_IN_NS_LIST`       INFO      nsname           SOA MNAME name server "{nsname}" is
+                                                                       not listed as NS record for the zone.
+  
+        `ZM_Z01_MNAME_NOT_MASTER`           WARNING   ns_list,         SOA MNAME name server(s) "{ns_list}"
+                                                      soaserial,       do(es) not have the highest SOA
+                                                      soaserial_list   SERIAL (expected "{soaserial}" but
+                                                                       got "{soaserial_list}")
+  
+        `ZM_Z01_MNAME_NOT_RESOLVE`          WARNING   nsname           SOA MNAME name server "{nsname}"
+                                                                       cannot be resolved into an IP
+                                                                       address.
+  
+        `ZM_Z01_MNAME_UNEXPECTED_RCODE`     WARNING   ns, rcode        SOA MNAME name server "{ns}" gives
+                                                                       unexpected RCODE name ("{rcode}") in
+                                                                       response to an SOA query.
+        ----------------------------------------------------------------------------------------------------
+  
       The value in the Level column is the default severity level of the
       message. The severity level can be changed in the [Zonemaster-Engine
       profile](../../../configuration/profiles.md). Also see the [Severity
@@ -2312,7 +2471,17 @@ Test-Cases:
       *[INFO](../SeverityLevelDefinitions.md#info)* or
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
-    Errors: []
+    Errors:
+    - ZM_Z01_MNAME_HAS_LOCALHOST_ADDR
+    - ZM_Z01_MNAME_NOT_IN_NS_LIST
+    - ZM_Z01_MNAME_NO_RESPONSE
+    - ZM_Z01_MNAME_NOT_RESOLVE
+    - ZM_Z01_MNAME_IS_LOCALHOST
+    - ZM_Z01_MNAME_NOT_MASTER
+    - ZM_Z01_MNAME_NOT_AUTHORITATIVE
+    - ZM_Z01_MNAME_UNEXPECTED_RCODE
+    - ZM_Z01_MNAME_IS_DOT
+    - ZM_Z01_MNAME_MISSING_SOA_RECORD
     Summary: Fully qualified master nameserver in SOA
 
   dns-zone02:
@@ -2531,12 +2700,14 @@ Test-Cases:
         `ZM_MULTIPLE_SOA`         ERROR
         `ZM_NO_RESPONSE`          `ERROR` (changed from `DEBUG`)
         `ZM_NO_SOA_IN_RESPONSE`   `ERROR` (changed from `DEBUG`)
+        `ZM_ONE_SOA`              INFO
         `ZM_WRONG_SOA`            `ERROR` (changed from `DEBUG`)
     Errors:
     - ZM_MULTIPLE_SOA
+    - ZM_WRONG_SOA
     - ZM_NO_SOA_IN_RESPONSE
     - ZM_NO_RESPONSE
-    - ZM_WRONG_SOA
+    - ZM_ONE_SOA
     Summary: No multiple SOA records
 
   dnssec-01:
@@ -2563,21 +2734,26 @@ Test-Cases:
       record.\n\n# Summary\n\n-   At least one DS record must be found, or no further
       investigation\n    will be done and no messages will be outputted.\n-   No messages
       will be outputted due to errors in the responses from\n    the parent name servers.\n\n
-      \ -------------------------------------------------------------------------------------------\n
-      \ Message Tag outputted          Level       Arguments               Description
-      of when\n                                                                     message
-      tag is outputted\n  ------------------------------ ----------- -----------------------
-      ------------------------\n  `ZM_DS01_DS_ALGO_DEPRECATED`   ERROR       ns_ip_list,
-      algo_mnemo, The DS digest algorithm\n                                             algo_num,
-      keytag        is deprecated.\n\n  `ZM_DS01_DS_ALGO_2_MISSING`    `ERROR`                             DS
-      created with algo 2\n                                 (changed                            (SHA-256)
-      is missing.\n                                 from                                \n
-      \                                `NOTICE`)                           \n\n  `ZM_DS01_DS_ALGO_NOT_DS`
-      \      ERROR       ns_ip_list, algo_mnemo, The DS digest algorithm\n                                             algo_num,
-      keytag        is not for DS.\n\n  `ZM_DS01_DS_ALGO_RESERVED`     ERROR       ns_ip_list,
-      algo_mnemo, No DS digest algorithm\n                                             algo_num,
-      keytag        defined for the digest\n                                                                     code.\n
-      \ -------------------------------------------------------------------------------------------\n\nThe
+      \ ---------------------------------------------------------------------------------------------------\n
+      \ Message Tag outputted                  Level       Arguments               Description
+      of when\n                                                                             message
+      tag is outputted\n  -------------------------------------- ----------- -----------------------
+      ------------------------\n  `ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM`   NOTICE      ns_ip_list,
+      algo_mnemo, DS Digest cannot be\n                                                     algo_num,
+      keytag        validated by this\n                                                                             installation
+      of\n                                                                             Zonemaster.\n\n
+      \ `ZM_DS01_DS_ALGO_DEPRECATED`           ERROR       ns_ip_list, algo_mnemo, The
+      DS digest algorithm\n                                                     algo_num,
+      keytag        is deprecated.\n\n  `ZM_DS01_DS_ALGO_2_MISSING`            `ERROR`
+      \                            DS created with algo 2\n                                         (changed
+      \                           (SHA-256) is missing.\n                                         from
+      \                               \n                                         `NOTICE`)
+      \                          \n\n  `ZM_DS01_DS_ALGO_NOT_DS`               ERROR
+      \      ns_ip_list, algo_mnemo, The DS digest algorithm\n                                                     algo_num,
+      keytag        is not for DS.\n\n  `ZM_DS01_DS_ALGO_RESERVED`             ERROR
+      \      ns_ip_list, algo_mnemo, No DS digest algorithm\n                                                     algo_num,
+      keytag        defined for the digest\n                                                                             code.\n
+      \ ---------------------------------------------------------------------------------------------------\n\nThe
       value in the Level column is the default severity level of the\nmessage. The severity
       level can be overridden in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
       Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
@@ -2592,10 +2768,11 @@ Test-Cases:
       or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
       Case is \"pass\".\n"
     Errors:
+    - ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM
+    - ZM_DS01_DS_ALGO_RESERVED
+    - ZM_DS01_DS_ALGO_2_MISSING
     - ZM_DS01_DS_ALGO_DEPRECATED
     - ZM_DS01_DS_ALGO_NOT_DS
-    - ZM_DS01_DS_ALGO_2_MISSING
-    - ZM_DS01_DS_ALGO_RESERVED
     Summary: Legal values for the DS hash digest algorithm
 
   dnssec-02:
@@ -2641,6 +2818,14 @@ Test-Cases:
         Message Tag outputted                   Level        Arguments         Description of when message tag
                                                                                is outputted
         --------------------------------------- ------------ ----------------- --------------------------------
+        `ZM_DS02_ALGO_NOT_SUPPORTED_BY_ZM`      NOTICE       ns_ip_list,       DNSKEY with tag {keytag} uses
+                                                             algo_mnemo,       unsupported algorithm {algo_num}
+                                                             algo_num, keytag  ({algo_mnemo}) by this
+                                                                               installation of Zonemaster.
+                                                                               Fetched from the nameservers
+                                                                               with IP addresses
+                                                                               "{ns_ip_list}".
+  
         `ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING`   ERROR        ns_ip_list,       Flags field of DNSKEY record
                                                              keytag            with tag {keytag} does not have
                                                                                ZONE bit set although DS with
@@ -2721,14 +2906,15 @@ Test-Cases:
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
     Errors:
-    - ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING
-    - ZM_DS02_NO_MATCHING_DNSKEY_RRSIG
-    - ZM_DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS
-    - ZM_DS02_NO_VALID_DNSKEY_FOR_ANY_DS
-    - ZM_DS02_DNSKEY_NOT_SEP
+    - ZM_DS02_ALGO_NOT_SUPPORTED_BY_ZM
     - ZM_DS02_NO_MATCH_DS_DNSKEY
     - ZM_DS02_NO_DNSKEY_FOR_DS
     - ZM_DS02_RRSIG_NOT_VALID_BY_DNSKEY
+    - ZM_DS02_DNSKEY_NOT_SEP
+    - ZM_DS02_NO_VALID_DNSKEY_FOR_ANY_DS
+    - ZM_DS02_NO_MATCHING_DNSKEY_RRSIG
+    - ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING
+    - ZM_DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS
     Summary: DS must match a valid DNSKEY in the child zone
 
   dnssec-03:
@@ -2872,22 +3058,26 @@ Test-Cases:
   
       In other cases the outcome of this Test Case is "pass".
   
-        Message                        Default severity level
-        ------------------------------ ----------------------------------
-        `ZM_NO_RESPONSE`               `ERROR` (changed from `DEBUG`)
-        `ZM_NO_RESPONSE_DNSKEY`        `ERROR` (changed from `WARNING`)
-        `ZM_ALGORITHM_DEPRECATED`      ERROR
-        `ZM_ALGORITHM_RESERVED`        ERROR
-        `ZM_ALGORITHM_UNASSIGNED`      ERROR
-        `ZM_ALGORITHM_PRIVATE`         ERROR
-        `ZM_ALGORITHM_NOT_ZONE_SIGN`   ERROR
+        Message                          Default severity level
+        -------------------------------- ----------------------------------
+        `ZM_NO_RESPONSE`                 `ERROR` (changed from `DEBUG`)
+        `ZM_NO_RESPONSE_DNSKEY`          `ERROR` (changed from `WARNING`)
+        `ZM_ALGORITHM_DEPRECATED`        ERROR
+        `ZM_ALGORITHM_RESERVED`          ERROR
+        `ZM_ALGORITHM_UNASSIGNED`        ERROR
+        `ZM_ALGORITHM_NOT_RECOMMENDED`   WARNING
+        `ZM_ALGORITHM_PRIVATE`           ERROR
+        `ZM_ALGORITHM_NOT_ZONE_SIGN`     ERROR
+        `ZM_ALGORITHM_OK`                INFO
     Errors:
     - ZM_NO_RESPONSE
+    - ZM_ALGORITHM_PRIVATE
     - ZM_ALGORITHM_UNASSIGNED
+    - ZM_ALGORITHM_OK
     - ZM_ALGORITHM_DEPRECATED
     - ZM_ALGORITHM_NOT_ZONE_SIGN
+    - ZM_ALGORITHM_NOT_RECOMMENDED
     - ZM_NO_RESPONSE_DNSKEY
-    - ZM_ALGORITHM_PRIVATE
     - ZM_ALGORITHM_RESERVED
     Summary: Check for invalid DNSKEY algorithms
 
@@ -2912,154 +3102,106 @@ Test-Cases:
     Summary: Verify DNSSEC additional processing
 
   dnssec-08:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md>.
-  
-      # Objective
-  
-      A DNSSEC signed zone should have a DNSKEY RRset in the zone apex ([RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.1),
-      section 2.1) and that RRset should be signed by a key that matches one
-      of the records in the DNSKEY RRset ([RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),
-      section 2.2).
-  
-      This test case will verify if the *Child Zone* meets that requirement.
-  
-      # Summary
-  
-      -   If no DNSKEY records are found, then further investigation will not
-          be done and no messages will be outputted.
-  
-        ------------------------------------------------------------------------------------------
-        Message Tag outputted                  Level   Arguments     Description of when message
-                                                                     tag is outputted
-        -------------------------------------- ------- ------------- -----------------------------
-        `ZM_DS08_DNSKEY_RRSIG_EXPIRED`         ERROR   ns_ip_list,   DNSKEY RRset is signed with
-                                                       keytag        an RRSIG that has expired.
-  
-        `ZM_DS08_DNSKEY_RRSIG_NOT_YET_VALID`   ERROR   ns_ip_list,   DNSKEY RRset is signed with a
-                                                       keytag        not yet valid RRSIG.
-  
-        `ZM_DS08_MISSING_RRSIG_IN_RESPONSE`    ERROR   ns_ip_list    DNSKEY is unsigned which is
-                                                                     against expectation.
-  
-        `ZM_DS08_NO_MATCHING_DNSKEY`           ERROR   ns_ip_list,   DNSKEY RRset is signed with
-                                                       keytag        an RRSIG that does not match
-                                                                     any DNSKEY.
-  
-        `ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY`    ERROR   ns_ip_list,   DNSKEY RRset is signed with
-                                                       keytag        an RRSIG that cannot be
-                                                                     validated by the matching
-                                                                     DNSKEY.
-        ------------------------------------------------------------------------------------------
-  
-      The value in the Level column is the default severity level of the
-      message. The severity level can be changed in the [Zonemaster-Engine
-      profile](../../../configuration/profiles.md). Also see the [Severity
-      Level Definitions](../SeverityLevelDefinitions.md) document.
-  
-      The argument names in the Arguments column lists the arguments used in
-      the message. The argument names are defined in the [argument
-      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
+    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
+      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec08.md>.\n\n#
+      Objective\n\nA DNSSEC signed zone should have a DNSKEY RRset in the zone apex
+      ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.1),\nsection
+      2.1) and that RRset should be signed by a key that matches one\nof the records
+      in the DNSKEY RRset ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
+      2.2).\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
+      Summary\n\n-   If no DNSKEY records are found, then further investigation will
+      not\n    be done and no messages will be outputted.\n\n  -------------------------------------------------------------------------------------------\n
+      \ Message Tag outputted                  Level    Arguments     Description of
+      when message\n                                                                tag
+      is outputted\n  -------------------------------------- -------- -------------
+      -----------------------------\n  `ZM_DS08_ALGO_NOT_SUPPORTED_BY_ZM`     NOTICE
+      \  ns_ip_list,   This installation of\n                                                  algo_mnemo,
+      \  Zonemaster does not support\n                                                  algo_num,
+      \    the DNSKEY algorithm.\n                                                  keytag
+      \       \n\n  `ZM_DS08_DNSKEY_RRSIG_EXPIRED`         ERROR    ns_ip_list,   DNSKEY
+      RRset is signed with\n                                                  keytag
+      \       an RRSIG that has expired.\n\n  `ZM_DS08_DNSKEY_RRSIG_NOT_YET_VALID`   ERROR
+      \   ns_ip_list,   DNSKEY RRset is signed with a\n                                                  keytag
+      \       not yet valid RRSIG.\n\n  `ZM_DS08_MISSING_RRSIG_IN_RESPONSE`    ERROR
+      \   ns_ip_list    DNSKEY is unsigned which is\n                                                                against
+      expectation.\n\n  `ZM_DS08_NO_MATCHING_DNSKEY`           ERROR    ns_ip_list,
+      \  DNSKEY RRset is signed with\n                                                  keytag
+      \       an RRSIG that does not match\n                                                                any
+      DNSKEY.\n\n  `ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY`    ERROR    ns_ip_list,   DNSKEY
+      RRset is signed with\n                                                  keytag
+      \       an RRSIG that cannot be\n                                                                validated
+      by the matching\n                                                                DNSKEY.\n
+      \ -------------------------------------------------------------------------------------------\n\nThe
+      value in the Level column is the default severity level of the\nmessage. The severity
+      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
+      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
+      argument names in the Arguments column lists the arguments used in\nthe message.
+      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
+      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
+      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
+      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
+      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
+      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
+      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
+      Case is \"pass\".\n"
     Errors:
-    - ZM_DS08_DNSKEY_RRSIG_EXPIRED
-    - ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY
-    - ZM_DS08_MISSING_RRSIG_IN_RESPONSE
-    - ZM_DS08_DNSKEY_RRSIG_NOT_YET_VALID
+    - ZM_DS08_ALGO_NOT_SUPPORTED_BY_ZM
     - ZM_DS08_NO_MATCHING_DNSKEY
+    - ZM_DS08_DNSKEY_RRSIG_NOT_YET_VALID
+    - ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY
+    - ZM_DS08_DNSKEY_RRSIG_EXPIRED
+    - ZM_DS08_MISSING_RRSIG_IN_RESPONSE
     Summary: Valid RRSIG for DNSKEY
 
   dnssec-09:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md>.
-  
-      # Objective
-  
-      If the zone is signed, the SOA RR should be signed with a valid RRSIG
-      using a DNSKEY from the DNSKEY RR set. This is described in [RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),
-      section 2.2.
-  
-      This test case will verify if the *Child Zone* meets that requirement.
-  
-      # Summary
-  
-      -   If no DNSKEY records are found, then further investigation will not
-          be done and no messages will be outputted.
-  
-        -----------------------------------------------------------------------------------------
-        Message Tag outputted                 Level   Arguments     Description of when message
-                                                                    tag is outputted
-        ------------------------------------- ------- ------------- -----------------------------
-        `ZM_DS09_MISSING_RRSIG_IN_RESPONSE`   ERROR   ns_ip_list    SOA is unsigned which is
-                                                                    against expectation
-  
-        `ZM_DS09_NO_MATCHING_DNSKEY`          ERROR   ns_ip_list,   SOA is signed with an RRSIG
-                                                      keytag        that does not match any
-                                                                    DNSKEY
-  
-        `ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY`   ERROR   ns_ip_list,   SOA is signed with an RRSIG
-                                                      keytag        that cannot be validated by
-                                                                    the matching DNSKEY
-  
-        `ZM_DS09_SOA_RRSIG_EXPIRED`           ERROR   ns_ip_list,   SOA is signed with an RRSIG
-                                                      keytag        that has expired
-  
-        `ZM_DS09_SOA_RRSIG_NOT_YET_VALID`     ERROR   ns_ip_list,   SOA is signed with a not yet
-                                                      keytag        valid RRSIG
-        -----------------------------------------------------------------------------------------
-  
-      The value in the Level column is the default severity level of the
-      message. The severity level can be changed in the [Zonemaster-Engine
-      profile](../../../configuration/profiles.md). Also see the [Severity
-      Level Definitions](../SeverityLevelDefinitions.md) document.
-  
-      The argument names in the Arguments column lists the arguments used in
-      the message. The argument names are defined in the [argument
-      list](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*
-      or *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level
-      *[WARNING](../SeverityLevelDefinitions.md#warning)*, but no message with
-      severity level *ERROR* or *CRITICAL*.
-  
-      In other cases, no message or only messages with severity level
-      *[INFO](../SeverityLevelDefinitions.md#info)* or
-      *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
-      Test Case is "pass".
+    Description: "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation,
+      see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec09.md>.\n\n#
+      Objective\n\nIf the zone is signed, the SOA RR should be signed with a valid RRSIG\nusing
+      a DNSKEY from the DNSKEY RR set. This is described in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.2),\nsection
+      2.2.\n\nThis test case will verify if the *Child Zone* meets that requirement.\n\n#
+      Summary\n\n-   If no DNSKEY records are found, then further investigation will
+      not\n    be done and no messages will be outputted.\n\n  ------------------------------------------------------------------------------------------\n
+      \ Message Tag outputted                 Level    Arguments     Description of
+      when message\n                                                               tag
+      is outputted\n  ------------------------------------- -------- ------------- -----------------------------\n
+      \ `ZM_DS09_ALGO_NOT_SUPPORTED_BY_ZM`    NOTICE   ns_ip_list,   This installation
+      of\n                                                 algo_mnemo,   Zonemaster
+      does not support\n                                                 algo_num,     the
+      DNSKEY algorithm.\n                                                 keytag        \n\n
+      \ `ZM_DS09_MISSING_RRSIG_IN_RESPONSE`   ERROR    ns_ip_list    SOA is unsigned
+      which is\n                                                               against
+      expectation\n\n  `ZM_DS09_NO_MATCHING_DNSKEY`          ERROR    ns_ip_list,   SOA
+      is signed with an RRSIG\n                                                 keytag
+      \       that does not match any\n                                                               DNSKEY\n\n
+      \ `ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY`   ERROR    ns_ip_list,   SOA is signed with
+      an RRSIG\n                                                 keytag        that
+      cannot be validated by\n                                                               the
+      matching DNSKEY\n\n  `ZM_DS09_SOA_RRSIG_EXPIRED`           ERROR    ns_ip_list,
+      \  SOA is signed with an RRSIG\n                                                 keytag
+      \       that has expired\n\n  `ZM_DS09_SOA_RRSIG_NOT_YET_VALID`     ERROR    ns_ip_list,
+      \  SOA is signed with a not yet\n                                                 keytag
+      \       valid RRSIG\n  ------------------------------------------------------------------------------------------\n\nThe
+      value in the Level column is the default severity level of the\nmessage. The severity
+      level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
+      Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
+      argument names in the Arguments column lists the arguments used in\nthe message.
+      The argument names are defined in the [argument\nlist](https://github.com/zonemaster/zonemaster-engine/blob/master/docs/logentry_args.md).\n\n#
+      Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at
+      least one message\nwith the severity level *[ERROR](../SeverityLevelDefinitions.md#error)*\nor
+      *[CRITICAL](../SeverityLevelDefinitions.md#critical)*.\n\nThe outcome of this
+      Test Case is \"warning\" if there is at least one\nmessage with the severity level\n*[WARNING](../SeverityLevelDefinitions.md#warning)*,
+      but no message with\nseverity level *ERROR* or *CRITICAL*.\n\nIn other cases,
+      no message or only messages with severity level\n*[INFO](../SeverityLevelDefinitions.md#info)*
+      or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
+      Case is \"pass\".\n"
     Errors:
-    - ZM_DS09_MISSING_RRSIG_IN_RESPONSE
-    - ZM_DS09_SOA_RRSIG_NOT_YET_VALID
-    - ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY
-    - ZM_DS09_NO_MATCHING_DNSKEY
+    - ZM_DS09_ALGO_NOT_SUPPORTED_BY_ZM
     - ZM_DS09_SOA_RRSIG_EXPIRED
+    - ZM_DS09_NO_MATCHING_DNSKEY
+    - ZM_DS09_SOA_RRSIG_NOT_YET_VALID
+    - ZM_DS09_MISSING_RRSIG_IN_RESPONSE
+    - ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY
     Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
 
   dnssec-10:
@@ -3076,41 +3218,49 @@ Test-Cases:
       section\n4.\n\nThe description of the NSEC3 RR is in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-3),
       section\n3, and its use in the DNS response is described in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-7.2),\nsection
       7.2.\n\n# Summary\n\n-   If no DNSKEY records are found, then further investigation
-      will not\n    be done and no messages will be outputted.\n\n  ---------------------------------------------------------------------------------------------\n
-      \ Message Tag outputted                   Level   Arguments     Description of
-      when message tag\n                                                                is
-      outputted\n  --------------------------------------- ------- ------------- -------------------------------\n
-      \ `ZM_DS10_ANSWER_VERIFY_ERROR`           ERROR   ns_ip_list,   RRSIG on record
-      or records in\n                                                  domain,       answer
-      section cannot be\n                                                  rrtype        verified.\n\n
-      \ `ZM_DS10_INCONSISTENT_NSEC_NSEC3`       ERROR   2 ns_ip_list  Some servers return
-      NSEC,\n                                                                others
-      return NSEC3.\n\n  `ZM_DS10_MISSING_NSEC_NSEC3`            ERROR   ns_ip_list
-      \   Missing expected NSEC or NSEC3\n                                                                in
-      a signed zone.\n\n  `ZM_DS10_MIXED_NSEC_NSEC3`              ERROR   ns_ip_list
-      \   Both NSEC and NSEC3 are\n                                                                returned
-      from the same server.\n\n  `ZM_DS10_NAME_NOT_COVERED_BY_NSEC`      ERROR   ns_ip_list
-      \   The non-existent name is not\n                                                                correctly
-      covered by the NSEC\n                                                                records.\n\n
-      \ `ZM_DS10_NAME_NOT_COVERED_BY_NSEC3`     ERROR   ns_ip_list    The non-existent
-      name is not\n                                                                correctly
-      covered by the NSEC3\n                                                                records.\n\n
-      \ `ZM_DS10_NON_EXISTENT_RESPONSE_ERROR`   ERROR   ns_ip_list    No or error in
-      response of an\n                                                                expected
-      non-existent name.\n\n  `ZM_DS10_NSEC3_MISSING_SIGNATURE`       ERROR   ns_ip_list
-      \   Missing signatures for NSEC3\n                                                                record
-      or records.\n\n  `ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR`      ERROR   ns_ip_list    The
-      signature or signatures on\n                                                                the
-      NSEC3 record or records\n                                                                cannot
-      be correctly verfied.\n\n  `ZM_DS10_NSEC_MISSING_SIGNATURE`        ERROR   ns_ip_list
-      \   Missing signatures for NSEC\n                                                                record
-      or records.\n\n  `ZM_DS10_NSEC_RRSIG_VERIFY_ERROR`       ERROR   ns_ip_list    The
-      signature or signatures on\n                                                                the
-      NSEC record or records\n                                                                cannot
-      be correctly verfied.\n\n  `ZM_DS10_UNSIGNED_ANSWER`               ERROR   ns_ip_list,
-      \  RRSIG is missing for record or\n                                                  domain,
-      \      records in the answer section.\n                                                  rrtype
-      \       \n  ---------------------------------------------------------------------------------------------\n\nThe
+      will not\n    be done and no messages will be outputted.\n\n  ----------------------------------------------------------------------------------------------\n
+      \ Message Tag outputted                   Level    Arguments     Description of
+      when message tag\n                                                                 is
+      outputted\n  --------------------------------------- -------- ------------- -------------------------------\n
+      \ `ZM_DS10_ALGO_NOT_SUPPORTED_BY_ZM`      NOTICE   ns_ip_list,   This installation
+      of Zonemaster\n                                                   algo_mnemo,
+      \  does not support the DNSKEY\n                                                   algo_num,
+      \    algorithm.\n                                                   keytag        \n\n
+      \ `ZM_DS10_ANSWER_VERIFY_ERROR`           ERROR    ns_ip_list,   RRSIG on record
+      or records in\n                                                   domain,       answer
+      section cannot be\n                                                   rrtype        verified.\n\n
+      \ `ZM_DS10_HAS_NSEC`                      INFO                   Consistent NSEC
+      returned from\n                                                                 servers.\n\n
+      \ `ZM_DS10_HAS_NSEC3`                     INFO                   Consistent NSEC3
+      returned from\n                                                                 servers.\n\n
+      \ `ZM_DS10_INCONSISTENT_NSEC_NSEC3`       ERROR    2 ns_ip_list  Some servers
+      return NSEC,\n                                                                 others
+      return NSEC3.\n\n  `ZM_DS10_MISSING_NSEC_NSEC3`            ERROR    ns_ip_list
+      \   Missing expected NSEC or NSEC3\n                                                                 in
+      a signed zone.\n\n  `ZM_DS10_MIXED_NSEC_NSEC3`              ERROR    ns_ip_list
+      \   Both NSEC and NSEC3 are\n                                                                 returned
+      from the same server.\n\n  `ZM_DS10_NAME_NOT_COVERED_BY_NSEC`      ERROR    ns_ip_list
+      \   The non-existent name is not\n                                                                 correctly
+      covered by the NSEC\n                                                                 records.\n\n
+      \ `ZM_DS10_NAME_NOT_COVERED_BY_NSEC3`     ERROR    ns_ip_list    The non-existent
+      name is not\n                                                                 correctly
+      covered by the NSEC3\n                                                                 records.\n\n
+      \ `ZM_DS10_NON_EXISTENT_RESPONSE_ERROR`   ERROR    ns_ip_list    No or error in
+      response of an\n                                                                 expected
+      non-existent name.\n\n  `ZM_DS10_NSEC3_MISSING_SIGNATURE`       ERROR    ns_ip_list
+      \   Missing signatures for NSEC3\n                                                                 record
+      or records.\n\n  `ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR`      ERROR    ns_ip_list    The
+      signature or signatures on\n                                                                 the
+      NSEC3 record or records\n                                                                 cannot
+      be correctly verfied.\n\n  `ZM_DS10_NSEC_MISSING_SIGNATURE`        ERROR    ns_ip_list
+      \   Missing signatures for NSEC\n                                                                 record
+      or records.\n\n  `ZM_DS10_NSEC_RRSIG_VERIFY_ERROR`       ERROR    ns_ip_list    The
+      signature or signatures on\n                                                                 the
+      NSEC record or records\n                                                                 cannot
+      be correctly verfied.\n\n  `ZM_DS10_UNSIGNED_ANSWER`               ERROR    ns_ip_list,
+      \  RRSIG is missing for record or\n                                                   domain,
+      \      records in the answer section.\n                                                   rrtype
+      \       \n  ----------------------------------------------------------------------------------------------\n\nThe
       value in the Level column is the default severity level of the\nmessage. The severity
       level can be changed in the [Zonemaster-Engine\nprofile](../../../configuration/profiles.md).
       Also see the [Severity\nLevel Definitions](../SeverityLevelDefinitions.md) document.\n\nThe
@@ -3125,18 +3275,21 @@ Test-Cases:
       or\n*[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this\nTest
       Case is \"pass\".\n"
     Errors:
-    - ZM_DS10_ANSWER_VERIFY_ERROR
-    - ZM_DS10_NON_EXISTENT_RESPONSE_ERROR
-    - ZM_DS10_NAME_NOT_COVERED_BY_NSEC
-    - ZM_DS10_NSEC_RRSIG_VERIFY_ERROR
-    - ZM_DS10_MISSING_NSEC_NSEC3
-    - ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR
+    - ZM_DS10_ALGO_NOT_SUPPORTED_BY_ZM
     - ZM_DS10_NAME_NOT_COVERED_BY_NSEC3
-    - ZM_DS10_UNSIGNED_ANSWER
     - ZM_DS10_INCONSISTENT_NSEC_NSEC3
+    - ZM_DS10_NSEC_MISSING_SIGNATURE
+    - ZM_DS10_HAS_NSEC
     - ZM_DS10_NSEC3_MISSING_SIGNATURE
     - ZM_DS10_MIXED_NSEC_NSEC3
-    - ZM_DS10_NSEC_MISSING_SIGNATURE
+    - ZM_DS10_UNSIGNED_ANSWER
+    - ZM_DS10_ANSWER_VERIFY_ERROR
+    - ZM_DS10_NON_EXISTENT_RESPONSE_ERROR
+    - ZM_DS10_MISSING_NSEC_NSEC3
+    - ZM_DS10_NSEC_RRSIG_VERIFY_ERROR
+    - ZM_DS10_HAS_NSEC3
+    - ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR
+    - ZM_DS10_NAME_NOT_COVERED_BY_NSEC
     Summary: Zone contains NSEC or NSEC3 records
 
   dnssec-12:
@@ -3268,13 +3421,17 @@ Test-Cases:
         -------------------------------- ----------------------------------
         `ZM_NO_RESPONSE`                 `ERROR` (changed from `DEBUG`)
         `ZM_NO_RESPONSE_DNSKEY`          `ERROR` (changed from `WARNING`)
+        `ZM_DNSKEY_SMALLER_THAN_REC`     WARNING
         `ZM_DNSKEY_TOO_SMALL_FOR_ALGO`   ERROR
         `ZM_DNSKEY_TOO_LARGE_FOR_ALGO`   ERROR
+        `ZM_KEY_SIZE_OK`                 INFO
     Errors:
     - ZM_NO_RESPONSE
-    - ZM_DNSKEY_TOO_SMALL_FOR_ALGO
-    - ZM_NO_RESPONSE_DNSKEY
     - ZM_DNSKEY_TOO_LARGE_FOR_ALGO
+    - ZM_DNSKEY_SMALLER_THAN_REC
+    - ZM_KEY_SIZE_OK
+    - ZM_NO_RESPONSE_DNSKEY
+    - ZM_DNSKEY_TOO_SMALL_FOR_ALGO
     Summary: Check for valid RSA DNSKEY key size
 
   dnssec-15:
@@ -3311,6 +3468,14 @@ Test-Cases:
         Message Tag outputted            [Default                                 Description of when message tag is
                                          level](../SeverityLevelDefinitions.md)   outputted
         -------------------------------- ---------------------------------------- ----------------------------------
+        `ZM_DS15_HAS_CDNSKEY_NO_CDS`     NOTICE                                   CDNSKEY RRset is found, but no CDS
+                                                                                  RRset.
+  
+        `ZM_DS15_HAS_CDS_AND_CDNSKEY`    INFO                                     CDNSKEY and CDS RRsets are found.
+  
+        `ZM_DS15_HAS_CDS_NO_CDNSKEY`     NOTICE                                   CDS RRset is found, but no CDNSKEY
+                                                                                  RRset.
+  
         `ZM_DS15_INCONSISTENT_CDNSKEY`   ERROR                                    All servers do not have the same
                                                                                   CDNSKEY RRset.
   
@@ -3319,6 +3484,9 @@ Test-Cases:
   
         `ZM_DS15_MISMATCH_CDS_CDNSKEY`   ERROR                                    Both CDS and CDNSKEY RRsets are
                                                                                   found but they do not match.
+  
+        `ZM_DS15_NO_CDS_CDNSKEY`         INFO                                     No CDS or CDNSKEY RRsets are found
+                                                                                  on any name server.
         ------------------------------------------------------------------------------------------------------------
   
       # Pass/fail criteria
@@ -3337,9 +3505,13 @@ Test-Cases:
       *[NOTICE](../SeverityLevelDefinitions.md#notice)*, the outcome of this
       Test Case is "pass".
     Errors:
-    - ZM_DS15_INCONSISTENT_CDNSKEY
-    - ZM_DS15_MISMATCH_CDS_CDNSKEY
+    - ZM_DS15_HAS_CDNSKEY_NO_CDS
     - ZM_DS15_INCONSISTENT_CDS
+    - ZM_DS15_HAS_CDS_NO_CDNSKEY
+    - ZM_DS15_NO_CDS_CDNSKEY
+    - ZM_DS15_HAS_CDS_AND_CDNSKEY
+    - ZM_DS15_MISMATCH_CDS_CDNSKEY
+    - ZM_DS15_INCONSISTENT_CDNSKEY
     Summary: Existence of CDS and CDNSKEY
 
   dnssec-16:
@@ -3393,6 +3565,9 @@ Test-Cases:
         `ZM_DS16_CDS_WITHOUT_DNSKEY`             ERROR                                    CDS RRset exists, but there is no
                                                                                           DNSKEY RRset.
   
+        `ZM_DS16_DELETE_CDS`                     INFO                                     CDS RRset has a "delete" CDS
+                                                                                          record as a single record.
+  
         `ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS`       `ERROR` (changed from `WARNING`)         DNSKEY RRset is not signed by the
                                                                                           key or keys that the CDS records
                                                                                           point to.
@@ -3420,12 +3595,13 @@ Test-Cases:
     - ZM_DS16_CDS_INVALID_RRSIG
     - ZM_DS16_CDS_UNSIGNED
     - ZM_DS16_CDS_NOT_SIGNED_BY_CDS
-    - ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS
-    - ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY
-    - ZM_DS16_CDS_WITHOUT_DNSKEY
-    - ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY
     - ZM_DS16_MIXED_DELETE_CDS
+    - ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY
+    - ZM_DS16_DELETE_CDS
+    - ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY
+    - ZM_DS16_CDS_WITHOUT_DNSKEY
     - ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY
+    - ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS
     - ZM_DS16_CDS_MATCHES_NO_DNSKEY
     Summary: Validate CDS
 
@@ -3480,6 +3656,10 @@ Test-Cases:
         `ZM_DS17_CDNSKEY_WITHOUT_DNSKEY`             ERROR                                    CDNSKEY RRset exists, but there
                                                                                               is no DNSKEY RRset.
   
+        `ZM_DS17_DELETE_CDNSKEY`                     INFO                                     CDNSKEY RRset has a "delete"
+                                                                                              CDNSKEY record as a single
+                                                                                              record.
+  
         `ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY`       `ERROR` (changed from `WARNING`)         DNSKEY RRset is not signed by the
                                                                                               key or keys that the CDNSKEY
                                                                                               records point to.
@@ -3507,12 +3687,13 @@ Test-Cases:
     - ZM_DS17_CDNSKEY_INVALID_RRSIG
     - ZM_DS17_CDNSKEY_UNSIGNED
     - ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY
-    - ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
-    - ZM_DS17_CDNSKEY_IS_NON_ZONE
-    - ZM_DS17_CDNSKEY_WITHOUT_DNSKEY
-    - ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY
     - ZM_DS17_MIXED_DELETE_CDNSKEY
+    - ZM_DS17_CDNSKEY_IS_NON_ZONE
+    - ZM_DS17_DELETE_CDNSKEY
+    - ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY
+    - ZM_DS17_CDNSKEY_WITHOUT_DNSKEY
     - ZM_DS17_CDNSKEY_IS_NON_SEP
+    - ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
     - ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY
     Summary: Validate CDNSKEY
 
@@ -5566,13 +5747,29 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_AAAA_WELL_PROCESSED:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ADDRESSES_MATCH:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_ALGORITHM_DEPRECATED:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_ALGORITHM_NOT_RECOMMENDED:
+    Description: '*Not available.*'
+    Severity: WARNING
+
   ZM_ALGORITHM_NOT_ZONE_SIGN:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_ALGORITHM_OK:
+    Description: '*Not available.*'
+    Severity: INFO
 
   ZM_ALGORITHM_PRIVATE:
     Description: '*Not available.*'
@@ -5594,6 +5791,10 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_CHILD_DISTINCT_NS_IP:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_CHILD_NS_FAILED:
     Description: '*Not available.*'
     Severity: ERROR
@@ -5605,6 +5806,18 @@ Errors:
   ZM_CHILD_ZONE_LAME:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_CN01_IPV4_DISABLED:
+    Description: |
+      IPv4 is disabled. No DNS queries are sent to these name servers:
+      "{ns_list}".
+    Severity: NOTICE
+
+  ZM_CN01_IPV6_DISABLED:
+    Description: |
+      IPv6 is disabled. No DNS queries are sent to these name servers:
+      "{ns_list}".
+    Severity: NOTICE
 
   ZM_CN01_MISSING_NS_RECORD_UDP:
     Description: |
@@ -5742,9 +5955,41 @@ Errors:
       Prefix database error. No data to analyze for IP address {ns_ip}.
     Severity: ERROR
 
+  ZM_CN04_IPV4_DIFFERENT_PREFIX:
+    Description: |
+      The following name server(s) are announced in unique IPv4 prefix(es):
+      "{ns_list}"
+    Severity: INFO
+
+  ZM_CN04_IPV4_SAME_PREFIX:
+    Description: |
+      The following name server(s) are announced in the same IPv4 prefix
+      ({ip_prefix}): "{ns_list}"
+    Severity: WARNING
+
+  ZM_CN04_IPV6_DIFFERENT_PREFIX:
+    Description: |
+      The following name server(s) are announced in unique IPv6 prefix(es):
+      "{ns_list}"
+    Severity: INFO
+
+  ZM_CN04_IPV6_SAME_PREFIX:
+    Description: |
+      The following name server(s) are announced in the same IPv6 prefix
+      ({ip_prefix}): "{ns_list}"
+    Severity: WARNING
+
+  ZM_DEL_DISTINCT_NS_IP:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_DEL_NS_SAME_IP:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_DNSKEY_SMALLER_THAN_REC:
+    Description: '*Not available.*'
+    Severity: WARNING
 
   ZM_DNSKEY_TOO_LARGE_FOR_ALGO:
     Description: '*Not available.*'
@@ -5753,6 +5998,11 @@ Errors:
   ZM_DNSKEY_TOO_SMALL_FOR_ALGO:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM:
+    Description: |
+      DS Digest cannot be validated by this installation of Zonemaster.
+    Severity: NOTICE
 
   ZM_DS01_DS_ALGO_2_MISSING:
     Description: |
@@ -5773,6 +6023,13 @@ Errors:
     Description: |
       No DS digest algorithm defined for the digest code.
     Severity: ERROR
+
+  ZM_DS02_ALGO_NOT_SUPPORTED_BY_ZM:
+    Description: |
+      DNSKEY with tag {keytag} uses unsupported algorithm {algo_num}
+      ({algo_mnemo}) by this installation of Zonemaster. Fetched from the
+      nameservers with IP addresses "{ns_ip_list}".
+    Severity: NOTICE
 
   ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING:
     Description: |
@@ -5827,6 +6084,11 @@ Errors:
       IP addresses "{ns_ip_list}".
     Severity: ERROR
 
+  ZM_DS08_ALGO_NOT_SUPPORTED_BY_ZM:
+    Description: |
+      This installation of Zonemaster does not support the DNSKEY algorithm.
+    Severity: NOTICE
+
   ZM_DS08_DNSKEY_RRSIG_EXPIRED:
     Description: |
       DNSKEY RRset is signed with an RRSIG that has expired.
@@ -5852,6 +6114,11 @@ Errors:
       DNSKEY RRset is signed with an RRSIG that cannot be validated by the
       matching DNSKEY.
     Severity: ERROR
+
+  ZM_DS09_ALGO_NOT_SUPPORTED_BY_ZM:
+    Description: |
+      This installation of Zonemaster does not support the DNSKEY algorithm.
+    Severity: NOTICE
 
   ZM_DS09_MISSING_RRSIG_IN_RESPONSE:
     Description: |
@@ -5879,10 +6146,25 @@ Errors:
       SOA is signed with a not yet valid RRSIG
     Severity: ERROR
 
+  ZM_DS10_ALGO_NOT_SUPPORTED_BY_ZM:
+    Description: |
+      This installation of Zonemaster does not support the DNSKEY algorithm.
+    Severity: NOTICE
+
   ZM_DS10_ANSWER_VERIFY_ERROR:
     Description: |
       RRSIG on record or records in answer section cannot be verified.
     Severity: ERROR
+
+  ZM_DS10_HAS_NSEC:
+    Description: |
+      Consistent NSEC returned from servers.
+    Severity: INFO
+
+  ZM_DS10_HAS_NSEC3:
+    Description: |
+      Consistent NSEC3 returned from servers.
+    Severity: INFO
 
   ZM_DS10_INCONSISTENT_NSEC_NSEC3:
     Description: |
@@ -5958,6 +6240,21 @@ Errors:
       RRset
     Severity: ERROR
 
+  ZM_DS15_HAS_CDNSKEY_NO_CDS:
+    Description: |
+      CDNSKEY RRset is found, but no CDS RRset.
+    Severity: NOTICE
+
+  ZM_DS15_HAS_CDS_AND_CDNSKEY:
+    Description: |
+      CDNSKEY and CDS RRsets are found.
+    Severity: INFO
+
+  ZM_DS15_HAS_CDS_NO_CDNSKEY:
+    Description: |
+      CDS RRset is found, but no CDNSKEY RRset.
+    Severity: NOTICE
+
   ZM_DS15_INCONSISTENT_CDNSKEY:
     Description: |
       All servers do not have the same CDNSKEY RRset.
@@ -5972,6 +6269,11 @@ Errors:
     Description: |
       Both CDS and CDNSKEY RRsets are found but they do not match.
     Severity: ERROR
+
+  ZM_DS15_NO_CDS_CDNSKEY:
+    Description: |
+      No CDS or CDNSKEY RRsets are found on any name server.
+    Severity: INFO
 
   ZM_DS16_CDS_INVALID_RRSIG:
     Description: |
@@ -6011,6 +6313,11 @@ Errors:
     Description: |
       CDS RRset exists, but there is no DNSKEY RRset.
     Severity: ERROR
+
+  ZM_DS16_DELETE_CDS:
+    Description: |
+      CDS RRset has a "delete" CDS record as a single record.
+    Severity: INFO
 
   ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS:
     Description: |
@@ -6063,6 +6370,11 @@ Errors:
       CDNSKEY RRset exists, but there is no DNSKEY RRset.
     Severity: ERROR
 
+  ZM_DS17_DELETE_CDNSKEY:
+    Description: |
+      CDNSKEY RRset has a "delete" CDNSKEY record as a single record.
+    Severity: INFO
+
   ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY:
     Description: |
       DNSKEY RRset is not signed by the key or keys that the CDNSKEY records
@@ -6098,6 +6410,30 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_ENOUGH_IPV4_NS_CHILD:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ENOUGH_IPV4_NS_DEL:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ENOUGH_IPV6_NS_CHILD:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ENOUGH_IPV6_NS_DEL:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ENOUGH_NS_CHILD:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ENOUGH_NS_DEL:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_ERROR_ASN_DATABASE:
     Description: '*Not available.*'
     Severity: ERROR
@@ -6110,17 +6446,37 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_IPV4_DIFFERENT_ASN:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_IPV4_ONE_ASN:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_IPV4_SAME_ASN:
+    Description: '*Not available.*'
+    Severity: NOTICE
+
+  ZM_IPV6_DIFFERENT_ASN:
+    Description: '*Not available.*'
+    Severity: INFO
 
   ZM_IPV6_ONE_ASN:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_IPV6_SAME_ASN:
+    Description: '*Not available.*'
+    Severity: NOTICE
+
   ZM_IS_A_RECURSOR:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_KEY_SIZE_OK:
+    Description: '*Not available.*'
+    Severity: INFO
 
   ZM_MISSING_OPT_IN_TRUNCATED:
     Description: '*Not available.*'
@@ -6145,6 +6501,10 @@ Errors:
   ZM_MULTIPLE_SOA_SERIALS:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_MULTIPLE_SOA_SERIALS_OK:
+    Description: '*Not available.*'
+    Severity: NOTICE
 
   ZM_MULTIPLE_SOA_TIME_PARAMETER_SET:
     Description: '*Not available.*'
@@ -6202,6 +6562,19 @@ Errors:
       unexpectedly not authoritative from name servers "{ns_ip_list}".
     Severity: ERROR
 
+  ZM_N15_NO_VERSION:
+    Description: |
+      The following name server(s) do not respond to software version queries.
+      Returned from name servers: "{ns_ip_list}"
+    Severity: INFO
+
+  ZM_N15_SOFTWARE_VERSION:
+    Description: |
+      The following name server(s) respond to software version query
+      "{query_name}" with string "{string}". Returned from name servers:
+      "{ns_ip_list}"
+    Severity: INFO
+
   ZM_NOT_ENOUGH_IPV4_NS_CHILD:
     Description: '*Not available.*'
     Severity: ERROR
@@ -6246,6 +6619,14 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_NO_NS_CNAME:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_NO_RECURSOR:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_NO_RESPONSE:
     Description: '*Not available.*'
     Severity: ERROR
@@ -6274,9 +6655,41 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_ONE_NS_SET:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ONE_SOA:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ONE_SOA_MNAME:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ONE_SOA_RNAME:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ONE_SOA_SERIAL:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_ONE_SOA_TIME_PARAMETER_SET:
+    Description: '*Not available.*'
+    Severity: INFO
+
   ZM_OUT_OF_BAILIWICK_ADDR_MISMATCH:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_REFERRAL_SIZE_OK:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_REFERRAL_SIZE_TOO_LARGE:
+    Description: '*Not available.*'
+    Severity: WARNING
 
   ZM_RNAME_MAIL_DOMAIN_INVALID:
     Description: '*Not available.*'
@@ -6294,6 +6707,22 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_RNAME_RFC822_VALID:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_SOA_SERIAL:
+    Description: '*Not available.*'
+    Severity: INFO
+
+  ZM_SOA_SERIAL_VARIATION:
+    Description: '*Not available.*'
+    Severity: NOTICE
+
+  ZM_UNEXPECTED_RCODE:
+    Description: '*Not available.*'
+    Severity: WARNING
+
   ZM_UNKNOWN_OPTION_CODE:
     Description: '*Not available.*'
     Severity: ERROR
@@ -6305,6 +6734,63 @@ Errors:
   ZM_WRONG_SOA:
     Description: '*Not available.*'
     Severity: ERROR
+
+  ZM_Z01_MNAME_HAS_LOCALHOST_ADDR:
+    Description: |
+      SOA MNAME name server "{nsname}" resolves to a localhost IP address
+      ({ns_ip}).
+    Severity: WARNING
+
+  ZM_Z01_MNAME_IS_DOT:
+    Description: |
+      SOA MNAME is specified as "." which usually means "no server". Fetched
+      from name servers "{ns_ip_list}".
+    Severity: NOTICE
+
+  ZM_Z01_MNAME_IS_LOCALHOST:
+    Description: |
+      SOA MNAME name server is "localhost", which is invalid. Fetched from
+      name servers "{ns_ip_list}".
+    Severity: WARNING
+
+  ZM_Z01_MNAME_MISSING_SOA_RECORD:
+    Description: |
+      SOA MNAME name server "{ns}" reponds to an SOA query with no SOA records
+      in the answer section.
+    Severity: WARNING
+
+  ZM_Z01_MNAME_NOT_AUTHORITATIVE:
+    Description: |
+      SOA MNAME name server "{ns}" is not authoritative for the zone.
+    Severity: WARNING
+
+  ZM_Z01_MNAME_NOT_IN_NS_LIST:
+    Description: |
+      SOA MNAME name server "{nsname}" is not listed as NS record for the
+      zone.
+    Severity: INFO
+
+  ZM_Z01_MNAME_NOT_MASTER:
+    Description: |
+      SOA MNAME name server(s) "{ns_list}" do(es) not have the highest SOA
+      SERIAL (expected "{soaserial}" but got "{soaserial_list}")
+    Severity: WARNING
+
+  ZM_Z01_MNAME_NOT_RESOLVE:
+    Description: |
+      SOA MNAME name server "{nsname}" cannot be resolved into an IP address.
+    Severity: WARNING
+
+  ZM_Z01_MNAME_NO_RESPONSE:
+    Description: |
+      SOA MNAME name server "{ns}" does not respond to an SOA query.
+    Severity: WARNING
+
+  ZM_Z01_MNAME_UNEXPECTED_RCODE:
+    Description: |
+      SOA MNAME name server "{ns}" gives unexpected RCODE name ("{rcode}") in
+      response to an SOA query.
+    Severity: WARNING
 
   ZM_Z_FLAGS_NOTCLEAR:
     Description: '*Not available.*'
