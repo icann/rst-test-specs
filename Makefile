@@ -1,4 +1,5 @@
 src = rst-test-specs
+all: export PERL5LIB=./tools/perl
 all: yaml json html
 
 yaml:
@@ -13,5 +14,5 @@ json:
 
 html:
 	@echo "Compiling HTML..."
-	@perl -Itools/perl tools/generate-html.pl $(src).yaml > $(src).html
+	@perl tools/generate-html.pl $(src).yaml > $(src).html
 	@echo wrote $(src).html
