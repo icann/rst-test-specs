@@ -18,6 +18,8 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://github.c
 
 * [Schema.md](Schema.md) documents the schema for the YAML files.
 
+* [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains the policies that are applied to Zonemaster tests.
+
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, `perl` and a couple of modules to create the JSON file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
 
 ## Copyright Statement
