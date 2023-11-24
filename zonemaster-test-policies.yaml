@@ -1,0 +1,140 @@
+#
+# this file contains policies related to Zonemaster
+#
+
+#
+# any test listed here will be ignored
+#
+skip:
+  - basic00
+  - basic01
+  - basic02
+  - basic03
+  - dnssec07
+  - dnssec11
+  - syntax01
+  - syntax02
+  - syntax03
+  - syntax08
+  - zone08
+  - zone09
+  - zone11
+
+#
+# these are the sections of the indiviual Zonemaster test cases that we want
+# to copy into our description
+#
+wanted_sections:
+  - objective
+  - summary
+  - outcomes
+
+#
+# Human-readable names for test case documentation sections
+#
+section_name_map:
+  outcomes: Pass/fail criteria
+
+#
+# these are the zonemaster message severity levels that we want to map to
+# errors - any other severity is ignored
+#
+error_levels:
+  - ERROR
+  - CRITICAL
+
+#
+# the error level of messages can be overridden by putting the message tag in
+# this structure
+#
+error_level_overrides:
+
+  #
+  # since WARNING isn't in error_levels, we can downgrade an error by putting it
+  # here
+  #
+  WARNING:
+
+  ERROR:
+    - A_UNEXPECTED_RCODE
+    - CHILD_NS_FAILED
+    - CHILD_ZONE_LAME
+    - CN01_MISSING_NS_RECORD_UDP
+    - CN01_MISSING_SOA_RECORD_UDP
+    - CN01_NO_RESPONSE_NS_QUERY_UDP
+    - CN01_NO_RESPONSE_SOA_QUERY_UDP
+    - CN01_NO_RESPONSE_UDP
+    - CN01_NS_RECORD_NOT_AA_UDP
+    - CN01_SOA_RECORD_NOT_AA_UDP
+    - CN01_UNEXPECTED_RCODE_NS_QUERY_UDP
+    - CN01_UNEXPECTED_RCODE_SOA_QUERY_UDP
+    - CN01_WRONG_NS_RECORD_UDP
+    - CN01_WRONG_NS_RECORD_UDPCN01_WRONG_SOA_RECORD_UDP
+    - CN01_WRONG_SOA_RECORD_UDP
+    - CN02_MISSING_NS_RECORD_TCP
+    - CN02_MISSING_SOA_RECORD_TCP
+    - CN02_NO_RESPONSE_NS_QUERY_TCP
+    - CN02_NO_RESPONSE_SOA_QUERY_TCP
+    - CN02_NO_RESPONSE_TCP
+    - CN02_NS_RECORD_NOT_AA_TCP
+    - CN02_SOA_RECORD_NOT_AA_TCP
+    - CN02_UNEXPECTED_RCODE_NS_QUERY_TCP
+    - CN02_UNEXPECTED_RCODE_SOA_QUERY_TCP
+    - CN02_WRONG_NS_RECORD_TCP
+    - CN02_WRONG_SOA_RECORD_TCP
+    - DS01_DS_ALGO_2_MISSING
+    - DS02_DNSKEY_NOT_SEP
+    - DS02_NO_DNSKEY_FOR_DS
+    - DS02_NO_MATCHING_DNSKEY_RRSIG
+    - DS13_ALGO_NOT_SIGNED_DNSKEY
+    - DS13_ALGO_NOT_SIGNED_NS
+    - DS13_ALGO_NOT_SIGNED_SOA
+    - DS16_CDS_MATCHES_NON_SEP_DNSKEY
+    - DS16_CDS_MATCHES_NO_DNSKEY
+    - DS16_CDS_NOT_SIGNED_BY_CDS
+    - DS16_DNSKEY_NOT_SIGNED_BY_CDS
+    - DS17_CDNSKEY_IS_NON_SEP
+    - DS17_CDNSKEY_MATCHES_NO_DNSKEY
+    - DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY
+    - DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
+    - EXTRA_ADDRESS_CHILD
+    - IN_BAILIWICK_ADDR_MISMATCH
+    - IPV4_ONE_ASN
+    - IPV6_ONE_ASN
+    - MISSING_OPT_IN_TRUNCATED
+    - MULTIPLE_NS_SET
+    - MULTIPLE_SOA_MNAMES
+    - MULTIPLE_SOA_RNAMES
+    - MULTIPLE_SOA_SERIALS
+    - MULTIPLE_SOA_TIME_PARAMETER_SET
+    - N10_EDNS_RESPONSE_ERROR
+    - N10_NO_RESPONSE_EDNS1_QUERY
+    - N10_UNEXPECTED_RCODE
+    - N11_NO_EDNS
+    - N11_NO_RESPONSE
+    - N11_RETURNS_UNKNOWN_OPTION_CODE
+    - N11_UNEXPECTED_ANSWER_SECTION
+    - N11_UNEXPECTED_RCODE
+    - N11_UNSET_AA
+    - NO_EDNS_SUPPORT
+    - NO_IPV4_NS_CHILD
+    - NO_IPV4_NS_DEL
+    - NO_IPV6_NS_CHILD
+    - NO_IPV6_NS_DEL
+    - NO_RESPONSE
+    - NO_RESPONSE_DNSKEY
+    - NO_RESPONSE_NS_QUERY
+    - NO_RESPONSE_SOA_QUERY
+    - NO_SOA_IN_RESPONSE
+    - NS_ERROR
+    - OUT_OF_BAILIWICK_ADDR_MISMATCH
+    - RNAME_MAIL_DOMAIN_INVALID
+    - RNAME_MAIL_DOMAIN_LOCALHOST
+    - RNAME_MAIL_ILLEGAL_CNAME
+    - RNAME_RFC822_INVALID
+    - UNKNOWN_OPTION_CODE
+    - UNSUPPORTED_EDNS_VER
+    - WRONG_SOA
+    - Z_FLAGS_NOTCLEAR
+    
+  CRITICAL:
