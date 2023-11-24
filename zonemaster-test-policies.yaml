@@ -40,6 +40,9 @@ section_name_map:
 # errors - any other severity is ignored
 #
 error_levels:
+  - INFO
+  - NOTICE
+  - WARNING
   - ERROR
   - CRITICAL
 
@@ -48,13 +51,6 @@ error_levels:
 # this structure
 #
 error_level_overrides:
-
-  #
-  # since WARNING isn't in error_levels, we can downgrade an error by putting it
-  # here
-  #
-  WARNING:
-
   ERROR:
     - A_UNEXPECTED_RCODE
     - CHILD_NS_FAILED
@@ -136,5 +132,3 @@ error_level_overrides:
     - UNSUPPORTED_EDNS_VER
     - WRONG_SOA
     - Z_FLAGS_NOTCLEAR
-    
-  CRITICAL:

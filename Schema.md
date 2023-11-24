@@ -137,7 +137,7 @@ A **Resource** object has the following properties:
 An **Error** object has the following properties:
 
 `Severity`
-: one of `ERROR` or `CRITICAL`.
+: one of `INFO`, `NOTICE`, `WARNING`, `ERROR` or `CRITICAL`.
 
 `Description`
 : a description of the error in Markdown format.

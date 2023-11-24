@@ -1,6 +1,6 @@
 #defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1
 #define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
-#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
+#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
 ---
@@ -61,6 +61,10 @@ Preamble: |
 
   ## 2.3.4. Error severity levels
 
+  1. `INFO` - an informational message.
+  1. `NOTICE` - a normal but significant condition.
+  2. `WARNING` - an issue which does not prevent the test from *passing*, but
+     which may benefit from further investigation.
   1. `ERROR` - an issue which prevents the test from *passing*, but does not
      prevent the test from *continuing*. A test may produce multiple `ERROR`
      results.
