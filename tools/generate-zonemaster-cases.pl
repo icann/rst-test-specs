@@ -1,14 +1,16 @@
 #!perl
-use Cwd;
+use Cwd qw(getcwd realpath);
+use Digest::SHA qw(sha1_hex);
+use File::Basename;
 use File::Slurp;
 use File::Spec;
-use Getopt::Long 2.32; # enable auto_help
+use Getopt::Long;
 use IPC::Open3;
-use List::Util qw(any);
+use List::Util qw(any none);
 use Pod::Usage;
 use Symbol qw(gensym);
 use Text::Unidecode;
-use XML::LibXML;
+use XML::LibXML qw(:libxml);
 use YAML::Node;
 use YAML::XS;
 use constant {
@@ -19,6 +21,16 @@ use utf8;
 use open qw(:std :utf8);
 use strict;
 
+my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__))).'/zonemaster-test-policies.yaml');
+
+my $mode = 'cases';
+my $devel;
+GetOptions(
+    'devel'     => \$devel,
+    'errors'    => sub { $mode = 'errors'},
+    'help'      => sub { pod2usage() },
+) || pod2usage();
+
 =pod
 
 =head1 NAME
@@ -28,11 +40,20 @@ into RST test cases.
 
 =head1 SYNOPSIS
 
-    generate-zonemaster-cases.pl ZONEMASTER_DIRECTORY
+    generate-zonemaster-cases.pl [--errors] ZONEMASTER_DIRECTORY
 
 =head1 OPTIONS
 
 =over
+
+=item *
+
+C<--errors> causes the script to emit a YAML fragment for the Zonemaster errors
+rather than the test cases.
+
+C<--devel> tells the script not to munge the table in the Outcomes section (if
+present) to remove unused message tags. This helps with reviewing those tags to
+decide whether to override their severity.
 
 =item *
 
@@ -52,34 +73,6 @@ C<rst-test-specs.yaml>.
 
 =cut
 
-#
-# any test listed here will be ignored
-#
-my @skip = qw(
-    basic00
-    basic01
-    basic02
-    basic03
-    dnssec07
-    dnssec11
-    syntax01
-    syntax02
-    syntax03
-    syntax08
-    zone08
-    zone09
-    zone11
-);
-
-my @wanted_sections = qw(objective summary outcomes);
-
-#
-# Human-readable names for test case documentation sections
-#
-my $snames = {
-    'outcomes'  => 'Pass/fail criteria',
-};
-
 $YAML::XS::UseHeader = undef;
 $YAML::XS::SortKeys = undef;
 
@@ -90,6 +83,7 @@ my @docpath = qw(docs public specifications tests);
 my @md2html = qw(pandoc --ascii -f markdown -t html --standalone);
 my @html2md = qw(pandoc -f html -t markdown);
 
+my %errors;
 my @cases;
 
 my $dir = getcwd;
@@ -99,9 +93,9 @@ chdir($dir);
 
 #
 # this returns an XML::LibXML::Element object representing the output
-# of the generateTestCaseList.pl script
+# of the generateTestCaseList.pl script in HTML format
 #
-my $list = generateTestCaseList(File::Spec->catdir($base, @docpath));
+my $list = generateHTMLTestCaseList(File::Spec->catdir($base, @docpath));
 
 my $plan;
 foreach my $row ($list->getElementsByTagName('tr')) {
@@ -114,7 +108,7 @@ foreach my $row ($list->getElementsByTagName('tr')) {
         next;
     }
 
-    next if (any { lc($id) eq lc($_) } @skip);
+    next if (any { lc($id) eq lc($_) } @{$config->{'skip'}});
 
     my $case_id;
     if ($id =~ /^dnssec(\d+)/i) {
@@ -135,15 +129,113 @@ foreach my $row ($list->getElementsByTagName('tr')) {
         'encoding'  => HTML_ENCODING,
     );
 
+    my @case_errors;
+
     my $section;
     my $sections = {};
-    foreach my $el (($cdoc->getElementsByTagName('body'))[0]->childNodes) {
+    foreach my $el ($cdoc->getElementsByTagName('body')->shift->childNodes) {
         if ($el->localName =~ /^h\d$/) {
             $section = $el->getAttribute('id');
 
-        } else {
-            push(@{$sections->{$section}}, $el);
+        } elsif ($section) {
+            if ('table' ne $el->localName) {
+                push(@{$sections->{$section}}, $el);
 
+            } else {
+                # this is the value of the first cell in the first row of the
+                # header of the table
+                my $value = uc($el->getElementsByTagName('thead')
+                                ->shift->getElementsByTagName('tr')
+                                ->shift->getElementsByTagName('th')
+                                ->shift->textContent);
+
+                if ($value !~ /message/i) {
+                    #
+                    # this is not the table we're looking for
+                    #
+                    push(@{$sections->{$section}}, $el);
+
+                } else {
+                    my $tbody = $el->getElementsByTagName('tbody')->shift;
+
+                    foreach my $row ($tbody->getElementsByTagName('tr')) {
+                        my $cells = $row->getElementsByTagName('td');
+
+                        my $id_cell     = $cells->shift;
+                        my $sev_cell    = $cells->shift;
+                        my $desc_cell   = $cells->pop;
+
+                        my $error_id = 'ZM_'.$id_cell->textContent;
+
+                        #
+                        # replace the cell contents with the new ID
+                        #
+                        $id_cell->removeChildNodes;
+                        $id_cell->appendTextChild('code', $error_id);
+
+                        #
+                        # this could be simpler but we always want to shift()
+                        # the node list
+                        #
+                        my $severity = $sev_cell->textContent || @{$config->{'error_levels'}}[-1];
+
+                        foreach my $level (keys(%{$config->{'error_level_overrides'}})) {
+                            if (any { 'ZM_'.$_ eq $error_id } @{$config->{'error_level_overrides'}->{$level}}) {
+                                my $was = $severity;
+
+                                $severity = $level;
+
+                                #
+                                # replace the cell contents with the new
+                                # severity
+                                #
+                                $sev_cell->removeChildNodes;
+                                $sev_cell->appendTextChild('code', $level);
+                                $sev_cell->appendText(' (changed from ');
+                                $sev_cell->appendTextChild('code', $was);
+                                $sev_cell->appendText(')');
+
+                                last;
+                            }
+                        }
+
+                        if (none { $_ eq $severity } @{$config->{'error_levels'}}) {
+                            $row->parentNode->removeChild($row) unless ($devel);
+
+                        } else {
+                            push(@case_errors, $error_id);
+
+                            if (!defined($errors{$error_id})) {
+                                $errors{$error_id} = {
+                                    'Severity' => $severity,
+                                };
+                            }
+
+                            if (!defined($errors{$error_id}->{'description'})) {
+                                my $desc = "*Not available.*";
+
+                                if ($desc_cell) {
+                                    my $ddoc = createHTMLDocument();
+
+                                    $ddoc->getElementsByTagName('body')
+                                        ->shift
+                                        ->appendChild($ddoc->importNode(
+                                            $desc_cell
+                                        ));
+
+                                    $desc = unidecode(html2md(
+                                        $ddoc->toStringHTML
+                                    ));
+                                }
+
+                                $errors{$error_id}->{'Description'} = $desc;
+                            }
+                        }
+                    }
+
+                    push(@{$sections->{$section}}, $el) if ($devel || scalar(@case_errors) > 0);
+                }
+            }
         }
     }
 
@@ -173,12 +265,12 @@ foreach my $row ($list->getElementsByTagName('tr')) {
 
     $p->appendText('.');
 
-    foreach my $section (@wanted_sections) {
+    foreach my $section (@{$config->{'wanted_sections'}}) {
         if (defined($sections->{$section}) && scalar(@{$sections->{$section}}) > 0) {
 
             $body->appendTextChild(
                 'h1',
-                $snames->{$section} || ucfirst($section)
+                $config->{'section_name_map'}->{$section} || ucfirst($section)
             );
 
             foreach my $el (@{$sections->{$section}}) {
@@ -191,15 +283,23 @@ foreach my $row ($list->getElementsByTagName('tr')) {
         'id'            => $case_id,
         'summary'       => unidecode($summary),
         'description'   => unidecode(html2md($idoc->toStringHTML)),
+        'errors'        => [sort { $a cmp $b } @case_errors],
     });
 }
 
-foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} !~ /^dnssec/ } @cases) {
-    print_case($case);
-}
+if ('errors' eq $mode) {
+    foreach my $id (sort { $a cmp $b } keys(%errors)) {
+        print_error($id, $errors{$id});
+    }
 
-foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} =~ /^dnssec/ } @cases) {
-    print_case($case);
+} else {
+    foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} !~ /^dnssec/ } @cases) {
+        print_case($case);
+    }
+
+    foreach my $case (sort { $a->{'id'} cmp $b->{'id'} } grep { $_->{'id'} =~ /^dnssec/ } @cases) {
+        print_case($case);
+    }
 }
 
 #
@@ -210,6 +310,9 @@ sub md2html {
 
     my $err = gensym;
     my $pid = open3(my $in, my $out, $err, @md2html);
+
+    $in->binmode(':encoding(UTF-8)');
+    $out->binmode(':encoding(UTF-8)');
 
     $in->print($markdown);
     $in->close;
@@ -234,13 +337,15 @@ sub html2md {
     my $err = gensym;
     my $pid = open3(my $in, my $out, $err, @html2md);
 
+    $in->binmode(':encoding(UTF-8)');
+    $out->binmode(':encoding(UTF-8)');
+
     $in->print($html);
     $in->close;
 
     my $md = join('', $out->getlines);
     $out->close;
 
-    print STDERR join('', $err->getlines);
     $err->close;
 
     waitpid($pid, 0);
@@ -255,6 +360,7 @@ sub print_case {
         $case->{'id'} => {
             'Summary'       => $case->{'summary'},
             'Description'   => $case->{'description'},
+            'Errors'        => $case->{'errors'},
         }
     };
 
@@ -266,24 +372,36 @@ sub print_case {
             "\n\n";
 }
 
-sub generateTestCaseList {
+sub print_error {
+    my ($id, $error) = @_;
+
+    my $node = {$id => $error};
+
+    print "  ".
+            join(
+                "\n  ",
+                grep { '---' ne $_ } split(/\n/, YAML::XS::Dump($node))
+            ).
+            "\n\n";
+}
+
+sub generateHTMLTestCaseList {
     my $dir = shift;
 
     my $err = gensym;
     my $pid = open3(
-        my $in,
+        undef,
         my $out,
         $err,
         File::Spec->catfile($base, qw(utils generateTestCaseList.pl)),
         '--dir='.$dir,
     );
 
-    $in->close;
+    $out->binmode(':encoding(UTF-8)');
 
     my $markdown = join('', $out->getlines);
     $out->close;
 
-    print STDERR join('', $err->getlines);
     $err->close;
 
     waitpid($pid, 0);
