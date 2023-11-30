@@ -1,9 +1,11 @@
 package ICANN::RST::Suite;
-use List::Util qw(any);
-use GraphViz2;
 use base qw(ICANN::RST::Base);
-use feature qw(say);
 use strict;
+
+#
+# if GraphViz2 is available then we can load ICANN::RST::Graph
+#
+eval qq(use ICANN::RST::Graph;) if (eval qq(use GraphViz2 ; 1));
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }

@@ -1,6 +1,7 @@
 package ICANN::RST::Graph;
-use HTML::Tiny;
+use Encode;
 use base qw(GraphViz2);
+use utf8;
 use strict;
 
 sub new {
@@ -20,7 +21,7 @@ sub new {
         $self->add_node(
             'name'      => $case->id,
             'href'      => sprintf('#Test-Case-%s', $case->id),
-            'tooltip'   => HTML::Tiny->entity_encode($case->summary),
+            'tooltip'   => $self->entity_encode($case->summary),
             'shape'     => 'box',
         );
     }
@@ -48,6 +49,12 @@ sub new {
     }
 
     return $self;
+}
+
+sub entity_encode {
+    my ($self, $str) = @_;
+
+    return join('', map { sprintf('&#%u;', ord($_)) } split(//, encode("UTF-8", $str)));
 }
 
 1;
