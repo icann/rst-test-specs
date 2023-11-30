@@ -21,25 +21,25 @@ sub title {
 sub inputs {
     my $self = shift;
 
-    return sort { $a->id <=> $b->id } map { $self->spec->input($_) } @{$self->{'Input-Parameters'}};
+    return sort { $a->id cmp $b->id } map { $self->spec->input($_) } @{$self->{'Input-Parameters'}};
 }
 
 sub resources {
     my $self = shift;
 
-    return sort { $a->id <=> $b->id } map { $self->spec->resource($_) } @{$self->{'Resources'}};
+    return sort { $a->id cmp $b->id } map { $self->spec->resource($_) } @{$self->{'Resources'}};
 }
 
 sub errors {
     my $self = shift;
 
-    return sort { $a->id <=> $b->id } map { $self->spec->error($_) } @{$self->{'Errors'}};
+    return sort { $a->id cmp $b->id } map { $self->spec->error($_) } @{$self->{'Errors'}};
 }
 
 sub dependencies {
     my $self = shift;
 
-    return sort { $a->id <=> $b->id } map { $self->spec->case($_) } @{$self->{'Dependencies'}};
+    return sort { $a->id cmp $b->id } map { $self->spec->case($_) } @{$self->{'Dependencies'}};
 }
 
 sub dependants {
@@ -51,7 +51,7 @@ sub dependants {
         push(@cases, $case) if (any { $_ eq $self->id } $case->dependencies);
     }
 
-    return sort { $a->id <=> $b->id } @cases;
+    return sort { $a->id cmp $b->id } @cases;
 }
 
 sub suites {
