@@ -168,23 +168,17 @@ window.addEventListener('beforeprint', (event) => {
 <h1>Registry System Testing - Test Specifications</h1><p>Version 3.0</p>
 <p>Last Updated: 2023-12-01</p>
 <p><a href="mailto:rst@icann.org">GDS Technical Services, Internet Corporation for Assigned Names and Numbers (ICANN)</a></p>
-</header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><ol type="1">
-<li><a href="#Preamble-2.1.-Test-plans">Test plans</a></li>
-<li><a href="#Preamble-2.2.-Test-suites">Test suites</a></li>
-<li><a href="#Preamble-2.3.-Test-cases">Test cases</a>
-<ol type="1">
-<li><a href="#Preamble-2.3.1.-Input-parameters">Input
-parameters</a></li>
-<li><a href="#Preamble-2.3.2.-Test-results">Test results</a></li>
-<li><a href="#Preamble-2.3.3.-General-pass/fail%20criteria">General
-pass/fail criteria</a></li>
-<li><a href="#Preamble-2.3.4.-Error-severity-levels">Error severity
-levels</a></li>
-<li><a href="#Preamble-2.3.5.-Common-errors">Common errors</a></li>
-</ol></li>
-<li><a href="#Preamble-2.4.-Key-acronyms-and-terms">Key acronyms and
-terms</a></li>
-</ol>
+</header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><pre><code>1. [Test plans](#Preamble-2.1.-Test-plans)
+2. [Test suites](#Preamble-2.2.-Test-suites)
+3. [Test cases](#Preamble-2.3.-Test-cases)
+    1. [Input parameters](#Preamble-2.3.1.-Input-parameters)
+    2. [Test results](#Preamble-2.3.2.-Test-results)
+    3. [General pass/fail</code></pre>
+<p>criteria](#Preamble-2.3.3.-General-pass/fail criteria) 4. <a
+href="#Preamble-2.3.4.-Error-severity-levels">Error severity levels</a>
+5. <a href="#Preamble-2.3.5.-Common-errors">Common errors</a> 4. <a
+href="#Preamble-2.4.-Key-acronyms-and-terms">Key acronyms and
+terms</a></p>
 </div></details></li><li><details open="1"><summary><a href="#test-plans">Test Plans</a></summary><ol><li><a href="#Test-Plan-StandardPreDelegationTest">Pre-Delegation Test</a></li><li><a href="#Test-Plan-StandardRSPChangeTest">RSP Change Test</a></li><li><a href="#Test-Plan-DNSRSPChangeTest">DNS RSP Change Test</a></li><li><a href="#Test-Plan-IDNTest">IDN Test</a></li><li><a href="#Test-Plan-SRSGatewayTest">SRS Gateway Test</a></li><li><a href="#Test-Plan-MainRSPEvaluationTest">Main RSP Evaluation Test</a></li><li><a href="#Test-Plan-DNSRSPEvaluationTest">DNS RSP Evaluation Test</a></li><li><a href="#Test-Plan-DNSSECRSPEvaluationTest">DNSSEC RSP Evaluation Test</a></li><li><a href="#Test-Plan-SRSGatewayRSPTest">SRS Gateway RSP Evaluation Test</a></li></ol></details></li><li><details open="1"><summary><a href="#test-suites">Test Suites</a></summary><ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li><li><a href="#Test-Suite-StandardRDAP">Registration Data Acess Protocol (RDAP)</a></li><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li><li><a href="#Test-Suite-StandardRDE">Registry Data Escrow (RDE)</a></li><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li><li><a href="#Test-Suite-StandardSRSGateway">SRS Gateway</a></li><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li><li><a href="#Test-Suite-StandardIntegrationTest">Standard Integration Test</a></li></ol></details></li><li><details open="1"><summary><a href="#resources">Resources</a></summary><ol><li><a href="#Resource-epp.clientACL">epp.clientACL</a></li><li><a href="#Resource-epp.clientCertificate">epp.clientCertificate</a></li><li><a href="#Resource-epp.tlsCertificateStore">epp.tlsCertificateStore</a></li><li><a href="#Resource-integration.rdeSFTPACL">integration.rdeSFTPACL</a></li><li><a href="#Resource-integration.rdeSFTPPublicKey">integration.rdeSFTPPublicKey</a></li><li><a href="#Resource-rde.encryptionKey">rde.encryptionKey</a></li></ol></details></li><li><details open="1"><summary><a href="#test-cases">Test Cases</a></summary><ol><li><a href="#Test-Case-dns-address01">dns-address01 - Name server address must be globally routable</a></li><li><a href="#Test-Case-dns-address02">dns-address02 - Reverse DNS entry exists for name server IP address</a></li><li><a href="#Test-Case-dns-address03">dns-address03 - Reverse DNS entry matches name server name</a></li><li><a href="#Test-Case-dns-connectivity01">dns-connectivity01 - UDP connectivity to name servers</a></li><li><a href="#Test-Case-dns-connectivity02">dns-connectivity02 - TCP connectivity to name servers</a></li><li><a href="#Test-Case-dns-connectivity03">dns-connectivity03 - AS Diversity</a></li><li><a href="#Test-Case-dns-connectivity04">dns-connectivity04 - IP Prefix Diversity</a></li><li><a href="#Test-Case-dns-consistency01">dns-consistency01 - SOA serial number consistency</a></li><li><a href="#Test-Case-dns-consistency02">dns-consistency02 - SOA RNAME consistency</a></li><li><a href="#Test-Case-dns-consistency03">dns-consistency03 - SOA timers consistency</a></li><li><a href="#Test-Case-dns-consistency04">dns-consistency04 - Name server NS consistency</a></li><li><a href="#Test-Case-dns-consistency05">dns-consistency05 - Consistency between glue and authoritative data</a></li><li><a href="#Test-Case-dns-consistency06">dns-consistency06 - SOA MNAME consistency</a></li><li><a href="#Test-Case-dns-delegation01">dns-delegation01 - Minimum number of name servers</a></li><li><a href="#Test-Case-dns-delegation02">dns-delegation02 - Name servers must have distinct IP addresses</a></li><li><a href="#Test-Case-dns-delegation03">dns-delegation03 - No truncation of referrals</a></li><li><a href="#Test-Case-dns-delegation04">dns-delegation04 - Name server is authoritative</a></li><li><a href="#Test-Case-dns-delegation05">dns-delegation05 - Name server must not point at CNAME alias</a></li><li><a href="#Test-Case-dns-delegation06">dns-delegation06 - Existence of SOA</a></li><li><a href="#Test-Case-dns-delegation07">dns-delegation07 - Parent glue name records present in child</a></li><li><a href="#Test-Case-dns-nameserver01">dns-nameserver01 - A name server should not be a recursor</a></li><li><a href="#Test-Case-dns-nameserver02">dns-nameserver02 - Test of EDNS0 support</a></li><li><a href="#Test-Case-dns-nameserver03">dns-nameserver03 - Test availability of zone transfer (AXFR)</a></li><li><a href="#Test-Case-dns-nameserver04">dns-nameserver04 - Same source address</a></li><li><a href="#Test-Case-dns-nameserver05">dns-nameserver05 - Behaviour against AAAA query</a></li><li><a href="#Test-Case-dns-nameserver06">dns-nameserver06 - NS can be resolved</a></li><li><a href="#Test-Case-dns-nameserver07">dns-nameserver07 - To check whether authoritative name servers return an upward referral</a></li><li><a href="#Test-Case-dns-nameserver08">dns-nameserver08 - Testing QNAME case insensitivity</a></li><li><a href="#Test-Case-dns-nameserver09">dns-nameserver09 - Testing QNAME case sensitivity</a></li><li><a href="#Test-Case-dns-nameserver10">dns-nameserver10 - Test for undefined EDNS version</a></li><li><a href="#Test-Case-dns-nameserver11">dns-nameserver11 - Test for unknown EDNS OPTION-CODE</a></li><li><a href="#Test-Case-dns-nameserver12">dns-nameserver12 - Test for unknown EDNS flags</a></li><li><a href="#Test-Case-dns-nameserver13">dns-nameserver13 - Test for truncated response on EDNS query</a></li><li><a href="#Test-Case-dns-nameserver14">dns-nameserver14 - Test for unknown version with unknown OPTION-CODE</a></li><li><a href="#Test-Case-dns-nameserver15">dns-nameserver15 - Checking for revealed software version</a></li><li><a href="#Test-Case-dns-syntax04">dns-syntax04 - The NS name must have a valid domain/hostname</a></li><li><a href="#Test-Case-dns-syntax05">dns-syntax05 - Misuse of &#39;@&#39; character in the SOA RNAME field</a></li><li><a href="#Test-Case-dns-syntax06">dns-syntax06 - No illegal characters in the SOA RNAME field</a></li><li><a href="#Test-Case-dns-syntax07">dns-syntax07 - No illegal characters in the SOA MNAME field</a></li><li><a href="#Test-Case-dns-zone01">dns-zone01 - Fully qualified master nameserver in SOA</a></li><li><a href="#Test-Case-dns-zone02">dns-zone02 - SOA &#39;refresh&#39; minimum value</a></li><li><a href="#Test-Case-dns-zone03">dns-zone03 - SOA &#39;retry&#39; lower than &#39;refresh&#39;</a></li><li><a href="#Test-Case-dns-zone04">dns-zone04 - SOA &#39;retry&#39; at least 1 hour</a></li><li><a href="#Test-Case-dns-zone05">dns-zone05 - SOA &#39;expire&#39; minimum value</a></li><li><a href="#Test-Case-dns-zone06">dns-zone06 - SOA &#39;minimum&#39; maximum value</a></li><li><a href="#Test-Case-dns-zone07">dns-zone07 - SOA master is not an alias</a></li><li><a href="#Test-Case-dns-zone10">dns-zone10 - No multiple SOA records</a></li><li><a href="#Test-Case-dnssec-01">dnssec-01 - Legal values for the DS hash digest algorithm</a></li><li><a href="#Test-Case-dnssec-02">dnssec-02 - DS must match a valid DNSKEY in the child zone</a></li><li><a href="#Test-Case-dnssec-03">dnssec-03 - Check for too many NSEC3 iterations</a></li><li><a href="#Test-Case-dnssec-04">dnssec-04 - Check for too short or too long RRSIG lifetimes</a></li><li><a href="#Test-Case-dnssec-05">dnssec-05 - Check for invalid DNSKEY algorithms</a></li><li><a href="#Test-Case-dnssec-06">dnssec-06 - Verify DNSSEC additional processing</a></li><li><a href="#Test-Case-dnssec-08">dnssec-08 - Valid RRSIG for DNSKEY</a></li><li><a href="#Test-Case-dnssec-09">dnssec-09 - RRSIG(SOA) must be valid and created by a valid DNSKEY</a></li><li><a href="#Test-Case-dnssec-10">dnssec-10 - Zone contains NSEC or NSEC3 records</a></li><li><a href="#Test-Case-dnssec-12">dnssec-12 - Test for DNSSEC Algorithm Completeness</a></li><li><a href="#Test-Case-dnssec-13">dnssec-13 - All DNSKEY algorithms used to sign the zone</a></li><li><a href="#Test-Case-dnssec-14">dnssec-14 - Check for valid RSA DNSKEY key size</a></li><li><a href="#Test-Case-dnssec-15">dnssec-15 - Existence of CDS and CDNSKEY</a></li><li><a href="#Test-Case-dnssec-16">dnssec-16 - Validate CDS</a></li><li><a href="#Test-Case-dnssec-17">dnssec-17 - Validate CDNSKEY</a></li><li><a href="#Test-Case-dnssec-18">dnssec-18 - Validate trust from DS to CDS and CDNSKEY</a></li><li><a href="#Test-Case-dnssecOps01-ZSKRollover">dnssecOps01-ZSKRollover - ZSK rollover</a></li><li><a href="#Test-Case-dnssecOps02-KSKRollover">dnssecOps02-KSKRollover - KSK rollover</a></li><li><a href="#Test-Case-dnssecOps03-AlgorithmRollover">dnssecOps03-AlgorithmRollover - algorithm rollover</a></li><li><a href="#Test-Case-epp-01">epp-01 - EPP server MUST have at least one A record</a></li><li><a href="#Test-Case-epp-02">epp-02 - EPP server MUST have at least one AAAA record</a></li><li><a href="#Test-Case-epp-03">epp-03 - All IP addresses MUST accept TCP connections on port 700</a></li><li><a href="#Test-Case-epp-04">epp-04 - All service ports support TLSv1.2 or higher</a></li><li><a href="#Test-Case-epp-05">epp-05 - All service ports MUST NOT support TLSv1.1 or earlier</a></li><li><a href="#Test-Case-epp-06">epp-06 - All service ports MUST offer a valid certificate issued by a trusted CA
 </a></li><li><a href="#Test-Case-epp-07">epp-07 - TLS certificate MUST be valid</a></li><li><a href="#Test-Case-epp-08">epp-08 - TLS certificate MUST be valid for the server name</a></li><li><a href="#Test-Case-epp-09">epp-09 - All service ports MUST send a &lt;greeting&gt; frame after successful connection
 </a></li><li><a href="#Test-Case-epp-10">epp-10 - All server responses MUST validate against the XML schema</a></li><li><a href="#Test-Case-epp-11">epp-11 - &lt;svID&gt; element in the &lt;greeting&gt; MUST be valid</a></li><li><a href="#Test-Case-epp-12">epp-12 - &lt;svDate&gt; element in the &lt;greeting&gt; MUST be valid</a></li><li><a href="#Test-Case-epp-13">epp-13 - &lt;version&gt; element in the &lt;greeting&gt; MUST be valid</a></li><li><a href="#Test-Case-epp-14">epp-14 - &lt;lang&gt; element(s) in the &lt;greeting&gt; MUST be valid</a></li><li><a href="#Test-Case-epp-15">epp-15 - &lt;objURI&gt; element(s) in the &lt;greeting&gt; MUST be valid for the registry type
@@ -199,38 +193,38 @@ parameters</a> required for each, relevant <a href="#resources">resources</a>, a
 &ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in
 RFC2119 when, and only when, they appear in all capitals, as shown
 here.</p>
-<a name="Preamble-2.1.-Test-plans"></a><h1 id="test-plans">2.1. Test plans</h1>
+<a name="Preamble-2.1.-Test-plans"></a><h2 id="test-plans">2.1. Test plans</h2>
 <p>An individual <em>Test Plan</em> addresses a particular scenario (for
 example, RSP evaluation or Pre-Delegation Testing). Each plan consists
 of one or more <em>test suites</em>, which in turn include one or more
 <em>test cases</em>.</p>
-<a name="Preamble-2.2.-Test-suites"></a><h1 id="test-suites">2.2. Test suites</h1>
+<a name="Preamble-2.2.-Test-suites"></a><h2 id="test-suites">2.2. Test suites</h2>
 <p>A <em>Test Suite</em> is a collection of <em>test cases</em> with a
 common theme or subject matter, for example, Authoritative DNS or
 Registry Data Escrow.</p>
-<a name="Preamble-2.3.-Test-cases"></a><h1 id="test-cases">2.3. Test cases</h1>
+<a name="Preamble-2.3.-Test-cases"></a><h2 id="test-cases">2.3. Test cases</h2>
 <p>A <em>Test Case</em> describes a process for determining the
 conformance or acceptability of a certain element of the system.</p>
 <p>A test case consists of a <em>test procedure</em> which accepts zero
 or more <strong>input parameters</strong>, and generates one or more
 <strong>test results</strong>.</p>
-<a name="Preamble-2.3.1.-Input-parameters"></a><h2 id="input-parameters">2.3.1. Input parameters</h2>
+<a name="Preamble-2.3.1.-Input-parameters"></a><h3 id="input-parameters">2.3.1. Input parameters</h3>
 <p>All test cases require some information about the subject of the
 test, for example, service hostnames, credentials, and functional
 parameters. These <em>input parameters</em> may be shared across
 multiple test cases.</p>
-<a name="Preamble-2.3.2.-Test-results"></a><h2 id="test-results">2.3.2. Test results</h2>
+<a name="Preamble-2.3.2.-Test-results"></a><h3 id="test-results">2.3.2. Test results</h3>
 <p>Test cases will generate one or more <em>test results</em>. Test
 results indicate the outcome of the test and other relevant
 information.</p>
-<a name="Preamble-2.3.3.-General-pass/fail%0Acriteria"></a><h2 id="general-passfail-criteria">2.3.3. General pass/fail
-criteria</h2>
+<a name="Preamble-2.3.3.-General-pass/fail%0Acriteria"></a><h3 id="general-passfail-criteria">2.3.3. General pass/fail
+criteria</h3>
 <p>In general, for a test to pass, <strong>all</strong> the test cases
 specified in the test suite(s) for the test plan MUST pass: if
 <em>any</em> fail, then the test as a whole will fail.</p>
 <p>A test case will fail if it produces one or more <a href="#errors">errors</a> with the <code>ERROR</code> or
 <code>CRITICAL</code> severities.</p>
-<a name="Preamble-2.3.4.-Error-severity-levels"></a><h2 id="error-severity-levels">2.3.4. Error severity levels</h2>
+<a name="Preamble-2.3.4.-Error-severity-levels"></a><h3 id="error-severity-levels">2.3.4. Error severity levels</h3>
 <ol type="1">
 <li>
 <code>INFO</code> - an informational message.</li>
@@ -250,7 +244,7 @@ continuing any further. A test will only produce a single
 <code>CRITICAL</code> result and it will always be the last result in
 the log.</li>
 </ol>
-<a name="Preamble-2.3.5.-Common-errors"></a><h2 id="common-errors">2.3.5. Common errors</h2>
+<a name="Preamble-2.3.5.-Common-errors"></a><h3 id="common-errors">2.3.5. Common errors</h3>
 <p>For each test case, various errors and critical errors are defined
 which will be used to signal why that the case might have failed.</p>
 <p>In addition to these, there are a number of errors which any test
@@ -258,7 +252,7 @@ case may produce, which are:</p>
 <ul>
 <li>[TBA]</li>
 </ul>
-<a name="Preamble-2.4.-Key-acronyms-and-terms"></a><h1 id="key-acronyms-and-terms">2.4. Key acronyms and terms</h1>
+<a name="Preamble-2.4.-Key-acronyms-and-terms"></a><h2 id="key-acronyms-and-terms">2.4. Key acronyms and terms</h2>
 <dl>
 <dt>RST</dt>
 <dd>

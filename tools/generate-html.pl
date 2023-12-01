@@ -148,7 +148,7 @@ sub print_preamble_toc_list {
     print $h->summary($h->a({href => '#preamble'}, 'Preamble'));
 
     my $doc = XML::LibXML->load_html(
-        'string'    => $spec->preamble->html,
+        'string'    => $spec->preamble->html(1),
         'encoding'  => 'UTF-8',
     );
 
