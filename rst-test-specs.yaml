@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.5
 Version: 3.0
-Last-Updated: 2023-11-24
+Last-Updated: 2023-12-01
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -347,6 +347,13 @@ Test-Plans:
       forwards all EPP transform commands to the primary registry system. TLD
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
+
+      The "SRS Gateway" test suite requires access to a primary registry system
+      that is logically independent of the SRS Gateway system, and details of
+      the primary registry system are required as input parameters. RSPs wishing
+      to offer SRS gateway services must identify such a primary registry
+      system, which MUST be independent of the SRS gateway system, and MAY be
+      operated by a third party.
 
       # Pass/fail criteria
 
