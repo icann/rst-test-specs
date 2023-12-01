@@ -194,6 +194,11 @@ terms</a></li>
 <p>This file describes each test <a href="#test-plans">plan</a>, <a href="#test-suites">suite</a> and <a href="#test-cases">case</a> in the
 RST system, as well as the <a href="#input-parameters">input
 parameters</a> required for each, relevant <a href="#resources">resources</a>, any inter-case dependencies, and the <a href="#errors">errors</a> that might occur during testing.</p>
+<p>The key words &ldquo;MUST&rdquo;, &ldquo;MUST NOT&rdquo;, &ldquo;REQUIRED&rdquo;, &ldquo;SHALL&rdquo;, &ldquo;SHALL NOT&rdquo;,
+&ldquo;SHOULD&rdquo;, &ldquo;SHOULD NOT&rdquo;, &ldquo;RECOMMENDED&rdquo;, &ldquo;NOT RECOMMENDED&rdquo;, &ldquo;MAY&rdquo;, and
+&ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in
+RFC2119 when, and only when, they appear in all capitals, as shown
+here.</p>
 <a name="Preamble-2.1.-Test-plans"></a><h1 id="test-plans">2.1. Test plans</h1>
 <p>An individual <em>Test Plan</em> addresses a particular scenario (for
 example, RSP evaluation or Pre-Delegation Testing). Each plan consists
@@ -221,7 +226,7 @@ information.</p>
 <a name="Preamble-2.3.3.-General-pass/fail%0Acriteria"></a><h2 id="general-passfail-criteria">2.3.3. General pass/fail
 criteria</h2>
 <p>In general, for a test to pass, <strong>all</strong> the test cases
-specified in the test suite(s) for the test plan must pass: if
+specified in the test suite(s) for the test plan MUST pass: if
 <em>any</em> fail, then the test as a whole will fail.</p>
 <p>A test case will fail if it produces one or more <a href="#errors">errors</a> with the <code>ERROR</code> or
 <code>CRITICAL</code> severities.</p>
@@ -383,7 +388,7 @@ complete PDT as a prerequisite to delegation into the root zone.</p>
 IDNs, and therefore uses all test suites.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.1.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>StandardPreDelegationTest</pre></details><details><summary><h4>3.1.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -2755,7 +2760,7 @@ technical and operational requirements of the Registry Agreement.</p>
 and therefore uses all test suites.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.2.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>StandardRSPChangeTest</pre></details><details><summary><h4>3.2.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -5128,7 +5133,7 @@ operational requirements of the Registry Agreement.</p>
 <p>The DNS RSP Change Test uses the DNS test suite only.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.3.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>DNSRSPChangeTest</pre></details><details><summary><h4>3.3.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -6125,7 +6130,7 @@ the submitted policy statements and IDN tables.</p>
 <p>The IDN Test uses the IDN test suite only.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.4.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>IDNTest</pre></details><details><summary><h4>3.4.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -6227,7 +6232,7 @@ with that of the TLD registry.</p>
 only.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.5.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>SRSGatewayTest</pre></details><details><summary><h4>3.5.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -6505,7 +6510,7 @@ domain name registrations through reporting, the Registration Data
 Access Protocol (RDAP), and other mechanisms.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.6.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>MainRSPEvaluationTest</pre></details><details><summary><h4>3.6.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -7956,7 +7961,7 @@ DNS will also be evaluated using the DNSSEC RSP Evaluation Test
 below.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.7.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>DNSRSPEvaluationTest</pre></details><details><summary><h4>3.7.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -8700,7 +8705,7 @@ not provide primary or secondary authoritative DNS services.</p>
 DNS will also be evaluated using the DNSSEC RSP Evaluation Test
 below.</p>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.8.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>DNSSECRSPEvaluationTest</pre></details><details><summary><h4>3.8.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -9037,15 +9042,16 @@ the Registry. It uses a local cache to speed up EPP query commands, but
 forwards all EPP transform commands to the primary registry system. TLD
 registries need to deploy a proxy setup in order to operate in certain
 markets worldwide.</p>
-<p>The “SRS Gateway” test suite requires access to a primary registry
-system that is logically independent of the SRS Gateway system, and
-details of the primary registry system are required as input parameters.
-RSPs wishing to offer SRS gateway services must identify such a primary
-registry system, which MUST be independent of the SRS gateway system,
-and MAY be operated by a third party.</p>
+<p>The <a href="#Test-Suite-StandardSRSGateway">SRS Gateway</a> test
+suite requires access to a primary registry system that is logically
+independent of the SRS Gateway system, and details of the primary
+registry system are required as input parameters. RSPs wishing to offer
+SRS gateway services MUST identify such a primary registry system, which
+MUST be independent of the SRS gateway system, and MAY be operated by a
+third party.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-plans">test plans</a>, for this test
-to pass, <strong>all</strong> the listed test cases must pass: if
+to pass, <strong>all</strong> the listed test cases MUST pass: if
 <strong>any</strong> fail, then the test as a whole will fail.</p>
 </div><details><summary><h4>3.9.2. Plan ID</h4></summary><p>The following Test Plan ID may be used with the RST API:</p>
 <pre>SRSGatewayRSPTest</pre></details><details><summary><h4>3.9.3. Test suites</h4></summary><p>This plan uses the following test suites:</p>
@@ -9333,7 +9339,7 @@ will be performed from multiple vantage points. All vantage points MUST
 receive the same response in order for the tests to pass.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 <p>Unless stated otherwise, the pass/fail criteria for the test cases in
 this suite are the same as those defined in the Zonemaster
@@ -10074,7 +10080,7 @@ anywhere in the DNS hierarchy, not all Zonemaster tests are applicable
 for TLDs and may not be listed in the test suites in this document.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 <p>Unless stated otherwise, the pass/fail criteria for the test cases in
 this suite are the same as those defined in the Zonemaster
@@ -10346,7 +10352,7 @@ be mapped to the test IDs in this document by removing the
 <code>rdap-NN-</code> prefix.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.3.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-rdap-01-domainCaseFoldingValidation">rdap-01-domainCaseFoldingValidation - Domain label case folding validation</a></li><li><a href="#Test-Case-rdap-02-domainNameValidation">rdap-02-domainNameValidation - Domain Name validation</a></li><li><a href="#Test-Case-rdap-03-ipv4Validation">rdap-03-ipv4Validation - IPv4 address validation</a></li><li><a href="#Test-Case-rdap-04-ipv6Validation">rdap-04-ipv6Validation - IPv6 address validation</a></li><li><a href="#Test-Case-rdap-05-stdRdapAsEventActorValidation">rdap-05-stdRdapAsEventActorValidation - asEventActor Validation</a></li><li><a href="#Test-Case-rdap-06-stdRdapConformanceValidation">rdap-06-stdRdapConformanceValidation - RDAP Conformance validation</a></li><li><a href="#Test-Case-rdap-07-stdRdapDomainLookupValidation">rdap-07-stdRdapDomainLookupValidation - Domain Lookup Validation</a></li><li><a href="#Test-Case-rdap-08-stdRdapEntitiesValidation">rdap-08-stdRdapEntitiesValidation - Entities validation</a></li><li><a href="#Test-Case-rdap-09-stdRdapEntityLookupValidation">rdap-09-stdRdapEntityLookupValidation - Entity lookup validation</a></li><li><a href="#Test-Case-rdap-10-stdRdapErrorResponseBodyValidation">rdap-10-stdRdapErrorResponseBodyValidation - Error Response Body</a></li><li><a href="#Test-Case-rdap-11-stdRdapEventsValidation">rdap-11-stdRdapEventsValidation - Events Validation</a></li><li><a href="#Test-Case-rdap-12-stdRdapHelpValidation">rdap-12-stdRdapHelpValidation - Help validation</a></li><li><a href="#Test-Case-rdap-13-stdRdapIpAddressesValidation">rdap-13-stdRdapIpAddressesValidation - IP Addresses Validation</a></li><li><a href="#Test-Case-rdap-14-stdRdapLanguageIdentifierValidation">rdap-14-stdRdapLanguageIdentifierValidation - Language Identifier Validation</a></li><li><a href="#Test-Case-rdap-15-stdRdapLdhNameValidation">rdap-15-stdRdapLdhNameValidation - LDH name</a></li><li><a href="#Test-Case-rdap-16-stdRdapLinksValidation">rdap-16-stdRdapLinksValidation - Links validation</a></li><li><a href="#Test-Case-rdap-17-stdRdapNameserverLookupValidation">rdap-17-stdRdapNameserverLookupValidation - Nameserver lookup validation</a></li><li><a href="#Test-Case-rdap-18-stdRdapNameserversSearchValidation">rdap-18-stdRdapNameserversSearchValidation - RFC7159RDAP_RFCsNameservers search validation</a></li><li><a href="#Test-Case-rdap-19-stdRdapNoticesRemarksValidation">rdap-19-stdRdapNoticesRemarksValidation - Notices and Remarks Validation</a></li><li><a href="#Test-Case-rdap-20-stdRdapPort43WhoisServerValidation">rdap-20-stdRdapPort43WhoisServerValidation - Port 43 WHOIS Server</a></li><li><a href="#Test-Case-rdap-21-stdRdapPublicIdsValidation">rdap-21-stdRdapPublicIdsValidation - Public IDs validation</a></li><li><a href="#Test-Case-rdap-22-stdRdapRolesValidation">rdap-22-stdRdapRolesValidation - Roles validation</a></li><li><a href="#Test-Case-rdap-23-stdRdapSecureDnsValidation">rdap-23-stdRdapSecureDnsValidation - Secure DNS validation</a></li><li><a href="#Test-Case-rdap-24-stdRdapStatusValidation">rdap-24-stdRdapStatusValidation - Status validation</a></li><li><a href="#Test-Case-rdap-25-stdRdapUnicodeNameValidation">rdap-25-stdRdapUnicodeNameValidation - RFC7159RDAP_RFCsIDNA_RFCsUnicode name</a></li><li><a href="#Test-Case-rdap-26-stdRdapVariantsValidation">rdap-26-stdRdapVariantsValidation - Variants validation</a></li><li><a href="#Test-Case-rdap-27-webUriValidation">rdap-27-webUriValidation - Web URI validation</a></li></ol></details><details><summary><h4>4.3.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -10773,7 +10779,7 @@ commands specified for domain names (and optionally host and contact
 objects) and the mandatory extensions.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.4.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-epp-01">epp-01 - EPP server MUST have at least one A record</a></li><li><a href="#Test-Case-epp-02">epp-02 - EPP server MUST have at least one AAAA record</a></li><li><a href="#Test-Case-epp-03">epp-03 - All IP addresses MUST accept TCP connections on port 700</a></li><li><a href="#Test-Case-epp-04">epp-04 - All service ports support TLSv1.2 or higher</a></li><li><a href="#Test-Case-epp-05">epp-05 - All service ports MUST NOT support TLSv1.1 or earlier</a></li><li><a href="#Test-Case-epp-06">epp-06 - All service ports MUST offer a valid certificate issued by a trusted CA
@@ -11393,11 +11399,11 @@ if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </g>
 </svg>
 </details></section><section><a name="Test-Suite-StandardRDE"></a><h3>4.5. Registry Data Escrow (RDE)</h3><h4>4.5.1. Description</h4><div class="markdown-content"><p>The RDE test suite validates Registry Data Escrow deposits generated
-for the TLD or RSP. These deposits must comply with the specifications
+for the TLD or RSP. These deposits MUST comply with the specifications
 in the Registry Agreement and with RFC8909 and RFC9022.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.5.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-rde-01">rde-01 - validate deposit filename format</a></li><li><a href="#Test-Case-rde-02">rde-02 - validate signature over deposit file</a></li><li><a href="#Test-Case-rde-03">rde-03 - decrypt deposit file(s)</a></li><li><a href="#Test-Case-rde-04">rde-04 - validate XML/CSV</a></li><li><a href="#Test-Case-rde-05">rde-05 - validate object types</a></li><li><a href="#Test-Case-rde-06">rde-06 - validate object counts</a></li><li><a href="#Test-Case-rde-07">rde-07 - validate domain objects</a></li><li><a href="#Test-Case-rde-08">rde-08 - validate host objects (if applicable)</a></li><li><a href="#Test-Case-rde-09">rde-09 - validate contact objects (if applicable)</a></li><li><a href="#Test-Case-rde-10">rde-10 - validate registrar objects</a></li><li><a href="#Test-Case-rde-11">rde-11 - validate IDN table objects (if applicable)</a></li><li><a href="#Test-Case-rde-12">rde-12 - validate NNDN objects</a></li><li><a href="#Test-Case-rde-13">rde-13 - validate EPP parameters object</a></li><li><a href="#Test-Case-rde-14">rde-14 - validate policy object (if applicable)</a></li></ol></details><details><summary><h4>4.5.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -11628,7 +11634,7 @@ including compliance with specifications for variant labels at the top-
 or second- level, and conformance with the IDN Guidelines.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.6.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-idn-01">idn-01 - Label validation test</a></li><li><a href="#Test-Case-idn-02">idn-02 - Level 1 variant handling test</a></li><li><a href="#Test-Case-idn-03">idn-03 - Level 2 variant handling test</a></li><li><a href="#Test-Case-idn-04">idn-04 - Level 3 variant handling test</a></li></ol></details><details><summary><h4>4.6.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -11709,7 +11715,7 @@ registry infrastructure of a TLD or RSP, and the synchronisation between
 primary and gateway systems.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.7.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-srsgw-01">srsgw-01 - IPv4 and IPv6 connectivity</a></li><li><a href="#Test-Case-srsgw-02">srsgw-02 - Host &lt;create&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-03">srsgw-03 - Contact &lt;create&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-04">srsgw-04 - Domain &lt;create&gt; synchronization</a></li><li><a href="#Test-Case-srsgw-05">srsgw-05 - Domain &lt;renew&gt; synchronisation</a></li><li><a href="#Test-Case-srsgw-06">srsgw-06 - Domain &lt;transfer&gt; synchronisation</a></li><li><a href="#Test-Case-srsgw-07">srsgw-07 - Domain &lt;transfer&gt; approval synchronisation</a></li><li><a href="#Test-Case-srsgw-08">srsgw-08 - Domain &lt;delete&gt; synchronisation</a></li><li><a href="#Test-Case-srsgw-09">srsgw-09 - Host &lt;update&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-10">srsgw-10 - Host &lt;delete&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-11">srsgw-11 - Contact &lt;update&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-12">srsgw-12 - Contact &lt;delete&gt; synchronization (if applicable)</a></li><li><a href="#Test-Case-srsgw-13">srsgw-13 - Domain RDAP synchronization</a></li><li><a href="#Test-Case-srsgw-14">srsgw-14 - Nameserver RDAP synchronization</a></li><li><a href="#Test-Case-srsgw-15">srsgw-15 - Registrar RDAP synchronization</a></li></ol></details><details><summary><h4>4.7.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -11961,7 +11967,7 @@ DNSSEC operational procedures while maintaining a chain of trust to the
 parent zone.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.8.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-dnssecOps01-ZSKRollover">dnssecOps01-ZSKRollover - ZSK rollover</a></li><li><a href="#Test-Case-dnssecOps02-KSKRollover">dnssecOps02-KSKRollover - KSK rollover</a></li><li><a href="#Test-Case-dnssecOps03-AlgorithmRollover">dnssecOps03-AlgorithmRollover - algorithm rollover</a></li></ol></details><details><summary><h4>4.8.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -12027,7 +12033,7 @@ Protection Mechanisms (RPMs), and the Launch Extension (RFC8334) if
 supported.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.9.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-minimumRPMs-01">minimumRPMs-01 - Sunrise domain &lt;check&gt; command test</a></li><li><a href="#Test-Case-minimumRPMs-02">minimumRPMs-02 - Claims &lt;check&gt; command test</a></li><li><a href="#Test-Case-minimumRPMs-03">minimumRPMs-03 - Trademark &lt;check&gt; command test</a></li><li><a href="#Test-Case-minimumRPMs-04">minimumRPMs-04 - Sunrise domain/launch application &lt;create&gt; command test
@@ -12160,7 +12166,7 @@ TLD are properly integrated and functioning within the requirements of
 the Service Level Agreement.</p>
 <h4 id="passfail-criteria">Pass/fail criteria</h4>
 <p>As with all other <a href="#test-suites">test suites</a>, for this
-test suite to pass <strong>all</strong> the listed test cases must pass:
+test suite to pass <strong>all</strong> the listed test cases MUST pass:
 if <strong>any</strong> fail, then the suite as a whole will fail.</p>
 </div><details><summary><h4>4.10.2. Test cases</h4></summary><p>This suite uses the following test cases:</p>
 <ol><li><a href="#Test-Case-integration-01">integration-01 - EPP -&gt; RDAP Integration Test</a></li><li><a href="#Test-Case-integration-02">integration-02 - EPP -&gt; DNS Integration Test</a></li><li><a href="#Test-Case-integration-03">integration-03 - EPP -&gt; RDE Integration Test</a></li></ol></details><details><summary><h4>4.10.3. Test plans</h4></summary><p>This suite is used by the following test plans:</p>
@@ -17004,7 +17010,7 @@ MUST successfully carry out an algorithm rollover for the domain
 algorithm used to secure the domain is changed, without disrupting the
 chain of trust.</p>
 <p>Note that the specific algorithms being rolled to and from are not
-significant (although they must be present in the IANA registry); it is
+significant (although they MUST be present in the IANA registry); it is
 not required that the new algorithm be more “secure” than the original
 algorithm; only that they are different. So a rollover from algorithm 13
 (<code>ECDSAP256SHA256</code>) to algorithm 8 (<code>RSASHA256</code>)
@@ -17839,7 +17845,7 @@ parameter, using the username specified in the
 in the <code>integration.rdeSFTPPublicKey</code> resource, and look for
 .ryde files in the directory specified by the
 <code>integration.rdeSFTPDirectory</code> input parameter. Note that
-operators must ensure that the IP addresses listed in the
+operators MUST ensure that the IP addresses listed in the
 <code>integration.rdeSFTPACL</code> resource have been added to the
 Access Control List for the SFTP server (if any).</p>
 <p>All objects created in the <code>epp-32</code> and

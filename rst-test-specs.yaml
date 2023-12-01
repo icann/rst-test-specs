@@ -14,6 +14,11 @@ Preamble: |
   [resources](#resources), any inter-case dependencies, and the
   [errors](#errors) that might occur during testing.
 
+  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+  "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+  document are to be interpreted as described in RFC2119 when, and only when,
+  they appear in all capitals, as shown here.
+
   # 2.1. Test plans
 
   An individual *Test Plan* addresses a particular scenario (for example, RSP
@@ -47,7 +52,7 @@ Preamble: |
   ## 2.3.3. General pass/fail criteria
 
   In general, for a test to pass, **all** the test cases specified in the test
-  suite(s) for the test plan must pass: if *any* fail, then the test as a
+  suite(s) for the test plan MUST pass: if *any* fail, then the test as a
   whole will fail.
 
   A test case will fail if it produces one or more [errors](#errors) with the
@@ -185,7 +190,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -210,7 +215,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -236,7 +241,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
@@ -256,7 +261,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardIDN
 
@@ -280,7 +285,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardSRSGateway
       - SRSGatewayIntegrationTest
@@ -299,7 +304,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardEPP
       - MinimumRPMs
@@ -319,7 +324,7 @@ Test-Plans:
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
 
@@ -333,7 +338,7 @@ Test-Plans:
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNSSEC
       - DNSSECOperations
@@ -348,16 +353,16 @@ Test-Plans:
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
 
-      The "SRS Gateway" test suite requires access to a primary registry system
-      that is logically independent of the SRS Gateway system, and details of
-      the primary registry system are required as input parameters. RSPs wishing
-      to offer SRS gateway services must identify such a primary registry
-      system, which MUST be independent of the SRS gateway system, and MAY be
-      operated by a third party.
+      The [SRS Gateway](#Test-Suite-StandardSRSGateway) test suite requires
+      access to a primary registry system that is logically independent of the
+      SRS Gateway system, and details of the primary registry system are
+      required as input parameters. RSPs wishing to offer SRS gateway services
+      MUST identify such a primary registry system, which MUST be independent of
+      the SRS gateway system, and MAY be operated by a third party.
 
       # Pass/fail criteria
 
-      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases must pass: if **any** fail, then the test as a whole will fail.
+      As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases MUST pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardSRSGateway
 
@@ -386,7 +391,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
 
       Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dns-
@@ -411,7 +416,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
 
       Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dnssec-
@@ -433,7 +438,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^rdap-
     Input-Parameters:
       - rdap.baseURLs
@@ -453,7 +458,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^epp-
     Resources:
 
@@ -462,12 +467,12 @@ Test-Suites:
     Name: Registry Data Escrow (RDE)
     Description: |
       The RDE test suite validates Registry Data Escrow deposits generated for
-      the TLD or RSP. These deposits must comply with the specifications in the
+      the TLD or RSP. These deposits MUST comply with the specifications in the
       Registry Agreement and with RFC8909 and RFC9022.
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^rde-
 
   StandardIDN:
@@ -480,7 +485,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^idn-
     Resources:
 
@@ -494,7 +499,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^srsgw-
     Resources:
 
@@ -508,7 +513,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^dnssecOps
     Resources:
 
@@ -522,7 +527,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^minimumRPMs-
     Resources:
 
@@ -536,7 +541,7 @@ Test-Suites:
 
       # Pass/fail criteria
 
-      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases must pass: if **any** fail, then the suite as a whole will fail.
+      As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases MUST pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^integration-
     Resources:
 
@@ -3979,7 +3984,7 @@ Test-Cases:
       secure the domain is changed, without disrupting the chain of trust.
 
       Note that the specific algorithms being rolled to and from are not
-      significant (although they must be present in the IANA registry); it is
+      significant (although they MUST be present in the IANA registry); it is
       not required that the new algorithm be more "secure" than the original
       algorithm; only that they are different. So a rollover from algorithm 13
       (`ECDSAP256SHA256`) to algorithm 8 (`RSASHA256`) will be accepted as well
@@ -5474,7 +5479,7 @@ Test-Cases:
       specified in the `integration.rdeSFTPUsername` input parameter and the SSH
       key in the `integration.rdeSFTPPublicKey` resource, and look for .ryde
       files in the directory specified by the `integration.rdeSFTPDirectory`
-      input parameter. Note that operators must ensure that the IP addresses
+      input parameter. Note that operators MUST ensure that the IP addresses
       listed in the `integration.rdeSFTPACL` resource have been added to the
       Access Control List for the SFTP server (if any).
 
