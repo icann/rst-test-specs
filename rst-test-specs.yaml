@@ -353,7 +353,7 @@ Test-Plans:
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
 
-      The [SRS Gateway](#Test-Suite-StandardSRSGateway) test suite requires
+      The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires
       access to a primary registry system that is logically independent of the
       SRS Gateway system, and details of the primary registry system are
       required as input parameters. RSPs wishing to offer SRS gateway services
