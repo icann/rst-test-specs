@@ -20,8 +20,10 @@ sub text { $_[0]->{'text'} }
 sub html {
     my ($self, $shift) = @_;
 
-    if (!defined($CACHE->{$self->text})) {
-        my $f = File::Spec->catfile(File::Spec->tmpdir, sha1_hex(unidecode($self->text))).sprintf('.%u.html', $shift);
+    my $key = sprintf('%s.%u', sha1_hex(unidecode($self->text)), $shift);
+
+    if (!defined($CACHE->{$key})) {
+        my $f = File::Spec->catfile(File::Spec->tmpdir, $key.'.html');
 
         unless (-e $f) {
             my @cmd = (qw(pandoc -f markdown -t html -o), $f);
@@ -37,10 +39,10 @@ sub html {
             waitpid($pid, 0);
         }
 
-        $CACHE->{$self->text} = '<div class="markdown-content">'.join('', read_file($f, 'binmode' => ':encoding(UTF-8)')).'</div>';
+        $CACHE->{$key} = '<div class="markdown-content">'.read_file($f, 'binmode' => ':encoding(UTF-8)').'</div>';
     }
 
-    return $CACHE->{$self->text};
+    return $CACHE->{$key};
 }
 
 1;
