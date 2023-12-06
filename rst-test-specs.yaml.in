@@ -327,7 +327,6 @@ Test-Plans:
     Test-Suites:
       - StandardEPP
       - MinimumRPMs
-      - StandardIDN
       - StandardRDAP
       - StandardRDE
 
