@@ -4,7 +4,7 @@
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
 ---
-RST-Test-Plan-Schema-Version: 1.5
+RST-Test-Plan-Schema-Version: 1.5.1
 Version: 3.0
 Last-Updated: #date %Y-%m-%d
 
@@ -614,6 +614,30 @@ Test-Cases:
 #exec perl ./tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx"
 
 ### END AUTO-GENERATED CASE SECTION ###
+
+  dnssecX-01:
+    Summary: Permitted signing algorithms
+    Description: |
+      In addition to the requirements outlined in `dnssec-05`, this test imposes
+      an additional requirement on the signing algorithms used to sign zones,
+      specifically, the algorithm number **MUST NOT** be lower than 8.
+    Input-Parameters:
+      - dns.nameservers
+    Errors:
+      - DNSSEC_DNS_QUERY_ERROR
+      - DNSSEC_INVALID_SIGNING_ALGORITHM
+    Dependencies:
+      - dnssec-05
+  dnssecX-02:
+    Summary: Permitted DS record hash algorithm(s)
+    Description: |
+      The DS record(s) submitted in the `dnssec.dsRecords` input parameters will
+      be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
+    Input-Parameters:
+      - dnssec.dsRecords
+    Errors:
+      - DNSSEC_DNS_QUERY_ERROR
+      - DNSSEC_INVALID_DIGEST_ALGORITHM
 
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
@@ -2153,6 +2177,7 @@ Test-Cases:
       - epp.transferPwd
       - general.minimalPublicDataSet
     Dependencies:
+
   integration-01:
     Summary: EPP -> RDAP Integration Test
     Description: |
@@ -2469,3 +2494,13 @@ Errors:
 #exec perl ./tools/generate-zonemaster-cases.pl ../../zonemaster/zonemaster --errors --devel
 
 ### END AUTO-GENERATED ERROR SECTION ###
+
+  DNSSEC_DNS_QUERY_ERROR:
+    Severity: ERROR
+    Description: An error occurred while performing DNS query(s).
+  DNSSEC_INVALID_SIGNING_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used to sign the zone.
+  DNSSEC_INVALID_DIGEST_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used in the provided DS record(s).
