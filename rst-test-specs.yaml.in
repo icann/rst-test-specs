@@ -444,7 +444,7 @@ Test-Suites:
 
   StandardRDAP:
     Order: 3
-    Name: Registration Data Acess Protocol (RDAP)
+    Name: Registration Data Access Protocol (RDAP)
     Description: |
       The RDAP test suite validates the RDAP service of the TLD or RSP.
 
@@ -1511,6 +1511,12 @@ Test-Cases:
       - epp.clid
       - epp.pwd
     Dependencies:
+    Errors:
+      - EPP_CONNECT_ERROR
+      - EPP_LOGIN_ERROR
+      - EPP_GENERIC_COMMAND_ERROR
+      - EPP_SCHEMA_VALIDATION_ERROR
+      - EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT
   minimumRPMs-02:
     Summary: Claims <check> command test
     Description: |
@@ -2504,3 +2510,22 @@ Errors:
   DNSSEC_INVALID_DIGEST_ALGORITHM:
     Severity: ERROR
     Description: An invalid algorithm is used in the provided DS record(s).
+
+  EPP_CONNECT_ERROR:
+    Severity: ERROR
+    Description: The client was unable to successfully connect to the EPP serer.
+  EPP_LOGIN_ERROR:
+    Severity: ERROR
+    Description: |
+      The client was unable to successfullt authenticate with the EPP server.
+  EPP_GENERIC_COMMAND_ERROR:
+    Severity: ERROR
+    Description: The client received a 2400 error from the server.
+  EPP_SCHEMA_VALIDATION_ERROR:
+    Severity: ERROR
+    Description: The response from the server failed schema validation.
+  EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT:
+    Severity: ERROR
+    Description: |
+      The response to a sunrise availability check command contained an invalid
+      value in the `avail` attribute.
