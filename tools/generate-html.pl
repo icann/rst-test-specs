@@ -526,14 +526,14 @@ sub print_plan {
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. RST-API example', $section, $i, ++$j)));
 
-    my $json = $json->encode(\%params);
+    my $jstr = $json->encode(\%params);
     print $h->pre(e(sprintf(
         "POST /test/987654/inputs HTTP/1.1\n".
             "Content-Type: application/json\n".
             "Content-Length: %u\n\n".
             "%s",
-        length($json),
-        $json
+        length($jstr),
+        $jstr
     )));
 
     print $h->close(details);
@@ -766,17 +766,17 @@ sub print_case {
 
     print $h->a({name => sprintf('Test-Case-%s', $case->id)});
 
-    my $j = 0;
-
     my $summary = $case->summary;
     if ($summary) {
         print $h->h3(sprintf(
-            '%u.%u.%u. %s - %s', $section, $i, ++$j, e($case->id), e($summary)));
+            '%u.%u. %s - %s', $section, $i, e($case->id), e($summary)));
 
     } else {
-        print $h->h3(sprintf('%u.%u.%u. %s', $section, $i, ++$j, e($case->id)));
+        print $h->h3(sprintf('%u.%u. %s', $section, $i, e($case->id)));
 
     }
+
+    my $j = 0;
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $case->description->html(3);
@@ -1120,6 +1120,9 @@ dd {
 code,tt,pre {
     font-family: "Fira Code", "Menlo", "Consolas", "Andale Mono", "Courier New",
         Courier, monospace;
+}
+
+code,tt {
     white-space:nowrap;
 }
 
