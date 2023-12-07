@@ -9,7 +9,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => 1.5.1;
+use constant SCHEMA_VERSION => v1.5.1;
 use strict;
 
 sub new {
@@ -22,8 +22,8 @@ sub new {
         $package,
     );
 
-    my $v = $self->{'spec'}->{'RST-Test-Plan-Schema-Version'};
-    croak(sprintf("Unsupported schema version '%s', must be %s", $v, SCHEMA_VERSION)) unless (SCHEMA_VERSION eq $v);
+    my $v = version->parse($self->{'spec'}->{'RST-Test-Plan-Schema-Version'});
+    croak(sprintf("Unsupported schema version '%s', must be '%s'", $v, SCHEMA_VERSION)) unless (SCHEMA_VERSION == $v);
 
     return $self;
 }
