@@ -5,7 +5,7 @@
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
 ---
 RST-Test-Plan-Schema-Version: 1.5.1
-Version: 3.0
+Version: #exec perl ./tools/generate-version.pl
 Last-Updated: #date %Y-%m-%d
 
 Contact:
