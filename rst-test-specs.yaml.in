@@ -615,7 +615,7 @@ Test-Cases:
 
 ### END AUTO-GENERATED CASE SECTION ###
 
-  dnssecX-01:
+  dnssec-91:
     Summary: Permitted signing algorithms
     Description: |
       In addition to the requirements outlined in `dnssec-05`, this test imposes
@@ -628,7 +628,7 @@ Test-Cases:
       - DNSSEC_INVALID_SIGNING_ALGORITHM
     Dependencies:
       - dnssec-05
-  dnssecX-02:
+  dnssec-92:
     Summary: Permitted DS record hash algorithm(s)
     Description: |
       The DS record(s) submitted in the `dnssec.dsRecords` input parameters will
