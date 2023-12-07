@@ -17,6 +17,26 @@
          "Description" : "An invalid algorithm is used to sign the zone.",
          "Severity" : "ERROR"
       },
+      "EPP_CONNECT_ERROR" : {
+         "Description" : "The client was unable to successfully connect to the EPP serer.",
+         "Severity" : "ERROR"
+      },
+      "EPP_GENERIC_COMMAND_ERROR" : {
+         "Description" : "The client received a 2400 error from the server.",
+         "Severity" : "ERROR"
+      },
+      "EPP_LOGIN_ERROR" : {
+         "Description" : "The client was unable to successfullt authenticate with the EPP server.\n",
+         "Severity" : "ERROR"
+      },
+      "EPP_SCHEMA_VALIDATION_ERROR" : {
+         "Description" : "The response from the server failed schema validation.",
+         "Severity" : "ERROR"
+      },
+      "EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT" : {
+         "Description" : "The response to a sunrise availability check command contained an invalid\nvalue in the `avail` attribute.\n",
+         "Severity" : "ERROR"
+      },
       "ZM_AAAA_BAD_RDATA" : {
          "Description" : "*Not available.*",
          "Severity" : "ERROR"
@@ -2238,6 +2258,13 @@
       "minimumRPMs-01" : {
          "Dependencies" : null,
          "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Availability Check Form, as described in Section\n3.1.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Sunrise List, as described in Section 5.4.2.1\nof RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `avail` for the `type` attribute of the\n`<launch:check>` element, and `sunrise` for the `<launch:phase>`\nelement. It will then confirm that the server returns an appropriate\nresponse:\n\n  * The `<domain:name>` element for a syntactically valid domain which\n    does not appear on the SURL **MUST** have an `avail` attribute of `0`\n    or `false`.\n  * The `<domain:name>` element for a domain which is present on the\n    SURL, and does not already exist, **MUST** have an `avail` attribute\n    of `1` or `true`.\n",
+         "Errors" : [
+            "EPP_CONNECT_ERROR",
+            "EPP_LOGIN_ERROR",
+            "EPP_GENERIC_COMMAND_ERROR",
+            "EPP_SCHEMA_VALIDATION_ERROR",
+            "EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT"
+         ],
          "Input-Parameters" : [
             "epp.hostName",
             "epp.clid",
@@ -2918,7 +2945,7 @@
             "rdap.testEntities",
             "rdap.testNameservers"
          ],
-         "Name" : "Registration Data Acess Protocol (RDAP)",
+         "Name" : "Registration Data Access Protocol (RDAP)",
          "Order" : "3",
          "Resources" : null,
          "Test-Cases" : "^rdap-"
@@ -2937,5 +2964,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.172"
+   "Version" : "3.0.176"
 }
