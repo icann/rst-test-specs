@@ -5,6 +5,18 @@
       "Organization" : "Internet Corporation for Assigned Names and Numbers (ICANN)"
    },
    "Errors" : {
+      "DNSSEC_DNS_QUERY_ERROR" : {
+         "Description" : "An error occurred while performing DNS query(s).",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_INVALID_DIGEST_ALGORITHM" : {
+         "Description" : "An invalid algorithm is used in the provided DS record(s).",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_INVALID_SIGNING_ALGORITHM" : {
+         "Description" : "An invalid algorithm is used to sign the zone.",
+         "Severity" : "ERROR"
+      },
       "ZM_AAAA_BAD_RDATA" : {
          "Description" : "*Not available.*",
          "Severity" : "ERROR"
@@ -1102,9 +1114,9 @@
          "Type" : "object"
       }
    },
-   "Last-Updated" : "2023-12-06",
+   "Last-Updated" : "2023-12-07",
    "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.3. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.4. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n   which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n   prevent the test from *continuing*. A test may produce multiple `ERROR`\n   results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n   further. A test will only produce a single `CRITICAL` result and it\n   will always be the last result in the log.\n\n## 2.3.5. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at <https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These **MUST**\ninclude (but are not limited to): (1) Sunrise Periods, and (2) Trademark\nClaims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
-   "RST-Test-Plan-Schema-Version" : "1.5",
+   "RST-Test-Plan-Schema-Version" : "1.5.1",
    "Resources" : {
       "epp.clientACL" : {
          "Description" : "A list of IPv4 and IPv6 address(es) from which client connections to the\noperator's EPP server will be made. The list is a plain text file with\neach IP address on a separate line.\n",
@@ -1729,6 +1741,31 @@
             "ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS"
          ],
          "Summary" : "Validate trust from DS to CDS and CDNSKEY"
+      },
+      "dnssec-91" : {
+         "Dependencies" : [
+            "dnssec-05"
+         ],
+         "Description" : "In addition to the requirements outlined in `dnssec-05`, this test imposes\nan additional requirement on the signing algorithms used to sign zones,\nspecifically, the algorithm number **MUST NOT** be lower than 8.\n",
+         "Errors" : [
+            "DNSSEC_DNS_QUERY_ERROR",
+            "DNSSEC_INVALID_SIGNING_ALGORITHM"
+         ],
+         "Input-Parameters" : [
+            "dns.nameservers"
+         ],
+         "Summary" : "Permitted signing algorithms"
+      },
+      "dnssec-92" : {
+         "Description" : "The DS record(s) submitted in the `dnssec.dsRecords` input parameters will\nbe validated. Algorithm 1 (SHA-1) **MUST NOT** be used.\n",
+         "Errors" : [
+            "DNSSEC_DNS_QUERY_ERROR",
+            "DNSSEC_INVALID_DIGEST_ALGORITHM"
+         ],
+         "Input-Parameters" : [
+            "dnssec.dsRecords"
+         ],
+         "Summary" : "Permitted DS record hash algorithm(s)"
       },
       "dnssecOps01-ZSKRollover" : {
          "Dependencies" : null,
@@ -2766,7 +2803,6 @@
          "Test-Suites" : [
             "StandardEPP",
             "MinimumRPMs",
-            "StandardIDN",
             "StandardRDAP",
             "StandardRDE"
          ]
