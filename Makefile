@@ -1,11 +1,15 @@
 src = rst-test-specs
 all: export PERL5LIB=./tools/perl
-all: yaml json html
+all: yaml lint json html
 
 yaml:
 	@echo "Compiling YAML..."
 	@gpp -x $(src).yaml.in > $(src).yaml
 	@echo wrote $(src).yaml
+
+lint:
+	@echo "Checking YAML"...
+	@perl tools/lint.pl $(src).yaml
 
 json:
 	@echo "Compiling JSON..."
