@@ -30,6 +30,24 @@ my $json = JSON::XS->new->pretty->canonical;
 
 my $h = HTML::Tiny->new;
 
+my $mcol = {
+    'ALPHA'     => 'red',
+    'BETA'      => 'orange',
+    'GAMMA'     => 'green',
+};
+
+my $msym = {
+    'ALPHA'     => $h->span({'style' => 'color:'.$mcol->{'ALPHA'}}, 'α'),
+    'BETA'      => $h->span({'style' => 'color:'.$mcol->{'BETA'}}, 'β'),
+    'GAMMA'     => $h->span({'style' => 'color:'.$mcol->{'GAMMA'}}, 'y'),
+};
+
+my $mdesc = {
+    'ALPHA'     => 'very rough outline, much more work needed',
+    'BETA'      => 'complete but likely to require further changes',
+    'GAMMA'     => 'finalized and ready for review',
+};
+
 my ($_DATA, $section);
 while (<DATA>) {
     if (/^__(.+?)__$/) {
@@ -258,8 +276,8 @@ sub print_test_case_toc_list {
 
     foreach my $case ($spec->cases) {
         print $h->li($h->a(
-            {href => sprintf('#Test-Case-%s', $case->id)},
-            e($case->title)
+            {href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity}},
+            e($case->title),
         ));
     }
 
@@ -595,7 +613,7 @@ sub print_suite {
 
         foreach my $case (@cases) {
             print $h->li($h->a(
-                { href => sprintf('#Test-Case-%s', $case->id) },
+                { href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity} },
                 e($case->title),
             ));
         }
@@ -778,13 +796,17 @@ sub print_case {
 
     my $j = 0;
 
+    print $h->h4(sprintf('%u.%u.%u. Maturity Level', $section, $i, ++$j));
+    print $h->ul($h->li([$h->strong({'style' => 'color:'.$mcol->{$case->maturity}}, $case->maturity.': '), $mdesc->{$case->maturity}]));
+
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $case->description->html(3);
 
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Errors', $section, $i, ++$j)));
-    print $h->p('This test case may produce the following errors:');
+    print $h->p('This test case may produce the following errors, in addition to
+        those defined in test suite:');
 
     my @errors = $case->errors;
     if (scalar(@errors) < 1) {
@@ -812,7 +834,8 @@ sub print_case {
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Input parameters', $section, $i, ++$j)));
-    print $h->p('This test case requires the following input parameters:');
+    print $h->p('This test case requires the following input parameters, in
+        addition to those defined in the test suite:');
 
     my @inputs = $case->inputs;
     if (scalar(@inputs) < 1) {
@@ -835,7 +858,8 @@ sub print_case {
     print $h->open(details);
     print $h->summary($h->h4(sprintf('%u.%u.%u. Resources', $section, $i, ++$j)));
     print $h->p('The following resources may be required to prepare for this
-                    test plan:');
+                    test case, in addition to those defined in the test
+                    suite:');
 
     my @resources = $case->resources;
     if (scalar(@resources) < 1) {
@@ -908,8 +932,8 @@ sub print_case {
 
     print $h->open(details);
 
-    print $h->summary($h->h4(sprintf('%u.%u.%u. Test suites', $section, $i, ++$j)));
-    print $h->p('This test case is used in the following test suites:');
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Test suite', $section, $i, ++$j)));
+    print $h->p('This test case is used in the following test suite(s):');
 
     my @suites = $case->suites;
     if (scalar(@suites) < 1) {
@@ -979,8 +1003,8 @@ sub print_input {
 
         foreach my $case (@cases) {
             print $h->li($h->a(
-                { href => sprintf('#Test-Case-%s', $case->id) },
-                e($case->title),
+            { href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity} },
+            e($case->title),
             ));
         }
 

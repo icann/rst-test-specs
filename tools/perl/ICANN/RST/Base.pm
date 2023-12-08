@@ -1,4 +1,5 @@
 package ICANN::RST::Base;
+use YAML::XS;
 use strict;
 
 sub new {
@@ -19,6 +20,13 @@ sub new {
 sub id      { $_[0]->{'id'} }
 sub order   { int($_[0]->{'Order'}) }
 sub spec    { $_[0]->{'spec'} }
+
+sub dump {
+    my $self = shift;
+    my %hash = %{$self};
+    delete($hash{'spec'});
+    return YAML::XS::Dump(\%hash);
+}
 
 1;
 

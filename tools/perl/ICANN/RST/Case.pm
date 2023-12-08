@@ -5,6 +5,7 @@ use strict;
 
 sub summary     { $_[0]->{'Summary'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
+sub maturity    { $_[0]->{'Maturity'} || 'ALPHA' }
 
 sub title {
     my $self = shift;

@@ -77,6 +77,7 @@ foreach my $case (sort keys(%cases)) {
     printf(
         "  rdap-%02u-%s:\n".
         "    Summary: %s\n".
+        "    Maturity: GAMMA\n".
         "    Description: |\n".
         "      %s\n",
         ++$i,

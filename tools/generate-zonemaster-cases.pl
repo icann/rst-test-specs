@@ -359,6 +359,7 @@ sub print_case {
     my $node = {
         $case->{'id'} => {
             'Summary'       => $case->{'summary'},
+            'Maturity'      => 'GAMMA',
             'Description'   => $case->{'description'},
             'Errors'        => $case->{'errors'},
         }

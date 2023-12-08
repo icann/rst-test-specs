@@ -2,7 +2,6 @@ package ICANN::RST::Error;
 use base qw(ICANN::RST::Base);
 use strict;
 
-sub url { URI->new($_[0]->{'URL'}) }
 sub severity { $_[0]->{'Severity'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 

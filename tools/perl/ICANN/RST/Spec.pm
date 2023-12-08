@@ -9,7 +9,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => v1.5.1;
+use constant SCHEMA_VERSION => v1.6.0;
 use strict;
 
 sub new {
@@ -44,9 +44,23 @@ sub errors          { my $self = shift ; return sort {    $a->id cmp $b->id     
 sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)      };
 sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites)     };
 sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)      };
-sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs)     };
 sub resource        { my ($self, $id) = @_ ; return $self->find($id, $self->resources)  };
-sub error           { my ($self, $id) = @_ ; return $self->find($id, $self->errors)     };
+
+sub input {
+    my ($self, $id) = @_;
+    my $input = $self->find($id, $self->inputs);
+    return $input if ($input);
+
+    return ICANN::RST::Input->new($id, {'Type' => 'string', 'Example' => 'TBA', 'Description' => '*TBA*'}, $self);
+};
+
+sub error {
+    my ($self, $id) = @_ ;
+    my $error = $self->find($id, $self->errors);
+    return $error if ($error);
+
+    return ICANN::RST::Error->new($id, {'Severity' => 'ERROR', 'Description' => '*TBA*'}, $self);
+};
 
 sub find {
     my ($self, $needle, @haystack) = @_;

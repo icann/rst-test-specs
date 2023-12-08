@@ -8,7 +8,7 @@ conforms to the following schema.
 The top-level object has the following properties:
 
 `RST-Test-Plan-Schema-Version`
-: this is always `1.5.1`. This property conforms to the [Semantic
+: this is always `1.6.0`. This property conforms to the [Semantic
 Versioning](https://semver.org) convention, and tracks the version of **this**
 document, and is updated whenever a material change to the schema is made.
 
@@ -114,6 +114,8 @@ A **Test Case** object has the following properties:
 : a short description of the test case.
 
 `Description`: a detailed description of the test case in Markdown format.
+
+`Maturity`: one of `ALPHA`, `BETA` or `GAMMA`.
 
 `Dependencies`
 : an **OPTIONAL** array of [Test Case object](#test-case-object) IDs, which must
