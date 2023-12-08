@@ -102,7 +102,7 @@ for the suite.
 prepare for the tests in this test suite, in addition to those specified by the
 test cases for the suite.
 
-`Resources`
+`Errors`
 : a collection of [Error object](#error-object]) IDs which may be produced by
 this test suite, in addition to those specified by the test cases for the suite.
 
