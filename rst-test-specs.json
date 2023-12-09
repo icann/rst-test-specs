@@ -17,24 +17,284 @@
          "Description" : "An invalid algorithm is used to sign the zone.",
          "Severity" : "ERROR"
       },
-      "EPP_CONNECT_ERROR" : {
-         "Description" : "The client was unable to successfully connect to the EPP serer.",
+      "EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_INFO_RESPONSE_NOT_1000" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DNS_RESOLUTION_ERROR" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
          "Severity" : "ERROR"
       },
       "EPP_GENERIC_COMMAND_ERROR" : {
          "Description" : "The client received a 2400 error from the server.",
          "Severity" : "ERROR"
       },
+      "EPP_GREETING_INVALID_LANG" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_MISSING_EXTURI" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_MISSING_OBJURI" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_RECOMMENDED_EXTENSION_MISSING" : {
+         "Description" : "The server does not include the namespace URI of a recommended extension\nin an `<extURI>` element of the `<greeting>` frame.\n",
+         "Severity" : "WARNING"
+      },
+      "EPP_GREETING_SVDATE_INVALID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_SVID_INVALID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_UNEXPECTED_EXTURI" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_UNEXPECTED_OBJURI" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_GREETING_VERSION_INVALID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "EPP_LOGIN_ERROR" : {
          "Description" : "The client was unable to successfullt authenticate with the EPP server.\n",
+         "Severity" : "ERROR"
+      },
+      "EPP_MISSING_AAAA_RECORDS" : {
+         "Description" : "TBA",
+         "Severity" : "WARNING"
+      },
+      "EPP_MISSING_A_RECORDS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_NO_GREETING_RECEIVED" : {
+         "Description" : "TBA",
          "Severity" : "ERROR"
       },
       "EPP_SCHEMA_VALIDATION_ERROR" : {
          "Description" : "The response from the server failed schema validation.",
          "Severity" : "ERROR"
       },
-      "EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT" : {
-         "Description" : "The response to a sunrise availability check command contained an invalid\nvalue in the `avail` attribute.\n",
+      "EPP_SERVICE_PORT_UNREACHABLE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_BAD_CIPHER" : {
+         "Description" : "The server uses an encryption cipher not recommended in RFC 9325.\n",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_CERTIFICATE_CHAIN_MISSING" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_CONNECTION_ERROR" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_EXPIRED_CERTIFICATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TLS_UNTRUSTED_CERTIFICATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_XML_PARSE_ERROR" : {
+         "Description" : "The XML response from the server could not be parsed.",
          "Severity" : "ERROR"
       },
       "ZM_AAAA_BAD_RDATA" : {
@@ -1010,6 +1270,16 @@
          "Example" : "",
          "Type" : "boolean"
       },
+      "epp.secDNSInterfaces" : {
+         "Description" : "Which of the interfaces defined in Section 4 of RFC 5910 the server\nsupports (either `dsData` or `keyData`).\n",
+         "Example" : "dsData",
+         "Type" : "string"
+      },
+      "epp.serverIssuedClientCertificate" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. If the server will accept ICANN's\nown client certificate, this parameter **SHOULD** be empty.\n",
+         "Example" : "rst_test_client_cert.pem",
+         "Type" : "string"
+      },
       "epp.transferClid" : {
          "Description" : "the username used for transfer tests",
          "Example" : "clid-02",
@@ -1029,11 +1299,6 @@
          "Description" : "if true, then the registry only supports the minimum public data set, and\ndoes not collect registrant and/or technical contact information from\nregistrars.\n",
          "Example" : "1",
          "Type" : "boolean"
-      },
-      "general.sunriseModels" : {
-         "Description" : "The sunrise models supported by the EPP server. The possible values for\nthis parameter are:\n  * `start-date`\n  * `end-date`\n  * `both`\n",
-         "Example" : "start-date",
-         "Type" : "string"
       },
       "integration.rdeSFTPDirectory" : {
          "Description" : "The directory on the SFTP server where deposit files may be found.\n",
@@ -1057,6 +1322,21 @@
             "2001:DB8::22:1"
          ],
          "Type" : "array"
+      },
+      "minimumRPMS.claimsTLD" : {
+         "Description" : "A TLD, or other registry-class zone, which has been configured to be in\nperpetual trademark claims.\n",
+         "Example" : "tmclaims.rsp.tech",
+         "Type" : "string"
+      },
+      "minimumRPMS.sunriseModels" : {
+         "Description" : "The sunrise models supported by the EPP server. The possible values for\nthis parameter are:\n  * `start-date`\n  * `end-date`\n  * `both`\n",
+         "Example" : "start-date",
+         "Type" : "string"
+      },
+      "minimumRPMS.sunriseTLD" : {
+         "Description" : "A TLD, or other registry-class zone, which has been configured to be in\nperpetual sunrise.\n",
+         "Example" : "tmclaims.rsp.tech",
+         "Type" : "string"
       },
       "rdap.baseURLs" : {
          "Descrption" : "The RDAP base URL(s) for the TLD(s). This input parameter is an object,\nwhere the object properties are the TLD names and the values are strings\ncontaining the base URL. The URL **MUST** end with a slash (\"/\").\n",
@@ -1132,15 +1412,23 @@
             "example" : "https://rdap.example.com/example/"
          },
          "Type" : "object"
+      },
+      "srsgw.serverIssuedClientCertificate" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. If the server will accept ICANN's\nown client certificate, this parameter **SHOULD** be empty.\n",
+         "Example" : null,
+         "Type" : "string"
       }
    },
-   "Last-Updated" : "2023-12-07",
+   "Last-Updated" : "2023-12-08",
    "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.3. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.4. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n   which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n   prevent the test from *continuing*. A test may produce multiple `ERROR`\n   results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n   further. A test will only produce a single `CRITICAL` result and it\n   will always be the last result in the log.\n\n## 2.3.5. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at <https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These **MUST**\ninclude (but are not limited to): (1) Sunrise Periods, and (2) Trademark\nClaims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
-   "RST-Test-Plan-Schema-Version" : "1.5.1",
+   "RST-Test-Plan-Schema-Version" : "1.6.0",
    "Resources" : {
       "epp.clientACL" : {
          "Description" : "A list of IPv4 and IPv6 address(es) from which client connections to the\noperator's EPP server will be made. The list is a plain text file with\neach IP address on a separate line.\n",
          "URL" : "https://rst.icann.org/v2/resources/epp.clientACL.txt"
+      },
+      "epp.clientCSR" : {
+         "Description" : "For servers that operate a private CA, this CSR may be used to issue a\nclient certificate. This certificate must then be provided in the\n`epp.clientCertificate` input parameter.\n"
       },
       "epp.clientCertificate" : {
          "Description" : "RFC 5734 requires servers to perform authentication of clients by means of\na client certificate. Operators **MUST** configure their systems to permit\nthe test client to connect using the certificate found at this URL.\n",
@@ -1167,16 +1455,19 @@
       "dns-address01" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address01.md>.\n\n# Objective\n\nIn order for the domain and its resources to be accessible,\nauthoritative name servers must have addresses in the routable public\naddressing space.\n\nIANA is responsible for global coordination of the IP addressing system.\nAside its address allocation activities, it maintains reserved address\nranges for special uses. These ranges can be categorized into three\ntypes : [Special purpose IPv4\naddresses](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xml),\n[Special purpose IPv6\naddresses](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xml)\nand [Multicast reserved\naddresses](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xml).\n\n# Pass/fail criteria\n\nIf one name server has one of its addresses matches a forbidden address\nblock, the test fails. If all the name server addresses are outside\nthese forbidden blocks, the test case succeeds.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Name server address must be globally routable"
       },
       "dns-address02" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address02.md>.\n\n# Objective\n\nSome anti-spam techniques use reverse DNS lookup to allow incoming\ntraffic. In order to prevent name servers to be blocked or blacklisted,\nDNS administrators should publish PTR records associated to name server\naddresses.\n\n\\[technical reference to be found\\]\n\n# Pass/fail criteria\n\nIf the test case succeeds, its result is a list of addresses with\ncorresponding hostnames which are the result of the PTR queries\nperformed. The result could be represented as a hash table where the\nkeys are the IP addresses and the values their corresponding hostnames.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Reverse DNS entry exists for name server IP address"
       },
       "dns-address03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address03.md>.\n\n# Objective\n\nSome anti-spam techniques use reverse DNS lookup to allow incoming\ntraffic. In order to prevent name servers to be blocked or blacklisted,\nDNS administrators should publish PTR records associated with the name\nserver addresses.\n\nMoreover, as mentioned in paragraph 2.1 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912) when a PTR record\nexists, it must match the host name.\n\n# Pass/fail criteria\n\nMultiple addresses and multiple PTR records are allowed. The test\nsucceeds if every name server address has one or more PTR records and\none of these records matches the server name. If one address doesn't\nmatch, the whole test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Reverse DNS entry matches name server name"
       },
       "dns-connectivity01" : {
@@ -1196,6 +1487,7 @@
             "ZM_CN01_MISSING_SOA_RECORD_UDP",
             "ZM_CN01_NS_RECORD_NOT_AA_UDP"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "UDP connectivity to name servers"
       },
       "dns-connectivity02" : {
@@ -1213,6 +1505,7 @@
             "ZM_CN02_WRONG_NS_RECORD_TCP",
             "ZM_CN02_NO_RESPONSE_SOA_QUERY_TCP"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "TCP connectivity to name servers"
       },
       "dns-connectivity03" : {
@@ -1227,6 +1520,7 @@
             "ZM_IPV4_SAME_ASN",
             "ZM_IPV6_DIFFERENT_ASN"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "AS Diversity"
       },
       "dns-connectivity04" : {
@@ -1239,6 +1533,7 @@
             "ZM_CN04_ERROR_PREFIX_DATABASE",
             "ZM_CN04_IPV4_DIFFERENT_PREFIX"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "IP Prefix Diversity"
       },
       "dns-consistency01" : {
@@ -1252,6 +1547,7 @@
             "ZM_SOA_SERIAL",
             "ZM_MULTIPLE_SOA_SERIALS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA serial number consistency"
       },
       "dns-consistency02" : {
@@ -1262,6 +1558,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_RNAMES"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA RNAME consistency"
       },
       "dns-consistency03" : {
@@ -1272,6 +1569,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_TIME_PARAMETER_SET"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA timers consistency"
       },
       "dns-consistency04" : {
@@ -1282,6 +1580,7 @@
             "ZM_NO_RESPONSE_NS_QUERY",
             "ZM_MULTIPLE_NS_SET"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Name server NS consistency"
       },
       "dns-consistency05" : {
@@ -1295,6 +1594,7 @@
             "ZM_EXTRA_ADDRESS_CHILD",
             "ZM_IN_BAILIWICK_ADDR_MISMATCH"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Consistency between glue and authoritative data"
       },
       "dns-consistency06" : {
@@ -1305,6 +1605,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_MNAMES"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA MNAME consistency"
       },
       "dns-delegation01" : {
@@ -1327,6 +1628,7 @@
             "ZM_NOT_ENOUGH_IPV4_NS_DEL",
             "ZM_NO_IPV6_NS_DEL"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Minimum number of name servers"
       },
       "dns-delegation02" : {
@@ -1337,6 +1639,7 @@
             "ZM_CHILD_NS_SAME_IP",
             "ZM_CHILD_DISTINCT_NS_IP"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Name servers must have distinct IP addresses"
       },
       "dns-delegation03" : {
@@ -1345,11 +1648,13 @@
             "ZM_REFERRAL_SIZE_TOO_LARGE",
             "ZM_REFERRAL_SIZE_OK"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "No truncation of referrals"
       },
       "dns-delegation04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation04.md>.\n\n# Objective\n\nSubsection 6.1 of [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the\nnameservers must answer authoritatively for the domain. Answers to\nqueries to the name servers for the designated zone must have the \"AA\"\nbit set.\n\n# Pass/fail criteria\n\nIf all the name servers answer with the AA-bit set, then the test\nsucceeds.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Name server is authoritative"
       },
       "dns-delegation05" : {
@@ -1360,16 +1665,19 @@
             "ZM_UNEXPECTED_RCODE",
             "ZM_NO_NS_CNAME"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Name server must not point at CNAME alias"
       },
       "dns-delegation06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.\n\n# Objective\n\nSection 6.1 of the [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the\nSOA record is mandatory for every zone.\n\nThis test is intended to verify the prescence of a SOA record for the\ndomain.\n\n# Pass/fail criteria\n\nIf there is a SOA record present for the domain this test case succeeds.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Existence of SOA"
       },
       "dns-delegation07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation07.md>.\n\n# Objective\n\nIf the list of name servers for a domain obtained from its parent are\nnot found in its its child zone, then it leads to an inconsistency\n(section 2.3 of\n[RIPE-114](https://www.ripe.net/publications/docs/ripe-114))\n\n# Pass/fail criteria\n\nIf the set of glue name records obtained are found in the list of name\nservers obtained from the child also, then the test succeeds\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Parent glue name records present in child"
       },
       "dns-nameserver01" : {
@@ -1379,6 +1687,7 @@
             "ZM_NO_RECURSOR",
             "ZM_IS_A_RECURSOR"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "A name server should not be a recursor"
       },
       "dns-nameserver02" : {
@@ -1391,16 +1700,19 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_EDNS_RESPONSE_WITHOUT_EDNS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test of EDNS0 support"
       },
       "dns-nameserver03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver03.md>.\n\n# Objective\n\nAXFR is a mechanism to transfer the whole content of a zone from a name\nserver. Some people prefer to not disclose the whole content of a zone\nfor various reasons, and thus wants the public name server\ninfrastructure not do disclose the whole zone content to the public.\nThis test case checks the availability of the AXFR mechanism.\n\nAXFR is defined in its latest revision in [RFC\n5936](https://datatracker.ietf.org/doc/html/rfc5936).\n\n# Pass/fail criteria\n\nIf any name server for the domain allows a zone transfer using AXFR,\nthis test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Test availability of zone transfer (AXFR)"
       },
       "dns-nameserver04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver04.md>.\n\n# Objective\n\nResponses from the authoritative name servers must contain same source\nIP address as the destination IP address of the initial query. This has\nbeen clarified in section 4 of [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181#section-4).\n\n# Pass/fail criteria\n\nIf any response comes from another IP address than the query was sent\nto, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Same source address"
       },
       "dns-nameserver05" : {
@@ -1413,26 +1725,31 @@
             "ZM_AAAA_QUERY_DROPPED",
             "ZM_AAAA_WELL_PROCESSED"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Behaviour against AAAA query"
       },
       "dns-nameserver06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver06.md>.\n\n# Objective\n\nAll name servers names listed for a delegation must be resolvable in\nDNS. If they are not resolvable using DNS this is a sign of\nmisconfiguration, and raises the risk of unreachability for the domain.\nIt could also lower the performance for any resolver trying to resolve\nthe name.\n\nThe objective of this test is to resolve the domain using all the listed\nname servers used in the delegation. More information about resolver\nbehavior is in section 7 of [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\n# Pass/fail criteria\n\nIf any of the name server names fails to resolve to an IP address, this\ntest case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "NS can be resolved"
       },
       "dns-nameserver07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver07.md>.\n\n# Objective\n\nThe configuration and/or implementation of some authoritative name\nservers causes them to return an upward referral to the root zone. There\nare proofs that such a [behaviour could be used for DDoS\nattacks](https://www.dns-oarc.net/oarc/articles/upward-referrals-considered-harmful)\n\n# Pass/fail criteria\n\nThe test case is Ok only if there are no responses in the authority\nsection\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "To check whether authoritative name servers return an upward referral"
       },
       "dns-nameserver08" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver08.md>.\n\n# Objective\n\nThe DNS standards require that nameservers treat names with case\ninsensitivity. That is, the names example.com and EXAMPLE.COM should\nresolve to the same IP address. However, in the response, most\nnameservers echo back the name as it appeared in the request, preserving\nthe original case.\n\nTherefore, another way to add entropy to requests is to randomly vary\nthe case of letters in domain names queried. This technique, also known\nas \"0x20\" because bit 0x20 is used to set the case of of US-ASCII\nletters, was first proposed in the [IETF internet\ndraft](https://datatracker.ietf.org/doc/html/draft-vixie-dnsext-dns0x20-00)\nUse of Bit 0x20 in DNS Labels to Improve Transaction Identity. With this\ntechnique, the nameserver response must match not only the query name,\nbut the case of every letter in the name string; for example,\nwWw.eXaMpLe.CoM or WwW.ExamPLe.COm. This may add little or no entropy to\nqueries for the top-level and root domains, but it's effective for most\nhostnames.\n\n# Pass/fail criteria\n\nThe test case is Ok only if there are no responses in the authority\nsection\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Testing QNAME case insensitivity"
       },
       "dns-nameserver09" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver09.md>.\n\n# Objective\n\nThere has been cases where the nameservers respond with complete\ncase-sensitivity (in violation of the DNS standards): that is, they\nmatch the exact case of the name in the response; but return different\nresults for equivalent names with different cases in the request\n(typically NXDOMAIN).\n\n# Pass/fail criteria\n\nThe test case passes only if the results of all queries are exactly the\nsame.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Testing QNAME case sensitivity"
       },
       "dns-nameserver10" : {
@@ -1442,6 +1759,7 @@
             "ZM_N10_EDNS_RESPONSE_ERROR",
             "ZM_N10_UNEXPECTED_RCODE"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for undefined EDNS version"
       },
       "dns-nameserver11" : {
@@ -1454,6 +1772,7 @@
             "ZM_N11_NO_RESPONSE",
             "ZM_N11_UNEXPECTED_ANSWER_SECTION"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for unknown EDNS OPTION-CODE"
       },
       "dns-nameserver12" : {
@@ -1464,6 +1783,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_Z_FLAGS_NOTCLEAR"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for unknown EDNS flags"
       },
       "dns-nameserver13" : {
@@ -1474,6 +1794,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_MISSING_OPT_IN_TRUNCATED"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for truncated response on EDNS query"
       },
       "dns-nameserver14" : {
@@ -1485,6 +1806,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_UNKNOWN_OPTION_CODE"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for unknown version with unknown OPTION-CODE"
       },
       "dns-nameserver15" : {
@@ -1493,16 +1815,19 @@
             "ZM_N15_SOFTWARE_VERSION",
             "ZM_N15_NO_VERSION"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Checking for revealed software version"
       },
       "dns-syntax04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax04.md>.\n\n# Objective\n\nThe Name Server name must be a valid hostname according to the rules\ndefined in [RFC 952](https://datatracker.ietf.org/doc/html/rfc952), in\nsection 2.1 in [RFC\n1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),\nsection 11 in [RFC\n2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and\nsection 2 and 5 in [RFC\n3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer\nRFCs may override some rules defined in earlier documents.\n\n# Pass/fail criteria\n\nIf any of the steps 3 to 5 in the ordered description of this test case\nfails, the whole test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "The NS name must have a valid domain/hostname"
       },
       "dns-syntax05" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax05.md>.\n\n# Objective\n\nThe SOA RNAME field does not allow the '@' characters to be used for\ndescribing a mailbox. The first dot ('.') is thus translated into the\n'@' character. This is a common mistake. The rules are defined in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\n# Pass/fail criteria\n\nIf there is any '@' character in any SOA/RNAME field, this test case\nfails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Misuse of '@' character in the SOA RNAME field"
       },
       "dns-syntax06" : {
@@ -1516,11 +1841,13 @@
             "ZM_RNAME_MAIL_ILLEGAL_CNAME",
             "ZM_RNAME_MAIL_DOMAIN_INVALID"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "No illegal characters in the SOA RNAME field"
       },
       "dns-syntax07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax07.md>.\n\n# Objective\n\nThe SOA MNAME field is a hostname. Hostnames are valid according to the\nrules defined in [RFC\n952](https://datatracker.ietf.org/doc/html/rfc952), in section 2.1 in\n[RFC 1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),\nsection 11 in [RFC\n2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and\nsection 2 and 5 in [RFC\n3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer\nRFCs may override some rules defined in earlier documents.\n\n# Pass/fail criteria\n\nIf any of the steps 4 to 8 in the ordered description of this test case\nfails, the whole test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "No illegal characters in the SOA MNAME field"
       },
       "dns-zone01" : {
@@ -1537,36 +1864,43 @@
             "ZM_Z01_MNAME_IS_DOT",
             "ZM_Z01_MNAME_MISSING_SOA_RECORD"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Fully qualified master nameserver in SOA"
       },
       "dns-zone02" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone02.md>.\n\n# Objective\n\nThe SOA refresh value is the number of seconds that describes how often\na secondary name server will poll the primary name server to see if\nthere is any updates. The SOA refresh value is described in section\n3.3.13 in [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), and\nclarified in section 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912). Setting the\nrefresh value low will increase the DNS traffic between the servers, and\nalso increase the load on the master name server. The primary name\nserver will in most cases send DNS notifications to tell the secondary\nname servers that zone content has been updated, as described in [RFC\n1996](https://datatracker.ietf.org/doc/html/rfc1996).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the refresh value is 24 hours (86400 seconds). Older\nDNSCheck code had a four hour minimum value, and this is the minimum\nvalue we recommend.\n\n# Pass/fail criteria\n\nIf the SOA refresh value is less than 14400 this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA 'refresh' minimum value"
       },
       "dns-zone03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone03.md>.\n\n# Objective\n\nThe SOA retry value is the number of seconds that describes minimum time\nelapsed since a failed zone refresh from the primary name server. The\nSOA refresh value is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\n> It's typically some fraction of the refresh interval.\n\nSetting the retry value low will increase the DNS traffic between the\nservers, and also increase the load on the master name server.\n\n# Pass/fail criteria\n\nIf the SOA retry value is higher than or equal to the refresh value,\nthis test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA 'retry' lower than 'refresh'"
       },
       "dns-zone04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone04.md>.\n\n# Objective\n\nThe SOA retry value is the number of seconds that describes minimum time\nelapsed since a failed zone refresh from the primary name server. The\nSOA refresh value is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\nSetting the retry value low will increase the DNS traffic between the\nservers, and also increase the load on the master name server.\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the retry value is 2 hours (7200 seconds). Older\nDNSCheck code had a one hour minimum value (3600 seconds), and this is\nthe minimum value we recommend.\n\n# Pass/fail criteria\n\nIf the retry value is less than 3600 seconds, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA 'retry' at least 1 hour"
       },
       "dns-zone05" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone05.md>.\n\n# Objective\n\nThe SOA expire value specifies for how long any secondary name server\nkeeps the zone valid without any contact with the primary name server.\nThis value should be greater than how long a major outage would\ntypically last. The expire value should also be larger than the refresh\nand retry values, as described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\nSetting the expire value low will increase the risk of any unwanted\nnon-availability of the zone because of any failures in contacting the\nprimary name server.\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the expire value is 1000 hours (roughly 41 days).\nOlder DNSCheck code had a 7 day minimum value (604800 seconds), and this\nis the minimum value we recommend as an absolut minimum.\n\n# Pass/fail criteria\n\nIf the expire value is less than 604800 seconds or if the expire value\nis lower than the refresh value, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA 'expire' minimum value"
       },
       "dns-zone06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone06.md>.\n\n# Objective\n\nThe SOA minimum field sets the default TTL for all records in a zone.\nThe recommended value is to be \"cache-friendly\". However, for a zone\nthat changes content often, there is a need to keep the TTL values\nshorter. The use of the SOA minimum value today is the negative cache\n(where a resolver find content is missing).\n\nThe SOA minimum field is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912). The description of\nthe implementation of negative caching is in [RFC\n2308](https://datatracker.ietf.org/doc/html/rfc2308) (although it has\nbeen updated by several DNSSEC related RFCs, it is still relevant for\nthis purpose).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the minimum value 2 days, but the negative caching is\nnow the norm. DNSCheck has a recommended value of between 300 seconds (5\nminutes) and 86400 seconds (1 day).\n\n# Pass/fail criteria\n\nIf the minimum value is larger than 86400 seconds or if the minimum\nvalue is lower than 300 seconds, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA 'minimum' maximum value"
       },
       "dns-zone07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone07.md>.\n\n# Objective\n\nAny NS type record should not be a CNAME. The SOA MNAME should in this\nrespect not be a CNAME.\n\nQuote from 2.4 in [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912):\n\n> Having NS records pointing to a CNAME is bad and may conflict badly\n> with current BIND servers.\n\nThe SOA MNAME field is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the minimum value 2 days, but the negative caching is\nnow the norm. DNSCheck has a recommended value of between 300 seconds (5\nminutes) and 86400 seconds (1 day).\n\n# Pass/fail criteria\n\nIf the SOA MNAME field is pointing to a CNAME, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "SOA master is not an alias"
       },
       "dns-zone10" : {
@@ -1578,6 +1912,7 @@
             "ZM_NO_RESPONSE",
             "ZM_ONE_SOA"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "No multiple SOA records"
       },
       "dnssec-01" : {
@@ -1589,6 +1924,7 @@
             "ZM_DS01_DS_ALGO_DEPRECATED",
             "ZM_DS01_DS_ALGO_NOT_DS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Legal values for the DS hash digest algorithm"
       },
       "dnssec-02" : {
@@ -1604,16 +1940,19 @@
             "ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING",
             "ZM_DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "DS must match a valid DNSKEY in the child zone"
       },
       "dnssec-03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.\n\n# Objective\n\nFor an authoritative name server an increased number of NSEC3 iterations\nhave a negative impact on performance.\n\nSection 10.3 in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-10.3) sets a\nmaximum number of iterations depending on the DNSSEC key size -\nregardless of which algorithm is used.\n\n> A zone owner MUST NOT use a value higher than shown in the table below\n> for iterations for the given key size. A resolver MAY treat a response\n> with a higher value as insecure, after the validator has verified that\n> the signature over the NSEC3 RR is correct.\n\n  Key Size   Iterations\n  ---------- ------------\n  1024       150\n  2048       500\n  4096       2,500\n\nSection 5.3.2 in [RFC\n6781](https://datatracker.ietf.org/doc/html/rfc6781#section-5.3.2)\ndescribes the consequences for an authoritative name server in more\ndetail, and references the [NSEC Hash\nPerformance](https://www.nlnetlabs.nl/downloads/publications/nsec3_hash_performance.pdf)\nstudy from NLNet Labs.\n\n> Choosing a value of 100 iterations is deemed to be a sufficiently\n> costly, yet not excessive, value: In the worst-case scenario, the\n> performance of name servers would be halved, regardless of key size.\n\n# Pass/fail criteria\n\nIf the NSEC3 iterations value is higher than 100, this test case gives a\nwarning. If it is higher than the number recommended for the\ncorresponding key size, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Check for too many NSEC3 iterations"
       },
       "dnssec-04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec04.md>.\n\n# Objective\n\nHaving RRSIG signature lifetimes last for too long opens up for DNS\nreplay attacks. Having too short RRSIG signature lifetimes is likely to\nhave a major operational impact if the master name server is down for\nthat long.\n\nThere is no clear recommendation of the exact validity periods to use\nwith DNSSEC. Shorter validity than 12 hours until expiration will give a\nserious operational problem just in case of temporary network problems,\nand longer than 180 days will create wide open holes for replay attacks.\n\nThe considerations are described in\n[RFC6781](https://datatracker.ietf.org/doc/html/rfc6781).\n\n# Pass/fail criteria\n\nIf any of the signature expirations time is either shorter than 12 hours\nor longer than 180 days, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Check for too short or too long RRSIG lifetimes"
       },
       "dnssec-05" : {
@@ -1629,11 +1968,13 @@
             "ZM_NO_RESPONSE_DNSKEY",
             "ZM_ALGORITHM_RESERVED"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Check for invalid DNSKEY algorithms"
       },
       "dnssec-06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md>.\n\n# Objective\n\nIn order for an authoritative name server to be DNSSEC compliant, it\nmust serve DNSSEC signatures (RRSIG) as additional data in a DNS answer.\nThis additional processing is described in section 3.1 of [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1).\n\n# Pass/fail criteria\n\nIf any of the name servers configured for the domains fail to answer\nwith DNSSEC data, this test case fails.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Verify DNSSEC additional processing"
       },
       "dnssec-08" : {
@@ -1646,6 +1987,7 @@
             "ZM_DS08_DNSKEY_RRSIG_EXPIRED",
             "ZM_DS08_MISSING_RRSIG_IN_RESPONSE"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Valid RRSIG for DNSKEY"
       },
       "dnssec-09" : {
@@ -1658,6 +2000,7 @@
             "ZM_DS09_MISSING_RRSIG_IN_RESPONSE",
             "ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "RRSIG(SOA) must be valid and created by a valid DNSKEY"
       },
       "dnssec-10" : {
@@ -1679,11 +2022,13 @@
             "ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR",
             "ZM_DS10_NAME_NOT_COVERED_BY_NSEC"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Zone contains NSEC or NSEC3 records"
       },
       "dnssec-12" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.\n\n# Objective\n\nThe objectives for this Test Case has yet to be defined. This is a\nplaceholder for a complete defintion of the Test Case. The Test Case is\nnot yet implemented.\n\nTest for DNSSEC Algorithm Completeness (DS-\\>DNSKEY-\\>RRSIG)\n\nSee issues [#588](https://github.com/zonemaster/zonemaster/issues/588),\n[#528](https://github.com/zonemaster/zonemaster/issues/528),\n[#529](https://github.com/zonemaster/zonemaster/issues/529) and\n[#231](https://github.com/zonemaster/zonemaster/issues/231).\n\n# Pass/fail criteria\n\nTBD.\n",
          "Errors" : [],
+         "Maturity" : "GAMMA",
          "Summary" : "Test for DNSSEC Algorithm Completeness"
       },
       "dnssec-13" : {
@@ -1693,6 +2038,7 @@
             "ZM_DS13_ALGO_NOT_SIGNED_SOA",
             "ZM_DS13_ALGO_NOT_SIGNED_NS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "All DNSKEY algorithms used to sign the zone"
       },
       "dnssec-14" : {
@@ -1705,6 +2051,7 @@
             "ZM_NO_RESPONSE_DNSKEY",
             "ZM_DNSKEY_TOO_SMALL_FOR_ALGO"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Check for valid RSA DNSKEY key size"
       },
       "dnssec-15" : {
@@ -1718,6 +2065,7 @@
             "ZM_DS15_MISMATCH_CDS_CDNSKEY",
             "ZM_DS15_INCONSISTENT_CDNSKEY"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Existence of CDS and CDNSKEY"
       },
       "dnssec-16" : {
@@ -1735,6 +2083,7 @@
             "ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS",
             "ZM_DS16_CDS_MATCHES_NO_DNSKEY"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Validate CDS"
       },
       "dnssec-17" : {
@@ -1752,6 +2101,7 @@
             "ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY",
             "ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Validate CDNSKEY"
       },
       "dnssec-18" : {
@@ -1760,6 +2110,7 @@
             "ZM_DS18_NO_MATCH_CDS_RRSIG_DS",
             "ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS"
          ],
+         "Maturity" : "GAMMA",
          "Summary" : "Validate trust from DS to CDS and CDNSKEY"
       },
       "dnssec-91" : {
@@ -1771,9 +2122,8 @@
             "DNSSEC_DNS_QUERY_ERROR",
             "DNSSEC_INVALID_SIGNING_ALGORITHM"
          ],
-         "Input-Parameters" : [
-            "dns.nameservers"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "Permitted signing algorithms"
       },
       "dnssec-92" : {
@@ -1782,9 +2132,8 @@
             "DNSSEC_DNS_QUERY_ERROR",
             "DNSSEC_INVALID_DIGEST_ALGORITHM"
          ],
-         "Input-Parameters" : [
-            "dnssec.dsRecords"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "Permitted DS record hash algorithm(s)"
       },
       "dnssecOps01-ZSKRollover" : {
@@ -1813,357 +2162,260 @@
          "Summary" : "algorithm rollover"
       },
       "epp-01" : {
-         "Description" : "At least one `A` record **MUST** be published in the DNS for the EPP\nhostname, to allow IPv4-only hosts to connect to the EPP service.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
+         "Description" : "This test confirms that the EPP service is reachable from the probe\nservers.\n\n1. At least one `A` record **MUST** be published in the DNS for the EPP\n   hostname, to allow IPv4-only hosts to connect to the EPP service.\n2. At least one `AAAA` record **SHOULD** be published in the DNS for the\n   EPP hostname, to allow IPv6-only hosts to connect to the EPP service.\n3. EPP is associated with TCP port 700. All IPv4/IPv6 addresses published\n   in the DNS for the EPP hostname **MUST** accept TCP connections on this\n   port. Since the EPP specification requires IP-based access control, the\n   RSP **MUST** configure their firewall to allow access from the IP\n   addresses listed in the `epp.clientACL` resource.\n4. EPP uses TLS to secure the channel between client and server. All\n   service ports **MUST** support TLSv1.2 and optionally any subsequent\n   protocol published by the IETF.\n5. TLSv1.1 and all previous versions have known security issues and **MUST\n   NOT** be supported by any service ports.\n6. To ensure that the connection can be trusted, all service ports\n   **MUST** present a certificate issued by a trusted CA, such as those\n   supported by major browsers.\n7. All TLS certificates **MUST NOT** have expired, and **MUST** be\n   presented wth any required intermediate certificates.\n8. The EPP server name **MUST** match at least one `subjectAltName` field\n   in all presented certificates (either exact match or wildcard).\n9. Service ports **MUST** use at least one of the ciphers recommended in\n   RFC 9325 (or any successor document).\n",
+         "Errors" : [
+            "EPP_MISSING_A_RECORDS",
+            "EPP_MISSING_AAAA_RECORDS",
+            "EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED",
+            "EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED",
+            "EPP_TLS_UNTRUSTED_CERTIFICATE",
+            "EPP_TLS_EXPIRED_CERTIFICATE",
+            "EPP_TLS_CERTIFICATE_CHAIN_MISSING",
+            "EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH",
+            "EPP_TLS_BAD_CIPHER"
          ],
-         "Summary" : "EPP server **MUST** have at least one A record"
+         "Input-Parameters" : null,
+         "Resources" : [
+            "epp.tlsCertificateStore"
+         ],
+         "Summary" : "Service connectivity test"
       },
       "epp-02" : {
-         "Description" : "At least one `AAAA` record **MUST** be published in the DNS for the EPP\nhostname, to allow IPv6-only hosts to connect to the EPP service.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
+         "Dependencies" : null,
+         "Description" : "Once a connection is established, all service ports **MUST** send a\nvalid `<greeting>` frame to the client.\n\n1. The `<svID>` element in the `<greeting>` **MUST** identify the EPP\n   server.\n2. The `<svDate>` element in the `<greeting>` **MUST** specify a time\n   within 30 seconds of the current date and time as received from the NTP\n   network.\n3. The `<version>` element in the <greeting> **MUST** be exactly `1.0`.\n4. All `<lang>` element(s) in the `<greeting>` **MUST** contain valid\n   language codes. At least `en` **MUST** be included.\n5. All `<objURI>` element(s) in the `<greeting>` **MUST** contain XML\n   namespace URIs that are appropriate. The only mandatory URI that\n   **MUST** be present is the domain namespace URI. The host and contact\n   namespace URIs may be required depending on the `epp.hostModel` and\n   `general.minimalPublicDataSet` parameters.\n6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML\n   namespace URIs that have been registered in the IANA registry, and that\n   the mandatory extensions are also included.\n7. `<extURI>` elements containing the following XML namespaces **MUST** be\n   present in the `<greeting>`:\n     * `urn:ietf:params:xml:ns:secDNS-1.1`\n     * `urn:ietf:params:xml:ns:launch-1.0`\n     # these may become mandatory in the future:\n     # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`\n     # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`\n8. If the `general.gracePeriodsSupported` input parameter is true, an\n   `<extURI>` element containing the XML namespace for the RGP extension\n   (RFC 3915) **MUST** be present in the `<greeting>`.\n",
+         "Errors" : [
+            "EPP_NO_GREETING_RECEIVED",
+            "EPP_GREETING_SVID_INVALID",
+            "EPP_GREETING_SVDATE_INVALID",
+            "EPP_GREETING_VERSION_INVALID",
+            "EPP_GREETING_INVALID_LANG",
+            "EPP_GREETING_UNEXPECTED_OBJURI",
+            "EPP_GREETING_MISSING_OBJURI",
+            "EPP_GREETING_UNEXPECTED_EXTURI",
+            "EPP_GREETING_MISSING_EXTURI",
+            "EPP_GREETING_RECOMMENDED_EXTENSION_MISSING"
          ],
-         "Summary" : "EPP server **MUST** have at least one AAAA record"
+         "Input-Parameters" : null,
+         "Summary" : "Protocol conformance test"
       },
       "epp-03" : {
-         "Dependencies" : [
-            "epp-01",
-            "epp-02"
-         ],
-         "Description" : "EPP is associated with TCP port 700. All IPv4/IPv6 addresses published\nin the DNS for the EPP hostname **MUST** accept TCP connections on this\nport.\n\nSince the EPP specification requires IP-based access control, the RSP\n**MUST** configure their firewall to allow access from the RST system.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Resources" : [
-            "epp.clientACL"
-         ],
-         "Summary" : "All IP addresses **MUST** accept TCP connections on port 700"
+         "Description" : "The EPP server **MUST** return a `1000` result in response to a `<login>`\ncommand.\n\nThe client will use the object and extension XML namespaces from the\nserver's `<greeting>` as part of the `<login>` command.\n\nIf the server supports the Login Security Extension (see RFC 8807) then\nthis will be used by the client.\n",
+         "Errors" : null,
+         "Input-Parameters" : null,
+         "Resources" : null,
+         "Summary" : "Authentication test"
       },
       "epp-04" : {
          "Dependencies" : [
             "epp-03"
          ],
-         "Description" : "EPP uses TLS to secure the channel between client and server. The server\n**MUST** support TLSv1.2 and optionally any subsequent protocol published\nby the IETF.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
+         "Description" : "The client will perform a series of `<check>` commands and will validate\nthe `avail` attribute of the `<domain:name>` elements in the server\nresponse, as follows:\n\n  * syntactically invalid domain: `avail` attribute **MUST** be `0` or\n    `false`.\n  * valid but registered domain: `avail` attribute **MUST** be `0` or\n    `false`.\n  * valid and unregistered domain: `avail` attribute **MUST** be `1` or\n    `true`. The domain will be generated using random characters.\n\nSyntactical validity will be determined based on **TODO (tagged names and\nLDH rules)**.\n\nThese checks will be carried out for each TLD in the TLD set.\n",
+         "Errors" : [
+            "EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL",
+            "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
+            "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"
          ],
-         "Resources" : [
-            "epp.clientCertificate"
-         ],
-         "Summary" : "All service ports support TLSv1.2 or higher"
-      },
-      "epp-05" : {
-         "Dependencies" : [
-            "epp-03"
-         ],
-         "Description" : "TLSv1.1 and all previous versions have known security issues and should\nnot be supported by the server.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "All service ports **MUST NOT** support TLSv1.1 or earlier"
-      },
-      "epp-06" : {
-         "Dependencies" : [
-            "epp-03"
-         ],
-         "Description" : "To ensure that the connection can be trusted, the server **MUST** present\na certificate issued by a trusted CA, such as those supported by major\nbrowsers.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Resources" : [
-            "epp.tlsCertificateStore"
-         ],
-         "Summary" : "All service ports **MUST** offer a valid certificate issued by a trusted\nCA\n"
-      },
-      "epp-07" : {
-         "Dependencies" : [
-            "epp-03"
-         ],
-         "Description" : "The TLS certificate **MUST NOT** have expired, and **MUST** be presented\nwith any additional intermediate certificates.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "TLS certificate **MUST** be valid"
-      },
-      "epp-08" : {
-         "Dependencies" : [
-            "epp-03"
-         ],
-         "Description" : "The EPP server name **MUST** match at least one `subjectAltName` field in\nthe certificate (either exact match or wildcard).\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "TLS certificate **MUST** be valid for the server name"
-      },
-      "epp-09" : {
-         "Description" : "Once the connection is established the server **MUST** send a `<greeting>`\nframe to the client.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "All service ports **MUST** send a <greeting> frame after successful\nconnection\n"
-      },
-      "epp-10" : {
-         "Description" : "All response frames received from the server **MUST** be well-formed XML\ninstances, and validate against all XSD schemas (the base EPP schemas\nin addition to any extensions).\n",
-         "Summary" : "All server responses **MUST** validate against the XML schema"
-      },
-      "epp-11" : {
-         "Dependencies" : null,
-         "Description" : "The `<svID>` element in the `<greeting>` **MUST** identify the EPP server.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "<svID> element in the <greeting> **MUST** be valid"
-      },
-      "epp-12" : {
-         "Dependencies" : null,
-         "Description" : "The `<svDate>` element in the `<greeting>` **MUST** specify a time within\nclose proximity to the current date and time as received from the NTP\nnetwork.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "<svDate> element in the <greeting> **MUST** be valid"
-      },
-      "epp-13" : {
-         "Dependencies" : null,
-         "Description" : "The `<version>` element in the <greeting> **MUST** be exactly `1.0`.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "<version> element in the <greeting> **MUST** be valid"
-      },
-      "epp-14" : {
-         "Dependencies" : null,
-         "Description" : "All `<lang>` element(s) in the `<greeting>` **MUST** contain valid\nlanguage codes.\n",
-         "Input-Parameters" : [
-            "epp.hostName"
-         ],
-         "Summary" : "<lang> element(s) in the <greeting> **MUST** be valid"
-      },
-      "epp-15" : {
-         "Dependencies" : null,
-         "Description" : "All `<objURI>` element(s) in the `<greeting>` **MUST** contain XML\nnamespace URIs that are appropriate.\n\nThe only mandatory URI that **MUST** be present is the domain namespace\nURI.\n\nFor example, the presence of the host and contact namespace URIs may be\nrequired depending on the `epp.hostModel` and\n`general.minimalPublicDataSet` parameters.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.hostModel",
-            "general.minimalPublicDataSet"
-         ],
-         "Summary" : "<objURI> element(s) in the <greeting> **MUST** be valid for the registry\ntype\n"
-      },
-      "epp-16" : {
-         "Dependencies" : null,
-         "Description" : "All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML\nnamespace URIs that have been registered in the IANA registry, and that\nthe mandatory extensions are also included.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.hostModel",
-            "general.gracePeriodsSupported",
-            "general.minimalPublicDataSet"
-         ],
-         "Summary" : "<extURI> element(s) in the <greeting> **MUST** be valid"
-      },
-      "epp-17" : {
-         "Dependencies" : null,
-         "Description" : "The EPP server **MUST** return a `1000` result in response to a `<login>`\ncommand.\n\nThe client will use the object and extension XML namespaces from the\nserver's `<greeting>` as part of the `<login>` command.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
-         "Summary" : "<login> command **MUST** return a successful response"
-      },
-      "epp-18" : {
-         "Dependencies" : null,
-         "Description" : "The EPP server **MUST** respond to a `<hello>` command with a\n`<greeting>`.\n",
-         "Summary" : "<hello> command **MUST** return a <greeting>"
-      },
-      "epp-19" : {
-         "Dependencies" : null,
-         "Description" : "The client will perform a series of `<check>` commands and will validate\nthe `avail` attribute of the `<domain:name>` elements in the server\nresponse, as follows:\n\n  * syntactically invalid domain: `avail` attribute **MUST** be `0`\n  * valid but registered domain: `avail` attribute **MUST** be `0`.\n  * valid and unregistered domain: `avail` attribute **MUST** be `1`. The\n    domain will be generated using random characters.\n\nThese checks will be carried out for each TLD in the TLD set.\n",
          "Input-Parameters" : [
             "epp.registeredNames"
          ],
          "Summary" : "domain <check> command test"
       },
-      "epp-22" : {
-         "Dependencies" : null,
-         "Description" : "If the EPP server supports host objects, this test will perform a series\nof `<check>` commands and will validate the `avail` attribute of the\n`<host:name>` elements in the server response, as follows:\n\n  * syntactically invalid hostname: `avail` attribute **MUST** be `0`\n  * valid but registered hostname: `avail` attribute **MUST** be `0`.\n  * valid and unregistered hostname: `avail` attribute **MUST** be `1`.\n    The hostname will be generated using random characters.\n",
+      "epp-05" : {
+         "Dependencies" : [
+            "epp-04"
+         ],
+         "Description" : "If the EPP server supports host objects, this test will perform a series\nof `<check>` commands and will validate the `avail` attribute of the\n`<host:name>` elements in the server response, as follows:\n* syntactically invalid hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid but registered hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid and unregistered hostname: `avail` attribute **MUST** be `1` or\n  `true`. The hostname will be generated using random characters.\nSyntactical validity will be determined based on **TODO**. (LDH rule)\n",
+         "Errors" : [
+            "EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL",
+            "EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL",
+            "EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL"
+         ],
          "Input-Parameters" : [
-            "epp.hostModel",
             "epp.registeredNameservers"
          ],
          "Summary" : "host <check> command test (if applicable)"
       },
-      "epp-23" : {
-         "Dependencies" : null,
-         "Description" : "If the EPP server supports contact objects, this test will perform a\nseries of `<check>` commands and will validate the `avail` attribute of\nthe `<contact:id>` elements in the server response, as follows:\n\n  * syntactically invalid ID: `avail` attribute **MUST** be `0`\n  * valid but registered ID: `avail` attribute **MUST** be `0`.\n  * valid and unregistered ID: `avail` attribute **MUST** be `1`. The\n    ID will be generated using random characters.\n",
+      "epp-06" : {
+         "Dependencies" : [
+            "epp-05"
+         ],
+         "Description" : "If the EPP server supports contact objects, this test will perform a\nseries of `<check>` commands and will validate the `avail` attribute of\nthe `<contact:id>` elements in the server response, as follows:\n* syntactically invalid ID: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid but registered ID: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid and unregistered ID: `avail` attribute **MUST** be `1` or\n  `true`. The ID will be generated using random characters.\n",
+         "Errors" : [
+            "EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL",
+            "EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL",
+            "EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL"
+         ],
          "Input-Parameters" : [
-            "general.minimalPublicDataSet",
             "epp.registeredContacts"
          ],
          "Summary" : "contact <check> command test (if applicable for the registry type)"
       },
-      "epp-24" : {
-         "Dependencies" : null,
-         "Description" : "This test attempts to create a number of contact objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<contact:id>`\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n",
-         "Input-Parameters" : [
-            "general.minimalPublicDataSet"
+      "epp-07" : {
+         "Dependencies" : [
+            "epp-06"
          ],
+         "Description" : "This test attempts to create a number of contact objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<contact:id>`\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:org>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:sp>` element\n      * `<contact:pc>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO**\nValidity determined by length (street etc)\nCC - present in list, not present etc\nemail - RFC syntax\nwhat will be covered by the schema and what needs exceptional handling?\n",
+         "Errors" : [
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE",
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL"
+         ],
+         "Input-Parameters" : null,
          "Summary" : "contact <create> command test (if applicable for the registry type)"
       },
-      "epp-25" : {
+      "epp-08" : {
          "Dependencies" : [
-            "epp-24"
+            "epp-07"
          ],
-         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-24` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n",
-         "Input-Parameters" : [
-            "general.minimalPublicDataSet"
+         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-07` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: merge with epp-07**\n",
+         "Errors" : [
+            "EPP_CONTACT_INFO_RESPONSE_NOT_1000",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE",
+            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL"
          ],
+         "Input-Parameters" : null,
          "Summary" : "contact <info> command test (if applicable for the registry type)"
       },
-      "epp-26" : {
+      "epp-09" : {
          "Dependencies" : [
-            "epp-25"
+            "epp-08"
          ],
-         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-24` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n",
-         "Input-Parameters" : [
-            "general.minimalPublicDataSet"
+         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-07` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:org>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:sp>` element\n      * `<contact:pc>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: re-run epp-08 to make sure changes have been saved**\n\n**TODO: add test of update of another client's object**\n",
+         "Errors" : [
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE",
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL"
          ],
+         "Input-Parameters" : null,
          "Summary" : "contact <update> command test (if applicable for the registry type)"
       },
-      "epp-27" : {
+      "epp-10" : {
          "Dependencies" : [
-            "epp-26"
+            "epp-09"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-24` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n",
-         "Input-Parameters" : [
-            "general.minimalPublicDataSet"
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-24` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: add check/info to see if the object was actually deleted - if\nresponse was 1000**\n",
+         "Errors" : [
+            "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001"
          ],
+         "Input-Parameters" : null,
          "Summary" : "contact <delete> command test (if applicable for the registry type)"
       },
-      "epp-28" : {
-         "Dependencies" : null,
-         "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : [
-            "epp.hostModel"
+      "epp-11" : {
+         "Dependencies" : [
+            "epp-03"
          ],
+         "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: merge with epp-12**\n",
+         "Input-Parameters" : null,
          "Summary" : "host <create> command test (if applicable)"
       },
-      "epp-29" : {
+      "epp-12" : {
          "Dependencies" : [
-            "epp-28"
+            "epp-11"
          ],
-         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-28` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : [
-            "epp.hostModel"
-         ],
+         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-11` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
+         "Input-Parameters" : null,
          "Summary" : "host <info> command test (if applicable)"
       },
-      "epp-30" : {
-         "Dependencies" : null,
-         "Description" : null,
-         "Input-Parameters" : null,
-         "Summary" : "(intentionally ommitted)"
-      },
-      "epp-31" : {
+      "epp-13" : {
          "Dependencies" : [
-            "epp-29"
+            "epp-12"
          ],
-         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-28` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nNote: the server's ability to support host renames is checked in a later\ntest.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : [
-            "epp.hostModel"
-         ],
+         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-12` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nNote: the server's ability to support host renames is checked in a later\ntest.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: add info afterwards**\n\n**TODO: add test of update of another client's object**\n",
+         "Input-Parameters" : null,
          "Summary" : "host <update> command test (if applicable)"
       },
-      "epp-31a" : {
+      "epp-14" : {
          "Dependencies" : [
-            "epp-29"
+            "epp-13"
          ],
-         "Description" : "This tests verifies the server's support for host rename operations.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-28` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : [
-            "epp.hostModel"
-         ],
+         "Description" : "This tests verifies the server's support for host rename operations.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected. **TODO: what will the parent domain\n  be?**\n* an `<update>` command which places the object within a domain sponsored\n  by the test client is accepted. **TODO: what will the parent domain\n  be?**\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: add info afterwards**\n",
+         "Input-Parameters" : null,
          "Summary" : "host rename test (if applicable)"
       },
-      "epp-31b" : {
+      "epp-15" : {
          "Dependencies" : [
-            "epp-30"
+            "epp-14"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-28` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : [
-            "epp.hostModel"
-         ],
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-11` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: add check/info afterwards**\n",
+         "Input-Parameters" : null,
          "Summary" : "host <delete> command test (if applicable)"
       },
-      "epp-32" : {
-         "Dependencies" : null,
-         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false` then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n  * to confirm that the server does not accept invalid values for object\n    properties (such as domain name, registration period, registant ID,\n    nameservers, DS record parameters, etc)\n  * to confirm that the server does not accept commands which reference\n    non-existent host/contact objects\n  * to confirm the server supports all permitted client-assigned status\n    codes\n  * to confirm that the server rejects a `<create>` command which\n    specifies a contact object (where the `general.minimalPublicDataSet`)\n    input parameter is `true`\n  * to confirm that the server rejects a `<create>` command which does not\n    specify a contact object (where the `general.minimalPublicDataSet`)\n    input parameter is `false`\n  * to confirm that the server rejects a `<create>` command containing\n    host objects when the `epp.hostModel` parameter is `attributes`\n  * to confirm that the server rejects a `<create>` command containing\n    host attributes when the `epp.hostModel` parameter is `objects`\n  * to confirm that the the server which implements RFC 9154 accepts a\n    `<create>` command without an authInfo command.\n",
+      "epp-16" : {
+         "Dependencies" : [
+            "epp-03"
+         ],
+         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false` then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n  * to confirm that the server does not accept invalid values for object\n    properties (such as domain name, registration period, registant ID,\n    nameservers, DS record parameters, etc) **TODO: what is \"etc\"?**\n    examples:\n      * invalid domain\n      * invalid period (1-10 years)\n      * non-existent registrant\n      * non-existent hosts\n      * invalid DS/keyData record parameters\n  * to confirm that the server does not accept commands which reference\n    non-existent host/contact objects\n  * to confirm the server supports all permitted client-assigned status\n    codes\n  * to confirm that the server rejects a `<create>` command which\n    specifies a registrant contact (where the `general.minimalPublicDataSet`\n    input parameter is `true`)\n  * to confirm that the server rejects a `<create>` command which does not\n    specify a registrant contact (where the `general.minimalPublicDataSet`)\n    input parameter is `false`\n  * to confirm that the server rejects a `<create>` command containing\n    host objects when the `epp.hostModel` parameter is `attributes`\n  * to confirm that the server rejects a `<create>` command containing\n    host attributes when the `epp.hostModel` parameter is `objects`\n  * to confirm that the the server which implements RFC 9154 accepts a\n    `<create>` command without an authInfo command.\n\n  **TODO: add test case below to try to delete linked contact objects.**\n\n  **TODO: merge with info case below**\n",
          "Input-Parameters" : [
-            "epp.hostModel",
-            "general.minimalPublicDataSet"
+            "epp.secDNSInterfaces"
          ],
          "Summary" : "domain <create> command test"
       },
-      "epp-33" : {
+      "epp-17" : {
          "Dependencies" : [
-            "epp-32"
+            "epp-16"
          ],
-         "Description" : "This test performs a series of `<info>` commands on the domain objects\ncreated in `epp-32`. This test checks that (a) the domain names are\npresent in the repository, and (b) that the expected object properties are\npresent and valid.\n\nThe responses will confirm that:\n\n  * the `<roid>` element is valid and contains a repository ID registered\n    with IANA;\n  * the `<crDate>` and `<exDate>` elements are present valid;\n  * the `<crID>` and `<clID>` elements match the client ID used to create\n    the domain.\n  * DNSSEC information provided in the `<create>` command is present and\n    correct.\n",
-         "Input-Parameters" : [
-            "epp.clid"
-         ],
+         "Description" : "This test performs a series of `<info>` commands on the domain objects\ncreated in `epp-16`. This test checks that (a) the domain names are\npresent in the repository, and (b) that the expected object properties are\npresent and valid.\n\nThe responses will confirm that:\n\n  * the `<roid>` element is valid and contains a repository ID registered\n    with IANA;\n  * the `<crDate>` and `<exDate>` elements are present valid;\n  * the `<crID>` and `<clID>` elements match the client ID used to create\n    the domain.\n  * DNSSEC information provided in the `<create>` command is present and\n    correct.\n",
+         "Input-Parameters" : null,
          "Summary" : "domain <info> command test"
       },
-      "epp-34" : {
+      "epp-18" : {
          "Dependencies" : [
-            "epp-32",
-            "epp-33"
+            "epp-16"
          ],
-         "Description" : "This test will confirm that the client is able to perform an `<update>`\ncommand on domain names, including:\n\n  * adding and removing client-assigned status codes\n  * adding and removing nameservers (whether objects or attributes)\n  * changing registrant object (if applicable)\n  * adding and remove DNSSEC information\n",
-         "Input-Parameters" : [
-            "epp.clid",
-            "epp.hostModel",
-            "general.minimalPublicDataSet"
-         ],
-         "Summary" : "domain <update> command test"
-      },
-      "epp-35" : {
-         "Dependencies" : [
-            "epp-32",
-            "epp-34"
-         ],
-         "Description" : "This test will confirm that the client is able to renew domain names.\n\n  * Following a succesful `<renew>` command, the expiry date of the domain\n    **MUST** have been increased by the period specified by the client;\n  * Where a server supports RFC 3915, the domain **MUST** have an RGP\n    status of `renewPeriod`;\n  * The server **MUST** reject a `<renew>` command if it would result in\n    the expiry date being more than 10 years into the future.\n",
-         "Input-Parameters" : [
-            "general.gracePeriodsSupported"
-         ],
+         "Description" : "This test will confirm that the client is able to renew domain names.\n\n  * Following a succesful `<renew>` command, the expiry date of the domain\n    **MUST** have been increased by the period specified by the client;\n  * Where a server supports RFC 3915, the domain **MUST** have an RGP\n    status of `renewPeriod`;\n  * The server **MUST** reject a `<renew>` command if it would result in\n    the expiry date being more than 10 years into the future.\n\n**TODO: explicit info after renew**\n",
+         "Input-Parameters" : null,
          "Summary" : "domain <renew> command test"
       },
-      "epp-36" : {
+      "epp-19" : {
          "Dependencies" : [
-            "epp-32",
-            "epp-35"
+            "epp-18"
          ],
-         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-32`) to a\nrandomly-determined value.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer.\n\nOnce the gaining registrar has also received a message on the queue, the\nclient will confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n",
+         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-16`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently secure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer.\n\n**TODO: make implicit info explicit**\nOnce the gaining registrar has also received a message on the queue, the\nclient will confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n\n**TODO: check current tooling to see how waiting for transfers is handled**\n\n**TODO: add transfer reject request?**\n",
          "Input-Parameters" : [
             "epp.transferClid",
             "epp.transferPwd"
          ],
          "Summary" : "domain <transfer> command test"
       },
-      "epp-37" : {
+      "epp-20" : {
          "Dependencies" : [
-            "epp-32",
-            "epp-36"
+            "epp-19"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-32` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n",
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-16` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\n**TODO: add check afterwards**\n",
          "Input-Parameters" : null,
          "Summary" : "domain <delete> command test"
       },
-      "epp-39" : {
+      "epp-21" : {
          "Dependencies" : [
-            "epp-37"
+            "epp-20"
          ],
-         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-37`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n\nIf the value of the `general.gracePeriodsSupported` parameter is false,\nthis test will be skipped.\n",
+         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-20`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n\nIf the value of the `general.gracePeriodsSupported` parameter is false,\nthis test will be skipped.\n",
          "Input-Parameters" : [
-            "general.gracePeriodsSupported",
             "epp.restoreReportRequired"
          ],
          "Summary" : "domain restore test (if applicable)"
@@ -2171,84 +2423,65 @@
       "idn-01" : {
          "Dependencies" : null,
          "Description" : "This test confirms that the EPP server correctly accepts or rejects domain\n`<create>` commands for valid and invalid IDN labels, respectively.\n\nIf there are no IDN tables supported under any of the TLDs associated with\nthe test, then this test will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe server **MUST** reject all `<create>` commands for invalid labels and\n**MUST** accept all `<create>` commands for valid labels.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.minimalPublicDataSet"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "Label validation test"
       },
       "idn-02" : {
          "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 1 variant\nsupport (no support for variant activation, all variants are blocked).\n\nIf there are no IDN tables for which Level 1 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants of the names created in the first step. The server\n**MUST** reject these commands.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.minimalPublicDataSet"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "Level 1 variant handling test"
       },
       "idn-03" : {
          "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 2 variant\nsupport (variants are supported within the same TLD).\n\nIf there are no IDN tables for which Level 2 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants of the names created in the first step. Some of these\ncommands will be made using the same registrar account as the first step,\nwhile some will be made using alternate credentials. If the value of the\n`general.minimalPublicDataSet` input parameter is `false`, then some\ncommands will also use a different registrant contact.\n\nThe server **MUST** reject `<create>` commands where the (a) registrar is\ndifferent from that of the primary label or (b) the registrant (if\napplicable) is different.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "epp.transferClid",
-            "epp.transferPwd",
-            "general.minimalPublicDataSet"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Level 2 variant handling test"
       },
       "idn-04" : {
          "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 3 variant\nsupport (variants are supported within variant TLD(s)).\n\nIf there are no IDN tables for which Level 3 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants (at both second- and top-level) of the names created in\nthe first step. Some of these commands will be made using the same\nregistrar account as the first step, while some will be made using\nalternate credentials. If the value of the `general.minimalPublicDataSet`\ninput parameter is `false`, then some commands will also use a different\nregistrant contact.\n\nThe server **MUST** reject `<create>` commands where the (a) registrar is\ndifferent from that of the primary label or (b) the registrant (if\napplicable) is different.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "epp.transferClid",
-            "epp.transferPwd",
-            "general.minimalPublicDataSet"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Level 3 variant handling test"
       },
       "integration-01" : {
          "Dependencies" : [
-            "epp-32",
-            "epp-28"
+            "epp-16",
+            "epp-11"
          ],
-         "Description" : "This test confirms that the EPP and RDAP systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform RDAP queries to confirm that the RDAP server\nprovides responses for the domain and host objects created in `epp-32` and\n`epp-28` (if applicable). The RDAP server **MUST** provide a 200 response\nwithin 1 hour of the object's `<crDate>` element.\n",
+         "Description" : "This test confirms that the EPP and RDAP systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform RDAP queries to confirm that the RDAP server\nprovides responses for the domain and host objects created in `epp-16` and\n`epp-11` (if applicable). The RDAP server **MUST** provide a 200 response\nwithin 1 hour of the object's `<crDate>` element.\n",
          "Input-Parameters" : [
             "rdap.baseURLs"
          ],
+         "Maturity" : "BETA",
          "Summary" : "EPP -> RDAP Integration Test"
       },
       "integration-02" : {
          "Dependencies" : [
-            "epp-32"
+            "epp-16"
          ],
-         "Description" : "This test confirms that the EPP and DNS systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform DNS queries to confirm that the DNS servers\nprovides responses for the domain names created in `epp-32`. All DNS\nservers **MUST** provide the correct DNS response within 1 hour of the\nobject's `<crDate>` element.\n",
+         "Description" : "This test confirms that the EPP and DNS systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform DNS queries to confirm that the DNS servers\nprovides responses for the domain names created in `epp-16`. All DNS\nservers **MUST** provide the correct DNS response within 1 hour of the\nobject's `<crDate>` element.\n",
          "Input-Parameters" : [
             "dns.nameservers"
          ],
+         "Maturity" : "BETA",
          "Summary" : "EPP -> DNS Integration Test"
       },
       "integration-03" : {
          "Dependencies" : [
-            "epp-32",
-            "epp-28"
+            "epp-16",
+            "epp-11"
          ],
-         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-32` and `epp-28` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on the\ndate specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
+         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-16` and `epp-11` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on the\ndate specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
          "Input-Parameters" : [
             "integration.rdeSFTPHostname",
             "integration.rdeSFTPDirectory",
             "integration.rdeSFTPUsername",
             "integration.rriACL"
          ],
+         "Maturity" : "BETA",
          "Resources" : [
             "integration.rdeSFTPPublicKey",
             "integration.rdeSFTPACL"
@@ -2257,220 +2490,180 @@
       },
       "minimumRPMs-01" : {
          "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Availability Check Form, as described in Section\n3.1.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Sunrise List, as described in Section 5.4.2.1\nof RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `avail` for the `type` attribute of the\n`<launch:check>` element, and `sunrise` for the `<launch:phase>`\nelement. It will then confirm that the server returns an appropriate\nresponse:\n\n  * The `<domain:name>` element for a syntactically valid domain which\n    does not appear on the SURL **MUST** have an `avail` attribute of `0`\n    or `false`.\n  * The `<domain:name>` element for a domain which is present on the\n    SURL, and does not already exist, **MUST** have an `avail` attribute\n    of `1` or `true`.\n",
-         "Errors" : [
-            "EPP_CONNECT_ERROR",
-            "EPP_LOGIN_ERROR",
-            "EPP_GENERIC_COMMAND_ERROR",
-            "EPP_SCHEMA_VALIDATION_ERROR",
-            "EPP_SUNRISE_AVAILABILITY_CHECK_INVALID_RESULT"
-         ],
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
-         "Summary" : "Sunrise domain <check> command test"
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na 1000 or 1001 result code, however, if the client receives a 2302 \"object\nexists\" result code, it will retry with a different domain name.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with a\n1000 or 1001 result code.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\n**TODO: test create with revoked certificate**\n**TODO: test create with revoked SMD**\n\nIf the server supports both modes, then both of the above tests will be\nperformed.\n\n**TODO: merge info case below**\n",
+         "Summary" : "Sunrise domain/launch application <create> command test\n"
       },
       "minimumRPMs-02" : {
-         "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Check Form, as described in Section\n3.1.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `claims` for the `type` attribute of the\n`<launch:check>` element and the `<launch:phase>` element. It will then\nconfirm that the server returns an appropriate\nresponse:\n\n* a `<check>` response for a domain that is present on the DNL contains\n  the correct `<launch:claimKey>` element;\n* a `<check>` response for a domain that is NOT present on the DNL\n  does not contain a `<launch:claimKey>` element.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
+         "Dependencies" : [
+            "minimumRPMs-01"
          ],
-         "Summary" : "Claims <check> command test"
+         "Description" : "In this test, the client will perform `<info>` commands on the objects\ncreated in `minimumRPMs-01` and will confirm that they have successfully\nbeen created in the repository and have the correct object properties.\n\n* a start-date sunrise `<create>` command **MUST** result in the creation\n  of a domain object;\n* an end-date sunrise `<create>` command **MUST** result in the creation\n  of a launch application.\n",
+         "Summary" : "Sunrise launch application <info> command test"
       },
       "minimumRPMs-03" : {
          "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Trademark Check Form, as described in Section\n3.1.3 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `trademark` for the `type` attribute of\nthe `<launch:check>` element. It will then confirm that the server returns\nan appropriate response:\n\n* a `<check>` response for a domain that is present on the DNL contains\n  the correct `<launch:claimKey>` element;\n* a `<check>` response for a domain that is NOT present on the DNL\n  does not contain a `<launch:claimKey>` element.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
-         "Summary" : "Trademark <check> command test"
-      },
-      "minimumRPMs-04" : {
-         "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`zz--edsct` TLD (eg `example.zz-edsct`). The Server **MUST** respond with\na 1000 or 1001 result code, however, if the client receives a 2302 \"object\nexists\" result code, it will retry with a different domain name.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`zz-sdsct` TLD (eg `example.zz-sdsct`). The Server **MUST** respond with a\n1000 or 1001 result code.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports both modes, then both of the above tests will be\nperformed.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.minimalPublicDataSet",
-            "epp.hostModel",
-            "general.sunriseModels"
-         ],
-         "Summary" : "Sunrise domain/launch application <create> command test\n"
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Check Form, as described in Section\n3.1.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `claims` for the `type` attribute of the\n`<launch:check>` element and the `<launch:phase>` element. It will then\nconfirm that the server returns an appropriate\nresponse:\n\n* a `<check>` response for a domain that is present on the DNL contains\n  the correct `<launch:claimKey>` element;\n* a `<check>` response for a domain that is NOT present on the DNL\n  does not contain a `<launch:claimKey>` element.\n",
+         "Summary" : "Claims <check> command test"
       },
       "minimumRPMs-05" : {
-         "Dependencies" : [
-            "minimumRPMs-04"
-         ],
-         "Description" : "In this test, the client will perform `<info>` commands on the objects\ncreated in `minimumRPMs-04` and will confirm that they have successfully\nbeen created in the repository and have the correct object properties.\n\n* a start-date sunrise `<create>` command **MUST** result in the creation\n  of a domain object;\n* an end-date sunrise `<create>` command **MUST** result in the creation\n  of a launch application.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.minimalPublicDataSet",
-            "epp.hostModel",
-            "general.sunriseModels"
-         ],
-         "Summary" : "Sunrise launch application <info> command test"
-      },
-      "minimumRPMs-06" : {
          "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Create Form, as described in Section\n3.3.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names present in the TMCH test environment.\n\nThe domain name will be constructed using a label from the DNL, and the\n`zz-tcdct` TLD (eg `example.zz--tcdct`). The client will perform a\nTrademark Claims `<check>` command beforehand to obtain the claim key, and\nwill then synthesise a trademark claims acknowledgement. The server\n**MUST** respond with a 1000 or 10001 response.\n\nThe client will also perform `<create>` command using an invalid\nclaims acknowledgements. The server **MUST** respond with a 2xxx error.\n",
-         "Input-Parameters" : [
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.minimalPublicDataSet",
-            "epp.hostModel",
-            "general.sunriseModels"
-         ],
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Create Form, as described in Section\n3.3.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names present in the TMCH test environment.\n\nThe domain name will be constructed using a label from the DNL, and the\n`minimumRPMS.claimsTLD` input parameter. The client will perform a\nTrademark Claims `<check>` command beforehand to obtain the claim key, and\nwill then synthesise a trademark claims acknowledgement. The server\n**MUST** respond with a 1000 or 10001 response.\n\nThe client will also perform `<create>` command using an invalid\nclaims acknowledgements **TODO: (invalid claim key, expiry date, see RFC\n9361)**. The server **MUST** respond with a 2xxx error.\n\n**TODO: do info afterwards**\n",
          "Summary" : "Trademark claims domain <create> command test"
-      },
-      "minimumRPMs-07" : {
-         "Dependencies" : [
-            "minimumRPMs-04",
-            "minimumRPMs-06"
-         ],
-         "Description" : "This test confirms the RSP's support for the `yd` interface of the TMCH\nfunctional specification, as described in Section 4.3.7 of RFC 9361.\n\nWithin 24 hours of the completion of the `minimumRPMs-06` test, the RSP\n**MUST** submit LORDN file(s) to the TMCH's test interface, containing all\nthe domain names created and activated as part of the `minimumRPMs-04` and\n`minimumRPMs-06` tests.\n",
-         "Input-Parameters" : null,
-         "Summary" : "LORDN submission test"
       },
       "rdap-01-domainCaseFoldingValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Domain label case folding validation"
       },
       "rdap-02-domainNameValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Domain Name validation"
       },
       "rdap-03-ipv4Validation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "IPv4 address validation"
       },
       "rdap-04-ipv6Validation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "IPv6 address validation"
       },
       "rdap-05-stdRdapAsEventActorValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "asEventActor Validation"
       },
       "rdap-06-stdRdapConformanceValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "RDAP Conformance validation"
       },
       "rdap-07-stdRdapDomainLookupValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Domain Lookup Validation"
       },
       "rdap-08-stdRdapEntitiesValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Entities validation"
       },
       "rdap-09-stdRdapEntityLookupValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Entity lookup validation"
       },
       "rdap-10-stdRdapErrorResponseBodyValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Error Response Body"
       },
       "rdap-11-stdRdapEventsValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Events Validation"
       },
       "rdap-12-stdRdapHelpValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Help validation"
       },
       "rdap-13-stdRdapIpAddressesValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "IP Addresses Validation"
       },
       "rdap-14-stdRdapLanguageIdentifierValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Language Identifier Validation"
       },
       "rdap-15-stdRdapLdhNameValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "LDH name"
       },
       "rdap-16-stdRdapLinksValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Links validation"
       },
       "rdap-17-stdRdapNameserverLookupValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Nameserver lookup validation"
       },
       "rdap-18-stdRdapNameserversSearchValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "RFC7159RDAP_RFCsNameservers search validation"
       },
       "rdap-19-stdRdapNoticesRemarksValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Notices and Remarks Validation"
       },
       "rdap-20-stdRdapPort43WhoisServerValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Port 43 WHOIS Server"
       },
       "rdap-21-stdRdapPublicIdsValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Public IDs validation"
       },
       "rdap-22-stdRdapRolesValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Roles validation"
       },
       "rdap-23-stdRdapSecureDnsValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Secure DNS validation"
       },
       "rdap-24-stdRdapStatusValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Status validation"
       },
       "rdap-25-stdRdapUnicodeNameValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "RFC7159RDAP_RFCsIDNA_RFCsUnicode name"
       },
       "rdap-26-stdRdapVariantsValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Variants validation"
       },
       "rdap-27-webUriValidation" : {
          "Description" : "This test case comes from the RDAP Conformance Tool. For more information, see\n<https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.\n",
+         "Maturity" : "GAMMA",
          "Summary" : "Web URI validation"
       },
       "rde-01" : {
          "Description" : "* The deposit filename **MUST** conform to the format specified in the RA.\n* The type of the deposit **MUST** be `FULL`.\n* The TLD in the filename **MUST** be present in the list of TLDs\n  associated with the test.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate deposit filename format"
       },
       "rde-02" : {
          "Description" : "The PGP signature **MUST** be valid for the deposit file and the RSP's\nkey.\n",
          "Input-Parameters" : [
             "rde.publicKey",
-            "rde.depositFile",
             "rde.signatureFile"
          ],
+         "Maturity" : "BETA",
          "Summary" : "validate signature over deposit file"
       },
       "rde-03" : {
          "Description" : "It **MUST** be possible to decrypt the deposit file using the RST key. The\nPGP public key for which the deposit **MUST** be encrypted may be found in\nthe URL specified by the `rde.encryptionKey` resource.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Resources" : [
             "rde.encryptionKey"
          ],
@@ -2478,134 +2671,86 @@
       },
       "rde-04" : {
          "Description" : "* XML deposit files **MUST** be well-formed and validate against the XML\n  schema.\n* CSV files **MUST** conform to RFC 4180.\n* Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit\n  contents.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate XML/CSV"
       },
       "rde-05" : {
          "Description" : "The header object **MUST** reference the correct object XML namespace\nURIs.\n\nThe correct URIs is determined by the `general.minimalPublicDataSet` and\n`epp.hostModel` input parameters.\n\nAll expected URIs **MUST** be present in the header, and the header **MUST\nNOT** contain any unexpected URIs.\n",
-         "Input-Parameters" : [
-            "rde.depositFile",
-            "general.minimalPublicDataSet",
-            "epp.hostModel"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate object types"
       },
       "rde-06" : {
          "Description" : "The number of each type of object **MUST** match the number of objects\nactually present in the deposit file.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate object counts"
       },
       "rde-07" : {
          "Description" : "Domain objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n  * `<domain:name>`\n  * `<domain:roid>` (which **MUST** have a repository ID registered with\n    IANA)\n  * at least one `<domain:status>` element\n  * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)\n  * `<domain:clID>` (sponsoring registrar ID)\n  * `<domain:crDate>` (creation date)\n  * `<domain:exDate>` (expiry date)\n\nContact, host and registrar objects (including optional objects such as\nadmin and tech contacts) which are referenced in domain objects **MUST**\nbe present in the deposit.\n",
-         "Input-Parameters" : [
-            "rde.depositFile",
-            "general.minimalPublicDataSet",
-            "epp.hostModel"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate domain objects"
       },
       "rde-08" : {
          "Description" : "Host objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n  * `<host:name>`\n  * `<host:roid>` (which **MUST** have a repository ID registered with\n    IANA)\n  * at least one `<domain:status>` element\n  * one or more `<addr>` elements (if the host name is subordinate to\n    the TLD)\n  * `<host:clID>` (sponsoring registrar ID)\n\nIf the applicant uses the host attribute model, then this test will be\nskipped.\n",
-         "Input-Parameters" : [
-            "rde.depositFile",
-            "epp.hostModel"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate host objects (if applicable)"
       },
       "rde-09" : {
          "Description" : "Contact objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n  * `<contact:id>`\n  * `<contact:roid>` (which **MUST** have a repository ID registered with\n    IANA)\n  * at least one `<contact:status>` element\n  * 1-2 `<contact:postalInfo>` elements containing the following:\n      * a \"type\" attribute of \"int\" or \"loc\"\n      * `<contact:name>` element\n      * an `<contact:addr>` element containing the following:\n        * at least one 1 `<contact:street>` element\n        * `<contact:city>` element\n        * `<contact:cc>` element\n  * `<contact:voice>`\n  * `<contact:email>`\n  * `<contact:clID>` (sponsoring registrar ID)\n\nIf the applicant uses the \"thin\" registry model, then this test will be\nskipped.\n",
-         "Input-Parameters" : [
-            "rde.depositFile",
-            "general.minimalPublicDataSet"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate contact objects (if applicable)"
       },
       "rde-10" : {
          "Description" : "Registrar objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n  * `<rdeRegistrar:id>`\n  * `<rdeRegistrar:name>`\n  * `<rdeRegistrar:gurid>` (IANA ID)\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate registrar objects"
       },
       "rde-11" : {
          "Description" : "IDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nAll IDN table objects present in the deposit **MUST** correspond to IDN\ntables approved for the TLD, and all approved tables **MUST** have a\ncorresponding object in the deposit.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate IDN table objects (if applicable)"
       },
       "rde-12" : {
          "Description" : "NNDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe aName property of NNDN objects **MUST NOT** match the name property of\na domain object.\n",
-         "Input-Parameters" : [
-            "rde.depositFile"
-         ],
+         "Input-Parameters" : null,
+         "Maturity" : "BETA",
          "Summary" : "validate NNDN objects"
       },
       "rde-13" : {
          "Description" : "The EPP Parameters object **MUST** match the `<greeting>` element returned\nby the EPP server.\n",
          "Input-Parameters" : [
-            "epp.hostName"
+            "epp.serverIssuedClientCertificate"
          ],
-         "Resources" : [
-            "epp.clientACL",
-            "epp.clientCertificate"
-         ],
+         "Maturity" : "BETA",
+         "Resources" : null,
          "Summary" : "validate EPP parameters object"
       },
       "rde-14" : {
          "Description" : "The object policies included in the `<rdePolicy:policy>` object **MUST**\nconform to the Registration Data Policy and the applicable data model.\n\n* If the `general.minimalPublicDataSet` input parameter is `true`, then\n  contact objects **MUST NOT** be present in the deposit.\n* If the `epp.hostModel` input parameter is `attributes`, then\n  host objects **MUST NOT** be present in the deposit.\n",
-         "Input-Parameters" : [
-            "general.minimalPublicDataSet",
-            "epp.hostModel"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "validate policy object (if applicable)"
       },
       "srsgw-01" : {
          "Dependencies" : null,
          "Description" : "This test confirms that the SRS Gateway EPP system is reachable over IPv4\nand IPv6.\n\nThe SRS Gateway EPP server host name will be resolved to obtain its\nIPv4 and IPv6 addresses. The client will then attempt to connect to TCP\nport 700 on these addresses.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName"
-         ],
-         "Resources" : [
-            "epp.clientACL",
-            "epp.clientCertificate"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "IPv4 and IPv6 connectivity"
       },
       "srsgw-02" : {
-         "Dependencies" : null,
-         "Description" : "This test confirms that host objects created in the SRS Gateway EPP system\nare correctly synchronized with the primary registry system.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<create>` command for a pseudo-randomly generated host name. \nIP address information will be provided if required. The server **MUST**\nrespond with a 1000 or 1001 response. The client will then perform an\n`<info>` command and will capture the response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the object created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe two `<info>` responses will then be compared and **MUST** be\nidentical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostModel",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
-         "Resources" : [
-            "epp.clientACL",
-            "epp.clientCertificate"
-         ],
+         "Description" : "This test confirms that host objects created in the SRS Gateway EPP system\nare correctly synchronized with the primary registry system.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<create>` command for a pseudo-randomly generated host name.\nIP address information will be provided if required. The server **MUST**\nrespond with a 1000 or 1001 response. The client will then perform an\n`<info>` command and will capture the response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the object created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe two `<info>` responses will then be compared and **MUST** be\nidentical.\n",
+         "Maturity" : "BETA",
          "Summary" : "Host <create> synchronization (if applicable)"
       },
       "srsgw-03" : {
-         "Dependencies" : null,
          "Description" : "This test confirms that contact objects created in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `general.minimalPublicDataSet` input parameter is\n`true`, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<create>` command for a pseudo-randomly generated contact\nobject. The client will then perform an `<info>` command and will capture\nthe response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the object created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe two `<info>` responses will then be compared and **MUST** be\nidentical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "general.minimalPublicDataSet",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Contact <create> synchronization (if applicable)"
       },
       "srsgw-04" : {
@@ -2613,17 +2758,8 @@
             "srsgw-02",
             "srsgw-03"
          ],
-         "Description" : "This test confirms that domain objects created in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit `<create>` commands for a pseudo-randomly generated domain names. \nContact and nameserver objects created in `srsgw-02` and `srsgw-03` will\nbe used if required. The server **MUST** respond with 1000 or 1001\nresponses. The client will then perform `<info>` commands and will capture\nthe responses.\n\nIt will then connect to the primary EPP system, authenticate, and perform\n`<info>` commands for the domains created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe pairs of `<info>` responses will then be compared and **MUST** be\nidentical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostModel",
-            "general.minimalPublicDataSet",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Description" : "This test confirms that domain objects created in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit `<create>` commands for a pseudo-randomly generated domain names.\nContact and nameserver objects created in `srsgw-02` and `srsgw-03` will\nbe used if required. The server **MUST** respond with 1000 or 1001\nresponses. The client will then perform `<info>` commands and will capture\nthe responses.\n\nIt will then connect to the primary EPP system, authenticate, and perform\n`<info>` commands for the domains created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe pairs of `<info>` responses will then be compared and **MUST** be\nidentical.\n",
+         "Maturity" : "BETA",
          "Summary" : "Domain <create> synchronization"
       },
       "srsgw-05" : {
@@ -2631,31 +2767,15 @@
             "srsgw-04"
          ],
          "Description" : "This test confirms that the expiry dates of domain objects renewed in the\nSRS Gateway EPP system are correctly synchronized with the primary\nregistry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<renew>` command for the domain created in `srsgw-04`. The\nserver **MUST** respond with a 1000 or 1001 response. The client will then\nperform an `<info>` command and will capture the response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\nThe server **MUST** respond with a 1000 response.\n\nThe `<exDate>` element of the two `<info>` responses will then be compared\nand **MUST** be identical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Domain <renew> synchronisation"
       },
       "srsgw-06" : {
          "Dependencies" : [
             "srsgw-05"
          ],
-         "Description" : "This test confirms that transfer requests submitted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<update>` command to specify an authInfo code for the domain\ncreated in `srsgw-04`. The server **MUST** respond with a 1000 or 1001\nresponse.\n\nIt will then reconnect to the SRS Gateway EPP system using the credentials\nof a second registrar account and submit a `<transfer op=\"request\">`\ncommand using the authInfo command set for the domain in the first step.\nThe server **MUST** respond with a 1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response.\n\n* if the response to the `<transfer op=\"request\">` command was 1000, then\n  the `<domain:clID>` element **MUST** contain the value of the \n  `srsgw.eppTransferClid` input parameter.\n* if the response to the `<transfer op=\"request\">` command was 1001, then\n  the domain **MUST** have the `pendingTransfer` status.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "srsgw.eppTransferClid",
-            "srsgw.eppTransferPwd",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Description" : "This test confirms that transfer requests submitted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<update>` command to specify an authInfo code for the domain\ncreated in `srsgw-04`. The server **MUST** respond with a 1000 or 1001\nresponse.\n\nIt will then reconnect to the SRS Gateway EPP system using the credentials\nof a second registrar account and submit a `<transfer op=\"request\">`\ncommand using the authInfo command set for the domain in the first step.\nThe server **MUST** respond with a 1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response.\n\n* if the response to the `<transfer op=\"request\">` command was 1000, then\n  the `<domain:clID>` element **MUST** contain the value of the\n  `srsgw.eppTransferClid` input parameter.\n* if the response to the `<transfer op=\"request\">` command was 1001, then\n  the domain **MUST** have the `pendingTransfer` status.\n",
+         "Maturity" : "BETA",
          "Summary" : "Domain <transfer> synchronisation"
       },
       "srsgw-07" : {
@@ -2663,15 +2783,7 @@
             "srsgw-06"
          ],
          "Description" : "This test confirms that transfer request approvals submitted in the SRS\nGateway EPP system are correctly synchronized with the primary registry\nsystem.\n\nIf the response to the `<transfer op=\"request\">` command performed in\n`srsgw-07` was 1000, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<transfer op=\"approve\">` command for the domain for which a\ntransfer was requested in `srsgw-04`. The server **MUST** respond with a\n1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response. The `<domain:clID>` element **MUST** contain the value of\nthe  `srsgw.eppTransferClid` input parameter.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "srsgw.eppTransferClid",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Domain <transfer> approval synchronisation"
       },
       "srsgw-08" : {
@@ -2679,15 +2791,7 @@
             "srsgw-07"
          ],
          "Description" : "This test confirms that domain objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate using\nthe credentials provided in `epp.transferClid` and `epp.transferPwd`, and\nsubmit a `<delete>` command for the domain transferred in `srsgw-07`.\nIf the value of the `general.gracePeriodsSupported` input parameter is\n`false`, the server **MUST** respond with a 1000 response. Otherwise it\n**MUST** respond with a 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\n\n* if `general.gracePeriodsSupported` is false, the server **MUST**\n  respond to the `<info>` command with a 2303 (\"object does not exist\")\n  result code.\n* If `general.gracePeriodsSupported` is true, the domain object **MUST**\n  have the `pendingDelete` status and have an RGP status of\n  `pendingDeleteRestorable`.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd",
-            "general.gracePeriodsSupported"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Domain <delete> synchronisation"
       },
       "srsgw-09" : {
@@ -2695,15 +2799,7 @@
             "srsgw-02"
          ],
          "Description" : "This test confirms that host objects updated in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe test client will connect to the SRS Gateway EPP server and perform\n`<update>` commands on the objects created in `srsgw-02`, specifically\nto add and remove status codes and IP addresses. It will then perform\n`<info>` commands on those objects.\n\nThe client will then connect to the primary registry EPP server and\nperform `<info>` commands for those objects.\n\nThe two sets of `<info>` responses **MUST** be identical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostModel",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Host <update> synchronization (if applicable)"
       },
       "srsgw-10" : {
@@ -2711,15 +2807,7 @@
             "srsgw-09"
          ],
          "Description" : "This test confirms that host objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe test client will connect to the SRS Gateway EPP server and perform\n`<delete>` commands on objects created in `srsgw-02`. The server **MUST**\nrespond with a 1000 response.\n\nThe client will then connect to the primary registry EPP server and\nperform `<info>` commands for those objects. The server **MUST**\nrespond with a 2303 \"object does not exist\" response.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "epp.hostModel",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Host <delete> synchronization (if applicable)"
       },
       "srsgw-11" : {
@@ -2727,15 +2815,7 @@
             "srsgw-03"
          ],
          "Description" : "This test confirms that contact objects updated in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `general.minimalPublicDataSet` input parameter is\n`true`, then this test will be skipped.\n\nThe test client will connect to the SRS Gateway EPP server and perform\n`<update>` commands on the objects created in `srsgw-03`. It will then\nperform `<info>` commands on those objects.\n\nThe client will then connect to the primary registry EPP server and\nperform `<info>` commands for those objects.\n\nThe two sets of `<info>` responses **MUST** be identical.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "general.minimalPublicDataSet",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Contact <update> synchronization (if applicable)"
       },
       "srsgw-12" : {
@@ -2743,15 +2823,7 @@
             "srsgw-11"
          ],
          "Description" : "This test confirms that contact objects delete in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `general.minimalPublicDataSet` input parameter is\n`true`, then this test will be skipped.\n\nThe test client will connect to the SRS Gateway EPP server and perform\n`<delete>` commands on objects created in `srsgw-03`. The server **MUST**\nrespond with a 1000 response.\n\nThe client will then connect to the primary registry EPP server and\nperform `<info>` commands for those objects. The server **MUST**\nrespond with a 2303 \"object does not exist\" response.\n",
-         "Input-Parameters" : [
-            "srsgw.eppHostName",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "general.minimalPublicDataSet",
-            "epp.hostName",
-            "epp.clid",
-            "epp.pwd"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Contact <delete> synchronization (if applicable)"
       },
       "srsgw-13" : {
@@ -2759,10 +2831,7 @@
             "srsgw-04"
          ],
          "Description" : "This test confirms that the SRS Gateway's RDAP service provides responses\nto domain lookups that match those of the primary registry RDAP server.\n\nThe test system will perform RDAP queries for some of the objects created\nin `srsgw-04` against both the primary registry RDAP server and the SRS\nGateway RDAP server. After canonicalisation, the responses from each\nserver **MUST** be identical.\n",
-         "Input-Parameters" : [
-            "rdap.baseURLs",
-            "srsgw.rdapBaseURLs"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Domain RDAP synchronization"
       },
       "srsgw-14" : {
@@ -2770,10 +2839,7 @@
             "srsgw-02"
          ],
          "Description" : "This test confirms that the SRS Gateway's RDAP service provides responses\nto domain lookups that match those of the primary registry RDAP server.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe test system will perform RDAP queries for some of the objects created\nin `srsgw-02` against both the primary registry RDAP server and the SRS\nGateway RDAP server. After canonicalisation, the JSON responses from each\nserver **MUST** be identical.\n",
-         "Input-Parameters" : [
-            "rdap.baseURLs",
-            "srsgw.rdapBaseURLs"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Nameserver RDAP synchronization"
       },
       "srsgw-15" : {
@@ -2781,10 +2847,7 @@
             "srsgw-02"
          ],
          "Description" : "This test confirms that the SRS Gateway's RDAP service provides responses\nto registrar (entity) lookups that match those of the primary registry\nRDAP server.\n\nThe test system will perform RDAP queries for some of the objects created\nin `srsgw-04` against the primary registry RDAP server in order to obtain\nthe `handle` property of the entity with the `registrar` role. It will\nthen construct two URLs using this value and the values of the\n`rdap.baseURLs` and `srsgw.rdapBaseURLs` input parameters. It will then\nretrieve those URLs.\n\nAfter canonicalisation, the JSON responses from each server **MUST** be\nidentical.\n",
-         "Input-Parameters" : [
-            "rdap.baseURLs",
-            "srsgw.rdapBaseURLs"
-         ],
+         "Maturity" : "BETA",
          "Summary" : "Registrar RDAP synchronization"
       }
    },
@@ -2824,7 +2887,7 @@
          ]
       },
       "MainRSPEvaluationTest" : {
-         "Description" : "The Main RSP is responsible for the creation and maintenance of domain\nname registrations in a Shared Registration System (SRS). This encompasses\nthe lifecycle of a domain name registration using domain registrars and\nprotocols such as the Extensible Provisioning Protocol (EPP) and adherence\nto policies regarding the use and transparency domain name registrations\nthrough reporting, the Registration Data Access Protocol (RDAP), and other\nmechanisms.\n\n# Pass/fail criteria\n\nAs with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.\n",
+         "Description" : "The Main RSP is responsible for the creation and maintenance of domain\nname registrations in a Shared Registration System (SRS). This encompasses\nthe lifecycle of a domain name registration using domain registrars and\nprotocols such as the Extensible Provisioning Protocol (EPP) and adherence\nto policies regarding the use and transparency domain name registrations\nthrough reporting, the Registration Data Access Protocol (RDAP), and other\nmechanisms.\n\n**TODO: add note that production system does not need to be used for this\ntest, but that pre-delegation will test production**\n\n# Pass/fail criteria\n\nAs with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.\n",
          "Name" : "Main RSP Evaluation Test",
          "Order" : "6",
          "Test-Suites" : [
@@ -2890,9 +2953,20 @@
       },
       "MinimumRPMs" : {
          "Description" : "This test suite verifies an RSP's support for the minimum Rights\nProtection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if\nsupported.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Input-Parameters" : [
+            "epp.hostName",
+            "epp.serverIssuedClientCertificate",
+            "epp.clid",
+            "epp.pwd",
+            "epp.transferClid",
+            "epp.transferPwd",
+            "epp.serverIssuedClientCertificate",
+            "minimumRPMS.sunriseModels",
+            "minimumRPMS.sunriseTLD",
+            "minimumRPMS.claimsTLD"
+         ],
          "Name" : "Minimum Rights Protection Mechanisms (RPMs)",
          "Order" : "9",
-         "Resources" : null,
          "Test-Cases" : "^minimumRPMs-"
       },
       "StandardDNS" : {
@@ -2918,16 +2992,50 @@
       },
       "StandardEPP" : {
          "Description" : "The EPP test suite validates the EPP service of the TLD or RSP. It\nverifies that the EPP server properly implements the query and transform\ncommands specified for domain names (and optionally host and contact\nobjects) and the mandatory extensions.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Errors" : [
+            "EPP_DNS_RESOLUTION_ERROR",
+            "EPP_SERVICE_PORT_UNREACHABLE",
+            "EPP_TLS_CONNECTION_ERROR",
+            "EPP_LOGIN_ERROR",
+            "EPP_XML_PARSE_ERROR",
+            "EPP_GENERIC_COMMAND_ERROR",
+            "EPP_SCHEMA_VALIDATION_ERROR"
+         ],
+         "Input-Parameters" : [
+            "general.gracePeriodsSupported",
+            "general.minimalPublicDataSet",
+            "epp.clid",
+            "epp.pwd",
+            "epp.hostModel",
+            "epp.hostName",
+            "epp.serverIssuedClientCertificate"
+         ],
          "Name" : "Extensible Provisioning Protocol (EPP)",
          "Order" : "4",
-         "Resources" : null,
+         "Resources" : [
+            "epp.clientACL",
+            "epp.clientCSR",
+            "epp.clientCertificate"
+         ],
          "Test-Cases" : "^epp-"
       },
       "StandardIDN" : {
          "Description" : "The RDE test suite validates the IDN table(s) for a TLD or RSP, including\ncompliance with specifications for variant labels at the top- or second-\nlevel, and conformance with the IDN Guidelines.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Input-Parameters" : [
+            "epp.hostName",
+            "epp.serverIssuedClientCertificate",
+            "epp.clid",
+            "epp.pwd",
+            "epp.transferClid",
+            "epp.transferPwd"
+         ],
          "Name" : "Internationalized Domain Names (IDN)",
          "Order" : "6",
-         "Resources" : null,
+         "Resources" : [
+            "epp.clientACL",
+            "epp.clientCSR",
+            "epp.clientCertificate"
+         ],
          "Test-Cases" : "^idn-"
       },
       "StandardIntegrationTest" : {
@@ -2952,17 +3060,41 @@
       },
       "StandardRDE" : {
          "Description" : "The RDE test suite validates Registry Data Escrow deposits generated for\nthe TLD or RSP. These deposits **MUST** comply with the specifications in\nthe Registry Agreement and with RFC 8909 and RFC 9022.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Input-Parameters" : [
+            "rde.depositFile"
+         ],
          "Name" : "Registry Data Escrow (RDE)",
          "Order" : "5",
          "Test-Cases" : "^rde-"
       },
       "StandardSRSGateway" : {
          "Description" : "The SRS Gateway test suite validates the conformance of the Gateway\nregistry infrastructure of a TLD or RSP, and the synchronisation between\nprimary and gateway systems.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Input-Parameters" : [
+            "epp.hostName",
+            "epp.serverIssuedClientCertificate",
+            "epp.clid",
+            "epp.pwd",
+            "epp.transferClid",
+            "epp.transferPwd",
+            "epp.serverIssuedClientCertificate",
+            "srsgw.eppHostName",
+            "srsgw.serverIssuedClientCertificate",
+            "srsgw.eppClid",
+            "srsgw.eppPwd",
+            "srsgw.eppTransferClid",
+            "srsgw.eppTransferPwd",
+            "srsgw.rdapBaseURLs",
+            "rdap.baseURLs"
+         ],
          "Name" : "SRS Gateway",
          "Order" : "7",
-         "Resources" : null,
+         "Resources" : [
+            "epp.clientACL",
+            "epp.clientCSR",
+            "epp.clientCertificate"
+         ],
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.176"
+   "Version" : "3.0.180"
 }
