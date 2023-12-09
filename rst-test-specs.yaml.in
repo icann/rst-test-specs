@@ -3,6 +3,8 @@
 #define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
+#define BAU_PLAN_ENVIRONMENT_NOTE **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
+#define RSP_EVALUATION_ENVIRONMENT_NOTE **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
 Version: #exec perl ./tools/generate-version.pl
@@ -32,6 +34,16 @@ Preamble: |
   evaluation or Pre-Delegation Testing). Each plan consists of one or more *test
   suites*, which in turn include one or more *test cases*.
 
+  ## 2.1.1. Test plan types
+
+  There are two types of test plan described in this document:
+
+  * **Business as usual** plans, which are used as part of the lifecycle of a
+    gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
+    Test)
+  * **RSP evaluation** plans, which are used as part of the RSP evaluation
+    program.
+
   # 2.2. Test suites
 
   A *Test Suite* is a collection of *test cases* with a common theme or subject
@@ -51,12 +63,21 @@ Preamble: |
   example, service hostnames, credentials, and functional parameters. These
   *input parameters* may be shared across multiple test cases.
 
-  ## 2.3.2. Test results
+  ## 2.3.2. Test environments
+
+  Each test plan indicates whether the test is to be carried out in the
+  production environment, or whether a test, staging or OT&E environment may be
+  used. In general, test plans which are designed for "business as usual" use
+  during the lifecycle of a TLD **MUST** be carried out in the production
+  registry infrastructure, while RSP evaluation tests **MAY** be carried out in
+  test, staging or OT&E environments.
+
+  ## 2.3.3. Test results
 
   Test cases will generate one or more *test results*. Test results indicate the
   outcome of the test and other relevant information.
 
-  ## 2.3.3. General pass/fail criteria
+  ## 2.3.4. General pass/fail criteria
 
   In general, for a test to pass, **all** the test cases specified in the test
   suite(s) for the test plan **MUST** pass: if *any* fail, then the test as a
@@ -65,7 +86,7 @@ Preamble: |
   A test case will fail if it produces one or more [errors](#errors) with the
   `ERROR` or `CRITICAL` severities.
 
-  ## 2.3.4. Error severity levels
+  ## 2.3.5. Error severity levels
 
   1. `INFO` - an informational message.
   1. `NOTICE` - a normal but significant condition.
@@ -78,7 +99,7 @@ Preamble: |
      further. A test will only produce a single `CRITICAL` result and it
      will always be the last result in the log.
 
-  ## 2.3.5. Common errors
+  ## 2.3.6. Common errors
 
   For each test case, various errors and critical errors are defined which will
   be used to signal why that the case might have failed.
@@ -207,6 +228,8 @@ Test-Plans:
       The Pre-Delegation Test covers all critical registry services and IDNs,
       and therefore uses all test suites.
 
+      BAU_PLAN_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -231,6 +254,8 @@ Test-Plans:
 
       The RSP Change Test covers all critical registry services and IDNs, and
       therefore uses all test suites.
+
+      BAU_PLAN_ENVIRONMENT_NOTE
 
       # Pass/fail criteria
 
@@ -258,6 +283,8 @@ Test-Plans:
 
       The DNS RSP Change Test uses the DNS test suite only.
 
+      BAU_PLAN_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -265,9 +292,9 @@ Test-Plans:
       - StandardDNS
       - StandardDNSSEC
 
-  IDNTest:
+  StandardIDNTest:
     Order: 4
-    Name: IDN Test
+    Name: Standard IDN Test
     Description: |
       A Registry Operator may apply to ICANN to amend its Registry Agreement
       to offer new scripts and/or languages for Internationalized Domain Names.
@@ -278,6 +305,23 @@ Test-Plans:
 
       The IDN Test uses the IDN test suite only.
 
+      BAU_PLAN_ENVIRONMENT_NOTE
+
+      # Pass/fail criteria
+
+      TP_PASSFAIL
+    Test-Suites:
+      - StandardIDN
+
+  RSPEvaluationIDNTest:
+    Order: 5
+    Name: IDN Test (RSP Evaluation)
+    Description: |
+      This test plan is identical to the Standard IDN Test, but is intended
+      solely for use by the RSP evaluation program.
+
+      BAU_PLAN_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -285,7 +329,7 @@ Test-Plans:
       - StandardIDN
 
   SRSGatewayTest:
-    Order: 5
+    Order: 6
     Name: SRS Gateway Test
     Description: |
       An SRS Gateway service is a Shared Registry System implementation that
@@ -302,6 +346,8 @@ Test-Plans:
 
       The SRS Gateway Test Change Test uses the SRS gateway test suite only.
 
+      BAU_PLAN_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -310,7 +356,7 @@ Test-Plans:
       - SRSGatewayIntegrationTest
 
   MainRSPEvaluationTest:
-    Order: 6
+    Order: 7
     Name: Main RSP Evaluation Test
     Description: |
       The Main RSP is responsible for the creation and maintenance of domain
@@ -324,6 +370,8 @@ Test-Plans:
       **TODO: add note that production system does not need to be used for this
       test, but that pre-delegation will test production**
 
+      RSP_EVALUATION_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -334,7 +382,7 @@ Test-Plans:
       - StandardRDE
 
   DNSRSPEvaluationTest:
-    Order: 7
+    Order: 8
     Name: DNS RSP Evaluation Test
     Description: |
       DNS RSPs provide primary or secondary authoritative DNS services.
@@ -343,6 +391,8 @@ Test-Plans:
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
 
+      RSP_EVALUATION_ENVIRONMENT_NOTE
+
       # Pass/fail criteria
 
       TP_PASSFAIL
@@ -350,7 +400,7 @@ Test-Plans:
       - StandardDNS
 
   DNSSECRSPEvaluationTest:
-    Order: 8
+    Order: 9
     Name: DNSSEC RSP Evaluation Test
     Description: |
       DNSSEC RSPs provide signing of TLD zone files as a service. They do not
@@ -359,13 +409,15 @@ Test-Plans:
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
 
+      RSP_EVALUATION_ENVIRONMENT_NOTE
+
       TP_PASSFAIL
     Test-Suites:
       - StandardDNSSEC
       - DNSSECOperations
 
   SRSGatewayRSPTest:
-    Order: 9
+    Order: 10
     Name: SRS Gateway RSP Evaluation Test
     Description: |
       SRS Gateway RSPs provide a proxy between a subset of Registrars and the
@@ -381,6 +433,8 @@ Test-Plans:
       **MUST** identify such a primary registry system, which **MUST** be
       independent of the SRS gateway system, and MAY be operated by a third
       party.
+
+      RSP_EVALUATION_ENVIRONMENT_NOTE
 
       # Pass/fail criteria
 
