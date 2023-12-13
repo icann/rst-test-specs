@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.182
-Last-Updated: 2023-12-09
+Version: 3.0.183
+Last-Updated: 2023-12-13
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -57,7 +57,7 @@ Preamble: |
 
   ## 2.3.2. Test environments
 
-  Each test plan will indicate whether the test is to be carried out in the
+  Each test plan indicates whether the test is to be carried out in the
   production environment, or whether a test, staging or OT&E environment may be
   used. In general, test plans which are designed for "business as usual" use
   during the lifecycle of a TLD **MUST** be carried out in the production
