@@ -156,9 +156,7 @@ foreach my $row ($list->getElementsByTagName('tr')) {
                     push(@{$sections->{$section}}, $el);
 
                 } else {
-                    my $tbody = $el->getElementsByTagName('tbody')->shift;
-
-                    foreach my $row ($tbody->getElementsByTagName('tr')) {
+                    foreach my $row ($el->getElementsByTagName('tbody')->shift->getElementsByTagName('tr')) {
                         my $cells = $row->getElementsByTagName('td');
 
                         my $id_cell     = $cells->shift;
@@ -279,6 +277,18 @@ foreach my $row ($list->getElementsByTagName('tr')) {
         }
     }
 
+    if (scalar(@case_errors) < 1) {
+        my $error_id = sprintf('ZM_%s_FAILED', uc($case_id));
+        $error_id =~ s/-/_/g;
+
+        push(@case_errors, $error_id);
+
+        $errors{$error_id} = {
+            'Severity'      => 'ERROR',
+            'Description'   => sprintf('The `%s` test case failed, but no further information is available. Please consult the result log for this test case.', $case_id),
+        };
+    }
+
     push(@cases, {
         'id'            => $case_id,
         'summary'       => unidecode($summary),
@@ -359,7 +369,7 @@ sub print_case {
     my $node = {
         $case->{'id'} => {
             'Summary'       => $case->{'summary'},
-            'Maturity'      => 'GAMMA',
+            'Maturity'      => 'BETA',
             'Description'   => $case->{'description'},
             'Errors'        => $case->{'errors'},
         }
