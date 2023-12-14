@@ -30,18 +30,6 @@ my $json = JSON::XS->new->pretty->canonical;
 
 my $h = HTML::Tiny->new;
 
-my $mcol = {
-    'ALPHA'     => 'red',
-    'BETA'      => 'orange',
-    'GAMMA'     => 'green',
-};
-
-my $msym = {
-    'ALPHA'     => $h->span({'style' => 'color:'.$mcol->{'ALPHA'}}, 'α'),
-    'BETA'      => $h->span({'style' => 'color:'.$mcol->{'BETA'}}, 'β'),
-    'GAMMA'     => $h->span({'style' => 'color:'.$mcol->{'GAMMA'}}, 'y'),
-};
-
 my $mdesc = {
     'ALPHA'     => 'very rough outline, much more work needed',
     'BETA'      => 'complete but likely to require further changes',
@@ -276,7 +264,7 @@ sub print_test_case_toc_list {
 
     foreach my $case ($spec->cases) {
         print $h->li($h->a(
-            {href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity}},
+            {href => sprintf('#Test-Case-%s', $case->id)},
             e($case->title),
         ));
     }
@@ -317,7 +305,7 @@ sub print_error_toc_list {
             {href => sprintf('#Error-%s', $error->id)},
             sprintf(
                 '%s (%s)',
-                $h->code(e($error->id)),
+                e($error->id),
                 e($error->severity),
             )
         ));
@@ -481,7 +469,7 @@ sub print_plan {
                 { href => sprintf('#Error-%s', $error->id) },
                 sprintf(
                     '%s (%s)',
-                    $h->code(e($error->id)),
+                    e($error->id),
                     e($error->severity),
                 )
             ));
@@ -613,7 +601,7 @@ sub print_suite {
 
         foreach my $case (@cases) {
             print $h->li($h->a(
-                { href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity} },
+                { href => sprintf('#Test-Case-%s', $case->id) },
                 e($case->title),
             ));
         }
@@ -688,7 +676,7 @@ sub print_suite {
                 { href => sprintf('#Error-%s', $error->id) },
                 sprintf(
                     '%s (%s)',
-                    $h->code(e($error->id)),
+                    e($error->id),
                     e($error->severity),
                 )
             ));
@@ -797,7 +785,7 @@ sub print_case {
     my $j = 0;
 
     print $h->h4(sprintf('%u.%u.%u. Maturity Level', $section, $i, ++$j));
-    print $h->ul($h->li([$h->strong({'style' => 'color:'.$mcol->{$case->maturity}}, $case->maturity.': '), $mdesc->{$case->maturity}]));
+    print $h->ul($h->li([$h->strong($case->maturity.': '), $mdesc->{$case->maturity}]));
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $case->description->html(3);
@@ -820,7 +808,7 @@ sub print_case {
                 { href => sprintf('#Error-%s', $error->id) },
                 sprintf(
                     '%s (%s)',
-                    $h->code(e($error->id)),
+                    e($error->id),
                     e($error->severity),
                 )
             ));
@@ -1003,7 +991,7 @@ sub print_input {
 
         foreach my $case (@cases) {
             print $h->li($h->a(
-            { href => sprintf('#Test-Case-%s', $case->id), 'style' => 'color:'.$mcol->{$case->maturity} },
+            { href => sprintf('#Test-Case-%s', $case->id) },
             e($case->title),
             ));
         }
