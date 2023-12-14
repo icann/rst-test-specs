@@ -18,155 +18,199 @@
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_INFO_RESPONSE_NOT_2201" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
-      "EPP_CONTACT_INFO_RESPONSE_NOT_1000" : {
-         "Description" : "TBA",
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "EPP_CONTACT_UPDATE_RESPONSE_NOT_2201" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_DNS_RESOLUTION_ERROR" : {
@@ -174,15 +218,15 @@
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_GENERIC_COMMAND_ERROR" : {
@@ -226,15 +270,15 @@
          "Severity" : "ERROR"
       },
       "EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL" : {
-         "Description" : "TBA",
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "EPP_LOGIN_ERROR" : {
@@ -507,6 +551,106 @@
       },
       "ZM_DNSKEY_TOO_SMALL_FOR_ALGO" : {
          "Description" : "*Not available.*",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNSSEC_03_FAILED" : {
+         "Description" : "The `dnssec-03` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNSSEC_04_FAILED" : {
+         "Description" : "The `dnssec-04` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNSSEC_06_FAILED" : {
+         "Description" : "The `dnssec-06` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNSSEC_12_FAILED" : {
+         "Description" : "The `dnssec-12` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ADDRESS01_FAILED" : {
+         "Description" : "The `dns-address01` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ADDRESS02_FAILED" : {
+         "Description" : "The `dns-address02` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ADDRESS03_FAILED" : {
+         "Description" : "The `dns-address03` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_DELEGATION04_FAILED" : {
+         "Description" : "The `dns-delegation04` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_DELEGATION06_FAILED" : {
+         "Description" : "The `dns-delegation06` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_DELEGATION07_FAILED" : {
+         "Description" : "The `dns-delegation07` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER03_FAILED" : {
+         "Description" : "The `dns-nameserver03` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER04_FAILED" : {
+         "Description" : "The `dns-nameserver04` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER06_FAILED" : {
+         "Description" : "The `dns-nameserver06` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER07_FAILED" : {
+         "Description" : "The `dns-nameserver07` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER08_FAILED" : {
+         "Description" : "The `dns-nameserver08` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_NAMESERVER09_FAILED" : {
+         "Description" : "The `dns-nameserver09` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_SYNTAX04_FAILED" : {
+         "Description" : "The `dns-syntax04` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_SYNTAX05_FAILED" : {
+         "Description" : "The `dns-syntax05` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_SYNTAX07_FAILED" : {
+         "Description" : "The `dns-syntax07` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE02_FAILED" : {
+         "Description" : "The `dns-zone02` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE03_FAILED" : {
+         "Description" : "The `dns-zone03` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE04_FAILED" : {
+         "Description" : "The `dns-zone04` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE05_FAILED" : {
+         "Description" : "The `dns-zone05` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE06_FAILED" : {
+         "Description" : "The `dns-zone06` test case failed, but no further information is available. Please consult the result log for this test case.",
+         "Severity" : "ERROR"
+      },
+      "ZM_DNS_ZONE07_FAILED" : {
+         "Description" : "The `dns-zone07` test case failed, but no further information is available. Please consult the result log for this test case.",
          "Severity" : "ERROR"
       },
       "ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM" : {
@@ -1419,7 +1563,7 @@
          "Type" : "string"
       }
    },
-   "Last-Updated" : "2023-12-13",
+   "Last-Updated" : "2023-12-14",
    "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n## 2.1.1. Test plan types\n\nThere are two types of test plan described in this document:\n\n* **Business as usual** plans, which are used as part of the lifecycle of a\n  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway\n  Test)\n* **RSP evaluation** plans, which are used as part of the RSP evaluation\n  program.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test environments\n\nEach test plan indicates whether the test is to be carried out in the\nproduction environment, or whether a test, staging or OT&E environment may be\nused. In general, test plans which are designed for \"business as usual\" use\nduring the lifecycle of a TLD **MUST** be carried out in the production\nregistry infrastructure, while RSP evaluation tests **MAY** be carried out in\ntest, staging or OT&E environments.\n\n## 2.3.3. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.4. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.5. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n   which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n   prevent the test from *continuing*. A test may produce multiple `ERROR`\n   results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n   further. A test will only produce a single `CRITICAL` result and it\n   will always be the last result in the log.\n\n## 2.3.6. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at <https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These **MUST**\ninclude (but are not limited to): (1) Sunrise Periods, and (2) Trademark\nClaims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
    "RST-Test-Plan-Schema-Version" : "1.6.0",
    "Resources" : {
@@ -1454,20 +1598,26 @@
    "Test-Cases" : {
       "dns-address01" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address01.md>.\n\n# Objective\n\nIn order for the domain and its resources to be accessible,\nauthoritative name servers must have addresses in the routable public\naddressing space.\n\nIANA is responsible for global coordination of the IP addressing system.\nAside its address allocation activities, it maintains reserved address\nranges for special uses. These ranges can be categorized into three\ntypes : [Special purpose IPv4\naddresses](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xml),\n[Special purpose IPv6\naddresses](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xml)\nand [Multicast reserved\naddresses](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xml).\n\n# Pass/fail criteria\n\nIf one name server has one of its addresses matches a forbidden address\nblock, the test fails. If all the name server addresses are outside\nthese forbidden blocks, the test case succeeds.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ADDRESS01_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Name server address must be globally routable"
       },
       "dns-address02" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address02.md>.\n\n# Objective\n\nSome anti-spam techniques use reverse DNS lookup to allow incoming\ntraffic. In order to prevent name servers to be blocked or blacklisted,\nDNS administrators should publish PTR records associated to name server\naddresses.\n\n\\[technical reference to be found\\]\n\n# Pass/fail criteria\n\nIf the test case succeeds, its result is a list of addresses with\ncorresponding hostnames which are the result of the PTR queries\nperformed. The result could be represented as a hash table where the\nkeys are the IP addresses and the values their corresponding hostnames.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ADDRESS02_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Reverse DNS entry exists for name server IP address"
       },
       "dns-address03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Address-TP/address03.md>.\n\n# Objective\n\nSome anti-spam techniques use reverse DNS lookup to allow incoming\ntraffic. In order to prevent name servers to be blocked or blacklisted,\nDNS administrators should publish PTR records associated with the name\nserver addresses.\n\nMoreover, as mentioned in paragraph 2.1 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912) when a PTR record\nexists, it must match the host name.\n\n# Pass/fail criteria\n\nMultiple addresses and multiple PTR records are allowed. The test\nsucceeds if every name server address has one or more PTR records and\none of these records matches the server name. If one address doesn't\nmatch, the whole test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ADDRESS03_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Reverse DNS entry matches name server name"
       },
       "dns-connectivity01" : {
@@ -1487,7 +1637,7 @@
             "ZM_CN01_MISSING_SOA_RECORD_UDP",
             "ZM_CN01_NS_RECORD_NOT_AA_UDP"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "UDP connectivity to name servers"
       },
       "dns-connectivity02" : {
@@ -1505,7 +1655,7 @@
             "ZM_CN02_WRONG_NS_RECORD_TCP",
             "ZM_CN02_NO_RESPONSE_SOA_QUERY_TCP"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "TCP connectivity to name servers"
       },
       "dns-connectivity03" : {
@@ -1520,7 +1670,7 @@
             "ZM_IPV4_SAME_ASN",
             "ZM_IPV6_DIFFERENT_ASN"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "AS Diversity"
       },
       "dns-connectivity04" : {
@@ -1533,7 +1683,7 @@
             "ZM_CN04_ERROR_PREFIX_DATABASE",
             "ZM_CN04_IPV4_DIFFERENT_PREFIX"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "IP Prefix Diversity"
       },
       "dns-consistency01" : {
@@ -1547,7 +1697,7 @@
             "ZM_SOA_SERIAL",
             "ZM_MULTIPLE_SOA_SERIALS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "SOA serial number consistency"
       },
       "dns-consistency02" : {
@@ -1558,7 +1708,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_RNAMES"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "SOA RNAME consistency"
       },
       "dns-consistency03" : {
@@ -1569,7 +1719,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_TIME_PARAMETER_SET"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "SOA timers consistency"
       },
       "dns-consistency04" : {
@@ -1580,7 +1730,7 @@
             "ZM_NO_RESPONSE_NS_QUERY",
             "ZM_MULTIPLE_NS_SET"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Name server NS consistency"
       },
       "dns-consistency05" : {
@@ -1594,7 +1744,7 @@
             "ZM_EXTRA_ADDRESS_CHILD",
             "ZM_IN_BAILIWICK_ADDR_MISMATCH"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Consistency between glue and authoritative data"
       },
       "dns-consistency06" : {
@@ -1605,7 +1755,7 @@
             "ZM_NO_RESPONSE_SOA_QUERY",
             "ZM_MULTIPLE_SOA_MNAMES"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "SOA MNAME consistency"
       },
       "dns-delegation01" : {
@@ -1628,7 +1778,7 @@
             "ZM_NOT_ENOUGH_IPV4_NS_DEL",
             "ZM_NO_IPV6_NS_DEL"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Minimum number of name servers"
       },
       "dns-delegation02" : {
@@ -1639,7 +1789,7 @@
             "ZM_CHILD_NS_SAME_IP",
             "ZM_CHILD_DISTINCT_NS_IP"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Name servers must have distinct IP addresses"
       },
       "dns-delegation03" : {
@@ -1648,13 +1798,15 @@
             "ZM_REFERRAL_SIZE_TOO_LARGE",
             "ZM_REFERRAL_SIZE_OK"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "No truncation of referrals"
       },
       "dns-delegation04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation04.md>.\n\n# Objective\n\nSubsection 6.1 of [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the\nnameservers must answer authoritatively for the domain. Answers to\nqueries to the name servers for the designated zone must have the \"AA\"\nbit set.\n\n# Pass/fail criteria\n\nIf all the name servers answer with the AA-bit set, then the test\nsucceeds.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_DELEGATION04_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Name server is authoritative"
       },
       "dns-delegation05" : {
@@ -1665,19 +1817,23 @@
             "ZM_UNEXPECTED_RCODE",
             "ZM_NO_NS_CNAME"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Name server must not point at CNAME alias"
       },
       "dns-delegation06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.\n\n# Objective\n\nSection 6.1 of the [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the\nSOA record is mandatory for every zone.\n\nThis test is intended to verify the prescence of a SOA record for the\ndomain.\n\n# Pass/fail criteria\n\nIf there is a SOA record present for the domain this test case succeeds.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_DELEGATION06_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Existence of SOA"
       },
       "dns-delegation07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation07.md>.\n\n# Objective\n\nIf the list of name servers for a domain obtained from its parent are\nnot found in its its child zone, then it leads to an inconsistency\n(section 2.3 of\n[RIPE-114](https://www.ripe.net/publications/docs/ripe-114))\n\n# Pass/fail criteria\n\nIf the set of glue name records obtained are found in the list of name\nservers obtained from the child also, then the test succeeds\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_DELEGATION07_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Parent glue name records present in child"
       },
       "dns-nameserver01" : {
@@ -1687,7 +1843,7 @@
             "ZM_NO_RECURSOR",
             "ZM_IS_A_RECURSOR"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "A name server should not be a recursor"
       },
       "dns-nameserver02" : {
@@ -1700,19 +1856,23 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_EDNS_RESPONSE_WITHOUT_EDNS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test of EDNS0 support"
       },
       "dns-nameserver03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver03.md>.\n\n# Objective\n\nAXFR is a mechanism to transfer the whole content of a zone from a name\nserver. Some people prefer to not disclose the whole content of a zone\nfor various reasons, and thus wants the public name server\ninfrastructure not do disclose the whole zone content to the public.\nThis test case checks the availability of the AXFR mechanism.\n\nAXFR is defined in its latest revision in [RFC\n5936](https://datatracker.ietf.org/doc/html/rfc5936).\n\n# Pass/fail criteria\n\nIf any name server for the domain allows a zone transfer using AXFR,\nthis test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER03_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Test availability of zone transfer (AXFR)"
       },
       "dns-nameserver04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver04.md>.\n\n# Objective\n\nResponses from the authoritative name servers must contain same source\nIP address as the destination IP address of the initial query. This has\nbeen clarified in section 4 of [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181#section-4).\n\n# Pass/fail criteria\n\nIf any response comes from another IP address than the query was sent\nto, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER04_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Same source address"
       },
       "dns-nameserver05" : {
@@ -1725,31 +1885,39 @@
             "ZM_AAAA_QUERY_DROPPED",
             "ZM_AAAA_WELL_PROCESSED"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Behaviour against AAAA query"
       },
       "dns-nameserver06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver06.md>.\n\n# Objective\n\nAll name servers names listed for a delegation must be resolvable in\nDNS. If they are not resolvable using DNS this is a sign of\nmisconfiguration, and raises the risk of unreachability for the domain.\nIt could also lower the performance for any resolver trying to resolve\nthe name.\n\nThe objective of this test is to resolve the domain using all the listed\nname servers used in the delegation. More information about resolver\nbehavior is in section 7 of [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\n# Pass/fail criteria\n\nIf any of the name server names fails to resolve to an IP address, this\ntest case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER06_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "NS can be resolved"
       },
       "dns-nameserver07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver07.md>.\n\n# Objective\n\nThe configuration and/or implementation of some authoritative name\nservers causes them to return an upward referral to the root zone. There\nare proofs that such a [behaviour could be used for DDoS\nattacks](https://www.dns-oarc.net/oarc/articles/upward-referrals-considered-harmful)\n\n# Pass/fail criteria\n\nThe test case is Ok only if there are no responses in the authority\nsection\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER07_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "To check whether authoritative name servers return an upward referral"
       },
       "dns-nameserver08" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver08.md>.\n\n# Objective\n\nThe DNS standards require that nameservers treat names with case\ninsensitivity. That is, the names example.com and EXAMPLE.COM should\nresolve to the same IP address. However, in the response, most\nnameservers echo back the name as it appeared in the request, preserving\nthe original case.\n\nTherefore, another way to add entropy to requests is to randomly vary\nthe case of letters in domain names queried. This technique, also known\nas \"0x20\" because bit 0x20 is used to set the case of of US-ASCII\nletters, was first proposed in the [IETF internet\ndraft](https://datatracker.ietf.org/doc/html/draft-vixie-dnsext-dns0x20-00)\nUse of Bit 0x20 in DNS Labels to Improve Transaction Identity. With this\ntechnique, the nameserver response must match not only the query name,\nbut the case of every letter in the name string; for example,\nwWw.eXaMpLe.CoM or WwW.ExamPLe.COm. This may add little or no entropy to\nqueries for the top-level and root domains, but it's effective for most\nhostnames.\n\n# Pass/fail criteria\n\nThe test case is Ok only if there are no responses in the authority\nsection\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER08_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Testing QNAME case insensitivity"
       },
       "dns-nameserver09" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver09.md>.\n\n# Objective\n\nThere has been cases where the nameservers respond with complete\ncase-sensitivity (in violation of the DNS standards): that is, they\nmatch the exact case of the name in the response; but return different\nresults for equivalent names with different cases in the request\n(typically NXDOMAIN).\n\n# Pass/fail criteria\n\nThe test case passes only if the results of all queries are exactly the\nsame.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_NAMESERVER09_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Testing QNAME case sensitivity"
       },
       "dns-nameserver10" : {
@@ -1759,7 +1927,7 @@
             "ZM_N10_EDNS_RESPONSE_ERROR",
             "ZM_N10_UNEXPECTED_RCODE"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test for undefined EDNS version"
       },
       "dns-nameserver11" : {
@@ -1772,7 +1940,7 @@
             "ZM_N11_NO_RESPONSE",
             "ZM_N11_UNEXPECTED_ANSWER_SECTION"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test for unknown EDNS OPTION-CODE"
       },
       "dns-nameserver12" : {
@@ -1783,7 +1951,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_Z_FLAGS_NOTCLEAR"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test for unknown EDNS flags"
       },
       "dns-nameserver13" : {
@@ -1794,7 +1962,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_MISSING_OPT_IN_TRUNCATED"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test for truncated response on EDNS query"
       },
       "dns-nameserver14" : {
@@ -1806,7 +1974,7 @@
             "ZM_NO_EDNS_SUPPORT",
             "ZM_UNKNOWN_OPTION_CODE"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Test for unknown version with unknown OPTION-CODE"
       },
       "dns-nameserver15" : {
@@ -1815,19 +1983,23 @@
             "ZM_N15_SOFTWARE_VERSION",
             "ZM_N15_NO_VERSION"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Checking for revealed software version"
       },
       "dns-syntax04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax04.md>.\n\n# Objective\n\nThe Name Server name must be a valid hostname according to the rules\ndefined in [RFC 952](https://datatracker.ietf.org/doc/html/rfc952), in\nsection 2.1 in [RFC\n1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),\nsection 11 in [RFC\n2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and\nsection 2 and 5 in [RFC\n3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer\nRFCs may override some rules defined in earlier documents.\n\n# Pass/fail criteria\n\nIf any of the steps 3 to 5 in the ordered description of this test case\nfails, the whole test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_SYNTAX04_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "The NS name must have a valid domain/hostname"
       },
       "dns-syntax05" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax05.md>.\n\n# Objective\n\nThe SOA RNAME field does not allow the '@' characters to be used for\ndescribing a mailbox. The first dot ('.') is thus translated into the\n'@' character. This is a common mistake. The rules are defined in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\n# Pass/fail criteria\n\nIf there is any '@' character in any SOA/RNAME field, this test case\nfails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_SYNTAX05_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Misuse of '@' character in the SOA RNAME field"
       },
       "dns-syntax06" : {
@@ -1841,13 +2013,15 @@
             "ZM_RNAME_MAIL_ILLEGAL_CNAME",
             "ZM_RNAME_MAIL_DOMAIN_INVALID"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "No illegal characters in the SOA RNAME field"
       },
       "dns-syntax07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax07.md>.\n\n# Objective\n\nThe SOA MNAME field is a hostname. Hostnames are valid according to the\nrules defined in [RFC\n952](https://datatracker.ietf.org/doc/html/rfc952), in section 2.1 in\n[RFC 1123](https://datatracker.ietf.org/doc/html/rfc1123#section-2.1),\nsection 11 in [RFC\n2182](https://datatracker.ietf.org/doc/html/rfc2181#section-11) and\nsection 2 and 5 in [RFC\n3696](https://datatracker.ietf.org/doc/html/rfc3696#section-2). Newer\nRFCs may override some rules defined in earlier documents.\n\n# Pass/fail criteria\n\nIf any of the steps 4 to 8 in the ordered description of this test case\nfails, the whole test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_SYNTAX07_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "No illegal characters in the SOA MNAME field"
       },
       "dns-zone01" : {
@@ -1864,43 +2038,55 @@
             "ZM_Z01_MNAME_IS_DOT",
             "ZM_Z01_MNAME_MISSING_SOA_RECORD"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Fully qualified master nameserver in SOA"
       },
       "dns-zone02" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone02.md>.\n\n# Objective\n\nThe SOA refresh value is the number of seconds that describes how often\na secondary name server will poll the primary name server to see if\nthere is any updates. The SOA refresh value is described in section\n3.3.13 in [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), and\nclarified in section 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912). Setting the\nrefresh value low will increase the DNS traffic between the servers, and\nalso increase the load on the master name server. The primary name\nserver will in most cases send DNS notifications to tell the secondary\nname servers that zone content has been updated, as described in [RFC\n1996](https://datatracker.ietf.org/doc/html/rfc1996).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the refresh value is 24 hours (86400 seconds). Older\nDNSCheck code had a four hour minimum value, and this is the minimum\nvalue we recommend.\n\n# Pass/fail criteria\n\nIf the SOA refresh value is less than 14400 this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE02_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA 'refresh' minimum value"
       },
       "dns-zone03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone03.md>.\n\n# Objective\n\nThe SOA retry value is the number of seconds that describes minimum time\nelapsed since a failed zone refresh from the primary name server. The\nSOA refresh value is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\n> It's typically some fraction of the refresh interval.\n\nSetting the retry value low will increase the DNS traffic between the\nservers, and also increase the load on the master name server.\n\n# Pass/fail criteria\n\nIf the SOA retry value is higher than or equal to the refresh value,\nthis test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE03_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA 'retry' lower than 'refresh'"
       },
       "dns-zone04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone04.md>.\n\n# Objective\n\nThe SOA retry value is the number of seconds that describes minimum time\nelapsed since a failed zone refresh from the primary name server. The\nSOA refresh value is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\nSetting the retry value low will increase the DNS traffic between the\nservers, and also increase the load on the master name server.\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the retry value is 2 hours (7200 seconds). Older\nDNSCheck code had a one hour minimum value (3600 seconds), and this is\nthe minimum value we recommend.\n\n# Pass/fail criteria\n\nIf the retry value is less than 3600 seconds, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE04_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA 'retry' at least 1 hour"
       },
       "dns-zone05" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone05.md>.\n\n# Objective\n\nThe SOA expire value specifies for how long any secondary name server\nkeeps the zone valid without any contact with the primary name server.\nThis value should be greater than how long a major outage would\ntypically last. The expire value should also be larger than the refresh\nand retry values, as described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912).\n\nSetting the expire value low will increase the risk of any unwanted\nnon-availability of the zone because of any failures in contacting the\nprimary name server.\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the expire value is 1000 hours (roughly 41 days).\nOlder DNSCheck code had a 7 day minimum value (604800 seconds), and this\nis the minimum value we recommend as an absolut minimum.\n\n# Pass/fail criteria\n\nIf the expire value is less than 604800 seconds or if the expire value\nis lower than the refresh value, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE05_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA 'expire' minimum value"
       },
       "dns-zone06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone06.md>.\n\n# Objective\n\nThe SOA minimum field sets the default TTL for all records in a zone.\nThe recommended value is to be \"cache-friendly\". However, for a zone\nthat changes content often, there is a need to keep the TTL values\nshorter. The use of the SOA minimum value today is the negative cache\n(where a resolver find content is missing).\n\nThe SOA minimum field is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), and clarified in\nsection 2.2 of [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912). The description of\nthe implementation of negative caching is in [RFC\n2308](https://datatracker.ietf.org/doc/html/rfc2308) (although it has\nbeen updated by several DNSSEC related RFCs, it is still relevant for\nthis purpose).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the minimum value 2 days, but the negative caching is\nnow the norm. DNSCheck has a recommended value of between 300 seconds (5\nminutes) and 86400 seconds (1 day).\n\n# Pass/fail criteria\n\nIf the minimum value is larger than 86400 seconds or if the minimum\nvalue is lower than 300 seconds, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE06_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA 'minimum' maximum value"
       },
       "dns-zone07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone07.md>.\n\n# Objective\n\nAny NS type record should not be a CNAME. The SOA MNAME should in this\nrespect not be a CNAME.\n\nQuote from 2.4 in [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912):\n\n> Having NS records pointing to a CNAME is bad and may conflict badly\n> with current BIND servers.\n\nThe SOA MNAME field is described in section 3.3.13 in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035).\n\nThe [RIPE-203](https://www.ripe.net/publications/docs/ripe-203)\nrecommendation for the minimum value 2 days, but the negative caching is\nnow the norm. DNSCheck has a recommended value of between 300 seconds (5\nminutes) and 86400 seconds (1 day).\n\n# Pass/fail criteria\n\nIf the SOA MNAME field is pointing to a CNAME, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNS_ZONE07_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "SOA master is not an alias"
       },
       "dns-zone10" : {
@@ -1912,7 +2098,7 @@
             "ZM_NO_RESPONSE",
             "ZM_ONE_SOA"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "No multiple SOA records"
       },
       "dnssec-01" : {
@@ -1924,7 +2110,7 @@
             "ZM_DS01_DS_ALGO_DEPRECATED",
             "ZM_DS01_DS_ALGO_NOT_DS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Legal values for the DS hash digest algorithm"
       },
       "dnssec-02" : {
@@ -1940,19 +2126,23 @@
             "ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING",
             "ZM_DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "DS must match a valid DNSKEY in the child zone"
       },
       "dnssec-03" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec03.md>.\n\n# Objective\n\nFor an authoritative name server an increased number of NSEC3 iterations\nhave a negative impact on performance.\n\nSection 10.3 in [RFC\n5155](https://datatracker.ietf.org/doc/html/rfc5155#section-10.3) sets a\nmaximum number of iterations depending on the DNSSEC key size -\nregardless of which algorithm is used.\n\n> A zone owner MUST NOT use a value higher than shown in the table below\n> for iterations for the given key size. A resolver MAY treat a response\n> with a higher value as insecure, after the validator has verified that\n> the signature over the NSEC3 RR is correct.\n\n  Key Size   Iterations\n  ---------- ------------\n  1024       150\n  2048       500\n  4096       2,500\n\nSection 5.3.2 in [RFC\n6781](https://datatracker.ietf.org/doc/html/rfc6781#section-5.3.2)\ndescribes the consequences for an authoritative name server in more\ndetail, and references the [NSEC Hash\nPerformance](https://www.nlnetlabs.nl/downloads/publications/nsec3_hash_performance.pdf)\nstudy from NLNet Labs.\n\n> Choosing a value of 100 iterations is deemed to be a sufficiently\n> costly, yet not excessive, value: In the worst-case scenario, the\n> performance of name servers would be halved, regardless of key size.\n\n# Pass/fail criteria\n\nIf the NSEC3 iterations value is higher than 100, this test case gives a\nwarning. If it is higher than the number recommended for the\ncorresponding key size, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNSSEC_03_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Check for too many NSEC3 iterations"
       },
       "dnssec-04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec04.md>.\n\n# Objective\n\nHaving RRSIG signature lifetimes last for too long opens up for DNS\nreplay attacks. Having too short RRSIG signature lifetimes is likely to\nhave a major operational impact if the master name server is down for\nthat long.\n\nThere is no clear recommendation of the exact validity periods to use\nwith DNSSEC. Shorter validity than 12 hours until expiration will give a\nserious operational problem just in case of temporary network problems,\nand longer than 180 days will create wide open holes for replay attacks.\n\nThe considerations are described in\n[RFC6781](https://datatracker.ietf.org/doc/html/rfc6781).\n\n# Pass/fail criteria\n\nIf any of the signature expirations time is either shorter than 12 hours\nor longer than 180 days, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNSSEC_04_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Check for too short or too long RRSIG lifetimes"
       },
       "dnssec-05" : {
@@ -1968,13 +2158,15 @@
             "ZM_NO_RESPONSE_DNSKEY",
             "ZM_ALGORITHM_RESERVED"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Check for invalid DNSKEY algorithms"
       },
       "dnssec-06" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec06.md>.\n\n# Objective\n\nIn order for an authoritative name server to be DNSSEC compliant, it\nmust serve DNSSEC signatures (RRSIG) as additional data in a DNS answer.\nThis additional processing is described in section 3.1 of [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-3.1).\n\n# Pass/fail criteria\n\nIf any of the name servers configured for the domains fail to answer\nwith DNSSEC data, this test case fails.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNSSEC_06_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Verify DNSSEC additional processing"
       },
       "dnssec-08" : {
@@ -1987,7 +2179,7 @@
             "ZM_DS08_DNSKEY_RRSIG_EXPIRED",
             "ZM_DS08_MISSING_RRSIG_IN_RESPONSE"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Valid RRSIG for DNSKEY"
       },
       "dnssec-09" : {
@@ -2000,7 +2192,7 @@
             "ZM_DS09_MISSING_RRSIG_IN_RESPONSE",
             "ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "RRSIG(SOA) must be valid and created by a valid DNSKEY"
       },
       "dnssec-10" : {
@@ -2022,13 +2214,15 @@
             "ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR",
             "ZM_DS10_NAME_NOT_COVERED_BY_NSEC"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Zone contains NSEC or NSEC3 records"
       },
       "dnssec-12" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.\n\n# Objective\n\nThe objectives for this Test Case has yet to be defined. This is a\nplaceholder for a complete defintion of the Test Case. The Test Case is\nnot yet implemented.\n\nTest for DNSSEC Algorithm Completeness (DS-\\>DNSKEY-\\>RRSIG)\n\nSee issues [#588](https://github.com/zonemaster/zonemaster/issues/588),\n[#528](https://github.com/zonemaster/zonemaster/issues/528),\n[#529](https://github.com/zonemaster/zonemaster/issues/529) and\n[#231](https://github.com/zonemaster/zonemaster/issues/231).\n\n# Pass/fail criteria\n\nTBD.\n",
-         "Errors" : [],
-         "Maturity" : "GAMMA",
+         "Errors" : [
+            "ZM_DNSSEC_12_FAILED"
+         ],
+         "Maturity" : "BETA",
          "Summary" : "Test for DNSSEC Algorithm Completeness"
       },
       "dnssec-13" : {
@@ -2038,7 +2232,7 @@
             "ZM_DS13_ALGO_NOT_SIGNED_SOA",
             "ZM_DS13_ALGO_NOT_SIGNED_NS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "All DNSKEY algorithms used to sign the zone"
       },
       "dnssec-14" : {
@@ -2051,7 +2245,7 @@
             "ZM_NO_RESPONSE_DNSKEY",
             "ZM_DNSKEY_TOO_SMALL_FOR_ALGO"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Check for valid RSA DNSKEY key size"
       },
       "dnssec-15" : {
@@ -2065,7 +2259,7 @@
             "ZM_DS15_MISMATCH_CDS_CDNSKEY",
             "ZM_DS15_INCONSISTENT_CDNSKEY"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Existence of CDS and CDNSKEY"
       },
       "dnssec-16" : {
@@ -2083,7 +2277,7 @@
             "ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS",
             "ZM_DS16_CDS_MATCHES_NO_DNSKEY"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Validate CDS"
       },
       "dnssec-17" : {
@@ -2101,7 +2295,7 @@
             "ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY",
             "ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Validate CDNSKEY"
       },
       "dnssec-18" : {
@@ -2110,7 +2304,7 @@
             "ZM_DS18_NO_MATCH_CDS_RRSIG_DS",
             "ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS"
          ],
-         "Maturity" : "GAMMA",
+         "Maturity" : "BETA",
          "Summary" : "Validate trust from DS to CDS and CDNSKEY"
       },
       "dnssec-91" : {
@@ -2209,7 +2403,7 @@
          "Dependencies" : [
             "epp-03"
          ],
-         "Description" : "The client will perform a series of `<check>` commands and will validate\nthe `avail` attribute of the `<domain:name>` elements in the server\nresponse, as follows:\n\n  * syntactically invalid domain: `avail` attribute **MUST** be `0` or\n    `false`.\n  * valid but registered domain: `avail` attribute **MUST** be `0` or\n    `false`.\n  * valid and unregistered domain: `avail` attribute **MUST** be `1` or\n    `true`. The domain will be generated using random characters.\n\nSyntactical validity will be determined based on **TODO (tagged names and\nLDH rules)**.\n\nThese checks will be carried out for each TLD in the TLD set.\n",
+         "Description" : "The client will perform a series of `<check>` commands and will validate\nthe `avail` attribute of the `<domain:name>` elements in the server\nresponse, as follows:\n\n  * syntactically invalid domain name: `avail` attribute **MUST** be `0`\n    or `false`.\n  * valid but registered domain name: `avail` attribute **MUST** be `0` or\n    `false`.\n  * syntactically valid, unregistered domain name: `avail` attribute\n    **MUST** be `1` or `true`. The domain name will be generated using\n    random characters.\n\nA \"syntactically valid\" domain name is one that complies with the format\nspecified in RFC 1123 (this test case does not consider IDN names).\n\nThese checks will be carried out for each TLD in the TLD set.\n",
          "Errors" : [
             "EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL",
             "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
@@ -2224,7 +2418,7 @@
          "Dependencies" : [
             "epp-04"
          ],
-         "Description" : "If the EPP server supports host objects, this test will perform a series\nof `<check>` commands and will validate the `avail` attribute of the\n`<host:name>` elements in the server response, as follows:\n* syntactically invalid hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid but registered hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid and unregistered hostname: `avail` attribute **MUST** be `1` or\n  `true`. The hostname will be generated using random characters.\nSyntactical validity will be determined based on **TODO**. (LDH rule)\n",
+         "Description" : "If the EPP server supports host objects, this test will perform a series\nof `<check>` commands and will validate the `avail` attribute of the\n`<host:name>` elements in the server response, as follows:\n* syntactically invalid hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* valid but registered hostname: `avail` attribute **MUST** be `0` or\n  `false`.\n* syntactically valid and unregistered hostname: `avail` attribute\n  **MUST** be `1` or `true`. The hostname will be generated using random\n  characters.\n\nA \"syntactically valid\" hostname is one that complies with the format\nspecified in RFC 1123 (this test case does not consider IDN names).\n",
          "Errors" : [
             "EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL",
             "EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL",
@@ -2254,51 +2448,46 @@
          "Dependencies" : [
             "epp-06"
          ],
-         "Description" : "This test attempts to create a number of contact objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<contact:id>`\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:org>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:sp>` element\n      * `<contact:pc>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO**\nValidity determined by length (street etc)\nCC - present in list, not present etc\nemail - RFC syntax\nwhat will be covered by the schema and what needs exceptional handling?\n",
+         "Description" : "This test attempts to create a number of contact objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<contact:id>`\n* `<contact:status>`\n* `<contact:postalInfo>` element(s)\n* `<contact:name>` element\n* `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\n* The server **MUST NOT** accept a `<contact:id>` element that\n  contains a value that is not a valid `clIDType` value;\n* The server **MUST NOT** accept a `<contact:status>` element that\n  contains a status code not defined in RFC 5733;\n* The server **MUST NOT** accept a `<contact:postalInfo>` element that\n  contains a `type` attribute that is neither `int` nor `loc`;\n* The server **MUST NOT** accept a `<contact:cc>` element that contains a\n  value that is not a valid ISO 3166-1 alpha-2 code;\n* The server **MUST NOT** accept a `<contact:voice>` element that contains\n  a value that does not conform to the format described in Section 2.5 of\n  RFC5733;\n* The server **MUST NOT** accept a `<contact:email>` element that contains\n  a value that does not conform to the format specified in RFC 5322.\n\nOnce objects have been created, the client will then perform `<info>`\ncommands to verify that the server has correctly stored the provided\nvalues.\n",
          "Errors" : [
             "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID",
             "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS",
             "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC",
             "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC",
             "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE",
-            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL"
+            "EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
+            "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Input-Parameters" : null,
          "Summary" : "contact <create> command test (if applicable for the registry type)"
       },
       "epp-08" : {
          "Dependencies" : [
-            "epp-07"
+            "epp-08"
          ],
-         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-07` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: merge with epp-07**\n",
+         "Description" : "This test will confirm that EPP clients are unable to perform `<info>`\ncommands on objects that they do not sponsor.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nThe client will connect using a set of alternate credentials and will\nsubmit `<info>` and `<update>` commands on the contact objects created in\n`epp-08`. The server **MUST** respond with a 2201 \"authorization error\"\nresponse.\n",
          "Errors" : [
-            "EPP_CONTACT_INFO_RESPONSE_NOT_1000",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE",
-            "EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL"
+            "EPP_CONTACT_INFO_RESPONSE_NOT_2201",
+            "EPP_CONTACT_UPDATE_RESPONSE_NOT_2201"
          ],
-         "Input-Parameters" : null,
-         "Summary" : "contact <info> command test (if applicable for the registry type)"
+         "Summary" : "Contact object access control (if applicable)"
       },
       "epp-09" : {
          "Dependencies" : [
             "epp-08"
          ],
-         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-07` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:org>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:sp>` element\n      * `<contact:pc>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: re-run epp-08 to make sure changes have been saved**\n\n**TODO: add test of update of another client's object**\n",
+         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-07` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<contact:status>`\n* `<contact:postalInfo>` elements (both `int` and `loc`)\n    * `<contact:name>`\n    * `<contact:org>`\n    * `<contact:addr>` elements\n      * `<contact:street>` element(s)\n      * `<contact:city>` element\n      * `<contact:sp>` element\n      * `<contact:pc>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n\nOnce objects have been updated, the client will then perform `<info>`\ncommands to verify that the server has correctly stored the provided\nvalues.\n",
          "Errors" : [
             "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS",
             "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE",
@@ -2309,44 +2498,51 @@
             "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC",
             "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC",
             "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE",
-            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL"
+            "EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
+            "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Input-Parameters" : null,
          "Summary" : "contact <update> command test (if applicable for the registry type)"
       },
       "epp-10" : {
          "Dependencies" : [
             "epp-09"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-24` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\n**TODO: add check/info to see if the object was actually deleted - if\nresponse was 1000**\n",
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-24` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nOnce the `<delete>` commands have been submitted, the client will perform\n`<info>` commands to confirm that the objects have actually been removed\nfrom the repository. If the response to the previous `<delete>` command\nwas 1001, this step will be skipped.\n",
          "Errors" : [
-            "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001"
+            "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001",
+            "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS"
          ],
          "Input-Parameters" : null,
          "Summary" : "contact <delete> command test (if applicable for the registry type)"
       },
       "epp-11" : {
-         "Dependencies" : [
-            "epp-03"
-         ],
-         "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: merge with epp-12**\n",
-         "Input-Parameters" : null,
+         "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will then perform `<info>` commands on the objects successfully\ncreated to confirm that the server has correctly stored the provided\nvalues.\n",
          "Summary" : "host <create> command test (if applicable)"
       },
       "epp-12" : {
          "Dependencies" : [
             "epp-11"
          ],
-         "Description" : "This test will perform `<info>` commands on the objects successfully\ncreated during `epp-11` and will confirm that the server has correctly\nstored the provided values.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
-         "Input-Parameters" : null,
-         "Summary" : "host <info> command test (if applicable)"
+         "Description" : "This test will confirm that EPP clients are unable to perform `<info>`\ncommands on objects that they do not sponsor.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will connect using a set of alternate credentials and will\nsubmit `<update>` commands on the contact objects created in `epp-11`. The\nserver **MUST** respond with a 2201 \"authorization error\" response.\n",
+         "Summary" : "host object access control (if applicable)"
       },
       "epp-13" : {
          "Dependencies" : [
-            "epp-12"
+            "epp-11"
          ],
-         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-12` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nNote: the server's ability to support host renames is checked in a later\ntest.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: add info afterwards**\n\n**TODO: add test of update of another client's object**\n",
-         "Input-Parameters" : null,
+         "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nNote: the server's ability to support host renames is checked in a later\ntest.\n\nThe client will then perform `<info>` commands on the objects successfully\nupdated to confirm that the server has correctly stored the updated\nvalues.\n",
          "Summary" : "host <update> command test (if applicable)"
       },
       "epp-14" : {
@@ -2879,7 +3075,7 @@
          ]
       },
       "MainRSPEvaluationTest" : {
-         "Description" : "The Main RSP is responsible for the creation and maintenance of domain\nname registrations in a Shared Registration System (SRS). This encompasses\nthe lifecycle of a domain name registration using domain registrars and\nprotocols such as the Extensible Provisioning Protocol (EPP) and adherence\nto policies regarding the use and transparency domain name registrations\nthrough reporting, the Registration Data Access Protocol (RDAP), and other\nmechanisms.\n\n**TODO: add note that production system does not need to be used for this\ntest, but that pre-delegation will test production**\n\n**Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.\n\n# Pass/fail criteria\n\nAs with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.\n",
+         "Description" : "The Main RSP is responsible for the creation and maintenance of domain\nname registrations in a Shared Registration System (SRS). This encompasses\nthe lifecycle of a domain name registration using domain registrars and\nprotocols such as the Extensible Provisioning Protocol (EPP) and adherence\nto policies regarding the use and transparency domain name registrations\nthrough reporting, the Registration Data Access Protocol (RDAP), and other\nmechanisms.\n\n**Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.\n\n# Pass/fail criteria\n\nAs with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.\n",
          "Name" : "Main RSP Evaluation Test",
          "Order" : "7",
          "Test-Suites" : [
@@ -2960,7 +3156,7 @@
          "Test-Cases" : "^dnssecOps"
       },
       "MinimumRPMs" : {
-         "Description" : "This test suite verifies an RSP's support for the minimum Rights\nProtection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if\nsupported.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Description" : "This test suite verifies an RSP's support for the minimum Rights\nProtection Mechanisms (RPMs), and the Launch Extension (RFC 8334).\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
          "Input-Parameters" : [
             "epp.hostName",
             "epp.serverIssuedClientCertificate",
@@ -3104,5 +3300,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.183"
+   "Version" : "3.0.186"
 }

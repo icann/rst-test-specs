@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.183
-Last-Updated: 2023-12-13
+Version: 3.0.186
+Last-Updated: 2023-12-14
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -359,9 +359,6 @@ Test-Plans:
       through reporting, the Registration Data Access Protocol (RDAP), and other
       mechanisms.
 
-      **TODO: add note that production system does not need to be used for this
-      test, but that pre-delegation will test production**
-
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
 
       # Pass/fail criteria
@@ -640,8 +637,7 @@ Test-Suites:
     Name: Minimum Rights Protection Mechanisms (RPMs)
     Description: |
       This test suite verifies an RSP's support for the minimum Rights
-      Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334) if
-      supported.
+      Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334).
 
       # Pass/fail criteria
 
@@ -752,8 +748,9 @@ Test-Cases:
       If one name server has one of its addresses matches a forbidden address
       block, the test fails. If all the name server addresses are outside
       these forbidden blocks, the test case succeeds.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ADDRESS01_FAILED
+    Maturity: BETA
     Summary: Name server address must be globally routable
 
   dns-address02:
@@ -777,8 +774,9 @@ Test-Cases:
       corresponding hostnames which are the result of the PTR queries
       performed. The result could be represented as a hash table where the
       keys are the IP addresses and the values their corresponding hostnames.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ADDRESS02_FAILED
+    Maturity: BETA
     Summary: Reverse DNS entry exists for name server IP address
 
   dns-address03:
@@ -804,8 +802,9 @@ Test-Cases:
       succeeds if every name server address has one or more PTR records and
       one of these records matches the server name. If one address doesn't
       match, the whole test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ADDRESS03_FAILED
+    Maturity: BETA
     Summary: Reverse DNS entry matches name server name
 
   dns-connectivity01:
@@ -910,7 +909,7 @@ Test-Cases:
     - ZM_CN01_NO_RESPONSE_SOA_QUERY_UDP
     - ZM_CN01_MISSING_SOA_RECORD_UDP
     - ZM_CN01_NS_RECORD_NOT_AA_UDP
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: UDP connectivity to name servers
 
   dns-connectivity02:
@@ -1003,7 +1002,7 @@ Test-Cases:
     - ZM_CN02_MISSING_SOA_RECORD_TCP
     - ZM_CN02_WRONG_NS_RECORD_TCP
     - ZM_CN02_NO_RESPONSE_SOA_QUERY_TCP
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: TCP connectivity to name servers
 
   dns-connectivity03:
@@ -1060,7 +1059,7 @@ Test-Cases:
     - ZM_IPV6_ONE_ASN
     - ZM_IPV4_SAME_ASN
     - ZM_IPV6_DIFFERENT_ASN
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: AS Diversity
 
   dns-connectivity04:
@@ -1144,7 +1143,7 @@ Test-Cases:
     - ZM_CN04_IPV6_DIFFERENT_PREFIX
     - ZM_CN04_ERROR_PREFIX_DATABASE
     - ZM_CN04_IPV4_DIFFERENT_PREFIX
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: IP Prefix Diversity
 
   dns-consistency01:
@@ -1212,7 +1211,7 @@ Test-Cases:
     - ZM_NO_RESPONSE_SOA_QUERY
     - ZM_SOA_SERIAL
     - ZM_MULTIPLE_SOA_SERIALS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: SOA serial number consistency
 
   dns-consistency02:
@@ -1262,7 +1261,7 @@ Test-Cases:
     - ZM_ONE_SOA_RNAME
     - ZM_NO_RESPONSE_SOA_QUERY
     - ZM_MULTIPLE_SOA_RNAMES
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: SOA RNAME consistency
 
   dns-consistency03:
@@ -1312,7 +1311,7 @@ Test-Cases:
     - ZM_ONE_SOA_TIME_PARAMETER_SET
     - ZM_NO_RESPONSE_SOA_QUERY
     - ZM_MULTIPLE_SOA_TIME_PARAMETER_SET
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: SOA timers consistency
 
   dns-consistency04:
@@ -1366,7 +1365,7 @@ Test-Cases:
     - ZM_ONE_NS_SET
     - ZM_NO_RESPONSE_NS_QUERY
     - ZM_MULTIPLE_NS_SET
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Name server NS consistency
 
   dns-consistency05:
@@ -1423,7 +1422,7 @@ Test-Cases:
     - ZM_NO_RESPONSE
     - ZM_EXTRA_ADDRESS_CHILD
     - ZM_IN_BAILIWICK_ADDR_MISMATCH
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Consistency between glue and authoritative data
 
   dns-consistency06:
@@ -1471,7 +1470,7 @@ Test-Cases:
     - ZM_ONE_SOA_MNAME
     - ZM_NO_RESPONSE_SOA_QUERY
     - ZM_MULTIPLE_SOA_MNAMES
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: SOA MNAME consistency
 
   dns-delegation01:
@@ -1544,7 +1543,7 @@ Test-Cases:
     - ZM_NOT_ENOUGH_NS_DEL
     - ZM_NOT_ENOUGH_IPV4_NS_DEL
     - ZM_NO_IPV6_NS_DEL
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Minimum number of name servers
 
   dns-delegation02:
@@ -1585,7 +1584,7 @@ Test-Cases:
     - ZM_DEL_DISTINCT_NS_IP
     - ZM_CHILD_NS_SAME_IP
     - ZM_CHILD_DISTINCT_NS_IP
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Name servers must have distinct IP addresses
 
   dns-delegation03:
@@ -1627,7 +1626,7 @@ Test-Cases:
     Errors:
     - ZM_REFERRAL_SIZE_TOO_LARGE
     - ZM_REFERRAL_SIZE_OK
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: No truncation of referrals
 
   dns-delegation04:
@@ -1648,8 +1647,9 @@ Test-Cases:
   
       If all the name servers answer with the AA-bit set, then the test
       succeeds.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_DELEGATION04_FAILED
+    Maturity: BETA
     Summary: Name server is authoritative
 
   dns-delegation05:
@@ -1692,7 +1692,7 @@ Test-Cases:
     - ZM_NS_IS_CNAME
     - ZM_UNEXPECTED_RCODE
     - ZM_NO_NS_CNAME
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Name server must not point at CNAME alias
 
   dns-delegation06:
@@ -1713,8 +1713,9 @@ Test-Cases:
       # Pass/fail criteria
   
       If there is a SOA record present for the domain this test case succeeds.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_DELEGATION06_FAILED
+    Maturity: BETA
     Summary: Existence of SOA
 
   dns-delegation07:
@@ -1734,8 +1735,9 @@ Test-Cases:
   
       If the set of glue name records obtained are found in the list of name
       servers obtained from the child also, then the test succeeds
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_DELEGATION07_FAILED
+    Maturity: BETA
     Summary: Parent glue name records present in child
 
   dns-nameserver01:
@@ -1784,7 +1786,7 @@ Test-Cases:
     - ZM_NO_RESPONSE
     - ZM_NO_RECURSOR
     - ZM_IS_A_RECURSOR
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: A name server should not be a recursor
 
   dns-nameserver02:
@@ -1856,7 +1858,7 @@ Test-Cases:
     - ZM_NS_ERROR
     - ZM_NO_EDNS_SUPPORT
     - ZM_EDNS_RESPONSE_WITHOUT_EDNS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test of EDNS0 support
 
   dns-nameserver03:
@@ -1880,8 +1882,9 @@ Test-Cases:
   
       If any name server for the domain allows a zone transfer using AXFR,
       this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER03_FAILED
+    Maturity: BETA
     Summary: Test availability of zone transfer (AXFR)
 
   dns-nameserver04:
@@ -1901,8 +1904,9 @@ Test-Cases:
   
       If any response comes from another IP address than the query was sent
       to, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER04_FAILED
+    Maturity: BETA
     Summary: Same source address
 
   dns-nameserver05:
@@ -1945,7 +1949,7 @@ Test-Cases:
     - ZM_NO_RESPONSE
     - ZM_AAAA_QUERY_DROPPED
     - ZM_AAAA_WELL_PROCESSED
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Behaviour against AAAA query
 
   dns-nameserver06:
@@ -1971,8 +1975,9 @@ Test-Cases:
   
       If any of the name server names fails to resolve to an IP address, this
       test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER06_FAILED
+    Maturity: BETA
     Summary: NS can be resolved
 
   dns-nameserver07:
@@ -1992,8 +1997,9 @@ Test-Cases:
   
       The test case is Ok only if there are no responses in the authority
       section
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER07_FAILED
+    Maturity: BETA
     Summary: To check whether authoritative name servers return an upward referral
 
   dns-nameserver08:
@@ -2026,8 +2032,9 @@ Test-Cases:
   
       The test case is Ok only if there are no responses in the authority
       section
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER08_FAILED
+    Maturity: BETA
     Summary: Testing QNAME case insensitivity
 
   dns-nameserver09:
@@ -2048,8 +2055,9 @@ Test-Cases:
   
       The test case passes only if the results of all queries are exactly the
       same.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_NAMESERVER09_FAILED
+    Maturity: BETA
     Summary: Testing QNAME case sensitivity
 
   dns-nameserver10:
@@ -2099,7 +2107,7 @@ Test-Cases:
     - ZM_N10_NO_RESPONSE_EDNS1_QUERY
     - ZM_N10_EDNS_RESPONSE_ERROR
     - ZM_N10_UNEXPECTED_RCODE
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test for undefined EDNS version
 
   dns-nameserver11:
@@ -2196,7 +2204,7 @@ Test-Cases:
     - ZM_N11_UNSET_AA
     - ZM_N11_NO_RESPONSE
     - ZM_N11_UNEXPECTED_ANSWER_SECTION
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test for unknown EDNS OPTION-CODE
 
   dns-nameserver12:
@@ -2245,7 +2253,7 @@ Test-Cases:
     - ZM_NS_ERROR
     - ZM_NO_EDNS_SUPPORT
     - ZM_Z_FLAGS_NOTCLEAR
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test for unknown EDNS flags
 
   dns-nameserver13:
@@ -2301,7 +2309,7 @@ Test-Cases:
     - ZM_NS_ERROR
     - ZM_NO_EDNS_SUPPORT
     - ZM_MISSING_OPT_IN_TRUNCATED
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test for truncated response on EDNS query
 
   dns-nameserver14:
@@ -2345,7 +2353,7 @@ Test-Cases:
     - ZM_NS_ERROR
     - ZM_NO_EDNS_SUPPORT
     - ZM_UNKNOWN_OPTION_CODE
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Test for unknown version with unknown OPTION-CODE
 
   dns-nameserver15:
@@ -2407,7 +2415,7 @@ Test-Cases:
     Errors:
     - ZM_N15_SOFTWARE_VERSION
     - ZM_N15_NO_VERSION
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Checking for revealed software version
 
   dns-syntax04:
@@ -2432,8 +2440,9 @@ Test-Cases:
   
       If any of the steps 3 to 5 in the ordered description of this test case
       fails, the whole test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_SYNTAX04_FAILED
+    Maturity: BETA
     Summary: The NS name must have a valid domain/hostname
 
   dns-syntax05:
@@ -2453,8 +2462,9 @@ Test-Cases:
   
       If there is any '@' character in any SOA/RNAME field, this test case
       fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_SYNTAX05_FAILED
+    Maturity: BETA
     Summary: Misuse of '@' character in the SOA RNAME field
 
   dns-syntax06:
@@ -2503,7 +2513,7 @@ Test-Cases:
     - ZM_NO_RESPONSE_SOA_QUERY
     - ZM_RNAME_MAIL_ILLEGAL_CNAME
     - ZM_RNAME_MAIL_DOMAIN_INVALID
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: No illegal characters in the SOA RNAME field
 
   dns-syntax07:
@@ -2528,8 +2538,9 @@ Test-Cases:
   
       If any of the steps 4 to 8 in the ordered description of this test case
       fails, the whole test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_SYNTAX07_FAILED
+    Maturity: BETA
     Summary: No illegal characters in the SOA MNAME field
 
   dns-zone01:
@@ -2666,7 +2677,7 @@ Test-Cases:
     - ZM_Z01_MNAME_UNEXPECTED_RCODE
     - ZM_Z01_MNAME_IS_DOT
     - ZM_Z01_MNAME_MISSING_SOA_RECORD
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Fully qualified master nameserver in SOA
 
   dns-zone02:
@@ -2697,8 +2708,9 @@ Test-Cases:
       # Pass/fail criteria
   
       If the SOA refresh value is less than 14400 this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE02_FAILED
+    Maturity: BETA
     Summary: SOA 'refresh' minimum value
 
   dns-zone03:
@@ -2725,8 +2737,9 @@ Test-Cases:
   
       If the SOA retry value is higher than or equal to the refresh value,
       this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE03_FAILED
+    Maturity: BETA
     Summary: SOA 'retry' lower than 'refresh'
 
   dns-zone04:
@@ -2755,8 +2768,9 @@ Test-Cases:
       # Pass/fail criteria
   
       If the retry value is less than 3600 seconds, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE04_FAILED
+    Maturity: BETA
     Summary: SOA 'retry' at least 1 hour
 
   dns-zone05:
@@ -2789,8 +2803,9 @@ Test-Cases:
   
       If the expire value is less than 604800 seconds or if the expire value
       is lower than the refresh value, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE05_FAILED
+    Maturity: BETA
     Summary: SOA 'expire' minimum value
 
   dns-zone06:
@@ -2825,8 +2840,9 @@ Test-Cases:
   
       If the minimum value is larger than 86400 seconds or if the minimum
       value is lower than 300 seconds, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE06_FAILED
+    Maturity: BETA
     Summary: SOA 'minimum' maximum value
 
   dns-zone07:
@@ -2857,8 +2873,9 @@ Test-Cases:
       # Pass/fail criteria
   
       If the SOA MNAME field is pointing to a CNAME, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNS_ZONE07_FAILED
+    Maturity: BETA
     Summary: SOA master is not an alias
 
   dns-zone10:
@@ -2899,7 +2916,7 @@ Test-Cases:
     - ZM_NO_SOA_IN_RESPONSE
     - ZM_NO_RESPONSE
     - ZM_ONE_SOA
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: No multiple SOA records
 
   dnssec-01:
@@ -2965,7 +2982,7 @@ Test-Cases:
     - ZM_DS01_DS_ALGO_2_MISSING
     - ZM_DS01_DS_ALGO_DEPRECATED
     - ZM_DS01_DS_ALGO_NOT_DS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Legal values for the DS hash digest algorithm
 
   dnssec-02:
@@ -3108,7 +3125,7 @@ Test-Cases:
     - ZM_DS02_NO_MATCHING_DNSKEY_RRSIG
     - ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING
     - ZM_DS02_DNSKEY_NOT_SIGNED_BY_ANY_DS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: DS must match a valid DNSKEY in the child zone
 
   dnssec-03:
@@ -3154,8 +3171,9 @@ Test-Cases:
       If the NSEC3 iterations value is higher than 100, this test case gives a
       warning. If it is higher than the number recommended for the
       corresponding key size, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNSSEC_03_FAILED
+    Maturity: BETA
     Summary: Check for too many NSEC3 iterations
 
   dnssec-04:
@@ -3183,8 +3201,9 @@ Test-Cases:
   
       If any of the signature expirations time is either shorter than 12 hours
       or longer than 180 days, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNSSEC_04_FAILED
+    Maturity: BETA
     Summary: Check for too short or too long RRSIG lifetimes
 
   dnssec-05:
@@ -3275,7 +3294,7 @@ Test-Cases:
     - ZM_ALGORITHM_NOT_RECOMMENDED
     - ZM_NO_RESPONSE_DNSKEY
     - ZM_ALGORITHM_RESERVED
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Check for invalid DNSKEY algorithms
 
   dnssec-06:
@@ -3295,8 +3314,9 @@ Test-Cases:
   
       If any of the name servers configured for the domains fail to answer
       with DNSSEC data, this test case fails.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNSSEC_06_FAILED
+    Maturity: BETA
     Summary: Verify DNSSEC additional processing
 
   dnssec-08:
@@ -3350,7 +3370,7 @@ Test-Cases:
     - ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY
     - ZM_DS08_DNSKEY_RRSIG_EXPIRED
     - ZM_DS08_MISSING_RRSIG_IN_RESPONSE
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Valid RRSIG for DNSKEY
 
   dnssec-09:
@@ -3401,7 +3421,7 @@ Test-Cases:
     - ZM_DS09_SOA_RRSIG_NOT_YET_VALID
     - ZM_DS09_MISSING_RRSIG_IN_RESPONSE
     - ZM_DS09_RRSIG_NOT_VALID_BY_DNSKEY
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: RRSIG(SOA) must be valid and created by a valid DNSKEY
 
   dnssec-10:
@@ -3490,7 +3510,7 @@ Test-Cases:
     - ZM_DS10_HAS_NSEC3
     - ZM_DS10_NSEC3_RRSIG_VERIFY_ERROR
     - ZM_DS10_NAME_NOT_COVERED_BY_NSEC
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Zone contains NSEC or NSEC3 records
 
   dnssec-12:
@@ -3515,8 +3535,9 @@ Test-Cases:
       # Pass/fail criteria
   
       TBD.
-    Errors: []
-    Maturity: GAMMA
+    Errors:
+    - ZM_DNSSEC_12_FAILED
+    Maturity: BETA
     Summary: Test for DNSSEC Algorithm Completeness
 
   dnssec-13:
@@ -3567,7 +3588,7 @@ Test-Cases:
     - ZM_DS13_ALGO_NOT_SIGNED_DNSKEY
     - ZM_DS13_ALGO_NOT_SIGNED_SOA
     - ZM_DS13_ALGO_NOT_SIGNED_NS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: All DNSKEY algorithms used to sign the zone
 
   dnssec-14:
@@ -3635,7 +3656,7 @@ Test-Cases:
     - ZM_KEY_SIZE_OK
     - ZM_NO_RESPONSE_DNSKEY
     - ZM_DNSKEY_TOO_SMALL_FOR_ALGO
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Check for valid RSA DNSKEY key size
 
   dnssec-15:
@@ -3716,7 +3737,7 @@ Test-Cases:
     - ZM_DS15_HAS_CDS_AND_CDNSKEY
     - ZM_DS15_MISMATCH_CDS_CDNSKEY
     - ZM_DS15_INCONSISTENT_CDNSKEY
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Existence of CDS and CDNSKEY
 
   dnssec-16:
@@ -3808,7 +3829,7 @@ Test-Cases:
     - ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY
     - ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS
     - ZM_DS16_CDS_MATCHES_NO_DNSKEY
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Validate CDS
 
   dnssec-17:
@@ -3901,7 +3922,7 @@ Test-Cases:
     - ZM_DS17_CDNSKEY_IS_NON_SEP
     - ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
     - ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Validate CDNSKEY
 
   dnssec-18:
@@ -3969,7 +3990,7 @@ Test-Cases:
     Errors:
     - ZM_DS18_NO_MATCH_CDS_RRSIG_DS
     - ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS
-    Maturity: GAMMA
+    Maturity: BETA
     Summary: Validate trust from DS to CDS and CDNSKEY
 
 
@@ -4538,15 +4559,16 @@ Test-Cases:
       the `avail` attribute of the `<domain:name>` elements in the server
       response, as follows:
 
-        * syntactically invalid domain: `avail` attribute **MUST** be `0` or
+        * syntactically invalid domain name: `avail` attribute **MUST** be `0`
+          or `false`.
+        * valid but registered domain name: `avail` attribute **MUST** be `0` or
           `false`.
-        * valid but registered domain: `avail` attribute **MUST** be `0` or
-          `false`.
-        * valid and unregistered domain: `avail` attribute **MUST** be `1` or
-          `true`. The domain will be generated using random characters.
+        * syntactically valid, unregistered domain name: `avail` attribute
+          **MUST** be `1` or `true`. The domain name will be generated using
+          random characters.
 
-      Syntactical validity will be determined based on **TODO (tagged names and
-      LDH rules)**.
+      A "syntactically valid" domain name is one that complies with the format
+      specified in RFC 1123 (this test case does not consider IDN names).
 
       These checks will be carried out for each TLD in the TLD set.
     Input-Parameters:
@@ -4567,9 +4589,12 @@ Test-Cases:
         `false`.
       * valid but registered hostname: `avail` attribute **MUST** be `0` or
         `false`.
-      * valid and unregistered hostname: `avail` attribute **MUST** be `1` or
-        `true`. The hostname will be generated using random characters.
-      Syntactical validity will be determined based on **TODO**. (LDH rule)
+      * syntactically valid and unregistered hostname: `avail` attribute
+        **MUST** be `1` or `true`. The hostname will be generated using random
+        characters.
+
+      A "syntactically valid" hostname is one that complies with the format
+      specified in RFC 1123 (this test case does not consider IDN names).
     Input-Parameters:
       - epp.registeredNameservers
     Dependencies:
@@ -4609,74 +4634,77 @@ Test-Cases:
       realistic values. No personal information will be transmitted as part
       of this test.
 
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
+      test will be skipped.
+
       The test will confirm that the server checks and validates the values of
       the following elements:
 
       * `<contact:id>`
       * `<contact:status>`
-      * `<contact:postalInfo>` elements (both `int` and `loc`)
-          * `<contact:name>`
-          * `<contact:org>`
-          * `<contact:addr>` elements
-            * `<contact:street>` element(s)
-            * `<contact:city>` element
-            * `<contact:sp>` element
-            * `<contact:pc>` element
-            * `<contact:cc>` element
+      * `<contact:postalInfo>` element(s)
+      * `<contact:name>` element
+      * `<contact:cc>` element
       * `<contact:voice>`
       * `<contact:email>`
 
-      If the `general.minimalPublicDataSet` input parameter is `true`, this
-      test will be skipped.
+      * The server **MUST NOT** accept a `<contact:id>` element that
+        contains a value that is not a valid `clIDType` value;
+      * The server **MUST NOT** accept a `<contact:status>` element that
+        contains a status code not defined in RFC 5733;
+      * The server **MUST NOT** accept a `<contact:postalInfo>` element that
+        contains a `type` attribute that is neither `int` nor `loc`;
+      * The server **MUST NOT** accept a `<contact:cc>` element that contains a
+        value that is not a valid ISO 3166-1 alpha-2 code;
+      * The server **MUST NOT** accept a `<contact:voice>` element that contains
+        a value that does not conform to the format described in Section 2.5 of
+        RFC5733;
+      * The server **MUST NOT** accept a `<contact:email>` element that contains
+        a value that does not conform to the format specified in RFC 5322.
 
-      **TODO**
-      Validity determined by length (street etc)
-      CC - present in list, not present etc
-      email - RFC syntax
-      what will be covered by the schema and what needs exceptional handling?
-    Input-Parameters:
+      Once objects have been created, the client will then perform `<info>`
+      commands to verify that the server has correctly stored the provided
+      values.
     Dependencies:
       - epp-06
     Errors:
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE
-      - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG
-      - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET
-      - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY
-      - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP
-      - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE
       - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
+      - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
   epp-08:
-    Summary: contact <info> command test (if applicable for the registry type)
+    Summary: Contact object access control (if applicable)
     Description: |
-      This test will perform `<info>` commands on the objects successfully
-      created during `epp-07` and will confirm that the server has correctly
-      stored the provided values.
+      This test will confirm that EPP clients are unable to perform `<info>`
+      commands on objects that they do not sponsor.
 
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
 
-      **TODO: merge with epp-07**
-    Input-Parameters:
+      The client will connect using a set of alternate credentials and will
+      submit `<info>` and `<update>` commands on the contact objects created in
+      `epp-08`. The server **MUST** respond with a 2201 "authorization error"
+      response.
     Dependencies:
-      - epp-07
+      - epp-08
     Errors:
-      - EPP_CONTACT_INFO_RESPONSE_NOT_1000
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE
-      - EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL
+      - EPP_CONTACT_INFO_RESPONSE_NOT_2201
+      - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
   epp-09:
     Summary: contact <update> command test (if applicable for the registry type)
     Description: |
@@ -4684,6 +4712,9 @@ Test-Cases:
       `epp-07` and will confirm that the server correctly rejects invalid
       commands (which would specify invalid property values) and accepts valid
       commands.
+
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
+      test will be skipped.
 
       The test will confirm that the server checks and validates `<update>`
       commands which transform the values of the following elements:
@@ -4701,13 +4732,9 @@ Test-Cases:
       * `<contact:voice>`
       * `<contact:email>`
 
-      If the `general.minimalPublicDataSet` input parameter is `true`, this
-      test will be skipped.
-
-      **TODO: re-run epp-08 to make sure changes have been saved**
-
-      **TODO: add test of update of another client's object**
-    Input-Parameters:
+      Once objects have been updated, the client will then perform `<info>`
+      commands to verify that the server has correctly stored the provided
+      values.
     Dependencies:
       - epp-08
     Errors:
@@ -4721,6 +4748,19 @@ Test-Cases:
       - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC
       - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE
       - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
+      - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
   epp-10:
     Summary: contact <delete> command test (if applicable for the registry type)
     Description: |
@@ -4731,13 +4771,16 @@ Test-Cases:
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
 
-      **TODO: add check/info to see if the object was actually deleted - if
-      response was 1000**
+      Once the `<delete>` commands have been submitted, the client will perform
+      `<info>` commands to confirm that the objects have actually been removed
+      from the repository. If the response to the previous `<delete>` command
+      was 1001, this step will be skipped.
     Input-Parameters:
     Dependencies:
       - epp-09
     Errors:
       - EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001
+      - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
   epp-11:
     Summary: host <create> command test (if applicable)
     Description: |
@@ -4748,6 +4791,9 @@ Test-Cases:
       properties. Property values will be randomly generated but will contain
       realistic values. No personal information will be transmitted as part
       of this test.
+
+      If the `epp.hostModel` input parameter is `attributes`, this test will
+      be skipped.
 
       The test will confirm that the server checks and validates the values of
       the following elements:
@@ -4760,29 +4806,33 @@ Test-Cases:
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
 
-      **TODO: merge with epp-12**
-    Input-Parameters:
-    Dependencies:
-      - epp-03
+      The client will then perform `<info>` commands on the objects successfully
+      created to confirm that the server has correctly stored the provided
+      values.
   epp-12:
-    Summary: host <info> command test (if applicable)
+    Summary: host object access control (if applicable)
     Description: |
-      This test will perform `<info>` commands on the objects successfully
-      created during `epp-11` and will confirm that the server has correctly
-      stored the provided values.
+      This test will confirm that EPP clients are unable to perform `<info>`
+      commands on objects that they do not sponsor.
 
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-    Input-Parameters:
+
+      The client will connect using a set of alternate credentials and will
+      submit `<update>` commands on the contact objects created in `epp-11`. The
+      server **MUST** respond with a 2201 "authorization error" response.
     Dependencies:
       - epp-11
   epp-13:
     Summary: host <update> command test (if applicable)
     Description: |
       This test will perform `<update>` commands on the objects created during
-      `epp-12` and will confirm that the server correctly rejects invalid
+      `epp-11` and will confirm that the server correctly rejects invalid
       commands (which would specify invalid property values) and accepts valid
       commands.
+
+      If the `epp.hostModel` input parameter is `attributes`, this test will
+      be skipped.
 
       The test will confirm that the server checks and validates `<update>`
       commands which transform the values of the following elements:
@@ -4793,15 +4843,11 @@ Test-Cases:
       Note: the server's ability to support host renames is checked in a later
       test.
 
-      If the `epp.hostModel` input parameter is `attributes`, this test will
-      be skipped.
-
-      **TODO: add info afterwards**
-
-      **TODO: add test of update of another client's object**
-    Input-Parameters:
+      The client will then perform `<info>` commands on the objects successfully
+      updated to confirm that the server has correctly stored the updated
+      values.
     Dependencies:
-      - epp-12
+      - epp-11
   epp-14:
     Summary: host rename test (if applicable)
     Description: |
@@ -6132,6 +6178,131 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
+  ZM_DNSSEC_03_FAILED:
+    Description: The `dnssec-03` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNSSEC_04_FAILED:
+    Description: The `dnssec-04` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNSSEC_06_FAILED:
+    Description: The `dnssec-06` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNSSEC_12_FAILED:
+    Description: The `dnssec-12` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ADDRESS01_FAILED:
+    Description: The `dns-address01` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ADDRESS02_FAILED:
+    Description: The `dns-address02` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ADDRESS03_FAILED:
+    Description: The `dns-address03` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_DELEGATION04_FAILED:
+    Description: The `dns-delegation04` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_DELEGATION06_FAILED:
+    Description: The `dns-delegation06` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_DELEGATION07_FAILED:
+    Description: The `dns-delegation07` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER03_FAILED:
+    Description: The `dns-nameserver03` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER04_FAILED:
+    Description: The `dns-nameserver04` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER06_FAILED:
+    Description: The `dns-nameserver06` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER07_FAILED:
+    Description: The `dns-nameserver07` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER08_FAILED:
+    Description: The `dns-nameserver08` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_NAMESERVER09_FAILED:
+    Description: The `dns-nameserver09` test case failed, but no further information
+      is available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_SYNTAX04_FAILED:
+    Description: The `dns-syntax04` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_SYNTAX05_FAILED:
+    Description: The `dns-syntax05` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_SYNTAX07_FAILED:
+    Description: The `dns-syntax07` test case failed, but no further information is
+      available. Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE02_FAILED:
+    Description: The `dns-zone02` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE03_FAILED:
+    Description: The `dns-zone03` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE04_FAILED:
+    Description: The `dns-zone04` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE05_FAILED:
+    Description: The `dns-zone05` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE06_FAILED:
+    Description: The `dns-zone06` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
+  ZM_DNS_ZONE07_FAILED:
+    Description: The `dns-zone07` test case failed, but no further information is available.
+      Please consult the result log for this test case.
+    Severity: ERROR
+
   ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM:
     Description: |
       DS Digest cannot be validated by this installation of Zonemaster.
@@ -7053,176 +7224,1102 @@ Errors:
 
   EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
     Severity: ERROR
-    Description: TBA
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_RESPONSE_NOT_1000:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ID:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STATUS:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_NAME:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_ORG:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_STREET:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CITY:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_SP:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_PC:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_CC:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_VOICE:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
-  EPP_CONTACT_INFO_MISSING_OR_INCORRECT_EMAIL:
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
+
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
 
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
 
   EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
     Severity: ERROR
-    Description: TBA
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+
+  
