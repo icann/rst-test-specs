@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.186
-Last-Updated: 2023-12-14
+Version: 3.0.187
+Last-Updated: 2023-12-15
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -167,7 +167,8 @@ Preamble: |
 
   RA
   : Registry Agreement. The contract between a Registry Operator and ICANN. The
-  base Registry Agreement may be reviewed at <https://www.icann.org/en/registry-agreements/base-agreement>.
+  base Registry Agreement may be reviewed at
+  <https://www.icann.org/en/registry-agreements/base-agreement>.
 
   KSK
   : Key Signing Key. A cryptographic key which acts as the Secure Entry Point
@@ -183,9 +184,9 @@ Preamble: |
 
   RPMs
   : Rights Protection Mechanisms, intended to discourage or prevent registration
-  of domain names that violate or abuse another party’s legal rights. These **MUST**
-  include (but are not limited to): (1) Sunrise Periods, and (2) Trademark
-  Claims Periods (see [Specification 7 of the Registry
+  of domain names that violate or abuse another party’s legal rights. These
+  **MUST** include (but are not limited to): (1) Sunrise Periods, and (2)
+  Trademark Claims Periods (see [Specification 7 of the Registry
   Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).
 
   TMCH
@@ -196,7 +197,8 @@ Preamble: |
 
   SLA
   : Service Level Agreement. The registry performance specifications laid out in
-  [Specification 10 of the Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).
+  [Specification 10 of the Registry
+  Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).
 
   RRI
   : Registration Reporting Interfaces. The interfaces provided by ICANN to
@@ -528,11 +530,14 @@ Test-Suites:
     Input-Parameters:
       - general.gracePeriodsSupported
       - general.minimalPublicDataSet
-      - epp.clid
-      - epp.pwd
+      - epp.clid01
+      - epp.pwd01
+      - epp.serverIssuedClientCertificate01
+      - epp.clid02
+      - epp.pwd02
+      - epp.serverIssuedClientCertificate02
       - epp.hostModel
       - epp.hostName
-      - epp.serverIssuedClientCertificate
     Resources:
       - epp.clientACL
       - epp.clientCSR
@@ -575,11 +580,12 @@ Test-Suites:
     Test-Cases: ^idn-
     Input-Parameters:
       - epp.hostName
-      - epp.serverIssuedClientCertificate
-      - epp.clid
-      - epp.pwd
-      - epp.transferClid
-      - epp.transferPwd
+      - epp.clid01
+      - epp.pwd01
+      - epp.serverIssuedClientCertificate01
+      - epp.serverIssuedClientCertificate02
+      - epp.clid02
+      - epp.pwd02
     Resources:
       - epp.clientACL
       - epp.clientCSR
@@ -599,18 +605,19 @@ Test-Suites:
     Test-Cases: ^srsgw-
     Input-Parameters:
       - epp.hostName
-      - epp.serverIssuedClientCertificate
-      - epp.clid
-      - epp.pwd
-      - epp.transferClid
-      - epp.transferPwd
-      - epp.serverIssuedClientCertificate
+      - epp.clid01
+      - epp.pwd01
+      - epp.serverIssuedClientCertificate01
+      - epp.clid02
+      - epp.pwd02
+      - epp.serverIssuedClientCertificate02
       - srsgw.eppHostName
-      - srsgw.serverIssuedClientCertificate
-      - srsgw.eppClid
-      - srsgw.eppPwd
-      - srsgw.eppTransferClid
-      - srsgw.eppTransferPwd
+      - srsgw.serverIssuedClientCertificate01
+      - srsgw.eppClid01
+      - srsgw.eppPwd01
+      - srsgw.eppClid02
+      - srsgw.eppPwd02
+      - srsgw.serverIssuedClientCertificate02
       - srsgw.rdapBaseURLs
       - rdap.baseURLs
     Resources:
@@ -645,12 +652,12 @@ Test-Suites:
     Test-Cases: ^minimumRPMs-
     Input-Parameters:
       - epp.hostName
-      - epp.serverIssuedClientCertificate
-      - epp.clid
-      - epp.pwd
-      - epp.transferClid
-      - epp.transferPwd
-      - epp.serverIssuedClientCertificate
+      - epp.serverIssuedClientCertificate01
+      - epp.clid01
+      - epp.pwd01
+      - epp.clid02
+      - epp.pwd02
+      - epp.serverIssuedClientCertificate02
       - minimumRPMS.sunriseModels
       - minimumRPMS.sunriseTLD
       - minimumRPMS.claimsTLD
@@ -4426,9 +4433,8 @@ Test-Cases:
       properties, and the values of those object properties **MUST** be
       well-formed.
 
-      The aName property of NNDN objects **MUST NOT** match the name property of
-      a domain object.
-    Input-Parameters:
+      The `aName` property of NNDN objects **MUST NOT** match the `name`
+      property of a domain object.
   rde-13:
     Summary: validate EPP parameters object
     Maturity: BETA
@@ -4436,8 +4442,13 @@ Test-Cases:
       The EPP Parameters object **MUST** match the `<greeting>` element returned
       by the EPP server.
     Resources:
+      - epp.clientCertificate
+      - epp.clientCSR
     Input-Parameters:
-      - epp.serverIssuedClientCertificate
+      - epp.hostName
+      - epp.clid01
+      - epp.pwd01
+      - epp.serverIssuedClientCertificate01
   rde-14:
     Summary: validate policy object (if applicable)
     Maturity: BETA
@@ -4853,6 +4864,9 @@ Test-Cases:
     Description: |
       This tests verifies the server's support for host rename operations.
 
+      If the `epp.hostModel` input parameter is `attributes`, this test will
+      be skipped.
+
       The client will perform `<update>` commands on the objects created during
       `epp-11` and will confirm that the server correctly accepts or rejects the
       commands, for example:
@@ -4864,17 +4878,17 @@ Test-Cases:
       * an `<update>` command which places the object within a non-existent
         domain is rejected;
       * an `<update>` command which places the object within a domain sponsored
-        by another registrar is rejected. **TODO: what will the parent domain
-        be?**
+        by another registrar is rejected. The domain name(s) provided in the
+        `epp.registeredNames` parameter will be used for this test.
       * an `<update>` command which places the object within a domain sponsored
         by the test client is accepted. **TODO: what will the parent domain
         be?**
 
-      If the `epp.hostModel` input parameter is `attributes`, this test will
-      be skipped.
-
-      **TODO: add info afterwards**
+      The client will then perform `<info>` commands on the objects successfully
+      updated, to confirm that the server has correctly stored the updated
+      values.
     Input-Parameters:
+      - epp.registeredNames
     Dependencies:
       - epp-13
 
@@ -4922,11 +4936,11 @@ Test-Cases:
         * to confirm the server supports all permitted client-assigned status
           codes
         * to confirm that the server rejects a `<create>` command which
-          specifies a registrant contact (where the `general.minimalPublicDataSet`
-          input parameter is `true`)
+          specifies a registrant contact (where the
+          `general.minimalPublicDataSet` input parameter is `true`)
         * to confirm that the server rejects a `<create>` command which does not
-          specify a registrant contact (where the `general.minimalPublicDataSet`)
-          input parameter is `false`
+          specify a registrant contact (where the
+          `general.minimalPublicDataSet`) input parameter is `false`
         * to confirm that the server rejects a `<create>` command containing
           host objects when the `epp.hostModel` parameter is `attributes`
         * to confirm that the server rejects a `<create>` command containing
@@ -5003,7 +5017,8 @@ Test-Cases:
       The client will perform an `<update>` command to set the authInfo code for
       the test domain (taken from the set created in `epp-16`) to a
       randomly-determined value. If the server implements RFC 9154, it **MUST**
-      reject the `<update>` command if the authInfo code is insufficently secure.
+      reject the `<update>` command if the authInfo code is insufficently
+      secure.
 
       Then, using a second set of credentials, the client will connect to the
       EPP server and authenticate, submit `<transfer>` commands, and validate
@@ -5032,9 +5047,6 @@ Test-Cases:
       **TODO: check current tooling to see how waiting for transfers is handled**
 
       **TODO: add transfer reject request?**
-    Input-Parameters:
-      - epp.transferClid
-      - epp.transferPwd
     Dependencies:
       - epp-18
   epp-20:
@@ -5089,8 +5101,8 @@ Test-Cases:
 
       If the server supports End Date sunrises, the fully-qualified domain
       name will be constructed using a label from the SMD file and the
-      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with a
-      1000 or 1001 result code.
+      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+      a 1000 or 1001 result code.
 
       The client will also attempt to create a domain using an invalid SMD,
       which the server **MUST** reject.
@@ -5293,7 +5305,7 @@ Test-Cases:
 
       * if the response to the `<transfer op="request">` command was 1000, then
         the `<domain:clID>` element **MUST** contain the value of the
-        `srsgw.eppTransferClid` input parameter.
+        `srsgw.eppClid01` input parameter.
       * if the response to the `<transfer op="request">` command was 1001, then
         the domain **MUST** have the `pendingTransfer` status.
     Dependencies:
@@ -5317,7 +5329,7 @@ Test-Cases:
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain. The server **MUST** respond with a
       1000 response. The `<domain:clID>` element **MUST** contain the value of
-      the  `srsgw.eppTransferClid` input parameter.
+      the  `srsgw.eppClid01` input parameter.
     Dependencies:
       - srsgw-06
   srsgw-08:
@@ -5328,7 +5340,7 @@ Test-Cases:
       system are correctly synchronized with the primary registry system.
 
       The client will connect to the SRS Gateway EPP system, authenticate using
-      the credentials provided in `epp.transferClid` and `epp.transferPwd`, and
+      the credentials provided in `epp.clid02` and `epp.pwd02`, and
       submit a `<delete>` command for the domain transferred in `srsgw-07`.
       If the value of the `general.gracePeriodsSupported` input parameter is
       `false`, the server **MUST** respond with a 1000 response. Otherwise it
@@ -5622,8 +5634,8 @@ Test-Cases:
       Furthermore, for each deposit found in the directory, the corresponding
       RDE report (as described in [Section 2.1 of
       draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))
-      **MUST** be recieved on the test RRI environment before 23:59:59 UTC on the
-      date specified in the Watermark element of the deposit file.
+      **MUST** be recieved on the test RRI environment before 23:59:59 UTC on
+      the date specified in the Watermark element of the deposit file.
 
       To facilitate submission of RDE reports, the RRI test environment will be
       configured to accept submissions for the TLDs associated with the test
@@ -5659,27 +5671,39 @@ Input-Parameters:
     Description: the fully-qualified domain name of the EPP server
     Type: string
     Example: epp.rsp.tech
-  epp.clid:
+  epp.clid01:
     Description: the username used to log in to the EPP server
     Type: string
     Example: clid-01
-  epp.pwd:
+  epp.pwd01:
     Description: the password used to log in to the EPP server
     Type: string
     Example: foo2bar
-  epp.serverIssuedClientCertificate:
+  epp.serverIssuedClientCertificate01:
     Description: |
       If the EPP server uses a private CA to issue client certificates, then
       a certificate generated using the CSR provided in the `epp.clientCSR` may
-      be provided using this parameter. If the server will accept ICANN's
-      own client certificate, this parameter **SHOULD** be empty.
+      be provided using this parameter. This certificate will only be used in
+      conjunction with the `epp.clid01` and `epp.pwd01` credentials. If the
+      server will accept ICANN's own client certificate, this parameter
+      **SHOULD** be empty.
     Type: string
     Example: rst_test_client_cert.pem
-  epp.transferClid:
+  epp.serverIssuedClientCertificate02:
+    Description: |
+      If the EPP server uses a private CA to issue client certificates, then
+      a certificate generated using the CSR provided in the `epp.clientCSR` may
+      be provided using this parameter. This certificate will only be used in
+      conjunction with the `epp.clid02` and `epp.pwd02` credentials. If the
+      server will accept ICANN's own client certificate, this parameter
+      **SHOULD** be empty.
+    Type: string
+    Example: rst_test_client_cert.pem
+  epp.clid02:
     Description: the username used for transfer tests
     Type: string
     Example: clid-02
-  epp.transferPwd:
+  epp.pwd02:
     Description: the password used for transfer tests
     Type: string
     Example: foo3bar
@@ -5714,8 +5738,9 @@ Input-Parameters:
   epp.registeredNames:
     Description: |
       An array of domain names that exist in the EPP server and which are
-      therefore unavailable for registration. The array **MUST** contain one
-      member for each TLD in the TLD set.
+      therefore unavailable for registration. The domains **MUST NOT** be under
+      the sponsorship of the `epp.clid01` or `epp.clid02` registrars. The array
+      **MUST** contain one member for each TLD in the TLD set.
     Type: array
     Example: ["example.example1", "example.example2"]
   epp.registeredNameservers:
@@ -5843,27 +5868,39 @@ Input-Parameters:
     Description: the fully-qualified domain name of the SRS Gateway EPP server
     Type: string
     Example: epp.rsp.tech
-  srsgw.eppClid:
+  srsgw.eppClid01:
     Description: the username used to log in to the SRS Gateway EPP server
     Type: string
     Example: clid-01
-  srsgw.eppPwd:
+  srsgw.eppPwd01:
     Description: the password used to log in to the SRS Gateway EPP server
     Type: string
     Example: foo2bar
-  srsgw.serverIssuedClientCertificate:
+  srsgw.serverIssuedClientCertificate01:
     Description: |
       If the EPP server uses a private CA to issue client certificates, then
       a certificate generated using the CSR provided in the `epp.clientCSR` may
-      be provided using this parameter. If the server will accept ICANN's
-      own client certificate, this parameter **SHOULD** be empty.
+      be provided using this parameter. This certificate will only be used in
+      conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
+      If the server will accept ICANN's own client certificate, this parameter
+      **SHOULD** be empty.
     Type: string
     Example:
-  srsgw.eppTransferClid:
+  srsgw.serverIssuedClientCertificate02:
+    Description: |
+      If the EPP server uses a private CA to issue client certificates, then
+      a certificate generated using the CSR provided in the `epp.clientCSR` may
+      be provided using this parameter. This certificate will only be used in
+      conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
+      If the server will accept ICANN's own client certificate, this parameter
+      **SHOULD** be empty.
+    Type: string
+    Example:
+  srsgw.eppClid02:
     Description: the username used for transfer tests
     Type: string
     Example: clid-02
-  srsgw.eppTransferPwd:
+  srsgw.eppPwd02:
     Description: the password used for transfer tests
     Type: string
     Example: foo3bar

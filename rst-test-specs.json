@@ -1365,9 +1365,14 @@
          "Example" : "example.com",
          "Type" : "string"
       },
-      "epp.clid" : {
+      "epp.clid01" : {
          "Description" : "the username used to log in to the EPP server",
          "Example" : "clid-01",
+         "Type" : "string"
+      },
+      "epp.clid02" : {
+         "Description" : "the username used for transfer tests",
+         "Example" : "clid-02",
          "Type" : "string"
       },
       "epp.hostModel" : {
@@ -1380,9 +1385,14 @@
          "Example" : "epp.rsp.tech",
          "Type" : "string"
       },
-      "epp.pwd" : {
+      "epp.pwd01" : {
          "Description" : "the password used to log in to the EPP server",
          "Example" : "foo2bar",
+         "Type" : "string"
+      },
+      "epp.pwd02" : {
+         "Description" : "the password used for transfer tests",
+         "Example" : "foo3bar",
          "Type" : "string"
       },
       "epp.registeredContacts" : {
@@ -1394,7 +1404,7 @@
          "Type" : "array"
       },
       "epp.registeredNames" : {
-         "Description" : "An array of domain names that exist in the EPP server and which are\ntherefore unavailable for registration. The array **MUST** contain one\nmember for each TLD in the TLD set.\n",
+         "Description" : "An array of domain names that exist in the EPP server and which are\ntherefore unavailable for registration. The domains **MUST NOT** be under\nthe sponsorship of the `epp.clid01` or `epp.clid02` registrars. The array\n**MUST** contain one member for each TLD in the TLD set.\n",
          "Example" : [
             "example.example1",
             "example.example2"
@@ -1419,19 +1429,14 @@
          "Example" : "dsData",
          "Type" : "string"
       },
-      "epp.serverIssuedClientCertificate" : {
-         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. If the server will accept ICANN's\nown client certificate, this parameter **SHOULD** be empty.\n",
+      "epp.serverIssuedClientCertificate01" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. This certificate will only be used in\nconjunction with the `epp.clid01` and `epp.pwd01` credentials. If the\nserver will accept ICANN's own client certificate, this parameter\n**SHOULD** be empty.\n",
          "Example" : "rst_test_client_cert.pem",
          "Type" : "string"
       },
-      "epp.transferClid" : {
-         "Description" : "the username used for transfer tests",
-         "Example" : "clid-02",
-         "Type" : "string"
-      },
-      "epp.transferPwd" : {
-         "Description" : "the password used for transfer tests",
-         "Example" : "foo3bar",
+      "epp.serverIssuedClientCertificate02" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. This certificate will only be used in\nconjunction with the `epp.clid02` and `epp.pwd02` credentials. If the\nserver will accept ICANN's own client certificate, this parameter\n**SHOULD** be empty.\n",
+         "Example" : "rst_test_client_cert.pem",
          "Type" : "string"
       },
       "general.gracePeriodsSupported" : {
@@ -1525,9 +1530,14 @@
          "Example" : "example_20231004_FULL_S1_R0.sig",
          "Type" : "file"
       },
-      "srsgw.eppClid" : {
+      "srsgw.eppClid01" : {
          "Description" : "the username used to log in to the SRS Gateway EPP server",
          "Example" : "clid-01",
+         "Type" : "string"
+      },
+      "srsgw.eppClid02" : {
+         "Description" : "the username used for transfer tests",
+         "Example" : "clid-02",
          "Type" : "string"
       },
       "srsgw.eppHostName" : {
@@ -1535,17 +1545,12 @@
          "Example" : "epp.rsp.tech",
          "Type" : "string"
       },
-      "srsgw.eppPwd" : {
+      "srsgw.eppPwd01" : {
          "Description" : "the password used to log in to the SRS Gateway EPP server",
          "Example" : "foo2bar",
          "Type" : "string"
       },
-      "srsgw.eppTransferClid" : {
-         "Description" : "the username used for transfer tests",
-         "Example" : "clid-02",
-         "Type" : "string"
-      },
-      "srsgw.eppTransferPwd" : {
+      "srsgw.eppPwd02" : {
          "Description" : "the password used for transfer tests",
          "Example" : "foo3bar",
          "Type" : "string"
@@ -1557,14 +1562,19 @@
          },
          "Type" : "object"
       },
-      "srsgw.serverIssuedClientCertificate" : {
-         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. If the server will accept ICANN's\nown client certificate, this parameter **SHOULD** be empty.\n",
+      "srsgw.serverIssuedClientCertificate01" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. This certificate will only be used in\nconjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.\nIf the server will accept ICANN's own client certificate, this parameter\n**SHOULD** be empty.\n",
+         "Example" : null,
+         "Type" : "string"
+      },
+      "srsgw.serverIssuedClientCertificate02" : {
+         "Description" : "If the EPP server uses a private CA to issue client certificates, then\na certificate generated using the CSR provided in the `epp.clientCSR` may\nbe provided using this parameter. This certificate will only be used in\nconjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.\nIf the server will accept ICANN's own client certificate, this parameter\n**SHOULD** be empty.\n",
          "Example" : null,
          "Type" : "string"
       }
    },
-   "Last-Updated" : "2023-12-14",
-   "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n## 2.1.1. Test plan types\n\nThere are two types of test plan described in this document:\n\n* **Business as usual** plans, which are used as part of the lifecycle of a\n  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway\n  Test)\n* **RSP evaluation** plans, which are used as part of the RSP evaluation\n  program.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test environments\n\nEach test plan indicates whether the test is to be carried out in the\nproduction environment, or whether a test, staging or OT&E environment may be\nused. In general, test plans which are designed for \"business as usual\" use\nduring the lifecycle of a TLD **MUST** be carried out in the production\nregistry infrastructure, while RSP evaluation tests **MAY** be carried out in\ntest, staging or OT&E environments.\n\n## 2.3.3. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.4. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.5. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n   which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n   prevent the test from *continuing*. A test may produce multiple `ERROR`\n   results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n   further. A test will only produce a single `CRITICAL` result and it\n   will always be the last result in the log.\n\n## 2.3.6. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at <https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These **MUST**\ninclude (but are not limited to): (1) Sunrise Periods, and (2) Trademark\nClaims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
+   "Last-Updated" : "2023-12-15",
+   "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n## 2.1.1. Test plan types\n\nThere are two types of test plan described in this document:\n\n* **Business as usual** plans, which are used as part of the lifecycle of a\n  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway\n  Test)\n* **RSP evaluation** plans, which are used as part of the RSP evaluation\n  program.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test environments\n\nEach test plan indicates whether the test is to be carried out in the\nproduction environment, or whether a test, staging or OT&E environment may be\nused. In general, test plans which are designed for \"business as usual\" use\nduring the lifecycle of a TLD **MUST** be carried out in the production\nregistry infrastructure, while RSP evaluation tests **MAY** be carried out in\ntest, staging or OT&E environments.\n\n## 2.3.3. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.4. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.5. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n   which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n   prevent the test from *continuing*. A test may produce multiple `ERROR`\n   results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n   further. A test will only produce a single `CRITICAL` result and it\n   will always be the last result in the log.\n\n## 2.3.6. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at\n<https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These\n**MUST** include (but are not limited to): (1) Sunrise Periods, and (2)\nTrademark Claims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
    "RST-Test-Plan-Schema-Version" : "1.6.0",
    "Resources" : {
       "epp.clientACL" : {
@@ -2549,8 +2559,10 @@
          "Dependencies" : [
             "epp-13"
          ],
-         "Description" : "This tests verifies the server's support for host rename operations.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected. **TODO: what will the parent domain\n  be?**\n* an `<update>` command which places the object within a domain sponsored\n  by the test client is accepted. **TODO: what will the parent domain\n  be?**\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\n**TODO: add info afterwards**\n",
-         "Input-Parameters" : null,
+         "Description" : "This tests verifies the server's support for host rename operations.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected. The domain name(s) provided in the\n  `epp.registeredNames` parameter will be used for this test.\n* an `<update>` command which places the object within a domain sponsored\n  by the test client is accepted. **TODO: what will the parent domain\n  be?**\n\nThe client will then perform `<info>` commands on the objects successfully\nupdated, to confirm that the server has correctly stored the updated\nvalues.\n",
+         "Input-Parameters" : [
+            "epp.registeredNames"
+         ],
          "Summary" : "host rename test (if applicable)"
       },
       "epp-15" : {
@@ -2565,7 +2577,7 @@
          "Dependencies" : [
             "epp-03"
          ],
-         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false` then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n  * to confirm that the server does not accept invalid values for object\n    properties (such as domain name, registration period, registant ID,\n    nameservers, DS record parameters, etc) **TODO: what is \"etc\"?**\n    examples:\n      * invalid domain\n      * invalid period (1-10 years)\n      * non-existent registrant\n      * non-existent hosts\n      * invalid DS/keyData record parameters\n  * to confirm that the server does not accept commands which reference\n    non-existent host/contact objects\n  * to confirm the server supports all permitted client-assigned status\n    codes\n  * to confirm that the server rejects a `<create>` command which\n    specifies a registrant contact (where the `general.minimalPublicDataSet`\n    input parameter is `true`)\n  * to confirm that the server rejects a `<create>` command which does not\n    specify a registrant contact (where the `general.minimalPublicDataSet`)\n    input parameter is `false`\n  * to confirm that the server rejects a `<create>` command containing\n    host objects when the `epp.hostModel` parameter is `attributes`\n  * to confirm that the server rejects a `<create>` command containing\n    host attributes when the `epp.hostModel` parameter is `objects`\n  * to confirm that the the server which implements RFC 9154 accepts a\n    `<create>` command without an authInfo command.\n\n  **TODO: add test case below to try to delete linked contact objects.**\n\n  **TODO: merge with info case below**\n",
+         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false` then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n  * to confirm that the server does not accept invalid values for object\n    properties (such as domain name, registration period, registant ID,\n    nameservers, DS record parameters, etc) **TODO: what is \"etc\"?**\n    examples:\n      * invalid domain\n      * invalid period (1-10 years)\n      * non-existent registrant\n      * non-existent hosts\n      * invalid DS/keyData record parameters\n  * to confirm that the server does not accept commands which reference\n    non-existent host/contact objects\n  * to confirm the server supports all permitted client-assigned status\n    codes\n  * to confirm that the server rejects a `<create>` command which\n    specifies a registrant contact (where the\n    `general.minimalPublicDataSet` input parameter is `true`)\n  * to confirm that the server rejects a `<create>` command which does not\n    specify a registrant contact (where the\n    `general.minimalPublicDataSet`) input parameter is `false`\n  * to confirm that the server rejects a `<create>` command containing\n    host objects when the `epp.hostModel` parameter is `attributes`\n  * to confirm that the server rejects a `<create>` command containing\n    host attributes when the `epp.hostModel` parameter is `objects`\n  * to confirm that the the server which implements RFC 9154 accepts a\n    `<create>` command without an authInfo command.\n\n  **TODO: add test case below to try to delete linked contact objects.**\n\n  **TODO: merge with info case below**\n",
          "Input-Parameters" : [
             "epp.secDNSInterfaces"
          ],
@@ -2591,11 +2603,7 @@
          "Dependencies" : [
             "epp-18"
          ],
-         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-16`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently secure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer.\n\n**TODO: make implicit info explicit**\nOnce the gaining registrar has also received a message on the queue, the\nclient will confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n\n**TODO: check current tooling to see how waiting for transfers is handled**\n\n**TODO: add transfer reject request?**\n",
-         "Input-Parameters" : [
-            "epp.transferClid",
-            "epp.transferPwd"
-         ],
+         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-16`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently\nsecure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer.\n\n**TODO: make implicit info explicit**\nOnce the gaining registrar has also received a message on the queue, the\nclient will confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n\n**TODO: check current tooling to see how waiting for transfers is handled**\n\n**TODO: add transfer reject request?**\n",
          "Summary" : "domain <transfer> command test"
       },
       "epp-20" : {
@@ -2670,7 +2678,7 @@
             "epp-16",
             "epp-11"
          ],
-         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-16` and `epp-11` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on the\ndate specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
+         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-16` and `epp-11` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on\nthe date specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
          "Input-Parameters" : [
             "integration.rdeSFTPHostname",
             "integration.rdeSFTPDirectory",
@@ -2686,7 +2694,7 @@
       },
       "minimumRPMs-01" : {
          "Dependencies" : null,
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na 1000 or 1001 result code, however, if the client receives a 2302 \"object\nexists\" result code, it will retry with a different domain name.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with a\n1000 or 1001 result code.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\n**TODO: test create with revoked certificate**\n**TODO: test create with revoked SMD**\n\nIf the server supports both modes, then both of the above tests will be\nperformed.\n\n**TODO: merge info case below**\n",
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na 1000 or 1001 result code, however, if the client receives a 2302 \"object\nexists\" result code, it will retry with a different domain name.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na 1000 or 1001 result code.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\n**TODO: test create with revoked certificate**\n**TODO: test create with revoked SMD**\n\nIf the server supports both modes, then both of the above tests will be\nperformed.\n\n**TODO: merge info case below**\n",
          "Summary" : "Sunrise domain/launch application <create> command test\n"
       },
       "minimumRPMs-02" : {
@@ -2914,18 +2922,23 @@
          "Summary" : "validate IDN table objects (if applicable)"
       },
       "rde-12" : {
-         "Description" : "NNDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe aName property of NNDN objects **MUST NOT** match the name property of\na domain object.\n",
-         "Input-Parameters" : null,
+         "Description" : "NNDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe `aName` property of NNDN objects **MUST NOT** match the `name`\nproperty of a domain object.\n",
          "Maturity" : "BETA",
          "Summary" : "validate NNDN objects"
       },
       "rde-13" : {
          "Description" : "The EPP Parameters object **MUST** match the `<greeting>` element returned\nby the EPP server.\n",
          "Input-Parameters" : [
-            "epp.serverIssuedClientCertificate"
+            "epp.hostName",
+            "epp.clid01",
+            "epp.pwd01",
+            "epp.serverIssuedClientCertificate01"
          ],
          "Maturity" : "BETA",
-         "Resources" : null,
+         "Resources" : [
+            "epp.clientCertificate",
+            "epp.clientCSR"
+         ],
          "Summary" : "validate EPP parameters object"
       },
       "rde-14" : {
@@ -2970,7 +2983,7 @@
          "Dependencies" : [
             "srsgw-05"
          ],
-         "Description" : "This test confirms that transfer requests submitted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<update>` command to specify an authInfo code for the domain\ncreated in `srsgw-04`. The server **MUST** respond with a 1000 or 1001\nresponse.\n\nIt will then reconnect to the SRS Gateway EPP system using the credentials\nof a second registrar account and submit a `<transfer op=\"request\">`\ncommand using the authInfo command set for the domain in the first step.\nThe server **MUST** respond with a 1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response.\n\n* if the response to the `<transfer op=\"request\">` command was 1000, then\n  the `<domain:clID>` element **MUST** contain the value of the\n  `srsgw.eppTransferClid` input parameter.\n* if the response to the `<transfer op=\"request\">` command was 1001, then\n  the domain **MUST** have the `pendingTransfer` status.\n",
+         "Description" : "This test confirms that transfer requests submitted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<update>` command to specify an authInfo code for the domain\ncreated in `srsgw-04`. The server **MUST** respond with a 1000 or 1001\nresponse.\n\nIt will then reconnect to the SRS Gateway EPP system using the credentials\nof a second registrar account and submit a `<transfer op=\"request\">`\ncommand using the authInfo command set for the domain in the first step.\nThe server **MUST** respond with a 1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response.\n\n* if the response to the `<transfer op=\"request\">` command was 1000, then\n  the `<domain:clID>` element **MUST** contain the value of the\n  `srsgw.eppClid01` input parameter.\n* if the response to the `<transfer op=\"request\">` command was 1001, then\n  the domain **MUST** have the `pendingTransfer` status.\n",
          "Maturity" : "BETA",
          "Summary" : "Domain <transfer> synchronisation"
       },
@@ -2978,7 +2991,7 @@
          "Dependencies" : [
             "srsgw-06"
          ],
-         "Description" : "This test confirms that transfer request approvals submitted in the SRS\nGateway EPP system are correctly synchronized with the primary registry\nsystem.\n\nIf the response to the `<transfer op=\"request\">` command performed in\n`srsgw-07` was 1000, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<transfer op=\"approve\">` command for the domain for which a\ntransfer was requested in `srsgw-04`. The server **MUST** respond with a\n1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response. The `<domain:clID>` element **MUST** contain the value of\nthe  `srsgw.eppTransferClid` input parameter.\n",
+         "Description" : "This test confirms that transfer request approvals submitted in the SRS\nGateway EPP system are correctly synchronized with the primary registry\nsystem.\n\nIf the response to the `<transfer op=\"request\">` command performed in\n`srsgw-07` was 1000, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<transfer op=\"approve\">` command for the domain for which a\ntransfer was requested in `srsgw-04`. The server **MUST** respond with a\n1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response. The `<domain:clID>` element **MUST** contain the value of\nthe  `srsgw.eppClid01` input parameter.\n",
          "Maturity" : "BETA",
          "Summary" : "Domain <transfer> approval synchronisation"
       },
@@ -2986,7 +2999,7 @@
          "Dependencies" : [
             "srsgw-07"
          ],
-         "Description" : "This test confirms that domain objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate using\nthe credentials provided in `epp.transferClid` and `epp.transferPwd`, and\nsubmit a `<delete>` command for the domain transferred in `srsgw-07`.\nIf the value of the `general.gracePeriodsSupported` input parameter is\n`false`, the server **MUST** respond with a 1000 response. Otherwise it\n**MUST** respond with a 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\n\n* if `general.gracePeriodsSupported` is false, the server **MUST**\n  respond to the `<info>` command with a 2303 (\"object does not exist\")\n  result code.\n* If `general.gracePeriodsSupported` is true, the domain object **MUST**\n  have the `pendingDelete` status and have an RGP status of\n  `pendingDeleteRestorable`.\n",
+         "Description" : "This test confirms that domain objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate using\nthe credentials provided in `epp.clid02` and `epp.pwd02`, and\nsubmit a `<delete>` command for the domain transferred in `srsgw-07`.\nIf the value of the `general.gracePeriodsSupported` input parameter is\n`false`, the server **MUST** respond with a 1000 response. Otherwise it\n**MUST** respond with a 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\n\n* if `general.gracePeriodsSupported` is false, the server **MUST**\n  respond to the `<info>` command with a 2303 (\"object does not exist\")\n  result code.\n* If `general.gracePeriodsSupported` is true, the domain object **MUST**\n  have the `pendingDelete` status and have an RGP status of\n  `pendingDeleteRestorable`.\n",
          "Maturity" : "BETA",
          "Summary" : "Domain <delete> synchronisation"
       },
@@ -3159,12 +3172,12 @@
          "Description" : "This test suite verifies an RSP's support for the minimum Rights\nProtection Mechanisms (RPMs), and the Launch Extension (RFC 8334).\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
          "Input-Parameters" : [
             "epp.hostName",
-            "epp.serverIssuedClientCertificate",
-            "epp.clid",
-            "epp.pwd",
-            "epp.transferClid",
-            "epp.transferPwd",
-            "epp.serverIssuedClientCertificate",
+            "epp.serverIssuedClientCertificate01",
+            "epp.clid01",
+            "epp.pwd01",
+            "epp.clid02",
+            "epp.pwd02",
+            "epp.serverIssuedClientCertificate02",
             "minimumRPMS.sunriseModels",
             "minimumRPMS.sunriseTLD",
             "minimumRPMS.claimsTLD"
@@ -3208,11 +3221,14 @@
          "Input-Parameters" : [
             "general.gracePeriodsSupported",
             "general.minimalPublicDataSet",
-            "epp.clid",
-            "epp.pwd",
+            "epp.clid01",
+            "epp.pwd01",
+            "epp.serverIssuedClientCertificate01",
+            "epp.clid02",
+            "epp.pwd02",
+            "epp.serverIssuedClientCertificate02",
             "epp.hostModel",
-            "epp.hostName",
-            "epp.serverIssuedClientCertificate"
+            "epp.hostName"
          ],
          "Name" : "Extensible Provisioning Protocol (EPP)",
          "Order" : "4",
@@ -3227,11 +3243,12 @@
          "Description" : "The RDE test suite validates the IDN table(s) for a TLD or RSP, including\ncompliance with specifications for variant labels at the top- or second-\nlevel, and conformance with the IDN Guidelines.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
          "Input-Parameters" : [
             "epp.hostName",
-            "epp.serverIssuedClientCertificate",
-            "epp.clid",
-            "epp.pwd",
-            "epp.transferClid",
-            "epp.transferPwd"
+            "epp.clid01",
+            "epp.pwd01",
+            "epp.serverIssuedClientCertificate01",
+            "epp.serverIssuedClientCertificate02",
+            "epp.clid02",
+            "epp.pwd02"
          ],
          "Name" : "Internationalized Domain Names (IDN)",
          "Order" : "6",
@@ -3275,18 +3292,19 @@
          "Description" : "The SRS Gateway test suite validates the conformance of the Gateway\nregistry infrastructure of a TLD or RSP, and the synchronisation between\nprimary and gateway systems.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
          "Input-Parameters" : [
             "epp.hostName",
-            "epp.serverIssuedClientCertificate",
-            "epp.clid",
-            "epp.pwd",
-            "epp.transferClid",
-            "epp.transferPwd",
-            "epp.serverIssuedClientCertificate",
+            "epp.clid01",
+            "epp.pwd01",
+            "epp.serverIssuedClientCertificate01",
+            "epp.clid02",
+            "epp.pwd02",
+            "epp.serverIssuedClientCertificate02",
             "srsgw.eppHostName",
-            "srsgw.serverIssuedClientCertificate",
-            "srsgw.eppClid",
-            "srsgw.eppPwd",
-            "srsgw.eppTransferClid",
-            "srsgw.eppTransferPwd",
+            "srsgw.serverIssuedClientCertificate01",
+            "srsgw.eppClid01",
+            "srsgw.eppPwd01",
+            "srsgw.eppClid02",
+            "srsgw.eppPwd02",
+            "srsgw.serverIssuedClientCertificate02",
             "srsgw.rdapBaseURLs",
             "rdap.baseURLs"
          ],
@@ -3300,5 +3318,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.186"
+   "Version" : "3.0.187"
 }
