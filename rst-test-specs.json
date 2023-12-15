@@ -2419,9 +2419,6 @@
             "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
             "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"
          ],
-         "Input-Parameters" : [
-            "epp.registeredNames"
-         ],
          "Summary" : "domain <check> command test"
       },
       "epp-05" : {
@@ -2560,9 +2557,6 @@
             "epp-13"
          ],
          "Description" : "This tests verifies the server's support for host rename operations.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected. The domain name(s) provided in the\n  `epp.registeredNames` parameter will be used for this test.\n* an `<update>` command which places the object within a domain sponsored\n  by the test client is accepted. **TODO: what will the parent domain\n  be?**\n\nThe client will then perform `<info>` commands on the objects successfully\nupdated, to confirm that the server has correctly stored the updated\nvalues.\n",
-         "Input-Parameters" : [
-            "epp.registeredNames"
-         ],
          "Summary" : "host rename test (if applicable)"
       },
       "epp-15" : {
@@ -3228,7 +3222,8 @@
             "epp.pwd02",
             "epp.serverIssuedClientCertificate02",
             "epp.hostModel",
-            "epp.hostName"
+            "epp.hostName",
+            "epp.registeredNames"
          ],
          "Name" : "Extensible Provisioning Protocol (EPP)",
          "Order" : "4",
@@ -3318,5 +3313,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.187"
+   "Version" : "3.0.188"
 }

@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.187
+Version: 3.0.188
 Last-Updated: 2023-12-15
 Contact:
   Name: GDS Technical Services
@@ -538,6 +538,7 @@ Test-Suites:
       - epp.serverIssuedClientCertificate02
       - epp.hostModel
       - epp.hostName
+      - epp.registeredNames
     Resources:
       - epp.clientACL
       - epp.clientCSR
@@ -4582,8 +4583,6 @@ Test-Cases:
       specified in RFC 1123 (this test case does not consider IDN names).
 
       These checks will be carried out for each TLD in the TLD set.
-    Input-Parameters:
-      - epp.registeredNames
     Dependencies:
       - epp-03
     Errors:
@@ -4887,8 +4886,6 @@ Test-Cases:
       The client will then perform `<info>` commands on the objects successfully
       updated, to confirm that the server has correctly stored the updated
       values.
-    Input-Parameters:
-      - epp.registeredNames
     Dependencies:
       - epp-13
 
