@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.188
-Last-Updated: 2023-12-15
+Version: 3.0.190
+Last-Updated: 2024-01-03
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -4338,14 +4338,14 @@ Test-Cases:
 
       The required properties are:
 
-        * `<domain:name>`
-        * `<domain:roid>` (which **MUST** have a repository ID registered with
-          IANA)
-        * at least one `<domain:status>` element
-        * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
-        * `<domain:clID>` (sponsoring registrar ID)
-        * `<domain:crDate>` (creation date)
-        * `<domain:exDate>` (expiry date)
+      * `<domain:name>`
+      * `<domain:roid>` (which **MUST** have a repository ID registered with
+        IANA)
+      * at least one `<domain:status>` element
+      * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
+      * `<domain:clID>` (sponsoring registrar ID)
+      * `<domain:crDate>` (creation date)
+      * `<domain:exDate>` (expiry date)
 
       Contact, host and registrar objects (including optional objects such as
       admin and tech contacts) which are referenced in domain objects **MUST**
@@ -4361,13 +4361,13 @@ Test-Cases:
 
       The required properties are:
 
-        * `<host:name>`
-        * `<host:roid>` (which **MUST** have a repository ID registered with
-          IANA)
-        * at least one `<domain:status>` element
-        * one or more `<addr>` elements (if the host name is subordinate to
-          the TLD)
-        * `<host:clID>` (sponsoring registrar ID)
+      * `<host:name>`
+      * `<host:roid>` (which **MUST** have a repository ID registered with
+        IANA)
+      * at least one `<domain:status>` element
+      * one or more `<addr>` elements (if the host name is subordinate to
+        the TLD)
+      * `<host:clID>` (sponsoring registrar ID)
 
       If the applicant uses the host attribute model, then this test will be
       skipped.
@@ -4382,20 +4382,20 @@ Test-Cases:
 
       The required properties are:
 
-        * `<contact:id>`
-        * `<contact:roid>` (which **MUST** have a repository ID registered with
-          IANA)
-        * at least one `<contact:status>` element
-        * 1-2 `<contact:postalInfo>` elements containing the following:
-            * a "type" attribute of "int" or "loc"
-            * `<contact:name>` element
-            * an `<contact:addr>` element containing the following:
-              * at least one 1 `<contact:street>` element
-              * `<contact:city>` element
-              * `<contact:cc>` element
-        * `<contact:voice>`
-        * `<contact:email>`
-        * `<contact:clID>` (sponsoring registrar ID)
+      * `<contact:id>`
+      * `<contact:roid>` (which **MUST** have a repository ID registered with
+        IANA)
+      * at least one `<contact:status>` element
+      * 1-2 `<contact:postalInfo>` elements containing the following:
+          * a "type" attribute of "int" or "loc"
+          * `<contact:name>` element
+          * an `<contact:addr>` element containing the following:
+            * at least one 1 `<contact:street>` element
+            * `<contact:city>` element
+            * `<contact:cc>` element
+      * `<contact:voice>`
+      * `<contact:email>`
+      * `<contact:clID>` (sponsoring registrar ID)
 
       If the applicant uses the "thin" registry model, then this test will be
       skipped.
@@ -4410,9 +4410,9 @@ Test-Cases:
 
       The required properties are:
 
-        * `<rdeRegistrar:id>`
-        * `<rdeRegistrar:name>`
-        * `<rdeRegistrar:gurid>` (IANA ID)
+      * `<rdeRegistrar:id>`
+      * `<rdeRegistrar:name>`
+      * `<rdeRegistrar:gurid>` (IANA ID)
     Input-Parameters:
   rde-11:
     Summary: validate IDN table objects (if applicable)
@@ -4571,13 +4571,13 @@ Test-Cases:
       the `avail` attribute of the `<domain:name>` elements in the server
       response, as follows:
 
-        * syntactically invalid domain name: `avail` attribute **MUST** be `0`
-          or `false`.
-        * valid but registered domain name: `avail` attribute **MUST** be `0` or
-          `false`.
-        * syntactically valid, unregistered domain name: `avail` attribute
-          **MUST** be `1` or `true`. The domain name will be generated using
-          random characters.
+      * syntactically invalid domain name: `avail` attribute **MUST** be `0`
+        or `false`.
+      * valid but registered domain name: `avail` attribute **MUST** be `0` or
+        `false`.
+      * syntactically valid, unregistered domain name: `avail` attribute
+        **MUST** be `1` or `true`. The domain name will be generated using
+        random characters.
 
       A "syntactically valid" domain name is one that complies with the format
       specified in RFC 1123 (this test case does not consider IDN names).
@@ -4859,56 +4859,17 @@ Test-Cases:
     Dependencies:
       - epp-11
   epp-14:
-    Summary: host rename test (if applicable)
-    Description: |
-      This tests verifies the server's support for host rename operations.
-
-      If the `epp.hostModel` input parameter is `attributes`, this test will
-      be skipped.
-
-      The client will perform `<update>` commands on the objects created during
-      `epp-11` and will confirm that the server correctly accepts or rejects the
-      commands, for example:
-
-      * an `<update>` command which specifies a syntatically invalid host name
-        is rejected;
-      * an `<update>` command which places the object out-of-bailiwick is
-        accepted;
-      * an `<update>` command which places the object within a non-existent
-        domain is rejected;
-      * an `<update>` command which places the object within a domain sponsored
-        by another registrar is rejected. The domain name(s) provided in the
-        `epp.registeredNames` parameter will be used for this test.
-      * an `<update>` command which places the object within a domain sponsored
-        by the test client is accepted. **TODO: what will the parent domain
-        be?**
-
-      The client will then perform `<info>` commands on the objects successfully
-      updated, to confirm that the server has correctly stored the updated
-      values.
-    Dependencies:
-      - epp-13
-
+    Summary: intentionally omitted
+    Description: intentionally omitted
   epp-15:
-    Summary: host <delete> command test (if applicable)
-    Description: |
-      This test will perform `<delete>` commands on the objects created during
-      `epp-11` and will confirm that the server accepts the `<delete>` command
-      with a `1xxx` response code.
-
-      If the `epp.hostModel` input parameter is `attributes`, this test will
-      be skipped.
-
-      **TODO: add check/info afterwards**
-    Input-Parameters:
-    Dependencies:
-      - epp-14
+    Summary: intentionally omitted
+    Description: intentionally omitted
   epp-16:
     Summary: domain <create> command test
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
       random ASCII domain names under each TLD in the TLD set. If the
-      `general.minimalPublicDataSet` input parameter is `false` then a contact
+      `general.minimalPublicDataSet` input parameter is `false`, then a contact
       object (containing pseudo-random contact information) will be created
       beforehand and used as the registrant. If the `epp.hostModel` parameter is
       `objects`, then two host objects with pseudo-random names will be created
@@ -4919,73 +4880,81 @@ Test-Cases:
       test certain aspects of the server's processing of those commands, for
       example:
 
-        * to confirm that the server does not accept invalid values for object
-          properties (such as domain name, registration period, registant ID,
-          nameservers, DS record parameters, etc) **TODO: what is "etc"?**
-          examples:
-            * invalid domain
-            * invalid period (1-10 years)
-            * non-existent registrant
-            * non-existent hosts
-            * invalid DS/keyData record parameters
-        * to confirm that the server does not accept commands which reference
-          non-existent host/contact objects
-        * to confirm the server supports all permitted client-assigned status
-          codes
-        * to confirm that the server rejects a `<create>` command which
-          specifies a registrant contact (where the
-          `general.minimalPublicDataSet` input parameter is `true`)
-        * to confirm that the server rejects a `<create>` command which does not
-          specify a registrant contact (where the
-          `general.minimalPublicDataSet`) input parameter is `false`
-        * to confirm that the server rejects a `<create>` command containing
-          host objects when the `epp.hostModel` parameter is `attributes`
-        * to confirm that the server rejects a `<create>` command containing
-          host attributes when the `epp.hostModel` parameter is `objects`
-        * to confirm that the the server which implements RFC 9154 accepts a
-          `<create>` command without an authInfo command.
+      * to confirm that the server does not accept invalid values for object
+        properties (such as domain name, registration period, registant ID,
+        nameservers, and DS record parameters). Examples:
+          * invalid domain
+          * invalid period (1-10 years)
+          * non-existent registrant
+          * non-existent hosts
+          * invalid DS/keyData record parameters
+      * to confirm that the server does not accept commands which reference
+        non-existent host/contact objects
+      * to confirm the server supports all permitted client-assigned status
+        codes
+      * to confirm that the server rejects a `<create>` command which
+        specifies a registrant contact (where the
+        `general.minimalPublicDataSet` input parameter is `true`)
+      * to confirm that the server rejects a `<create>` command which does not
+        specify a registrant contact (where the
+        `general.minimalPublicDataSet`) input parameter is `false`
+      * to confirm that the server rejects a `<create>` command containing
+        host objects when the `epp.hostModel` parameter is `attributes`
+      * to confirm that the server rejects a `<create>` command containing
+        host attributes when the `epp.hostModel` parameter is `objects`
+      * to confirm that the the server which implements RFC 9154 accepts a
+        `<create>` command without an authInfo command.
 
-        **TODO: add test case below to try to delete linked contact objects.**
+      Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
+      input parameters) will be used to create domains.
 
-        **TODO: merge with info case below**
+      Once the `<create>` commands have been processed, the client will then
+      perform `<info>` commands to confirm that:
+
+      * the `<roid>` element is valid and contains a repository ID registered
+        with IANA;
+      * the `<crDate>` and `<exDate>` elements are present and valid;
+      * the `<crID>` and `<clID>` elements match the client ID used to create
+        the domain.
+      * DNSSEC information provided in the `<create>` command is present and
+        correct.
     Input-Parameters:
       - epp.secDNSInterfaces
     Dependencies:
       - epp-03
   epp-17:
-    Summary: domain <info> command test
+    Summary: Registry object integrity test
     Description: |
-      This test performs a series of `<info>` commands on the domain objects
-      created in `epp-16`. This test checks that (a) the domain names are
-      present in the repository, and (b) that the expected object properties are
-      present and valid.
+      This test confirms that the EPP server will refuse a request to delete a
+      linked object.
 
-      The responses will confirm that:
+      If the `epp.hostModel` input parameter is `attributes`, **and** the
+      `general.minimalPublicDataSet` input parameter is `true`, then this test
+      will be skipped.
 
-        * the `<roid>` element is valid and contains a repository ID registered
-          with IANA;
-        * the `<crDate>` and `<exDate>` elements are present valid;
-        * the `<crID>` and `<clID>` elements match the client ID used to create
-          the domain.
-        * DNSSEC information provided in the `<create>` command is present and
-          correct.
-    Input-Parameters:
+      The client will submit `<delete>` commands for any contact and host
+      objects created during `epp-16`. The server **MUST** respond with a `2305`
+      "Object association prohibits operation" error.
     Dependencies:
       - epp-16
   epp-18:
     Summary: domain <update> command test
     Description: |
       This test will confirm that the client is able to perform an `<update>`
-      command on domain names, including:
+      command on the domain names created in `epp-16`, including:
 
-        * adding and removing client-assigned status codes
-        * adding and removing nameservers (whether objects or attributes)
-        * changing registrant object (if applicable)
-        * adding and remove DNSSEC information
+      * adding and removing client-assigned status codes
+      * adding and removing nameservers (whether objects or attributes)
+      * changing registrant object (if applicable)
+      * adding and remove DNSSEC information
 
-      **TODO: add test of update of another client's object**
+      The client will also confirm that it cannot perform an `<update>` command
+      on a domain sponsored by another registrar, and that the server responds
+      with a `2201` authorization error.
 
-      **TODO: add info afterwards**
+      Once the `<update>` commands have been processed, the client will then
+      perform `<info>` commands to confirm that the changes have been correctly
+      stored by the server.
     Input-Parameters:
     Dependencies:
       - epp-17
@@ -4994,14 +4963,16 @@ Test-Cases:
     Description: |
       This test will confirm that the client is able to renew domain names.
 
-        * Following a succesful `<renew>` command, the expiry date of the domain
-          **MUST** have been increased by the period specified by the client;
-        * Where a server supports RFC 3915, the domain **MUST** have an RGP
-          status of `renewPeriod`;
-        * The server **MUST** reject a `<renew>` command if it would result in
-          the expiry date being more than 10 years into the future.
+      * Following a succesful `<renew>` command, the expiry date of the domain
+        **MUST** have been increased by the period specified by the client;
+      * Where a server supports RFC 3915, the domain **MUST** have an RGP
+        status of `renewPeriod`;
+      * The server **MUST** reject a `<renew>` command if it would result in
+        the expiry date being more than 10 years into the future.
 
-      **TODO: explicit info after renew**
+      The client will issue the `<renew>` commands and then perform `<info>`
+      commands to ensure that the expiry date and RGP status of the domain are
+      set correctly.
     Input-Parameters:
     Dependencies:
       - epp-16
@@ -5029,39 +5000,57 @@ Test-Cases:
       * the server accepts a `<transfer>` command with a valid authInfo code
         and period.
 
+      The client will use an `<info>` command to ensure that the
+      `pendingTransfer` status code is added to the domain after a successul
+      transfer request.
+
       Once the transfer request has been accepted, the sponsoring client will
       wait for a message to be received on the server's message queue, and will
       then approve the transfer.
 
-      **TODO: make implicit info explicit**
       Once the gaining registrar has also received a message on the queue, the
-      client will confirm that:
+      client will use an `<info>` command to confirm that:
 
       * the domain is now under the sponsorship of the gaining registrar
       * the authInfo code has been reset by the server (if the server supports
         RFC 9154).
-
-      **TODO: check current tooling to see how waiting for transfers is handled**
-
-      **TODO: add transfer reject request?**
     Dependencies:
       - epp-18
   epp-20:
+    Summary: domain <transfer> rejection test
+    Description:
+      This test confirms that the server behaves correctly if the sponsoring
+      registrar of a domain rejects a transfer request.
+
+      The test procedure matches that of `epp-19`, but the transfer request will
+      be rejected rather than approved. An `<info>` command will be used to
+      confirm that the domain name remains under the sponsorship of the original
+      registrar.
+    Dependencies:
+      - epp-18
+    
+  epp-21:
     Summary: domain <delete> command test
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-16` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
 
-      **TODO: add check afterwards**
-    Input-Parameters:
+      Once the `<delete>` commands have been processed, the client will perform
+      `<info>` commands on the deleted to object to confirm that:
+
+      * if the server responded to the `<delete>` command with a `1000`
+        response, then the domain no longer exists
+      * if the server responded to the `<delete>` command with a `1001`
+        response, then the domain has the `pendingDelete` status and the
+        `redemptionPeriod` RGP status.
     Dependencies:
       - epp-19
-  epp-21:
+  epp-22:
     Summary: domain restore test (if applicable)
     Description: |
       This test will perform RGP restore operations on the objects deleted
-      during `epp-20`, in order to confirm the correct operation of the server's
+      during `epp-21`, in order to confirm the correct operation of the server's
       implementation of RFC 3915.
 
       If the value of the `general.gracePeriodsSupported` parameter is false,
@@ -5069,7 +5058,53 @@ Test-Cases:
     Input-Parameters:
       - epp.restoreReportRequired
     Dependencies:
-      - epp-20
+      - epp-21
+
+  epp-23:
+    Summary: host rename test (if applicable)
+    Description: |
+      This tests verifies the server's support for host rename operations.
+
+      If the `epp.hostModel` input parameter is `attributes`, this test will
+      be skipped.
+
+      The client will perform `<update>` commands on the objects created during
+      `epp-11` and will confirm that the server correctly accepts or rejects the
+      commands, for example:
+
+      * an `<update>` command which specifies a syntatically invalid host name
+        is rejected;
+      * an `<update>` command which places the object out-of-bailiwick is
+        accepted;
+      * an `<update>` command which places the object within a non-existent
+        domain is rejected;
+      * an `<update>` command which places the object within a domain sponsored
+        by another registrar is rejected. The domain name(s) provided in the
+        `epp.registeredNames` parameter will be used for this test.
+      * an `<update>` command which places the object within a domain sponsored
+        by the test client is accepted. A domain created during the `epp-13`
+        test case will be used as the new parent domain.
+
+      The client will then perform `<info>` commands on the objects successfully
+      updated, to confirm that the server has correctly stored the updated
+      values.
+    Dependencies:
+      - epp-13
+  epp-24:
+    Summary: host <delete> command test (if applicable)
+    Description: |
+      This test will perform `<delete>` commands on the objects created during
+      `epp-11` and will confirm that the server accepts the `<delete>` command
+      with a `1xxx` response code.
+
+      Once the `<delete>` commands have been submitted, if a `1000` response was
+      received from the server, the client will perform `<check>` and `<info>`
+      commands to confirm that the objects have been deleted.
+
+      If the `epp.hostModel` input parameter is `attributes`, this test will
+      be skipped.
+    Dependencies:
+      - epp-23
 
   minimumRPMs-01:
     Summary: |
