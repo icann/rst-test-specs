@@ -1,0 +1,78 @@
+integration-01:
+  Summary: EPP -> RDAP Integration Test
+  Maturity: BETA
+  Description: |
+    This test confirms that the EPP and RDAP systems are properly integrated,
+    that is, that transform commands performed on objects in the EPP system
+    are reflected in the RDAP system within the Service Level Requirement of
+    the SLA.
+
+    The test system will perform RDAP queries to confirm that the RDAP server
+    provides responses for the domain and host objects created in `epp-16` and
+    `epp-11` (if applicable). The RDAP server **MUST** provide a 200 response
+    within 1 hour of the object's `<crDate>` element.
+  Input-Parameters:
+    - rdap.baseURLs
+  Dependencies:
+    - epp-16
+    - epp-11
+integration-02:
+  Summary: EPP -> DNS Integration Test
+  Maturity: BETA
+  Description: |
+    This test confirms that the EPP and DNS systems are properly integrated,
+    that is, that transform commands performed on objects in the EPP system
+    are reflected in the RDAP system within the Service Level Requirement of
+    the SLA.
+
+    The test system will perform DNS queries to confirm that the DNS servers
+    provides responses for the domain names created in `epp-16`. All DNS
+    servers **MUST** provide the correct DNS response within 1 hour of the
+    object's `<crDate>` element.
+  Input-Parameters:
+    - dns.nameservers
+  Dependencies:
+    - epp-16
+integration-03:
+  Summary: EPP -> RDE Integration Test
+  Maturity: BETA
+  Description: |
+    This test confirms that the EPP and RDE systems are properly integrated,
+    that is, that objects created in the EPP system are reflected in a valid
+    RDE deposit file within the Service Level Requirement of the SLA.
+
+    The test system will periodically connect to the SFTP server specified by
+    the `integration.rdeSFTPHostname` input parameter, using the username
+    specified in the `integration.rdeSFTPUsername` input parameter and the SSH
+    key in the `integration.rdeSFTPPublicKey` resource, and look for .ryde
+    files in the directory specified by the `integration.rdeSFTPDirectory`
+    input parameter. Note that operators **MUST** ensure that the IP addresses
+    listed in the `integration.rdeSFTPACL` resource have been added to the
+    Access Control List for the SFTP server (if any).
+
+    All objects created in the `epp-16` and `epp-11` (if applicable) tests
+    **MUST** be found within a valid RDE deposit file (that is, the deposit
+    passes all the tests in the RDE test suite) within 24 hours of each
+    object's `<crDate>` element.
+
+    Furthermore, for each deposit found in the directory, the corresponding
+    RDE report (as described in [Section 2.1 of
+    draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))
+    **MUST** be recieved on the test RRI environment before 23:59:59 UTC on
+    the date specified in the Watermark element of the deposit file.
+
+    To facilitate submission of RDE reports, the RRI test environment will be
+    configured to accept submissions for the TLDs associated with the test
+    from clients using the same TLSA DNS hostnames that are configured for the
+    test.
+  Resources:
+    - integration.rdeSFTPPublicKey
+    - integration.rdeSFTPACL
+  Input-Parameters:
+    - integration.rdeSFTPHostname
+    - integration.rdeSFTPDirectory
+    - integration.rdeSFTPUsername
+    - integration.rriACL
+  Dependencies:
+    - epp-16
+    - epp-11

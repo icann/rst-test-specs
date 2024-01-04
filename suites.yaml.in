@@ -1,0 +1,244 @@
+#defeval ZM_VERSION #exec cd ../../zonemaster/zonemaster ; git tag -l | tail -1
+#define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
+#define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
+#define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
+StandardDNS:
+  Order: 1
+  Name: Authoritative DNS Service
+  Description: |
+    The DNS test suite validates the authoritative DNS services for the TLD
+    or RSP.
+
+    The DNS test suite is derived from the test plans in version
+    **ZM_VERSION      ** of [Zonemaster](https://github.com/zonemaster). Test
+    case IDs from this document can be mapped to the Zonemaster test IDs by
+    removing the `dns-` prefix.
+
+    ZM_NOTE
+
+    # Testing of Anycast networks using multiple vantage points
+
+    In order to test anycast networks without requiring RSPs to provide the
+    unicast adresses of their nodes, tests carried out over the network will
+    be performed from multiple vantage points. All vantage points **MUST**
+    receive the same response in order for the tests to pass.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+
+    ZM_PASSFAIL
+  Test-Cases: ^dns-
+  Input-Parameters:
+    - dns.nameservers
+  Resources:
+
+StandardDNSSEC:
+  Order: 2
+  Name: DNS Security Extensions (DNSSEC)
+  Description: |
+    The DNSSEC test suite validates the DNSSEC signing service for the TLD or
+    RSP.
+
+    The DNSSEC test suite is derived from the test plans in version
+    **ZM_VERSION      ** of [Zonemaster](https://github.com/zonemaster). Test
+    case IDs from this document can be mapped to the Zonemaster test IDs by
+    removing the hyphen-minus.
+
+    ZM_NOTE
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+
+    ZM_PASSFAIL
+  Test-Cases: ^dnssec-
+  Input-Parameters:
+    - dns.nameservers
+    - dnssec.dsRecords
+  Resources:
+
+StandardRDAP:
+  Order: 3
+  Name: Registration Data Access Protocol (RDAP)
+  Description: |
+    The RDAP test suite validates the RDAP service of the TLD or RSP.
+
+    The RDAP test suite is derived from the test specification of the [RDAP
+    Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
+    As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
+    IDs in this document by removing the `rdap-NN-` prefix.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^rdap-
+  Input-Parameters:
+    - rdap.baseURLs
+    - rdap.testDomains
+    - rdap.testEntities
+    - rdap.testNameservers
+  Resources:
+
+StandardEPP:
+  Order: 4
+  Name: Extensible Provisioning Protocol (EPP)
+  Description: |
+    The EPP test suite validates the EPP service of the TLD or RSP. It
+    verifies that the EPP server properly implements the query and transform
+    commands specified for domain names (and optionally host and contact
+    objects) and the mandatory extensions.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^epp-
+  Input-Parameters:
+    - general.gracePeriodsSupported
+    - general.minimalPublicDataSet
+    - epp.clid01
+    - epp.pwd01
+    - epp.serverIssuedClientCertificate01
+    - epp.clid02
+    - epp.pwd02
+    - epp.serverIssuedClientCertificate02
+    - epp.hostModel
+    - epp.hostName
+    - epp.registeredNames
+  Resources:
+    - epp.clientACL
+    - epp.clientCSR
+    - epp.clientCertificate
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+
+StandardRDE:
+  Order: 5
+  Name: Registry Data Escrow (RDE)
+  Description: |
+    The RDE test suite validates Registry Data Escrow deposits generated for
+    the TLD or RSP. These deposits **MUST** comply with the specifications in
+    the Registry Agreement and with RFC 8909 and RFC 9022.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^rde-
+  Input-Parameters:
+    - rde.depositFile
+
+StandardIDN:
+  Order: 6
+  Name: Internationalized Domain Names (IDN)
+  Description: |
+    The RDE test suite validates the IDN table(s) for a TLD or RSP, including
+    compliance with specifications for variant labels at the top- or second-
+    level, and conformance with the IDN Guidelines.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^idn-
+  Input-Parameters:
+    - epp.hostName
+    - epp.clid01
+    - epp.pwd01
+    - epp.serverIssuedClientCertificate01
+    - epp.serverIssuedClientCertificate02
+    - epp.clid02
+    - epp.pwd02
+  Resources:
+    - epp.clientACL
+    - epp.clientCSR
+    - epp.clientCertificate
+
+StandardSRSGateway:
+  Order: 7
+  Name: SRS Gateway
+  Description: |
+    The SRS Gateway test suite validates the conformance of the Gateway
+    registry infrastructure of a TLD or RSP, and the synchronisation between
+    primary and gateway systems.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^srsgw-
+  Input-Parameters:
+    - epp.hostName
+    - epp.clid01
+    - epp.pwd01
+    - epp.serverIssuedClientCertificate01
+    - epp.clid02
+    - epp.pwd02
+    - epp.serverIssuedClientCertificate02
+    - srsgw.eppHostName
+    - srsgw.serverIssuedClientCertificate01
+    - srsgw.eppClid01
+    - srsgw.eppPwd01
+    - srsgw.eppClid02
+    - srsgw.eppPwd02
+    - srsgw.serverIssuedClientCertificate02
+    - srsgw.rdapBaseURLs
+    - rdap.baseURLs
+  Resources:
+    - epp.clientACL
+    - epp.clientCSR
+    - epp.clientCertificate
+
+DNSSECOperations:
+  Order: 8
+  Name: DNSSEC Operations
+  Description: |
+    This test suite verifies the ability of an RSP to carry out standard
+    DNSSEC operational procedures while maintaining a chain of trust to the
+    parent zone.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^dnssecOps
+  Resources:
+
+MinimumRPMs:
+  Order: 9
+  Name: Minimum Rights Protection Mechanisms (RPMs)
+  Description: |
+    This test suite verifies an RSP's support for the minimum Rights
+    Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334).
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^minimumRPMs-
+  Input-Parameters:
+    - epp.hostName
+    - epp.serverIssuedClientCertificate01
+    - epp.clid01
+    - epp.pwd01
+    - epp.clid02
+    - epp.pwd02
+    - epp.serverIssuedClientCertificate02
+    - minimumRPMS.sunriseModels
+    - minimumRPMS.sunriseTLD
+    - minimumRPMS.claimsTLD
+
+StandardIntegrationTest:
+  Order: 10
+  Name: Standard Integration Test
+  Description: |
+    This test suite verifies that the critical registry services of the TLD
+    are properly integrated and functioning within the requirements of the
+    Service Level Agreement.
+
+    # Pass/fail criteria
+
+    TS_PASSFAIL
+  Test-Cases: ^integration-
+  Resources:

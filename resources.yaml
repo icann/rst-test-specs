@@ -1,0 +1,42 @@
+rde.encryptionKey:
+  Description: |
+    RDE deposit files **MUST** be encrypted using OpenPGP (RFC 4880). The PGP
+    key that **MUST** be used to encrypt the escrow deposit file may be found
+    at this URL.
+  URL: https://rst.icann.org/v2/resources/rde.encryptionKey.asc
+epp.clientCertificate:
+  Description: |
+    RFC 5734 requires servers to perform authentication of clients by means of
+    a client certificate. Operators **MUST** configure their systems to permit
+    the test client to connect using the certificate found at this URL.
+  URL: https://rst.icann.org/v2/resources/epp.clientCertificate.pem
+epp.clientCSR:
+  Description: |
+    For servers that operate a private CA, this CSR may be used to issue a
+    client certificate. This certificate must then be provided in the
+    `epp.clientCertificate` input parameter.
+epp.clientACL:
+  Description: |
+    A list of IPv4 and IPv6 address(es) from which client connections to the
+    operator's EPP server will be made. The list is a plain text file with
+    each IP address on a separate line.
+  URL: https://rst.icann.org/v2/resources/epp.clientACL.txt
+integration.rdeSFTPPublicKey:
+  Description: |
+    The SSH public key that will be used to authenticate connections to the
+    operator's SFTP server.
+  URL: https://rst.icann.org/v2/resources/integration.rdeSFTPPublicKey.pem
+integration.rdeSFTPACL:
+  Description: |
+    A list of IPv4 and IPv6 address(es) from which client connections to the
+    operator's SFTP server will be made. The list is a plain text file with
+    each IP address on a separate line.
+  URL: https://rst.icann.org/v2/resources/integration.rdeSFTPACL.txt
+epp.tlsCertificateStore:
+  Description: |
+    A PEM-formatted file containing the CA certificates trusted by Mozilla.
+    For more information, see <https://curl.se/docs/caextract.html>.
+
+    EPP servers **MUST** use a certificate that has a chain of trust to one of
+    the CAs present in this file.
+  URL: https://rst.icann.org/v2/resources/epp.tlsCertificateStore.pem

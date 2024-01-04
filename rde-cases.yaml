@@ -1,0 +1,191 @@
+rde-01:
+  Summary: validate deposit filename format
+  Maturity: BETA
+  Description: |
+    * The deposit filename **MUST** conform to the format specified in the RA.
+    * The type of the deposit **MUST** be `FULL`.
+    * The TLD in the filename **MUST** be present in the list of TLDs
+      associated with the test.
+  Input-Parameters:
+rde-02:
+  Summary: validate signature over deposit file
+  Maturity: BETA
+  Description: |
+    The PGP signature **MUST** be valid for the deposit file and the RSP's
+    key.
+  Input-Parameters:
+    - rde.publicKey
+    - rde.signatureFile
+rde-03:
+  Summary: decrypt deposit file(s)
+  Maturity: BETA
+  Description: |
+    It **MUST** be possible to decrypt the deposit file using the RST key. The
+    PGP public key for which the deposit **MUST** be encrypted may be found in
+    the URL specified by the `rde.encryptionKey` resource.
+  Input-Parameters:
+  Resources:
+    - rde.encryptionKey
+rde-04:
+  Summary: validate XML/CSV
+  Maturity: BETA
+  Description: |
+    * XML deposit files **MUST** be well-formed and validate against the XML
+      schema.
+    * CSV files **MUST** conform to RFC 4180.
+    * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
+      contents.
+  Input-Parameters:
+rde-05:
+  Summary: validate object types
+  Maturity: BETA
+  Description: |
+    The header object **MUST** reference the correct object XML namespace
+    URIs.
+
+    The correct URIs is determined by the `general.minimalPublicDataSet` and
+    `epp.hostModel` input parameters.
+
+    All expected URIs **MUST** be present in the header, and the header **MUST
+    NOT** contain any unexpected URIs.
+  Input-Parameters:
+rde-06:
+  Summary: validate object counts
+  Maturity: BETA
+  Description: |
+    The number of each type of object **MUST** match the number of objects
+    actually present in the deposit file.
+  Input-Parameters:
+rde-07:
+  Summary: validate domain objects
+  Maturity: BETA
+  Description: |
+    Domain objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    The required properties are:
+
+    * `<domain:name>`
+    * `<domain:roid>` (which **MUST** have a repository ID registered with
+      IANA)
+    * at least one `<domain:status>` element
+    * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
+    * `<domain:clID>` (sponsoring registrar ID)
+    * `<domain:crDate>` (creation date)
+    * `<domain:exDate>` (expiry date)
+
+    Contact, host and registrar objects (including optional objects such as
+    admin and tech contacts) which are referenced in domain objects **MUST**
+    be present in the deposit.
+  Input-Parameters:
+rde-08:
+  Summary: validate host objects (if applicable)
+  Maturity: BETA
+  Description: |
+    Host objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    The required properties are:
+
+    * `<host:name>`
+    * `<host:roid>` (which **MUST** have a repository ID registered with
+      IANA)
+    * at least one `<domain:status>` element
+    * one or more `<addr>` elements (if the host name is subordinate to
+      the TLD)
+    * `<host:clID>` (sponsoring registrar ID)
+
+    If the applicant uses the host attribute model, then this test will be
+    skipped.
+  Input-Parameters:
+rde-09:
+  Summary: validate contact objects (if applicable)
+  Maturity: BETA
+  Description: |
+    Contact objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    The required properties are:
+
+    * `<contact:id>`
+    * `<contact:roid>` (which **MUST** have a repository ID registered with
+      IANA)
+    * at least one `<contact:status>` element
+    * 1-2 `<contact:postalInfo>` elements containing the following:
+        * a "type" attribute of "int" or "loc"
+        * `<contact:name>` element
+        * an `<contact:addr>` element containing the following:
+          * at least one 1 `<contact:street>` element
+          * `<contact:city>` element
+          * `<contact:cc>` element
+    * `<contact:voice>`
+    * `<contact:email>`
+    * `<contact:clID>` (sponsoring registrar ID)
+
+    If the applicant uses the "thin" registry model, then this test will be
+    skipped.
+  Input-Parameters:
+rde-10:
+  Summary: validate registrar objects
+  Maturity: BETA
+  Description: |
+    Registrar objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    The required properties are:
+
+    * `<rdeRegistrar:id>`
+    * `<rdeRegistrar:name>`
+    * `<rdeRegistrar:gurid>` (IANA ID)
+  Input-Parameters:
+rde-11:
+  Summary: validate IDN table objects (if applicable)
+  Maturity: BETA
+  Description: |
+    IDN table objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    All IDN table objects present in the deposit **MUST** correspond to IDN
+    tables approved for the TLD, and all approved tables **MUST** have a
+    corresponding object in the deposit.
+  Input-Parameters:
+rde-12:
+  Summary: validate NNDN objects
+  Maturity: BETA
+  Description: |
+    NNDN table objects (whether CSV or XML) **MUST** have the required object
+    properties, and the values of those object properties **MUST** be
+    well-formed.
+
+    The `aName` property of NNDN objects **MUST NOT** match the `name`
+    property of a domain object.
+rde-13:
+  Summary: validate EPP parameters object
+  Maturity: BETA
+  Description: |
+    The EPP Parameters object **MUST** match the `<greeting>` element returned
+    by the EPP server.
+  Resources:
+    - epp.clientCertificate
+    - epp.clientCSR
+  Input-Parameters:
+    - epp.hostName
+    - epp.clid01
+    - epp.pwd01
+    - epp.serverIssuedClientCertificate01
+rde-14:
+  Summary: validate policy object (if applicable)
+  Maturity: BETA
+  Description: |
+    The object policies included in the `<rdePolicy:policy>` object **MUST**
+    conform to the Registration Data Policy and the applicable data model.
+
+    * If the `general.minimalPublicDataSet` input parameter is `true`, then
+      contact objects **MUST NOT** be present in the deposit.
+    * If the `epp.hostModel` input parameter is `attributes`, then
+      host objects **MUST NOT** be present in the deposit.

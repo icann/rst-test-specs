@@ -1,0 +1,103 @@
+  minimumRPMs-01:
+    Summary: |
+      Sunrise domain/launch application <create> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Sunrise Create Form, as described in Section
+      3.3.1 of RFC 8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
+
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names and SMD files present in the TMCH test
+      environment.
+
+      If the server supports Start Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+      a 1000 or 1001 result code, however, if the client receives a 2302 "object
+      exists" result code, it will retry with a different domain name.
+
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server **MUST** reject.
+
+      If the server supports End Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+      a 1000 or 1001 result code.
+
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server **MUST** reject.
+
+      **TODO: test create with revoked certificate**
+      **TODO: test create with revoked SMD**
+
+      If the server supports both modes, then both of the above tests will be
+      performed.
+
+      **TODO: merge info case below**
+    Dependencies:
+  minimumRPMs-02:
+    Summary: Sunrise launch application <info> command test
+    Description: |
+      In this test, the client will perform `<info>` commands on the objects
+      created in `minimumRPMs-01` and will confirm that they have successfully
+      been created in the repository and have the correct object properties.
+
+      * a start-date sunrise `<create>` command **MUST** result in the creation
+        of a domain object;
+      * an end-date sunrise `<create>` command **MUST** result in the creation
+        of a launch application.
+    Dependencies:
+      - minimumRPMs-01
+  minimumRPMs-03:
+    Summary: Claims <check> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Claims Check Form, as described in Section
+      3.1.1 of RFC 8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
+
+      The client will connect to the EPP server using the provided credentials
+      and will then perform a series of `<check>` commands, using the Launch
+      extension to specify a value of `claims` for the `type` attribute of the
+      `<launch:check>` element and the `<launch:phase>` element. It will then
+      confirm that the server returns an appropriate
+      response:
+
+      * a `<check>` response for a domain that is present on the DNL contains
+        the correct `<launch:claimKey>` element;
+      * a `<check>` response for a domain that is NOT present on the DNL
+        does not contain a `<launch:claimKey>` element.
+    Dependencies:
+  minimumRPMs-05:
+    Summary: Trademark claims domain <create> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Claims Create Form, as described in Section
+      3.3.2 of RFC 8334.
+
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
+
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names present in the TMCH test environment.
+
+      The domain name will be constructed using a label from the DNL, and the
+      `minimumRPMS.claimsTLD` input parameter. The client will perform a
+      Trademark Claims `<check>` command beforehand to obtain the claim key, and
+      will then synthesise a trademark claims acknowledgement. The server
+      **MUST** respond with a 1000 or 10001 response.
+
+      The client will also perform `<create>` command using an invalid
+      claims acknowledgements **TODO: (invalid claim key, expiry date, see RFC
+      9361)**. The server **MUST** respond with a 2xxx error.
+
+      **TODO: do info afterwards**
+    Dependencies:

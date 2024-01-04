@@ -1,0 +1,9 @@
+  DNSSEC_DNS_QUERY_ERROR:
+    Severity: ERROR
+    Description: An error occurred while performing DNS query(s).
+  DNSSEC_INVALID_SIGNING_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used to sign the zone.
+  DNSSEC_INVALID_DIGEST_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used in the provided DS record(s).

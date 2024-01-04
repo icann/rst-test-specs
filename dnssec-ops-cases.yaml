@@ -1,0 +1,79 @@
+dnssecOps01-ZSKRollover:
+  Summary: ZSK rollover
+  Description: |
+    This test case verifies the RSP's ability to perform a ZSK rollover (as
+    described in [Section 4.1.1 of
+    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1) for
+    a zone.
+
+    If the value of the `dnssecOps.csk` input parameter is `true`, then this
+    test will be skipped.
+
+    The system will monitor the SOA record in the domain name specified in the
+    `dnssec.zskRolloverZone` input parameter. The domain may be present
+    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+    **MUST** have a secure chain of trust up to the root zone, so that it can
+    be validated using the root zone trust anchor.
+
+    During the test period (currently defined as 24 hours) the operator
+    **MUST** successfully carry out a ZSK rollover for the domain, where the
+    Zone Signing Key is replaced, without disrupting the chain of trust.
+
+    To simplify testing, applicants may wish to provision domain that is
+    configured with short TTLs and a short ZSK lifetime, so that a ZSK
+    rollover is guaranteed to occur within the 24 test period.
+  Input-Parameters:
+    - dnssecOps.csk
+    - dnssecOps.zskRolloverZone
+  Dependencies:
+dnssecOps02-KSKRollover:
+  Summary: KSK rollover
+  Description: |
+    This test case verifies the RSP's ability to perform a CSK/KSK rollover
+    (as described in [Sections 4.1.2 and 4.13 of
+    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
+    a zone.
+
+    The system will monitor the SOA record in the domain name specified in the
+    `dnssec.kskRolloverZone` input parameter. The domain may be present
+    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+    **MUST** have a secure chain of trust up to the root zone, so that it can
+    be validated using the root zone trust anchor.
+
+    During the test period (currently defined as 24 hours) the operator
+    **MUST** successfully carry out a KSK rollover for the domain, where the
+    Key Signing Key is replaced, and the DS record in the parent zone is
+    updated, without disrupting the chain of trust.
+  Input-Parameters:
+    - dnssecOps.kskRolloverZone
+  Dependencies:
+dnssecOps03-AlgorithmRollover:
+  Summary: algorithm rollover
+  Description: |
+    This test case verifies the RSP's ability to perform an algorithm rollover
+    (as described in [Section 4.1.4 of
+    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
+    a zone.
+
+    The system will monitor the SOA record in the domain name specified in the
+    `dnssec.algorithmRolloverZone` input parameter. The domain may be present
+    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
+    **MUST** have a secure chain of trust up to the root zone, so that it can
+    be validated using the root zone trust anchor.
+
+    During the test period (currently defined as 72 hours) the operator
+    **MUST** successfully carry out an algorithm rollover for the domain
+    (including an update to the DS record in the parent zone), where the
+    algorithm used to secure the domain is changed, without disrupting the
+    chain of trust.
+
+    Note that the specific algorithms being rolled to and from are not
+    significant (although they **MUST** be present in the IANA registry); it
+    is not required that the new algorithm be more "secure" than the original
+    algorithm; only that they are different. So a rollover from algorithm 13
+    (`ECDSAP256SHA256`) to algorithm 8 (`RSASHA256`) will be accepted as well
+    as a rollover from `RSASHA256` to `ECDSAP256SHA256`.
+  Input-Parameters:
+    - dnssecOps.algorithmRolloverZone
+  Dependencies:
+

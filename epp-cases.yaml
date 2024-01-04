@@ -1,0 +1,643 @@
+epp-01:
+  Summary: Service connectivity test
+  Description: |
+    This test confirms that the EPP service is reachable from the probe
+    servers.
+
+    1. At least one `A` record **MUST** be published in the DNS for the EPP
+       hostname, to allow IPv4-only hosts to connect to the EPP service.
+    2. At least one `AAAA` record **SHOULD** be published in the DNS for the
+       EPP hostname, to allow IPv6-only hosts to connect to the EPP service.
+    3. EPP is associated with TCP port 700. All IPv4/IPv6 addresses published
+       in the DNS for the EPP hostname **MUST** accept TCP connections on this
+       port. Since the EPP specification requires IP-based access control, the
+       RSP **MUST** configure their firewall to allow access from the IP
+       addresses listed in the `epp.clientACL` resource.
+    4. EPP uses TLS to secure the channel between client and server. All
+       service ports **MUST** support TLSv1.2 and optionally any subsequent
+       protocol published by the IETF.
+    5. TLSv1.1 and all previous versions have known security issues and **MUST
+       NOT** be supported by any service ports.
+    6. To ensure that the connection can be trusted, all service ports
+       **MUST** present a certificate issued by a trusted CA, such as those
+       supported by major browsers.
+    7. All TLS certificates **MUST NOT** have expired, and **MUST** be
+       presented wth any required intermediate certificates.
+    8. The EPP server name **MUST** match at least one `subjectAltName` field
+       in all presented certificates (either exact match or wildcard).
+    9. Service ports **MUST** use at least one of the ciphers recommended in
+       RFC 9325 (or any successor document).
+  Input-Parameters:
+  Resources:
+    - epp.tlsCertificateStore
+  Errors:
+    - EPP_MISSING_A_RECORDS
+    - EPP_MISSING_AAAA_RECORDS
+    - EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED
+    - EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED
+    - EPP_TLS_UNTRUSTED_CERTIFICATE
+    - EPP_TLS_EXPIRED_CERTIFICATE
+    - EPP_TLS_CERTIFICATE_CHAIN_MISSING
+    - EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
+    - EPP_TLS_BAD_CIPHER
+epp-02:
+  Summary: Protocol conformance test
+  Description: |
+    Once a connection is established, all service ports **MUST** send a
+    valid `<greeting>` frame to the client.
+
+    1. The `<svID>` element in the `<greeting>` **MUST** identify the EPP
+       server.
+    2. The `<svDate>` element in the `<greeting>` **MUST** specify a time
+       within 30 seconds of the current date and time as received from the NTP
+       network.
+    3. The `<version>` element in the <greeting> **MUST** be exactly `1.0`.
+    4. All `<lang>` element(s) in the `<greeting>` **MUST** contain valid
+       language codes. At least `en` **MUST** be included.
+    5. All `<objURI>` element(s) in the `<greeting>` **MUST** contain XML
+       namespace URIs that are appropriate. The only mandatory URI that
+       **MUST** be present is the domain namespace URI. The host and contact
+       namespace URIs may be required depending on the `epp.hostModel` and
+       `general.minimalPublicDataSet` parameters.
+    6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
+       namespace URIs that have been registered in the IANA registry, and that
+       the mandatory extensions are also included.
+    7. `<extURI>` elements containing the following XML namespaces **MUST** be
+       present in the `<greeting>`:
+         * `urn:ietf:params:xml:ns:secDNS-1.1`
+         * `urn:ietf:params:xml:ns:launch-1.0`
+         # these may become mandatory in the future:
+         # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
+         # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
+    8. If the `general.gracePeriodsSupported` input parameter is true, an
+       `<extURI>` element containing the XML namespace for the RGP extension
+       (RFC 3915) **MUST** be present in the `<greeting>`.
+  Input-Parameters:
+  Errors:
+    - EPP_NO_GREETING_RECEIVED
+    - EPP_GREETING_SVID_INVALID
+    - EPP_GREETING_SVDATE_INVALID
+    - EPP_GREETING_VERSION_INVALID
+    - EPP_GREETING_INVALID_LANG
+    - EPP_GREETING_UNEXPECTED_OBJURI
+    - EPP_GREETING_MISSING_OBJURI
+    - EPP_GREETING_UNEXPECTED_EXTURI
+    - EPP_GREETING_MISSING_EXTURI
+    - EPP_GREETING_RECOMMENDED_EXTENSION_MISSING
+  Input-Parameters:
+  Dependencies:
+epp-03:
+  Summary: Authentication test
+  Description: |
+    The EPP server **MUST** return a `1000` result in response to a `<login>`
+    command.
+
+    The client will use the object and extension XML namespaces from the
+    server's `<greeting>` as part of the `<login>` command.
+
+    If the server supports the Login Security Extension (see RFC 8807) then
+    this will be used by the client.
+  Input-Parameters:
+  Resources:
+  Errors:
+epp-04:
+  Summary: domain <check> command test
+  Description: |
+    The client will perform a series of `<check>` commands and will validate
+    the `avail` attribute of the `<domain:name>` elements in the server
+    response, as follows:
+
+    * syntactically invalid domain name: `avail` attribute **MUST** be `0`
+      or `false`.
+    * valid but registered domain name: `avail` attribute **MUST** be `0` or
+      `false`.
+    * syntactically valid, unregistered domain name: `avail` attribute
+      **MUST** be `1` or `true`. The domain name will be generated using
+      random characters.
+
+    A "syntactically valid" domain name is one that complies with the format
+    specified in RFC 1123 (this test case does not consider IDN names).
+
+    These checks will be carried out for each TLD in the TLD set.
+  Dependencies:
+    - epp-03
+  Errors:
+    - EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL
+    - EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL
+    - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
+epp-05:
+  Summary: host <check> command test (if applicable)
+  Description: |
+    If the EPP server supports host objects, this test will perform a series
+    of `<check>` commands and will validate the `avail` attribute of the
+    `<host:name>` elements in the server response, as follows:
+    * syntactically invalid hostname: `avail` attribute **MUST** be `0` or
+      `false`.
+    * valid but registered hostname: `avail` attribute **MUST** be `0` or
+      `false`.
+    * syntactically valid and unregistered hostname: `avail` attribute
+      **MUST** be `1` or `true`. The hostname will be generated using random
+      characters.
+
+    A "syntactically valid" hostname is one that complies with the format
+    specified in RFC 1123 (this test case does not consider IDN names).
+  Input-Parameters:
+    - epp.registeredNameservers
+  Dependencies:
+    - epp-04
+  Errors:
+    - EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL
+    - EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL
+    - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
+epp-06:
+  Summary: contact <check> command test (if applicable for the registry type)
+  Description: |
+    If the EPP server supports contact objects, this test will perform a
+    series of `<check>` commands and will validate the `avail` attribute of
+    the `<contact:id>` elements in the server response, as follows:
+    * syntactically invalid ID: `avail` attribute **MUST** be `0` or
+      `false`.
+    * valid but registered ID: `avail` attribute **MUST** be `0` or
+      `false`.
+    * valid and unregistered ID: `avail` attribute **MUST** be `1` or
+      `true`. The ID will be generated using random characters.
+  Input-Parameters:
+    - epp.registeredContacts
+  Dependencies:
+    - epp-05
+  Errors:
+    - EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL
+    - EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL
+    - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
+epp-07:
+  Summary: contact <create> command test (if applicable for the registry type)
+  Description: |
+    This test attempts to create a number of contact objects, and validates
+    the server's response. For example, the test will expect that the server
+    will reject a command that creates an object with missing or invalid
+    properties, but will accept a command to create an object with valid
+    properties. Property values will be randomly generated but will contain
+    realistic values. No personal information will be transmitted as part
+    of this test.
+
+    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    test will be skipped.
+
+    The test will confirm that the server checks and validates the values of
+    the following elements:
+
+    * `<contact:id>`
+    * `<contact:status>`
+    * `<contact:postalInfo>` element(s)
+    * `<contact:name>` element
+    * `<contact:cc>` element
+    * `<contact:voice>`
+    * `<contact:email>`
+
+    * The server **MUST NOT** accept a `<contact:id>` element that
+      contains a value that is not a valid `clIDType` value;
+    * The server **MUST NOT** accept a `<contact:status>` element that
+      contains a status code not defined in RFC 5733;
+    * The server **MUST NOT** accept a `<contact:postalInfo>` element that
+      contains a `type` attribute that is neither `int` nor `loc`;
+    * The server **MUST NOT** accept a `<contact:cc>` element that contains a
+      value that is not a valid ISO 3166-1 alpha-2 code;
+    * The server **MUST NOT** accept a `<contact:voice>` element that contains
+      a value that does not conform to the format described in Section 2.5 of
+      RFC5733;
+    * The server **MUST NOT** accept a `<contact:email>` element that contains
+      a value that does not conform to the format specified in RFC 5322.
+
+    Once objects have been created, the client will then perform `<info>`
+    commands to verify that the server has correctly stored the provided
+    values.
+  Dependencies:
+    - epp-06
+  Errors:
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE
+    - EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
+    - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+epp-08:
+  Summary: Contact object access control (if applicable)
+  Description: |
+    This test will confirm that EPP clients are unable to perform `<info>`
+    commands on objects that they do not sponsor.
+
+    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    test will be skipped.
+
+    The client will connect using a set of alternate credentials and will
+    submit `<info>` and `<update>` commands on the contact objects created in
+    `epp-08`. The server **MUST** respond with a 2201 "authorization error"
+    response.
+  Dependencies:
+    - epp-08
+  Errors:
+    - EPP_CONTACT_INFO_RESPONSE_NOT_2201
+    - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
+epp-09:
+  Summary: contact <update> command test (if applicable for the registry type)
+  Description: |
+    This test will perform `<update>` commands on the objects created during
+    `epp-07` and will confirm that the server correctly rejects invalid
+    commands (which would specify invalid property values) and accepts valid
+    commands.
+
+    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    test will be skipped.
+
+    The test will confirm that the server checks and validates `<update>`
+    commands which transform the values of the following elements:
+
+    * `<contact:status>`
+    * `<contact:postalInfo>` elements (both `int` and `loc`)
+        * `<contact:name>`
+        * `<contact:org>`
+        * `<contact:addr>` elements
+          * `<contact:street>` element(s)
+          * `<contact:city>` element
+          * `<contact:sp>` element
+          * `<contact:pc>` element
+          * `<contact:cc>` element
+    * `<contact:voice>`
+    * `<contact:email>`
+
+    Once objects have been updated, the client will then perform `<info>`
+    commands to verify that the server has correctly stored the provided
+    values.
+  Dependencies:
+    - epp-08
+  Errors:
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
+    - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+epp-10:
+  Summary: contact <delete> command test (if applicable for the registry type)
+  Description: |
+    This test will perform `<delete>` commands on the objects created during
+    `epp-24` and will confirm that the server accepts the `<delete>` command
+    with a `1xxx` response code.
+
+    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    test will be skipped.
+
+    Once the `<delete>` commands have been submitted, the client will perform
+    `<info>` commands to confirm that the objects have actually been removed
+    from the repository. If the response to the previous `<delete>` command
+    was 1001, this step will be skipped.
+  Input-Parameters:
+  Dependencies:
+    - epp-09
+  Errors:
+    - EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001
+    - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
+epp-11:
+  Summary: host <create> command test (if applicable)
+  Description: |
+    This test attempts to create a number of host objects, and validates
+    the server's response. For example, the test will expect that the server
+    will reject a command that creates an object with missing or invalid
+    properties, but will accept a command to create an object with valid
+    properties. Property values will be randomly generated but will contain
+    realistic values. No personal information will be transmitted as part
+    of this test.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The test will confirm that the server checks and validates the values of
+    the following elements:
+
+    * `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD
+      set)
+    * `<host:status>`
+    * `<host:addr>` elements (both IPv4 and IPv6)
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The client will then perform `<info>` commands on the objects successfully
+    created to confirm that the server has correctly stored the provided
+    values.
+epp-12:
+  Summary: host object access control (if applicable)
+  Description: |
+    This test will confirm that EPP clients are unable to perform `<info>`
+    commands on objects that they do not sponsor.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The client will connect using a set of alternate credentials and will
+    submit `<update>` commands on the contact objects created in `epp-11`. The
+    server **MUST** respond with a 2201 "authorization error" response.
+  Dependencies:
+    - epp-11
+epp-13:
+  Summary: host <update> command test (if applicable)
+  Description: |
+    This test will perform `<update>` commands on the objects created during
+    `epp-11` and will confirm that the server correctly rejects invalid
+    commands (which would specify invalid property values) and accepts valid
+    commands.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The test will confirm that the server checks and validates `<update>`
+    commands which transform the values of the following elements:
+
+    * `<host:status>`
+    * `<host:addr>` elements (both IPv4 and IPv6)
+
+    Note: the server's ability to support host renames is checked in a later
+    test.
+
+    The client will then perform `<info>` commands on the objects successfully
+    updated to confirm that the server has correctly stored the updated
+    values.
+  Dependencies:
+    - epp-11
+epp-14:
+  Summary: intentionally omitted
+  Description: intentionally omitted
+epp-15:
+  Summary: intentionally omitted
+  Description: intentionally omitted
+epp-16:
+  Summary: domain <create> command test
+  Description: |
+    This test performs a series domain `<create>` commands, using pseudo-
+    random ASCII domain names under each TLD in the TLD set. If the
+    `general.minimalPublicDataSet` input parameter is `false`, then a contact
+    object (containing pseudo-random contact information) will be created
+    beforehand and used as the registrant. If the `epp.hostModel` parameter is
+    `objects`, then two host objects with pseudo-random names will be created
+    and used as the nameservers (otherwise the names will be provided as
+    attributes).
+
+    The client will perform several `<create>` commands, each of which will
+    test certain aspects of the server's processing of those commands, for
+    example:
+
+    * to confirm that the server does not accept invalid values for object
+      properties (such as domain name, registration period, registant ID,
+      nameservers, and DS record parameters). Examples:
+        * invalid domain
+        * invalid period (1-10 years)
+        * non-existent registrant
+        * non-existent hosts
+        * invalid DS/keyData record parameters
+    * to confirm that the server does not accept commands which reference
+      non-existent host/contact objects
+    * to confirm the server supports all permitted client-assigned status
+      codes
+    * to confirm that the server rejects a `<create>` command which
+      specifies a registrant contact (where the
+      `general.minimalPublicDataSet` input parameter is `true`)
+    * to confirm that the server rejects a `<create>` command which does not
+      specify a registrant contact (where the
+      `general.minimalPublicDataSet`) input parameter is `false`
+    * to confirm that the server rejects a `<create>` command containing
+      host objects when the `epp.hostModel` parameter is `attributes`
+    * to confirm that the server rejects a `<create>` command containing
+      host attributes when the `epp.hostModel` parameter is `objects`
+    * to confirm that the the server which implements RFC 9154 accepts a
+      `<create>` command without an authInfo command.
+
+    Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
+    input parameters) will be used to create domains.
+
+    Once the `<create>` commands have been processed, the client will then
+    perform `<info>` commands to confirm that:
+
+    * the `<roid>` element is valid and contains a repository ID registered
+      with IANA;
+    * the `<crDate>` and `<exDate>` elements are present and valid;
+    * the `<crID>` and `<clID>` elements match the client ID used to create
+      the domain.
+    * DNSSEC information provided in the `<create>` command is present and
+      correct.
+  Input-Parameters:
+    - epp.secDNSInterfaces
+  Dependencies:
+    - epp-03
+epp-17:
+  Summary: Registry object integrity test
+  Description: |
+    This test confirms that the EPP server will refuse a request to delete a
+    linked object.
+
+    If the `epp.hostModel` input parameter is `attributes`, **and** the
+    `general.minimalPublicDataSet` input parameter is `true`, then this test
+    will be skipped.
+
+    The client will submit `<delete>` commands for any contact and host
+    objects created during `epp-16`. The server **MUST** respond with a `2305`
+    "Object association prohibits operation" error.
+  Dependencies:
+    - epp-16
+epp-18:
+  Summary: domain <update> command test
+  Description: |
+    This test will confirm that the client is able to perform an `<update>`
+    command on the domain names created in `epp-16`, including:
+
+    * adding and removing client-assigned status codes
+    * adding and removing nameservers (whether objects or attributes)
+    * changing registrant object (if applicable)
+    * adding and remove DNSSEC information
+
+    The client will also confirm that it cannot perform an `<update>` command
+    on a domain sponsored by another registrar, and that the server responds
+    with a `2201` authorization error.
+
+    Once the `<update>` commands have been processed, the client will then
+    perform `<info>` commands to confirm that the changes have been correctly
+    stored by the server.
+  Input-Parameters:
+  Dependencies:
+    - epp-17
+epp-18:
+  Summary: domain <renew> command test
+  Description: |
+    This test will confirm that the client is able to renew domain names.
+
+    * Following a succesful `<renew>` command, the expiry date of the domain
+      **MUST** have been increased by the period specified by the client;
+    * Where a server supports RFC 3915, the domain **MUST** have an RGP
+      status of `renewPeriod`;
+    * The server **MUST** reject a `<renew>` command if it would result in
+      the expiry date being more than 10 years into the future.
+
+    The client will issue the `<renew>` commands and then perform `<info>`
+    commands to ensure that the expiry date and RGP status of the domain are
+    set correctly.
+  Input-Parameters:
+  Dependencies:
+    - epp-16
+epp-19:
+  Summary: domain <transfer> command test
+  Description: |
+    This test will confirm that the client is able to initiate a domain
+    transfer.
+
+    The client will perform an `<update>` command to set the authInfo code for
+    the test domain (taken from the set created in `epp-16`) to a
+    randomly-determined value. If the server implements RFC 9154, it **MUST**
+    reject the `<update>` command if the authInfo code is insufficently
+    secure.
+
+    Then, using a second set of credentials, the client will connect to the
+    EPP server and authenticate, submit `<transfer>` commands, and validate
+    the responses.
+
+    This test will confirm that:
+
+    * the server rejects a `<transfer>` command with an invalid authInfo code
+    * the server rejects a command which would extend the domain's validity
+      period more than 10 years into the future
+    * the server accepts a `<transfer>` command with a valid authInfo code
+      and period.
+
+    The client will use an `<info>` command to ensure that the
+    `pendingTransfer` status code is added to the domain after a successul
+    transfer request.
+
+    Once the transfer request has been accepted, the sponsoring client will
+    wait for a message to be received on the server's message queue, and will
+    then approve the transfer.
+
+    Once the gaining registrar has also received a message on the queue, the
+    client will use an `<info>` command to confirm that:
+
+    * the domain is now under the sponsorship of the gaining registrar
+    * the authInfo code has been reset by the server (if the server supports
+      RFC 9154).
+  Dependencies:
+    - epp-18
+epp-20:
+  Summary: domain <transfer> rejection test
+  Description:
+    This test confirms that the server behaves correctly if the sponsoring
+    registrar of a domain rejects a transfer request.
+
+    The test procedure matches that of `epp-19`, but the transfer request will
+    be rejected rather than approved. An `<info>` command will be used to
+    confirm that the domain name remains under the sponsorship of the original
+    registrar.
+  Dependencies:
+    - epp-18
+  
+epp-21:
+  Summary: domain <delete> command test
+  Description: |
+    This test will perform `<delete>` commands on the objects created during
+    `epp-16` and will confirm that the server accepts the `<delete>` command
+    with a `1xxx` response code.
+
+    Once the `<delete>` commands have been processed, the client will perform
+    `<info>` commands on the deleted to object to confirm that:
+
+    * if the server responded to the `<delete>` command with a `1000`
+      response, then the domain no longer exists
+    * if the server responded to the `<delete>` command with a `1001`
+      response, then the domain has the `pendingDelete` status and the
+      `redemptionPeriod` RGP status.
+  Dependencies:
+    - epp-19
+epp-22:
+  Summary: domain restore test (if applicable)
+  Description: |
+    This test will perform RGP restore operations on the objects deleted
+    during `epp-21`, in order to confirm the correct operation of the server's
+    implementation of RFC 3915.
+
+    If the value of the `general.gracePeriodsSupported` parameter is false,
+    this test will be skipped.
+  Input-Parameters:
+    - epp.restoreReportRequired
+  Dependencies:
+    - epp-21
+
+epp-23:
+  Summary: host rename test (if applicable)
+  Description: |
+    This tests verifies the server's support for host rename operations.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The client will perform `<update>` commands on the objects created during
+    `epp-11` and will confirm that the server correctly accepts or rejects the
+    commands, for example:
+
+    * an `<update>` command which specifies a syntatically invalid host name
+      is rejected;
+    * an `<update>` command which places the object out-of-bailiwick is
+      accepted;
+    * an `<update>` command which places the object within a non-existent
+      domain is rejected;
+    * an `<update>` command which places the object within a domain sponsored
+      by another registrar is rejected. The domain name(s) provided in the
+      `epp.registeredNames` parameter will be used for this test.
+    * an `<update>` command which places the object within a domain sponsored
+      by the test client is accepted. A domain created during the `epp-13`
+      test case will be used as the new parent domain.
+
+    The client will then perform `<info>` commands on the objects successfully
+    updated, to confirm that the server has correctly stored the updated
+    values.
+  Dependencies:
+    - epp-13
+epp-24:
+  Summary: host <delete> command test (if applicable)
+  Description: |
+    This test will perform `<delete>` commands on the objects created during
+    `epp-11` and will confirm that the server accepts the `<delete>` command
+    with a `1xxx` response code.
+
+    Once the `<delete>` commands have been submitted, if a `1000` response was
+    received from the server, the client will perform `<check>` and `<info>`
+    commands to confirm that the objects have been deleted.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+  Dependencies:
+    - epp-23

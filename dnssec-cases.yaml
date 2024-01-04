@@ -1,0 +1,23 @@
+dnssec-91:
+  Summary: Permitted signing algorithms
+  Maturity: BETA
+  Description: |
+    In addition to the requirements outlined in `dnssec-05`, this test imposes
+    an additional requirement on the signing algorithms used to sign zones,
+    specifically, the algorithm number **MUST NOT** be lower than 8.
+  Input-Parameters:
+  Errors:
+    - DNSSEC_DNS_QUERY_ERROR
+    - DNSSEC_INVALID_SIGNING_ALGORITHM
+  Dependencies:
+    - dnssec-05
+dnssec-92:
+  Summary: Permitted DS record hash algorithm(s)
+  Maturity: BETA
+  Description: |
+    The DS record(s) submitted in the `dnssec.dsRecords` input parameters will
+    be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
+  Input-Parameters:
+  Errors:
+    - DNSSEC_DNS_QUERY_ERROR
+    - DNSSEC_INVALID_DIGEST_ALGORITHM

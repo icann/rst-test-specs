@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.190
-Last-Updated: 2024-01-03
+Version: 3.0.191
+Last-Updated: 2024-01-04
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -13,193 +13,193 @@ Preamble: |
   [input parameters](#input-parameters) required for each, relevant
   [resources](#resources), any inter-case dependencies, and the
   [errors](#errors) that might occur during testing.
-
+  
   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
   "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
   document are to be interpreted as described in [RFC
   2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they
   appear in all capitals, as shown here.
-
+  
   # 2.1. Test plans
-
+  
   An individual *Test Plan* addresses a particular scenario (for example, RSP
   evaluation or Pre-Delegation Testing). Each plan consists of one or more *test
   suites*, which in turn include one or more *test cases*.
-
+  
   ## 2.1.1. Test plan types
-
+  
   There are two types of test plan described in this document:
-
+  
   * **Business as usual** plans, which are used as part of the lifecycle of a
-    gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
-    Test)
+  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
+  Test)
   * **RSP evaluation** plans, which are used as part of the RSP evaluation
-    program.
-
+  program.
+  
   # 2.2. Test suites
-
+  
   A *Test Suite* is a collection of *test cases* with a common theme or subject
   matter, for example, Authoritative DNS or Registry Data Escrow.
-
+  
   # 2.3. Test cases
-
+  
   A *Test Case* describes a process for determining the conformance or
   acceptability of a certain element of the system.
-
+  
   A test case consists of a *test procedure* which accepts zero or more **input
   parameters**, and generates one or more **test results**.
-
+  
   ## 2.3.1. Input parameters
-
+  
   All test cases require some information about the subject of the test, for
   example, service hostnames, credentials, and functional parameters. These
   *input parameters* may be shared across multiple test cases.
-
+  
   ## 2.3.2. Test environments
-
+  
   Each test plan indicates whether the test is to be carried out in the
   production environment, or whether a test, staging or OT&E environment may be
   used. In general, test plans which are designed for "business as usual" use
   during the lifecycle of a TLD **MUST** be carried out in the production
   registry infrastructure, while RSP evaluation tests **MAY** be carried out in
   test, staging or OT&E environments.
-
+  
   ## 2.3.3. Test results
-
+  
   Test cases will generate one or more *test results*. Test results indicate the
   outcome of the test and other relevant information.
-
+  
   ## 2.3.4. General pass/fail criteria
-
+  
   In general, for a test to pass, **all** the test cases specified in the test
   suite(s) for the test plan **MUST** pass: if *any* fail, then the test as a
   whole will fail.
-
+  
   A test case will fail if it produces one or more [errors](#errors) with the
   `ERROR` or `CRITICAL` severities.
-
+  
   ## 2.3.5. Error severity levels
-
+  
   1. `INFO` - an informational message.
   1. `NOTICE` - a normal but significant condition.
   2. `WARNING` - an issue which does not prevent the test from *passing*, but
-     which may benefit from further investigation.
+   which may benefit from further investigation.
   1. `ERROR` - an issue which prevents the test from *passing*, but does not
-     prevent the test from *continuing*. A test may produce multiple `ERROR`
-     results.
+   prevent the test from *continuing*. A test may produce multiple `ERROR`
+   results.
   2. `CRITICAL` - an issue which prevents the test from continuing any
-     further. A test will only produce a single `CRITICAL` result and it
-     will always be the last result in the log.
-
+   further. A test will only produce a single `CRITICAL` result and it
+   will always be the last result in the log.
+  
   ## 2.3.6. Common errors
-
+  
   For each test case, various errors and critical errors are defined which will
   be used to signal why that the case might have failed.
-
+  
   In addition to these, there are a number of errors which any test case may
   produce, which are:
-
+  
   * [TBA]
-
+  
   # 2.4. Key acronyms and terms
-
+  
   RST
   : Registry System Testing. This system.
-
+  
   PDT
   : Pre-Delegation Test. A test carried out prior to the delegation of a new TLD
   into the DNS root zone.
-
+  
   RSP
   : Registry Service Provider. A specialist provider of critical registry
   services.
-
+  
   DNS
   : Domain Name System. The internet's system of globally unique identifiers.
-
+  
   TLD
   : Top-level domain. The highest level of the DNS namespace hierarchy.
-
+  
   gTLD
   : generic top-level domain.
-
+  
   DNSSEC
   : DNS Security Extensions. DNSSEC is described in [BCP
   237](https://www.rfc-editor.org/info/bcp237).
-
+  
   EPP
   : Extensible Provisioning Protocol. The protocol used by registrars to create
   and manage domain name registrations in an SRS. EPP is defined in [STD
   69](https://www.rfc-editor.org/info/std69).
-
+  
   SRS
   : Shared Registry System. A TLD registry in which registrations are managed
   by one or more registrars, using EPP.
-
+  
   RDDS
   : Registration Data Directory Services. A service to provide access to
   data about domain registrations to third parties.
-
+  
   RDAP
   : Registration Data Access Protocol. The protocol used to deliver the RDDS.
   RDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).
-
+  
   RDE
   : Registry Data Escrow. A system whereby the registration data stored in a
   Shared Registry System is backed up to a trusted third party. RDE is defined
   in [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC
   9022](https://www.rfc-editor.org/info/rfc9022).
-
+  
   IDN
   : Internationalized Domain Name. A domain name that contains characters not in
   the ASCII character set. The technical specification for IDNs may be found in
   [RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply
   with ICANN's [IDN
   Guidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).
-
+  
   LGR
   : Label Generation Ruleset. The rules by which IDNs are validated. LGRs are
   described in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).
-
+  
   RO
   : Registry Operator. The entity to which ICANN has granted the right to
   operate a gTLD.
-
+  
   RA
   : Registry Agreement. The contract between a Registry Operator and ICANN. The
   base Registry Agreement may be reviewed at
   <https://www.icann.org/en/registry-agreements/base-agreement>.
-
+  
   KSK
   : Key Signing Key. A cryptographic key which acts as the Secure Entry Point
   for a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is
   published in the parent zone (ie. the root zone for a TLD).
-
+  
   ZSK
   : Zone Signing Key. A cryptographic key which signs a DNS zone's resource
   records.
-
+  
   CSK
   : Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.
-
+  
   RPMs
   : Rights Protection Mechanisms, intended to discourage or prevent registration
   of domain names that violate or abuse another party’s legal rights. These
   **MUST** include (but are not limited to): (1) Sunrise Periods, and (2)
   Trademark Claims Periods (see [Specification 7 of the Registry
   Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).
-
+  
   TMCH
   : Trademark Clearinghouse. The system established by ICANN to maintain a
   database of validated and registered trademarks which is used to enforce
   Rights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of
   the TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).
-
+  
   SLA
   : Service Level Agreement. The registry performance specifications laid out in
   [Specification 10 of the Registry
   Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).
-
+  
   RRI
   : Registration Reporting Interfaces. The interfaces provided by ICANN to
   contracted parties including Registry Operators to fulfill and monitor their
@@ -218,14 +218,14 @@ Test-Plans:
       technical and operational criteria described in the gTLD Applicant
       Guidebook (AGB). Each applicant will be required to complete PDT as a
       prerequisite to delegation into the root zone.
-
+  
       The Pre-Delegation Test covers all critical registry services and IDNs,
       and therefore uses all test suites.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
@@ -235,7 +235,7 @@ Test-Plans:
       - StandardIDN
       - StandardRDE
       - StandardIntegrationTest
-
+  
   StandardRSPChangeTest:
     Order: 2
     Name: RSP Change Test
@@ -245,14 +245,14 @@ Test-Plans:
       this change can be approved, the new RSP **MUST** complete Registry System
       Testing to ensure their systems comply with the technical and operational
       requirements of the Registry Agreement.
-
+  
       The RSP Change Test covers all critical registry services and IDNs, and
       therefore uses all test suites.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
@@ -262,7 +262,7 @@ Test-Plans:
       - StandardRDAP
       - StandardRDE
       - StandardIntegrationTest
-
+  
   DNSRSPChangeTest:
     Order: 3
     Name: DNS RSP Change Test
@@ -270,58 +270,58 @@ Test-Plans:
       A Registry Operator may apply to ICANN to change a Material Subcontracting
       Arrangement (MSA) and appoint a new provider of authoritative DNS services
       instead of or in addition to any existing provider(s).
-
+  
       Before this change can be approved, the new DNS provider **MUST** complete
       testing to ensure their systems comply with the technical and operational
       requirements of the Registry Agreement.
-
+  
       The DNS RSP Change Test uses the DNS test suite only.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
       - StandardDNSSEC
-
+  
   StandardIDNTest:
     Order: 4
     Name: Standard IDN Test
     Description: |
       A Registry Operator may apply to ICANN to amend its Registry Agreement
       to offer new scripts and/or languages for Internationalized Domain Names.
-
+  
       The purpose of an IDN RST test is to verify that the Registry Operator’s
       registry system handles IDN registrations in accordance with the
       submitted policy statements and IDN tables.
-
+  
       The IDN Test uses the IDN test suite only.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardIDN
-
+  
   RSPEvaluationIDNTest:
     Order: 5
     Name: IDN Test (RSP Evaluation)
     Description: |
       This test plan is identical to the Standard IDN Test, but is intended
       solely for use by the RSP evaluation program.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardIDN
-
+  
   SRSGatewayTest:
     Order: 6
     Name: SRS Gateway Test
@@ -331,24 +331,24 @@ Test-Plans:
       a local cache to speed up EPP query commands, but forwards all EPP
       transform commands to the primary registry system. TLD registries need to
       deploy a proxy setup in order to operate in certain markets worldwide.
-
+  
       The purpose of an SRS Gateway Test is to verify that the Registry
       Operator’s proxy setup operates in accordance with the technical and
       operational criteria for EPP systems described in the gTLD Applicant
       Guidebook (AGB). Furthermore, it **MUST** keep its own database
       synchronized with that of the TLD registry.
-
+  
       The SRS Gateway Test Change Test uses the SRS gateway test suite only.
-
+  
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardSRSGateway
       - SRSGatewayIntegrationTest
-
+  
   MainRSPEvaluationTest:
     Order: 7
     Name: Main RSP Evaluation Test
@@ -360,53 +360,53 @@ Test-Plans:
       to policies regarding the use and transparency domain name registrations
       through reporting, the Registration Data Access Protocol (RDAP), and other
       mechanisms.
-
+  
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardEPP
       - MinimumRPMs
       - StandardRDAP
       - StandardRDE
-
+  
   DNSRSPEvaluationTest:
     Order: 8
     Name: DNS RSP Evaluation Test
     Description: |
       DNS RSPs provide primary or secondary authoritative DNS services.
       Therefore, this test plan only covers the DNS area.
-
+  
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
-
+  
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNS
-
+  
   DNSSECRSPEvaluationTest:
     Order: 9
     Name: DNSSEC RSP Evaluation Test
     Description: |
       DNSSEC RSPs provide signing of TLD zone files as a service. They do not
       provide primary or secondary authoritative DNS services.
-
+  
       RSPs wishing to offer DNSSEC services in addition to authoritative DNS
       will also be evaluated using the DNSSEC RSP Evaluation Test below.
-
+  
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardDNSSEC
       - DNSSECOperations
-
+  
   SRSGatewayRSPTest:
     Order: 10
     Name: SRS Gateway RSP Evaluation Test
@@ -416,7 +416,7 @@ Test-Plans:
       forwards all EPP transform commands to the primary registry system. TLD
       registries need to deploy a proxy setup in order to operate in certain
       markets worldwide.
-
+  
       The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires
       access to a primary registry system that is logically independent of the
       SRS Gateway system, and details of the primary registry system are
@@ -424,11 +424,11 @@ Test-Plans:
       **MUST** identify such a primary registry system, which **MUST** be
       independent of the SRS gateway system, and MAY be operated by a third
       party.
-
+  
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
     Test-Suites:
       - StandardSRSGateway
@@ -440,71 +440,71 @@ Test-Suites:
     Description: |
       The DNS test suite validates the authoritative DNS services for the TLD
       or RSP.
-
+  
       The DNS test suite is derived from the test plans in version
       **v2023.1.4
-      ** of [Zonemaster](https://github.com/zonemaster). Test
+        ** of [Zonemaster](https://github.com/zonemaster). Test
       case IDs from this document can be mapped to the Zonemaster test IDs by
       removing the `dns-` prefix.
-
+  
       Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
-
+  
       # Testing of Anycast networks using multiple vantage points
-
+  
       In order to test anycast networks without requiring RSPs to provide the
       unicast adresses of their nodes, tests carried out over the network will
       be performed from multiple vantage points. All vantage points **MUST**
       receive the same response in order for the tests to pass.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
-
+  
       Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dns-
     Input-Parameters:
       - dns.nameservers
     Resources:
-
+  
   StandardDNSSEC:
     Order: 2
     Name: DNS Security Extensions (DNSSEC)
     Description: |
       The DNSSEC test suite validates the DNSSEC signing service for the TLD or
       RSP.
-
+  
       The DNSSEC test suite is derived from the test plans in version
       **v2023.1.4
-      ** of [Zonemaster](https://github.com/zonemaster). Test
+        ** of [Zonemaster](https://github.com/zonemaster). Test
       case IDs from this document can be mapped to the Zonemaster test IDs by
       removing the hyphen-minus.
-
+  
       Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
-
+  
       Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
     Test-Cases: ^dnssec-
     Input-Parameters:
       - dns.nameservers
       - dnssec.dsRecords
     Resources:
-
+  
   StandardRDAP:
     Order: 3
     Name: Registration Data Access Protocol (RDAP)
     Description: |
       The RDAP test suite validates the RDAP service of the TLD or RSP.
-
+  
       The RDAP test suite is derived from the test specification of the [RDAP
       Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
       As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
       IDs in this document by removing the `rdap-NN-` prefix.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^rdap-
     Input-Parameters:
@@ -513,7 +513,7 @@ Test-Suites:
       - rdap.testEntities
       - rdap.testNameservers
     Resources:
-
+  
   StandardEPP:
     Order: 4
     Name: Extensible Provisioning Protocol (EPP)
@@ -522,9 +522,9 @@ Test-Suites:
       verifies that the EPP server properly implements the query and transform
       commands specified for domain names (and optionally host and contact
       objects) and the mandatory extensions.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^epp-
     Input-Parameters:
@@ -551,7 +551,7 @@ Test-Suites:
       - EPP_XML_PARSE_ERROR
       - EPP_GENERIC_COMMAND_ERROR
       - EPP_SCHEMA_VALIDATION_ERROR
-
+  
   StandardRDE:
     Order: 5
     Name: Registry Data Escrow (RDE)
@@ -559,14 +559,14 @@ Test-Suites:
       The RDE test suite validates Registry Data Escrow deposits generated for
       the TLD or RSP. These deposits **MUST** comply with the specifications in
       the Registry Agreement and with RFC 8909 and RFC 9022.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^rde-
     Input-Parameters:
       - rde.depositFile
-
+  
   StandardIDN:
     Order: 6
     Name: Internationalized Domain Names (IDN)
@@ -574,9 +574,9 @@ Test-Suites:
       The RDE test suite validates the IDN table(s) for a TLD or RSP, including
       compliance with specifications for variant labels at the top- or second-
       level, and conformance with the IDN Guidelines.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^idn-
     Input-Parameters:
@@ -591,7 +591,7 @@ Test-Suites:
       - epp.clientACL
       - epp.clientCSR
       - epp.clientCertificate
-
+  
   StandardSRSGateway:
     Order: 7
     Name: SRS Gateway
@@ -599,9 +599,9 @@ Test-Suites:
       The SRS Gateway test suite validates the conformance of the Gateway
       registry infrastructure of a TLD or RSP, and the synchronisation between
       primary and gateway systems.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^srsgw-
     Input-Parameters:
@@ -625,7 +625,7 @@ Test-Suites:
       - epp.clientACL
       - epp.clientCSR
       - epp.clientCertificate
-
+  
   DNSSECOperations:
     Order: 8
     Name: DNSSEC Operations
@@ -633,22 +633,22 @@ Test-Suites:
       This test suite verifies the ability of an RSP to carry out standard
       DNSSEC operational procedures while maintaining a chain of trust to the
       parent zone.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^dnssecOps
     Resources:
-
+  
   MinimumRPMs:
     Order: 9
     Name: Minimum Rights Protection Mechanisms (RPMs)
     Description: |
       This test suite verifies an RSP's support for the minimum Rights
       Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334).
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^minimumRPMs-
     Input-Parameters:
@@ -662,7 +662,7 @@ Test-Suites:
       - minimumRPMS.sunriseModels
       - minimumRPMS.sunriseTLD
       - minimumRPMS.claimsTLD
-
+  
   StandardIntegrationTest:
     Order: 10
     Name: Standard Integration Test
@@ -670,9 +670,9 @@ Test-Suites:
       This test suite verifies that the critical registry services of the TLD
       are properly integrated and functioning within the requirements of the
       Service Level Agreement.
-
+  
       # Pass/fail criteria
-
+  
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^integration-
     Resources:
@@ -716,19 +716,12 @@ Resources:
     Description: |
       A PEM-formatted file containing the CA certificates trusted by Mozilla.
       For more information, see <https://curl.se/docs/caextract.html>.
-
+  
       EPP servers **MUST** use a certificate that has a chain of trust to one of
       the CAs present in this file.
     URL: https://rst.icann.org/v2/resources/epp.tlsCertificateStore.pem
 
 Test-Cases:
-
-### BEGIN AUTO-GENERATED CASE SECTION ###
-#
-# Don't edit anything in this section, it will be clobbered when 'make' is next
-# run!
-#
-
   dns-address01:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -4001,7 +3994,6 @@ Test-Cases:
     Maturity: BETA
     Summary: Validate trust from DS to CDS and CDNSKEY
 
-
   rdap-01-domainCaseFoldingValidation:
     Summary: Domain label case folding validation 
     Maturity: GAMMA
@@ -4164,9 +4156,6 @@ Test-Cases:
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
       <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-
-### END AUTO-GENERATED CASE SECTION ###
-
   dnssec-91:
     Summary: Permitted signing algorithms
     Maturity: BETA
@@ -4190,7 +4179,6 @@ Test-Cases:
     Errors:
       - DNSSEC_DNS_QUERY_ERROR
       - DNSSEC_INVALID_DIGEST_ALGORITHM
-
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
     Description: |
@@ -4198,20 +4186,20 @@ Test-Cases:
       described in [Section 4.1.1 of
       RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1) for
       a zone.
-
+  
       If the value of the `dnssecOps.csk` input parameter is `true`, then this
       test will be skipped.
-
+  
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.zskRolloverZone` input parameter. The domain may be present
       anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
       **MUST** have a secure chain of trust up to the root zone, so that it can
       be validated using the root zone trust anchor.
-
+  
       During the test period (currently defined as 24 hours) the operator
       **MUST** successfully carry out a ZSK rollover for the domain, where the
       Zone Signing Key is replaced, without disrupting the chain of trust.
-
+  
       To simplify testing, applicants may wish to provision domain that is
       configured with short TTLs and a short ZSK lifetime, so that a ZSK
       rollover is guaranteed to occur within the 24 test period.
@@ -4226,13 +4214,13 @@ Test-Cases:
       (as described in [Sections 4.1.2 and 4.13 of
       RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
       a zone.
-
+  
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.kskRolloverZone` input parameter. The domain may be present
       anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
       **MUST** have a secure chain of trust up to the root zone, so that it can
       be validated using the root zone trust anchor.
-
+  
       During the test period (currently defined as 24 hours) the operator
       **MUST** successfully carry out a KSK rollover for the domain, where the
       Key Signing Key is replaced, and the DS record in the parent zone is
@@ -4247,19 +4235,19 @@ Test-Cases:
       (as described in [Section 4.1.4 of
       RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
       a zone.
-
+  
       The system will monitor the SOA record in the domain name specified in the
       `dnssec.algorithmRolloverZone` input parameter. The domain may be present
       anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
       **MUST** have a secure chain of trust up to the root zone, so that it can
       be validated using the root zone trust anchor.
-
+  
       During the test period (currently defined as 72 hours) the operator
       **MUST** successfully carry out an algorithm rollover for the domain
       (including an update to the DS record in the parent zone), where the
       algorithm used to secure the domain is changed, without disrupting the
       chain of trust.
-
+  
       Note that the specific algorithms being rolled to and from are not
       significant (although they **MUST** be present in the IANA registry); it
       is not required that the new algorithm be more "secure" than the original
@@ -4269,7 +4257,7 @@ Test-Cases:
     Input-Parameters:
       - dnssecOps.algorithmRolloverZone
     Dependencies:
-
+  
   rde-01:
     Summary: validate deposit filename format
     Maturity: BETA
@@ -4314,10 +4302,10 @@ Test-Cases:
     Description: |
       The header object **MUST** reference the correct object XML namespace
       URIs.
-
+  
       The correct URIs is determined by the `general.minimalPublicDataSet` and
       `epp.hostModel` input parameters.
-
+  
       All expected URIs **MUST** be present in the header, and the header **MUST
       NOT** contain any unexpected URIs.
     Input-Parameters:
@@ -4335,9 +4323,9 @@ Test-Cases:
       Domain objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       The required properties are:
-
+  
       * `<domain:name>`
       * `<domain:roid>` (which **MUST** have a repository ID registered with
         IANA)
@@ -4346,7 +4334,7 @@ Test-Cases:
       * `<domain:clID>` (sponsoring registrar ID)
       * `<domain:crDate>` (creation date)
       * `<domain:exDate>` (expiry date)
-
+  
       Contact, host and registrar objects (including optional objects such as
       admin and tech contacts) which are referenced in domain objects **MUST**
       be present in the deposit.
@@ -4358,9 +4346,9 @@ Test-Cases:
       Host objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       The required properties are:
-
+  
       * `<host:name>`
       * `<host:roid>` (which **MUST** have a repository ID registered with
         IANA)
@@ -4368,7 +4356,7 @@ Test-Cases:
       * one or more `<addr>` elements (if the host name is subordinate to
         the TLD)
       * `<host:clID>` (sponsoring registrar ID)
-
+  
       If the applicant uses the host attribute model, then this test will be
       skipped.
     Input-Parameters:
@@ -4379,9 +4367,9 @@ Test-Cases:
       Contact objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       The required properties are:
-
+  
       * `<contact:id>`
       * `<contact:roid>` (which **MUST** have a repository ID registered with
         IANA)
@@ -4396,7 +4384,7 @@ Test-Cases:
       * `<contact:voice>`
       * `<contact:email>`
       * `<contact:clID>` (sponsoring registrar ID)
-
+  
       If the applicant uses the "thin" registry model, then this test will be
       skipped.
     Input-Parameters:
@@ -4407,9 +4395,9 @@ Test-Cases:
       Registrar objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       The required properties are:
-
+  
       * `<rdeRegistrar:id>`
       * `<rdeRegistrar:name>`
       * `<rdeRegistrar:gurid>` (IANA ID)
@@ -4421,7 +4409,7 @@ Test-Cases:
       IDN table objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       All IDN table objects present in the deposit **MUST** correspond to IDN
       tables approved for the TLD, and all approved tables **MUST** have a
       corresponding object in the deposit.
@@ -4433,7 +4421,7 @@ Test-Cases:
       NNDN table objects (whether CSV or XML) **MUST** have the required object
       properties, and the values of those object properties **MUST** be
       well-formed.
-
+  
       The `aName` property of NNDN objects **MUST NOT** match the `name`
       property of a domain object.
   rde-13:
@@ -4456,18 +4444,17 @@ Test-Cases:
     Description: |
       The object policies included in the `<rdePolicy:policy>` object **MUST**
       conform to the Registration Data Policy and the applicable data model.
-
+  
       * If the `general.minimalPublicDataSet` input parameter is `true`, then
         contact objects **MUST NOT** be present in the deposit.
       * If the `epp.hostModel` input parameter is `attributes`, then
         host objects **MUST NOT** be present in the deposit.
-
   epp-01:
     Summary: Service connectivity test
     Description: |
       This test confirms that the EPP service is reachable from the probe
       servers.
-
+  
       1. At least one `A` record **MUST** be published in the DNS for the EPP
          hostname, to allow IPv4-only hosts to connect to the EPP service.
       2. At least one `AAAA` record **SHOULD** be published in the DNS for the
@@ -4509,7 +4496,7 @@ Test-Cases:
     Description: |
       Once a connection is established, all service ports **MUST** send a
       valid `<greeting>` frame to the client.
-
+  
       1. The `<svID>` element in the `<greeting>` **MUST** identify the EPP
          server.
       2. The `<svDate>` element in the `<greeting>` **MUST** specify a time
@@ -4555,10 +4542,10 @@ Test-Cases:
     Description: |
       The EPP server **MUST** return a `1000` result in response to a `<login>`
       command.
-
+  
       The client will use the object and extension XML namespaces from the
       server's `<greeting>` as part of the `<login>` command.
-
+  
       If the server supports the Login Security Extension (see RFC 8807) then
       this will be used by the client.
     Input-Parameters:
@@ -4570,7 +4557,7 @@ Test-Cases:
       The client will perform a series of `<check>` commands and will validate
       the `avail` attribute of the `<domain:name>` elements in the server
       response, as follows:
-
+  
       * syntactically invalid domain name: `avail` attribute **MUST** be `0`
         or `false`.
       * valid but registered domain name: `avail` attribute **MUST** be `0` or
@@ -4578,10 +4565,10 @@ Test-Cases:
       * syntactically valid, unregistered domain name: `avail` attribute
         **MUST** be `1` or `true`. The domain name will be generated using
         random characters.
-
+  
       A "syntactically valid" domain name is one that complies with the format
       specified in RFC 1123 (this test case does not consider IDN names).
-
+  
       These checks will be carried out for each TLD in the TLD set.
     Dependencies:
       - epp-03
@@ -4602,7 +4589,7 @@ Test-Cases:
       * syntactically valid and unregistered hostname: `avail` attribute
         **MUST** be `1` or `true`. The hostname will be generated using random
         characters.
-
+  
       A "syntactically valid" hostname is one that complies with the format
       specified in RFC 1123 (this test case does not consider IDN names).
     Input-Parameters:
@@ -4643,13 +4630,13 @@ Test-Cases:
       properties. Property values will be randomly generated but will contain
       realistic values. No personal information will be transmitted as part
       of this test.
-
+  
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
-
+  
       The test will confirm that the server checks and validates the values of
       the following elements:
-
+  
       * `<contact:id>`
       * `<contact:status>`
       * `<contact:postalInfo>` element(s)
@@ -4657,7 +4644,7 @@ Test-Cases:
       * `<contact:cc>` element
       * `<contact:voice>`
       * `<contact:email>`
-
+  
       * The server **MUST NOT** accept a `<contact:id>` element that
         contains a value that is not a valid `clIDType` value;
       * The server **MUST NOT** accept a `<contact:status>` element that
@@ -4671,7 +4658,7 @@ Test-Cases:
         RFC5733;
       * The server **MUST NOT** accept a `<contact:email>` element that contains
         a value that does not conform to the format specified in RFC 5322.
-
+  
       Once objects have been created, the client will then perform `<info>`
       commands to verify that the server has correctly stored the provided
       values.
@@ -4702,10 +4689,10 @@ Test-Cases:
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
-
+  
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
-
+  
       The client will connect using a set of alternate credentials and will
       submit `<info>` and `<update>` commands on the contact objects created in
       `epp-08`. The server **MUST** respond with a 2201 "authorization error"
@@ -4722,13 +4709,13 @@ Test-Cases:
       `epp-07` and will confirm that the server correctly rejects invalid
       commands (which would specify invalid property values) and accepts valid
       commands.
-
+  
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
-
+  
       The test will confirm that the server checks and validates `<update>`
       commands which transform the values of the following elements:
-
+  
       * `<contact:status>`
       * `<contact:postalInfo>` elements (both `int` and `loc`)
           * `<contact:name>`
@@ -4741,7 +4728,7 @@ Test-Cases:
             * `<contact:cc>` element
       * `<contact:voice>`
       * `<contact:email>`
-
+  
       Once objects have been updated, the client will then perform `<info>`
       commands to verify that the server has correctly stored the provided
       values.
@@ -4777,10 +4764,10 @@ Test-Cases:
       This test will perform `<delete>` commands on the objects created during
       `epp-24` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
-
+  
       If the `general.minimalPublicDataSet` input parameter is `true`, this
       test will be skipped.
-
+  
       Once the `<delete>` commands have been submitted, the client will perform
       `<info>` commands to confirm that the objects have actually been removed
       from the repository. If the response to the previous `<delete>` command
@@ -4801,21 +4788,21 @@ Test-Cases:
       properties. Property values will be randomly generated but will contain
       realistic values. No personal information will be transmitted as part
       of this test.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-
+  
       The test will confirm that the server checks and validates the values of
       the following elements:
-
+  
       * `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD
         set)
       * `<host:status>`
       * `<host:addr>` elements (both IPv4 and IPv6)
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-
+  
       The client will then perform `<info>` commands on the objects successfully
       created to confirm that the server has correctly stored the provided
       values.
@@ -4824,10 +4811,10 @@ Test-Cases:
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-
+  
       The client will connect using a set of alternate credentials and will
       submit `<update>` commands on the contact objects created in `epp-11`. The
       server **MUST** respond with a 2201 "authorization error" response.
@@ -4840,19 +4827,19 @@ Test-Cases:
       `epp-11` and will confirm that the server correctly rejects invalid
       commands (which would specify invalid property values) and accepts valid
       commands.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-
+  
       The test will confirm that the server checks and validates `<update>`
       commands which transform the values of the following elements:
-
+  
       * `<host:status>`
       * `<host:addr>` elements (both IPv4 and IPv6)
-
+  
       Note: the server's ability to support host renames is checked in a later
       test.
-
+  
       The client will then perform `<info>` commands on the objects successfully
       updated to confirm that the server has correctly stored the updated
       values.
@@ -4875,11 +4862,11 @@ Test-Cases:
       `objects`, then two host objects with pseudo-random names will be created
       and used as the nameservers (otherwise the names will be provided as
       attributes).
-
+  
       The client will perform several `<create>` commands, each of which will
       test certain aspects of the server's processing of those commands, for
       example:
-
+  
       * to confirm that the server does not accept invalid values for object
         properties (such as domain name, registration period, registant ID,
         nameservers, and DS record parameters). Examples:
@@ -4904,13 +4891,13 @@ Test-Cases:
         host attributes when the `epp.hostModel` parameter is `objects`
       * to confirm that the the server which implements RFC 9154 accepts a
         `<create>` command without an authInfo command.
-
+  
       Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
       input parameters) will be used to create domains.
-
+  
       Once the `<create>` commands have been processed, the client will then
       perform `<info>` commands to confirm that:
-
+  
       * the `<roid>` element is valid and contains a repository ID registered
         with IANA;
       * the `<crDate>` and `<exDate>` elements are present and valid;
@@ -4927,11 +4914,11 @@ Test-Cases:
     Description: |
       This test confirms that the EPP server will refuse a request to delete a
       linked object.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, **and** the
       `general.minimalPublicDataSet` input parameter is `true`, then this test
       will be skipped.
-
+  
       The client will submit `<delete>` commands for any contact and host
       objects created during `epp-16`. The server **MUST** respond with a `2305`
       "Object association prohibits operation" error.
@@ -4942,16 +4929,16 @@ Test-Cases:
     Description: |
       This test will confirm that the client is able to perform an `<update>`
       command on the domain names created in `epp-16`, including:
-
+  
       * adding and removing client-assigned status codes
       * adding and removing nameservers (whether objects or attributes)
       * changing registrant object (if applicable)
       * adding and remove DNSSEC information
-
+  
       The client will also confirm that it cannot perform an `<update>` command
       on a domain sponsored by another registrar, and that the server responds
       with a `2201` authorization error.
-
+  
       Once the `<update>` commands have been processed, the client will then
       perform `<info>` commands to confirm that the changes have been correctly
       stored by the server.
@@ -4962,14 +4949,14 @@ Test-Cases:
     Summary: domain <renew> command test
     Description: |
       This test will confirm that the client is able to renew domain names.
-
+  
       * Following a succesful `<renew>` command, the expiry date of the domain
         **MUST** have been increased by the period specified by the client;
       * Where a server supports RFC 3915, the domain **MUST** have an RGP
         status of `renewPeriod`;
       * The server **MUST** reject a `<renew>` command if it would result in
         the expiry date being more than 10 years into the future.
-
+  
       The client will issue the `<renew>` commands and then perform `<info>`
       commands to ensure that the expiry date and RGP status of the domain are
       set correctly.
@@ -4981,36 +4968,36 @@ Test-Cases:
     Description: |
       This test will confirm that the client is able to initiate a domain
       transfer.
-
+  
       The client will perform an `<update>` command to set the authInfo code for
       the test domain (taken from the set created in `epp-16`) to a
       randomly-determined value. If the server implements RFC 9154, it **MUST**
       reject the `<update>` command if the authInfo code is insufficently
       secure.
-
+  
       Then, using a second set of credentials, the client will connect to the
       EPP server and authenticate, submit `<transfer>` commands, and validate
       the responses.
-
+  
       This test will confirm that:
-
+  
       * the server rejects a `<transfer>` command with an invalid authInfo code
       * the server rejects a command which would extend the domain's validity
         period more than 10 years into the future
       * the server accepts a `<transfer>` command with a valid authInfo code
         and period.
-
+  
       The client will use an `<info>` command to ensure that the
       `pendingTransfer` status code is added to the domain after a successul
       transfer request.
-
+  
       Once the transfer request has been accepted, the sponsoring client will
       wait for a message to be received on the server's message queue, and will
       then approve the transfer.
-
+  
       Once the gaining registrar has also received a message on the queue, the
       client will use an `<info>` command to confirm that:
-
+  
       * the domain is now under the sponsorship of the gaining registrar
       * the authInfo code has been reset by the server (if the server supports
         RFC 9154).
@@ -5021,7 +5008,7 @@ Test-Cases:
     Description:
       This test confirms that the server behaves correctly if the sponsoring
       registrar of a domain rejects a transfer request.
-
+  
       The test procedure matches that of `epp-19`, but the transfer request will
       be rejected rather than approved. An `<info>` command will be used to
       confirm that the domain name remains under the sponsorship of the original
@@ -5035,10 +5022,10 @@ Test-Cases:
       This test will perform `<delete>` commands on the objects created during
       `epp-16` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
-
+  
       Once the `<delete>` commands have been processed, the client will perform
       `<info>` commands on the deleted to object to confirm that:
-
+  
       * if the server responded to the `<delete>` command with a `1000`
         response, then the domain no longer exists
       * if the server responded to the `<delete>` command with a `1001`
@@ -5052,26 +5039,26 @@ Test-Cases:
       This test will perform RGP restore operations on the objects deleted
       during `epp-21`, in order to confirm the correct operation of the server's
       implementation of RFC 3915.
-
+  
       If the value of the `general.gracePeriodsSupported` parameter is false,
       this test will be skipped.
     Input-Parameters:
       - epp.restoreReportRequired
     Dependencies:
       - epp-21
-
+  
   epp-23:
     Summary: host rename test (if applicable)
     Description: |
       This tests verifies the server's support for host rename operations.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
-
+  
       The client will perform `<update>` commands on the objects created during
       `epp-11` and will confirm that the server correctly accepts or rejects the
       commands, for example:
-
+  
       * an `<update>` command which specifies a syntatically invalid host name
         is rejected;
       * an `<update>` command which places the object out-of-bailiwick is
@@ -5084,7 +5071,7 @@ Test-Cases:
       * an `<update>` command which places the object within a domain sponsored
         by the test client is accepted. A domain created during the `epp-13`
         test case will be used as the new parent domain.
-
+  
       The client will then perform `<info>` commands on the objects successfully
       updated, to confirm that the server has correctly stored the updated
       values.
@@ -5096,127 +5083,125 @@ Test-Cases:
       This test will perform `<delete>` commands on the objects created during
       `epp-11` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
-
+  
       Once the `<delete>` commands have been submitted, if a `1000` response was
       received from the server, the client will perform `<check>` and `<info>`
       commands to confirm that the objects have been deleted.
-
+  
       If the `epp.hostModel` input parameter is `attributes`, this test will
       be skipped.
     Dependencies:
       - epp-23
-
-  minimumRPMs-01:
-    Summary: |
-      Sunrise domain/launch application <create> command test
-    Description: |
-      This test is used to confirm the conformance of the EPP server's
-      implementation of the Sunrise Create Form, as described in Section
-      3.3.1 of RFC 8334.
-
-      For this test, it is assumed that the EPP server has been configured to
-      use data (specifically the Domain Name Label List, as described in Section
-      5.3.3.1 of RFC 9361) from the TMCH test environment.
-
-      The client will connect to the EPP server and will submit `<create>`
-      commands, using domain names and SMD files present in the TMCH test
-      environment.
-
-      If the server supports Start Date sunrises, the fully-qualified domain
-      name will be constructed using a label from the SMD file and the
-      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-      a 1000 or 1001 result code, however, if the client receives a 2302 "object
-      exists" result code, it will retry with a different domain name.
-
-      The client will also attempt to create a domain using an invalid SMD,
-      which the server **MUST** reject.
-
-      If the server supports End Date sunrises, the fully-qualified domain
-      name will be constructed using a label from the SMD file and the
-      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-      a 1000 or 1001 result code.
-
-      The client will also attempt to create a domain using an invalid SMD,
-      which the server **MUST** reject.
-
-      **TODO: test create with revoked certificate**
-      **TODO: test create with revoked SMD**
-
-      If the server supports both modes, then both of the above tests will be
-      performed.
-
-      **TODO: merge info case below**
-    Dependencies:
-  minimumRPMs-02:
-    Summary: Sunrise launch application <info> command test
-    Description: |
-      In this test, the client will perform `<info>` commands on the objects
-      created in `minimumRPMs-01` and will confirm that they have successfully
-      been created in the repository and have the correct object properties.
-
-      * a start-date sunrise `<create>` command **MUST** result in the creation
-        of a domain object;
-      * an end-date sunrise `<create>` command **MUST** result in the creation
-        of a launch application.
-    Dependencies:
-      - minimumRPMs-01
-  minimumRPMs-03:
-    Summary: Claims <check> command test
-    Description: |
-      This test is used to confirm the conformance of the EPP server's
-      implementation of the Claims Check Form, as described in Section
-      3.1.1 of RFC 8334.
-
-      For this test, it is assumed that the EPP server has been configured to
-      use data (specifically the Domain Name Label List, as described in Section
-      5.3.3.1 of RFC 9361) from the TMCH test environment.
-
-      The client will connect to the EPP server using the provided credentials
-      and will then perform a series of `<check>` commands, using the Launch
-      extension to specify a value of `claims` for the `type` attribute of the
-      `<launch:check>` element and the `<launch:phase>` element. It will then
-      confirm that the server returns an appropriate
-      response:
-
-      * a `<check>` response for a domain that is present on the DNL contains
-        the correct `<launch:claimKey>` element;
-      * a `<check>` response for a domain that is NOT present on the DNL
-        does not contain a `<launch:claimKey>` element.
-    Dependencies:
-  minimumRPMs-05:
-    Summary: Trademark claims domain <create> command test
-    Description: |
-      This test is used to confirm the conformance of the EPP server's
-      implementation of the Claims Create Form, as described in Section
-      3.3.2 of RFC 8334.
-
-      For this test, it is assumed that the EPP server has been configured to
-      use data (specifically the Domain Name Label List, as described in Section
-      5.3.3.1 of RFC 9361) from the TMCH test environment.
-
-      The client will connect to the EPP server and will submit `<create>`
-      commands, using domain names present in the TMCH test environment.
-
-      The domain name will be constructed using a label from the DNL, and the
-      `minimumRPMS.claimsTLD` input parameter. The client will perform a
-      Trademark Claims `<check>` command beforehand to obtain the claim key, and
-      will then synthesise a trademark claims acknowledgement. The server
-      **MUST** respond with a 1000 or 10001 response.
-
-      The client will also perform `<create>` command using an invalid
-      claims acknowledgements **TODO: (invalid claim key, expiry date, see RFC
-      9361)**. The server **MUST** respond with a 2xxx error.
-
-      **TODO: do info afterwards**
-    Dependencies:
-
+    minimumRPMs-01:
+      Summary: |
+        Sunrise domain/launch application <create> command test
+      Description: |
+        This test is used to confirm the conformance of the EPP server's
+        implementation of the Sunrise Create Form, as described in Section
+        3.3.1 of RFC 8334.
+  
+        For this test, it is assumed that the EPP server has been configured to
+        use data (specifically the Domain Name Label List, as described in Section
+        5.3.3.1 of RFC 9361) from the TMCH test environment.
+  
+        The client will connect to the EPP server and will submit `<create>`
+        commands, using domain names and SMD files present in the TMCH test
+        environment.
+  
+        If the server supports Start Date sunrises, the fully-qualified domain
+        name will be constructed using a label from the SMD file and the
+        `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+        a 1000 or 1001 result code, however, if the client receives a 2302 "object
+        exists" result code, it will retry with a different domain name.
+  
+        The client will also attempt to create a domain using an invalid SMD,
+        which the server **MUST** reject.
+  
+        If the server supports End Date sunrises, the fully-qualified domain
+        name will be constructed using a label from the SMD file and the
+        `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+        a 1000 or 1001 result code.
+  
+        The client will also attempt to create a domain using an invalid SMD,
+        which the server **MUST** reject.
+  
+        **TODO: test create with revoked certificate**
+        **TODO: test create with revoked SMD**
+  
+        If the server supports both modes, then both of the above tests will be
+        performed.
+  
+        **TODO: merge info case below**
+      Dependencies:
+    minimumRPMs-02:
+      Summary: Sunrise launch application <info> command test
+      Description: |
+        In this test, the client will perform `<info>` commands on the objects
+        created in `minimumRPMs-01` and will confirm that they have successfully
+        been created in the repository and have the correct object properties.
+  
+        * a start-date sunrise `<create>` command **MUST** result in the creation
+          of a domain object;
+        * an end-date sunrise `<create>` command **MUST** result in the creation
+          of a launch application.
+      Dependencies:
+        - minimumRPMs-01
+    minimumRPMs-03:
+      Summary: Claims <check> command test
+      Description: |
+        This test is used to confirm the conformance of the EPP server's
+        implementation of the Claims Check Form, as described in Section
+        3.1.1 of RFC 8334.
+  
+        For this test, it is assumed that the EPP server has been configured to
+        use data (specifically the Domain Name Label List, as described in Section
+        5.3.3.1 of RFC 9361) from the TMCH test environment.
+  
+        The client will connect to the EPP server using the provided credentials
+        and will then perform a series of `<check>` commands, using the Launch
+        extension to specify a value of `claims` for the `type` attribute of the
+        `<launch:check>` element and the `<launch:phase>` element. It will then
+        confirm that the server returns an appropriate
+        response:
+  
+        * a `<check>` response for a domain that is present on the DNL contains
+          the correct `<launch:claimKey>` element;
+        * a `<check>` response for a domain that is NOT present on the DNL
+          does not contain a `<launch:claimKey>` element.
+      Dependencies:
+    minimumRPMs-05:
+      Summary: Trademark claims domain <create> command test
+      Description: |
+        This test is used to confirm the conformance of the EPP server's
+        implementation of the Claims Create Form, as described in Section
+        3.3.2 of RFC 8334.
+  
+        For this test, it is assumed that the EPP server has been configured to
+        use data (specifically the Domain Name Label List, as described in Section
+        5.3.3.1 of RFC 9361) from the TMCH test environment.
+  
+        The client will connect to the EPP server and will submit `<create>`
+        commands, using domain names present in the TMCH test environment.
+  
+        The domain name will be constructed using a label from the DNL, and the
+        `minimumRPMS.claimsTLD` input parameter. The client will perform a
+        Trademark Claims `<check>` command beforehand to obtain the claim key, and
+        will then synthesise a trademark claims acknowledgement. The server
+        **MUST** respond with a 1000 or 10001 response.
+  
+        The client will also perform `<create>` command using an invalid
+        claims acknowledgements **TODO: (invalid claim key, expiry date, see RFC
+        9361)**. The server **MUST** respond with a 2xxx error.
+  
+        **TODO: do info afterwards**
+      Dependencies:
   srsgw-01:
     Summary: IPv4 and IPv6 connectivity
     Maturity: BETA
     Description: |
       This test confirms that the SRS Gateway EPP system is reachable over IPv4
       and IPv6.
-
+  
       The SRS Gateway EPP server host name will be resolved to obtain its
       IPv4 and IPv6 addresses. The client will then attempt to connect to TCP
       port 700 on these addresses.
@@ -5227,22 +5212,22 @@ Test-Cases:
     Description: |
       This test confirms that host objects created in the SRS Gateway EPP system
       are correctly synchronized with the primary registry system.
-
+  
       If the value of the `epp.hostModel` input parameter is `attributes`, then
       this test will be skipped.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       submit a `<create>` command for a pseudo-randomly generated host name.
       IP address information will be provided if required. The server **MUST**
       respond with a 1000 or 1001 response. The client will then perform an
       `<info>` command and will capture the response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the object created in the first step. If the
       server responds with a 2303 response, it will wait for 30 seconds and
       retry. The server **MUST** respond to the first or second `<info>` command
       with a 1000 response.
-
+  
       The two `<info>` responses will then be compared and **MUST** be
       identical.
   srsgw-03:
@@ -5251,21 +5236,21 @@ Test-Cases:
     Description: |
       This test confirms that contact objects created in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       If the value of the `general.minimalPublicDataSet` input parameter is
       `true`, then this test will be skipped.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       submit a `<create>` command for a pseudo-randomly generated contact
       object. The client will then perform an `<info>` command and will capture
       the response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the object created in the first step. If the
       server responds with a 2303 response, it will wait for 30 seconds and
       retry. The server **MUST** respond to the first or second `<info>` command
       with a 1000 response.
-
+  
       The two `<info>` responses will then be compared and **MUST** be
       identical.
   srsgw-04:
@@ -5274,20 +5259,20 @@ Test-Cases:
     Description: |
       This test confirms that domain objects created in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       submit `<create>` commands for a pseudo-randomly generated domain names.
       Contact and nameserver objects created in `srsgw-02` and `srsgw-03` will
       be used if required. The server **MUST** respond with 1000 or 1001
       responses. The client will then perform `<info>` commands and will capture
       the responses.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       `<info>` commands for the domains created in the first step. If the
       server responds with a 2303 response, it will wait for 30 seconds and
       retry. The server **MUST** respond to the first or second `<info>` command
       with a 1000 response.
-
+  
       The pairs of `<info>` responses will then be compared and **MUST** be
       identical.
     Dependencies:
@@ -5300,16 +5285,16 @@ Test-Cases:
       This test confirms that the expiry dates of domain objects renewed in the
       SRS Gateway EPP system are correctly synchronized with the primary
       registry system.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       submit a `<renew>` command for the domain created in `srsgw-04`. The
       server **MUST** respond with a 1000 or 1001 response. The client will then
       perform an `<info>` command and will capture the response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain renewed in the first step.
       The server **MUST** respond with a 1000 response.
-
+  
       The `<exDate>` element of the two `<info>` responses will then be compared
       and **MUST** be identical.
     Dependencies:
@@ -5320,21 +5305,21 @@ Test-Cases:
     Description: |
       This test confirms that transfer requests submitted in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       perform an `<update>` command to specify an authInfo code for the domain
       created in `srsgw-04`. The server **MUST** respond with a 1000 or 1001
       response.
-
+  
       It will then reconnect to the SRS Gateway EPP system using the credentials
       of a second registrar account and submit a `<transfer op="request">`
       command using the authInfo command set for the domain in the first step.
       The server **MUST** respond with a 1000 or 1001 response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain. The server **MUST** respond with a
       1000 response.
-
+  
       * if the response to the `<transfer op="request">` command was 1000, then
         the `<domain:clID>` element **MUST** contain the value of the
         `srsgw.eppClid01` input parameter.
@@ -5349,15 +5334,15 @@ Test-Cases:
       This test confirms that transfer request approvals submitted in the SRS
       Gateway EPP system are correctly synchronized with the primary registry
       system.
-
+  
       If the response to the `<transfer op="request">` command performed in
       `srsgw-07` was 1000, then this test will be skipped.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate, and
       perform an `<transfer op="approve">` command for the domain for which a
       transfer was requested in `srsgw-04`. The server **MUST** respond with a
       1000 or 1001 response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain. The server **MUST** respond with a
       1000 response. The `<domain:clID>` element **MUST** contain the value of
@@ -5370,17 +5355,17 @@ Test-Cases:
     Description: |
       This test confirms that domain objects deleted in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       The client will connect to the SRS Gateway EPP system, authenticate using
       the credentials provided in `epp.clid02` and `epp.pwd02`, and
       submit a `<delete>` command for the domain transferred in `srsgw-07`.
       If the value of the `general.gracePeriodsSupported` input parameter is
       `false`, the server **MUST** respond with a 1000 response. Otherwise it
       **MUST** respond with a 1001 response.
-
+  
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain renewed in the first step.
-
+  
       * if `general.gracePeriodsSupported` is false, the server **MUST**
         respond to the `<info>` command with a 2303 ("object does not exist")
         result code.
@@ -5395,18 +5380,18 @@ Test-Cases:
     Description: |
       This test confirms that host objects updated in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       If the value of the `epp.hostModel` input parameter is `attributes`, then
       this test will be skipped.
-
+  
       The test client will connect to the SRS Gateway EPP server and perform
       `<update>` commands on the objects created in `srsgw-02`, specifically
       to add and remove status codes and IP addresses. It will then perform
       `<info>` commands on those objects.
-
+  
       The client will then connect to the primary registry EPP server and
       perform `<info>` commands for those objects.
-
+  
       The two sets of `<info>` responses **MUST** be identical.
     Dependencies:
       - srsgw-02
@@ -5416,14 +5401,14 @@ Test-Cases:
     Description: |
       This test confirms that host objects deleted in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       If the value of the `epp.hostModel` input parameter is `attributes`, then
       this test will be skipped.
-
+  
       The test client will connect to the SRS Gateway EPP server and perform
       `<delete>` commands on objects created in `srsgw-02`. The server **MUST**
       respond with a 1000 response.
-
+  
       The client will then connect to the primary registry EPP server and
       perform `<info>` commands for those objects. The server **MUST**
       respond with a 2303 "object does not exist" response.
@@ -5435,17 +5420,17 @@ Test-Cases:
     Description: |
       This test confirms that contact objects updated in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       If the value of the `general.minimalPublicDataSet` input parameter is
       `true`, then this test will be skipped.
-
+  
       The test client will connect to the SRS Gateway EPP server and perform
       `<update>` commands on the objects created in `srsgw-03`. It will then
       perform `<info>` commands on those objects.
-
+  
       The client will then connect to the primary registry EPP server and
       perform `<info>` commands for those objects.
-
+  
       The two sets of `<info>` responses **MUST** be identical.
     Dependencies:
       - srsgw-03
@@ -5455,14 +5440,14 @@ Test-Cases:
     Description: |
       This test confirms that contact objects delete in the SRS Gateway EPP
       system are correctly synchronized with the primary registry system.
-
+  
       If the value of the `general.minimalPublicDataSet` input parameter is
       `true`, then this test will be skipped.
-
+  
       The test client will connect to the SRS Gateway EPP server and perform
       `<delete>` commands on objects created in `srsgw-03`. The server **MUST**
       respond with a 1000 response.
-
+  
       The client will then connect to the primary registry EPP server and
       perform `<info>` commands for those objects. The server **MUST**
       respond with a 2303 "object does not exist" response.
@@ -5474,7 +5459,7 @@ Test-Cases:
     Description: |
       This test confirms that the SRS Gateway's RDAP service provides responses
       to domain lookups that match those of the primary registry RDAP server.
-
+  
       The test system will perform RDAP queries for some of the objects created
       in `srsgw-04` against both the primary registry RDAP server and the SRS
       Gateway RDAP server. After canonicalisation, the responses from each
@@ -5487,10 +5472,10 @@ Test-Cases:
     Description: |
       This test confirms that the SRS Gateway's RDAP service provides responses
       to domain lookups that match those of the primary registry RDAP server.
-
+  
       If the value of the `epp.hostModel` input parameter is `attributes`, then
       this test will be skipped.
-
+  
       The test system will perform RDAP queries for some of the objects created
       in `srsgw-02` against both the primary registry RDAP server and the SRS
       Gateway RDAP server. After canonicalisation, the JSON responses from each
@@ -5504,33 +5489,32 @@ Test-Cases:
       This test confirms that the SRS Gateway's RDAP service provides responses
       to registrar (entity) lookups that match those of the primary registry
       RDAP server.
-
+  
       The test system will perform RDAP queries for some of the objects created
       in `srsgw-04` against the primary registry RDAP server in order to obtain
       the `handle` property of the entity with the `registrar` role. It will
       then construct two URLs using this value and the values of the
       `rdap.baseURLs` and `srsgw.rdapBaseURLs` input parameters. It will then
       retrieve those URLs.
-
+  
       After canonicalisation, the JSON responses from each server **MUST** be
       identical.
     Dependencies:
       - srsgw-02
-
   idn-01:
     Summary: Label validation test
     Maturity: BETA
     Description: |
       This test confirms that the EPP server correctly accepts or rejects domain
       `<create>` commands for valid and invalid IDN labels, respectively.
-
+  
       If there are no IDN tables supported under any of the TLDs associated with
       the test, then this test will be skipped.
-
+  
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
       required, the client will create any contact object(s) needed.
-
+  
       The server **MUST** reject all `<create>` commands for invalid labels and
       **MUST** accept all `<create>` commands for valid labels.
     Input-Parameters:
@@ -5541,14 +5525,14 @@ Test-Cases:
     Description: |
       This test confirms the EPP server's conformance with the Level 1 variant
       support (no support for variant activation, all variants are blocked).
-
+  
       If there are no IDN tables for which Level 1 support is claimed, this
       test will be skipped.
-
+  
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
       required, the client will create any contact object(s) needed.
-
+  
       The client will then submit `<create>` commands for one or more labels
       that are variants of the names created in the first step. The server
       **MUST** reject these commands.
@@ -5560,21 +5544,21 @@ Test-Cases:
     Description: |
       This test confirms the EPP server's conformance with the Level 2 variant
       support (variants are supported within the same TLD).
-
+  
       If there are no IDN tables for which Level 2 support is claimed, this
       test will be skipped.
-
+  
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
       required, the client will create any contact object(s) needed.
-
+  
       The client will then submit `<create>` commands for one or more labels
       that are variants of the names created in the first step. Some of these
       commands will be made using the same registrar account as the first step,
       while some will be made using alternate credentials. If the value of the
       `general.minimalPublicDataSet` input parameter is `false`, then some
       commands will also use a different registrant contact.
-
+  
       The server **MUST** reject `<create>` commands where the (a) registrar is
       different from that of the primary label or (b) the registrant (if
       applicable) is different.
@@ -5585,14 +5569,14 @@ Test-Cases:
     Description: |
       This test confirms the EPP server's conformance with the Level 3 variant
       support (variants are supported within variant TLD(s)).
-
+  
       If there are no IDN tables for which Level 3 support is claimed, this
       test will be skipped.
-
+  
       For each supported IDN table, the test client will perform a series of
       `<create>` commands using a pre-defined catalogue of test labels. If
       required, the client will create any contact object(s) needed.
-
+  
       The client will then submit `<create>` commands for one or more labels
       that are variants (at both second- and top-level) of the names created in
       the first step. Some of these commands will be made using the same
@@ -5600,12 +5584,11 @@ Test-Cases:
       alternate credentials. If the value of the `general.minimalPublicDataSet`
       input parameter is `false`, then some commands will also use a different
       registrant contact.
-
+  
       The server **MUST** reject `<create>` commands where the (a) registrar is
       different from that of the primary label or (b) the registrant (if
       applicable) is different.
     Dependencies:
-
   integration-01:
     Summary: EPP -> RDAP Integration Test
     Maturity: BETA
@@ -5614,7 +5597,7 @@ Test-Cases:
       that is, that transform commands performed on objects in the EPP system
       are reflected in the RDAP system within the Service Level Requirement of
       the SLA.
-
+  
       The test system will perform RDAP queries to confirm that the RDAP server
       provides responses for the domain and host objects created in `epp-16` and
       `epp-11` (if applicable). The RDAP server **MUST** provide a 200 response
@@ -5632,7 +5615,7 @@ Test-Cases:
       that is, that transform commands performed on objects in the EPP system
       are reflected in the RDAP system within the Service Level Requirement of
       the SLA.
-
+  
       The test system will perform DNS queries to confirm that the DNS servers
       provides responses for the domain names created in `epp-16`. All DNS
       servers **MUST** provide the correct DNS response within 1 hour of the
@@ -5648,7 +5631,7 @@ Test-Cases:
       This test confirms that the EPP and RDE systems are properly integrated,
       that is, that objects created in the EPP system are reflected in a valid
       RDE deposit file within the Service Level Requirement of the SLA.
-
+  
       The test system will periodically connect to the SFTP server specified by
       the `integration.rdeSFTPHostname` input parameter, using the username
       specified in the `integration.rdeSFTPUsername` input parameter and the SSH
@@ -5657,18 +5640,18 @@ Test-Cases:
       input parameter. Note that operators **MUST** ensure that the IP addresses
       listed in the `integration.rdeSFTPACL` resource have been added to the
       Access Control List for the SFTP server (if any).
-
+  
       All objects created in the `epp-16` and `epp-11` (if applicable) tests
       **MUST** be found within a valid RDE deposit file (that is, the deposit
       passes all the tests in the RDE test suite) within 24 hours of each
       object's `<crDate>` element.
-
+  
       Furthermore, for each deposit found in the directory, the corresponding
       RDE report (as described in [Section 2.1 of
       draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))
       **MUST** be recieved on the test RRI environment before 23:59:59 UTC on
       the date specified in the Watermark element of the deposit file.
-
+  
       To facilitate submission of RDE reports, the RRI test environment will be
       configured to accept submissions for the TLDs associated with the test
       from clients using the same TLSA DNS hostnames that are configured for the
@@ -5698,7 +5681,7 @@ Input-Parameters:
       Whether or not the registry supports grace periods as defined in RFC 3915
     Type: boolean
     Example: true
-
+  
   epp.hostName:
     Description: the fully-qualified domain name of the EPP server
     Type: string
@@ -5779,7 +5762,7 @@ Input-Parameters:
     Description: |
       An array of host objects that exist in the EPP server and which are
       therefore unavailable for registration.
-
+  
       If the value of `epp.hostModel` is `objects`, this array **MUST** contain
       one member for each TLD in the TLD set. However, if it is `attributes`,
       the array **MUST** be empty.
@@ -5789,7 +5772,7 @@ Input-Parameters:
     Description: |
       An array of contact IDs that exist in the EPP server and which are
       therefore unavailable for registration.
-
+  
       If the value of `general.minimalPublicDataSet` is `false`, this array
       **MUST** contain one member for each TLD in the TLD set. However, if it is
       `false`, the array **MUST** be empty.
@@ -5799,12 +5782,12 @@ Input-Parameters:
     Description: |
       Whether the server requires submission of a restore report when a client
       attempts to restore a domain.
-
+  
       If the value of `general.gracePeriodsSupported` is `false`, then this
       input parameter is ignored.
     Type: boolean
     Example: false
-
+  
   minimumRPMS.sunriseModels:
     Description: |
       The sunrise models supported by the EPP server. The possible values for
@@ -5814,7 +5797,7 @@ Input-Parameters:
         * `both`
     Type: string
     Example: start-date
-
+  
   dnssecOps.csk:
     Description: |
       A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
@@ -5840,33 +5823,33 @@ Input-Parameters:
       rollover.
     Type: string
     Example: example.com
-
+  
   dns.nameservers:
     Description: |
       The set of nameservers that will be authoritative for the TLD(s).
-
+  
       This input parameter is an array where the object properties are the
       TLD names, and the values are objects. For these objects, the properties
       are the nameserver names, and the values are arrays of IPv4 and IPv6
       addresses.
-
+  
       There **MUST** be at least two nameservers, and at least two nameservers
       **MUST** have at least one IPv6 address.
     Type: object
     Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
-
+  
   dnssec.dsRecords:
     Description: |
       The DS record(s) that may be used to validate the DNSSEC signature for the
       TLD(s). This input parameter is an object where the object properties are
       the TLD names and the values are arrays of objects representing DS
       records.
-
+  
       There **MUST** be an entry for every TLD in the TLD set and there **MUST**
       be at least one DS record for each TLD.
     Type: object
     Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
-
+  
   rdap.baseURLs:
     Descrption: |
       The RDAP base URL(s) for the TLD(s). This input parameter is an object,
@@ -5895,7 +5878,7 @@ Input-Parameters:
       names and the values host names.
     Type: object
     Example: {"example": "ns1.example.com"}
-
+  
   srsgw.eppHostName:
     Description: the fully-qualified domain name of the SRS Gateway EPP server
     Type: string
@@ -5943,7 +5926,7 @@ Input-Parameters:
       containing the base URL. The URL **MUST** end with a slash ("/").
     Type: object
     Example: {"example": "https://rdap.example.com/example/"}
-
+  
   integration.rdeSFTPHostname:
     Description: The hostname of the operator's SFTP server.
     Type: string
@@ -5962,7 +5945,7 @@ Input-Parameters:
       An array of IP addresses from which requests to the RRI will be sent.
     Type: array
     Example: ["192.168.22.1", "2001:DB8::22:1"]
-
+  
   minimumRPMS.sunriseTLD:
     Description: |
       A TLD, or other registry-class zone, which has been configured to be in
@@ -5977,12 +5960,6 @@ Input-Parameters:
     Example: tmclaims.rsp.tech
 
 Errors:
-### BEGIN AUTO-GENERATED ERROR SECTION ###
-#
-# Don't edit anything in this section, it will be clobbered when 'make' is next
-# run!
-#
-
   ZM_AAAA_BAD_RDATA:
     Description: '*Not available.*'
     Severity: ERROR
@@ -7169,19 +7146,15 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
-
-### END AUTO-GENERATED ERROR SECTION ###
-
-  DNSSEC_DNS_QUERY_ERROR:
-    Severity: ERROR
-    Description: An error occurred while performing DNS query(s).
-  DNSSEC_INVALID_SIGNING_ALGORITHM:
-    Severity: ERROR
-    Description: An invalid algorithm is used to sign the zone.
-  DNSSEC_INVALID_DIGEST_ALGORITHM:
-    Severity: ERROR
-    Description: An invalid algorithm is used in the provided DS record(s).
-
+    DNSSEC_DNS_QUERY_ERROR:
+      Severity: ERROR
+      Description: An error occurred while performing DNS query(s).
+    DNSSEC_INVALID_SIGNING_ALGORITHM:
+      Severity: ERROR
+      Description: An invalid algorithm is used to sign the zone.
+    DNSSEC_INVALID_DIGEST_ALGORITHM:
+      Severity: ERROR
+      Description: An invalid algorithm is used in the provided DS record(s).
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
     Description: The client was unable to successfully connect to the EPP serer.
@@ -7195,1200 +7168,1198 @@ Errors:
   EPP_SCHEMA_VALIDATION_ERROR:
     Severity: ERROR
     Description: The response from the server failed schema validation.
-
+  
   EPP_DNS_RESOLUTION_ERROR:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_MISSING_A_RECORDS:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_MISSING_AAAA_RECORDS:
     Severity: WARNING
     Description: TBA
-
+  
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_CONNECTION_ERROR:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_UNTRUSTED_CERTIFICATE:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_EXPIRED_CERTIFICATE:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_CERTIFICATE_CHAIN_MISSING:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_TLS_BAD_CIPHER:
     Severity: ERROR
     Description: |
       The server uses an encryption cipher not recommended in RFC 9325.
-
+  
   EPP_NO_GREETING_RECEIVED:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_SVID_INVALID:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_SVDATE_INVALID:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_VERSION_INVALID:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_INVALID_LANG:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_UNEXPECTED_OBJURI:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_MISSING_OBJURI:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_UNEXPECTED_EXTURI:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_GREETING_MISSING_EXTURI:
     Severity: ERROR
     Description: TBA
-
+  
   EPP_XML_PARSE_ERROR:
     Severity: ERROR
     Description: The XML response from the server could not be parsed.
-
+  
   EPP_GREETING_RECOMMENDED_EXTENSION_MISSING:
     Severity: WARNING
     Description: |
       The server does not include the namespace URI of a recommended extension
       in an `<extURI>` element of the `<greeting>` frame.
-
-  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-    Severity: ERROR
-    Description: TBA.
-
-  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-    Severity: ERROR
-    Description: TBA.
-
   
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
+    Severity: ERROR
+    Description: TBA.
+  
+  EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA.

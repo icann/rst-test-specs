@@ -1,0 +1,306 @@
+srsgw-01:
+  Summary: IPv4 and IPv6 connectivity
+  Maturity: BETA
+  Description: |
+    This test confirms that the SRS Gateway EPP system is reachable over IPv4
+    and IPv6.
+
+    The SRS Gateway EPP server host name will be resolved to obtain its
+    IPv4 and IPv6 addresses. The client will then attempt to connect to TCP
+    port 700 on these addresses.
+  Dependencies:
+srsgw-02:
+  Summary: Host <create> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that host objects created in the SRS Gateway EPP system
+    are correctly synchronized with the primary registry system.
+
+    If the value of the `epp.hostModel` input parameter is `attributes`, then
+    this test will be skipped.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated host name.
+    IP address information will be provided if required. The server **MUST**
+    respond with a 1000 or 1001 response. The client will then perform an
+    `<info>` command and will capture the response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the object created in the first step. If the
+    server responds with a 2303 response, it will wait for 30 seconds and
+    retry. The server **MUST** respond to the first or second `<info>` command
+    with a 1000 response.
+
+    The two `<info>` responses will then be compared and **MUST** be
+    identical.
+srsgw-03:
+  Summary: Contact <create> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that contact objects created in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    If the value of the `general.minimalPublicDataSet` input parameter is
+    `true`, then this test will be skipped.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated contact
+    object. The client will then perform an `<info>` command and will capture
+    the response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the object created in the first step. If the
+    server responds with a 2303 response, it will wait for 30 seconds and
+    retry. The server **MUST** respond to the first or second `<info>` command
+    with a 1000 response.
+
+    The two `<info>` responses will then be compared and **MUST** be
+    identical.
+srsgw-04:
+  Summary: Domain <create> synchronization
+  Maturity: BETA
+  Description: |
+    This test confirms that domain objects created in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit `<create>` commands for a pseudo-randomly generated domain names.
+    Contact and nameserver objects created in `srsgw-02` and `srsgw-03` will
+    be used if required. The server **MUST** respond with 1000 or 1001
+    responses. The client will then perform `<info>` commands and will capture
+    the responses.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    `<info>` commands for the domains created in the first step. If the
+    server responds with a 2303 response, it will wait for 30 seconds and
+    retry. The server **MUST** respond to the first or second `<info>` command
+    with a 1000 response.
+
+    The pairs of `<info>` responses will then be compared and **MUST** be
+    identical.
+  Dependencies:
+    - srsgw-02
+    - srsgw-03
+srsgw-05:
+  Summary: Domain <renew> synchronisation
+  Maturity: BETA
+  Description: |
+    This test confirms that the expiry dates of domain objects renewed in the
+    SRS Gateway EPP system are correctly synchronized with the primary
+    registry system.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<renew>` command for the domain created in `srsgw-04`. The
+    server **MUST** respond with a 1000 or 1001 response. The client will then
+    perform an `<info>` command and will capture the response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the domain renewed in the first step.
+    The server **MUST** respond with a 1000 response.
+
+    The `<exDate>` element of the two `<info>` responses will then be compared
+    and **MUST** be identical.
+  Dependencies:
+    - srsgw-04
+srsgw-06:
+  Summary: Domain <transfer> synchronisation
+  Maturity: BETA
+  Description: |
+    This test confirms that transfer requests submitted in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    perform an `<update>` command to specify an authInfo code for the domain
+    created in `srsgw-04`. The server **MUST** respond with a 1000 or 1001
+    response.
+
+    It will then reconnect to the SRS Gateway EPP system using the credentials
+    of a second registrar account and submit a `<transfer op="request">`
+    command using the authInfo command set for the domain in the first step.
+    The server **MUST** respond with a 1000 or 1001 response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the domain. The server **MUST** respond with a
+    1000 response.
+
+    * if the response to the `<transfer op="request">` command was 1000, then
+      the `<domain:clID>` element **MUST** contain the value of the
+      `srsgw.eppClid01` input parameter.
+    * if the response to the `<transfer op="request">` command was 1001, then
+      the domain **MUST** have the `pendingTransfer` status.
+  Dependencies:
+    - srsgw-05
+srsgw-07:
+  Summary: Domain <transfer> approval synchronisation
+  Maturity: BETA
+  Description: |
+    This test confirms that transfer request approvals submitted in the SRS
+    Gateway EPP system are correctly synchronized with the primary registry
+    system.
+
+    If the response to the `<transfer op="request">` command performed in
+    `srsgw-07` was 1000, then this test will be skipped.
+
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    perform an `<transfer op="approve">` command for the domain for which a
+    transfer was requested in `srsgw-04`. The server **MUST** respond with a
+    1000 or 1001 response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the domain. The server **MUST** respond with a
+    1000 response. The `<domain:clID>` element **MUST** contain the value of
+    the  `srsgw.eppClid01` input parameter.
+  Dependencies:
+    - srsgw-06
+srsgw-08:
+  Summary: Domain <delete> synchronisation
+  Maturity: BETA
+  Description: |
+    This test confirms that domain objects deleted in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    The client will connect to the SRS Gateway EPP system, authenticate using
+    the credentials provided in `epp.clid02` and `epp.pwd02`, and
+    submit a `<delete>` command for the domain transferred in `srsgw-07`.
+    If the value of the `general.gracePeriodsSupported` input parameter is
+    `false`, the server **MUST** respond with a 1000 response. Otherwise it
+    **MUST** respond with a 1001 response.
+
+    It will then connect to the primary EPP system, authenticate, and perform
+    an `<info>` command for the domain renewed in the first step.
+
+    * if `general.gracePeriodsSupported` is false, the server **MUST**
+      respond to the `<info>` command with a 2303 ("object does not exist")
+      result code.
+    * If `general.gracePeriodsSupported` is true, the domain object **MUST**
+      have the `pendingDelete` status and have an RGP status of
+      `pendingDeleteRestorable`.
+  Dependencies:
+    - srsgw-07
+srsgw-09:
+  Summary: Host <update> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that host objects updated in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    If the value of the `epp.hostModel` input parameter is `attributes`, then
+    this test will be skipped.
+
+    The test client will connect to the SRS Gateway EPP server and perform
+    `<update>` commands on the objects created in `srsgw-02`, specifically
+    to add and remove status codes and IP addresses. It will then perform
+    `<info>` commands on those objects.
+
+    The client will then connect to the primary registry EPP server and
+    perform `<info>` commands for those objects.
+
+    The two sets of `<info>` responses **MUST** be identical.
+  Dependencies:
+    - srsgw-02
+srsgw-10:
+  Summary: Host <delete> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that host objects deleted in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    If the value of the `epp.hostModel` input parameter is `attributes`, then
+    this test will be skipped.
+
+    The test client will connect to the SRS Gateway EPP server and perform
+    `<delete>` commands on objects created in `srsgw-02`. The server **MUST**
+    respond with a 1000 response.
+
+    The client will then connect to the primary registry EPP server and
+    perform `<info>` commands for those objects. The server **MUST**
+    respond with a 2303 "object does not exist" response.
+  Dependencies:
+    - srsgw-09
+srsgw-11:
+  Summary: Contact <update> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that contact objects updated in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    If the value of the `general.minimalPublicDataSet` input parameter is
+    `true`, then this test will be skipped.
+
+    The test client will connect to the SRS Gateway EPP server and perform
+    `<update>` commands on the objects created in `srsgw-03`. It will then
+    perform `<info>` commands on those objects.
+
+    The client will then connect to the primary registry EPP server and
+    perform `<info>` commands for those objects.
+
+    The two sets of `<info>` responses **MUST** be identical.
+  Dependencies:
+    - srsgw-03
+srsgw-12:
+  Summary: Contact <delete> synchronization (if applicable)
+  Maturity: BETA
+  Description: |
+    This test confirms that contact objects delete in the SRS Gateway EPP
+    system are correctly synchronized with the primary registry system.
+
+    If the value of the `general.minimalPublicDataSet` input parameter is
+    `true`, then this test will be skipped.
+
+    The test client will connect to the SRS Gateway EPP server and perform
+    `<delete>` commands on objects created in `srsgw-03`. The server **MUST**
+    respond with a 1000 response.
+
+    The client will then connect to the primary registry EPP server and
+    perform `<info>` commands for those objects. The server **MUST**
+    respond with a 2303 "object does not exist" response.
+  Dependencies:
+    - srsgw-11
+srsgw-13:
+  Summary: Domain RDAP synchronization
+  Maturity: BETA
+  Description: |
+    This test confirms that the SRS Gateway's RDAP service provides responses
+    to domain lookups that match those of the primary registry RDAP server.
+
+    The test system will perform RDAP queries for some of the objects created
+    in `srsgw-04` against both the primary registry RDAP server and the SRS
+    Gateway RDAP server. After canonicalisation, the responses from each
+    server **MUST** be identical.
+  Dependencies:
+    - srsgw-04
+srsgw-14:
+  Summary: Nameserver RDAP synchronization
+  Maturity: BETA
+  Description: |
+    This test confirms that the SRS Gateway's RDAP service provides responses
+    to domain lookups that match those of the primary registry RDAP server.
+
+    If the value of the `epp.hostModel` input parameter is `attributes`, then
+    this test will be skipped.
+
+    The test system will perform RDAP queries for some of the objects created
+    in `srsgw-02` against both the primary registry RDAP server and the SRS
+    Gateway RDAP server. After canonicalisation, the JSON responses from each
+    server **MUST** be identical.
+  Dependencies:
+    - srsgw-02
+srsgw-15:
+  Summary: Registrar RDAP synchronization
+  Maturity: BETA
+  Description: |
+    This test confirms that the SRS Gateway's RDAP service provides responses
+    to registrar (entity) lookups that match those of the primary registry
+    RDAP server.
+
+    The test system will perform RDAP queries for some of the objects created
+    in `srsgw-04` against the primary registry RDAP server in order to obtain
+    the `handle` property of the entity with the `registrar` role. It will
+    then construct two URLs using this value and the values of the
+    `rdap.baseURLs` and `srsgw.rdapBaseURLs` input parameters. It will then
+    retrieve those URLs.
+
+    After canonicalisation, the JSON responses from each server **MUST** be
+    identical.
+  Dependencies:
+    - srsgw-02
