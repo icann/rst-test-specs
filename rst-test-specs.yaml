@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.192
+Version: 3.0.197
 Last-Updated: 2024-01-04
 Contact:
   Name: GDS Technical Services
@@ -3994,168 +3994,6 @@ Test-Cases:
     Maturity: BETA
     Summary: Validate trust from DS to CDS and CDNSKEY
 
-  rdap-01-domainCaseFoldingValidation:
-    Summary: Domain label case folding validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-02-domainNameValidation:
-    Summary: Domain Name validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-03-ipv4Validation:
-    Summary: IPv4 address validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-04-ipv6Validation:
-    Summary: IPv6 address validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-05-stdRdapAsEventActorValidation:
-    Summary: asEventActor Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-06-stdRdapConformanceValidation:
-    Summary: RDAP Conformance validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-07-stdRdapDomainLookupValidation:
-    Summary: Domain Lookup Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-08-stdRdapEntitiesValidation:
-    Summary: Entities validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-09-stdRdapEntityLookupValidation:
-    Summary: Entity lookup validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-10-stdRdapErrorResponseBodyValidation:
-    Summary: Error Response Body 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-11-stdRdapEventsValidation:
-    Summary: Events Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-12-stdRdapHelpValidation:
-    Summary: Help validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-13-stdRdapIpAddressesValidation:
-    Summary: IP Addresses Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-14-stdRdapLanguageIdentifierValidation:
-    Summary: Language Identifier Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-15-stdRdapLdhNameValidation:
-    Summary: LDH name 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-16-stdRdapLinksValidation:
-    Summary: Links validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-17-stdRdapNameserverLookupValidation:
-    Summary: Nameserver lookup validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-18-stdRdapNameserversSearchValidation:
-    Summary: RFC7159RDAP_RFCsNameservers search validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-19-stdRdapNoticesRemarksValidation:
-    Summary: Notices and Remarks Validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-20-stdRdapPort43WhoisServerValidation:
-    Summary: Port 43 WHOIS Server 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-21-stdRdapPublicIdsValidation:
-    Summary: Public IDs validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-22-stdRdapRolesValidation:
-    Summary: Roles validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-23-stdRdapSecureDnsValidation:
-    Summary: Secure DNS validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-24-stdRdapStatusValidation:
-    Summary: Status validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-25-stdRdapUnicodeNameValidation:
-    Summary: RFC7159RDAP_RFCsIDNA_RFCsUnicode name 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-26-stdRdapVariantsValidation:
-    Summary: Variants validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
-  rdap-27-webUriValidation:
-    Summary: Web URI validation 
-    Maturity: GAMMA
-    Description: |
-      This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   dnssec-91:
     Summary: Permitted signing algorithms
     Maturity: BETA
@@ -5092,109 +4930,271 @@ Test-Cases:
       be skipped.
     Dependencies:
       - epp-23
-    minimumRPMs-01:
-      Summary: |
-        Sunrise domain/launch application <create> command test
-      Description: |
-        This test is used to confirm the conformance of the EPP server's
-        implementation of the Sunrise Create Form, as described in Section
-        3.3.1 of RFC 8334.
+  rdap-01-domainCaseFoldingValidation:
+    Summary: Domain label case folding validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-02-domainNameValidation:
+    Summary: Domain Name validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-03-ipv4Validation:
+    Summary: IPv4 address validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-04-ipv6Validation:
+    Summary: IPv6 address validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-05-stdRdapAsEventActorValidation:
+    Summary: asEventActor Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-06-stdRdapConformanceValidation:
+    Summary: RDAP Conformance validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-07-stdRdapDomainLookupValidation:
+    Summary: Domain Lookup Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-08-stdRdapEntitiesValidation:
+    Summary: Entities validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-09-stdRdapEntityLookupValidation:
+    Summary: Entity lookup validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-10-stdRdapErrorResponseBodyValidation:
+    Summary: Error Response Body 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-11-stdRdapEventsValidation:
+    Summary: Events Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-12-stdRdapHelpValidation:
+    Summary: Help validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-13-stdRdapIpAddressesValidation:
+    Summary: IP Addresses Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-14-stdRdapLanguageIdentifierValidation:
+    Summary: Language Identifier Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-15-stdRdapLdhNameValidation:
+    Summary: LDH name 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-16-stdRdapLinksValidation:
+    Summary: Links validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-17-stdRdapNameserverLookupValidation:
+    Summary: Nameserver lookup validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-18-stdRdapNameserversSearchValidation:
+    Summary: RFC7159RDAP_RFCsNameservers search validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-19-stdRdapNoticesRemarksValidation:
+    Summary: Notices and Remarks Validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-20-stdRdapPort43WhoisServerValidation:
+    Summary: Port 43 WHOIS Server 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-21-stdRdapPublicIdsValidation:
+    Summary: Public IDs validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-22-stdRdapRolesValidation:
+    Summary: Roles validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-23-stdRdapSecureDnsValidation:
+    Summary: Secure DNS validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-24-stdRdapStatusValidation:
+    Summary: Status validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-25-stdRdapUnicodeNameValidation:
+    Summary: RFC7159RDAP_RFCsIDNA_RFCsUnicode name 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-26-stdRdapVariantsValidation:
+    Summary: Variants validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  rdap-27-webUriValidation:
+    Summary: Web URI validation 
+    Maturity: GAMMA
+    Description: |
+      This test case comes from the RDAP Conformance Tool. For more information, see
+      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  minimumRPMs-01:
+    Summary: |
+      Sunrise domain/launch application <create> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Sunrise Create Form, as described in Section
+      3.3.1 of RFC 8334.
   
-        For this test, it is assumed that the EPP server has been configured to
-        use data (specifically the Domain Name Label List, as described in Section
-        5.3.3.1 of RFC 9361) from the TMCH test environment.
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
   
-        The client will connect to the EPP server and will submit `<create>`
-        commands, using domain names and SMD files present in the TMCH test
-        environment.
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names and SMD files present in the TMCH test
+      environment.
   
-        If the server supports Start Date sunrises, the fully-qualified domain
-        name will be constructed using a label from the SMD file and the
-        `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-        a 1000 or 1001 result code, however, if the client receives a 2302 "object
-        exists" result code, it will retry with a different domain name.
+      If the server supports Start Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+      a 1000 or 1001 result code, however, if the client receives a 2302 "object
+      exists" result code, it will retry with a different domain name.
   
-        The client will also attempt to create a domain using an invalid SMD,
-        which the server **MUST** reject.
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server **MUST** reject.
   
-        If the server supports End Date sunrises, the fully-qualified domain
-        name will be constructed using a label from the SMD file and the
-        `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-        a 1000 or 1001 result code.
+      If the server supports End Date sunrises, the fully-qualified domain
+      name will be constructed using a label from the SMD file and the
+      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
+      a 1000 or 1001 result code.
   
-        The client will also attempt to create a domain using an invalid SMD,
-        which the server **MUST** reject.
+      The client will also attempt to create a domain using an invalid SMD,
+      which the server **MUST** reject.
   
-        **TODO: test create with revoked certificate**
-        **TODO: test create with revoked SMD**
+      **TODO: test create with revoked certificate**
+      **TODO: test create with revoked SMD**
   
-        If the server supports both modes, then both of the above tests will be
-        performed.
+      If the server supports both modes, then both of the above tests will be
+      performed.
   
-        **TODO: merge info case below**
-      Dependencies:
-    minimumRPMs-02:
-      Summary: Sunrise launch application <info> command test
-      Description: |
-        In this test, the client will perform `<info>` commands on the objects
-        created in `minimumRPMs-01` and will confirm that they have successfully
-        been created in the repository and have the correct object properties.
+      **TODO: merge info case below**
+    Dependencies:
+  minimumRPMs-02:
+    Summary: Sunrise launch application <info> command test
+    Description: |
+      In this test, the client will perform `<info>` commands on the objects
+      created in `minimumRPMs-01` and will confirm that they have successfully
+      been created in the repository and have the correct object properties.
   
-        * a start-date sunrise `<create>` command **MUST** result in the creation
-          of a domain object;
-        * an end-date sunrise `<create>` command **MUST** result in the creation
-          of a launch application.
-      Dependencies:
-        - minimumRPMs-01
-    minimumRPMs-03:
-      Summary: Claims <check> command test
-      Description: |
-        This test is used to confirm the conformance of the EPP server's
-        implementation of the Claims Check Form, as described in Section
-        3.1.1 of RFC 8334.
+      * a start-date sunrise `<create>` command **MUST** result in the creation
+        of a domain object;
+      * an end-date sunrise `<create>` command **MUST** result in the creation
+        of a launch application.
+    Dependencies:
+      - minimumRPMs-01
+  minimumRPMs-03:
+    Summary: Claims <check> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Claims Check Form, as described in Section
+      3.1.1 of RFC 8334.
   
-        For this test, it is assumed that the EPP server has been configured to
-        use data (specifically the Domain Name Label List, as described in Section
-        5.3.3.1 of RFC 9361) from the TMCH test environment.
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
   
-        The client will connect to the EPP server using the provided credentials
-        and will then perform a series of `<check>` commands, using the Launch
-        extension to specify a value of `claims` for the `type` attribute of the
-        `<launch:check>` element and the `<launch:phase>` element. It will then
-        confirm that the server returns an appropriate
-        response:
+      The client will connect to the EPP server using the provided credentials
+      and will then perform a series of `<check>` commands, using the Launch
+      extension to specify a value of `claims` for the `type` attribute of the
+      `<launch:check>` element and the `<launch:phase>` element. It will then
+      confirm that the server returns an appropriate
+      response:
   
-        * a `<check>` response for a domain that is present on the DNL contains
-          the correct `<launch:claimKey>` element;
-        * a `<check>` response for a domain that is NOT present on the DNL
-          does not contain a `<launch:claimKey>` element.
-      Dependencies:
-    minimumRPMs-05:
-      Summary: Trademark claims domain <create> command test
-      Description: |
-        This test is used to confirm the conformance of the EPP server's
-        implementation of the Claims Create Form, as described in Section
-        3.3.2 of RFC 8334.
+      * a `<check>` response for a domain that is present on the DNL contains
+        the correct `<launch:claimKey>` element;
+      * a `<check>` response for a domain that is NOT present on the DNL
+        does not contain a `<launch:claimKey>` element.
+    Dependencies:
+  minimumRPMs-05:
+    Summary: Trademark claims domain <create> command test
+    Description: |
+      This test is used to confirm the conformance of the EPP server's
+      implementation of the Claims Create Form, as described in Section
+      3.3.2 of RFC 8334.
   
-        For this test, it is assumed that the EPP server has been configured to
-        use data (specifically the Domain Name Label List, as described in Section
-        5.3.3.1 of RFC 9361) from the TMCH test environment.
+      For this test, it is assumed that the EPP server has been configured to
+      use data (specifically the Domain Name Label List, as described in Section
+      5.3.3.1 of RFC 9361) from the TMCH test environment.
   
-        The client will connect to the EPP server and will submit `<create>`
-        commands, using domain names present in the TMCH test environment.
+      The client will connect to the EPP server and will submit `<create>`
+      commands, using domain names present in the TMCH test environment.
   
-        The domain name will be constructed using a label from the DNL, and the
-        `minimumRPMS.claimsTLD` input parameter. The client will perform a
-        Trademark Claims `<check>` command beforehand to obtain the claim key, and
-        will then synthesise a trademark claims acknowledgement. The server
-        **MUST** respond with a 1000 or 10001 response.
+      The domain name will be constructed using a label from the DNL, and the
+      `minimumRPMS.claimsTLD` input parameter. The client will perform a
+      Trademark Claims `<check>` command beforehand to obtain the claim key, and
+      will then synthesise a trademark claims acknowledgement. The server
+      **MUST** respond with a 1000 or 10001 response.
   
-        The client will also perform `<create>` command using an invalid
-        claims acknowledgements **TODO: (invalid claim key, expiry date, see RFC
-        9361)**. The server **MUST** respond with a 2xxx error.
+      The client will also perform `<create>` command using an invalid
+      claims acknowledgements **TODO: (invalid claim key, expiry date, see RFC
+      9361)**. The server **MUST** respond with a 2xxx error.
   
-        **TODO: do info afterwards**
-      Dependencies:
+      **TODO: do info afterwards**
+    Dependencies:
   srsgw-01:
     Summary: IPv4 and IPv6 connectivity
     Maturity: BETA
@@ -5681,7 +5681,69 @@ Input-Parameters:
       Whether or not the registry supports grace periods as defined in RFC 3915
     Type: boolean
     Example: true
+  dns.nameservers:
+    Description: |
+      The set of nameservers that will be authoritative for the TLD(s).
   
+      This input parameter is an array where the object properties are the
+      TLD names, and the values are objects. For these objects, the properties
+      are the nameserver names, and the values are arrays of IPv4 and IPv6
+      addresses.
+  
+      There **MUST** be at least two nameservers, and at least two nameservers
+      **MUST** have at least one IPv6 address.
+    Type: object
+    Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+  dnssec.dsRecords:
+    Description: |
+      The DS record(s) that may be used to validate the DNSSEC signature for the
+      TLD(s). This input parameter is an object where the object properties are
+      the TLD names and the values are arrays of objects representing DS
+      records.
+  
+      There **MUST** be an entry for every TLD in the TLD set and there **MUST**
+      be at least one DS record for each TLD.
+    Type: object
+    Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
+  dnssecOps.csk:
+    Description: |
+      A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
+      also referred to as a "Single Type Signing Scheme") instead of a split
+      KSK/ZSK configuration.
+    Type: boolean
+    Example: false
+  dnssecOps.zskRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of a ZSK
+      rollover.
+    Type: string
+    Example: example.com
+  dnssecOps.kskRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of a KSK
+      rollover.
+    Type: string
+    Example: example.com
+  dnssecOps.algorithmRolloverZone:
+    Description: |
+      The domain name which will be monitored for the occurrence of an algorithm
+      rollover.
+    Type: string
+    Example: example.com
+  rde.depositFile:
+    Description: |
+      an RDE deposit file. The TLD to which the deposit relates **MUST** match
+      one of the TLDs that are associated with the test object.
+    Type: file
+    Example: example_20231004_FULL_S1_R0.ryde
+  rde.signatureFile:
+    Description: an ASCII-armoured OpenPGP signature covering the deposit file
+    Type: file
+    Example: example_20231004_FULL_S1_R0.sig
+  rde.publicKey:
+    Description: a PGP public key block
+    Type: file
+    Example: rsp-rde-signing-key.asc
   epp.hostName:
     Description: the fully-qualified domain name of the EPP server
     Type: string
@@ -5722,20 +5784,6 @@ Input-Parameters:
     Description: the password used for transfer tests
     Type: string
     Example: foo3bar
-  rde.depositFile:
-    Description: |
-      an RDE deposit file. The TLD to which the deposit relates **MUST** match
-      one of the TLDs that are associated with the test object.
-    Type: file
-    Example: example_20231004_FULL_S1_R0.ryde
-  rde.signatureFile:
-    Description: an ASCII-armoured OpenPGP signature covering the deposit file
-    Type: file
-    Example: example_20231004_FULL_S1_R0.sig
-  rde.publicKey:
-    Description: a PGP public key block
-    Type: file
-    Example: rsp-rde-signing-key.asc
   epp.hostModel:
     Description: |
       The host model supported by the EPP server. The possible values for this
@@ -5787,69 +5835,6 @@ Input-Parameters:
       input parameter is ignored.
     Type: boolean
     Example: false
-  
-  minimumRPMS.sunriseModels:
-    Description: |
-      The sunrise models supported by the EPP server. The possible values for
-      this parameter are:
-        * `start-date`
-        * `end-date`
-        * `both`
-    Type: string
-    Example: start-date
-  
-  dnssecOps.csk:
-    Description: |
-      A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
-      also referred to as a "Single Type Signing Scheme") instead of a split
-      KSK/ZSK configuration.
-    Type: boolean
-    Example: false
-  dnssecOps.zskRolloverZone:
-    Description: |
-      The domain name which will be monitored for the occurrence of a ZSK
-      rollover.
-    Type: string
-    Example: example.com
-  dnssecOps.kskRolloverZone:
-    Description: |
-      The domain name which will be monitored for the occurrence of a KSK
-      rollover.
-    Type: string
-    Example: example.com
-  dnssecOps.algorithmRolloverZone:
-    Description: |
-      The domain name which will be monitored for the occurrence of an algorithm
-      rollover.
-    Type: string
-    Example: example.com
-  
-  dns.nameservers:
-    Description: |
-      The set of nameservers that will be authoritative for the TLD(s).
-  
-      This input parameter is an array where the object properties are the
-      TLD names, and the values are objects. For these objects, the properties
-      are the nameserver names, and the values are arrays of IPv4 and IPv6
-      addresses.
-  
-      There **MUST** be at least two nameservers, and at least two nameservers
-      **MUST** have at least one IPv6 address.
-    Type: object
-    Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
-  
-  dnssec.dsRecords:
-    Description: |
-      The DS record(s) that may be used to validate the DNSSEC signature for the
-      TLD(s). This input parameter is an object where the object properties are
-      the TLD names and the values are arrays of objects representing DS
-      records.
-  
-      There **MUST** be an entry for every TLD in the TLD set and there **MUST**
-      be at least one DS record for each TLD.
-    Type: object
-    Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
-  
   rdap.baseURLs:
     Descrption: |
       The RDAP base URL(s) for the TLD(s). This input parameter is an object,
@@ -5878,7 +5863,27 @@ Input-Parameters:
       names and the values host names.
     Type: object
     Example: {"example": "ns1.example.com"}
-  
+  minimumRPMS.sunriseModels:
+    Description: |
+      The sunrise models supported by the EPP server. The possible values for
+      this parameter are:
+        * `start-date`
+        * `end-date`
+        * `both`
+    Type: string
+    Example: start-date
+  minimumRPMS.sunriseTLD:
+    Description: |
+      A TLD, or other registry-class zone, which has been configured to be in
+      perpetual sunrise.
+    Type: string
+    Example: tmclaims.rsp.tech
+  minimumRPMS.claimsTLD:
+    Description: |
+      A TLD, or other registry-class zone, which has been configured to be in
+      perpetual trademark claims.
+    Type: string
+    Example: tmclaims.rsp.tech
   srsgw.eppHostName:
     Description: the fully-qualified domain name of the SRS Gateway EPP server
     Type: string
@@ -5926,7 +5931,7 @@ Input-Parameters:
       containing the base URL. The URL **MUST** end with a slash ("/").
     Type: object
     Example: {"example": "https://rdap.example.com/example/"}
-  
+  # there are no inputs for the IDN test suite, as they are all provided in the test object.
   integration.rdeSFTPHostname:
     Description: The hostname of the operator's SFTP server.
     Type: string
@@ -5945,19 +5950,6 @@ Input-Parameters:
       An array of IP addresses from which requests to the RRI will be sent.
     Type: array
     Example: ["192.168.22.1", "2001:DB8::22:1"]
-  
-  minimumRPMS.sunriseTLD:
-    Description: |
-      A TLD, or other registry-class zone, which has been configured to be in
-      perpetual sunrise.
-    Type: string
-    Example: tmclaims.rsp.tech
-  minimumRPMS.claimsTLD:
-    Description: |
-      A TLD, or other registry-class zone, which has been configured to be in
-      perpetual trademark claims.
-    Type: string
-    Example: tmclaims.rsp.tech
 
 Errors:
   ZM_AAAA_BAD_RDATA:
@@ -7146,15 +7138,15 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
-    DNSSEC_DNS_QUERY_ERROR:
-      Severity: ERROR
-      Description: An error occurred while performing DNS query(s).
-    DNSSEC_INVALID_SIGNING_ALGORITHM:
-      Severity: ERROR
-      Description: An invalid algorithm is used to sign the zone.
-    DNSSEC_INVALID_DIGEST_ALGORITHM:
-      Severity: ERROR
-      Description: An invalid algorithm is used in the provided DS record(s).
+  DNSSEC_DNS_QUERY_ERROR:
+    Severity: ERROR
+    Description: An error occurred while performing DNS query(s).
+  DNSSEC_INVALID_SIGNING_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used to sign the zone.
+  DNSSEC_INVALID_DIGEST_ALGORITHM:
+    Severity: ERROR
+    Description: An invalid algorithm is used in the provided DS record(s).
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
     Description: The client was unable to successfully connect to the EPP serer.
