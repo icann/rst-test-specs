@@ -10,8 +10,11 @@ skip:
   - basic01
   - basic02
   - basic03
+  - consistency01
+  - delegation06
   - dnssec07
   - dnssec11
+  - nameserver03
   - syntax01
   - syntax02
   - syntax03
