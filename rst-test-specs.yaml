@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.200
+Version: 3.0.203
 Last-Updated: 2024-01-04
 Contact:
   Name: GDS Technical Services
@@ -1147,74 +1147,6 @@ Test-Cases:
     Maturity: BETA
     Summary: IP Prefix Diversity
 
-  dns-consistency01:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency01.md>.
-  
-      # Objective
-  
-      For the data served by the authoritative name servers for a designated
-      zone to be consistent, all authoritative name servers must serve the
-      same SOA record for the designated zone.
-  
-      If the serial number (explained in 3.3.13. of [RFC
-      1035](https://datatracker.ietf.org/doc/html/rfc1035)), which is part of
-      the SOA record, is not consistent between authoritative servers, there
-      is a possibility that the data served is inconsistent. The reasons for
-      this inconsistency may be different - such as misconfiguration, or as a
-      result of slow propagation to the secondary name servers.
-  
-      The objective of this test is to verify that the serial number is
-      consistent between different authoritative name servers.
-  
-      For reference purposes : [RFC
-      1982](https://datatracker.ietf.org/doc/html/rfc1982) explains the serial
-      number arithmetic, and section 4.3.5 of [RFC
-      1034](https://datatracker.ietf.org/doc/html/rfc1035) explains the
-      importance of serial number consistency.
-  
-      # Pass/fail criteria
-  
-      The outcome of this Test Case is "fail" if there is at least one message
-      with the severity level *ERROR* or *CRITICAL*.
-  
-      The outcome of this Test Case is "warning" if there is at least one
-      message with the severity level *WARNING*, but no message with severity
-      level *ERROR* or *CRITICAL*.
-  
-      In other cases the outcome of this Test Case is "pass".
-  
-        ----------------------------------------------------------------------
-        Message                         Default severity level (if message is
-                                        emitted)
-        ------------------------------- --------------------------------------
-        `ZM_NO_RESPONSE`                `ERROR` (changed from `DEBUG`)
-  
-        `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)
-  
-        `ZM_ONE_SOA_SERIAL`             INFO
-  
-        `ZM_MULTIPLE_SOA_SERIALS`       `ERROR` (changed from `WARNING`)
-  
-        `ZM_MULTIPLE_SOA_SERIALS_OK`    NOTICE
-  
-        `ZM_SOA_SERIAL`                 INFO
-  
-        `ZM_SOA_SERIAL_VARIATION`       NOTICE
-        ----------------------------------------------------------------------
-    Errors:
-    - ZM_NO_RESPONSE
-    - ZM_MULTIPLE_SOA_SERIALS_OK
-    - ZM_ONE_SOA_SERIAL
-    - ZM_SOA_SERIAL_VARIATION
-    - ZM_NO_RESPONSE_SOA_QUERY
-    - ZM_SOA_SERIAL
-    - ZM_MULTIPLE_SOA_SERIALS
-    Maturity: BETA
-    Summary: SOA serial number consistency
-
   dns-consistency02:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -1696,29 +1628,6 @@ Test-Cases:
     Maturity: BETA
     Summary: Name server must not point at CNAME alias
 
-  dns-delegation06:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.
-  
-      # Objective
-  
-      Section 6.1 of the [RFC
-      2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the
-      SOA record is mandatory for every zone.
-  
-      This test is intended to verify the prescence of a SOA record for the
-      domain.
-  
-      # Pass/fail criteria
-  
-      If there is a SOA record present for the domain this test case succeeds.
-    Errors:
-    - ZM_DNS_DELEGATION06_FAILED
-    Maturity: BETA
-    Summary: Existence of SOA
-
   dns-delegation07:
     Description: |
       This test case comes from version v2023.1.4 of Zonemaster. For more
@@ -1861,32 +1770,6 @@ Test-Cases:
     - ZM_EDNS_RESPONSE_WITHOUT_EDNS
     Maturity: BETA
     Summary: Test of EDNS0 support
-
-  dns-nameserver03:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver03.md>.
-  
-      # Objective
-  
-      AXFR is a mechanism to transfer the whole content of a zone from a name
-      server. Some people prefer to not disclose the whole content of a zone
-      for various reasons, and thus wants the public name server
-      infrastructure not do disclose the whole zone content to the public.
-      This test case checks the availability of the AXFR mechanism.
-  
-      AXFR is defined in its latest revision in [RFC
-      5936](https://datatracker.ietf.org/doc/html/rfc5936).
-  
-      # Pass/fail criteria
-  
-      If any name server for the domain allows a zone transfer using AXFR,
-      this test case fails.
-    Errors:
-    - ZM_DNS_NAMESERVER03_FAILED
-    Maturity: BETA
-    Summary: Test availability of zone transfer (AXFR)
 
   dns-nameserver04:
     Description: |
@@ -6245,18 +6128,8 @@ Errors:
       is available. Please consult the result log for this test case.
     Severity: ERROR
 
-  ZM_DNS_DELEGATION06_FAILED:
-    Description: The `dns-delegation06` test case failed, but no further information
-      is available. Please consult the result log for this test case.
-    Severity: ERROR
-
   ZM_DNS_DELEGATION07_FAILED:
     Description: The `dns-delegation07` test case failed, but no further information
-      is available. Please consult the result log for this test case.
-    Severity: ERROR
-
-  ZM_DNS_NAMESERVER03_FAILED:
-    Description: The `dns-nameserver03` test case failed, but no further information
       is available. Please consult the result log for this test case.
     Severity: ERROR
 
@@ -6829,14 +6702,6 @@ Errors:
     Description: '*Not available.*'
     Severity: ERROR
 
-  ZM_MULTIPLE_SOA_SERIALS:
-    Description: '*Not available.*'
-    Severity: ERROR
-
-  ZM_MULTIPLE_SOA_SERIALS_OK:
-    Description: '*Not available.*'
-    Severity: NOTICE
-
   ZM_MULTIPLE_SOA_TIME_PARAMETER_SET:
     Description: '*Not available.*'
     Severity: ERROR
@@ -7002,10 +6867,6 @@ Errors:
     Description: '*Not available.*'
     Severity: INFO
 
-  ZM_ONE_SOA_SERIAL:
-    Description: '*Not available.*'
-    Severity: INFO
-
   ZM_ONE_SOA_TIME_PARAMETER_SET:
     Description: '*Not available.*'
     Severity: INFO
@@ -7041,14 +6902,6 @@ Errors:
   ZM_RNAME_RFC822_VALID:
     Description: '*Not available.*'
     Severity: INFO
-
-  ZM_SOA_SERIAL:
-    Description: '*Not available.*'
-    Severity: INFO
-
-  ZM_SOA_SERIAL_VARIATION:
-    Description: '*Not available.*'
-    Severity: NOTICE
 
   ZM_UNEXPECTED_RCODE:
     Description: '*Not available.*'

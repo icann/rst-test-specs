@@ -585,16 +585,8 @@
          "Description" : "The `dns-delegation04` test case failed, but no further information is available. Please consult the result log for this test case.",
          "Severity" : "ERROR"
       },
-      "ZM_DNS_DELEGATION06_FAILED" : {
-         "Description" : "The `dns-delegation06` test case failed, but no further information is available. Please consult the result log for this test case.",
-         "Severity" : "ERROR"
-      },
       "ZM_DNS_DELEGATION07_FAILED" : {
          "Description" : "The `dns-delegation07` test case failed, but no further information is available. Please consult the result log for this test case.",
-         "Severity" : "ERROR"
-      },
-      "ZM_DNS_NAMESERVER03_FAILED" : {
-         "Description" : "The `dns-nameserver03` test case failed, but no further information is available. Please consult the result log for this test case.",
          "Severity" : "ERROR"
       },
       "ZM_DNS_NAMESERVER04_FAILED" : {
@@ -1053,14 +1045,6 @@
          "Description" : "*Not available.*",
          "Severity" : "ERROR"
       },
-      "ZM_MULTIPLE_SOA_SERIALS" : {
-         "Description" : "*Not available.*",
-         "Severity" : "ERROR"
-      },
-      "ZM_MULTIPLE_SOA_SERIALS_OK" : {
-         "Description" : "*Not available.*",
-         "Severity" : "NOTICE"
-      },
       "ZM_MULTIPLE_SOA_TIME_PARAMETER_SET" : {
          "Description" : "*Not available.*",
          "Severity" : "ERROR"
@@ -1205,10 +1189,6 @@
          "Description" : "*Not available.*",
          "Severity" : "INFO"
       },
-      "ZM_ONE_SOA_SERIAL" : {
-         "Description" : "*Not available.*",
-         "Severity" : "INFO"
-      },
       "ZM_ONE_SOA_TIME_PARAMETER_SET" : {
          "Description" : "*Not available.*",
          "Severity" : "INFO"
@@ -1244,14 +1224,6 @@
       "ZM_RNAME_RFC822_VALID" : {
          "Description" : "*Not available.*",
          "Severity" : "INFO"
-      },
-      "ZM_SOA_SERIAL" : {
-         "Description" : "*Not available.*",
-         "Severity" : "INFO"
-      },
-      "ZM_SOA_SERIAL_VARIATION" : {
-         "Description" : "*Not available.*",
-         "Severity" : "NOTICE"
       },
       "ZM_UNEXPECTED_RCODE" : {
          "Description" : "*Not available.*",
@@ -1696,20 +1668,6 @@
          "Maturity" : "BETA",
          "Summary" : "IP Prefix Diversity"
       },
-      "dns-consistency01" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency01.md>.\n\n# Objective\n\nFor the data served by the authoritative name servers for a designated\nzone to be consistent, all authoritative name servers must serve the\nsame SOA record for the designated zone.\n\nIf the serial number (explained in 3.3.13. of [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035)), which is part of\nthe SOA record, is not consistent between authoritative servers, there\nis a possibility that the data served is inconsistent. The reasons for\nthis inconsistency may be different - such as misconfiguration, or as a\nresult of slow propagation to the secondary name servers.\n\nThe objective of this test is to verify that the serial number is\nconsistent between different authoritative name servers.\n\nFor reference purposes : [RFC\n1982](https://datatracker.ietf.org/doc/html/rfc1982) explains the serial\nnumber arithmetic, and section 4.3.5 of [RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1035) explains the\nimportance of serial number consistency.\n\n# Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at least one message\nwith the severity level *ERROR* or *CRITICAL*.\n\nThe outcome of this Test Case is \"warning\" if there is at least one\nmessage with the severity level *WARNING*, but no message with severity\nlevel *ERROR* or *CRITICAL*.\n\nIn other cases the outcome of this Test Case is \"pass\".\n\n  ----------------------------------------------------------------------\n  Message                         Default severity level (if message is\n                                  emitted)\n  ------------------------------- --------------------------------------\n  `ZM_NO_RESPONSE`                `ERROR` (changed from `DEBUG`)\n\n  `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)\n\n  `ZM_ONE_SOA_SERIAL`             INFO\n\n  `ZM_MULTIPLE_SOA_SERIALS`       `ERROR` (changed from `WARNING`)\n\n  `ZM_MULTIPLE_SOA_SERIALS_OK`    NOTICE\n\n  `ZM_SOA_SERIAL`                 INFO\n\n  `ZM_SOA_SERIAL_VARIATION`       NOTICE\n  ----------------------------------------------------------------------\n",
-         "Errors" : [
-            "ZM_NO_RESPONSE",
-            "ZM_MULTIPLE_SOA_SERIALS_OK",
-            "ZM_ONE_SOA_SERIAL",
-            "ZM_SOA_SERIAL_VARIATION",
-            "ZM_NO_RESPONSE_SOA_QUERY",
-            "ZM_SOA_SERIAL",
-            "ZM_MULTIPLE_SOA_SERIALS"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "SOA serial number consistency"
-      },
       "dns-consistency02" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.\n\n# Objective\n\nAll authoritative name servers must serve the same SOA record for the\ntested domain (section 4.2.1 of [RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1034)). As per section\n3.3.13 of [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), the\nRNAME field in the SOA RDATA refers to the administrative contact. An\ninconsistency in the administrative contact for the domain might result\nin operational failures being reported to different persons.\n\nThe objective of this test is to verify that the administrative contact\nis consistent between different authoritative name servers.\n\n# Pass/fail criteria\n\nThe outcome of this Test Case is \"fail\" if there is at least one message\nwith the severity level *ERROR* or *CRITICAL*.\n\nThe outcome of this Test Case is \"warning\" if there is at least one\nmessage with the severity level *WARNING*, but no message with severity\nlevel *ERROR* or *CRITICAL*.\n\nIn other cases the outcome of this Test Case is \"pass\".\n\n  ----------------------------------------------------------------------\n  Message                         Default severity level (if message is\n                                  emitted)\n  ------------------------------- --------------------------------------\n  `ZM_NO_RESPONSE`                `ERROR` (changed from `DEBUG`)\n\n  `ZM_NO_RESPONSE_SOA_QUERY`      `ERROR` (changed from `DEBUG`)\n\n  `ZM_ONE_SOA_RNAME`              INFO\n\n  `ZM_MULTIPLE_SOA_RNAMES`        `ERROR` (changed from `NOTICE`)\n  ----------------------------------------------------------------------\n",
          "Errors" : [
@@ -1830,14 +1788,6 @@
          "Maturity" : "BETA",
          "Summary" : "Name server must not point at CNAME alias"
       },
-      "dns-delegation06" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation06.md>.\n\n# Objective\n\nSection 6.1 of the [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181) specifies that the\nSOA record is mandatory for every zone.\n\nThis test is intended to verify the prescence of a SOA record for the\ndomain.\n\n# Pass/fail criteria\n\nIf there is a SOA record present for the domain this test case succeeds.\n",
-         "Errors" : [
-            "ZM_DNS_DELEGATION06_FAILED"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Existence of SOA"
-      },
       "dns-delegation07" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation07.md>.\n\n# Objective\n\nIf the list of name servers for a domain obtained from its parent are\nnot found in its its child zone, then it leads to an inconsistency\n(section 2.3 of\n[RIPE-114](https://www.ripe.net/publications/docs/ripe-114))\n\n# Pass/fail criteria\n\nIf the set of glue name records obtained are found in the list of name\nservers obtained from the child also, then the test succeeds\n",
          "Errors" : [
@@ -1868,14 +1818,6 @@
          ],
          "Maturity" : "BETA",
          "Summary" : "Test of EDNS0 support"
-      },
-      "dns-nameserver03" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver03.md>.\n\n# Objective\n\nAXFR is a mechanism to transfer the whole content of a zone from a name\nserver. Some people prefer to not disclose the whole content of a zone\nfor various reasons, and thus wants the public name server\ninfrastructure not do disclose the whole zone content to the public.\nThis test case checks the availability of the AXFR mechanism.\n\nAXFR is defined in its latest revision in [RFC\n5936](https://datatracker.ietf.org/doc/html/rfc5936).\n\n# Pass/fail criteria\n\nIf any name server for the domain allows a zone transfer using AXFR,\nthis test case fails.\n",
-         "Errors" : [
-            "ZM_DNS_NAMESERVER03_FAILED"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Test availability of zone transfer (AXFR)"
       },
       "dns-nameserver04" : {
          "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver04.md>.\n\n# Objective\n\nResponses from the authoritative name servers must contain same source\nIP address as the destination IP address of the initial query. This has\nbeen clarified in section 4 of [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181#section-4).\n\n# Pass/fail criteria\n\nIf any response comes from another IP address than the query was sent\nto, this test case fails.\n",
@@ -3315,5 +3257,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.200"
+   "Version" : "3.0.203"
 }
