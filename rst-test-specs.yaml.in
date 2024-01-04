@@ -22,20 +22,30 @@ Resources:
 
 Test-Cases:
 #exec perl ./tools/generate-zonemaster-cases.pl ../../zonemaster/zonemaster
+#exec sed 's/^/  /' inc/dnssec/cases.yaml
+#exec sed 's/^/  /' inc/dnssec-ops/cases.yaml
+#exec sed 's/^/  /' inc/rde/cases.yaml
+#exec sed 's/^/  /' inc/epp/cases.yaml
 #exec perl ./tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx"
-#exec sed 's/^/  /' inc/dnssec-cases.yaml
-#exec sed 's/^/  /' inc/dnssec-ops-cases.yaml
-#exec sed 's/^/  /' inc/rde-cases.yaml
-#exec sed 's/^/  /' inc/epp-cases.yaml
-#exec sed 's/^/  /' inc/minimum-rpms-cases.yaml
-#exec sed 's/^/  /' inc/srsgw-cases.yaml
-#exec sed 's/^/  /' inc/idn-cases.yaml
-#exec sed 's/^/  /' inc/integration-cases.yaml
+#exec sed 's/^/  /' inc/minimum-rpms/cases.yaml
+#exec sed 's/^/  /' inc/srsgw/cases.yaml
+#exec sed 's/^/  /' inc/idn/cases.yaml
+#exec sed 's/^/  /' inc/integration/cases.yaml
 
 Input-Parameters:
-#exec sed 's/^/  /' inc/inputs.yaml
+#exec sed 's/^/  /' inc/general/inputs.yaml
+#exec sed 's/^/  /' inc/dns/inputs.yaml
+#exec sed 's/^/  /' inc/dnssec/inputs.yaml
+#exec sed 's/^/  /' inc/dnssec-ops/inputs.yaml
+#exec sed 's/^/  /' inc/rde/inputs.yaml
+#exec sed 's/^/  /' inc/epp/inputs.yaml
+#exec sed 's/^/  /' inc/rdap/inputs.yaml
+#exec sed 's/^/  /' inc/minimum-rpms/inputs.yaml
+#exec sed 's/^/  /' inc/srsgw/inputs.yaml
+#exec sed 's/^/  /' inc/idn/inputs.yaml
+#exec sed 's/^/  /' inc/integration/inputs.yaml
 
 Errors:
 #exec perl ./tools/generate-zonemaster-cases.pl ../../zonemaster/zonemaster --errors --devel
-#exec sed 's/^/  /' inc/dnssec-errors.yaml
-#exec sed 's/^/  /' inc/epp-errors.yaml
+#exec sed 's/^/  /' inc/dnssec/errors.yaml
+#exec sed 's/^/  /' inc/epp/errors.yaml
