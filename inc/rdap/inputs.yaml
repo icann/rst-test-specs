@@ -1,0 +1,28 @@
+rdap.baseURLs:
+  Descrption: |
+    The RDAP base URL(s) for the TLD(s). This input parameter is an object,
+    where the object properties are the TLD names and the values are strings
+    containing the base URL. The URL **MUST** end with a slash ("/").
+  Type: object
+  Example: {"example": "https://rdap.example.com/example/"}
+rdap.testDomains:
+  Description: |
+    The domain(s) that will be queried to validate domain responses. This
+    input parameter is an object, where the object properties are the TLD
+    names and the values domain names.
+  Type: object
+  Example: {"example": "example.example"}
+rdap.testEntities:
+  Description: |
+    The entities(s) that will be queried to validate entity responses. This
+    input parameter is an object, where the object properties are the TLD
+    names and the values entity handles.
+  Type: object
+  Example: {"example": "9999"}
+rdap.testNameservers:
+  Description: |
+    The nameservers(s) that will be queried to validate nameserver responses.
+    This input parameter is an object, where the object properties are the TLD
+    names and the values host names.
+  Type: object
+  Example: {"example": "ns1.example.com"}

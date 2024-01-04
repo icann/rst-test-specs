@@ -1,0 +1,25 @@
+dnssecOps.csk:
+  Description: |
+    A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
+    also referred to as a "Single Type Signing Scheme") instead of a split
+    KSK/ZSK configuration.
+  Type: boolean
+  Example: false
+dnssecOps.zskRolloverZone:
+  Description: |
+    The domain name which will be monitored for the occurrence of a ZSK
+    rollover.
+  Type: string
+  Example: example.com
+dnssecOps.kskRolloverZone:
+  Description: |
+    The domain name which will be monitored for the occurrence of a KSK
+    rollover.
+  Type: string
+  Example: example.com
+dnssecOps.algorithmRolloverZone:
+  Description: |
+    The domain name which will be monitored for the occurrence of an algorithm
+    rollover.
+  Type: string
+  Example: example.com

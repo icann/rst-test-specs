@@ -1,0 +1,21 @@
+minimumRPMS.sunriseModels:
+  Description: |
+    The sunrise models supported by the EPP server. The possible values for
+    this parameter are:
+      * `start-date`
+      * `end-date`
+      * `both`
+  Type: string
+  Example: start-date
+minimumRPMS.sunriseTLD:
+  Description: |
+    A TLD, or other registry-class zone, which has been configured to be in
+    perpetual sunrise.
+  Type: string
+  Example: tmclaims.rsp.tech
+minimumRPMS.claimsTLD:
+  Description: |
+    A TLD, or other registry-class zone, which has been configured to be in
+    perpetual trademark claims.
+  Type: string
+  Example: tmclaims.rsp.tech

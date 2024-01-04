@@ -1,0 +1,18 @@
+integration.rdeSFTPHostname:
+  Description: The hostname of the operator's SFTP server.
+  Type: string
+  Example: sftp.rsp.tech
+integration.rdeSFTPDirectory:
+  Description: |
+    The directory on the SFTP server where deposit files may be found.
+  Type: string
+  Example: /path/to/deposits
+integration.rdeSFTPUsername:
+  Description: The username that can be used to connect to the SFTP server.
+  Type: string
+  Example: icann
+integration.rriACL:
+  Description: |
+    An array of IP addresses from which requests to the RRI will be sent.
+  Type: array
+  Example: ["192.168.22.1", "2001:DB8::22:1"]

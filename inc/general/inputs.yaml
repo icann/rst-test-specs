@@ -1,0 +1,12 @@
+general.minimalPublicDataSet:
+  Description: |
+    if true, then the registry only supports the minimum public data set, and
+    does not collect registrant and/or technical contact information from
+    registrars.
+  Type: boolean
+  Example: true
+general.gracePeriodsSupported:
+  Description: |
+    Whether or not the registry supports grace periods as defined in RFC 3915
+  Type: boolean
+  Example: true

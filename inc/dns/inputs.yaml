@@ -1,0 +1,13 @@
+dns.nameservers:
+  Description: |
+    The set of nameservers that will be authoritative for the TLD(s).
+
+    This input parameter is an array where the object properties are the
+    TLD names, and the values are objects. For these objects, the properties
+    are the nameserver names, and the values are arrays of IPv4 and IPv6
+    addresses.
+
+    There **MUST** be at least two nameservers, and at least two nameservers
+    **MUST** have at least one IPv6 address.
+  Type: object
+  Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}

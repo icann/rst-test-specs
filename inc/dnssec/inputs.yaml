@@ -1,0 +1,11 @@
+dnssec.dsRecords:
+  Description: |
+    The DS record(s) that may be used to validate the DNSSEC signature for the
+    TLD(s). This input parameter is an object where the object properties are
+    the TLD names and the values are arrays of objects representing DS
+    records.
+
+    There **MUST** be an entry for every TLD in the TLD set and there **MUST**
+    be at least one DS record for each TLD.
+  Type: object
+  Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}

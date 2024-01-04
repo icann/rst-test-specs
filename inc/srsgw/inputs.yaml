@@ -1,0 +1,47 @@
+srsgw.eppHostName:
+  Description: the fully-qualified domain name of the SRS Gateway EPP server
+  Type: string
+  Example: epp.rsp.tech
+srsgw.eppClid01:
+  Description: the username used to log in to the SRS Gateway EPP server
+  Type: string
+  Example: clid-01
+srsgw.eppPwd01:
+  Description: the password used to log in to the SRS Gateway EPP server
+  Type: string
+  Example: foo2bar
+srsgw.serverIssuedClientCertificate01:
+  Description: |
+    If the EPP server uses a private CA to issue client certificates, then
+    a certificate generated using the CSR provided in the `epp.clientCSR` may
+    be provided using this parameter. This certificate will only be used in
+    conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
+    If the server will accept ICANN's own client certificate, this parameter
+    **SHOULD** be empty.
+  Type: string
+  Example:
+srsgw.serverIssuedClientCertificate02:
+  Description: |
+    If the EPP server uses a private CA to issue client certificates, then
+    a certificate generated using the CSR provided in the `epp.clientCSR` may
+    be provided using this parameter. This certificate will only be used in
+    conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
+    If the server will accept ICANN's own client certificate, this parameter
+    **SHOULD** be empty.
+  Type: string
+  Example:
+srsgw.eppClid02:
+  Description: the username used for transfer tests
+  Type: string
+  Example: clid-02
+srsgw.eppPwd02:
+  Description: the password used for transfer tests
+  Type: string
+  Example: foo3bar
+srsgw.rdapBaseURLs:
+  Description: |
+    The RDAP base URL(s) for the TLD(s). This input parameter is an object,
+    where the object properties are the TLD names and the values are strings
+    containing the base URL. The URL **MUST** end with a slash ("/").
+  Type: object
+  Example: {"example": "https://rdap.example.com/example/"}
