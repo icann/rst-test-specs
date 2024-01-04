@@ -2481,7 +2481,7 @@
       },
       "epp-08" : {
          "Dependencies" : [
-            "epp-08"
+            "epp-07"
          ],
          "Description" : "This test will confirm that EPP clients are unable to perform `<info>`\ncommands on objects that they do not sponsor.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nThe client will connect using a set of alternate credentials and will\nsubmit `<info>` and `<update>` commands on the contact objects created in\n`epp-08`. The server **MUST** respond with a 2201 \"authorization error\"\nresponse.\n",
          "Errors" : [
@@ -3315,5 +3315,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.199"
+   "Version" : "3.0.200"
 }

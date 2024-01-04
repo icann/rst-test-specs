@@ -247,7 +247,7 @@ epp-08:
     `epp-08`. The server **MUST** respond with a 2201 "authorization error"
     response.
   Dependencies:
-    - epp-08
+    - epp-07
   Errors:
     - EPP_CONTACT_INFO_RESPONSE_NOT_2201
     - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
