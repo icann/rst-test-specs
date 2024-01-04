@@ -289,6 +289,8 @@ foreach my $row ($list->getElementsByTagName('tr')) {
         };
     }
 
+    printf(STDERR "Warning: case %s has no errors\n", $case_id) if (scalar(@case_errors) < 1);
+
     push(@cases, {
         'id'            => $case_id,
         'summary'       => unidecode($summary),
