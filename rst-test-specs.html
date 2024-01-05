@@ -168,7 +168,7 @@ window.addEventListener('beforeprint', (event) => {
     </g>
   </g>
 </svg>
-<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.207</p>
+<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.209</p>
 <p>Last Updated: 2024-01-05</p>
 <p><a href="mailto:rst@icann.org">GDS Technical Services, Internet Corporation for Assigned Names and Numbers (ICANN)</a></p>
 </header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><ol type="1">
@@ -18641,40 +18641,53 @@ this parameter <strong>SHOULD</strong> be empty.</p>
 </div></section><section><a name="Error-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS"></a><h3>8.50. EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS</h3><h4>8.50.1. Severity</h4><pre>ERROR</pre><h4>8.50.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET"></a><h3>8.51. EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET</h3><h4>8.51.1. Severity</h4><pre>ERROR</pre><h4>8.51.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE"></a><h3>8.52. EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE</h3><h4>8.52.1. Severity</h4><pre>ERROR</pre><h4>8.52.2. Description</h4><div class="markdown-content"><p>TBA.</p>
-</div></section><section><a name="Error-EPP_DNS_RESOLUTION_ERROR"></a><h3>8.53. EPP_DNS_RESOLUTION_ERROR</h3><h4>8.53.1. Severity</h4><pre>ERROR</pre><h4>8.53.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_DNS_RESOLUTION_ERROR"></a><h3>8.53. EPP_DNS_RESOLUTION_ERROR</h3><h4>8.53.1. Severity</h4><pre>ERROR</pre><h4>8.53.2. Description</h4><div class="markdown-content"><p>There was an error while performing a DNS query for the EPP server
+hostname.</p>
 </div></section><section><a name="Error-EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL"></a><h3>8.54. EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL</h3><h4>8.54.1. Severity</h4><pre>ERROR</pre><h4>8.54.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"></a><h3>8.55. EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL</h3><h4>8.55.1. Severity</h4><pre>ERROR</pre><h4>8.55.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL"></a><h3>8.56. EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL</h3><h4>8.56.1. Severity</h4><pre>ERROR</pre><h4>8.56.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_GENERIC_COMMAND_ERROR"></a><h3>8.57. EPP_GENERIC_COMMAND_ERROR</h3><h4>8.57.1. Severity</h4><pre>ERROR</pre><h4>8.57.2. Description</h4><div class="markdown-content"><p>The client received a 2400 error from the server.</p>
-</div></section><section><a name="Error-EPP_GREETING_INVALID_LANG"></a><h3>8.58. EPP_GREETING_INVALID_LANG</h3><h4>8.58.1. Severity</h4><pre>ERROR</pre><h4>8.58.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_MISSING_EXTURI"></a><h3>8.59. EPP_GREETING_MISSING_EXTURI</h3><h4>8.59.1. Severity</h4><pre>ERROR</pre><h4>8.59.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_MISSING_OBJURI"></a><h3>8.60. EPP_GREETING_MISSING_OBJURI</h3><h4>8.60.1. Severity</h4><pre>ERROR</pre><h4>8.60.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_GREETING_INVALID_LANG"></a><h3>8.58. EPP_GREETING_INVALID_LANG</h3><h4>8.58.1. Severity</h4><pre>ERROR</pre><h4>8.58.2. Description</h4><div class="markdown-content"><p>The value of one or more of the <code>&lt;lang&gt;</code> elements in
+the <code>&lt;greeting&gt;</code> are invalid.</p>
+</div></section><section><a name="Error-EPP_GREETING_MISSING_EXTURI"></a><h3>8.59. EPP_GREETING_MISSING_EXTURI</h3><h4>8.59.1. Severity</h4><pre>ERROR</pre><h4>8.59.2. Description</h4><div class="markdown-content"><p>A mandatory extension namespace URI is missing.</p>
+</div></section><section><a name="Error-EPP_GREETING_MISSING_OBJURI"></a><h3>8.60. EPP_GREETING_MISSING_OBJURI</h3><h4>8.60.1. Severity</h4><pre>ERROR</pre><h4>8.60.2. Description</h4><div class="markdown-content"><p>A mandatory object namespace URI is missing.</p>
 </div></section><section><a name="Error-EPP_GREETING_RECOMMENDED_EXTENSION_MISSING"></a><h3>8.61. EPP_GREETING_RECOMMENDED_EXTENSION_MISSING</h3><h4>8.61.1. Severity</h4><pre>WARNING</pre><h4>8.61.2. Description</h4><div class="markdown-content"><p>The server does not include the namespace URI of a recommended
 extension in an <code>&lt;extURI&gt;</code> element of the
 <code>&lt;greeting&gt;</code> frame.</p>
-</div></section><section><a name="Error-EPP_GREETING_SVDATE_INVALID"></a><h3>8.62. EPP_GREETING_SVDATE_INVALID</h3><h4>8.62.1. Severity</h4><pre>ERROR</pre><h4>8.62.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_SVID_INVALID"></a><h3>8.63. EPP_GREETING_SVID_INVALID</h3><h4>8.63.1. Severity</h4><pre>ERROR</pre><h4>8.63.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_UNEXPECTED_EXTURI"></a><h3>8.64. EPP_GREETING_UNEXPECTED_EXTURI</h3><h4>8.64.1. Severity</h4><pre>ERROR</pre><h4>8.64.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_UNEXPECTED_OBJURI"></a><h3>8.65. EPP_GREETING_UNEXPECTED_OBJURI</h3><h4>8.65.1. Severity</h4><pre>ERROR</pre><h4>8.65.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_GREETING_VERSION_INVALID"></a><h3>8.66. EPP_GREETING_VERSION_INVALID</h3><h4>8.66.1. Severity</h4><pre>ERROR</pre><h4>8.66.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_GREETING_SVDATE_INVALID"></a><h3>8.62. EPP_GREETING_SVDATE_INVALID</h3><h4>8.62.1. Severity</h4><pre>ERROR</pre><h4>8.62.2. Description</h4><div class="markdown-content"><p>The value of the <code>&lt;svDate&gt;</code> element in the
+<code>&lt;greeting&gt;</code> is invalid.</p>
+</div></section><section><a name="Error-EPP_GREETING_SVID_INVALID"></a><h3>8.63. EPP_GREETING_SVID_INVALID</h3><h4>8.63.1. Severity</h4><pre>ERROR</pre><h4>8.63.2. Description</h4><div class="markdown-content"><p>The value of the <code>&lt;svID&gt;</code> element in the
+<code>&lt;greeting&gt;</code> is invalid.</p>
+</div></section><section><a name="Error-EPP_GREETING_UNEXPECTED_EXTURI"></a><h3>8.64. EPP_GREETING_UNEXPECTED_EXTURI</h3><h4>8.64.1. Severity</h4><pre>ERROR</pre><h4>8.64.2. Description</h4><div class="markdown-content"><p>One or more of the <code>&lt;extRI&gt;</code> elements in the
+<code>&lt;greeting&gt;</code> contain invalid namespace URIs.</p>
+</div></section><section><a name="Error-EPP_GREETING_UNEXPECTED_OBJURI"></a><h3>8.65. EPP_GREETING_UNEXPECTED_OBJURI</h3><h4>8.65.1. Severity</h4><pre>ERROR</pre><h4>8.65.2. Description</h4><div class="markdown-content"><p>One or more of the <code>&lt;objURI&gt;</code> elements in the
+<code>&lt;greeting&gt;</code> contain invalid namespace URIs.</p>
+</div></section><section><a name="Error-EPP_GREETING_VERSION_INVALID"></a><h3>8.66. EPP_GREETING_VERSION_INVALID</h3><h4>8.66.1. Severity</h4><pre>ERROR</pre><h4>8.66.2. Description</h4><div class="markdown-content"><p>The value of the <code>&lt;version&gt;</code> element in the
+<code>&lt;greeting&gt;</code> is invalid.</p>
 </div></section><section><a name="Error-EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL"></a><h3>8.67. EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL</h3><h4>8.67.1. Severity</h4><pre>ERROR</pre><h4>8.67.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL"></a><h3>8.68. EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL</h3><h4>8.68.1. Severity</h4><pre>ERROR</pre><h4>8.68.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL"></a><h3>8.69. EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL</h3><h4>8.69.1. Severity</h4><pre>ERROR</pre><h4>8.69.2. Description</h4><div class="markdown-content"><p>TBA.</p>
 </div></section><section><a name="Error-EPP_LOGIN_ERROR"></a><h3>8.70. EPP_LOGIN_ERROR</h3><h4>8.70.1. Severity</h4><pre>ERROR</pre><h4>8.70.2. Description</h4><div class="markdown-content"><p>The client was unable to successfullt authenticate with the EPP
 server.</p>
-</div></section><section><a name="Error-EPP_MISSING_AAAA_RECORDS"></a><h3>8.71. EPP_MISSING_AAAA_RECORDS</h3><h4>8.71.1. Severity</h4><pre>WARNING</pre><h4>8.71.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_MISSING_A_RECORDS"></a><h3>8.72. EPP_MISSING_A_RECORDS</h3><h4>8.72.1. Severity</h4><pre>ERROR</pre><h4>8.72.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_NO_GREETING_RECEIVED"></a><h3>8.73. EPP_NO_GREETING_RECEIVED</h3><h4>8.73.1. Severity</h4><pre>ERROR</pre><h4>8.73.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_MISSING_AAAA_RECORDS"></a><h3>8.71. EPP_MISSING_AAAA_RECORDS</h3><h4>8.71.1. Severity</h4><pre>WARNING</pre><h4>8.71.2. Description</h4><div class="markdown-content"><p>No <code>AAAA</code> record(s) were found for the EPP server
+hostname.</p>
+</div></section><section><a name="Error-EPP_MISSING_A_RECORDS"></a><h3>8.72. EPP_MISSING_A_RECORDS</h3><h4>8.72.1. Severity</h4><pre>ERROR</pre><h4>8.72.2. Description</h4><div class="markdown-content"><p>No <code>A</code> record(s) were found for the EPP server
+hostname.</p>
+</div></section><section><a name="Error-EPP_NO_GREETING_RECEIVED"></a><h3>8.73. EPP_NO_GREETING_RECEIVED</h3><h4>8.73.1. Severity</h4><pre>ERROR</pre><h4>8.73.2. Description</h4><div class="markdown-content"><p>No <code>&lt;greeting&gt;</code> was received after successful
+connection.</p>
 </div></section><section><a name="Error-EPP_SCHEMA_VALIDATION_ERROR"></a><h3>8.74. EPP_SCHEMA_VALIDATION_ERROR</h3><h4>8.74.1. Severity</h4><pre>ERROR</pre><h4>8.74.2. Description</h4><div class="markdown-content"><p>The response from the server failed schema validation.</p>
-</div></section><section><a name="Error-EPP_SERVICE_PORT_UNREACHABLE"></a><h3>8.75. EPP_SERVICE_PORT_UNREACHABLE</h3><h4>8.75.1. Severity</h4><pre>ERROR</pre><h4>8.75.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_SERVICE_PORT_UNREACHABLE"></a><h3>8.75. EPP_SERVICE_PORT_UNREACHABLE</h3><h4>8.75.1. Severity</h4><pre>ERROR</pre><h4>8.75.2. Description</h4><div class="markdown-content"><p>The EPP service port (tcp/700) could not be connected to.</p>
 </div></section><section><a name="Error-EPP_TLS_BAD_CIPHER"></a><h3>8.76. EPP_TLS_BAD_CIPHER</h3><h4>8.76.1. Severity</h4><pre>ERROR</pre><h4>8.76.2. Description</h4><div class="markdown-content"><p>The server uses an encryption cipher not recommended in RFC 9325.</p>
-</div></section><section><a name="Error-EPP_TLS_CERTIFICATE_CHAIN_MISSING"></a><h3>8.77. EPP_TLS_CERTIFICATE_CHAIN_MISSING</h3><h4>8.77.1. Severity</h4><pre>ERROR</pre><h4>8.77.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH"></a><h3>8.78. EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH</h3><h4>8.78.1. Severity</h4><pre>ERROR</pre><h4>8.78.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_CONNECTION_ERROR"></a><h3>8.79. EPP_TLS_CONNECTION_ERROR</h3><h4>8.79.1. Severity</h4><pre>ERROR</pre><h4>8.79.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_EXPIRED_CERTIFICATE"></a><h3>8.80. EPP_TLS_EXPIRED_CERTIFICATE</h3><h4>8.80.1. Severity</h4><pre>ERROR</pre><h4>8.80.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED"></a><h3>8.81. EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED</h3><h4>8.81.1. Severity</h4><pre>ERROR</pre><h4>8.81.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED"></a><h3>8.82. EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED</h3><h4>8.82.1. Severity</h4><pre>ERROR</pre><h4>8.82.2. Description</h4><div class="markdown-content"><p>TBA</p>
-</div></section><section><a name="Error-EPP_TLS_UNTRUSTED_CERTIFICATE"></a><h3>8.83. EPP_TLS_UNTRUSTED_CERTIFICATE</h3><h4>8.83.1. Severity</h4><pre>ERROR</pre><h4>8.83.2. Description</h4><div class="markdown-content"><p>TBA</p>
+</div></section><section><a name="Error-EPP_TLS_CERTIFICATE_CHAIN_MISSING"></a><h3>8.77. EPP_TLS_CERTIFICATE_CHAIN_MISSING</h3><h4>8.77.1. Severity</h4><pre>ERROR</pre><h4>8.77.2. Description</h4><div class="markdown-content"><p>One or more intermediate certificates are missing.</p>
+</div></section><section><a name="Error-EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH"></a><h3>8.78. EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH</h3><h4>8.78.1. Severity</h4><pre>ERROR</pre><h4>8.78.2. Description</h4><div class="markdown-content"><p>The hostname in the TLS certificate does not match the EPP server
+hostname.</p>
+</div></section><section><a name="Error-EPP_TLS_CONNECTION_ERROR"></a><h3>8.79. EPP_TLS_CONNECTION_ERROR</h3><h4>8.79.1. Severity</h4><pre>ERROR</pre><h4>8.79.2. Description</h4><div class="markdown-content"><p>There was an error during the TLS handshake while connecting to the
+EPP server.</p>
+</div></section><section><a name="Error-EPP_TLS_EXPIRED_CERTIFICATE"></a><h3>8.80. EPP_TLS_EXPIRED_CERTIFICATE</h3><h4>8.80.1. Severity</h4><pre>ERROR</pre><h4>8.80.2. Description</h4><div class="markdown-content"><p>The TLS certificate presented by the EPP server has expired.</p>
+</div></section><section><a name="Error-EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED"></a><h3>8.81. EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED</h3><h4>8.81.1. Severity</h4><pre>ERROR</pre><h4>8.81.2. Description</h4><div class="markdown-content"><p>The EPP server implements a forbidden protocol.</p>
+</div></section><section><a name="Error-EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED"></a><h3>8.82. EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED</h3><h4>8.82.1. Severity</h4><pre>ERROR</pre><h4>8.82.2. Description</h4><div class="markdown-content"><p>The EPP server does not implement a required protocol.</p>
+</div></section><section><a name="Error-EPP_TLS_UNTRUSTED_CERTIFICATE"></a><h3>8.83. EPP_TLS_UNTRUSTED_CERTIFICATE</h3><h4>8.83.1. Severity</h4><pre>ERROR</pre><h4>8.83.2. Description</h4><div class="markdown-content"><p>The TLS certificate presented by the EPP server is not issued by a
+trusted Certificate Authority.</p>
 </div></section><section><a name="Error-EPP_XML_PARSE_ERROR"></a><h3>8.84. EPP_XML_PARSE_ERROR</h3><h4>8.84.1. Severity</h4><pre>ERROR</pre><h4>8.84.2. Description</h4><div class="markdown-content"><p>The XML response from the server could not be parsed.</p>
 </div></section><section><a name="Error-ZM_AAAA_BAD_RDATA"></a><h3>8.85. ZM_AAAA_BAD_RDATA</h3><h4>8.85.1. Severity</h4><pre>ERROR</pre><h4>8.85.2. Description</h4><div class="markdown-content"><p><em>Not available.</em></p>
 </div></section><section><a name="Error-ZM_AAAA_QUERY_DROPPED"></a><h3>8.86. ZM_AAAA_QUERY_DROPPED</h3><h4>8.86.1. Severity</h4><pre>ERROR</pre><h4>8.86.2. Description</h4><div class="markdown-content"><p><em>Not available.</em></p>

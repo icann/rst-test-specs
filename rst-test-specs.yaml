@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.207
+Version: 3.0.209
 Last-Updated: 2024-01-05
 Contact:
   Name: GDS Technical Services
@@ -6993,47 +6993,53 @@ Errors:
   
   EPP_DNS_RESOLUTION_ERROR:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      There was an error while performing a DNS query for the EPP server hostname.
   
   EPP_MISSING_A_RECORDS:
     Severity: ERROR
-    Description: TBA
+    Description: No `A` record(s) were found for the EPP server hostname.
   
   EPP_MISSING_AAAA_RECORDS:
     Severity: WARNING
-    Description: TBA
+    Description: No `AAAA` record(s) were found for the EPP server hostname.
   
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
-    Description: TBA
+    Description: The EPP service port (tcp/700) could not be connected to.
   
   EPP_TLS_CONNECTION_ERROR:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      There was an error during the TLS handshake while connecting to the EPP
+      server.
   
   EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
     Severity: ERROR
-    Description: TBA
+    Description: The EPP server does not implement a required protocol.
   
   EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED:
     Severity: ERROR
-    Description: TBA
+    Description: The EPP server implements a forbidden protocol.
   
   EPP_TLS_UNTRUSTED_CERTIFICATE:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      The TLS certificate presented by the EPP server is not issued by a trusted
+      Certificate Authority.  
   
   EPP_TLS_EXPIRED_CERTIFICATE:
     Severity: ERROR
-    Description: TBA
+    Description: The TLS certificate presented by the EPP server has expired.
   
   EPP_TLS_CERTIFICATE_CHAIN_MISSING:
     Severity: ERROR
-    Description: TBA
+    Description: One or more intermediate certificates are missing.
   
   EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      The hostname in the TLS certificate does not match the EPP server hostname.
   
   EPP_TLS_BAD_CIPHER:
     Severity: ERROR
@@ -7042,39 +7048,47 @@ Errors:
   
   EPP_NO_GREETING_RECEIVED:
     Severity: ERROR
-    Description: TBA
+    Description: No `<greeting>` was received after successful connection.
   
   EPP_GREETING_SVID_INVALID:
     Severity: ERROR
-    Description: TBA
+    Description: The value of the `<svID>` element in the `<greeting>` is invalid.
   
   EPP_GREETING_SVDATE_INVALID:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      The value of the `<svDate>` element in the `<greeting>` is invalid.
   
   EPP_GREETING_VERSION_INVALID:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      The value of the `<version>` element in the `<greeting>` is invalid.
   
   EPP_GREETING_INVALID_LANG:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      The value of one or more of the `<lang>` elements in the `<greeting>` are
+      invalid.
   
   EPP_GREETING_UNEXPECTED_OBJURI:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      One or more of the `<objURI>` elements in the `<greeting>` contain invalid
+      namespace URIs.
   
   EPP_GREETING_MISSING_OBJURI:
     Severity: ERROR
-    Description: TBA
+    Description: A mandatory object namespace URI is missing.
   
   EPP_GREETING_UNEXPECTED_EXTURI:
     Severity: ERROR
-    Description: TBA
+    Description: |
+      One or more of the `<extRI>` elements in the `<greeting>` contain invalid
+      namespace URIs.
   
   EPP_GREETING_MISSING_EXTURI:
     Severity: ERROR
-    Description: TBA
+    Description: A mandatory extension namespace URI is missing.
   
   EPP_XML_PARSE_ERROR:
     Severity: ERROR
@@ -7088,39 +7102,57 @@ Errors:
   
   EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
     Severity: ERROR
-    Description: TBA.
+    Description: |
+      The server responded to a `<check>` command with an unexpected value in one
+      or more of the `avail` attributes.
   
   EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
     Severity: ERROR

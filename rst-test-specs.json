@@ -214,7 +214,7 @@
          "Severity" : "ERROR"
       },
       "EPP_DNS_RESOLUTION_ERROR" : {
-         "Description" : "TBA",
+         "Description" : "There was an error while performing a DNS query for the EPP server hostname.\n",
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL" : {
@@ -234,15 +234,15 @@
          "Severity" : "ERROR"
       },
       "EPP_GREETING_INVALID_LANG" : {
-         "Description" : "TBA",
+         "Description" : "The value of one or more of the `<lang>` elements in the `<greeting>` are\ninvalid.\n",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_MISSING_EXTURI" : {
-         "Description" : "TBA",
+         "Description" : "A mandatory extension namespace URI is missing.",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_MISSING_OBJURI" : {
-         "Description" : "TBA",
+         "Description" : "A mandatory object namespace URI is missing.",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_RECOMMENDED_EXTENSION_MISSING" : {
@@ -250,23 +250,23 @@
          "Severity" : "WARNING"
       },
       "EPP_GREETING_SVDATE_INVALID" : {
-         "Description" : "TBA",
+         "Description" : "The value of the `<svDate>` element in the `<greeting>` is invalid.\n",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_SVID_INVALID" : {
-         "Description" : "TBA",
+         "Description" : "The value of the `<svID>` element in the `<greeting>` is invalid.",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_UNEXPECTED_EXTURI" : {
-         "Description" : "TBA",
+         "Description" : "One or more of the `<extRI>` elements in the `<greeting>` contain invalid\nnamespace URIs.\n",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_UNEXPECTED_OBJURI" : {
-         "Description" : "TBA",
+         "Description" : "One or more of the `<objURI>` elements in the `<greeting>` contain invalid\nnamespace URIs.\n",
          "Severity" : "ERROR"
       },
       "EPP_GREETING_VERSION_INVALID" : {
-         "Description" : "TBA",
+         "Description" : "The value of the `<version>` element in the `<greeting>` is invalid.\n",
          "Severity" : "ERROR"
       },
       "EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL" : {
@@ -286,15 +286,15 @@
          "Severity" : "ERROR"
       },
       "EPP_MISSING_AAAA_RECORDS" : {
-         "Description" : "TBA",
+         "Description" : "No `AAAA` record(s) were found for the EPP server hostname.",
          "Severity" : "WARNING"
       },
       "EPP_MISSING_A_RECORDS" : {
-         "Description" : "TBA",
+         "Description" : "No `A` record(s) were found for the EPP server hostname.",
          "Severity" : "ERROR"
       },
       "EPP_NO_GREETING_RECEIVED" : {
-         "Description" : "TBA",
+         "Description" : "No `<greeting>` was received after successful connection.",
          "Severity" : "ERROR"
       },
       "EPP_SCHEMA_VALIDATION_ERROR" : {
@@ -302,7 +302,7 @@
          "Severity" : "ERROR"
       },
       "EPP_SERVICE_PORT_UNREACHABLE" : {
-         "Description" : "TBA",
+         "Description" : "The EPP service port (tcp/700) could not be connected to.",
          "Severity" : "ERROR"
       },
       "EPP_TLS_BAD_CIPHER" : {
@@ -310,31 +310,31 @@
          "Severity" : "ERROR"
       },
       "EPP_TLS_CERTIFICATE_CHAIN_MISSING" : {
-         "Description" : "TBA",
+         "Description" : "One or more intermediate certificates are missing.",
          "Severity" : "ERROR"
       },
       "EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH" : {
-         "Description" : "TBA",
+         "Description" : "The hostname in the TLS certificate does not match the EPP server hostname.\n",
          "Severity" : "ERROR"
       },
       "EPP_TLS_CONNECTION_ERROR" : {
-         "Description" : "TBA",
+         "Description" : "There was an error during the TLS handshake while connecting to the EPP\nserver.\n",
          "Severity" : "ERROR"
       },
       "EPP_TLS_EXPIRED_CERTIFICATE" : {
-         "Description" : "TBA",
+         "Description" : "The TLS certificate presented by the EPP server has expired.",
          "Severity" : "ERROR"
       },
       "EPP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED" : {
-         "Description" : "TBA",
+         "Description" : "The EPP server implements a forbidden protocol.",
          "Severity" : "ERROR"
       },
       "EPP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED" : {
-         "Description" : "TBA",
+         "Description" : "The EPP server does not implement a required protocol.",
          "Severity" : "ERROR"
       },
       "EPP_TLS_UNTRUSTED_CERTIFICATE" : {
-         "Description" : "TBA",
+         "Description" : "The TLS certificate presented by the EPP server is not issued by a trusted\nCertificate Authority.  \n",
          "Severity" : "ERROR"
       },
       "EPP_XML_PARSE_ERROR" : {
@@ -3251,5 +3251,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.207"
+   "Version" : "3.0.209"
 }
