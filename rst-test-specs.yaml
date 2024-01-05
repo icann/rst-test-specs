@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.0
-Version: 3.0.203
-Last-Updated: 2024-01-04
+Version: 3.0.207
+Last-Updated: 2024-01-05
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -528,7 +528,6 @@ Test-Suites:
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^epp-
     Input-Parameters:
-      - general.gracePeriodsSupported
       - general.minimalPublicDataSet
       - epp.clid01
       - epp.pwd01
@@ -4238,12 +4237,10 @@ Test-Cases:
          present in the `<greeting>`:
            * `urn:ietf:params:xml:ns:secDNS-1.1`
            * `urn:ietf:params:xml:ns:launch-1.0`
+           * `urn:ietf:params:xml:ns:rgp-1.0`
            # these may become mandatory in the future:
            # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
            # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
-      8. If the `general.gracePeriodsSupported` input parameter is true, an
-         `<extURI>` element containing the XML namespace for the RGP extension
-         (RFC 3915) **MUST** be present in the `<greeting>`.
     Input-Parameters:
     Errors:
       - EPP_NO_GREETING_RECEIVED
@@ -4673,8 +4670,7 @@ Test-Cases:
   
       * Following a succesful `<renew>` command, the expiry date of the domain
         **MUST** have been increased by the period specified by the client;
-      * Where a server supports RFC 3915, the domain **MUST** have an RGP
-        status of `renewPeriod`;
+      * The domain **MUST** have an RGP status of `renewPeriod`;
       * The server **MUST** reject a `<renew>` command if it would result in
         the expiry date being more than 10 years into the future.
   
@@ -4755,14 +4751,11 @@ Test-Cases:
     Dependencies:
       - epp-19
   epp-22:
-    Summary: domain restore test (if applicable)
+    Summary: domain restore test
     Description: |
       This test will perform RGP restore operations on the objects deleted
       during `epp-21`, in order to confirm the correct operation of the server's
       implementation of RFC 3915.
-  
-      If the value of the `general.gracePeriodsSupported` parameter is false,
-      this test will be skipped.
     Input-Parameters:
       - epp.restoreReportRequired
     Dependencies:
@@ -5546,11 +5539,6 @@ Input-Parameters:
       if true, then the registry only supports the minimum public data set, and
       does not collect registrant and/or technical contact information from
       registrars.
-    Type: boolean
-    Example: true
-  general.gracePeriodsSupported:
-    Description: |
-      Whether or not the registry supports grace periods as defined in RFC 3915
     Type: boolean
     Example: true
   dns.nameservers:

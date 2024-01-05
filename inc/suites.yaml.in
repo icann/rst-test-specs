@@ -94,7 +94,6 @@ StandardEPP:
     TS_PASSFAIL
   Test-Cases: ^epp-
   Input-Parameters:
-    - general.gracePeriodsSupported
     - general.minimalPublicDataSet
     - epp.clid01
     - epp.pwd01

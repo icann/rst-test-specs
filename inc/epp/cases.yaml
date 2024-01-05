@@ -66,12 +66,10 @@ epp-02:
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
          * `urn:ietf:params:xml:ns:launch-1.0`
+         * `urn:ietf:params:xml:ns:rgp-1.0`
          # these may become mandatory in the future:
          # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
          # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
-    8. If the `general.gracePeriodsSupported` input parameter is true, an
-       `<extURI>` element containing the XML namespace for the RGP extension
-       (RFC 3915) **MUST** be present in the `<greeting>`.
   Input-Parameters:
   Errors:
     - EPP_NO_GREETING_RECEIVED
@@ -501,8 +499,7 @@ epp-18:
 
     * Following a succesful `<renew>` command, the expiry date of the domain
       **MUST** have been increased by the period specified by the client;
-    * Where a server supports RFC 3915, the domain **MUST** have an RGP
-      status of `renewPeriod`;
+    * The domain **MUST** have an RGP status of `renewPeriod`;
     * The server **MUST** reject a `<renew>` command if it would result in
       the expiry date being more than 10 years into the future.
 
@@ -583,14 +580,11 @@ epp-21:
   Dependencies:
     - epp-19
 epp-22:
-  Summary: domain restore test (if applicable)
+  Summary: domain restore test
   Description: |
     This test will perform RGP restore operations on the objects deleted
     during `epp-21`, in order to confirm the correct operation of the server's
     implementation of RFC 3915.
-
-    If the value of the `general.gracePeriodsSupported` parameter is false,
-    this test will be skipped.
   Input-Parameters:
     - epp.restoreReportRequired
   Dependencies:

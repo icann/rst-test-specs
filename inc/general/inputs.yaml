@@ -5,8 +5,3 @@ general.minimalPublicDataSet:
     registrars.
   Type: boolean
   Example: true
-general.gracePeriodsSupported:
-  Description: |
-    Whether or not the registry supports grace periods as defined in RFC 3915
-  Type: boolean
-  Example: true
