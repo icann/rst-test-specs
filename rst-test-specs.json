@@ -229,6 +229,78 @@
          "Description" : "TBA.",
          "Severity" : "ERROR"
       },
+      "EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "EPP_GENERIC_COMMAND_ERROR" : {
          "Description" : "The client received a 2400 error from the server.",
          "Severity" : "ERROR"
@@ -281,6 +353,86 @@
          "Description" : "TBA.",
          "Severity" : "ERROR"
       },
+      "EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_AUTHZ_ERROR" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_HOSTNAME" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "EPP_LOGIN_ERROR" : {
          "Description" : "The client was unable to successfullt authenticate with the EPP server.\n",
          "Severity" : "ERROR"
@@ -295,6 +447,34 @@
       },
       "EPP_NO_GREETING_RECEIVED" : {
          "Description" : "No `<greeting>` was received after successful connection.",
+         "Severity" : "ERROR"
+      },
+      "EPP_OBJECT_SHOULD_EXIST" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_OBJECT_SHOULD_NOT_EXIST" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE" : {
+         "Description" : "TBA",
          "Severity" : "ERROR"
       },
       "EPP_SCHEMA_VALIDATION_ERROR" : {
@@ -335,6 +515,54 @@
       },
       "EPP_TLS_UNTRUSTED_CERTIFICATE" : {
          "Description" : "The TLS certificate presented by the EPP server is not issued by a trusted\nCertificate Authority.  \n",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_UNEXPECTED_COMMAND_FAILURE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_UNEXPECTED_COMMAND_SUCCESS" : {
+         "Description" : "TBA",
          "Severity" : "ERROR"
       },
       "EPP_XML_PARSE_ERROR" : {
@@ -1540,7 +1768,7 @@
          "Type" : "string"
       }
    },
-   "Last-Updated" : "2024-01-05",
+   "Last-Updated" : "2024-01-09",
    "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n## 2.1.1. Test plan types\n\nThere are two types of test plan described in this document:\n\n* **Business as usual** plans, which are used as part of the lifecycle of a\ngTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway\nTest)\n* **RSP evaluation** plans, which are used as part of the RSP evaluation\nprogram.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test environments\n\nEach test plan indicates whether the test is to be carried out in the\nproduction environment, or whether a test, staging or OT&E environment may be\nused. In general, test plans which are designed for \"business as usual\" use\nduring the lifecycle of a TLD **MUST** be carried out in the production\nregistry infrastructure, while RSP evaluation tests **MAY** be carried out in\ntest, staging or OT&E environments.\n\n## 2.3.3. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.4. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.5. Error severity levels\n\n1. `INFO` - an informational message.\n1. `NOTICE` - a normal but significant condition.\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test from *passing*, but does not\n prevent the test from *continuing*. A test may produce multiple `ERROR`\n results.\n2. `CRITICAL` - an issue which prevents the test from continuing any\n further. A test will only produce a single `CRITICAL` result and it\n will always be the last result in the log.\n\n## 2.3.6. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at\n<https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These\n**MUST** include (but are not limited to): (1) Sunrise Periods, and (2)\nTrademark Claims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
    "RST-Test-Plan-Schema-Version" : "1.6.0",
    "Resources" : {
@@ -2473,6 +2701,14 @@
       },
       "epp-11" : {
          "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will then perform `<info>` commands on the objects successfully\ncreated to confirm that the server has correctly stored the provided\nvalues.\n",
+         "Errors" : [
+            "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME",
+            "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS",
+            "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS",
+            "EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE",
+            "EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
+            "EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
+         ],
          "Summary" : "host <create> command test (if applicable)"
       },
       "epp-12" : {
@@ -2480,6 +2716,9 @@
             "epp-11"
          ],
          "Description" : "This test will confirm that EPP clients are unable to perform `<info>`\ncommands on objects that they do not sponsor.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will connect using a set of alternate credentials and will\nsubmit `<update>` commands on the contact objects created in `epp-11`. The\nserver **MUST** respond with a 2201 \"authorization error\" response.\n",
+         "Errors" : [
+            "EPP_HOST_UPDATE_AUTHZ_ERROR"
+         ],
          "Summary" : "host object access control (if applicable)"
       },
       "epp-13" : {
@@ -2487,6 +2726,14 @@
             "epp-11"
          ],
          "Description" : "This test will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly rejects invalid\ncommands (which would specify invalid property values) and accepts valid\ncommands.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe test will confirm that the server checks and validates `<update>`\ncommands which transform the values of the following elements:\n\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nNote: the server's ability to support host renames is checked in a later\ntest.\n\nThe client will then perform `<info>` commands on the objects successfully\nupdated to confirm that the server has correctly stored the updated\nvalues.\n",
+         "Errors" : [
+            "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_HOSTNAME",
+            "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS",
+            "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS",
+            "EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE",
+            "EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
+            "EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
+         ],
          "Summary" : "host <update> command test (if applicable)"
       },
       "epp-14" : {
@@ -2501,7 +2748,24 @@
          "Dependencies" : [
             "epp-03"
          ],
-         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false`, then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n* to confirm that the server does not accept invalid values for object\n  properties (such as domain name, registration period, registant ID,\n  nameservers, and DS record parameters). Examples:\n    * invalid domain\n    * invalid period (1-10 years)\n    * non-existent registrant\n    * non-existent hosts\n    * invalid DS/keyData record parameters\n* to confirm that the server does not accept commands which reference\n  non-existent host/contact objects\n* to confirm the server supports all permitted client-assigned status\n  codes\n* to confirm that the server rejects a `<create>` command which\n  specifies a registrant contact (where the\n  `general.minimalPublicDataSet` input parameter is `true`)\n* to confirm that the server rejects a `<create>` command which does not\n  specify a registrant contact (where the\n  `general.minimalPublicDataSet`) input parameter is `false`\n* to confirm that the server rejects a `<create>` command containing\n  host objects when the `epp.hostModel` parameter is `attributes`\n* to confirm that the server rejects a `<create>` command containing\n  host attributes when the `epp.hostModel` parameter is `objects`\n* to confirm that the the server which implements RFC 9154 accepts a\n  `<create>` command without an authInfo command.\n\nBoth registrar IDs (those specified in the `epp.clid01` and `epp.clid02`\ninput parameters) will be used to create domains.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that:\n\n* the `<roid>` element is valid and contains a repository ID registered\n  with IANA;\n* the `<crDate>` and `<exDate>` elements are present and valid;\n* the `<crID>` and `<clID>` elements match the client ID used to create\n  the domain.\n* DNSSEC information provided in the `<create>` command is present and\n  correct.\n",
+         "Description" : "This test performs a series domain `<create>` commands, using pseudo-\nrandom ASCII domain names under each TLD in the TLD set. If the\n`general.minimalPublicDataSet` input parameter is `false`, then a contact\nobject (containing pseudo-random contact information) will be created\nbeforehand and used as the registrant. If the `epp.hostModel` parameter is\n`objects`, then two host objects with pseudo-random names will be created\nand used as the nameservers (otherwise the names will be provided as\nattributes).\n\nThe client will perform several `<create>` commands, each of which will\ntest certain aspects of the server's processing of those commands, for\nexample:\n\n* to confirm that the server does not accept invalid values for object\n  properties (such as domain name, registration period, registant ID,\n  nameservers, and DS record parameters). Examples:\n    * invalid domain\n    * invalid period (1-10 years)\n    * invalid host attributes (if applicable)\n    * host attributes with subordinate names and missing glue (if\n      applicable)\n    * invalid DS/keyData record parameters (keyTag, algorithm, digest type,\n      and malformed digest)\n* to confirm that the server does not accept commands which reference\n  non-existent host/contact objects (if applicable)\n* to confirm that the server rejects a `<create>` command which\n  specifies a registrant contact (where the\n  `general.minimalPublicDataSet` input parameter is `true`)\n* to confirm that the server rejects a `<create>` command which does not\n  specify a registrant contact (where the\n  `general.minimalPublicDataSet`) input parameter is `false`\n* to confirm that the server rejects a `<create>` command containing\n  host objects when the `epp.hostModel` parameter is `attributes`\n* to confirm that the server rejects a `<create>` command containing\n  host attributes when the `epp.hostModel` parameter is `objects`\n* to confirm that the the server which implements RFC 9154 accepts a\n  `<create>` command without an authInfo command.\n\nBoth registrar IDs (those specified in the `epp.clid01` and `epp.clid02`\ninput parameters) will be used to create domains.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that:\n\n* the `<roid>` element is valid and contains a repository ID registered\n  with IANA;\n* the `<crDate>` and `<exDate>` elements are present and valid;\n* the `<crID>` and `<clID>` elements match the client ID used to create\n  the domain.\n* DNSSEC information provided in the `<create>` command is present and\n  correct.\n",
+         "Errors" : [
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO",
+            "EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID",
+            "EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
+         ],
          "Input-Parameters" : [
             "epp.secDNSInterfaces"
          ],
@@ -2512,6 +2776,10 @@
             "epp-16"
          ],
          "Description" : "This test confirms that the EPP server will refuse a request to delete a\nlinked object.\n\nIf the `epp.hostModel` input parameter is `attributes`, **and** the\n`general.minimalPublicDataSet` input parameter is `true`, then this test\nwill be skipped.\n\nThe client will submit `<delete>` commands for any contact and host\nobjects created during `epp-16`. The server **MUST** respond with a `2305`\n\"Object association prohibits operation\" error.\n",
+         "Errors" : [
+            "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT",
+            "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT"
+         ],
          "Summary" : "Registry object integrity test"
       },
       "epp-18" : {
@@ -2519,14 +2787,30 @@
             "epp-16"
          ],
          "Description" : "This test will confirm that the client is able to renew domain names.\n\n* Following a succesful `<renew>` command, the expiry date of the domain\n  **MUST** have been increased by the period specified by the client;\n* The domain **MUST** have an RGP status of `renewPeriod`;\n* The server **MUST** reject a `<renew>` command if it would result in\n  the expiry date being more than 10 years into the future.\n\nThe client will issue the `<renew>` commands and then perform `<info>`\ncommands to ensure that the expiry date and RGP status of the domain are\nset correctly.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD",
+            "EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE",
+            "EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE",
+            "EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS"
+         ],
          "Summary" : "domain <renew> command test"
       },
       "epp-19" : {
          "Dependencies" : [
             "epp-18"
          ],
-         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-16`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently\nsecure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nThe client will use an `<info>` command to ensure that the\n`pendingTransfer` status code is added to the domain after a successul\ntransfer request.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer.\n\nOnce the gaining registrar has also received a message on the queue, the\nclient will use an `<info>` command to confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n",
+         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-16`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently\nsecure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nThe client will use an `<info>` command to ensure that the\n`pendingTransfer` status code is added to the domain after a successul\ntransfer request.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer. This message **MUST** be received within 120\nseconds of the transfer request.\n\nOnce the gaining registrar has also received a message on the queue, the\nclient will use an `<info>` command to confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n\nThis message **MUST** be received within 120 seconds of the transfer\napproval.\n",
+         "Errors" : [
+            "EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO",
+            "EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO",
+            "EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD",
+            "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE",
+            "EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED",
+            "EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED",
+            "EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE",
+            "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS",
+            "EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET"
+         ],
          "Summary" : "domain <transfer> command test"
       },
       "epp-20" : {
@@ -2534,6 +2818,9 @@
             "epp-18"
          ],
          "Description" : "This test confirms that the server behaves correctly if the sponsoring registrar of a domain rejects a transfer request.\nThe test procedure matches that of `epp-19`, but the transfer request will be rejected rather than approved. An `<info>` command will be used to confirm that the domain name remains under the sponsorship of the original registrar.",
+         "Errors" : [
+            "EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER"
+         ],
          "Summary" : "domain <transfer> rejection test"
       },
       "epp-21" : {
@@ -2541,13 +2828,21 @@
             "epp-19"
          ],
          "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-16` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nOnce the `<delete>` commands have been processed, the client will perform\n`<info>` commands on the deleted to object to confirm that:\n\n* if the server responded to the `<delete>` command with a `1000`\n  response, then the domain no longer exists\n* if the server responded to the `<delete>` command with a `1001`\n  response, then the domain has the `pendingDelete` status and the\n  `redemptionPeriod` RGP status.\n",
+         "Errors" : [
+            "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS",
+            "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE",
+            "EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE"
+         ],
          "Summary" : "domain <delete> command test"
       },
       "epp-22" : {
          "Dependencies" : [
             "epp-21"
          ],
-         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-21`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n",
+         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-21`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n\nOnce the restore request has been procssed, the client will perform\n`<info>` commands on the deleted to object to confirm that the domain no\nlonger has the `pendingDelete` status and RGP status.\n",
+         "Errors" : [
+            "EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE"
+         ],
          "Input-Parameters" : [
             "epp.restoreReportRequired"
          ],
@@ -2558,13 +2853,23 @@
             "epp-13"
          ],
          "Description" : "This tests verifies the server's support for host rename operations.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will perform `<update>` commands on the objects created during\n`epp-11` and will confirm that the server correctly accepts or rejects the\ncommands, for example:\n\n* an `<update>` command which specifies a syntatically invalid host name\n  is rejected;\n* an `<update>` command which places the object out-of-bailiwick is\n  accepted;\n* an `<update>` command which places the object within a non-existent\n  domain is rejected;\n* an `<update>` command which places the object within a domain sponsored\n  by another registrar is rejected. The domain name(s) provided in the\n  `epp.registeredNames` parameter will be used for this test.\n* an `<update>` command which places the object within a domain sponsored\n  by the test client is accepted. A domain created during the `epp-13`\n  test case will be used as the new parent domain.\n\nThe client will then perform `<info>` commands on the objects successfully\nupdated, to confirm that the server has correctly stored the updated\nvalues.\n",
+         "Errors" : [
+            "EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME",
+            "EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME",
+            "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN",
+            "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN",
+            "EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME"
+         ],
          "Summary" : "host rename test (if applicable)"
       },
       "epp-24" : {
          "Dependencies" : [
             "epp-23"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-11` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nOnce the `<delete>` commands have been submitted, if a `1000` response was\nreceived from the server, the client will perform `<check>` and `<info>`\ncommands to confirm that the objects have been deleted.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n",
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-11` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nOnce the `<delete>` commands have been submitted, if a `1000` response was\nreceived from the server, the client will perform `<check>` and `<info>`\ncommands to confirm that the objects have been deleted.\n",
+         "Errors" : [
+            "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS"
+         ],
          "Summary" : "host <delete> command test (if applicable)"
       },
       "idn-01" : {
@@ -3149,7 +3454,11 @@
             "EPP_LOGIN_ERROR",
             "EPP_XML_PARSE_ERROR",
             "EPP_GENERIC_COMMAND_ERROR",
-            "EPP_SCHEMA_VALIDATION_ERROR"
+            "EPP_UNEXPECTED_COMMAND_SUCCESS",
+            "EPP_UNEXPECTED_COMMAND_FAILURE",
+            "EPP_SCHEMA_VALIDATION_ERROR",
+            "EPP_OBJECT_SHOULD_EXIST",
+            "EPP_OBJECT_SHOULD_NOT_EXIST"
          ],
          "Input-Parameters" : [
             "general.minimalPublicDataSet",
@@ -3251,5 +3560,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.209"
+   "Version" : "3.0.210"
 }
