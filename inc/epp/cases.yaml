@@ -353,6 +353,13 @@ epp-11:
     The client will then perform `<info>` commands on the objects successfully
     created to confirm that the server has correctly stored the provided
     values.
+  Errors:
+    - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME
+    - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
+    - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
+    - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
+    - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
+    - EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-12:
   Summary: host object access control (if applicable)
   Description: |
@@ -367,6 +374,8 @@ epp-12:
     server **MUST** respond with a 2201 "authorization error" response.
   Dependencies:
     - epp-11
+  Errors:
+    - EPP_HOST_UPDATE_AUTHZ_ERROR
 epp-13:
   Summary: host <update> command test (if applicable)
   Description: |
@@ -392,6 +401,13 @@ epp-13:
     values.
   Dependencies:
     - epp-11
+  Errors:
+    - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_HOSTNAME
+    - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
+    - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
+    - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
+    - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
+    - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-14:
   Summary: intentionally omitted
   Description: intentionally omitted
@@ -419,13 +435,13 @@ epp-16:
       nameservers, and DS record parameters). Examples:
         * invalid domain
         * invalid period (1-10 years)
-        * non-existent registrant
-        * non-existent hosts
-        * invalid DS/keyData record parameters
+        * invalid host attributes (if applicable)
+        * host attributes with subordinate names and missing glue (if
+          applicable)
+        * invalid DS/keyData record parameters (keyTag, algorithm, digest type,
+          and malformed digest)
     * to confirm that the server does not accept commands which reference
-      non-existent host/contact objects
-    * to confirm the server supports all permitted client-assigned status
-      codes
+      non-existent host/contact objects (if applicable)
     * to confirm that the server rejects a `<create>` command which
       specifies a registrant contact (where the
       `general.minimalPublicDataSet` input parameter is `true`)
@@ -456,6 +472,22 @@ epp-16:
     - epp.secDNSInterfaces
   Dependencies:
     - epp-03
+  Errors:
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
+    - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
+    - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-17:
   Summary: Registry object integrity test
   Description: |
@@ -471,6 +503,9 @@ epp-17:
     "Object association prohibits operation" error.
   Dependencies:
     - epp-16
+  Errors:
+    - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
+    - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
 epp-18:
   Summary: domain <update> command test
   Description: |
@@ -492,6 +527,17 @@ epp-18:
   Input-Parameters:
   Dependencies:
     - epp-17
+  Errors:
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
+    - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
 epp-18:
   Summary: domain <renew> command test
   Description: |
@@ -506,9 +552,14 @@ epp-18:
     The client will issue the `<renew>` commands and then perform `<info>`
     commands to ensure that the expiry date and RGP status of the domain are
     set correctly.
-  Input-Parameters:
   Dependencies:
     - epp-16
+  Errors:
+    - EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD
+    - EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE
+    - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
+    - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
+
 epp-19:
   Summary: domain <transfer> command test
   Description: |
@@ -539,7 +590,8 @@ epp-19:
 
     Once the transfer request has been accepted, the sponsoring client will
     wait for a message to be received on the server's message queue, and will
-    then approve the transfer.
+    then approve the transfer. This message **MUST** be received within 120
+    seconds of the transfer request.
 
     Once the gaining registrar has also received a message on the queue, the
     client will use an `<info>` command to confirm that:
@@ -547,8 +599,22 @@ epp-19:
     * the domain is now under the sponsorship of the gaining registrar
     * the authInfo code has been reset by the server (if the server supports
       RFC 9154).
+
+    This message **MUST** be received within 120 seconds of the transfer
+    approval.
   Dependencies:
     - epp-18
+  Errors:
+    - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
+    - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
+    - EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD
+    - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE
+    - EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED
+    - EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED
+    - EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
+    - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
+    - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
+
 epp-20:
   Summary: domain <transfer> rejection test
   Description:
@@ -561,7 +627,9 @@ epp-20:
     registrar.
   Dependencies:
     - epp-18
-  
+  Errors:
+    - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
+
 epp-21:
   Summary: domain <delete> command test
   Description: |
@@ -579,16 +647,27 @@ epp-21:
       `redemptionPeriod` RGP status.
   Dependencies:
     - epp-19
+  Errors:
+    - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
+    - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
+    - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
+
 epp-22:
   Summary: domain restore test
   Description: |
     This test will perform RGP restore operations on the objects deleted
     during `epp-21`, in order to confirm the correct operation of the server's
     implementation of RFC 3915.
+
+    Once the restore request has been procssed, the client will perform
+    `<info>` commands on the deleted to object to confirm that the domain no
+    longer has the `pendingDelete` status and RGP status.
   Input-Parameters:
     - epp.restoreReportRequired
   Dependencies:
     - epp-21
+  Errors:
+    - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
 
 epp-23:
   Summary: host rename test (if applicable)
@@ -620,6 +699,13 @@ epp-23:
     values.
   Dependencies:
     - epp-13
+  Errors:
+    - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
+    - EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME
+    - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN
+    - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
+    - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
+
 epp-24:
   Summary: host <delete> command test (if applicable)
   Description: |
@@ -627,11 +713,13 @@ epp-24:
     `epp-11` and will confirm that the server accepts the `<delete>` command
     with a `1xxx` response code.
 
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
     Once the `<delete>` commands have been submitted, if a `1000` response was
     received from the server, the client will perform `<check>` and `<info>`
     commands to confirm that the objects have been deleted.
-
-    If the `epp.hostModel` input parameter is `attributes`, this test will
-    be skipped.
   Dependencies:
     - epp-23
+  Errors:
+    - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS

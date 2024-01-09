@@ -2,6 +2,7 @@
 #define ZM_NOTE Since Zonemaster is designed to perform testing of domain names anywhere in the DNS hierarchy, not all Zonemaster tests are applicable for TLDs and may not be listed in the test suites in this document.
 #define ZM_PASSFAIL Unless stated otherwise, the pass/fail criteria for the test cases in this suite are the same as those defined in the Zonemaster documentation: that is, if Zonemaster reports that a test case has an `ERROR` or `CRITICAL` result, then the corresponding test case in this suite will fail. `INFO`, `NOTICE` and `WARNING` results will not result in a failed test case. Error codes in this suite are prefixed with `ZM_` which map onto the message tags used by Zonemaster.
 #define TS_PASSFAIL As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
+
 StandardDNS:
   Order: 1
   Name: Authoritative DNS Service
@@ -115,7 +116,11 @@ StandardEPP:
     - EPP_LOGIN_ERROR
     - EPP_XML_PARSE_ERROR
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_SUCCESS
+    - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_OBJECT_SHOULD_EXIST
+    - EPP_OBJECT_SHOULD_NOT_EXIST
 
 StandardRDE:
   Order: 5
