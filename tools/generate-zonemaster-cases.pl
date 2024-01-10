@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/perl
 use Cwd qw(getcwd realpath);
 use Digest::SHA qw(sha1_hex);
 use File::Basename;
@@ -15,7 +15,7 @@ use YAML::Node;
 use YAML::XS;
 use constant {
     HTML_ENCODING   => 'UTF-8',
-    ZM_URL_FMT      => 'https://github.com/zonemaster/zonemaster/blob/%s/%s',
+    ZM_URL_FMT      => 'https://github.com/zonemaster/zonemaster/blob/v%s/%s',
 };
 use utf8;
 use open qw(:std :utf8);
@@ -25,8 +25,10 @@ my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__))).'/zonemaste
 
 my $mode = 'cases';
 my $devel;
+my $version;
 GetOptions(
     'devel'     => \$devel,
+    'version=s' => \$version,
     'errors'    => sub { $mode = 'errors'},
     'help'      => sub { pod2usage() },
 ) || pod2usage();
@@ -85,11 +87,6 @@ my @html2md = qw(pandoc -f html -t markdown);
 
 my %errors;
 my @cases;
-
-my $dir = getcwd;
-chdir($base);
-chomp(my $version = `git tag -l | tail -1`);
-chdir($dir);
 
 #
 # this returns an XML::LibXML::Element object representing the output
@@ -252,7 +249,7 @@ foreach my $row ($list->getElementsByTagName('tr')) {
 
     my $p = $body->appendChild($idoc->createElement('p'));
     $p->appendText(sprintf(
-        'This test case comes from version %s of Zonemaster. '.
+        'This test case comes from version v%s of Zonemaster. '.
         'For more information, see ',
         $version
     ));
