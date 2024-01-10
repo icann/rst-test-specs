@@ -196,7 +196,7 @@ components:
             this test case.
           type: array
 
-    rstTestInputParameter:
+    rstInputParameter:
       type: object
       properties:
         Description:
