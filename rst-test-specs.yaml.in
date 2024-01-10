@@ -1,5 +1,5 @@
 ---
-RST-Test-Plan-Schema-Version: 1.6.0
+RST-Test-Plan-Schema-Version: 1.6.1
 Version: #exec perl ./tools/generate-version.pl
 Last-Updated: #date %Y-%m-%d
 
