@@ -3,6 +3,9 @@
 The [`rst-test-specs.yaml` file in this repository](rst-test-specs.yaml)
 conforms to the following schema.
 
+This schema is available in YAML format in
+[`rst-test-spec-schema.yaml`](rst-test-spec-schema.yaml).
+
 # Top-level object
 
 The top-level object has the following properties:
@@ -13,7 +16,7 @@ Versioning](https://semver.org) convention, and tracks the version of **this**
 document, and is updated whenever a material change to the schema is made.
 
 `Version`
-: a string containing the semantic version number for the schema itself.
+: a string containing the semantic version number for the specification itself.
 
 `Last-Updated`
 : the date when the `Version` property was last updated, in `YYYY-MM-DD` format.
@@ -68,6 +71,9 @@ A **Test Plan** object has the following properties:
 `Name`
 : the name of the plan.
 
+`Order`
+: an integer containing the canonical order of the plan in the spec.
+
 `Description`
 : a description of the plan, in Markdown format.
 
@@ -82,6 +88,9 @@ A **Test Suite** object has the following properties:
 
 `Name`
 : the name of the suite.
+
+`Order`
+: an integer containing the canonical order of the suite in the spec.
 
 `Description`
 : a description of the suite, in Markdown format.

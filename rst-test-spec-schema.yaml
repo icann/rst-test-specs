@@ -1,0 +1,245 @@
+openapi: 3.1.0
+
+info:
+  title: YAML Schema for the RST Test Specifications
+  version: 1.6.0
+  description: |
+    This file contains a schema which describes the RST Test
+    Specifications YAML format.
+
+components:
+  schemas:
+    rstTestSpec:
+      description: |
+        The `rstTestSpec` schema describes the format of the RST Test
+        Specifications YAML file.
+      type: object
+      properties:
+        RST-Test-Plan-Schema-Version:
+          description: |
+            This property conforms to the [Semantic
+            Versioning](https://semver.org) convention, and tracks the version
+            of **this** document, and is updated whenever a material change to
+            the schema is made. Its value is always equal to the value of the
+            `info.version` property of *this* schema.
+          type: string
+          pattern: ^\d+\.\d+\.\d+$
+        Version:
+          description: |
+            a string containing the semantic version number for the
+            specification itself.
+          type: string
+          pattern: ^\d+\.\d+\.\d+$
+        Preamble:
+          description: |
+            a description of the contents of the file, in Markdown format.
+          type: string
+        Contact:
+          description: a `rstTestSpecContact` object.
+          type: object
+          schema:
+            $ref: "#/components/schemas/rstTestSpecContact"
+        Test-Plans:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstTestPlan"
+        Test-Suites:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstTestSuite"
+        Test-Cases:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstTestCase"
+        Input-Parameters:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstInputParameter"
+        Resources:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstTestResource"
+        Errors:
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstTestError"
+
+    rstTestSpecContact:
+      description: |
+        The `rstTestSpecContact` schema describes an object containing contact
+        information for the maintainer of the RST Test Specifications YAML file.
+      type: object
+      properties:
+        Name:
+          description: contact name.
+          type: string
+        Organization:
+          description: contact organization.
+          type: string
+        Email:
+          description: contact email.
+          type: string
+          format: email
+
+    rstTestPlan:
+      type: object
+      properties:
+        Name:
+          description: the name of the plan.
+          type: string
+        Order:
+          description: the canonical order of the plan.
+          type: integer
+          format: uint8
+        Description:
+          description: a description of the plan in Markdown format.
+          type: string
+        Test-Suites:
+          description: an array of Test Suite IDs.
+          type: array
+          items:
+            type: string
+
+    rstTestSuite:
+      type: object
+      properties:
+        Name:
+          description: the name of the suite.
+          type: string
+        Order:
+          description: the canonical order of the suite.
+          type: integer
+          format: uint8
+        Description:
+          description: a description of the suite in Markdown format.
+          type: string
+        Test-Cases:
+          description: |
+            either an array of test case IDs or a regular expression used
+            to filter them.
+          type:
+          - array
+          - string
+        Input-Parameters:
+          description: |
+            an array of input parameter IDs which must be provided in
+            addition to the input parameters specified by the test cases for
+            the suite.
+          type: array
+        Resources:
+          description: |
+            an array of resource IDs which may be used to prepare for the
+            tests in this test suite, in addition to those specified by the
+            test cases for the suite.
+          type: array
+        Errors:
+          description: |
+            an array of error IDs which may be produced by this test suite,
+            in addition to those specified by the test cases for the suite.
+          type: array
+
+    rstTestCase:
+      type: object
+      properties:
+        Summary:
+          description: a short description of the test case.
+          type: string
+        Maturity:
+          description: the maturity level of the test case.
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - GAMMA
+        Description:
+          description: a description of the case in Markdown format.
+          type: string
+        Dependencies:
+          description: an array of dependencies.
+          type: array
+          items:
+            type: string
+        Input-Parameters:
+          description: |
+            an array of input parameter IDs which must be provided in
+            addition to the input parameters specified by the test suite(s)
+            that use this test case.
+          type: array
+        Resources:
+          description: |
+            an array of resource IDs which may be used to prepare for the
+            tests in this test suite, in addition to those specified by the
+            test suite(s) that use this test case.
+          type: array
+        Errors:
+          description: |
+            an array of error IDs which may be produced by this test suite,
+            in addition to those specified by the test suite(s) that use
+            this test case.
+          type: array
+
+    rstTestInputParameter:
+      type: object
+      properties:
+        Description:
+          description: a description of the parameter in Markdown format.
+          type: string
+        Type:
+          description: the type of the parameter
+          type: string
+          enum:
+          - "file"
+          - "string"
+          - "integer"
+          - "number"
+          - "boolean"
+          - "null"
+          - "object"
+          - "array"
+        Example:
+          description: an example value for this parameter.
+
+    rstTestResource:
+      type: object
+      properties:
+        Description:
+          description: a description of the resource in Markdown format.
+          type: string
+        URL:
+          description: the URL where the resource may be found.
+          type: string
+          format: url
+
+    rstTestError:
+      type: object
+      properties:
+        Description:
+          description: a description of the error in Markdown format.
+          type: string
+        Severity:
+          description: the severity of the error.
+          type: string
+          enum:
+          - INFO
+          - NOTICE
+          - WARNING
+          - ERROR
+          - CRITICAL

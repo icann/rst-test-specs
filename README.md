@@ -1,6 +1,6 @@
 # Registry System Testing v2.0 Test Specifications
 
-[![build](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml) [![pages-build-deployment](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment)
+[![build](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml)[![pages-build-deployment](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment)
 
 This repository contains the specifications for the RST v2.0 system.
 
@@ -18,7 +18,7 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://icann.gi
 
 * [rst-test-specs.json](rst-test-specs.json) is the above file in JSON, in case you prefer that kind of thing. Note that the conversion from YAML causes keys in dictionaries to be reordered.
 
-* [Schema.md](Schema.md) documents the schema for the YAML files.
+* [Schema.md](Schema.md) documents the schema for the YAML files. There is a YAML version of this schema in [`rst-test-spec-schema.yaml`](rst-test-spec-schema.yaml).
 
 * [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains the policies that are applied to Zonemaster tests.
 
