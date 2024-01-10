@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.235
+Version: 3.0.237
 Last-Updated: 2024-01-10
 Contact:
   Name: GDS Technical Services
@@ -7280,6 +7280,293 @@ Errors:
   DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED:
     Severity: ERROR
     Description: TBA.
+  RDE_CONTACT_HAS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_POSTALINFO:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DECRYPTION_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_CRDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_EXDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_CRDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_EXDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_IP_ADDRESS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_IP_ADDRESS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_INVALID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_MISSING:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_UNEXPECTED:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_CSV:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_FILENAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_SIGNATURE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_XML:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_MISSING_OBJECT_URI:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_MIXED_TYPES:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_NNDN_CONFLICTS_WITH_DOMAIN:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_OBJECT_COUNT_MISMATCH:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_INVALID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_MISSING:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_MISSING_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_GURID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_GURID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_SCHEMA_VALIDATION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_UNEXPECTED_OBJECT_URI:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_XML_PARSE_ERROR:
+    Severity: ERROR
+    Description: TBA.
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
     Description: The client was unable to successfully connect to the EPP serer.
@@ -8756,347 +9043,6 @@ Errors:
   EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
     Severity: ERROR
     Description: TBA
-  IDN_SERVER_ACCEPTS_INVALID_LABEL:
-    Severity: ERROR
-    Description: TBA.
-  
-  IDN_SERVER_REJECTS_VALID_LABEL:
-    Severity: ERROR
-    Description: TBA.
-  
-  IDN_VARIANT_LABEL_NOT_BLOCKED:
-    Severity: ERROR
-    Description: TBA.
-  
-  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR:
-    Severity: ERROR
-    Description: TBA.
-  
-  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT:
-    Severity: ERROR
-    Description: TBA.
-  INTEGRATION_DNS_ANSWER_IS_INCORRECT:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_DNS_QUERY_FAILED:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_RDAP_REQUEST_FAILED:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_RDE_DEADLINE_MISSED:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_RDE_MISSING_OBJECTS:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
-    Severity: ERROR
-    Description: TBA.
-  
-  INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE:
-    Severity: ERROR
-    Description: TBA.
-  RDE_CONTACT_HAS_INVALID_CC:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_INVALID_VOICE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_CC:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_CITY:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_EMAIL:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_ID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_POSTALINFO:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_STREET:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_CONTACT_HAS_MISSING_VOICE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DECRYPTION_FAILED:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_CRDATE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_EXDATE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_REGISTRANT:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_CRDATE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_EXDATE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_REGISTRANT:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_DOMAIN_HAS_MISSING_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_INVALID_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_INVALID_IP_ADDRESS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_INVALID_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_INVALID_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_INVALID_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_MISSING_CLID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_MISSING_IP_ADDRESS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_MISSING_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_MISSING_ROID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_HOST_HAS_MISSING_STATUS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_IDN_OBJECT_INVALID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_IDN_OBJECT_MISSING:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_IDN_OBJECT_UNEXPECTED:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_INVALID_CSV:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_INVALID_FILENAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_INVALID_SIGNATURE:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_INVALID_XML:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_MISSING_OBJECT_URI:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_MIXED_TYPES:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_NNDN_CONFLICTS_WITH_DOMAIN:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_OBJECT_COUNT_MISMATCH:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_POLICY_OBJECT_INVALID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_POLICY_OBJECT_MISSING:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_POLICY_OBJECT_MISSING_OBJECTS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_INVALID_GURID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_INVALID_ID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_INVALID_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_MISSING_GURID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_MISSING_ID:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_REGISTRAR_HAS_MISSING_NAME:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_SCHEMA_VALIDATION_ERROR:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_UNEXPECTED_OBJECT_URI:
-    Severity: ERROR
-    Description: TBA.
-  
-  RDE_XML_PARSE_ERROR:
-    Severity: ERROR
-    Description: TBA.
   RPMS_MISSING_CLAIMS_KEY:
     Severity: ERROR
     Description: TBA.
@@ -9281,5 +9227,59 @@ Errors:
     Description: TBA.
   
   SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  IDN_SERVER_ACCEPTS_INVALID_LABEL:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_SERVER_REJECTS_VALID_LABEL:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_LABEL_NOT_BLOCKED:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  INTEGRATION_DNS_ANSWER_IS_INCORRECT:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DNS_QUERY_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDAP_REQUEST_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_DEADLINE_MISSED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_MISSING_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE:
     Severity: ERROR
     Description: TBA.
