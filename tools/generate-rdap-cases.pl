@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/perl
 use File::Glob qw(:bsd_glob);
 use Getopt::Long 2.32; # enable auto_help
 use IPC::Open2;
