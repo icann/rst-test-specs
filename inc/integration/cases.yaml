@@ -16,6 +16,9 @@ integration-01:
   Dependencies:
     - epp-16
     - epp-11
+  Errors:
+    - INTEGRATION_RDAP_REQUEST_FAILED
+    - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
 integration-02:
   Summary: EPP -> DNS Integration Test
   Maturity: BETA
@@ -33,6 +36,10 @@ integration-02:
     - dns.nameservers
   Dependencies:
     - epp-16
+  Errors:
+    - INTEGRATION_DNS_QUERY_FAILED
+    - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
+    - INTEGRATION_DNS_ANSWER_IS_INCORRECT
 integration-03:
   Summary: EPP -> RDE Integration Test
   Maturity: BETA
@@ -76,3 +83,8 @@ integration-03:
   Dependencies:
     - epp-16
     - epp-11
+  Errors:
+    - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
+    - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR
+    - INTEGRATION_RDE_MISSING_OBJECTS
+    - INTEGRATION_RDE_DEADLINE_MISSED

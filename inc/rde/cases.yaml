@@ -6,7 +6,8 @@ rde-01:
     * The type of the deposit **MUST** be `FULL`.
     * The TLD in the filename **MUST** be present in the list of TLDs
       associated with the test.
-  Input-Parameters:
+  Errors:
+    - RDE_INVALID_FILENAME
 rde-02:
   Summary: validate signature over deposit file
   Maturity: BETA
@@ -16,6 +17,8 @@ rde-02:
   Input-Parameters:
     - rde.publicKey
     - rde.signatureFile
+  Errors:
+    - RDE_INVALID_SIGNATURE
 rde-03:
   Summary: decrypt deposit file(s)
   Maturity: BETA
@@ -23,9 +26,10 @@ rde-03:
     It **MUST** be possible to decrypt the deposit file using the RST key. The
     PGP public key for which the deposit **MUST** be encrypted may be found in
     the URL specified by the `rde.encryptionKey` resource.
-  Input-Parameters:
   Resources:
     - rde.encryptionKey
+  Errors:
+    - RDE_DECRYPTION_FAILED
 rde-04:
   Summary: validate XML/CSV
   Maturity: BETA
@@ -35,7 +39,10 @@ rde-04:
     * CSV files **MUST** conform to RFC 4180.
     * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
       contents.
-  Input-Parameters:
+  Errors:
+    - RDE_INVALID_XML
+    - RDE_INVALID_CSV
+    - RDE_MIXED_TYPES
 rde-05:
   Summary: validate object types
   Maturity: BETA
@@ -48,14 +55,17 @@ rde-05:
 
     All expected URIs **MUST** be present in the header, and the header **MUST
     NOT** contain any unexpected URIs.
-  Input-Parameters:
+  Errors:
+    - RDE_UNEXPECTED_OBJECT_URI
+    - RDE_MISSING_OBJECT_URI
 rde-06:
   Summary: validate object counts
   Maturity: BETA
   Description: |
     The number of each type of object **MUST** match the number of objects
     actually present in the deposit file.
-  Input-Parameters:
+  Errors:
+    - RDE_OBJECT_COUNT_MISMATCH
 rde-07:
   Summary: validate domain objects
   Maturity: BETA
@@ -78,7 +88,21 @@ rde-07:
     Contact, host and registrar objects (including optional objects such as
     admin and tech contacts) which are referenced in domain objects **MUST**
     be present in the deposit.
-  Input-Parameters:
+  Errors:
+    - RDE_DOMAIN_HAS_MISSING_NAME
+    - RDE_DOMAIN_HAS_INVALID_NAME
+    - RDE_DOMAIN_HAS_MISSING_ROID
+    - RDE_DOMAIN_HAS_INVALID_ROID
+    - RDE_DOMAIN_HAS_MISSING_STATUS
+    - RDE_DOMAIN_HAS_INVALID_STATUS
+    - RDE_DOMAIN_HAS_MISSING_REGISTRANT
+    - RDE_DOMAIN_HAS_INVALID_REGISTRANT
+    - RDE_DOMAIN_HAS_MISSING_CLID
+    - RDE_DOMAIN_HAS_INVALID_CLID
+    - RDE_DOMAIN_HAS_MISSING_CRDATE
+    - RDE_DOMAIN_HAS_INVALID_CRDATE
+    - RDE_DOMAIN_HAS_MISSING_EXDATE
+    - RDE_DOMAIN_HAS_INVALID_EXDATE
 rde-08:
   Summary: validate host objects (if applicable)
   Maturity: BETA
@@ -99,7 +123,18 @@ rde-08:
 
     If the applicant uses the host attribute model, then this test will be
     skipped.
-  Input-Parameters:
+  Errors:
+    - RDE_HOST_HAS_MISSING_NAME
+    - RDE_HOST_HAS_INVALID_NAME
+    - RDE_HOST_HAS_MISSING_ROID
+    - RDE_HOST_HAS_INVALID_ROID
+    - RDE_HOST_HAS_MISSING_STATUS
+    - RDE_HOST_HAS_INVALID_STATUS
+    - RDE_HOST_HAS_MISSING_IP_ADDRESS
+    - RDE_HOST_HAS_INVALID_IP_ADDRESS
+    - RDE_HOST_HAS_MISSING_CLID
+    - RDE_HOST_HAS_INVALID_CLID
+
 rde-09:
   Summary: validate contact objects (if applicable)
   Maturity: BETA
@@ -127,7 +162,29 @@ rde-09:
 
     If the applicant uses the "thin" registry model, then this test will be
     skipped.
-  Input-Parameters:
+  Errors:
+    - RDE_CONTACT_HAS_MISSING_ID
+    - RDE_CONTACT_HAS_INVALID_ID
+    - RDE_CONTACT_HAS_MISSING_ROID
+    - RDE_CONTACT_HAS_INVALID_ROID
+    - RDE_CONTACT_HAS_MISSING_STATUS
+    - RDE_CONTACT_HAS_INVALID_STATUS
+    - RDE_CONTACT_HAS_MISSING_POSTALINFO
+    - RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE
+    - RDE_CONTACT_HAS_MISSING_NAME
+    - RDE_CONTACT_HAS_INVALID_NAME
+    - RDE_CONTACT_HAS_MISSING_STREET
+    - RDE_CONTACT_HAS_INVALID_STREET
+    - RDE_CONTACT_HAS_MISSING_CITY
+    - RDE_CONTACT_HAS_INVALID_CITY
+    - RDE_CONTACT_HAS_MISSING_CC
+    - RDE_CONTACT_HAS_INVALID_CC
+    - RDE_CONTACT_HAS_MISSING_VOICE
+    - RDE_CONTACT_HAS_INVALID_VOICE
+    - RDE_CONTACT_HAS_MISSING_EMAIL
+    - RDE_CONTACT_HAS_INVALID_EMAIL
+    - RDE_CONTACT_HAS_MISSING_CLID
+    - RDE_CONTACT_HAS_INVALID_CLID
 rde-10:
   Summary: validate registrar objects
   Maturity: BETA
@@ -141,7 +198,13 @@ rde-10:
     * `<rdeRegistrar:id>`
     * `<rdeRegistrar:name>`
     * `<rdeRegistrar:gurid>` (IANA ID)
-  Input-Parameters:
+  Errors:
+    - RDE_REGISTRAR_HAS_MISSING_ID
+    - RDE_REGISTRAR_HAS_INVALID_ID
+    - RDE_REGISTRAR_HAS_MISSING_NAME
+    - RDE_REGISTRAR_HAS_INVALID_NAME
+    - RDE_REGISTRAR_HAS_MISSING_GURID
+    - RDE_REGISTRAR_HAS_INVALID_GURID
 rde-11:
   Summary: validate IDN table objects (if applicable)
   Maturity: BETA
@@ -153,7 +216,10 @@ rde-11:
     All IDN table objects present in the deposit **MUST** correspond to IDN
     tables approved for the TLD, and all approved tables **MUST** have a
     corresponding object in the deposit.
-  Input-Parameters:
+  Errors:
+    - RDE_IDN_OBJECT_INVALID
+    - RDE_IDN_OBJECT_MISSING
+    - RDE_IDN_OBJECT_UNEXPECTED
 rde-12:
   Summary: validate NNDN objects
   Maturity: BETA
@@ -164,6 +230,9 @@ rde-12:
 
     The `aName` property of NNDN objects **MUST NOT** match the `name`
     property of a domain object.
+  Errors:
+    - RDE_NNDN_CONFLICTS_WITH_DOMAIN
+
 rde-13:
   Summary: validate EPP parameters object
   Maturity: BETA
@@ -173,11 +242,14 @@ rde-13:
   Resources:
     - epp.clientCertificate
     - epp.clientCSR
+    - epp.clientACL
   Input-Parameters:
     - epp.hostName
     - epp.clid01
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
+  Errors:
+    - RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER
 rde-14:
   Summary: validate policy object (if applicable)
   Maturity: BETA
@@ -189,3 +261,8 @@ rde-14:
       contact objects **MUST NOT** be present in the deposit.
     * If the `epp.hostModel` input parameter is `attributes`, then
       host objects **MUST NOT** be present in the deposit.
+  Errors:
+    - RDE_POLICY_OBJECT_MISSING
+    - RDE_POLICY_OBJECT_INVALID
+    - RDE_POLICY_OBJECT_MISSING_OBJECTS
+    - RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS

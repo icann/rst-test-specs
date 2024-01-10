@@ -25,7 +25,10 @@ dnssecOps01-ZSKRollover:
   Input-Parameters:
     - dnssecOps.csk
     - dnssecOps.zskRolloverZone
-  Dependencies:
+  Errors:
+    - DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+    - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
+  
 dnssecOps02-KSKRollover:
   Summary: KSK rollover
   Description: |
@@ -46,7 +49,10 @@ dnssecOps02-KSKRollover:
     updated, without disrupting the chain of trust.
   Input-Parameters:
     - dnssecOps.kskRolloverZone
-  Dependencies:
+  Errors:
+    - DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+    - DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED
+
 dnssecOps03-AlgorithmRollover:
   Summary: algorithm rollover
   Description: |
@@ -75,5 +81,6 @@ dnssecOps03-AlgorithmRollover:
     as a rollover from `RSASHA256` to `ECDSAP256SHA256`.
   Input-Parameters:
     - dnssecOps.algorithmRolloverZone
-  Dependencies:
-
+  Errors:
+    - DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+    - DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED

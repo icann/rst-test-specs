@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.232
+Version: 3.0.235
 Last-Updated: 2024-01-10
 Contact:
   Name: GDS Technical Services
@@ -570,6 +570,9 @@ Test-Suites:
     Test-Cases: ^rde-
     Input-Parameters:
       - rde.depositFile
+    Errors:
+      - RDE_XML_PARSE_ERROR
+      - RDE_SCHEMA_VALIDATION_ERROR
   
   StandardIDN:
     Order: 6
@@ -595,6 +598,9 @@ Test-Suites:
       - epp.clientACL
       - epp.clientCSR
       - epp.clientCertificate
+    Errors:
+      - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR
+      - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT
   
   StandardSRSGateway:
     Order: 7
@@ -629,6 +635,29 @@ Test-Suites:
       - epp.clientACL
       - epp.clientCSR
       - epp.clientCertificate
+    Errors:
+      - EPP_DNS_RESOLUTION_ERROR
+      - EPP_SERVICE_PORT_UNREACHABLE
+      - EPP_TLS_CONNECTION_ERROR
+      - EPP_LOGIN_ERROR
+      - EPP_XML_PARSE_ERROR
+      - EPP_GENERIC_COMMAND_ERROR
+      - EPP_UNEXPECTED_COMMAND_SUCCESS
+      - EPP_UNEXPECTED_COMMAND_FAILURE
+      - EPP_SCHEMA_VALIDATION_ERROR
+      - EPP_OBJECT_SHOULD_EXIST
+      - EPP_OBJECT_SHOULD_NOT_EXIST
+      - SRSGW_EPP_DNS_RESOLUTION_ERROR
+      - SRSGW_EPP_SERVICE_PORT_UNREACHABLE
+      - SRSGW_EPP_TLS_CONNECTION_ERROR
+      - SRSGW_EPP_LOGIN_ERROR
+      - SRSGW_EPP_XML_PARSE_ERROR
+      - SRSGW_EPP_GENERIC_COMMAND_ERROR
+      - SRSGW_EPP_UNEXPECTED_COMMAND_SUCCESS
+      - SRSGW_EPP_UNEXPECTED_COMMAND_FAILURE
+      - SRSGW_EPP_SCHEMA_VALIDATION_ERROR
+      - SRSGW_EPP_OBJECT_SHOULD_EXIST
+      - SRSGW_EPP_OBJECT_SHOULD_NOT_EXIST
   
   DNSSECOperations:
     Order: 8
@@ -3931,7 +3960,10 @@ Test-Cases:
     Input-Parameters:
       - dnssecOps.csk
       - dnssecOps.zskRolloverZone
-    Dependencies:
+    Errors:
+      - DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+      - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
+    
   dnssecOps02-KSKRollover:
     Summary: KSK rollover
     Description: |
@@ -3952,7 +3984,10 @@ Test-Cases:
       updated, without disrupting the chain of trust.
     Input-Parameters:
       - dnssecOps.kskRolloverZone
-    Dependencies:
+    Errors:
+      - DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+      - DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED
+  
   dnssecOps03-AlgorithmRollover:
     Summary: algorithm rollover
     Description: |
@@ -3981,8 +4016,9 @@ Test-Cases:
       as a rollover from `RSASHA256` to `ECDSAP256SHA256`.
     Input-Parameters:
       - dnssecOps.algorithmRolloverZone
-    Dependencies:
-  
+    Errors:
+      - DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN
+      - DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED
   rde-01:
     Summary: validate deposit filename format
     Maturity: BETA
@@ -3991,7 +4027,8 @@ Test-Cases:
       * The type of the deposit **MUST** be `FULL`.
       * The TLD in the filename **MUST** be present in the list of TLDs
         associated with the test.
-    Input-Parameters:
+    Errors:
+      - RDE_INVALID_FILENAME
   rde-02:
     Summary: validate signature over deposit file
     Maturity: BETA
@@ -4001,6 +4038,8 @@ Test-Cases:
     Input-Parameters:
       - rde.publicKey
       - rde.signatureFile
+    Errors:
+      - RDE_INVALID_SIGNATURE
   rde-03:
     Summary: decrypt deposit file(s)
     Maturity: BETA
@@ -4008,9 +4047,10 @@ Test-Cases:
       It **MUST** be possible to decrypt the deposit file using the RST key. The
       PGP public key for which the deposit **MUST** be encrypted may be found in
       the URL specified by the `rde.encryptionKey` resource.
-    Input-Parameters:
     Resources:
       - rde.encryptionKey
+    Errors:
+      - RDE_DECRYPTION_FAILED
   rde-04:
     Summary: validate XML/CSV
     Maturity: BETA
@@ -4020,7 +4060,10 @@ Test-Cases:
       * CSV files **MUST** conform to RFC 4180.
       * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
         contents.
-    Input-Parameters:
+    Errors:
+      - RDE_INVALID_XML
+      - RDE_INVALID_CSV
+      - RDE_MIXED_TYPES
   rde-05:
     Summary: validate object types
     Maturity: BETA
@@ -4033,14 +4076,17 @@ Test-Cases:
   
       All expected URIs **MUST** be present in the header, and the header **MUST
       NOT** contain any unexpected URIs.
-    Input-Parameters:
+    Errors:
+      - RDE_UNEXPECTED_OBJECT_URI
+      - RDE_MISSING_OBJECT_URI
   rde-06:
     Summary: validate object counts
     Maturity: BETA
     Description: |
       The number of each type of object **MUST** match the number of objects
       actually present in the deposit file.
-    Input-Parameters:
+    Errors:
+      - RDE_OBJECT_COUNT_MISMATCH
   rde-07:
     Summary: validate domain objects
     Maturity: BETA
@@ -4063,7 +4109,21 @@ Test-Cases:
       Contact, host and registrar objects (including optional objects such as
       admin and tech contacts) which are referenced in domain objects **MUST**
       be present in the deposit.
-    Input-Parameters:
+    Errors:
+      - RDE_DOMAIN_HAS_MISSING_NAME
+      - RDE_DOMAIN_HAS_INVALID_NAME
+      - RDE_DOMAIN_HAS_MISSING_ROID
+      - RDE_DOMAIN_HAS_INVALID_ROID
+      - RDE_DOMAIN_HAS_MISSING_STATUS
+      - RDE_DOMAIN_HAS_INVALID_STATUS
+      - RDE_DOMAIN_HAS_MISSING_REGISTRANT
+      - RDE_DOMAIN_HAS_INVALID_REGISTRANT
+      - RDE_DOMAIN_HAS_MISSING_CLID
+      - RDE_DOMAIN_HAS_INVALID_CLID
+      - RDE_DOMAIN_HAS_MISSING_CRDATE
+      - RDE_DOMAIN_HAS_INVALID_CRDATE
+      - RDE_DOMAIN_HAS_MISSING_EXDATE
+      - RDE_DOMAIN_HAS_INVALID_EXDATE
   rde-08:
     Summary: validate host objects (if applicable)
     Maturity: BETA
@@ -4084,7 +4144,18 @@ Test-Cases:
   
       If the applicant uses the host attribute model, then this test will be
       skipped.
-    Input-Parameters:
+    Errors:
+      - RDE_HOST_HAS_MISSING_NAME
+      - RDE_HOST_HAS_INVALID_NAME
+      - RDE_HOST_HAS_MISSING_ROID
+      - RDE_HOST_HAS_INVALID_ROID
+      - RDE_HOST_HAS_MISSING_STATUS
+      - RDE_HOST_HAS_INVALID_STATUS
+      - RDE_HOST_HAS_MISSING_IP_ADDRESS
+      - RDE_HOST_HAS_INVALID_IP_ADDRESS
+      - RDE_HOST_HAS_MISSING_CLID
+      - RDE_HOST_HAS_INVALID_CLID
+  
   rde-09:
     Summary: validate contact objects (if applicable)
     Maturity: BETA
@@ -4112,7 +4183,29 @@ Test-Cases:
   
       If the applicant uses the "thin" registry model, then this test will be
       skipped.
-    Input-Parameters:
+    Errors:
+      - RDE_CONTACT_HAS_MISSING_ID
+      - RDE_CONTACT_HAS_INVALID_ID
+      - RDE_CONTACT_HAS_MISSING_ROID
+      - RDE_CONTACT_HAS_INVALID_ROID
+      - RDE_CONTACT_HAS_MISSING_STATUS
+      - RDE_CONTACT_HAS_INVALID_STATUS
+      - RDE_CONTACT_HAS_MISSING_POSTALINFO
+      - RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE
+      - RDE_CONTACT_HAS_MISSING_NAME
+      - RDE_CONTACT_HAS_INVALID_NAME
+      - RDE_CONTACT_HAS_MISSING_STREET
+      - RDE_CONTACT_HAS_INVALID_STREET
+      - RDE_CONTACT_HAS_MISSING_CITY
+      - RDE_CONTACT_HAS_INVALID_CITY
+      - RDE_CONTACT_HAS_MISSING_CC
+      - RDE_CONTACT_HAS_INVALID_CC
+      - RDE_CONTACT_HAS_MISSING_VOICE
+      - RDE_CONTACT_HAS_INVALID_VOICE
+      - RDE_CONTACT_HAS_MISSING_EMAIL
+      - RDE_CONTACT_HAS_INVALID_EMAIL
+      - RDE_CONTACT_HAS_MISSING_CLID
+      - RDE_CONTACT_HAS_INVALID_CLID
   rde-10:
     Summary: validate registrar objects
     Maturity: BETA
@@ -4126,7 +4219,13 @@ Test-Cases:
       * `<rdeRegistrar:id>`
       * `<rdeRegistrar:name>`
       * `<rdeRegistrar:gurid>` (IANA ID)
-    Input-Parameters:
+    Errors:
+      - RDE_REGISTRAR_HAS_MISSING_ID
+      - RDE_REGISTRAR_HAS_INVALID_ID
+      - RDE_REGISTRAR_HAS_MISSING_NAME
+      - RDE_REGISTRAR_HAS_INVALID_NAME
+      - RDE_REGISTRAR_HAS_MISSING_GURID
+      - RDE_REGISTRAR_HAS_INVALID_GURID
   rde-11:
     Summary: validate IDN table objects (if applicable)
     Maturity: BETA
@@ -4138,7 +4237,10 @@ Test-Cases:
       All IDN table objects present in the deposit **MUST** correspond to IDN
       tables approved for the TLD, and all approved tables **MUST** have a
       corresponding object in the deposit.
-    Input-Parameters:
+    Errors:
+      - RDE_IDN_OBJECT_INVALID
+      - RDE_IDN_OBJECT_MISSING
+      - RDE_IDN_OBJECT_UNEXPECTED
   rde-12:
     Summary: validate NNDN objects
     Maturity: BETA
@@ -4149,6 +4251,9 @@ Test-Cases:
   
       The `aName` property of NNDN objects **MUST NOT** match the `name`
       property of a domain object.
+    Errors:
+      - RDE_NNDN_CONFLICTS_WITH_DOMAIN
+  
   rde-13:
     Summary: validate EPP parameters object
     Maturity: BETA
@@ -4158,11 +4263,14 @@ Test-Cases:
     Resources:
       - epp.clientCertificate
       - epp.clientCSR
+      - epp.clientACL
     Input-Parameters:
       - epp.hostName
       - epp.clid01
       - epp.pwd01
       - epp.serverIssuedClientCertificate01
+    Errors:
+      - RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER
   rde-14:
     Summary: validate policy object (if applicable)
     Maturity: BETA
@@ -4174,6 +4282,11 @@ Test-Cases:
         contact objects **MUST NOT** be present in the deposit.
       * If the `epp.hostModel` input parameter is `attributes`, then
         host objects **MUST NOT** be present in the deposit.
+    Errors:
+      - RDE_POLICY_OBJECT_MISSING
+      - RDE_POLICY_OBJECT_INVALID
+      - RDE_POLICY_OBJECT_MISSING_OBJECTS
+      - RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS
   epp-01:
     Summary: Service connectivity test
     Description: |
@@ -5082,7 +5195,9 @@ Test-Cases:
         the correct `<launch:claimKey>` element;
       * a `<check>` response for a domain that is NOT present on the DNL
         does not contain a `<launch:claimKey>` element.
-  
+    Errors:
+      - RPMS_MISSING_CLAIMS_KEY
+      - RPMS_UNEXPECTED_CLAIMS_KEY
   minimumRPMs-02:
     Summary: |
       Sunrise domain/launch application <create> command test
@@ -5101,27 +5216,34 @@ Test-Cases:
   
       If the server supports Start Date sunrises, the fully-qualified domain
       name will be constructed using a label from the SMD file and the
-      `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-      a `1000` or `1001` result code, however, if the client receives a `2302`
-      "object exists" result code, it will retry with a different domain name.
-  
-      The client will also attempt to create a domain using an invalid SMD,
-      which the server **MUST** reject.
+      `minimumRPMS.sunriseTLD` input parameter. If the domain is not already
+      present in the registry, the Server **MUST** respond with a `1000` or `1001`
+      result code, however, if the client receives a `2302` "object exists" result
+      code, it will retry with a different domain name, until a `1000` or `1001`
+      response is received.
   
       If the server supports End Date sunrises, the fully-qualified domain
       name will be constructed using a label from the SMD file and the
       `minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with
-      a `1000` or `1001` result code.
+      a `1000` or `1001` result code, and create a launch application.
   
       Once the `<create>` commands have been processed, the client will then
-      perform `<info>` commands to confirm that the domains have been created and
-      that the submitted object properties have been correctly stored.
+      perform `<info>` commands to confirm that the domains or launch applications
+      have been created and that the submitted object properties have been
+      correctly stored.
   
       The client will also confirm that the server rejects attempts to:
   
       1. create a domain using an invalid SMD;
       2. create a domain using a revoked SMD;
       3. create a domain using an SMD signed by a revoked certificate.
+    Errors:
+      - RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD
+      - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD
+      - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD
+      - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE
+      - RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST
+      - RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES
   
   minimumRPMs-03:
     Summary: Trademark claims domain <create> command test
@@ -5141,7 +5263,7 @@ Test-Cases:
       `minimumRPMS.claimsTLD` input parameter. The client will perform a
       Trademark Claims `<check>` command beforehand to obtain the claim key, and
       will then synthesise a trademark claims acknowledgement. The server
-      **MUST** respond with a 1000 or 10001 response.
+      **MUST** respond with a `1000` or `1001` response.
   
       Once the `<create>` commands have been processed, the client will then
       perform `<info>` commands to confirm that the domains have been created and
@@ -5153,6 +5275,12 @@ Test-Cases:
       2. create a domain using an expired claim key;
       3. create a domain using an acceptance datetime more than 48 hours in the
         past.
+    Errors:
+      - RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY
+      - RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY
+      - RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE
+      - RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST
+      - RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES
   srsgw-01:
     Summary: IPv4 and IPv6 connectivity
     Maturity: BETA
@@ -5162,8 +5290,8 @@ Test-Cases:
   
       The SRS Gateway EPP server host name will be resolved to obtain its
       IPv4 and IPv6 addresses. The client will then attempt to connect to TCP
-      port 700 on these addresses.
-    Dependencies:
+      port 700 on these addresses and log in using the provided credentials.
+  
   srsgw-02:
     Summary: Host <create> synchronization (if applicable)
     Maturity: BETA
@@ -5188,6 +5316,11 @@ Test-Cases:
   
       The two `<info>` responses will then be compared and **MUST** be
       identical.
+    Errors:
+      - SRSGW_HOST_CREATE_FAILED
+      - SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE
+      - SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES
+  
   srsgw-03:
     Summary: Contact <create> synchronization (if applicable)
     Maturity: BETA
@@ -5211,6 +5344,11 @@ Test-Cases:
   
       The two `<info>` responses will then be compared and **MUST** be
       identical.
+    Errors:
+      - SRSGW_CONTACT_CREATE_FAILED
+      - SRSGW_CONTACT_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE
+      - SRSGW_CONTACT_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES
+  
   srsgw-04:
     Summary: Domain <create> synchronization
     Maturity: BETA
@@ -5236,6 +5374,11 @@ Test-Cases:
     Dependencies:
       - srsgw-02
       - srsgw-03
+    Errors:
+      - SRSGW_DOMAIN_CREATE_FAILED
+      - SRSGW_DOMAIN_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE
+      - SRSGW_DOMAIN_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES
+  
   srsgw-05:
     Summary: Domain <renew> synchronisation
     Maturity: BETA
@@ -5257,6 +5400,11 @@ Test-Cases:
       and **MUST** be identical.
     Dependencies:
       - srsgw-04
+    Errors:
+      - SRSGW_DOMAIN_RENEW_FAILED
+      - SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
+      - SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE
+  
   srsgw-06:
     Summary: Domain <transfer> synchronisation
     Maturity: BETA
@@ -5285,6 +5433,12 @@ Test-Cases:
         the domain **MUST** have the `pendingTransfer` status.
     Dependencies:
       - srsgw-05
+    Errors:
+      - SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED
+      - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
+      - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID
+      - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER
+  
   srsgw-07:
     Summary: Domain <transfer> approval synchronisation
     Maturity: BETA
@@ -5307,6 +5461,12 @@ Test-Cases:
       the  `srsgw.eppClid01` input parameter.
     Dependencies:
       - srsgw-06
+    Errors:
+      - SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED
+      - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
+      - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID
+      - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER
+  
   srsgw-08:
     Summary: Domain <delete> synchronisation
     Maturity: BETA
@@ -5324,14 +5484,15 @@ Test-Cases:
       It will then connect to the primary EPP system, authenticate, and perform
       an `<info>` command for the domain renewed in the first step.
   
-      * if `general.gracePeriodsSupported` is false, the server **MUST**
-        respond to the `<info>` command with a 2303 ("object does not exist")
-        result code.
-      * If `general.gracePeriodsSupported` is true, the domain object **MUST**
-        have the `pendingDelete` status and have an RGP status of
-        `pendingDeleteRestorable`.
+      The domain object **MUST** have the `pendingDelete` status and have an RGP
+      status of `pendingDeleteRestorable`.
     Dependencies:
       - srsgw-07
+    Errors:
+      - SRSGW_DOMAIN_DELETE_FAILED
+      - SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE
+      - SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE
+  
   srsgw-09:
     Summary: Host <update> synchronization (if applicable)
     Maturity: BETA
@@ -5353,6 +5514,7 @@ Test-Cases:
       The two sets of `<info>` responses **MUST** be identical.
     Dependencies:
       - srsgw-02
+  
   srsgw-10:
     Summary: Host <delete> synchronization (if applicable)
     Maturity: BETA
@@ -5372,6 +5534,7 @@ Test-Cases:
       respond with a 2303 "object does not exist" response.
     Dependencies:
       - srsgw-09
+  
   srsgw-11:
     Summary: Contact <update> synchronization (if applicable)
     Maturity: BETA
@@ -5392,6 +5555,7 @@ Test-Cases:
       The two sets of `<info>` responses **MUST** be identical.
     Dependencies:
       - srsgw-03
+  
   srsgw-12:
     Summary: Contact <delete> synchronization (if applicable)
     Maturity: BETA
@@ -5411,6 +5575,7 @@ Test-Cases:
       respond with a 2303 "object does not exist" response.
     Dependencies:
       - srsgw-11
+  
   srsgw-13:
     Summary: Domain RDAP synchronization
     Maturity: BETA
@@ -5424,6 +5589,7 @@ Test-Cases:
       server **MUST** be identical.
     Dependencies:
       - srsgw-04
+  
   srsgw-14:
     Summary: Nameserver RDAP synchronization
     Maturity: BETA
@@ -5440,6 +5606,7 @@ Test-Cases:
       server **MUST** be identical.
     Dependencies:
       - srsgw-02
+  
   srsgw-15:
     Summary: Registrar RDAP synchronization
     Maturity: BETA
@@ -5475,8 +5642,9 @@ Test-Cases:
   
       The server **MUST** reject all `<create>` commands for invalid labels and
       **MUST** accept all `<create>` commands for valid labels.
-    Input-Parameters:
-    Dependencies:
+    Errors:
+      - IDN_SERVER_ACCEPTS_INVALID_LABEL
+      - IDN_SERVER_REJECTS_VALID_LABEL
   idn-02:
     Summary: Level 1 variant handling test
     Maturity: BETA
@@ -5494,8 +5662,8 @@ Test-Cases:
       The client will then submit `<create>` commands for one or more labels
       that are variants of the names created in the first step. The server
       **MUST** reject these commands.
-    Input-Parameters:
-    Dependencies:
+    Errors:
+      - IDN_VARIANT_LABEL_NOT_BLOCKED
   idn-03:
     Summary: Level 2 variant handling test
     Maturity: BETA
@@ -5520,7 +5688,6 @@ Test-Cases:
       The server **MUST** reject `<create>` commands where the (a) registrar is
       different from that of the primary label or (b) the registrant (if
       applicable) is different.
-    Dependencies:
   idn-04:
     Summary: Level 3 variant handling test
     Maturity: BETA
@@ -5546,7 +5713,6 @@ Test-Cases:
       The server **MUST** reject `<create>` commands where the (a) registrar is
       different from that of the primary label or (b) the registrant (if
       applicable) is different.
-    Dependencies:
   integration-01:
     Summary: EPP -> RDAP Integration Test
     Maturity: BETA
@@ -5565,6 +5731,9 @@ Test-Cases:
     Dependencies:
       - epp-16
       - epp-11
+    Errors:
+      - INTEGRATION_RDAP_REQUEST_FAILED
+      - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
   integration-02:
     Summary: EPP -> DNS Integration Test
     Maturity: BETA
@@ -5582,6 +5751,10 @@ Test-Cases:
       - dns.nameservers
     Dependencies:
       - epp-16
+    Errors:
+      - INTEGRATION_DNS_QUERY_FAILED
+      - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
+      - INTEGRATION_DNS_ANSWER_IS_INCORRECT
   integration-03:
     Summary: EPP -> RDE Integration Test
     Maturity: BETA
@@ -5625,6 +5798,11 @@ Test-Cases:
     Dependencies:
       - epp-16
       - epp-11
+    Errors:
+      - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
+      - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR
+      - INTEGRATION_RDE_MISSING_OBJECTS
+      - INTEGRATION_RDE_DEADLINE_MISSED
 
 Input-Parameters:
   general.minimalPublicDataSet:
@@ -7070,7 +7248,6 @@ Errors:
   ZM_Z_FLAGS_NOTCLEAR:
     Description: '*Not available.*'
     Severity: ERROR
-  
   DNSSEC_DNS_QUERY_ERROR:
     Severity: ERROR
     Description: An error occurred while performing DNS query(s).
@@ -7080,6 +7257,29 @@ Errors:
   DNSSEC_INVALID_DIGEST_ALGORITHM:
     Severity: ERROR
     Description: An invalid algorithm is used in the provided DS record(s).
+  DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED:
+    Severity: ERROR
+    Description: TBA.
   EPP_SERVICE_PORT_UNREACHABLE:
     Severity: ERROR
     Description: The client was unable to successfully connect to the EPP serer.
@@ -8556,3 +8756,530 @@ Errors:
   EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
     Severity: ERROR
     Description: TBA
+  IDN_SERVER_ACCEPTS_INVALID_LABEL:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_SERVER_REJECTS_VALID_LABEL:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_LABEL_NOT_BLOCKED:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR:
+    Severity: ERROR
+    Description: TBA.
+  
+  IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  INTEGRATION_DNS_ANSWER_IS_INCORRECT:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DNS_QUERY_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDAP_REQUEST_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_DEADLINE_MISSED:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_MISSING_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE:
+    Severity: ERROR
+    Description: TBA.
+  RDE_CONTACT_HAS_INVALID_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_INVALID_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CC:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CITY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_EMAIL:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_POSTALINFO:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_STREET:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_CONTACT_HAS_MISSING_VOICE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DECRYPTION_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_CRDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_EXDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_CRDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_EXDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_REGISTRANT:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_DOMAIN_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_IP_ADDRESS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_INVALID_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_IP_ADDRESS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_ROID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_HOST_HAS_MISSING_STATUS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_INVALID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_MISSING:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_IDN_OBJECT_UNEXPECTED:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_CSV:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_FILENAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_SIGNATURE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_INVALID_XML:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_MISSING_OBJECT_URI:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_MIXED_TYPES:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_NNDN_CONFLICTS_WITH_DOMAIN:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_OBJECT_COUNT_MISMATCH:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_INVALID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_MISSING:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_MISSING_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_GURID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_INVALID_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_GURID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_ID:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_REGISTRAR_HAS_MISSING_NAME:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_SCHEMA_VALIDATION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_UNEXPECTED_OBJECT_URI:
+    Severity: ERROR
+    Description: TBA.
+  
+  RDE_XML_PARSE_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  RPMS_MISSING_CLAIMS_KEY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY:
+    Severity: ERROR
+    Description: TBA.
+  
+  RPMS_UNEXPECTED_CLAIMS_KEY:
+    Severity: ERROR
+    Description: TBA.
+  SRSGW_CONTACT_CREATE_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_CONTACT_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_CONTACT_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_CREATE_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_DELETE_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_RENEW_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_DNS_RESOLUTION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_GENERIC_COMMAND_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_LOGIN_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_OBJECT_SHOULD_EXIST:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_OBJECT_SHOULD_NOT_EXIST:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_SCHEMA_VALIDATION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_SERVICE_PORT_UNREACHABLE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_TLS_CONNECTION_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_UNEXPECTED_COMMAND_FAILURE:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_UNEXPECTED_COMMAND_SUCCESS:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_EPP_XML_PARSE_ERROR:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_HOST_CREATE_FAILED:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
+    Severity: ERROR
+    Description: TBA.
+  
+  SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
+    Severity: ERROR
+    Description: TBA.

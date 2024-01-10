@@ -17,6 +17,30 @@
          "Description" : "An invalid algorithm is used to sign the zone.",
          "Severity" : "ERROR"
       },
+      "DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
       "EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL" : {
          "Description" : "TBA.",
          "Severity" : "ERROR"
@@ -571,6 +595,538 @@
       },
       "EPP_XML_PARSE_ERROR" : {
          "Description" : "The XML response from the server could not be parsed.",
+         "Severity" : "ERROR"
+      },
+      "IDN_SERVER_ACCEPTS_INVALID_LABEL" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "IDN_SERVER_REJECTS_VALID_LABEL" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "IDN_VARIANT_LABEL_NOT_BLOCKED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_DNS_ANSWER_IS_INCORRECT" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_DNS_QUERY_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_RDAP_REQUEST_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_RDE_DEADLINE_MISSED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_RDE_MISSING_OBJECTS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_CC" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_CITY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_EMAIL" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_ID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_STREET" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_INVALID_VOICE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_CC" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_CITY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_EMAIL" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_ID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_POSTALINFO" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_STREET" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_CONTACT_HAS_MISSING_VOICE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DECRYPTION_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_CRDATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_EXDATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_REGISTRANT" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_INVALID_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_CRDATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_EXDATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_REGISTRANT" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_DOMAIN_HAS_MISSING_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_INVALID_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_INVALID_IP_ADDRESS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_INVALID_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_INVALID_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_INVALID_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_MISSING_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_MISSING_IP_ADDRESS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_MISSING_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_MISSING_ROID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_HOST_HAS_MISSING_STATUS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_IDN_OBJECT_INVALID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_IDN_OBJECT_MISSING" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_IDN_OBJECT_UNEXPECTED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_INVALID_CSV" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_INVALID_FILENAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_INVALID_SIGNATURE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_INVALID_XML" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_MISSING_OBJECT_URI" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_MIXED_TYPES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_NNDN_CONFLICTS_WITH_DOMAIN" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_OBJECT_COUNT_MISMATCH" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_POLICY_OBJECT_INVALID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_POLICY_OBJECT_MISSING" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_POLICY_OBJECT_MISSING_OBJECTS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_INVALID_GURID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_INVALID_ID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_INVALID_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_MISSING_GURID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_MISSING_ID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_REGISTRAR_HAS_MISSING_NAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_SCHEMA_VALIDATION_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_UNEXPECTED_OBJECT_URI" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RDE_XML_PARSE_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_MISSING_CLAIMS_KEY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "RPMS_UNEXPECTED_CLAIMS_KEY" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_CONTACT_CREATE_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_CONTACT_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_CONTACT_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_CREATE_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_DELETE_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_RENEW_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_DNS_RESOLUTION_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_GENERIC_COMMAND_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_LOGIN_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_OBJECT_SHOULD_EXIST" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_OBJECT_SHOULD_NOT_EXIST" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_SCHEMA_VALIDATION_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_SERVICE_PORT_UNREACHABLE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_TLS_CONNECTION_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_UNEXPECTED_COMMAND_FAILURE" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_UNEXPECTED_COMMAND_SUCCESS" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_EPP_XML_PARSE_ERROR" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_HOST_CREATE_FAILED" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE" : {
+         "Description" : "TBA.",
          "Severity" : "ERROR"
       },
       "ZM_AAAA_BAD_RDATA" : {
@@ -2525,8 +3081,11 @@
          "Summary" : "Permitted DS record hash algorithm(s)"
       },
       "dnssecOps01-ZSKRollover" : {
-         "Dependencies" : null,
          "Description" : "This test case verifies the RSP's ability to perform a ZSK rollover (as\ndescribed in [Section 4.1.1 of\nRFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1) for\na zone.\n\nIf the value of the `dnssecOps.csk` input parameter is `true`, then this\ntest will be skipped.\n\nThe system will monitor the SOA record in the domain name specified in the\n`dnssec.zskRolloverZone` input parameter. The domain may be present\nanywhere in the DNS hierarchy (that is, it does not need to be a TLD), but\n**MUST** have a secure chain of trust up to the root zone, so that it can\nbe validated using the root zone trust anchor.\n\nDuring the test period (currently defined as 24 hours) the operator\n**MUST** successfully carry out a ZSK rollover for the domain, where the\nZone Signing Key is replaced, without disrupting the chain of trust.\n\nTo simplify testing, applicants may wish to provision domain that is\nconfigured with short TTLs and a short ZSK lifetime, so that a ZSK\nrollover is guaranteed to occur within the 24 test period.\n",
+         "Errors" : [
+            "DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN",
+            "DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED"
+         ],
          "Input-Parameters" : [
             "dnssecOps.csk",
             "dnssecOps.zskRolloverZone"
@@ -2534,16 +3093,22 @@
          "Summary" : "ZSK rollover"
       },
       "dnssecOps02-KSKRollover" : {
-         "Dependencies" : null,
          "Description" : "This test case verifies the RSP's ability to perform a CSK/KSK rollover\n(as described in [Sections 4.1.2 and 4.13 of\nRFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for\na zone.\n\nThe system will monitor the SOA record in the domain name specified in the\n`dnssec.kskRolloverZone` input parameter. The domain may be present\nanywhere in the DNS hierarchy (that is, it does not need to be a TLD), but\n**MUST** have a secure chain of trust up to the root zone, so that it can\nbe validated using the root zone trust anchor.\n\nDuring the test period (currently defined as 24 hours) the operator\n**MUST** successfully carry out a KSK rollover for the domain, where the\nKey Signing Key is replaced, and the DS record in the parent zone is\nupdated, without disrupting the chain of trust.\n",
+         "Errors" : [
+            "DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN",
+            "DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED"
+         ],
          "Input-Parameters" : [
             "dnssecOps.kskRolloverZone"
          ],
          "Summary" : "KSK rollover"
       },
       "dnssecOps03-AlgorithmRollover" : {
-         "Dependencies" : null,
          "Description" : "This test case verifies the RSP's ability to perform an algorithm rollover\n(as described in [Section 4.1.4 of\nRFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for\na zone.\n\nThe system will monitor the SOA record in the domain name specified in the\n`dnssec.algorithmRolloverZone` input parameter. The domain may be present\nanywhere in the DNS hierarchy (that is, it does not need to be a TLD), but\n**MUST** have a secure chain of trust up to the root zone, so that it can\nbe validated using the root zone trust anchor.\n\nDuring the test period (currently defined as 72 hours) the operator\n**MUST** successfully carry out an algorithm rollover for the domain\n(including an update to the DS record in the parent zone), where the\nalgorithm used to secure the domain is changed, without disrupting the\nchain of trust.\n\nNote that the specific algorithms being rolled to and from are not\nsignificant (although they **MUST** be present in the IANA registry); it\nis not required that the new algorithm be more \"secure\" than the original\nalgorithm; only that they are different. So a rollover from algorithm 13\n(`ECDSAP256SHA256`) to algorithm 8 (`RSASHA256`) will be accepted as well\nas a rollover from `RSASHA256` to `ECDSAP256SHA256`.\n",
+         "Errors" : [
+            "DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN",
+            "DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED"
+         ],
          "Input-Parameters" : [
             "dnssecOps.algorithmRolloverZone"
          ],
@@ -2892,27 +3457,28 @@
          "Summary" : "host <delete> command test (if applicable)"
       },
       "idn-01" : {
-         "Dependencies" : null,
          "Description" : "This test confirms that the EPP server correctly accepts or rejects domain\n`<create>` commands for valid and invalid IDN labels, respectively.\n\nIf there are no IDN tables supported under any of the TLDs associated with\nthe test, then this test will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe server **MUST** reject all `<create>` commands for invalid labels and\n**MUST** accept all `<create>` commands for valid labels.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "IDN_SERVER_ACCEPTS_INVALID_LABEL",
+            "IDN_SERVER_REJECTS_VALID_LABEL"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Label validation test"
       },
       "idn-02" : {
-         "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 1 variant\nsupport (no support for variant activation, all variants are blocked).\n\nIf there are no IDN tables for which Level 1 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants of the names created in the first step. The server\n**MUST** reject these commands.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "IDN_VARIANT_LABEL_NOT_BLOCKED"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Level 1 variant handling test"
       },
       "idn-03" : {
-         "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 2 variant\nsupport (variants are supported within the same TLD).\n\nIf there are no IDN tables for which Level 2 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants of the names created in the first step. Some of these\ncommands will be made using the same registrar account as the first step,\nwhile some will be made using alternate credentials. If the value of the\n`general.minimalPublicDataSet` input parameter is `false`, then some\ncommands will also use a different registrant contact.\n\nThe server **MUST** reject `<create>` commands where the (a) registrar is\ndifferent from that of the primary label or (b) the registrant (if\napplicable) is different.\n",
          "Maturity" : "BETA",
          "Summary" : "Level 2 variant handling test"
       },
       "idn-04" : {
-         "Dependencies" : null,
          "Description" : "This test confirms the EPP server's conformance with the Level 3 variant\nsupport (variants are supported within variant TLD(s)).\n\nIf there are no IDN tables for which Level 3 support is claimed, this\ntest will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe client will then submit `<create>` commands for one or more labels\nthat are variants (at both second- and top-level) of the names created in\nthe first step. Some of these commands will be made using the same\nregistrar account as the first step, while some will be made using\nalternate credentials. If the value of the `general.minimalPublicDataSet`\ninput parameter is `false`, then some commands will also use a different\nregistrant contact.\n\nThe server **MUST** reject `<create>` commands where the (a) registrar is\ndifferent from that of the primary label or (b) the registrant (if\napplicable) is different.\n",
          "Maturity" : "BETA",
          "Summary" : "Level 3 variant handling test"
@@ -2923,6 +3489,10 @@
             "epp-11"
          ],
          "Description" : "This test confirms that the EPP and RDAP systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform RDAP queries to confirm that the RDAP server\nprovides responses for the domain and host objects created in `epp-16` and\n`epp-11` (if applicable). The RDAP server **MUST** provide a 200 response\nwithin 1 hour of the object's `<crDate>` element.\n",
+         "Errors" : [
+            "INTEGRATION_RDAP_REQUEST_FAILED",
+            "INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP"
+         ],
          "Input-Parameters" : [
             "rdap.baseURLs"
          ],
@@ -2934,6 +3504,11 @@
             "epp-16"
          ],
          "Description" : "This test confirms that the EPP and DNS systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform DNS queries to confirm that the DNS servers\nprovides responses for the domain names created in `epp-16`. All DNS\nservers **MUST** provide the correct DNS response within 1 hour of the\nobject's `<crDate>` element.\n",
+         "Errors" : [
+            "INTEGRATION_DNS_QUERY_FAILED",
+            "INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS",
+            "INTEGRATION_DNS_ANSWER_IS_INCORRECT"
+         ],
          "Input-Parameters" : [
             "dns.nameservers"
          ],
@@ -2946,6 +3521,12 @@
             "epp-11"
          ],
          "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-16` and `epp-11` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on\nthe date specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
+         "Errors" : [
+            "INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE",
+            "INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR",
+            "INTEGRATION_RDE_MISSING_OBJECTS",
+            "INTEGRATION_RDE_DEADLINE_MISSED"
+         ],
          "Input-Parameters" : [
             "integration.rdeSFTPHostname",
             "integration.rdeSFTPDirectory",
@@ -2961,14 +3542,33 @@
       },
       "minimumRPMs-01" : {
          "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Check Form, as described in Section\n3.1.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server using the provided credentials\nand will then perform a series of `<check>` commands, using the Launch\nextension to specify a value of `claims` for the `type` attribute of the\n`<launch:check>` element and the `<launch:phase>` element. It will then\nconfirm that the server returns an appropriate response:\n\n* a `<check>` response for a domain that is present on the DNL contains\n  the correct `<launch:claimKey>` element;\n* a `<check>` response for a domain that is NOT present on the DNL\n  does not contain a `<launch:claimKey>` element.\n",
+         "Errors" : [
+            "RPMS_MISSING_CLAIMS_KEY",
+            "RPMS_UNEXPECTED_CLAIMS_KEY"
+         ],
          "Summary" : "Claims <check> command test"
       },
       "minimumRPMs-02" : {
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na `1000` or `1001` result code, however, if the client receives a `2302`\n\"object exists\" result code, it will retry with a different domain name.\n\nThe client will also attempt to create a domain using an invalid SMD,\nwhich the server **MUST** reject.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na `1000` or `1001` result code.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the domains have been created and\nthat the submitted object properties have been correctly stored.\n\nThe client will also confirm that the server rejects attempts to:\n\n1. create a domain using an invalid SMD;\n2. create a domain using a revoked SMD;\n3. create a domain using an SMD signed by a revoked certificate.\n",
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Sunrise Create Form, as described in Section\n3.3.1 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names and SMD files present in the TMCH test\nenvironment.\n\nIf the server supports Start Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. If the domain is not already\npresent in the registry, the Server **MUST** respond with a `1000` or `1001`\nresult code, however, if the client receives a `2302` \"object exists\" result\ncode, it will retry with a different domain name, until a `1000` or `1001`\nresponse is received.\n\nIf the server supports End Date sunrises, the fully-qualified domain\nname will be constructed using a label from the SMD file and the\n`minimumRPMS.sunriseTLD` input parameter. The Server **MUST** respond with\na `1000` or `1001` result code, and create a launch application.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the domains or launch applications\nhave been created and that the submitted object properties have been\ncorrectly stored.\n\nThe client will also confirm that the server rejects attempts to:\n\n1. create a domain using an invalid SMD;\n2. create a domain using a revoked SMD;\n3. create a domain using an SMD signed by a revoked certificate.\n",
+         "Errors" : [
+            "RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD",
+            "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD",
+            "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD",
+            "RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE",
+            "RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST",
+            "RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES"
+         ],
          "Summary" : "Sunrise domain/launch application <create> command test\n"
       },
       "minimumRPMs-03" : {
-         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Create Form, as described in Section\n3.3.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names present in the TMCH test environment.\n\nThe domain name will be constructed using a label from the DNL, and the\n`minimumRPMS.claimsTLD` input parameter. The client will perform a\nTrademark Claims `<check>` command beforehand to obtain the claim key, and\nwill then synthesise a trademark claims acknowledgement. The server\n**MUST** respond with a 1000 or 10001 response.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the domains have been created and\nthat the submitted object properties have been correctly stored.\n\nThe client will also confirm that the server rejects attempts to:\n\n1. create a domain using an invalid claim key;\n2. create a domain using an expired claim key;\n3. create a domain using an acceptance datetime more than 48 hours in the\n  past.\n",
+         "Description" : "This test is used to confirm the conformance of the EPP server's\nimplementation of the Claims Create Form, as described in Section\n3.3.2 of RFC 8334.\n\nFor this test, it is assumed that the EPP server has been configured to\nuse data (specifically the Domain Name Label List, as described in Section\n5.3.3.1 of RFC 9361) from the TMCH test environment.\n\nThe client will connect to the EPP server and will submit `<create>`\ncommands, using domain names present in the TMCH test environment.\n\nThe domain name will be constructed using a label from the DNL, and the\n`minimumRPMS.claimsTLD` input parameter. The client will perform a\nTrademark Claims `<check>` command beforehand to obtain the claim key, and\nwill then synthesise a trademark claims acknowledgement. The server\n**MUST** respond with a `1000` or `1001` response.\n\nOnce the `<create>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the domains have been created and\nthat the submitted object properties have been correctly stored.\n\nThe client will also confirm that the server rejects attempts to:\n\n1. create a domain using an invalid claim key;\n2. create a domain using an expired claim key;\n3. create a domain using an acceptance datetime more than 48 hours in the\n  past.\n",
+         "Errors" : [
+            "RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY",
+            "RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY",
+            "RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE",
+            "RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST",
+            "RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES"
+         ],
          "Summary" : "Trademark claims domain <create> command test"
       },
       "rdap-01-domainCaseFoldingValidation" : {
@@ -3108,12 +3708,17 @@
       },
       "rde-01" : {
          "Description" : "* The deposit filename **MUST** conform to the format specified in the RA.\n* The type of the deposit **MUST** be `FULL`.\n* The TLD in the filename **MUST** be present in the list of TLDs\n  associated with the test.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_INVALID_FILENAME"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate deposit filename format"
       },
       "rde-02" : {
          "Description" : "The PGP signature **MUST** be valid for the deposit file and the RSP's\nkey.\n",
+         "Errors" : [
+            "RDE_INVALID_SIGNATURE"
+         ],
          "Input-Parameters" : [
             "rde.publicKey",
             "rde.signatureFile"
@@ -3123,7 +3728,9 @@
       },
       "rde-03" : {
          "Description" : "It **MUST** be possible to decrypt the deposit file using the RST key. The\nPGP public key for which the deposit **MUST** be encrypted may be found in\nthe URL specified by the `rde.encryptionKey` resource.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_DECRYPTION_FAILED"
+         ],
          "Maturity" : "BETA",
          "Resources" : [
             "rde.encryptionKey"
@@ -3132,59 +3739,134 @@
       },
       "rde-04" : {
          "Description" : "* XML deposit files **MUST** be well-formed and validate against the XML\n  schema.\n* CSV files **MUST** conform to RFC 4180.\n* Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit\n  contents.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_INVALID_XML",
+            "RDE_INVALID_CSV",
+            "RDE_MIXED_TYPES"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate XML/CSV"
       },
       "rde-05" : {
          "Description" : "The header object **MUST** reference the correct object XML namespace\nURIs.\n\nThe correct URIs is determined by the `general.minimalPublicDataSet` and\n`epp.hostModel` input parameters.\n\nAll expected URIs **MUST** be present in the header, and the header **MUST\nNOT** contain any unexpected URIs.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_UNEXPECTED_OBJECT_URI",
+            "RDE_MISSING_OBJECT_URI"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate object types"
       },
       "rde-06" : {
          "Description" : "The number of each type of object **MUST** match the number of objects\nactually present in the deposit file.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_OBJECT_COUNT_MISMATCH"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate object counts"
       },
       "rde-07" : {
          "Description" : "Domain objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n* `<domain:name>`\n* `<domain:roid>` (which **MUST** have a repository ID registered with\n  IANA)\n* at least one `<domain:status>` element\n* `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)\n* `<domain:clID>` (sponsoring registrar ID)\n* `<domain:crDate>` (creation date)\n* `<domain:exDate>` (expiry date)\n\nContact, host and registrar objects (including optional objects such as\nadmin and tech contacts) which are referenced in domain objects **MUST**\nbe present in the deposit.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_DOMAIN_HAS_MISSING_NAME",
+            "RDE_DOMAIN_HAS_INVALID_NAME",
+            "RDE_DOMAIN_HAS_MISSING_ROID",
+            "RDE_DOMAIN_HAS_INVALID_ROID",
+            "RDE_DOMAIN_HAS_MISSING_STATUS",
+            "RDE_DOMAIN_HAS_INVALID_STATUS",
+            "RDE_DOMAIN_HAS_MISSING_REGISTRANT",
+            "RDE_DOMAIN_HAS_INVALID_REGISTRANT",
+            "RDE_DOMAIN_HAS_MISSING_CLID",
+            "RDE_DOMAIN_HAS_INVALID_CLID",
+            "RDE_DOMAIN_HAS_MISSING_CRDATE",
+            "RDE_DOMAIN_HAS_INVALID_CRDATE",
+            "RDE_DOMAIN_HAS_MISSING_EXDATE",
+            "RDE_DOMAIN_HAS_INVALID_EXDATE"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate domain objects"
       },
       "rde-08" : {
          "Description" : "Host objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n* `<host:name>`\n* `<host:roid>` (which **MUST** have a repository ID registered with\n  IANA)\n* at least one `<domain:status>` element\n* one or more `<addr>` elements (if the host name is subordinate to\n  the TLD)\n* `<host:clID>` (sponsoring registrar ID)\n\nIf the applicant uses the host attribute model, then this test will be\nskipped.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_HOST_HAS_MISSING_NAME",
+            "RDE_HOST_HAS_INVALID_NAME",
+            "RDE_HOST_HAS_MISSING_ROID",
+            "RDE_HOST_HAS_INVALID_ROID",
+            "RDE_HOST_HAS_MISSING_STATUS",
+            "RDE_HOST_HAS_INVALID_STATUS",
+            "RDE_HOST_HAS_MISSING_IP_ADDRESS",
+            "RDE_HOST_HAS_INVALID_IP_ADDRESS",
+            "RDE_HOST_HAS_MISSING_CLID",
+            "RDE_HOST_HAS_INVALID_CLID"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate host objects (if applicable)"
       },
       "rde-09" : {
          "Description" : "Contact objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n* `<contact:id>`\n* `<contact:roid>` (which **MUST** have a repository ID registered with\n  IANA)\n* at least one `<contact:status>` element\n* 1-2 `<contact:postalInfo>` elements containing the following:\n    * a \"type\" attribute of \"int\" or \"loc\"\n    * `<contact:name>` element\n    * an `<contact:addr>` element containing the following:\n      * at least one 1 `<contact:street>` element\n      * `<contact:city>` element\n      * `<contact:cc>` element\n* `<contact:voice>`\n* `<contact:email>`\n* `<contact:clID>` (sponsoring registrar ID)\n\nIf the applicant uses the \"thin\" registry model, then this test will be\nskipped.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_CONTACT_HAS_MISSING_ID",
+            "RDE_CONTACT_HAS_INVALID_ID",
+            "RDE_CONTACT_HAS_MISSING_ROID",
+            "RDE_CONTACT_HAS_INVALID_ROID",
+            "RDE_CONTACT_HAS_MISSING_STATUS",
+            "RDE_CONTACT_HAS_INVALID_STATUS",
+            "RDE_CONTACT_HAS_MISSING_POSTALINFO",
+            "RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE",
+            "RDE_CONTACT_HAS_MISSING_NAME",
+            "RDE_CONTACT_HAS_INVALID_NAME",
+            "RDE_CONTACT_HAS_MISSING_STREET",
+            "RDE_CONTACT_HAS_INVALID_STREET",
+            "RDE_CONTACT_HAS_MISSING_CITY",
+            "RDE_CONTACT_HAS_INVALID_CITY",
+            "RDE_CONTACT_HAS_MISSING_CC",
+            "RDE_CONTACT_HAS_INVALID_CC",
+            "RDE_CONTACT_HAS_MISSING_VOICE",
+            "RDE_CONTACT_HAS_INVALID_VOICE",
+            "RDE_CONTACT_HAS_MISSING_EMAIL",
+            "RDE_CONTACT_HAS_INVALID_EMAIL",
+            "RDE_CONTACT_HAS_MISSING_CLID",
+            "RDE_CONTACT_HAS_INVALID_CLID"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate contact objects (if applicable)"
       },
       "rde-10" : {
          "Description" : "Registrar objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe required properties are:\n\n* `<rdeRegistrar:id>`\n* `<rdeRegistrar:name>`\n* `<rdeRegistrar:gurid>` (IANA ID)\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_REGISTRAR_HAS_MISSING_ID",
+            "RDE_REGISTRAR_HAS_INVALID_ID",
+            "RDE_REGISTRAR_HAS_MISSING_NAME",
+            "RDE_REGISTRAR_HAS_INVALID_NAME",
+            "RDE_REGISTRAR_HAS_MISSING_GURID",
+            "RDE_REGISTRAR_HAS_INVALID_GURID"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate registrar objects"
       },
       "rde-11" : {
          "Description" : "IDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nAll IDN table objects present in the deposit **MUST** correspond to IDN\ntables approved for the TLD, and all approved tables **MUST** have a\ncorresponding object in the deposit.\n",
-         "Input-Parameters" : null,
+         "Errors" : [
+            "RDE_IDN_OBJECT_INVALID",
+            "RDE_IDN_OBJECT_MISSING",
+            "RDE_IDN_OBJECT_UNEXPECTED"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate IDN table objects (if applicable)"
       },
       "rde-12" : {
          "Description" : "NNDN table objects (whether CSV or XML) **MUST** have the required object\nproperties, and the values of those object properties **MUST** be\nwell-formed.\n\nThe `aName` property of NNDN objects **MUST NOT** match the `name`\nproperty of a domain object.\n",
+         "Errors" : [
+            "RDE_NNDN_CONFLICTS_WITH_DOMAIN"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate NNDN objects"
       },
       "rde-13" : {
          "Description" : "The EPP Parameters object **MUST** match the `<greeting>` element returned\nby the EPP server.\n",
+         "Errors" : [
+            "RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER"
+         ],
          "Input-Parameters" : [
             "epp.hostName",
             "epp.clid01",
@@ -3194,28 +3876,44 @@
          "Maturity" : "BETA",
          "Resources" : [
             "epp.clientCertificate",
-            "epp.clientCSR"
+            "epp.clientCSR",
+            "epp.clientACL"
          ],
          "Summary" : "validate EPP parameters object"
       },
       "rde-14" : {
          "Description" : "The object policies included in the `<rdePolicy:policy>` object **MUST**\nconform to the Registration Data Policy and the applicable data model.\n\n* If the `general.minimalPublicDataSet` input parameter is `true`, then\n  contact objects **MUST NOT** be present in the deposit.\n* If the `epp.hostModel` input parameter is `attributes`, then\n  host objects **MUST NOT** be present in the deposit.\n",
+         "Errors" : [
+            "RDE_POLICY_OBJECT_MISSING",
+            "RDE_POLICY_OBJECT_INVALID",
+            "RDE_POLICY_OBJECT_MISSING_OBJECTS",
+            "RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS"
+         ],
          "Maturity" : "BETA",
          "Summary" : "validate policy object (if applicable)"
       },
       "srsgw-01" : {
-         "Dependencies" : null,
-         "Description" : "This test confirms that the SRS Gateway EPP system is reachable over IPv4\nand IPv6.\n\nThe SRS Gateway EPP server host name will be resolved to obtain its\nIPv4 and IPv6 addresses. The client will then attempt to connect to TCP\nport 700 on these addresses.\n",
+         "Description" : "This test confirms that the SRS Gateway EPP system is reachable over IPv4\nand IPv6.\n\nThe SRS Gateway EPP server host name will be resolved to obtain its\nIPv4 and IPv6 addresses. The client will then attempt to connect to TCP\nport 700 on these addresses and log in using the provided credentials.\n",
          "Maturity" : "BETA",
          "Summary" : "IPv4 and IPv6 connectivity"
       },
       "srsgw-02" : {
          "Description" : "This test confirms that host objects created in the SRS Gateway EPP system\nare correctly synchronized with the primary registry system.\n\nIf the value of the `epp.hostModel` input parameter is `attributes`, then\nthis test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<create>` command for a pseudo-randomly generated host name.\nIP address information will be provided if required. The server **MUST**\nrespond with a 1000 or 1001 response. The client will then perform an\n`<info>` command and will capture the response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the object created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe two `<info>` responses will then be compared and **MUST** be\nidentical.\n",
+         "Errors" : [
+            "SRSGW_HOST_CREATE_FAILED",
+            "SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE",
+            "SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Host <create> synchronization (if applicable)"
       },
       "srsgw-03" : {
          "Description" : "This test confirms that contact objects created in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nIf the value of the `general.minimalPublicDataSet` input parameter is\n`true`, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<create>` command for a pseudo-randomly generated contact\nobject. The client will then perform an `<info>` command and will capture\nthe response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the object created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe two `<info>` responses will then be compared and **MUST** be\nidentical.\n",
+         "Errors" : [
+            "SRSGW_CONTACT_CREATE_FAILED",
+            "SRSGW_CONTACT_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE",
+            "SRSGW_CONTACT_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Contact <create> synchronization (if applicable)"
       },
@@ -3225,6 +3923,11 @@
             "srsgw-03"
          ],
          "Description" : "This test confirms that domain objects created in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit `<create>` commands for a pseudo-randomly generated domain names.\nContact and nameserver objects created in `srsgw-02` and `srsgw-03` will\nbe used if required. The server **MUST** respond with 1000 or 1001\nresponses. The client will then perform `<info>` commands and will capture\nthe responses.\n\nIt will then connect to the primary EPP system, authenticate, and perform\n`<info>` commands for the domains created in the first step. If the\nserver responds with a 2303 response, it will wait for 30 seconds and\nretry. The server **MUST** respond to the first or second `<info>` command\nwith a 1000 response.\n\nThe pairs of `<info>` responses will then be compared and **MUST** be\nidentical.\n",
+         "Errors" : [
+            "SRSGW_DOMAIN_CREATE_FAILED",
+            "SRSGW_DOMAIN_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE",
+            "SRSGW_DOMAIN_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Domain <create> synchronization"
       },
@@ -3233,6 +3936,11 @@
             "srsgw-04"
          ],
          "Description" : "This test confirms that the expiry dates of domain objects renewed in the\nSRS Gateway EPP system are correctly synchronized with the primary\nregistry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nsubmit a `<renew>` command for the domain created in `srsgw-04`. The\nserver **MUST** respond with a 1000 or 1001 response. The client will then\nperform an `<info>` command and will capture the response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\nThe server **MUST** respond with a 1000 response.\n\nThe `<exDate>` element of the two `<info>` responses will then be compared\nand **MUST** be identical.\n",
+         "Errors" : [
+            "SRSGW_DOMAIN_RENEW_FAILED",
+            "SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE",
+            "SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Domain <renew> synchronisation"
       },
@@ -3241,6 +3949,12 @@
             "srsgw-05"
          ],
          "Description" : "This test confirms that transfer requests submitted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<update>` command to specify an authInfo code for the domain\ncreated in `srsgw-04`. The server **MUST** respond with a 1000 or 1001\nresponse.\n\nIt will then reconnect to the SRS Gateway EPP system using the credentials\nof a second registrar account and submit a `<transfer op=\"request\">`\ncommand using the authInfo command set for the domain in the first step.\nThe server **MUST** respond with a 1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response.\n\n* if the response to the `<transfer op=\"request\">` command was 1000, then\n  the `<domain:clID>` element **MUST** contain the value of the\n  `srsgw.eppClid01` input parameter.\n* if the response to the `<transfer op=\"request\">` command was 1001, then\n  the domain **MUST** have the `pendingTransfer` status.\n",
+         "Errors" : [
+            "SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED",
+            "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE",
+            "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID",
+            "SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Domain <transfer> synchronisation"
       },
@@ -3249,6 +3963,12 @@
             "srsgw-06"
          ],
          "Description" : "This test confirms that transfer request approvals submitted in the SRS\nGateway EPP system are correctly synchronized with the primary registry\nsystem.\n\nIf the response to the `<transfer op=\"request\">` command performed in\n`srsgw-07` was 1000, then this test will be skipped.\n\nThe client will connect to the SRS Gateway EPP system, authenticate, and\nperform an `<transfer op=\"approve\">` command for the domain for which a\ntransfer was requested in `srsgw-04`. The server **MUST** respond with a\n1000 or 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain. The server **MUST** respond with a\n1000 response. The `<domain:clID>` element **MUST** contain the value of\nthe  `srsgw.eppClid01` input parameter.\n",
+         "Errors" : [
+            "SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED",
+            "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE",
+            "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID",
+            "SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Domain <transfer> approval synchronisation"
       },
@@ -3256,7 +3976,12 @@
          "Dependencies" : [
             "srsgw-07"
          ],
-         "Description" : "This test confirms that domain objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate using\nthe credentials provided in `epp.clid02` and `epp.pwd02`, and\nsubmit a `<delete>` command for the domain transferred in `srsgw-07`.\nIf the value of the `general.gracePeriodsSupported` input parameter is\n`false`, the server **MUST** respond with a 1000 response. Otherwise it\n**MUST** respond with a 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\n\n* if `general.gracePeriodsSupported` is false, the server **MUST**\n  respond to the `<info>` command with a 2303 (\"object does not exist\")\n  result code.\n* If `general.gracePeriodsSupported` is true, the domain object **MUST**\n  have the `pendingDelete` status and have an RGP status of\n  `pendingDeleteRestorable`.\n",
+         "Description" : "This test confirms that domain objects deleted in the SRS Gateway EPP\nsystem are correctly synchronized with the primary registry system.\n\nThe client will connect to the SRS Gateway EPP system, authenticate using\nthe credentials provided in `epp.clid02` and `epp.pwd02`, and\nsubmit a `<delete>` command for the domain transferred in `srsgw-07`.\nIf the value of the `general.gracePeriodsSupported` input parameter is\n`false`, the server **MUST** respond with a 1000 response. Otherwise it\n**MUST** respond with a 1001 response.\n\nIt will then connect to the primary EPP system, authenticate, and perform\nan `<info>` command for the domain renewed in the first step.\n\nThe domain object **MUST** have the `pendingDelete` status and have an RGP\nstatus of `pendingDeleteRestorable`.\n",
+         "Errors" : [
+            "SRSGW_DOMAIN_DELETE_FAILED",
+            "SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE",
+            "SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE"
+         ],
          "Maturity" : "BETA",
          "Summary" : "Domain <delete> synchronisation"
       },
@@ -3502,6 +4227,10 @@
       },
       "StandardIDN" : {
          "Description" : "The RDE test suite validates the IDN table(s) for a TLD or RSP, including\ncompliance with specifications for variant labels at the top- or second-\nlevel, and conformance with the IDN Guidelines.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Errors" : [
+            "IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR",
+            "IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT"
+         ],
          "Input-Parameters" : [
             "epp.hostName",
             "epp.clid01",
@@ -3542,6 +4271,10 @@
       },
       "StandardRDE" : {
          "Description" : "The RDE test suite validates Registry Data Escrow deposits generated for\nthe TLD or RSP. These deposits **MUST** comply with the specifications in\nthe Registry Agreement and with RFC 8909 and RFC 9022.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Errors" : [
+            "RDE_XML_PARSE_ERROR",
+            "RDE_SCHEMA_VALIDATION_ERROR"
+         ],
          "Input-Parameters" : [
             "rde.depositFile"
          ],
@@ -3551,6 +4284,30 @@
       },
       "StandardSRSGateway" : {
          "Description" : "The SRS Gateway test suite validates the conformance of the Gateway\nregistry infrastructure of a TLD or RSP, and the synchronisation between\nprimary and gateway systems.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Errors" : [
+            "EPP_DNS_RESOLUTION_ERROR",
+            "EPP_SERVICE_PORT_UNREACHABLE",
+            "EPP_TLS_CONNECTION_ERROR",
+            "EPP_LOGIN_ERROR",
+            "EPP_XML_PARSE_ERROR",
+            "EPP_GENERIC_COMMAND_ERROR",
+            "EPP_UNEXPECTED_COMMAND_SUCCESS",
+            "EPP_UNEXPECTED_COMMAND_FAILURE",
+            "EPP_SCHEMA_VALIDATION_ERROR",
+            "EPP_OBJECT_SHOULD_EXIST",
+            "EPP_OBJECT_SHOULD_NOT_EXIST",
+            "SRSGW_EPP_DNS_RESOLUTION_ERROR",
+            "SRSGW_EPP_SERVICE_PORT_UNREACHABLE",
+            "SRSGW_EPP_TLS_CONNECTION_ERROR",
+            "SRSGW_EPP_LOGIN_ERROR",
+            "SRSGW_EPP_XML_PARSE_ERROR",
+            "SRSGW_EPP_GENERIC_COMMAND_ERROR",
+            "SRSGW_EPP_UNEXPECTED_COMMAND_SUCCESS",
+            "SRSGW_EPP_UNEXPECTED_COMMAND_FAILURE",
+            "SRSGW_EPP_SCHEMA_VALIDATION_ERROR",
+            "SRSGW_EPP_OBJECT_SHOULD_EXIST",
+            "SRSGW_EPP_OBJECT_SHOULD_NOT_EXIST"
+         ],
          "Input-Parameters" : [
             "epp.hostName",
             "epp.clid01",
@@ -3579,5 +4336,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.232"
+   "Version" : "3.0.235"
 }

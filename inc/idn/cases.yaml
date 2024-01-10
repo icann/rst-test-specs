@@ -14,8 +14,9 @@ idn-01:
 
     The server **MUST** reject all `<create>` commands for invalid labels and
     **MUST** accept all `<create>` commands for valid labels.
-  Input-Parameters:
-  Dependencies:
+  Errors:
+    - IDN_SERVER_ACCEPTS_INVALID_LABEL
+    - IDN_SERVER_REJECTS_VALID_LABEL
 idn-02:
   Summary: Level 1 variant handling test
   Maturity: BETA
@@ -33,8 +34,8 @@ idn-02:
     The client will then submit `<create>` commands for one or more labels
     that are variants of the names created in the first step. The server
     **MUST** reject these commands.
-  Input-Parameters:
-  Dependencies:
+  Errors:
+    - IDN_VARIANT_LABEL_NOT_BLOCKED
 idn-03:
   Summary: Level 2 variant handling test
   Maturity: BETA
@@ -59,7 +60,6 @@ idn-03:
     The server **MUST** reject `<create>` commands where the (a) registrar is
     different from that of the primary label or (b) the registrant (if
     applicable) is different.
-  Dependencies:
 idn-04:
   Summary: Level 3 variant handling test
   Maturity: BETA
@@ -85,4 +85,3 @@ idn-04:
     The server **MUST** reject `<create>` commands where the (a) registrar is
     different from that of the primary label or (b) the registrant (if
     applicable) is different.
-  Dependencies:
