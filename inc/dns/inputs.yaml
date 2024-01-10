@@ -11,3 +11,13 @@ dns.nameservers:
     **MUST** have at least one IPv6 address.
   Type: object
   Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+  Schema:
+    type: object
+    patternProperties:
+      ^[a-z]+[a-z0-9\.]*[a-z]\$:
+        type: array
+        items:
+          type: string
+          format:
+            - ipv4
+            - ipv6
