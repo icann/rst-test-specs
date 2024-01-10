@@ -73,14 +73,14 @@ components:
             "^.+$":
               type: object
               schema:
-                $ref: "#/components/schemas/rstTestResource"
+                $ref: "#/components/schemas/rstResource"
         Errors:
           type: object
           patternProperties:
             "^.+$":
               type: object
               schema:
-                $ref: "#/components/schemas/rstTestError"
+                $ref: "#/components/schemas/rstError"
 
     rstTestSpecContact:
       description: |
@@ -223,7 +223,7 @@ components:
             which can be used to validate this parameter.
           type: object
 
-    rstTestResource:
+    rstResource:
       type: object
       properties:
         Description:
@@ -234,7 +234,7 @@ components:
           type: string
           format: url
 
-    rstTestError:
+    rstError:
       type: object
       properties:
         Description:
