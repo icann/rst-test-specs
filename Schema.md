@@ -11,7 +11,7 @@ This schema is available in YAML format in
 The top-level object has the following properties:
 
 `RST-Test-Plan-Schema-Version`
-: this is always `1.6.0`. This property conforms to the [Semantic
+: this is always `1.6.1`. This property conforms to the [Semantic
 Versioning](https://semver.org) convention, and tracks the version of **this**
 document, and is updated whenever a material change to the schema is made.
 
@@ -154,6 +154,11 @@ An **Input Parameter** object has the following properties:
 
 `Description`
 : a description of the input parameter in Markdown format.
+
+`Schema`
+: an [OpenAPI `Schema`
+object](https://spec.openapis.org/oas/latest.html#schemaObject) which can be
+used to validate this parameter.
 
 `Example`
 : an example value in JSON format.

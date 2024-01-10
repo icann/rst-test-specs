@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: YAML Schema for the RST Test Specifications
-  version: 1.6.0
+  version: 1.6.1
   description: |
     This file contains a schema which describes the RST Test
     Specifications YAML format.
@@ -216,6 +216,12 @@ components:
           - "array"
         Example:
           description: an example value for this parameter.
+        Schema:
+          description: |
+            an [OpenAPI `Schema`
+            object](https://spec.openapis.org/oas/latest.html#schemaObject)
+            which can be used to validate this parameter.
+          type: object
 
     rstTestResource:
       type: object
