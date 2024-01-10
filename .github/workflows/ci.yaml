@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ "Xmain" ] # bogus branch name to stop this action running on every push
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -14,21 +14,32 @@ jobs:
         uses: actions/checkout@v3
 
       - name: apk update
-        run: apk update
+        run: apk --quiet update
 
       - name: install deps
         run: |
-          apk add make gcc musl-dev perl perl-file-slurp perl-json-xs \
+          #
+          # upstream packages
+          #
+          apk --quiet add make gcc musl-dev perl perl-file-slurp perl-json-xs \
             perl-yaml perl-yaml-libyaml perl-text-unidecode perl-xml-libxml \
-            perl-uri perl-app-cpanminus pandoc git graphviz perl-dev
+            perl-uri perl-app-cpanminus pandoc git graphviz perl-dev curl
 
-          cpanm --notest HTML::Tiny GraphViz2
+          #
+          # perl modules
+          #
+          cpanm --quiet --notest HTML::Tiny GraphViz2
 
+          #
+          # this we have to do the old-fashioned way!
+          #
           wget -qO - https://github.com/logological/gpp/releases/download/2.28/gpp-2.28.tar.bz2 | tar xj
           cd gpp-2.28
-          ./configure
+          ./configure --quiet
           make install
           rm -rf ../gpp-2.28
 
       - name: make
-        run: make
+        run: |
+          make
+          echo Build complete!
