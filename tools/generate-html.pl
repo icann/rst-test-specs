@@ -11,6 +11,7 @@ use HTML::Tiny;
 use JSON::XS;
 use ICANN::RST::Spec;
 use XML::LibXML;
+use YAML::XS;
 use constant {
     'href'          => 'href',
     'ol'            => 'ol',
@@ -969,6 +970,21 @@ sub print_input {
 
     print $h->h4(sprintf('%u.%u.%u. Type', $section, $i, ++$j));
     print $h->pre(e($input->type));
+
+    print $h->open(details);
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Schema', $section, $i, ++$j)));
+
+    if (!$input->schema) {
+        print $h->ul($h->li($h->em('None specified.')));
+
+    } else {
+        my $yaml = YAML::XS::Dump($input->{'Schema'});
+        $yaml =~ s/^---//;
+        print $h->pre(e($yaml));
+
+    }
+
+    print $h->close(details);
 
     print $h->open(details);
 

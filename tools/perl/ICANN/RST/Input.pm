@@ -1,10 +1,12 @@
 package ICANN::RST::Input;
 use base qw(ICANN::RST::Base);
+use JSON::Schema;
 use strict;
 
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub type        { $_[0]->{'Type'} }
 sub example     { $_[0]->{'Example'} }
+sub schema      { $_[0]->{'Schema'} ? JSON::Schema->new($_[0]->{'Schema'}) : undef }
 
 sub jsonExample {
     my $self = shift;
@@ -69,6 +71,11 @@ A string containing an example value.
 A scalar containing the example value coerced into a type that L<JSON::XS>
 understands. This ensures that numbers and booleans are properly represented
 when encoded into JSON.
+
+=head2 schema()
+
+A hashref containing a L<JSON::Schema> object that can be used to validate this
+parameter.
 
 =head2 cases()
 

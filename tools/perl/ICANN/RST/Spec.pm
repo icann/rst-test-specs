@@ -9,7 +9,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => v1.6.0;
+use constant SCHEMA_VERSION => v1.6.1;
 use strict;
 
 sub new {
