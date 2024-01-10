@@ -1,0 +1,162 @@
+rdap-01-domainCaseFoldingValidation:
+  Summary: Domain label case folding validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-02-domainNameValidation:
+  Summary: Domain Name validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-03-ipv4Validation:
+  Summary: IPv4 address validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-04-ipv6Validation:
+  Summary: IPv6 address validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-05-stdRdapAsEventActorValidation:
+  Summary: asEventActor Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-06-stdRdapConformanceValidation:
+  Summary: RDAP Conformance validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-07-stdRdapDomainLookupValidation:
+  Summary: Domain Lookup Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-08-stdRdapEntitiesValidation:
+  Summary: Entities validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-09-stdRdapEntityLookupValidation:
+  Summary: Entity lookup validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-10-stdRdapErrorResponseBodyValidation:
+  Summary: Error Response Body 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-11-stdRdapEventsValidation:
+  Summary: Events Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-12-stdRdapHelpValidation:
+  Summary: Help validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-13-stdRdapIpAddressesValidation:
+  Summary: IP Addresses Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-14-stdRdapLanguageIdentifierValidation:
+  Summary: Language Identifier Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-15-stdRdapLdhNameValidation:
+  Summary: LDH name 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-16-stdRdapLinksValidation:
+  Summary: Links validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-17-stdRdapNameserverLookupValidation:
+  Summary: Nameserver lookup validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-18-stdRdapNameserversSearchValidation:
+  Summary: RFC7159RDAP_RFCsNameservers search validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-19-stdRdapNoticesRemarksValidation:
+  Summary: Notices and Remarks Validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-20-stdRdapPort43WhoisServerValidation:
+  Summary: Port 43 WHOIS Server 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-21-stdRdapPublicIdsValidation:
+  Summary: Public IDs validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-22-stdRdapRolesValidation:
+  Summary: Roles validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-23-stdRdapSecureDnsValidation:
+  Summary: Secure DNS validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-24-stdRdapStatusValidation:
+  Summary: Status validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-25-stdRdapUnicodeNameValidation:
+  Summary: RFC7159RDAP_RFCsIDNA_RFCsUnicode name 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-26-stdRdapVariantsValidation:
+  Summary: Variants validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+rdap-27-webUriValidation:
+  Summary: Web URI validation 
+  Maturity: GAMMA
+  Description: |
+    This test case comes from the RDAP Conformance Tool. For more information, see
+    <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
