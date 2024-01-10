@@ -1,5 +1,7 @@
 # Registry System Testing v2.0 Test Specifications
 
+[![build](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/ci.yaml)[![pages-build-deployment](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/icann/rst-test-specs/actions/workflows/pages/pages-build-deployment)
+
 This repository contains the specifications for the RST v2.0 system.
 
 This system will replace the original Pre-Delegation Testing (later renamed to Registry System
