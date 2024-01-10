@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ZM_VERSION="$1"
+if [ "${ZM_VERSION}" = "" ] ; then
+    echo "Usage: $0 ZM_VERSION"
+    exit 1
+fi
+
+ZM_TARBALL="v${ZM_VERSION}.tar.gz"
+ZM_URL="https://github.com/zonemaster/zonemaster/archive/refs/tags/${ZM_TARBALL}"
+ZM_DIR="zonemaster"
+
+if [ ! -e "${ZM_DIR}" ] ; then
+    mkdir -p "${ZM_DIR}"
+    echo "Created ${ZM_DIR}"
+fi
+
+pushd "${ZM_DIR}" > /dev/null
+
+if [ ! -e "${ZM_TARBALL}" ] ; then
+    curl --location --silent --output "${ZM_TARBALL}" "${ZM_URL}"
+    echo "Downloaded ${ZM_TARBALL}"
+fi
+
+tar -x --gunzip --file "${ZM_TARBALL}"
