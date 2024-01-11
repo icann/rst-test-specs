@@ -921,7 +921,7 @@ sub print_case {
 
     print $h->open(details);
 
-    print $h->summary($h->h4(sprintf('%u.%u.%u. Test suite', $section, $i, ++$j)));
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Test suites', $section, $i, ++$j)));
     print $h->p('This test case is used in the following test suite(s):');
 
     my @suites = $case->suites;
