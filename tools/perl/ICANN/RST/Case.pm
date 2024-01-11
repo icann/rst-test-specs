@@ -49,7 +49,7 @@ sub dependants {
     my @cases;
 
     foreach my $case ($self->spec->cases) {
-        push(@cases, $case) if (any { $_ eq $self->id } $case->dependencies);
+        push(@cases, $case) if (any { $_->id eq $self->id } $case->dependencies);
     }
 
     return sort { $a->id cmp $b->id } @cases;
