@@ -526,7 +526,7 @@ epp-18:
     stored by the server.
   Input-Parameters:
   Dependencies:
-    - epp-17
+    - epp-16
   Errors:
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
@@ -541,7 +541,9 @@ epp-18:
 epp-18:
   Summary: domain <renew> command test
   Description: |
-    This test will confirm that the client is able to renew domain names.
+    This test will confirm that the client is able to renew domain names. The
+    client will submit a number of `<renew>` commands for the domains created in
+    `epp-16`.
 
     * Following a succesful `<renew>` command, the expiry date of the domain
       **MUST** have been increased by the period specified by the client;
@@ -603,7 +605,7 @@ epp-19:
     This message **MUST** be received within 120 seconds of the transfer
     approval.
   Dependencies:
-    - epp-18
+    - epp-16
   Errors:
     - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
     - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
@@ -626,7 +628,7 @@ epp-20:
     confirm that the domain name remains under the sponsorship of the original
     registrar.
   Dependencies:
-    - epp-18
+    - epp-16
   Errors:
     - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
 
@@ -646,7 +648,7 @@ epp-21:
       response, then the domain has the `pendingDelete` status and the
       `redemptionPeriod` RGP status.
   Dependencies:
-    - epp-19
+    - epp-16
   Errors:
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
@@ -691,14 +693,15 @@ epp-23:
       by another registrar is rejected. The domain name(s) provided in the
       `epp.registeredNames` parameter will be used for this test.
     * an `<update>` command which places the object within a domain sponsored
-      by the test client is accepted. A domain created during the `epp-13`
+      by the test client is accepted. A domain created during the `epp-16`
       test case will be used as the new parent domain.
 
     The client will then perform `<info>` commands on the objects successfully
     updated, to confirm that the server has correctly stored the updated
     values.
   Dependencies:
-    - epp-13
+    - epp-16
+    - epp-11
   Errors:
     - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
     - EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME
