@@ -57,7 +57,6 @@ StandardDNSSEC:
   Input-Parameters:
     - dns.nameservers
     - dnssec.dsRecords
-  Resources:
 
 StandardRDAP:
   Order: 3
@@ -79,7 +78,6 @@ StandardRDAP:
     - rdap.testDomains
     - rdap.testEntities
     - rdap.testNameservers
-  Resources:
 
 StandardEPP:
   Order: 4
@@ -237,7 +235,6 @@ DNSSECOperations:
 
     TS_PASSFAIL
   Test-Cases: ^dnssecOps
-  Resources:
 
 MinimumRPMs:
   Order: 9
@@ -274,4 +271,3 @@ StandardIntegrationTest:
 
     TS_PASSFAIL
   Test-Cases: ^integration-
-  Resources:
