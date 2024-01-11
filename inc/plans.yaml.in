@@ -1,18 +1,21 @@
 #define BAU_PLAN_ENVIRONMENT_NOTE **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
+
 #define RSP_EVALUATION_ENVIRONMENT_NOTE **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
+
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
+
 StandardPreDelegationTest:
   Order: 1
   Name: Pre-Delegation Test
   Description: |
     The purpose of the Pre-Delegation Test is to verify that the applicant has
     met its commitment to establish registry operations in accordance with the
-    technical and operational criteria described in the gTLD Applicant
-    Guidebook (AGB). Each applicant will be required to complete PDT as a
-    prerequisite to delegation into the root zone.
+    technical and operational criteria described in the gTLD Applicant Guidebook
+    (AGB). Each applicant will be required to complete PDT as a prerequisite to
+    delegation into the root zone.
 
-    The Pre-Delegation Test covers all critical registry services and IDNs,
-    and therefore uses all test suites.
+    The Pre-Delegation Test covers all critical registry services and IDNs, and
+    therefore uses all standard test suites.
 
     BAU_PLAN_ENVIRONMENT_NOTE
 
@@ -39,7 +42,7 @@ StandardRSPChangeTest:
     requirements of the Registry Agreement.
 
     The RSP Change Test covers all critical registry services and IDNs, and
-    therefore uses all test suites.
+    therefore uses all test standard suites.
 
     BAU_PLAN_ENVIRONMENT_NOTE
 
@@ -104,7 +107,7 @@ RSPEvaluationIDNTest:
   Name: IDN Test (RSP Evaluation)
   Description: |
     This test plan is identical to the Standard IDN Test, but is intended
-    solely for use by the RSP evaluation program.
+    solely for use in the RSP evaluation program.
 
     BAU_PLAN_ENVIRONMENT_NOTE
 
@@ -118,17 +121,17 @@ SRSGatewayTest:
   Order: 6
   Name: SRS Gateway Test
   Description: |
-    An SRS Gateway service is a Shared Registry System implementation that
-    acts as a proxy between a subset of Registrars and the Registry. It uses
-    a local cache to speed up EPP query commands, but forwards all EPP
-    transform commands to the primary registry system. TLD registries need to
-    deploy a proxy setup in order to operate in certain markets worldwide.
+    An SRS Gateway service is a Shared Registry System implementation that acts
+    as a proxy between a subset of Registrars and the Registry. It uses a local
+    cache to speed up EPP query commands, but forwards all EPP transform
+    commands to the primary registry system. TLD registries need to deploy a
+    proxy setup in order to operate in certain markets worldwide.
 
-    The purpose of an SRS Gateway Test is to verify that the Registry
-    Operator’s proxy setup operates in accordance with the technical and
-    operational criteria for EPP systems described in the gTLD Applicant
-    Guidebook (AGB). Furthermore, it **MUST** keep its own database
-    synchronized with that of the TLD registry.
+    The purpose of an SRS Gateway Test is to verify that the Registry Operator’s
+    proxy setup operates in accordance with the technical and operational
+    criteria for EPP systems described in the gTLD Applicant Guidebook (AGB).
+    Furthermore, it **MUST** keep its own database synchronized with that of the
+    TLD registry.
 
     The SRS Gateway Test Change Test uses the SRS gateway test suite only.
 
@@ -145,9 +148,9 @@ MainRSPEvaluationTest:
   Order: 7
   Name: Main RSP Evaluation Test
   Description: |
-    The Main RSP is responsible for the creation and maintenance of domain
-    name registrations in a Shared Registration System (SRS). This encompasses
-    the lifecycle of a domain name registration using domain registrars and
+    The Main RSP is responsible for the creation and maintenance of domain name
+    registrations in a Shared Registration System (SRS). This encompasses the
+    lifecycle of a domain name registration using domain registrars and
     protocols such as the Extensible Provisioning Protocol (EPP) and adherence
     to policies regarding the use and transparency domain name registrations
     through reporting, the Registration Data Access Protocol (RDAP), and other
@@ -168,11 +171,11 @@ DNSRSPEvaluationTest:
   Order: 8
   Name: DNS RSP Evaluation Test
   Description: |
-    DNS RSPs provide primary or secondary authoritative DNS services.
-    Therefore, this test plan only covers the DNS area.
+    DNS RSPs provide primary or secondary authoritative DNS services. Therefore,
+    this test plan only covers the DNS area.
 
-    RSPs wishing to offer DNSSEC services in addition to authoritative DNS
-    will also be evaluated using the DNSSEC RSP Evaluation Test below.
+    RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
+    also be evaluated using the DNSSEC RSP Evaluation Test below.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
@@ -189,8 +192,8 @@ DNSSECRSPEvaluationTest:
     DNSSEC RSPs provide signing of TLD zone files as a service. They do not
     provide primary or secondary authoritative DNS services.
 
-    RSPs wishing to offer DNSSEC services in addition to authoritative DNS
-    will also be evaluated using the DNSSEC RSP Evaluation Test below.
+    RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
+    also be evaluated using the DNSSEC RSP Evaluation Test below.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
@@ -204,18 +207,19 @@ SRSGatewayRSPTest:
   Name: SRS Gateway RSP Evaluation Test
   Description: |
     SRS Gateway RSPs provide a proxy between a subset of Registrars and the
-    Registry. It uses a local cache to speed up EPP query commands, but
-    forwards all EPP transform commands to the primary registry system. TLD
-    registries need to deploy a proxy setup in order to operate in certain
-    markets worldwide.
+    Registry. It uses a local cache to speed up EPP query commands, but forwards
+    all EPP transform commands to the primary registry system. TLD registries
+    need to deploy a proxy setup in order to operate in certain markets
+    worldwide.
 
-    The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires
-    access to a primary registry system that is logically independent of the
-    SRS Gateway system, and details of the primary registry system are
-    required as input parameters. RSPs wishing to offer SRS gateway services
-    **MUST** identify such a primary registry system, which **MUST** be
-    independent of the SRS gateway system, and MAY be operated by a third
-    party.
+    The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires access
+    to a primary registry system that is logically independent of the SRS
+    Gateway system, and details of the primary registry system are required as
+    input parameters.
+
+    RSPs wishing to offer SRS gateway services **MUST** identify such a primary
+    registry system, which **MUST** be independent of the SRS gateway system,
+    and **MAY** be operated by a third party.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
