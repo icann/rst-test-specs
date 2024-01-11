@@ -374,25 +374,13 @@ sub print_case {
         }
     };
 
-    print "  ".
-            join(
-                "\n  ",
-                grep { '---' ne $_ } split(/\n/, YAML::XS::Dump($node))
-            ).
-            "\n\n";
+    print join("\n", grep { '---' ne $_ } split(/\n/, YAML::XS::Dump($node)))."\n\n";
 }
 
 sub print_error {
     my ($id, $error) = @_;
 
-    my $node = {$id => $error};
-
-    print "  ".
-            join(
-                "\n  ",
-                grep { '---' ne $_ } split(/\n/, YAML::XS::Dump($node))
-            ).
-            "\n\n";
+    print join("\n", grep { '---' ne $_ } split(/\n/, YAML::XS::Dump({$id => $error})))."\n\n";
 }
 
 sub generateHTMLTestCaseList {

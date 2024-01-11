@@ -9,10 +9,10 @@ includes:
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
 
 	@echo Generating Zonemaster cases...
-	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" | cut -b 3- > inc/zonemaster-cases.yaml
+	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > inc/zonemaster-cases.yaml
 
 	@echo Generating Zonemaster errors...
-	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" --errors zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" | cut -b 3- > inc/zonemaster-errors.yaml
+	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" --errors zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > inc/zonemaster-errors.yaml
 
 	@echo Generating RDAP cases...
 	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > inc/rdap/cases.yaml
