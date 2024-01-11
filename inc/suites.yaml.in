@@ -244,6 +244,8 @@ DNSSECOperations:
     - dnssecOps.tsigKey
   Errors:
     - DNSSEC_OPS_XFR_FAILED
+  Resources:
+    - dnssecOps.xfrACL
 
 MinimumRPMs:
   Order: 9
