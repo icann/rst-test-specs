@@ -238,6 +238,12 @@ DNSSECOperations:
 
     TS_PASSFAIL
   Test-Cases: ^dnssecOps
+  Input-Parameters:
+    - dnssecOps.nameservers
+    - dnssecOps.primaryServer
+    - dnssecOps.tsigKey
+  Errors:
+    - DNSSEC_OPS_XFR_FAILED
 
 MinimumRPMs:
   Order: 9

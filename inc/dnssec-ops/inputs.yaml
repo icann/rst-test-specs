@@ -1,3 +1,49 @@
+dnssecOps.nameservers:
+  Description: |
+    The set of nameservers that will be authoritative for the zones used in the
+    DNSSEC operations test suite.
+
+    This input parameter is an object where the object properties are the
+    zone names, and the values are objects. For these objects, the properties
+    are the nameserver names, and the values are arrays of IPv4 and IPv6
+    addresses.
+  Type: object
+  Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+  Schema:
+    type: object
+    patternProperties:
+      ^[a-z]+[a-z0-9\.]*[a-z]\$:
+        type: array
+        items:
+          type: string
+          format:
+            - ipv4
+            - ipv6
+
+dnssecOps.primaryServer:
+  Description: The primary nameserver from which zones can be transferred.
+  Type: string
+  Example: 192.168.53.1
+  Schema:
+    type: string
+    format:
+      - ipv4
+      - ipv6
+
+dnssecOps.tsigKey:
+  Description: The TSIG key which should be used to perform zone transfers.
+  Type: object
+  Example: {"name": "rst-tsig-01", "algorithm": "hmac-sha256", "secret": "NQO...xQ="}
+  Schema:
+    type: object
+    properties:
+      name:
+        type: string
+      algorithm:
+        type: string
+      secret:
+        type: string
+
 dnssecOps.csk:
   Description: |
     A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
@@ -5,18 +51,21 @@ dnssecOps.csk:
     KSK/ZSK configuration.
   Type: boolean
   Example: false
+
 dnssecOps.zskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a ZSK
     rollover.
   Type: string
   Example: example.com
+
 dnssecOps.kskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a KSK
     rollover.
   Type: string
   Example: example.com
+
 dnssecOps.algorithmRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of an algorithm

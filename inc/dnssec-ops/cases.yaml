@@ -9,19 +9,30 @@ dnssecOps01-ZSKRollover:
     If the value of the `dnssecOps.csk` input parameter is `true`, then this
     test will be skipped.
 
-    The system will monitor the SOA record in the domain name specified in the
-    `dnssec.zskRolloverZone` input parameter. The domain may be present
-    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-    **MUST** have a secure chain of trust up to the root zone, so that it can
-    be validated using the root zone trust anchor.
+    The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+    input parameter. The domain may be present anywhere in the DNS hierarchy
+    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+    trust up to the root zone, so that it can be validated using the root zone
+    trust anchor.
 
-    During the test period (currently defined as 24 hours) the operator
+    The zone **MUST** contain at least 10,000 delegations, where a delegation is
+    considered to be one or more `NS` records with owner names that are below
+    the zone's origin. If NSEC3 is used for secure denial of existence, the
+    opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+    present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+    record is published)*.
+
+    Monitoring will be carried out using `SOA` queries sent to multiple
+    validating DNS resolvers, and by validating the result of a a zone transfer
+    from the server specified in the `dnssecOps.primaryServer` input parameter.
+
+    During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out a ZSK rollover for the domain, where the
     Zone Signing Key is replaced, without disrupting the chain of trust.
 
-    To simplify testing, applicants may wish to provision domain that is
-    configured with short TTLs and a short ZSK lifetime, so that a ZSK
-    rollover is guaranteed to occur within the 24 test period.
+    To simplify testing, applicants may wish to provision the zone such that it
+    is configured with short TTLs and a short ZSK lifetime, so that a ZSK
+    rollover is guaranteed to occur within the 48 test period.
   Input-Parameters:
     - dnssecOps.csk
     - dnssecOps.zskRolloverZone
@@ -37,13 +48,24 @@ dnssecOps02-KSKRollover:
     RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
     a zone.
 
-    The system will monitor the SOA record in the domain name specified in the
-    `dnssec.kskRolloverZone` input parameter. The domain may be present
-    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-    **MUST** have a secure chain of trust up to the root zone, so that it can
-    be validated using the root zone trust anchor.
+    The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+    input parameter. The domain may be present anywhere in the DNS hierarchy
+    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+    trust up to the root zone, so that it can be validated using the root zone
+    trust anchor.
 
-    During the test period (currently defined as 24 hours) the operator
+    The zone **MUST** contain at least 10,000 delegations, where a delegation is
+    considered to be one or more `NS` records with owner names that are below
+    the zone's origin. If NSEC3 is used for secure denial of existence, the
+    opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+    present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+    record is published)*.
+
+    Monitoring will be carried out using `SOA` queries sent to multiple
+    validating DNS resolvers, and by validating the result of a a zone transfer
+    from the server specified in the `dnssecOps.primaryServer` input parameter.
+
+    During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out a KSK rollover for the domain, where the
     Key Signing Key is replaced, and the DS record in the parent zone is
     updated, without disrupting the chain of trust.
@@ -61,13 +83,24 @@ dnssecOps03-AlgorithmRollover:
     RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
     a zone.
 
-    The system will monitor the SOA record in the domain name specified in the
-    `dnssec.algorithmRolloverZone` input parameter. The domain may be present
-    anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-    **MUST** have a secure chain of trust up to the root zone, so that it can
-    be validated using the root zone trust anchor.
+    The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+    input parameter. The domain may be present anywhere in the DNS hierarchy
+    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+    trust up to the root zone, so that it can be validated using the root zone
+    trust anchor.
 
-    During the test period (currently defined as 72 hours) the operator
+    The zone **MUST** contain at least 10,000 delegations, where a delegation is
+    considered to be one or more `NS` records with owner names that are below
+    the zone's origin. If NSEC3 is used for secure denial of existence, the
+    opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+    present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+    record is published)*.
+
+    Monitoring will be carried out using `SOA` queries sent to multiple
+    validating DNS resolvers, and by validating the result of a a zone transfer
+    from the server specified in the `dnssecOps.primaryServer` input parameter.
+
+    During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out an algorithm rollover for the domain
     (including an update to the DS record in the parent zone), where the
     algorithm used to secure the domain is changed, without disrupting the
@@ -84,3 +117,4 @@ dnssecOps03-AlgorithmRollover:
   Errors:
     - DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN
     - DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED
+    - DNSSEC_OPS_INVALID_ALGORITHM
