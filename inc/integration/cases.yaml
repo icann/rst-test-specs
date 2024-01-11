@@ -8,10 +8,11 @@ integration-01:
     the SLA.
 
     The test system will perform RDAP queries to confirm that the RDAP server
-    provides responses for the domain and host objects created in `epp-16` and
-    `epp-11` (if applicable). The RDAP server **MUST** provide a 200 response
-    within 1 hour of the object's `<crDate>` element.
+    provides responses for the domains created in `epp-16`, and host objects
+    created in `epp-11` (if applicable). The RDAP server **MUST** provide a 200
+    response within 1 hour of the object's `<crDate>` element.
   Input-Parameters:
+    - epp.hostModel
     - rdap.baseURLs
   Dependencies:
     - epp-16
