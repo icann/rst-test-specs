@@ -41,10 +41,13 @@ and prints a YAML fragment which can be pasted into C<rst-test-specs.yaml>.
 
 my $file = $ARGV[0] || pod2usage(1);
 
-open2(my $out, undef, qw(pandoc --metadata title=html --standalone -f docx -t html), $file);
+my $pid = open2(my $out, undef, qw(pandoc --metadata title=html --standalone -f docx -t html), $file);
 
 my $html;
 $html .= $out->getline while (!$out->eof);
+$out->close;
+
+waitpid($pid, 0);
 
 my $doc = XML::LibXML->load_xml('string' => $html);
 my @nodes = ($doc->getElementsByTagName('body'))[0]->childNodes;
@@ -58,6 +61,11 @@ for (my $i = 0 ; $i < scalar(@nodes) ; $i++) {
     if ('h3' eq $el->localName) {
         my $test = $el->textContent;
         $test =~ s/[\r\n]+/ /g;
+
+        #
+        # temporary hack to deal with broken document structure
+        #
+        $test =~ s/^(RFC7159|RDAP_RFCs|IDNA_RFCs)+//g;
 
         if ($test =~ /^(.+?)\[(.+?)\]$/) {
             $cases{$2} = $1;
@@ -75,11 +83,11 @@ binmode(STDOUT, 'encoding(utf-8)');
 my $i = 0;
 foreach my $case (sort keys(%cases)) {
     printf(
-        "  rdap-%02u-%s:\n".
-        "    Summary: %s\n".
-        "    Maturity: GAMMA\n".
-        "    Description: |\n".
-        "      %s\n",
+        "rdap-%02u-%s:\n".
+        "  Summary: %s\n".
+        "  Maturity: GAMMA\n".
+        "  Description: |\n".
+        "    %s\n\n",
         ++$i,
         $case,
         $cases{$case},
