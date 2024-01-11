@@ -309,7 +309,7 @@ epp-10:
   Summary: contact <delete> command test (if applicable for the registry type)
   Description: |
     This test will perform `<delete>` commands on the objects created during
-    `epp-24` and will confirm that the server accepts the `<delete>` command
+    `epp-22` and will confirm that the server accepts the `<delete>` command
     with a `1xxx` response code.
 
     If the `general.minimalPublicDataSet` input parameter is `true`, this
@@ -409,12 +409,6 @@ epp-13:
     - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-14:
-  Summary: intentionally omitted
-  Description: intentionally omitted
-epp-15:
-  Summary: intentionally omitted
-  Description: intentionally omitted
-epp-16:
   Summary: domain <create> command test
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
@@ -488,7 +482,7 @@ epp-16:
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
-epp-17:
+epp-15:
   Summary: Registry object integrity test
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
@@ -499,18 +493,18 @@ epp-17:
     will be skipped.
 
     The client will submit `<delete>` commands for any contact and host
-    objects created during `epp-16`. The server **MUST** respond with a `2305`
+    objects created during `epp-14`. The server **MUST** respond with a `2305`
     "Object association prohibits operation" error.
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
-epp-18:
+epp-16:
   Summary: domain <update> command test
   Description: |
     This test will confirm that the client is able to perform an `<update>`
-    command on the domain names created in `epp-16`, including:
+    command on the domain names created in `epp-14`, including:
 
     * adding and removing client-assigned status codes
     * adding and removing nameservers (whether objects or attributes)
@@ -526,7 +520,7 @@ epp-18:
     stored by the server.
   Input-Parameters:
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
@@ -538,12 +532,12 @@ epp-18:
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
-epp-18:
+epp-16:
   Summary: domain <renew> command test
   Description: |
     This test will confirm that the client is able to renew domain names. The
     client will submit a number of `<renew>` commands for the domains created in
-    `epp-16`.
+    `epp-14`.
 
     * Following a succesful `<renew>` command, the expiry date of the domain
       **MUST** have been increased by the period specified by the client;
@@ -555,21 +549,21 @@ epp-18:
     commands to ensure that the expiry date and RGP status of the domain are
     set correctly.
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD
     - EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE
     - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
     - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
 
-epp-19:
+epp-17:
   Summary: domain <transfer> command test
   Description: |
     This test will confirm that the client is able to initiate a domain
     transfer.
 
     The client will perform an `<update>` command to set the authInfo code for
-    the test domain (taken from the set created in `epp-16`) to a
+    the test domain (taken from the set created in `epp-14`) to a
     randomly-determined value. If the server implements RFC 9154, it **MUST**
     reject the `<update>` command if the authInfo code is insufficently
     secure.
@@ -605,7 +599,7 @@ epp-19:
     This message **MUST** be received within 120 seconds of the transfer
     approval.
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
     - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
@@ -617,26 +611,26 @@ epp-19:
     - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
     - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
 
-epp-20:
+epp-18:
   Summary: domain <transfer> rejection test
   Description:
     This test confirms that the server behaves correctly if the sponsoring
     registrar of a domain rejects a transfer request.
 
-    The test procedure matches that of `epp-19`, but the transfer request will
+    The test procedure matches that of `epp-17`, but the transfer request will
     be rejected rather than approved. An `<info>` command will be used to
     confirm that the domain name remains under the sponsorship of the original
     registrar.
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
 
-epp-21:
+epp-19:
   Summary: domain <delete> command test
   Description: |
     This test will perform `<delete>` commands on the objects created during
-    `epp-16` and will confirm that the server accepts the `<delete>` command
+    `epp-14` and will confirm that the server accepts the `<delete>` command
     with a `1xxx` response code.
 
     Once the `<delete>` commands have been processed, the client will perform
@@ -648,17 +642,17 @@ epp-21:
       response, then the domain has the `pendingDelete` status and the
       `redemptionPeriod` RGP status.
   Dependencies:
-    - epp-16
+    - epp-14
   Errors:
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
 
-epp-22:
+epp-20:
   Summary: domain restore test
   Description: |
     This test will perform RGP restore operations on the objects deleted
-    during `epp-21`, in order to confirm the correct operation of the server's
+    during `epp-19`, in order to confirm the correct operation of the server's
     implementation of RFC 3915.
 
     Once the restore request has been procssed, the client will perform
@@ -667,11 +661,11 @@ epp-22:
   Input-Parameters:
     - epp.restoreReportRequired
   Dependencies:
-    - epp-21
+    - epp-19
   Errors:
     - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
 
-epp-23:
+epp-21:
   Summary: host rename test (if applicable)
   Description: |
     This tests verifies the server's support for host rename operations.
@@ -693,14 +687,14 @@ epp-23:
       by another registrar is rejected. The domain name(s) provided in the
       `epp.registeredNames` parameter will be used for this test.
     * an `<update>` command which places the object within a domain sponsored
-      by the test client is accepted. A domain created during the `epp-16`
+      by the test client is accepted. A domain created during the `epp-14`
       test case will be used as the new parent domain.
 
     The client will then perform `<info>` commands on the objects successfully
     updated, to confirm that the server has correctly stored the updated
     values.
   Dependencies:
-    - epp-16
+    - epp-14
     - epp-11
   Errors:
     - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
@@ -709,7 +703,7 @@ epp-23:
     - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
     - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
 
-epp-24:
+epp-22:
   Summary: host <delete> command test (if applicable)
   Description: |
     This test will perform `<delete>` commands on the objects created during
@@ -723,6 +717,6 @@ epp-24:
     received from the server, the client will perform `<check>` and `<info>`
     commands to confirm that the objects have been deleted.
   Dependencies:
-    - epp-23
+    - epp-21
   Errors:
     - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
