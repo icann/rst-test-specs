@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.244
+Version: 3.0.253
 Last-Updated: 2024-01-11
 Contact:
   Name: GDS Technical Services
@@ -209,18 +209,21 @@ Preamble: |
   interfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).
 
 Test-Plans:
+  
+  
+  
   StandardPreDelegationTest:
     Order: 1
     Name: Pre-Delegation Test
     Description: |
       The purpose of the Pre-Delegation Test is to verify that the applicant has
       met its commitment to establish registry operations in accordance with the
-      technical and operational criteria described in the gTLD Applicant
-      Guidebook (AGB). Each applicant will be required to complete PDT as a
-      prerequisite to delegation into the root zone.
+      technical and operational criteria described in the gTLD Applicant Guidebook
+      (AGB). Each applicant will be required to complete PDT as a prerequisite to
+      delegation into the root zone.
   
-      The Pre-Delegation Test covers all critical registry services and IDNs,
-      and therefore uses all test suites.
+      The Pre-Delegation Test covers all critical registry services and IDNs, and
+      therefore uses all standard test suites.
   
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
   
@@ -247,7 +250,7 @@ Test-Plans:
       requirements of the Registry Agreement.
   
       The RSP Change Test covers all critical registry services and IDNs, and
-      therefore uses all test suites.
+      therefore uses all test standard suites.
   
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
   
@@ -312,7 +315,7 @@ Test-Plans:
     Name: IDN Test (RSP Evaluation)
     Description: |
       This test plan is identical to the Standard IDN Test, but is intended
-      solely for use by the RSP evaluation program.
+      solely for use in the RSP evaluation program.
   
       **Note on test environment:** this is a "business as usual" test, designed to test a soon-to-be or already delegated TLD. Therefore, all input parameters provided **MUST** relate to the production registry environment.
   
@@ -326,17 +329,17 @@ Test-Plans:
     Order: 6
     Name: SRS Gateway Test
     Description: |
-      An SRS Gateway service is a Shared Registry System implementation that
-      acts as a proxy between a subset of Registrars and the Registry. It uses
-      a local cache to speed up EPP query commands, but forwards all EPP
-      transform commands to the primary registry system. TLD registries need to
-      deploy a proxy setup in order to operate in certain markets worldwide.
+      An SRS Gateway service is a Shared Registry System implementation that acts
+      as a proxy between a subset of Registrars and the Registry. It uses a local
+      cache to speed up EPP query commands, but forwards all EPP transform
+      commands to the primary registry system. TLD registries need to deploy a
+      proxy setup in order to operate in certain markets worldwide.
   
-      The purpose of an SRS Gateway Test is to verify that the Registry
-      Operator’s proxy setup operates in accordance with the technical and
-      operational criteria for EPP systems described in the gTLD Applicant
-      Guidebook (AGB). Furthermore, it **MUST** keep its own database
-      synchronized with that of the TLD registry.
+      The purpose of an SRS Gateway Test is to verify that the Registry Operator’s
+      proxy setup operates in accordance with the technical and operational
+      criteria for EPP systems described in the gTLD Applicant Guidebook (AGB).
+      Furthermore, it **MUST** keep its own database synchronized with that of the
+      TLD registry.
   
       The SRS Gateway Test Change Test uses the SRS gateway test suite only.
   
@@ -353,9 +356,9 @@ Test-Plans:
     Order: 7
     Name: Main RSP Evaluation Test
     Description: |
-      The Main RSP is responsible for the creation and maintenance of domain
-      name registrations in a Shared Registration System (SRS). This encompasses
-      the lifecycle of a domain name registration using domain registrars and
+      The Main RSP is responsible for the creation and maintenance of domain name
+      registrations in a Shared Registration System (SRS). This encompasses the
+      lifecycle of a domain name registration using domain registrars and
       protocols such as the Extensible Provisioning Protocol (EPP) and adherence
       to policies regarding the use and transparency domain name registrations
       through reporting, the Registration Data Access Protocol (RDAP), and other
@@ -376,11 +379,11 @@ Test-Plans:
     Order: 8
     Name: DNS RSP Evaluation Test
     Description: |
-      DNS RSPs provide primary or secondary authoritative DNS services.
-      Therefore, this test plan only covers the DNS area.
+      DNS RSPs provide primary or secondary authoritative DNS services. Therefore,
+      this test plan only covers the DNS area.
   
-      RSPs wishing to offer DNSSEC services in addition to authoritative DNS
-      will also be evaluated using the DNSSEC RSP Evaluation Test below.
+      RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
+      also be evaluated using the DNSSEC RSP Evaluation Test below.
   
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
   
@@ -397,8 +400,8 @@ Test-Plans:
       DNSSEC RSPs provide signing of TLD zone files as a service. They do not
       provide primary or secondary authoritative DNS services.
   
-      RSPs wishing to offer DNSSEC services in addition to authoritative DNS
-      will also be evaluated using the DNSSEC RSP Evaluation Test below.
+      RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
+      also be evaluated using the DNSSEC RSP Evaluation Test below.
   
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
   
@@ -412,18 +415,19 @@ Test-Plans:
     Name: SRS Gateway RSP Evaluation Test
     Description: |
       SRS Gateway RSPs provide a proxy between a subset of Registrars and the
-      Registry. It uses a local cache to speed up EPP query commands, but
-      forwards all EPP transform commands to the primary registry system. TLD
-      registries need to deploy a proxy setup in order to operate in certain
-      markets worldwide.
+      Registry. It uses a local cache to speed up EPP query commands, but forwards
+      all EPP transform commands to the primary registry system. TLD registries
+      need to deploy a proxy setup in order to operate in certain markets
+      worldwide.
   
-      The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires
-      access to a primary registry system that is logically independent of the
-      SRS Gateway system, and details of the primary registry system are
-      required as input parameters. RSPs wishing to offer SRS gateway services
-      **MUST** identify such a primary registry system, which **MUST** be
-      independent of the SRS gateway system, and MAY be operated by a third
-      party.
+      The [SRS Gateway test suite](#Test-Suite-StandardSRSGateway) requires access
+      to a primary registry system that is logically independent of the SRS
+      Gateway system, and details of the primary registry system are required as
+      input parameters.
+  
+      RSPs wishing to offer SRS gateway services **MUST** identify such a primary
+      registry system, which **MUST** be independent of the SRS gateway system,
+      and **MAY** be operated by a third party.
   
       **Note on test environment:** this test is designed to be used as part of the RSP evaluation program. Therefore, input parameters **MAY** be provided the relate to a test, staging or OT&E environment.
   
@@ -434,6 +438,9 @@ Test-Plans:
       - StandardSRSGateway
 
 Test-Suites:
+  
+  
+  
   
   StandardDNS:
     Order: 1
@@ -517,10 +524,10 @@ Test-Suites:
     Order: 4
     Name: Extensible Provisioning Protocol (EPP)
     Description: |
-      The EPP test suite validates the EPP service of the TLD or RSP. It
-      verifies that the EPP server properly implements the query and transform
-      commands specified for domain names (and optionally host and contact
-      objects) and the mandatory extensions.
+      The EPP test suite validates the EPP service of the TLD or RSP. It verifies
+      that the EPP server properly implements the query and transform commands
+      specified for domain names (and optionally host and contact objects) and the
+      mandatory extensions.
   
       # Pass/fail criteria
   
@@ -604,9 +611,9 @@ Test-Suites:
     Order: 7
     Name: SRS Gateway
     Description: |
-      The SRS Gateway test suite validates the conformance of the Gateway
-      registry infrastructure of a TLD or RSP, and the synchronisation between
-      primary and gateway systems.
+      The SRS Gateway test suite validates the conformance of the Gateway registry
+      infrastructure of a TLD or RSP, and the synchronisation between primary and
+      gateway systems.
   
       # Pass/fail criteria
   
@@ -661,21 +668,27 @@ Test-Suites:
     Order: 8
     Name: DNSSEC Operations
     Description: |
-      This test suite verifies the ability of an RSP to carry out standard
-      DNSSEC operational procedures while maintaining a chain of trust to the
-      parent zone.
+      This test suite verifies the ability of an RSP to carry out standard DNSSEC
+      operational procedures while maintaining a chain of trust to the parent
+      zone.
   
       # Pass/fail criteria
   
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^dnssecOps
+    Input-Parameters:
+      - dnssecOps.nameservers
+      - dnssecOps.primaryServer
+      - dnssecOps.tsigKey
+    Errors:
+      - DNSSEC_OPS_XFR_FAILED
   
   MinimumRPMs:
     Order: 9
     Name: Minimum Rights Protection Mechanisms (RPMs)
     Description: |
-      This test suite verifies an RSP's support for the minimum Rights
-      Protection Mechanisms (RPMs), and the Launch Extension (RFC 8334).
+      This test suite verifies an RSP's support for the minimum Rights Protection
+      Mechanisms (RPMs), and the Launch Extension (RFC 8334).
   
       # Pass/fail criteria
   
@@ -697,9 +710,9 @@ Test-Suites:
     Order: 10
     Name: Standard Integration Test
     Description: |
-      This test suite verifies that the critical registry services of the TLD
-      are properly integrated and functioning within the requirements of the
-      Service Level Agreement.
+      This test suite verifies that the critical registry services of the TLD are
+      properly integrated and functioning within the requirements of the Service
+      Level Agreement.
   
       # Pass/fail criteria
   
@@ -3940,19 +3953,30 @@ Test-Cases:
       If the value of the `dnssecOps.csk` input parameter is `true`, then this
       test will be skipped.
   
-      The system will monitor the SOA record in the domain name specified in the
-      `dnssec.zskRolloverZone` input parameter. The domain may be present
-      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-      **MUST** have a secure chain of trust up to the root zone, so that it can
-      be validated using the root zone trust anchor.
+      The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+      input parameter. The domain may be present anywhere in the DNS hierarchy
+      (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+      trust up to the root zone, so that it can be validated using the root zone
+      trust anchor.
   
-      During the test period (currently defined as 24 hours) the operator
+      The zone **MUST** contain at least 10,000 delegations, where a delegation is
+      considered to be one or more `NS` records with owner names that are below
+      the zone's origin. If NSEC3 is used for secure denial of existence, the
+      opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+      present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+      record is published)*.
+  
+      Monitoring will be carried out using `SOA` queries sent to multiple
+      validating DNS resolvers, and by validating the result of a a zone transfer
+      from the server specified in the `dnssecOps.primaryServer` input parameter.
+  
+      During the test period (currently defined as 48 hours) the operator
       **MUST** successfully carry out a ZSK rollover for the domain, where the
       Zone Signing Key is replaced, without disrupting the chain of trust.
   
-      To simplify testing, applicants may wish to provision domain that is
-      configured with short TTLs and a short ZSK lifetime, so that a ZSK
-      rollover is guaranteed to occur within the 24 test period.
+      To simplify testing, applicants may wish to provision the zone such that it
+      is configured with short TTLs and a short ZSK lifetime, so that a ZSK
+      rollover is guaranteed to occur within the 48 test period.
     Input-Parameters:
       - dnssecOps.csk
       - dnssecOps.zskRolloverZone
@@ -3968,13 +3992,24 @@ Test-Cases:
       RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
       a zone.
   
-      The system will monitor the SOA record in the domain name specified in the
-      `dnssec.kskRolloverZone` input parameter. The domain may be present
-      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-      **MUST** have a secure chain of trust up to the root zone, so that it can
-      be validated using the root zone trust anchor.
+      The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+      input parameter. The domain may be present anywhere in the DNS hierarchy
+      (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+      trust up to the root zone, so that it can be validated using the root zone
+      trust anchor.
   
-      During the test period (currently defined as 24 hours) the operator
+      The zone **MUST** contain at least 10,000 delegations, where a delegation is
+      considered to be one or more `NS` records with owner names that are below
+      the zone's origin. If NSEC3 is used for secure denial of existence, the
+      opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+      present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+      record is published)*.
+  
+      Monitoring will be carried out using `SOA` queries sent to multiple
+      validating DNS resolvers, and by validating the result of a a zone transfer
+      from the server specified in the `dnssecOps.primaryServer` input parameter.
+  
+      During the test period (currently defined as 48 hours) the operator
       **MUST** successfully carry out a KSK rollover for the domain, where the
       Key Signing Key is replaced, and the DS record in the parent zone is
       updated, without disrupting the chain of trust.
@@ -3992,13 +4027,24 @@ Test-Cases:
       RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2) for
       a zone.
   
-      The system will monitor the SOA record in the domain name specified in the
-      `dnssec.algorithmRolloverZone` input parameter. The domain may be present
-      anywhere in the DNS hierarchy (that is, it does not need to be a TLD), but
-      **MUST** have a secure chain of trust up to the root zone, so that it can
-      be validated using the root zone trust anchor.
+      The system will monitor the zone specified in the `dnssec.zskRolloverZone`
+      input parameter. The domain may be present anywhere in the DNS hierarchy
+      (that is, it does not need to be a TLD), but **MUST** have a secure chain of
+      trust up to the root zone, so that it can be validated using the root zone
+      trust anchor.
   
-      During the test period (currently defined as 72 hours) the operator
+      The zone **MUST** contain at least 10,000 delegations, where a delegation is
+      considered to be one or more `NS` records with owner names that are below
+      the zone's origin. If NSEC3 is used for secure denial of existence, the
+      opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
+      present for all `NS` rrsets, irrespective of whether a corresponding `DS`
+      record is published)*.
+  
+      Monitoring will be carried out using `SOA` queries sent to multiple
+      validating DNS resolvers, and by validating the result of a a zone transfer
+      from the server specified in the `dnssecOps.primaryServer` input parameter.
+  
+      During the test period (currently defined as 48 hours) the operator
       **MUST** successfully carry out an algorithm rollover for the domain
       (including an update to the DS record in the parent zone), where the
       algorithm used to secure the domain is changed, without disrupting the
@@ -4015,6 +4061,7 @@ Test-Cases:
     Errors:
       - DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN
       - DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED
+      - DNSSEC_OPS_INVALID_ALGORITHM
   rde-01:
     Summary: validate deposit filename format
     Maturity: BETA
@@ -4594,7 +4641,7 @@ Test-Cases:
     Summary: contact <delete> command test (if applicable for the registry type)
     Description: |
       This test will perform `<delete>` commands on the objects created during
-      `epp-24` and will confirm that the server accepts the `<delete>` command
+      `epp-22` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
   
       If the `general.minimalPublicDataSet` input parameter is `true`, this
@@ -4694,12 +4741,6 @@ Test-Cases:
       - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
       - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
   epp-14:
-    Summary: intentionally omitted
-    Description: intentionally omitted
-  epp-15:
-    Summary: intentionally omitted
-    Description: intentionally omitted
-  epp-16:
     Summary: domain <create> command test
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
@@ -4773,7 +4814,7 @@ Test-Cases:
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
-  epp-17:
+  epp-15:
     Summary: Registry object integrity test
     Description: |
       This test confirms that the EPP server will refuse a request to delete a
@@ -4784,18 +4825,18 @@ Test-Cases:
       will be skipped.
   
       The client will submit `<delete>` commands for any contact and host
-      objects created during `epp-16`. The server **MUST** respond with a `2305`
+      objects created during `epp-14`. The server **MUST** respond with a `2305`
       "Object association prohibits operation" error.
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
       - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
-  epp-18:
+  epp-16:
     Summary: domain <update> command test
     Description: |
       This test will confirm that the client is able to perform an `<update>`
-      command on the domain names created in `epp-16`, including:
+      command on the domain names created in `epp-14`, including:
   
       * adding and removing client-assigned status codes
       * adding and removing nameservers (whether objects or attributes)
@@ -4811,7 +4852,7 @@ Test-Cases:
       stored by the server.
     Input-Parameters:
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
@@ -4823,12 +4864,12 @@ Test-Cases:
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
-  epp-18:
+  epp-16:
     Summary: domain <renew> command test
     Description: |
       This test will confirm that the client is able to renew domain names. The
       client will submit a number of `<renew>` commands for the domains created in
-      `epp-16`.
+      `epp-14`.
   
       * Following a succesful `<renew>` command, the expiry date of the domain
         **MUST** have been increased by the period specified by the client;
@@ -4840,21 +4881,21 @@ Test-Cases:
       commands to ensure that the expiry date and RGP status of the domain are
       set correctly.
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD
       - EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE
       - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
       - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
   
-  epp-19:
+  epp-17:
     Summary: domain <transfer> command test
     Description: |
       This test will confirm that the client is able to initiate a domain
       transfer.
   
       The client will perform an `<update>` command to set the authInfo code for
-      the test domain (taken from the set created in `epp-16`) to a
+      the test domain (taken from the set created in `epp-14`) to a
       randomly-determined value. If the server implements RFC 9154, it **MUST**
       reject the `<update>` command if the authInfo code is insufficently
       secure.
@@ -4890,7 +4931,7 @@ Test-Cases:
       This message **MUST** be received within 120 seconds of the transfer
       approval.
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
       - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
@@ -4902,26 +4943,26 @@ Test-Cases:
       - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
       - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
   
-  epp-20:
+  epp-18:
     Summary: domain <transfer> rejection test
     Description:
       This test confirms that the server behaves correctly if the sponsoring
       registrar of a domain rejects a transfer request.
   
-      The test procedure matches that of `epp-19`, but the transfer request will
+      The test procedure matches that of `epp-17`, but the transfer request will
       be rejected rather than approved. An `<info>` command will be used to
       confirm that the domain name remains under the sponsorship of the original
       registrar.
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
   
-  epp-21:
+  epp-19:
     Summary: domain <delete> command test
     Description: |
       This test will perform `<delete>` commands on the objects created during
-      `epp-16` and will confirm that the server accepts the `<delete>` command
+      `epp-14` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
   
       Once the `<delete>` commands have been processed, the client will perform
@@ -4933,17 +4974,17 @@ Test-Cases:
         response, then the domain has the `pendingDelete` status and the
         `redemptionPeriod` RGP status.
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
   
-  epp-22:
+  epp-20:
     Summary: domain restore test
     Description: |
       This test will perform RGP restore operations on the objects deleted
-      during `epp-21`, in order to confirm the correct operation of the server's
+      during `epp-19`, in order to confirm the correct operation of the server's
       implementation of RFC 3915.
   
       Once the restore request has been procssed, the client will perform
@@ -4952,11 +4993,11 @@ Test-Cases:
     Input-Parameters:
       - epp.restoreReportRequired
     Dependencies:
-      - epp-21
+      - epp-19
     Errors:
       - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
   
-  epp-23:
+  epp-21:
     Summary: host rename test (if applicable)
     Description: |
       This tests verifies the server's support for host rename operations.
@@ -4978,14 +5019,14 @@ Test-Cases:
         by another registrar is rejected. The domain name(s) provided in the
         `epp.registeredNames` parameter will be used for this test.
       * an `<update>` command which places the object within a domain sponsored
-        by the test client is accepted. A domain created during the `epp-16`
+        by the test client is accepted. A domain created during the `epp-14`
         test case will be used as the new parent domain.
   
       The client will then perform `<info>` commands on the objects successfully
       updated, to confirm that the server has correctly stored the updated
       values.
     Dependencies:
-      - epp-16
+      - epp-14
       - epp-11
     Errors:
       - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
@@ -4994,7 +5035,7 @@ Test-Cases:
       - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
       - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
   
-  epp-24:
+  epp-22:
     Summary: host <delete> command test (if applicable)
     Description: |
       This test will perform `<delete>` commands on the objects created during
@@ -5008,7 +5049,7 @@ Test-Cases:
       received from the server, the client will perform `<check>` and `<info>`
       commands to confirm that the objects have been deleted.
     Dependencies:
-      - epp-23
+      - epp-21
     Errors:
       - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
   rdap-01-domainCaseFoldingValidation:
@@ -5016,163 +5057,190 @@ Test-Cases:
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-02-domainNameValidation:
     Summary: Domain Name validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-03-ipv4Validation:
     Summary: IPv4 address validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-04-ipv6Validation:
     Summary: IPv6 address validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-05-stdRdapAsEventActorValidation:
     Summary: asEventActor Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-06-stdRdapConformanceValidation:
     Summary: RDAP Conformance validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-07-stdRdapDomainLookupValidation:
     Summary: Domain Lookup Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-08-stdRdapEntitiesValidation:
     Summary: Entities validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-09-stdRdapEntityLookupValidation:
     Summary: Entity lookup validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-10-stdRdapErrorResponseBodyValidation:
     Summary: Error Response Body 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-11-stdRdapEventsValidation:
     Summary: Events Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-12-stdRdapHelpValidation:
     Summary: Help validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-13-stdRdapIpAddressesValidation:
     Summary: IP Addresses Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-14-stdRdapLanguageIdentifierValidation:
     Summary: Language Identifier Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-15-stdRdapLdhNameValidation:
     Summary: LDH name 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-16-stdRdapLinksValidation:
     Summary: Links validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-17-stdRdapNameserverLookupValidation:
     Summary: Nameserver lookup validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-18-stdRdapNameserversSearchValidation:
-    Summary: RFC7159RDAP_RFCsNameservers search validation 
+    Summary: Nameservers search validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-19-stdRdapNoticesRemarksValidation:
     Summary: Notices and Remarks Validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-20-stdRdapPort43WhoisServerValidation:
     Summary: Port 43 WHOIS Server 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-21-stdRdapPublicIdsValidation:
     Summary: Public IDs validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-22-stdRdapRolesValidation:
     Summary: Roles validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-23-stdRdapSecureDnsValidation:
     Summary: Secure DNS validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-24-stdRdapStatusValidation:
     Summary: Status validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-25-stdRdapUnicodeNameValidation:
-    Summary: RFC7159RDAP_RFCsIDNA_RFCsUnicode name 
+    Summary: Unicode name 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-26-stdRdapVariantsValidation:
     Summary: Variants validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   rdap-27-webUriValidation:
     Summary: Web URI validation 
     Maturity: GAMMA
     Description: |
       This test case comes from the RDAP Conformance Tool. For more information, see
-      <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+        <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
+  
   minimumRPMs-01:
     Summary: Claims <check> command test
     Description: |
@@ -5722,14 +5790,14 @@ Test-Cases:
       the SLA.
   
       The test system will perform RDAP queries to confirm that the RDAP server
-      provides responses for the domains created in `epp-16`, and host objects
+      provides responses for the domains created in `epp-14`, and host objects
       created in `epp-11` (if applicable). The RDAP server **MUST** provide a 200
       response within 1 hour of the object's `<crDate>` element.
     Input-Parameters:
       - epp.hostModel
       - rdap.baseURLs
     Dependencies:
-      - epp-16
+      - epp-14
       - epp-11
     Errors:
       - INTEGRATION_RDAP_REQUEST_FAILED
@@ -5744,13 +5812,13 @@ Test-Cases:
       the SLA.
   
       The test system will perform DNS queries to confirm that the DNS servers
-      provides responses for the domain names created in `epp-16`. All DNS
+      provides responses for the domain names created in `epp-14`. All DNS
       servers **MUST** provide the correct DNS response within 1 hour of the
       object's `<crDate>` element.
     Input-Parameters:
       - dns.nameservers
     Dependencies:
-      - epp-16
+      - epp-14
     Errors:
       - INTEGRATION_DNS_QUERY_FAILED
       - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
@@ -5772,7 +5840,7 @@ Test-Cases:
       listed in the `integration.rdeSFTPACL` resource have been added to the
       Access Control List for the SFTP server (if any).
   
-      All objects created in the `epp-16` and `epp-11` (if applicable) tests
+      All objects created in the `epp-14` and `epp-11` (if applicable) tests
       **MUST** be found within a valid RDE deposit file (that is, the deposit
       passes all the tests in the RDE test suite) within 24 hours of each
       object's `<crDate>` element.
@@ -5796,7 +5864,7 @@ Test-Cases:
       - integration.rdeSFTPUsername
       - integration.rriACL
     Dependencies:
-      - epp-16
+      - epp-14
       - epp-11
     Errors:
       - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
@@ -5816,7 +5884,7 @@ Input-Parameters:
     Description: |
       The set of nameservers that will be authoritative for the TLD(s).
   
-      This input parameter is an array where the object properties are the
+      This input parameter is an object where the object properties are the
       TLD names, and the values are objects. For these objects, the properties
       are the nameserver names, and the values are arrays of IPv4 and IPv6
       addresses.
@@ -5846,6 +5914,52 @@ Input-Parameters:
       be at least one DS record for each TLD.
     Type: object
     Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
+  dnssecOps.nameservers:
+    Description: |
+      The set of nameservers that will be authoritative for the zones used in the
+      DNSSEC operations test suite.
+  
+      This input parameter is an object where the object properties are the
+      zone names, and the values are objects. For these objects, the properties
+      are the nameserver names, and the values are arrays of IPv4 and IPv6
+      addresses.
+    Type: object
+    Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+    Schema:
+      type: object
+      patternProperties:
+        ^[a-z]+[a-z0-9\.]*[a-z]\$:
+          type: array
+          items:
+            type: string
+            format:
+              - ipv4
+              - ipv6
+  
+  dnssecOps.primaryServer:
+    Description: The primary nameserver from which zones can be transferred.
+    Type: string
+    Example: 192.168.53.1
+    Schema:
+      type: string
+      format:
+        - ipv4
+        - ipv6
+  
+  dnssecOps.tsigKey:
+    Description: The TSIG key which should be used to perform zone transfers.
+    Type: object
+    Example: {"name": "rst-tsig-01", "algorithm": "hmac-sha256", "secret": "NQO...xQ="}
+    Schema:
+      type: object
+      properties:
+        name:
+          type: string
+        algorithm:
+          type: string
+        secret:
+          type: string
+  
   dnssecOps.csk:
     Description: |
       A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
@@ -5853,18 +5967,21 @@ Input-Parameters:
       KSK/ZSK configuration.
     Type: boolean
     Example: false
+  
   dnssecOps.zskRolloverZone:
     Description: |
       The domain name which will be monitored for the occurrence of a ZSK
       rollover.
     Type: string
     Example: example.com
+  
   dnssecOps.kskRolloverZone:
     Description: |
       The domain name which will be monitored for the occurrence of a KSK
       rollover.
     Type: string
     Example: example.com
+  
   dnssecOps.algorithmRolloverZone:
     Description: |
       The domain name which will be monitored for the occurrence of an algorithm
@@ -7303,6 +7420,14 @@ Errors:
     Description: TBA.
   
   DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_INVALID_ALGORITHM:
+    Severity: ERROR
+    Description: TBA.
+  
+  DNSSEC_OPS_XFR_FAILED:
     Severity: ERROR
     Description: TBA.
   RDE_CONTACT_HAS_INVALID_CC:
