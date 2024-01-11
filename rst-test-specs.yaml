@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.237
-Last-Updated: 2024-01-10
+Version: 3.0.244
+Last-Updated: 2024-01-11
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -491,7 +491,6 @@ Test-Suites:
     Input-Parameters:
       - dns.nameservers
       - dnssec.dsRecords
-    Resources:
   
   StandardRDAP:
     Order: 3
@@ -513,7 +512,6 @@ Test-Suites:
       - rdap.testDomains
       - rdap.testEntities
       - rdap.testNameservers
-    Resources:
   
   StandardEPP:
     Order: 4
@@ -671,7 +669,6 @@ Test-Suites:
   
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^dnssecOps
-    Resources:
   
   MinimumRPMs:
     Order: 9
@@ -708,7 +705,6 @@ Test-Suites:
   
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^integration-
-    Resources:
 
 Resources:
   rde.encryptionKey:
@@ -4815,7 +4811,7 @@ Test-Cases:
       stored by the server.
     Input-Parameters:
     Dependencies:
-      - epp-17
+      - epp-16
     Errors:
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
@@ -4830,7 +4826,9 @@ Test-Cases:
   epp-18:
     Summary: domain <renew> command test
     Description: |
-      This test will confirm that the client is able to renew domain names.
+      This test will confirm that the client is able to renew domain names. The
+      client will submit a number of `<renew>` commands for the domains created in
+      `epp-16`.
   
       * Following a succesful `<renew>` command, the expiry date of the domain
         **MUST** have been increased by the period specified by the client;
@@ -4892,7 +4890,7 @@ Test-Cases:
       This message **MUST** be received within 120 seconds of the transfer
       approval.
     Dependencies:
-      - epp-18
+      - epp-16
     Errors:
       - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
       - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
@@ -4915,7 +4913,7 @@ Test-Cases:
       confirm that the domain name remains under the sponsorship of the original
       registrar.
     Dependencies:
-      - epp-18
+      - epp-16
     Errors:
       - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
   
@@ -4935,7 +4933,7 @@ Test-Cases:
         response, then the domain has the `pendingDelete` status and the
         `redemptionPeriod` RGP status.
     Dependencies:
-      - epp-19
+      - epp-16
     Errors:
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
@@ -4980,14 +4978,15 @@ Test-Cases:
         by another registrar is rejected. The domain name(s) provided in the
         `epp.registeredNames` parameter will be used for this test.
       * an `<update>` command which places the object within a domain sponsored
-        by the test client is accepted. A domain created during the `epp-13`
+        by the test client is accepted. A domain created during the `epp-16`
         test case will be used as the new parent domain.
   
       The client will then perform `<info>` commands on the objects successfully
       updated, to confirm that the server has correctly stored the updated
       values.
     Dependencies:
-      - epp-13
+      - epp-16
+      - epp-11
     Errors:
       - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
       - EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME
@@ -5723,10 +5722,11 @@ Test-Cases:
       the SLA.
   
       The test system will perform RDAP queries to confirm that the RDAP server
-      provides responses for the domain and host objects created in `epp-16` and
-      `epp-11` (if applicable). The RDAP server **MUST** provide a 200 response
-      within 1 hour of the object's `<crDate>` element.
+      provides responses for the domains created in `epp-16`, and host objects
+      created in `epp-11` (if applicable). The RDAP server **MUST** provide a 200
+      response within 1 hour of the object's `<crDate>` element.
     Input-Parameters:
+      - epp.hostModel
       - rdap.baseURLs
     Dependencies:
       - epp-16
@@ -5979,10 +5979,17 @@ Input-Parameters:
   rdap.baseURLs:
     Descrption: |
       The RDAP base URL(s) for the TLD(s). This input parameter is an object,
-      where the object properties are the TLD names and the values are strings
-      containing the base URL. The URL **MUST** end with a slash ("/").
+      where the object properties are the TLD names, and the values are strings
+      containing the base URL. The URL **MUST** use the `https:` scheme and
+      **MUST** end with a slash ("/").
     Type: object
     Example: {"example": "https://rdap.example.com/example/"}
+    Schema:
+      type: object
+      patternProperties:
+        ^[a-z][a-\0-9-]*[a-z]\$:
+            type: string
+            format: url
   rdap.testDomains:
     Description: |
       The domain(s) that will be queried to validate domain responses. This
@@ -5990,6 +5997,12 @@ Input-Parameters:
       names and the values domain names.
     Type: object
     Example: {"example": "example.example"}
+    Schema:
+      type: object
+      patternProperties:
+        ^[a-z][a-\0-9-]*[a-z]\$:
+            type: string
+            format: hostname
   rdap.testEntities:
     Description: |
       The entities(s) that will be queried to validate entity responses. This
@@ -5997,6 +6010,11 @@ Input-Parameters:
       names and the values entity handles.
     Type: object
     Example: {"example": "9999"}
+    Schema:
+      type: object
+      patternProperties:
+        ^[a-z][a-\0-9-]*[a-z]\$:
+            type: string
   rdap.testNameservers:
     Description: |
       The nameservers(s) that will be queried to validate nameserver responses.
@@ -6004,6 +6022,12 @@ Input-Parameters:
       names and the values host names.
     Type: object
     Example: {"example": "ns1.example.com"}
+    Schema:
+      type: object
+      patternProperties:
+        ^[a-z][a-\0-9-]*[a-z]\$:
+            type: string
+            format: hostname
   minimumRPMS.sunriseModels:
     Description: |
       The sunrise models supported by the EPP server. The possible values for
@@ -7248,6 +7272,7 @@ Errors:
   ZM_Z_FLAGS_NOTCLEAR:
     Description: '*Not available.*'
     Severity: ERROR
+  
   DNSSEC_DNS_QUERY_ERROR:
     Severity: ERROR
     Description: An error occurred while performing DNS query(s).
