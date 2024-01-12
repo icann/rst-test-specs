@@ -24,6 +24,10 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://icann.gi
 
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, `perl` a couple of modules to create the JSON file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
 
+## See Also
+
+* [RST API Specification](https://github.com/icann/rst-api-spec)
+
 ## Copyright Statement
 
 This repository is (c) 2024 Internet Corporation for Assigned Names and Numbers (ICANN). All rights reserved.
