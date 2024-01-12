@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.254
-Last-Updated: 2024-01-11
+Version: 3.0.256
+Last-Updated: 2024-01-12
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -4132,11 +4132,20 @@ Test-Cases:
       The correct URIs is determined by the `general.minimalPublicDataSet` and
       `epp.hostModel` input parameters.
   
+      * if the `general.minimalPublicDataSet` input parameter is `true`, then the
+        contact URI **MUST** be present. If the value is `false`, then it **MUST
+        NOT** be present.
+  
+      * if the `epp.hostModel` input parameter is `true`, then the host URI
+        **MUST** be present. If the value is `false`, then it **MUST NOT** be
+        present.
+  
       All expected URIs **MUST** be present in the header, and the header **MUST
       NOT** contain any unexpected URIs.
     Errors:
       - RDE_UNEXPECTED_OBJECT_URI
       - RDE_MISSING_OBJECT_URI
+  
   rde-06:
     Summary: validate object counts
     Maturity: BETA
@@ -4145,6 +4154,7 @@ Test-Cases:
       actually present in the deposit file.
     Errors:
       - RDE_OBJECT_COUNT_MISMATCH
+  
   rde-07:
     Summary: validate domain objects
     Maturity: BETA
@@ -4182,6 +4192,7 @@ Test-Cases:
       - RDE_DOMAIN_HAS_INVALID_CRDATE
       - RDE_DOMAIN_HAS_MISSING_EXDATE
       - RDE_DOMAIN_HAS_INVALID_EXDATE
+  
   rde-08:
     Summary: validate host objects (if applicable)
     Maturity: BETA
@@ -4202,6 +4213,9 @@ Test-Cases:
   
       If the applicant uses the host attribute model, then this test will be
       skipped.
+  
+      Registrar objects which are referenced in host objects **MUST**
+      be present in the deposit.
     Errors:
       - RDE_HOST_HAS_MISSING_NAME
       - RDE_HOST_HAS_INVALID_NAME
@@ -4239,8 +4253,11 @@ Test-Cases:
       * `<contact:email>`
       * `<contact:clID>` (sponsoring registrar ID)
   
-      If the applicant uses the "thin" registry model, then this test will be
-      skipped.
+      If the value of the `general.minimalPublicDataSet` input parameter is
+      `true`, then this test will be skipped.
+  
+      Registrar objects which are referenced in contact objects **MUST**
+      be present in the deposit.
     Errors:
       - RDE_CONTACT_HAS_MISSING_ID
       - RDE_CONTACT_HAS_INVALID_ID

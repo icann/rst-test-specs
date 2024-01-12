@@ -168,8 +168,8 @@ window.addEventListener('beforeprint', (event) => {
     </g>
   </g>
 </svg>
-<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.254</p>
-<p>Last Updated: 2024-01-11</p>
+<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.256</p>
+<p>Last Updated: 2024-01-12</p>
 <p><a href="mailto:rst@icann.org">GDS Technical Services, Internet Corporation for Assigned Names and Numbers (ICANN)</a></p>
 </header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><ol type="1">
 <li><a href="#Preamble-2.1.-Test-plans">Test plans</a>
@@ -17587,6 +17587,16 @@ XML namespace URIs.</p>
 <p>The correct URIs is determined by the
 <code>general.minimalPublicDataSet</code> and <code>epp.hostModel</code>
 input parameters.</p>
+<ul>
+<li><p>if the <code>general.minimalPublicDataSet</code> input parameter
+is <code>true</code>, then the contact URI <strong>MUST</strong> be
+present. If the value is <code>false</code>, then it <strong>MUST
+NOT</strong> be present.</p></li>
+<li><p>if the <code>epp.hostModel</code> input parameter is
+<code>true</code>, then the host URI <strong>MUST</strong> be present.
+If the value is <code>false</code>, then it <strong>MUST NOT</strong> be
+present.</p></li>
+</ul>
 <p>All expected URIs <strong>MUST</strong> be present in the header, and
 the header <strong>MUST NOT</strong> contain any unexpected URIs.</p>
 </div><details><summary><h4>6.129.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
@@ -17660,6 +17670,8 @@ subordinate to the TLD)</li>
 </ul>
 <p>If the applicant uses the host attribute model, then this test will
 be skipped.</p>
+<p>Registrar objects which are referenced in host objects
+<strong>MUST</strong> be present in the deposit.</p>
 </div><details><summary><h4>6.132.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
         those defined in test suite:</p>
 <ul><li><a href="#Error-RDE_HOST_HAS_INVALID_CLID">RDE_HOST_HAS_INVALID_CLID (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_INVALID_IP_ADDRESS">RDE_HOST_HAS_INVALID_IP_ADDRESS (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_INVALID_NAME">RDE_HOST_HAS_INVALID_NAME (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_INVALID_ROID">RDE_HOST_HAS_INVALID_ROID (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_INVALID_STATUS">RDE_HOST_HAS_INVALID_STATUS (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_MISSING_CLID">RDE_HOST_HAS_MISSING_CLID (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_MISSING_IP_ADDRESS">RDE_HOST_HAS_MISSING_IP_ADDRESS (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_MISSING_NAME">RDE_HOST_HAS_MISSING_NAME (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_MISSING_ROID">RDE_HOST_HAS_MISSING_ROID (ERROR)</a></li><li><a href="#Error-RDE_HOST_HAS_MISSING_STATUS">RDE_HOST_HAS_MISSING_STATUS (ERROR)</a></li></ul></details><details><summary><h4>6.132.4. Input parameters</h4></summary><p>This test case requires the following input parameters, in
@@ -17698,8 +17710,10 @@ following:
 <li><code>&lt;contact:email&gt;</code></li>
 <li><code>&lt;contact:clID&gt;</code> (sponsoring registrar ID)</li>
 </ul>
-<p>If the applicant uses the “thin” registry model, then this test will
-be skipped.</p>
+<p>If the value of the <code>general.minimalPublicDataSet</code> input
+parameter is <code>true</code>, then this test will be skipped.</p>
+<p>Registrar objects which are referenced in contact objects
+<strong>MUST</strong> be present in the deposit.</p>
 </div><details><summary><h4>6.133.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
         those defined in test suite:</p>
 <ul><li><a href="#Error-RDE_CONTACT_HAS_INVALID_CC">RDE_CONTACT_HAS_INVALID_CC (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_CITY">RDE_CONTACT_HAS_INVALID_CITY (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_CLID">RDE_CONTACT_HAS_INVALID_CLID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_EMAIL">RDE_CONTACT_HAS_INVALID_EMAIL (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_ID">RDE_CONTACT_HAS_INVALID_ID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_NAME">RDE_CONTACT_HAS_INVALID_NAME (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE">RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_ROID">RDE_CONTACT_HAS_INVALID_ROID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_STATUS">RDE_CONTACT_HAS_INVALID_STATUS (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_STREET">RDE_CONTACT_HAS_INVALID_STREET (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_INVALID_VOICE">RDE_CONTACT_HAS_INVALID_VOICE (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_CC">RDE_CONTACT_HAS_MISSING_CC (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_CITY">RDE_CONTACT_HAS_MISSING_CITY (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_CLID">RDE_CONTACT_HAS_MISSING_CLID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_EMAIL">RDE_CONTACT_HAS_MISSING_EMAIL (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_ID">RDE_CONTACT_HAS_MISSING_ID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_NAME">RDE_CONTACT_HAS_MISSING_NAME (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_POSTALINFO">RDE_CONTACT_HAS_MISSING_POSTALINFO (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_ROID">RDE_CONTACT_HAS_MISSING_ROID (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_STATUS">RDE_CONTACT_HAS_MISSING_STATUS (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_STREET">RDE_CONTACT_HAS_MISSING_STREET (ERROR)</a></li><li><a href="#Error-RDE_CONTACT_HAS_MISSING_VOICE">RDE_CONTACT_HAS_MISSING_VOICE (ERROR)</a></li></ul></details><details><summary><h4>6.133.4. Input parameters</h4></summary><p>This test case requires the following input parameters, in
