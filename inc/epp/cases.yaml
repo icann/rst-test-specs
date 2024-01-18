@@ -70,7 +70,11 @@ epp-02:
          # these may become mandatory in the future:
          # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
          # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
+    8. With the exception of the `<svDate>` element, all values in the
+       `<greeting>` **MUST** match those found in the `epp.greeting` input
+       parameter.
   Input-Parameters:
+    - epp.greeting
   Errors:
     - EPP_NO_GREETING_RECEIVED
     - EPP_GREETING_SVID_INVALID
@@ -82,6 +86,7 @@ epp-02:
     - EPP_GREETING_UNEXPECTED_EXTURI
     - EPP_GREETING_MISSING_EXTURI
     - EPP_GREETING_RECOMMENDED_EXTENSION_MISSING
+    - EPP_GREETING_DOES_NOT_MATCH
   Input-Parameters:
   Dependencies:
 epp-03:

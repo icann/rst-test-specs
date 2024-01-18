@@ -1,7 +1,45 @@
 epp.hostName:
-  Description: the fully-qualified domain name of the EPP server
+  Description: |
+    The fully-qualified domain name of the EPP server.
+
+    The server name **MUST** comply with the requirements for valid
+    hostnames described in RFC 1123, section 2.1. Additionally, all IDN labels
+    in the server name **MUST** comply with IDNA2008.
   Type: string
   Example: epp.rsp.tech
+  Schema:
+    type: string
+    format: hostname
+epp.greeting:
+  Description: |
+    an XML instance which contains a copy of the server's `<greeting>`.
+  Type: string
+  Example: |
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+      <greeting>
+        <svID>EPP server</svID>
+        <svDate>2024-06-08T22:00:00.0Z</svDate>
+        <svcMenu>
+          <version>1.0</version>
+          <lang>en</lang>
+          <objURI>urn:ietf:params:xml:ns:domain-1.0</objURI>
+          <svcExtension>
+            <extURI>urn:ietf:params:xml:ns:rgp-1.0</extURI>
+            <extURI>urn:ietf:params:xml:ns:secDNS-1.1</extURI>
+            <extURI>urn:ietf:params:xml:ns:launch-1.0</extURI>
+          </svcExtension>
+        </svcMenu>
+        <dcp>
+          <access><all/></access>
+          <statement>
+            <purpose><admin/><prov/></purpose>
+            <recipient><ours/><public/></recipient>
+            <retention><stated/></retention>
+          </statement>
+        </dcp>
+      </greeting>
+    </epp>
 epp.clid01:
   Description: the username used to log in to the EPP server
   Type: string
@@ -46,12 +84,22 @@ epp.hostModel:
       * `attributes`
   Type: string
   Example: objects
+  Schema:
+    type: string
+    enum:
+      - objects
+      - attributes
 epp.secDNSInterfaces:
   Description: |
     Which of the interfaces defined in Section 4 of RFC 5910 the server
     supports (either `dsData` or `keyData`).
   Type: string
   Example: dsData
+  Schema:
+    type: string
+    enum:
+      - dsData
+      - keyData
 epp.registeredNames:
   Description: |
     An array of domain names that exist in the EPP server and which are
@@ -60,6 +108,11 @@ epp.registeredNames:
     **MUST** contain one member for each TLD in the TLD set.
   Type: array
   Example: ["example.example1", "example.example2"]
+  Schema:
+    type: array
+    items:
+      type: string
+      format: hostname
 epp.registeredNameservers:
   Description: |
     An array of host objects that exist in the EPP server and which are
@@ -70,6 +123,11 @@ epp.registeredNameservers:
     the array **MUST** be empty.
   Type: array
   Example: ["ns1.example.com", "ns2.example.org"]
+  Schema:
+    type: array
+    items:
+      type: string
+      format: hostname
 epp.registeredContacts:
   Description: |
     An array of contact IDs that exist in the EPP server and which are
@@ -80,6 +138,10 @@ epp.registeredContacts:
     `false`, the array **MUST** be empty.
   Type: array
   Example: ["abc123", "def321"]
+  Schema:
+    type: array
+    items:
+      type: string
 epp.restoreReportRequired:
   Description: |
     Whether the server requires submission of a restore report when a client
@@ -89,3 +151,5 @@ epp.restoreReportRequired:
     input parameter is ignored.
   Type: boolean
   Example: false
+  Schema:
+    type: boolean

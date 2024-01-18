@@ -157,51 +157,31 @@ rde-09:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
-    The required properties are:
-
-    * `<contact:id>`
-    * `<contact:roid>` (which **MUST** have a repository ID registered with
-      IANA)
-    * at least one `<contact:status>` element
-    * 1-2 `<contact:postalInfo>` elements containing the following:
-        * a "type" attribute of "int" or "loc"
-        * `<contact:name>` element
-        * an `<contact:addr>` element containing the following:
-          * at least one 1 `<contact:street>` element
-          * `<contact:city>` element
-          * `<contact:cc>` element
-    * `<contact:voice>`
-    * `<contact:email>`
-    * `<contact:clID>` (sponsoring registrar ID)
-
     If the value of the `general.minimalPublicDataSet` input parameter is
     `true`, then this test will be skipped.
 
-    Registrar objects which are referenced in contact objects **MUST**
-    be present in the deposit.
+    * The value of the `<contact:id>` element **MUST** be unique in the deposit
+    * The value of the `<contact:roid>` **MUST** have a repository ID registered
+      with IANA
+    * The object **MUST NOT** have two `<rdeContact:postalInfo>` elements with
+      the same `type` attribute
+    * The value of the `<contact:cc>` element **MUST** contain a value on the
+      ISO-3166-alpha-2 list
+    * The value of the `<contact:email>` element **MUST** be a valid mailbox
+
+    Registrar objects which are referenced in contact objects **MUST** be
+    present in the deposit.
   Errors:
-    - RDE_CONTACT_HAS_MISSING_ID
-    - RDE_CONTACT_HAS_INVALID_ID
-    - RDE_CONTACT_HAS_MISSING_ROID
+    - RDE_CONTACT_HAS_NON_UNIQUE_ID
     - RDE_CONTACT_HAS_INVALID_ROID
-    - RDE_CONTACT_HAS_MISSING_STATUS
-    - RDE_CONTACT_HAS_INVALID_STATUS
-    - RDE_CONTACT_HAS_MISSING_POSTALINFO
-    - RDE_CONTACT_HAS_INVALID_POSTALINFO_TYPE
-    - RDE_CONTACT_HAS_MISSING_NAME
-    - RDE_CONTACT_HAS_INVALID_NAME
-    - RDE_CONTACT_HAS_MISSING_STREET
-    - RDE_CONTACT_HAS_INVALID_STREET
-    - RDE_CONTACT_HAS_MISSING_CITY
-    - RDE_CONTACT_HAS_INVALID_CITY
-    - RDE_CONTACT_HAS_MISSING_CC
+    - RDE_CONTACT_HAS_MULTIPLE_POSTALINFO_TYPES
     - RDE_CONTACT_HAS_INVALID_CC
-    - RDE_CONTACT_HAS_MISSING_VOICE
-    - RDE_CONTACT_HAS_INVALID_VOICE
-    - RDE_CONTACT_HAS_MISSING_EMAIL
     - RDE_CONTACT_HAS_INVALID_EMAIL
-    - RDE_CONTACT_HAS_MISSING_CLID
-    - RDE_CONTACT_HAS_INVALID_CLID
+    - RDE_CONTACT_HAS_UNKNOWN_CLID
+    - RDE_CONTACT_HAS_UNKNOWN_CRRR
+    - RDE_CONTACT_HAS_UNKNOWN_UPRR
+    - RDE_CONTACT_HAS_UNKNOWN_RERR
+    - RDE_CONTACT_HAS_UNKNOWN_ACRR
 rde-10:
   Summary: validate registrar objects
   Maturity: BETA
@@ -254,19 +234,15 @@ rde-13:
   Summary: validate EPP parameters object
   Maturity: BETA
   Description: |
-    The EPP Parameters object **MUST** match the `<greeting>` element returned
-    by the EPP server.
-  Resources:
-    - epp.clientCertificate
-    - epp.clientCSR
-    - epp.clientACL
+    The EPP Parameters object **MUST** match the `<greeting>` element provided
+    as an input parameter.
+
+    A test case in the EPP Test Suite will confirm that this also matches what
+    is returned when a client connects to the EPP server.
   Input-Parameters:
-    - epp.hostName
-    - epp.clid01
-    - epp.pwd01
-    - epp.serverIssuedClientCertificate01
+    - epp.greeting
   Errors:
-    - RDE_GREETING_DOES_NOT_MATCH_EPP_SERVER
+    - RDE_GREETING_DOES_NOT_MATCH
 rde-14:
   Summary: validate policy object (if applicable)
   Maturity: BETA

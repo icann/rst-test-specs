@@ -10,6 +10,7 @@ use List::Util qw(any none);
 use Pod::Usage;
 use Symbol qw(gensym);
 use Text::Unidecode;
+use URI;
 use XML::LibXML qw(:libxml);
 use YAML::Node;
 use YAML::XS;
@@ -21,7 +22,8 @@ use utf8;
 use open qw(:std :utf8);
 use strict;
 
-my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__))).'/zonemaster-test-policies.yaml');
+my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__)))
+                .'/zonemaster-test-policies.yaml');
 
 my $mode = 'cases';
 my $devel;
@@ -258,7 +260,8 @@ foreach my $row ($list->getElementsByTagName('tr')) {
     $a->setAttribute('href' => $url);
     $a->appendText($url);
 
-    $p->appendText('.');
+    $p->appendText('. Some of the information below may not be applicable to the
+        RST system.');
 
     foreach my $section (@{$config->{'wanted_sections'}}) {
         if (defined($sections->{$section}) && scalar(@{$sections->{$section}}) > 0) {
@@ -269,6 +272,20 @@ foreach my $row ($list->getElementsByTagName('tr')) {
             );
 
             foreach my $el (@{$sections->{$section}}) {
+                if (XML_ELEMENT_NODE == $el->nodeType) {
+                    foreach my $a ($el->getElementsByTagName('a')) {
+                        if ('li' eq $a->parentNode->localName && any { lc($a->textContent) eq lc($_) } @{$config->{'skip'}}) {
+                            # reference to a skipped test, so remove
+                            $a->parentNode->parentNode->removeChild($a->parentNode);
+
+                        } else {
+                            # rewrite URL so it works
+                            $a->setAttribute('href', URI->new_abs($a->getAttribute('href'), $url)->as_string);
+
+                        }
+                    }
+                }
+
                 $body->appendChild($idoc->importNode($el));
             }
         }
@@ -414,16 +431,15 @@ sub generateHTMLTestCaseList {
 
 sub createHTMLDocument {
     my $doc = XML::LibXML::Document->createDocument('1.0', HTML_ENCODING);
-
-    $doc->createInternalSubset('html',undef, undef);
-
+    $doc->createInternalSubset('html', undef, undef);
     $doc->setDocumentElement($doc->createElement('html'));
-
     $doc->documentElement->setAttribute('lang', 'en');
+
     my $head = $doc->documentElement->appendChild($doc->createElement('head'));
 
     $head->appendChild($doc->createElement('meta'))->setAttribute('charset', $doc->encoding);
-    my $body = $doc->documentElement->appendChild($doc->createElement('body'));
+
+    $doc->documentElement->appendChild($doc->createElement('body'));
 
     return $doc;
 }

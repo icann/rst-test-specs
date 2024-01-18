@@ -70,15 +70,15 @@ A test case will fail if it produces one or more [errors](#errors) with the
 
 ## 2.3.5. Error severity levels
 
-1. `INFO` - an informational message.
-1. `NOTICE` - a normal but significant condition.
+The supported severity levels are a subset of the values defined in RFC 5424.
+
 2. `WARNING` - an issue which does not prevent the test from *passing*, but
  which may benefit from further investigation.
-1. `ERROR` - an issue which prevents the test from *passing*, but does not
- prevent the test from *continuing*. A test may produce multiple `ERROR`
- results.
-2. `CRITICAL` - an issue which prevents the test from continuing any
- further. A test will only produce a single `CRITICAL` result and it
+1. `ERROR` - an issue which prevents the test case from *passing*, but does not
+ prevent the test case from *continuing*. A test case may produce multiple
+ `ERROR` results.
+2. `CRITICAL` - an issue which prevents the test case from continuing any
+ further. A test case will only produce a single `CRITICAL` result and it
  will always be the last result in the log.
 
 ## 2.3.6. Common errors

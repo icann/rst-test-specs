@@ -10,14 +10,6 @@ ZM_AAAA_UNEXPECTED_RCODE:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_AAAA_WELL_PROCESSED:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ADDRESSES_MATCH:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_ALGORITHM_DEPRECATED:
   Description: '*Not available.*'
   Severity: ERROR
@@ -29,10 +21,6 @@ ZM_ALGORITHM_NOT_RECOMMENDED:
 ZM_ALGORITHM_NOT_ZONE_SIGN:
   Description: '*Not available.*'
   Severity: ERROR
-
-ZM_ALGORITHM_OK:
-  Description: '*Not available.*'
-  Severity: INFO
 
 ZM_ALGORITHM_PRIVATE:
   Description: '*Not available.*'
@@ -54,10 +42,6 @@ ZM_BREAKS_ON_EDNS:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_CHILD_DISTINCT_NS_IP:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_CHILD_NS_FAILED:
   Description: '*Not available.*'
   Severity: ERROR
@@ -69,18 +53,6 @@ ZM_CHILD_NS_SAME_IP:
 ZM_CHILD_ZONE_LAME:
   Description: '*Not available.*'
   Severity: ERROR
-
-ZM_CN01_IPV4_DISABLED:
-  Description: |
-    IPv4 is disabled. No DNS queries are sent to these name servers:
-    "{ns_list}".
-  Severity: NOTICE
-
-ZM_CN01_IPV6_DISABLED:
-  Description: |
-    IPv6 is disabled. No DNS queries are sent to these name servers:
-    "{ns_list}".
-  Severity: NOTICE
 
 ZM_CN01_MISSING_NS_RECORD_UDP:
   Description: |
@@ -208,44 +180,6 @@ ZM_CN02_WRONG_SOA_RECORD_TCP:
     of {domain_expected}) on SOA queries over TCP.
   Severity: ERROR
 
-ZM_CN04_EMPTY_PREFIX_SET:
-  Description: |
-    Prefix database returned no information for IP address {ns_ip}.
-  Severity: ERROR
-
-ZM_CN04_ERROR_PREFIX_DATABASE:
-  Description: |
-    Prefix database error. No data to analyze for IP address {ns_ip}.
-  Severity: ERROR
-
-ZM_CN04_IPV4_DIFFERENT_PREFIX:
-  Description: |
-    The following name server(s) are announced in unique IPv4 prefix(es):
-    "{ns_list}"
-  Severity: INFO
-
-ZM_CN04_IPV4_SAME_PREFIX:
-  Description: |
-    The following name server(s) are announced in the same IPv4 prefix
-    ({ip_prefix}): "{ns_list}"
-  Severity: WARNING
-
-ZM_CN04_IPV6_DIFFERENT_PREFIX:
-  Description: |
-    The following name server(s) are announced in unique IPv6 prefix(es):
-    "{ns_list}"
-  Severity: INFO
-
-ZM_CN04_IPV6_SAME_PREFIX:
-  Description: |
-    The following name server(s) are announced in the same IPv6 prefix
-    ({ip_prefix}): "{ns_list}"
-  Severity: WARNING
-
-ZM_DEL_DISTINCT_NS_IP:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_DEL_NS_SAME_IP:
   Description: '*Not available.*'
   Severity: ERROR
@@ -317,11 +251,6 @@ ZM_DNS_NAMESERVER06_FAILED:
     is available. Please consult the result log for this test case.
   Severity: ERROR
 
-ZM_DNS_NAMESERVER07_FAILED:
-  Description: The `dns-nameserver07` test case failed, but no further information
-    is available. Please consult the result log for this test case.
-  Severity: ERROR
-
 ZM_DNS_NAMESERVER08_FAILED:
   Description: The `dns-nameserver08` test case failed, but no further information
     is available. Please consult the result log for this test case.
@@ -330,11 +259,6 @@ ZM_DNS_NAMESERVER08_FAILED:
 ZM_DNS_NAMESERVER09_FAILED:
   Description: The `dns-nameserver09` test case failed, but no further information
     is available. Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNS_SYNTAX04_FAILED:
-  Description: The `dns-syntax04` test case failed, but no further information is
-    available. Please consult the result log for this test case.
   Severity: ERROR
 
 ZM_DNS_SYNTAX05_FAILED:
@@ -347,40 +271,10 @@ ZM_DNS_SYNTAX07_FAILED:
     available. Please consult the result log for this test case.
   Severity: ERROR
 
-ZM_DNS_ZONE02_FAILED:
-  Description: The `dns-zone02` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNS_ZONE03_FAILED:
-  Description: The `dns-zone03` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNS_ZONE04_FAILED:
-  Description: The `dns-zone04` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNS_ZONE05_FAILED:
-  Description: The `dns-zone05` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNS_ZONE06_FAILED:
-  Description: The `dns-zone06` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
 ZM_DNS_ZONE07_FAILED:
   Description: The `dns-zone07` test case failed, but no further information is available.
     Please consult the result log for this test case.
   Severity: ERROR
-
-ZM_DS01_DIGEST_NOT_SUPPORTED_BY_ZM:
-  Description: |
-    DS Digest cannot be validated by this installation of Zonemaster.
-  Severity: NOTICE
 
 ZM_DS01_DS_ALGO_2_MISSING:
   Description: |
@@ -401,13 +295,6 @@ ZM_DS01_DS_ALGO_RESERVED:
   Description: |
     No DS digest algorithm defined for the digest code.
   Severity: ERROR
-
-ZM_DS02_ALGO_NOT_SUPPORTED_BY_ZM:
-  Description: |
-    DNSKEY with tag {keytag} uses unsupported algorithm {algo_num}
-    ({algo_mnemo}) by this installation of Zonemaster. Fetched from the
-    nameservers with IP addresses "{ns_ip_list}".
-  Severity: NOTICE
 
 ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING:
   Description: |
@@ -462,11 +349,6 @@ ZM_DS02_RRSIG_NOT_VALID_BY_DNSKEY:
     IP addresses "{ns_ip_list}".
   Severity: ERROR
 
-ZM_DS08_ALGO_NOT_SUPPORTED_BY_ZM:
-  Description: |
-    This installation of Zonemaster does not support the DNSKEY algorithm.
-  Severity: NOTICE
-
 ZM_DS08_DNSKEY_RRSIG_EXPIRED:
   Description: |
     DNSKEY RRset is signed with an RRSIG that has expired.
@@ -492,11 +374,6 @@ ZM_DS08_RRSIG_NOT_VALID_BY_DNSKEY:
     DNSKEY RRset is signed with an RRSIG that cannot be validated by the
     matching DNSKEY.
   Severity: ERROR
-
-ZM_DS09_ALGO_NOT_SUPPORTED_BY_ZM:
-  Description: |
-    This installation of Zonemaster does not support the DNSKEY algorithm.
-  Severity: NOTICE
 
 ZM_DS09_MISSING_RRSIG_IN_RESPONSE:
   Description: |
@@ -524,25 +401,10 @@ ZM_DS09_SOA_RRSIG_NOT_YET_VALID:
     SOA is signed with a not yet valid RRSIG
   Severity: ERROR
 
-ZM_DS10_ALGO_NOT_SUPPORTED_BY_ZM:
-  Description: |
-    This installation of Zonemaster does not support the DNSKEY algorithm.
-  Severity: NOTICE
-
 ZM_DS10_ANSWER_VERIFY_ERROR:
   Description: |
     RRSIG on record or records in answer section cannot be verified.
   Severity: ERROR
-
-ZM_DS10_HAS_NSEC:
-  Description: |
-    Consistent NSEC returned from servers.
-  Severity: INFO
-
-ZM_DS10_HAS_NSEC3:
-  Description: |
-    Consistent NSEC3 returned from servers.
-  Severity: INFO
 
 ZM_DS10_INCONSISTENT_NSEC_NSEC3:
   Description: |
@@ -618,21 +480,6 @@ ZM_DS13_ALGO_NOT_SIGNED_SOA:
     RRset
   Severity: ERROR
 
-ZM_DS15_HAS_CDNSKEY_NO_CDS:
-  Description: |
-    CDNSKEY RRset is found, but no CDS RRset.
-  Severity: NOTICE
-
-ZM_DS15_HAS_CDS_AND_CDNSKEY:
-  Description: |
-    CDNSKEY and CDS RRsets are found.
-  Severity: INFO
-
-ZM_DS15_HAS_CDS_NO_CDNSKEY:
-  Description: |
-    CDS RRset is found, but no CDNSKEY RRset.
-  Severity: NOTICE
-
 ZM_DS15_INCONSISTENT_CDNSKEY:
   Description: |
     All servers do not have the same CDNSKEY RRset.
@@ -647,11 +494,6 @@ ZM_DS15_MISMATCH_CDS_CDNSKEY:
   Description: |
     Both CDS and CDNSKEY RRsets are found but they do not match.
   Severity: ERROR
-
-ZM_DS15_NO_CDS_CDNSKEY:
-  Description: |
-    No CDS or CDNSKEY RRsets are found on any name server.
-  Severity: INFO
 
 ZM_DS16_CDS_INVALID_RRSIG:
   Description: |
@@ -691,11 +533,6 @@ ZM_DS16_CDS_WITHOUT_DNSKEY:
   Description: |
     CDS RRset exists, but there is no DNSKEY RRset.
   Severity: ERROR
-
-ZM_DS16_DELETE_CDS:
-  Description: |
-    CDS RRset has a "delete" CDS record as a single record.
-  Severity: INFO
 
 ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS:
   Description: |
@@ -748,11 +585,6 @@ ZM_DS17_CDNSKEY_WITHOUT_DNSKEY:
     CDNSKEY RRset exists, but there is no DNSKEY RRset.
   Severity: ERROR
 
-ZM_DS17_DELETE_CDNSKEY:
-  Description: |
-    CDNSKEY RRset has a "delete" CDNSKEY record as a single record.
-  Severity: INFO
-
 ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY:
   Description: |
     DNSKEY RRset is not signed by the key or keys that the CDNSKEY records
@@ -788,30 +620,6 @@ ZM_EMPTY_ASN_SET:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_ENOUGH_IPV4_NS_CHILD:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ENOUGH_IPV4_NS_DEL:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ENOUGH_IPV6_NS_CHILD:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ENOUGH_IPV6_NS_DEL:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ENOUGH_NS_CHILD:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ENOUGH_NS_DEL:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_ERROR_ASN_DATABASE:
   Description: '*Not available.*'
   Severity: ERROR
@@ -824,37 +632,17 @@ ZM_IN_BAILIWICK_ADDR_MISMATCH:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_IPV4_DIFFERENT_ASN:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_IPV4_ONE_ASN:
   Description: '*Not available.*'
   Severity: ERROR
-
-ZM_IPV4_SAME_ASN:
-  Description: '*Not available.*'
-  Severity: NOTICE
-
-ZM_IPV6_DIFFERENT_ASN:
-  Description: '*Not available.*'
-  Severity: INFO
 
 ZM_IPV6_ONE_ASN:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_IPV6_SAME_ASN:
-  Description: '*Not available.*'
-  Severity: NOTICE
-
 ZM_IS_A_RECURSOR:
   Description: '*Not available.*'
   Severity: ERROR
-
-ZM_KEY_SIZE_OK:
-  Description: '*Not available.*'
-  Severity: INFO
 
 ZM_MISSING_OPT_IN_TRUNCATED:
   Description: '*Not available.*'
@@ -932,19 +720,6 @@ ZM_N11_UNSET_AA:
     unexpectedly not authoritative from name servers "{ns_ip_list}".
   Severity: ERROR
 
-ZM_N15_NO_VERSION:
-  Description: |
-    The following name server(s) do not respond to software version queries.
-    Returned from name servers: "{ns_ip_list}"
-  Severity: INFO
-
-ZM_N15_SOFTWARE_VERSION:
-  Description: |
-    The following name server(s) respond to software version query
-    "{query_name}" with string "{string}". Returned from name servers:
-    "{ns_ip_list}"
-  Severity: INFO
-
 ZM_NOT_ENOUGH_IPV4_NS_CHILD:
   Description: '*Not available.*'
   Severity: ERROR
@@ -989,14 +764,6 @@ ZM_NO_IPV6_NS_DEL:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_NO_NS_CNAME:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_NO_RECURSOR:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_NO_RESPONSE:
   Description: '*Not available.*'
   Severity: ERROR
@@ -1025,37 +792,13 @@ ZM_NS_IS_CNAME:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_ONE_NS_SET:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ONE_SOA:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ONE_SOA_MNAME:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ONE_SOA_RNAME:
-  Description: '*Not available.*'
-  Severity: INFO
-
-ZM_ONE_SOA_TIME_PARAMETER_SET:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_OUT_OF_BAILIWICK_ADDR_MISMATCH:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_REFERRAL_SIZE_OK:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_REFERRAL_SIZE_TOO_LARGE:
   Description: '*Not available.*'
-  Severity: WARNING
+  Severity: ERROR
 
 ZM_RNAME_MAIL_DOMAIN_INVALID:
   Description: '*Not available.*'
@@ -1073,10 +816,6 @@ ZM_RNAME_RFC822_INVALID:
   Description: '*Not available.*'
   Severity: ERROR
 
-ZM_RNAME_RFC822_VALID:
-  Description: '*Not available.*'
-  Severity: INFO
-
 ZM_UNEXPECTED_RCODE:
   Description: '*Not available.*'
   Severity: WARNING
@@ -1092,63 +831,6 @@ ZM_UNSUPPORTED_EDNS_VER:
 ZM_WRONG_SOA:
   Description: '*Not available.*'
   Severity: ERROR
-
-ZM_Z01_MNAME_HAS_LOCALHOST_ADDR:
-  Description: |
-    SOA MNAME name server "{nsname}" resolves to a localhost IP address
-    ({ns_ip}).
-  Severity: WARNING
-
-ZM_Z01_MNAME_IS_DOT:
-  Description: |
-    SOA MNAME is specified as "." which usually means "no server". Fetched
-    from name servers "{ns_ip_list}".
-  Severity: NOTICE
-
-ZM_Z01_MNAME_IS_LOCALHOST:
-  Description: |
-    SOA MNAME name server is "localhost", which is invalid. Fetched from
-    name servers "{ns_ip_list}".
-  Severity: WARNING
-
-ZM_Z01_MNAME_MISSING_SOA_RECORD:
-  Description: |
-    SOA MNAME name server "{ns}" reponds to an SOA query with no SOA records
-    in the answer section.
-  Severity: WARNING
-
-ZM_Z01_MNAME_NOT_AUTHORITATIVE:
-  Description: |
-    SOA MNAME name server "{ns}" is not authoritative for the zone.
-  Severity: WARNING
-
-ZM_Z01_MNAME_NOT_IN_NS_LIST:
-  Description: |
-    SOA MNAME name server "{nsname}" is not listed as NS record for the
-    zone.
-  Severity: INFO
-
-ZM_Z01_MNAME_NOT_MASTER:
-  Description: |
-    SOA MNAME name server(s) "{ns_list}" do(es) not have the highest SOA
-    SERIAL (expected "{soaserial}" but got "{soaserial_list}")
-  Severity: WARNING
-
-ZM_Z01_MNAME_NOT_RESOLVE:
-  Description: |
-    SOA MNAME name server "{nsname}" cannot be resolved into an IP address.
-  Severity: WARNING
-
-ZM_Z01_MNAME_NO_RESPONSE:
-  Description: |
-    SOA MNAME name server "{ns}" does not respond to an SOA query.
-  Severity: WARNING
-
-ZM_Z01_MNAME_UNEXPECTED_RCODE:
-  Description: |
-    SOA MNAME name server "{ns}" gives unexpected RCODE name ("{rcode}") in
-    response to an SOA query.
-  Severity: WARNING
 
 ZM_Z_FLAGS_NOTCLEAR:
   Description: '*Not available.*'

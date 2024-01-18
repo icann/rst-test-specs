@@ -15,4 +15,4 @@ integration.rriACL:
   Description: |
     An array of IP addresses from which requests to the RRI will be sent.
   Type: array
-  Example: ["192.168.22.1", "2001:DB8::22:1"]
+  Example: ["192.0.2.1", "2001:DB8::22:1"]

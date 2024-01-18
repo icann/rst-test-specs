@@ -45,22 +45,8 @@ sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plan
 sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites)     };
 sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)      };
 sub resource        { my ($self, $id) = @_ ; return $self->find($id, $self->resources)  };
-
-sub input {
-    my ($self, $id) = @_;
-    my $input = $self->find($id, $self->inputs);
-    return $input if ($input);
-
-    return ICANN::RST::Input->new($id, {'Type' => 'string', 'Example' => 'TBA', 'Description' => '*TBA*'}, $self);
-};
-
-sub error {
-    my ($self, $id) = @_ ;
-    my $error = $self->find($id, $self->errors);
-    return $error if ($error);
-
-    return ICANN::RST::Error->new($id, {'Severity' => 'ERROR', 'Description' => '*TBA*'}, $self);
-};
+sub error           { my ($self, $id) = @_ ; return $self->find($id, $self->errors)     };
+sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs)     };
 
 sub find {
     my ($self, $needle, @haystack) = @_;

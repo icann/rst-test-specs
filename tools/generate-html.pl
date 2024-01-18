@@ -789,7 +789,7 @@ sub print_case {
     print $h->ul($h->li([$h->strong($case->maturity.': '), $mdesc->{$case->maturity}]));
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
-    print $case->description->html(3);
+    print $case->description->html(4);
 
     print $h->open(details);
 

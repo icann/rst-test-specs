@@ -9,8 +9,12 @@ dns.nameservers:
 
     There **MUST** be at least two nameservers, and at least two nameservers
     **MUST** have at least one IPv6 address.
+
+    All DNS server names **MUST** comply with the requirements for valid
+    hostnames described in RFC 1123, section 2.1. Additionally, all IDN labels
+    in those hostnames **MUST** comply with IDNA2008.
   Type: object
-  Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+  Example: {"example":{"ns1.example.com":["192.0.2.1","2001:DB8::53:1"],"ns2.example.com":["192.0.2.2","2001:DB8::53:2"]}}
   Schema:
     type: object
     patternProperties:

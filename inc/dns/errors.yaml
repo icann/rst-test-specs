@@ -1,0 +1,8 @@
+DNS_IDNA2008_INVALID_MNAME:
+  Severity: ERROR
+  Description: TBA.
+
+DNS_IDNA2008_INVALID_RNAME:
+  Severity: ERROR
+  Description: TBA.
+

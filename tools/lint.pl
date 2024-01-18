@@ -1,49 +1,49 @@
 #!perl
-use List::Util qw(any);
+use Data::Dumper;
+use List::Util qw(any none);
 use ICANN::RST::Spec;
-use JSON::XS;
 use feature qw(say);
 use strict;
 
-my $json = JSON::XS->new->utf8;
-
-undef $/;
+my $spec = ICANN::RST::Spec->new($ARGV[0]);
 
 say 'checking test specification in ', $ARGV[0];
 
-my $spec = ICANN::RST::Spec->new($ARGV[0]);
-
-say 'checking plans...';
-foreach my $plan ($spec->plans) {
-    check_plan($plan);
-}
-
-say 'checking suites...';
-foreach my $suite ($spec->suites) {
-    check_suite($suite);
-}
-
-say 'checking cases...';
-foreach my $case ($spec->cases) {
-    check_case($case);
-}
-
-say 'checking inputs...';
-foreach my $input ($spec->inputs) {
-    check_input($input);
-}
-
-say 'checking resources...';
-foreach my $resource ($spec->resources) {
-    check_resource($resource);
-}
-
-say 'checking errors...';
-foreach my $error ($spec->errors) {
-    check_error($error);
-}
+check_spec();
 
 say 'done';
+
+sub check_spec {
+    say 'checking plans...';
+    foreach my $plan ($spec->plans) {
+        check_plan($plan);
+    }
+
+    say 'checking suites...';
+    foreach my $suite ($spec->suites) {
+        check_suite($suite);
+    }
+
+    say 'checking cases...';
+    foreach my $case ($spec->cases) {
+        check_case($case);
+    }
+
+    say 'checking inputs...';
+    foreach my $input ($spec->inputs) {
+        check_input($input);
+    }
+
+    say 'checking resources...';
+    foreach my $resource ($spec->resources) {
+        check_resource($resource);
+    }
+
+    say 'checking errors...';
+    foreach my $error ($spec->errors) {
+        check_error($error);
+    }
+}
 
 sub check_plan {
     my $plan = shift;
@@ -101,6 +101,22 @@ sub check_case {
 
     my @suites = $case->suites;
     warn(sprintf("Case '%s' is not used by any suites", $case->id)) unless (scalar(@suites) > 0);
+
+    foreach my $dep (@{$case->{'Dependencies'}}) {
+        warn(sprintf("Case '%s' has a dependency on non-existent case '%s'", $case->id, $dep)) if (none { $_->id eq $dep } $spec->cases);
+    }
+
+    foreach my $input (@{$case->{'Input-Parameters'}}) {
+        warn(sprintf("Case '%s' uses non-existent input parameter '%s'", $case->id, $input)) if (none { $_->id eq $input } $spec->inputs);
+    }
+
+    foreach my $resource (@{$case->{'Resources'}}) {
+        warn(sprintf("Case '%s' references non-existent resource '%s'", $case->id, $resource)) if (none { $_->id eq $resource } $spec->resources);
+    }
+
+    foreach my $error (@{$case->{'Errors'}}) {
+        warn(sprintf("Case '%s' uses non-existent error '%s'", $case->id, $error)) if (none { $_->id eq $error } $spec->errors);
+    }
 }
 
 sub check_input {
@@ -114,23 +130,6 @@ sub check_input {
     }
 
     warn(sprintf("Input Parameter '%s' is not used by any cases or suites", $input->id)) unless ($used > 0);
-
-    # my ($v, $valid);
-    # eval {
-    #     $v = $json->decode($input->jsonExample);
-    #     $valid = 1;
-    # };
-    # say STDERR $@;
-    # if (!$valid) {
-    #     print STDERR $input->dump;
-    #     use Data::Dumper;
-    #     print STDERR Dumper [$input->example, $input->jsonExample];
-    #     warn(sprintf("Example value %s for %s is not valid JSON", $input->jsonExample, $input->id));
-    #
-    # } else {
-    #     warn(sprintf("Example value %s for %s is not an object", $input->jsonExample, $input->id)) if ('object' eq $input->type && 'HASH' ne ref($v));
-    #     warn(sprintf("Example value %s for %s is not an array", $input->jsonExample, $input->id)) if ('array' eq $input->type && 'ARRAY' ne ref($v));
-    # }
 }
 
 sub check_resource {
@@ -150,6 +149,10 @@ sub check_resource {
 
 sub check_error {
     my $error = shift;
+
+    if (none { $_ eq $error->severity} qw(WARNING ERROR CRITICAL)) {
+        warn(sprintf("Error '%s' has unsupported severity '%s'", $error->id, $error->severity));
+    }
 
     my $used = 0;
     foreach my $case ($spec->cases) {

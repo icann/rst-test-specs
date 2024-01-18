@@ -10,15 +10,25 @@ skip:
   - basic01
   - basic02
   - basic03
+  - connectivity04
   - consistency01
   - delegation06
   - dnssec07
   - dnssec11
   - nameserver03
+  - nameserver07
+  - nameserver15
   - syntax01
   - syntax02
   - syntax03
+  - syntax04
   - syntax08
+  - zone01
+  - zone02
+  - zone03
+  - zone04
+  - zone05
+  - zone06
   - zone08
   - zone09
   - zone11
@@ -29,22 +39,18 @@ skip:
 #
 wanted_sections:
   - objective
-  - summary
-  - outcomes
 
 #
 # Human-readable names for test case documentation sections
 #
 section_name_map:
-  outcomes: Pass/fail criteria
+  section_name: Title I want it to have
 
 #
 # these are the zonemaster message severity levels that we want to map to
 # errors - any other severity is ignored
 #
 error_levels:
-  - INFO
-  - NOTICE
   - WARNING
   - ERROR
   - CRITICAL
@@ -127,6 +133,7 @@ error_level_overrides:
     - NO_SOA_IN_RESPONSE
     - NS_ERROR
     - OUT_OF_BAILIWICK_ADDR_MISMATCH
+    - REFERRAL_SIZE_TOO_LARGE
     - RNAME_MAIL_DOMAIN_INVALID
     - RNAME_MAIL_DOMAIN_LOCALHOST
     - RNAME_MAIL_ILLEGAL_CNAME

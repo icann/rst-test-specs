@@ -8,7 +8,7 @@ dnssecOps.nameservers:
     are the nameserver names, and the values are arrays of IPv4 and IPv6
     addresses.
   Type: object
-  Example: {"example":{"ns1.example.com":["192.168.53.1","2001:DB8::53:1"],"ns2.example.com":["192.168.53.2","2001:DB8::53:2"]}}
+  Example: {"example":{"ns1.example.com":["192.0.2.1","2001:DB8::53:1"],"ns2.example.com":["192.0.2.2","2001:DB8::53:2"]}}
   Schema:
     type: object
     patternProperties:
@@ -23,7 +23,7 @@ dnssecOps.nameservers:
 dnssecOps.primaryServer:
   Description: The primary nameserver from which zones can be transferred.
   Type: string
-  Example: 192.168.53.1
+  Example: 192.0.2.1
   Schema:
     type: string
     format:
