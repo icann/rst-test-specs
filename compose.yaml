@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  builder:
+    restart: "no"
+    build: .
+    command: make -C /app
+    volumes:
+      - .:/app
