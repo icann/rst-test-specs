@@ -168,8 +168,8 @@ window.addEventListener('beforeprint', (event) => {
     </g>
   </g>
 </svg>
-<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.257</p>
-<p>Last Updated: 2024-01-18</p>
+<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.260</p>
+<p>Last Updated: 2024-01-22</p>
 <p><a href="mailto:rst@icann.org">GDS Technical Services, Internet Corporation for Assigned Names and Numbers (ICANN)</a></p>
 </header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><ol type="1">
 <li><a href="#Preamble-2.1.-Test-plans">Test plans</a>
@@ -190,7 +190,8 @@ pass/fail criteria</a></li>
 levels</a></li>
 <li><a href="#Preamble-2.3.6.-Common-errors">Common errors</a></li>
 </ol></li>
-<li><a href="#Preamble-2.4.-Key-acronyms-and-terms">Key acronyms and
+<li><a href="#Preamble-2.4.-Test-procedures">Test procedures</a></li>
+<li><a href="#Preamble-2.5.-Key-acronyms-and-terms">Key acronyms and
 terms</a></li>
 </ol>
 </div></details></li><li><details open="1"><summary><a href="#test-plans">Test Plans</a></summary><ol><li><a href="#Test-Plan-StandardPreDelegationTest">Pre-Delegation Test</a></li><li><a href="#Test-Plan-StandardRSPChangeTest">RSP Change Test</a></li><li><a href="#Test-Plan-DNSRSPChangeTest">DNS RSP Change Test</a></li><li><a href="#Test-Plan-StandardIDNTest">Standard IDN Test</a></li><li><a href="#Test-Plan-RSPEvaluationIDNTest">IDN Test (RSP Evaluation)</a></li><li><a href="#Test-Plan-SRSGatewayTest">SRS Gateway Test</a></li><li><a href="#Test-Plan-MainRSPEvaluationTest">Main RSP Evaluation Test</a></li><li><a href="#Test-Plan-DNSRSPEvaluationTest">DNS RSP Evaluation Test</a></li><li><a href="#Test-Plan-DNSSECRSPEvaluationTest">DNSSEC RSP Evaluation Test</a></li><li><a href="#Test-Plan-SRSGatewayRSPTest">SRS Gateway RSP Evaluation Test</a></li></ol></details></li><li><details open="1"><summary><a href="#test-suites">Test Suites</a></summary><ol><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li><li><a href="#Test-Suite-StandardRDAP">Registration Data Access Protocol (RDAP)</a></li><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li><li><a href="#Test-Suite-StandardRDE">Registry Data Escrow (RDE)</a></li><li><a href="#Test-Suite-StandardIDN">Internationalized Domain Names (IDN)</a></li><li><a href="#Test-Suite-StandardSRSGateway">SRS Gateway</a></li><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li><li><a href="#Test-Suite-StandardIntegrationTest">Standard Integration Test</a></li></ol></details></li><li><details open="1"><summary><a href="#resources">Resources</a></summary><ol><li><a href="#Resource-dnssecOps.xfrACL">dnssecOps.xfrACL</a></li><li><a href="#Resource-epp.clientACL">epp.clientACL</a></li><li><a href="#Resource-epp.clientCSR">epp.clientCSR</a></li><li><a href="#Resource-epp.clientCertificate">epp.clientCertificate</a></li><li><a href="#Resource-epp.tlsCertificateStore">epp.tlsCertificateStore</a></li><li><a href="#Resource-integration.rdeSFTPACL">integration.rdeSFTPACL</a></li><li><a href="#Resource-integration.rdeSFTPPublicKey">integration.rdeSFTPPublicKey</a></li><li><a href="#Resource-rde.encryptionKey">rde.encryptionKey</a></li></ol></details></li><li><details open="1"><summary><a href="#test-cases">Test Cases</a></summary><ol><li><a href="#Test-Case-dns-address01">dns-address01 - Name server address must be globally routable</a></li><li><a href="#Test-Case-dns-address02">dns-address02 - Reverse DNS entry exists for name server IP address</a></li><li><a href="#Test-Case-dns-address03">dns-address03 - Reverse DNS entry matches name server name</a></li><li><a href="#Test-Case-dns-connectivity01">dns-connectivity01 - UDP connectivity to name servers</a></li><li><a href="#Test-Case-dns-connectivity02">dns-connectivity02 - TCP connectivity to name servers</a></li><li><a href="#Test-Case-dns-connectivity03">dns-connectivity03 - AS Diversity</a></li><li><a href="#Test-Case-dns-consistency02">dns-consistency02 - SOA RNAME consistency</a></li><li><a href="#Test-Case-dns-consistency03">dns-consistency03 - SOA timers consistency</a></li><li><a href="#Test-Case-dns-consistency04">dns-consistency04 - Name server NS consistency</a></li><li><a href="#Test-Case-dns-consistency05">dns-consistency05 - Consistency between glue and authoritative data</a></li><li><a href="#Test-Case-dns-consistency06">dns-consistency06 - SOA MNAME consistency</a></li><li><a href="#Test-Case-dns-delegation01">dns-delegation01 - Minimum number of name servers</a></li><li><a href="#Test-Case-dns-delegation02">dns-delegation02 - Name servers must have distinct IP addresses</a></li><li><a href="#Test-Case-dns-delegation03">dns-delegation03 - No truncation of referrals</a></li><li><a href="#Test-Case-dns-delegation04">dns-delegation04 - Name server is authoritative</a></li><li><a href="#Test-Case-dns-delegation05">dns-delegation05 - Name server must not point at CNAME alias</a></li><li><a href="#Test-Case-dns-delegation07">dns-delegation07 - Parent glue name records present in child</a></li><li><a href="#Test-Case-dns-nameserver01">dns-nameserver01 - A name server should not be a recursor</a></li><li><a href="#Test-Case-dns-nameserver02">dns-nameserver02 - Test of EDNS0 support</a></li><li><a href="#Test-Case-dns-nameserver04">dns-nameserver04 - Same source address</a></li><li><a href="#Test-Case-dns-nameserver05">dns-nameserver05 - Behaviour against AAAA query</a></li><li><a href="#Test-Case-dns-nameserver06">dns-nameserver06 - NS can be resolved</a></li><li><a href="#Test-Case-dns-nameserver08">dns-nameserver08 - Testing QNAME case insensitivity</a></li><li><a href="#Test-Case-dns-nameserver09">dns-nameserver09 - Testing QNAME case sensitivity</a></li><li><a href="#Test-Case-dns-nameserver10">dns-nameserver10 - Test for undefined EDNS version</a></li><li><a href="#Test-Case-dns-nameserver11">dns-nameserver11 - Test for unknown EDNS OPTION-CODE</a></li><li><a href="#Test-Case-dns-nameserver12">dns-nameserver12 - Test for unknown EDNS flags</a></li><li><a href="#Test-Case-dns-nameserver13">dns-nameserver13 - Test for truncated response on EDNS query</a></li><li><a href="#Test-Case-dns-nameserver14">dns-nameserver14 - Test for unknown version with unknown OPTION-CODE</a></li><li><a href="#Test-Case-dns-syntax05">dns-syntax05 - Misuse of &#39;@&#39; character in the SOA RNAME field</a></li><li><a href="#Test-Case-dns-syntax06">dns-syntax06 - No illegal characters in the SOA RNAME field</a></li><li><a href="#Test-Case-dns-syntax07">dns-syntax07 - No illegal characters in the SOA MNAME field</a></li><li><a href="#Test-Case-dns-zone07">dns-zone07 - SOA master is not an alias</a></li><li><a href="#Test-Case-dns-zone10">dns-zone10 - No multiple SOA records</a></li><li><a href="#Test-Case-dns-zz-idna2008-compliance">dns-zz-idna2008-compliance - IDNA2008 compliance check</a></li><li><a href="#Test-Case-dnssec-01">dnssec-01 - Legal values for the DS hash digest algorithm</a></li><li><a href="#Test-Case-dnssec-02">dnssec-02 - DS must match a valid DNSKEY in the child zone</a></li><li><a href="#Test-Case-dnssec-03">dnssec-03 - Check for too many NSEC3 iterations</a></li><li><a href="#Test-Case-dnssec-04">dnssec-04 - Check for too short or too long RRSIG lifetimes</a></li><li><a href="#Test-Case-dnssec-05">dnssec-05 - Check for invalid DNSKEY algorithms</a></li><li><a href="#Test-Case-dnssec-06">dnssec-06 - Verify DNSSEC additional processing</a></li><li><a href="#Test-Case-dnssec-08">dnssec-08 - Valid RRSIG for DNSKEY</a></li><li><a href="#Test-Case-dnssec-09">dnssec-09 - RRSIG(SOA) must be valid and created by a valid DNSKEY</a></li><li><a href="#Test-Case-dnssec-10">dnssec-10 - Zone contains NSEC or NSEC3 records</a></li><li><a href="#Test-Case-dnssec-12">dnssec-12 - Test for DNSSEC Algorithm Completeness</a></li><li><a href="#Test-Case-dnssec-13">dnssec-13 - All DNSKEY algorithms used to sign the zone</a></li><li><a href="#Test-Case-dnssec-14">dnssec-14 - Check for valid RSA DNSKEY key size</a></li><li><a href="#Test-Case-dnssec-15">dnssec-15 - Existence of CDS and CDNSKEY</a></li><li><a href="#Test-Case-dnssec-16">dnssec-16 - Validate CDS</a></li><li><a href="#Test-Case-dnssec-17">dnssec-17 - Validate CDNSKEY</a></li><li><a href="#Test-Case-dnssec-18">dnssec-18 - Validate trust from DS to CDS and CDNSKEY</a></li><li><a href="#Test-Case-dnssec-91">dnssec-91 - Permitted signing algorithms</a></li><li><a href="#Test-Case-dnssec-92">dnssec-92 - Permitted DS record hash algorithm(s)</a></li><li><a href="#Test-Case-dnssecOps01-ZSKRollover">dnssecOps01-ZSKRollover - ZSK rollover</a></li><li><a href="#Test-Case-dnssecOps02-KSKRollover">dnssecOps02-KSKRollover - KSK rollover</a></li><li><a href="#Test-Case-dnssecOps03-AlgorithmRollover">dnssecOps03-AlgorithmRollover - algorithm rollover</a></li><li><a href="#Test-Case-epp-01">epp-01 - Service connectivity test</a></li><li><a href="#Test-Case-epp-02">epp-02 - Protocol conformance test</a></li><li><a href="#Test-Case-epp-03">epp-03 - Authentication test</a></li><li><a href="#Test-Case-epp-04">epp-04 - domain &lt;check&gt; command test</a></li><li><a href="#Test-Case-epp-05">epp-05 - host &lt;check&gt; command test (if applicable)</a></li><li><a href="#Test-Case-epp-06">epp-06 - contact &lt;check&gt; command test (if applicable for the registry type)</a></li><li><a href="#Test-Case-epp-07">epp-07 - contact &lt;create&gt; command test (if applicable for the registry type)</a></li><li><a href="#Test-Case-epp-08">epp-08 - Contact object access control (if applicable)</a></li><li><a href="#Test-Case-epp-09">epp-09 - contact &lt;update&gt; command test (if applicable for the registry type)</a></li><li><a href="#Test-Case-epp-10">epp-10 - contact &lt;delete&gt; command test (if applicable for the registry type)</a></li><li><a href="#Test-Case-epp-11">epp-11 - host &lt;create&gt; command test (if applicable)</a></li><li><a href="#Test-Case-epp-12">epp-12 - host object access control (if applicable)</a></li><li><a href="#Test-Case-epp-13">epp-13 - host &lt;update&gt; command test (if applicable)</a></li><li><a href="#Test-Case-epp-14">epp-14 - domain &lt;create&gt; command test</a></li><li><a href="#Test-Case-epp-15">epp-15 - Registry object integrity test</a></li><li><a href="#Test-Case-epp-16">epp-16 - domain &lt;renew&gt; command test</a></li><li><a href="#Test-Case-epp-17">epp-17 - domain &lt;transfer&gt; command test</a></li><li><a href="#Test-Case-epp-18">epp-18 - domain &lt;transfer&gt; rejection test</a></li><li><a href="#Test-Case-epp-19">epp-19 - domain &lt;delete&gt; command test</a></li><li><a href="#Test-Case-epp-20">epp-20 - domain restore test</a></li><li><a href="#Test-Case-epp-21">epp-21 - host rename test (if applicable)</a></li><li><a href="#Test-Case-epp-22">epp-22 - host &lt;delete&gt; command test (if applicable)</a></li><li><a href="#Test-Case-idn-01">idn-01 - Label validation test</a></li><li><a href="#Test-Case-idn-02">idn-02 - Level 1 variant handling test</a></li><li><a href="#Test-Case-idn-03">idn-03 - Level 2 variant handling test</a></li><li><a href="#Test-Case-idn-04">idn-04 - Level 3 variant handling test</a></li><li><a href="#Test-Case-integration-01">integration-01 - EPP -&gt; RDAP Integration Test</a></li><li><a href="#Test-Case-integration-02">integration-02 - EPP -&gt; DNS Integration Test</a></li><li><a href="#Test-Case-integration-03">integration-03 - EPP -&gt; RDE Integration Test</a></li><li><a href="#Test-Case-minimumRPMs-01">minimumRPMs-01 - Claims &lt;check&gt; command test</a></li><li><a href="#Test-Case-minimumRPMs-02">minimumRPMs-02 - Sunrise domain/launch application &lt;create&gt; command test
@@ -279,7 +280,23 @@ case may produce, which are:</p>
 <ul>
 <li>[TBA]</li>
 </ul>
-<a name="Preamble-2.4.-Key-acronyms-and-terms"></a><h3 id="key-acronyms-and-terms">2.4. Key acronyms and terms</h3>
+<a name="Preamble-2.4.-Test-procedures"></a><h3 id="test-procedures">2.4. Test procedures</h3>
+<p>Where possible, test cases will reuse existing connections and any
+objects created as part of previous test cases, to reduce the resources
+required to perform service testing. However, it is anticipated that
+registry services will see a moderate volumne of connections from test
+systems, and a moderate number of objects may be created as part of the
+test. The level of resource consumption is anticipated to be
+significantly lower than that experienced by a live production system,
+so in &ldquo;business as usual&rdquo; scenarios, where production systems are being
+tested, no impact to those systems is expected.</p>
+<p>Where a test is being carried out using test, staging or OT&amp;E
+environments, then those systems should be provisioned with sufficient
+capacity to allow testing to be carried out without interruption. Any
+existing OT&amp;E environment supporting registrar integration testing
+and onboarding is likely to be sufficiently robust to support Registry
+System Testing with no further additional capacity requirements.</p>
+<a name="Preamble-2.5.-Key-acronyms-and-terms"></a><h3 id="key-acronyms-and-terms">2.5. Key acronyms and terms</h3>
 <dl>
 <dt>RST</dt>
 <dd>
@@ -12536,10 +12553,7 @@ namespaces <strong>MUST</strong> be present in the
 <ul>
 <li><code>urn:ietf:params:xml:ns:secDNS-1.1</code></li>
 <li><code>urn:ietf:params:xml:ns:launch-1.0</code></li>
-<li><code>urn:ietf:params:xml:ns:rgp-1.0</code> # these may become
-mandatory in the future: # *
-<code>urn:ietf:params:xml:ns:epp:loginSec-1.0</code> # *
-<code>urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0</code></li>
+<li><code>urn:ietf:params:xml:ns:rgp-1.0</code></li>
 </ul></li>
 <li>With the exception of the <code>&lt;svDate&gt;</code> element, all
 values in the <code>&lt;greeting&gt;</code> <strong>MUST</strong> match
@@ -12557,8 +12571,19 @@ those found in the <code>epp.greeting</code> input parameter.</li>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>6.58.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>6.58.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-03"></a><h3>6.59. epp-03 - Authentication test</h3><h4>6.59.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>6.59.2. Description</h4><div class="markdown-content"><p>The EPP server <strong>MUST</strong> return a <code>1000</code>
-result in response to a <code>&lt;login&gt;</code> command.</p>
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-03"></a><h3>6.59. epp-03 - Authentication test</h3><h4>6.59.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>6.59.2. Description</h4><div class="markdown-content"><p>This test case validates the server’s implementation of client
+authentication. The client will submit a series of
+<code>&lt;login&gt;</code> commands to confirm that:</p>
+<ul>
+<li>the server rejects a <code>&lt;login&gt;</code> command with a
+(randomly generated) non- existent client ID;</li>
+<li>the server rejects a <code>&lt;login&gt;</code> command with a valid
+client ID, but an invalid password;</li>
+<li>the server rejects a <code>&lt;login&gt;</code> command with a valid
+client ID and password but an incorrect client certificate;</li>
+<li>the server accepts a <code>&lt;login&gt;</code> command with a valid
+client ID, password and client certificate;</li>
+</ul>
 <p>The client will use the object and extension XML namespaces from the
 server’s <code>&lt;greeting&gt;</code> as part of the
 <code>&lt;login&gt;</code> command.</p>
@@ -12608,14 +12633,16 @@ names).</p>
 <ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-05"></a><h3>6.61. epp-05 - host &lt;check&gt; command test (if applicable)</h3><h4>6.61.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>6.61.2. Description</h4><div class="markdown-content"><p>If the EPP server supports host objects, this test will perform a
 series of <code>&lt;check&gt;</code> commands and will validate the
 <code>avail</code> attribute of the <code>&lt;host:name&gt;</code>
-elements in the server response, as follows: * syntactically invalid
-hostname: <code>avail</code> attribute <strong>MUST</strong> be
-<code>0</code> or <code>false</code>. * valid but registered hostname:
-<code>avail</code> attribute <strong>MUST</strong> be <code>0</code> or
-<code>false</code>. * syntactically valid and unregistered hostname:
-<code>avail</code> attribute <strong>MUST</strong> be <code>1</code> or
-<code>true</code>. The hostname will be generated using random
-characters.</p>
+elements in the server response, as follows:</p>
+<ul>
+<li>syntactically invalid hostname: <code>avail</code> attribute
+<strong>MUST</strong> be <code>0</code> or <code>false</code>.</li>
+<li>valid but registered hostname: <code>avail</code> attribute
+<strong>MUST</strong> be <code>0</code> or <code>false</code>.</li>
+<li>syntactically valid and unregistered hostname: <code>avail</code>
+attribute <strong>MUST</strong> be <code>1</code> or <code>true</code>.
+The hostname will be generated using random characters.</li>
+</ul>
 <p>A “syntactically valid” hostname is one that complies with the format
 specified in RFC 1123 (this test case does not consider IDN names).</p>
 </div><details><summary><h4>6.61.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
@@ -12633,13 +12660,16 @@ specified in RFC 1123 (this test case does not consider IDN names).</p>
 <ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-06"></a><h3>6.62. epp-06 - contact &lt;check&gt; command test (if applicable for the registry type)</h3><h4>6.62.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>6.62.2. Description</h4><div class="markdown-content"><p>If the EPP server supports contact objects, this test will perform a
 series of <code>&lt;check&gt;</code> commands and will validate the
 <code>avail</code> attribute of the <code>&lt;contact:id&gt;</code>
-elements in the server response, as follows: * syntactically invalid ID:
-<code>avail</code> attribute <strong>MUST</strong> be <code>0</code> or
-<code>false</code>. * valid but registered ID: <code>avail</code>
-attribute <strong>MUST</strong> be <code>0</code> or <code>false</code>.
-* valid and unregistered ID: <code>avail</code> attribute
+elements in the server response, as follows:</p>
+<ul>
+<li>syntactically invalid ID: <code>avail</code> attribute
+<strong>MUST</strong> be <code>0</code> or <code>false</code>.</li>
+<li>valid but registered ID: <code>avail</code> attribute
+<strong>MUST</strong> be <code>0</code> or <code>false</code>.</li>
+<li>valid and unregistered ID: <code>avail</code> attribute
 <strong>MUST</strong> be <code>1</code> or <code>true</code>. The ID
-will be generated using random characters.</p>
+will be generated using random characters.</li>
+</ul>
 </div><details><summary><h4>6.62.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
         those defined in test suite:</p>
 <ul><li><a href="#Error-EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL">EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL (ERROR)</a></li><li><a href="#Error-EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL">EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL (ERROR)</a></li><li><a href="#Error-EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL">EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL (ERROR)</a></li></ul></details><details><summary><h4>6.62.4. Input parameters</h4></summary><p>This test case requires the following input parameters, in
