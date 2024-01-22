@@ -67,9 +67,6 @@ epp-02:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
          * `urn:ietf:params:xml:ns:launch-1.0`
          * `urn:ietf:params:xml:ns:rgp-1.0`
-         # these may become mandatory in the future:
-         # * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
-         # * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
     8. With the exception of the `<svDate>` element, all values in the
        `<greeting>` **MUST** match those found in the `epp.greeting` input
        parameter.
@@ -92,8 +89,18 @@ epp-02:
 epp-03:
   Summary: Authentication test
   Description: |
-    The EPP server **MUST** return a `1000` result in response to a `<login>`
-    command.
+    This test case validates the server's implementation of client
+    authentication. The client will submit a series of `<login>` commands to
+    confirm that:
+
+    * the server rejects a `<login>` command with a (randomly generated) non-
+      existent client ID;
+    * the server rejects a `<login>` command with a valid client ID, but an
+      invalid password;
+    * the server rejects a `<login>` command with a valid client ID and password
+      but an incorrect client certificate;
+    * the server accepts a `<login>` command with a valid client ID, password
+      and client certificate;
 
     The client will use the object and extension XML namespaces from the
     server's `<greeting>` as part of the `<login>` command.
@@ -134,6 +141,7 @@ epp-05:
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the `avail` attribute of the
     `<host:name>` elements in the server response, as follows:
+
     * syntactically invalid hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
@@ -158,6 +166,7 @@ epp-06:
     If the EPP server supports contact objects, this test will perform a
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
+
     * syntactically invalid ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
@@ -207,7 +216,7 @@ epp-07:
       value that is not a valid ISO 3166-1 alpha-2 code;
     * The server **MUST NOT** accept a `<contact:voice>` element that contains
       a value that does not conform to the format described in Section 2.5 of
-      RFC5733;
+      RFC 5733;
     * The server **MUST NOT** accept a `<contact:email>` element that contains
       a value that does not conform to the format specified in RFC 5322.
 

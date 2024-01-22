@@ -91,7 +91,25 @@ produce, which are:
 
 * [TBA]
 
-# 2.4. Key acronyms and terms
+# 2.4. Test procedures
+
+Where possible, test cases will reuse existing connections and any objects
+created as part of previous test cases, to reduce the resources required to
+perform service testing. However, it is anticipated that registry services will
+see a moderate volumne of connections from test systems, and a moderate number
+of objects may be created as part of the test. The level of resource consumption
+is anticipated to be significantly lower than that experienced by a live
+production system, so in "business as usual" scenarios, where production
+systems are being tested, no impact to those systems is expected.
+
+Where a test is being carried out using test, staging or OT&E environments, then
+those systems should be provisioned with sufficient capacity to allow testing to
+be carried out without interruption. Any existing OT&E environment supporting
+registrar integration testing and onboarding is likely to be sufficiently robust
+to support Registry System Testing with no further additional capacity
+requirements.
+
+# 2.5. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
