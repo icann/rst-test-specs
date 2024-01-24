@@ -93,6 +93,13 @@ sub check_suite {
                 }
             }
         }
+
+        foreach my $dep ($case->dependencies) {
+            my @suites = $dep->suites;
+            if (scalar(@suites) > 1 || $suites[0]->id ne $suite->id) {
+                warn(sprintf("Test case '%s' in %s has a cross-suite dependency on %s (%s)", $case->id, $suite->id, $dep->id, $suites[0]->id));
+            }
+        }
     }
 }
 

@@ -111,7 +111,7 @@ epp-03:
   Resources:
   Errors:
 epp-04:
-  Summary: domain <check> command test
+  Summary: Domain <check> command test
   Description: |
     The client will perform a series of `<check>` commands and will validate
     the `avail` attribute of the `<domain:name>` elements in the server
@@ -136,7 +136,7 @@ epp-04:
     - EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL
     - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
 epp-05:
-  Summary: host <check> command test (if applicable)
+  Summary: Host <check> command test (if applicable)
   Description: |
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the `avail` attribute of the
@@ -161,7 +161,7 @@ epp-05:
     - EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL
     - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
 epp-06:
-  Summary: contact <check> command test (if applicable for the registry type)
+  Summary: Contact <check> command test (if applicable for the registry type)
   Description: |
     If the EPP server supports contact objects, this test will perform a
     series of `<check>` commands and will validate the `avail` attribute of
@@ -182,7 +182,7 @@ epp-06:
     - EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL
     - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
 epp-07:
-  Summary: contact <create> command test (if applicable for the registry type)
+  Summary: Contact <create> command test (if applicable for the registry type)
   Description: |
     This test attempts to create a number of contact objects, and validates
     the server's response. For example, the test will expect that the server
@@ -264,7 +264,7 @@ epp-08:
     - EPP_CONTACT_INFO_RESPONSE_NOT_2201
     - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
 epp-09:
-  Summary: contact <update> command test (if applicable for the registry type)
+  Summary: Contact <update> command test (if applicable for the registry type)
   Description: |
     This test will perform `<update>` commands on the objects created during
     `epp-07` and will confirm that the server correctly rejects invalid
@@ -320,7 +320,7 @@ epp-09:
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
 epp-10:
-  Summary: contact <delete> command test (if applicable for the registry type)
+  Summary: Contact <delete> command test (if applicable for the registry type)
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-22` and will confirm that the server accepts the `<delete>` command
@@ -375,7 +375,7 @@ epp-11:
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-12:
-  Summary: host object access control (if applicable)
+  Summary: Host object access control (if applicable)
   Description: |
     This test will confirm that EPP clients are unable to perform `<info>`
     commands on objects that they do not sponsor.
@@ -391,7 +391,7 @@ epp-12:
   Errors:
     - EPP_HOST_UPDATE_AUTHZ_ERROR
 epp-13:
-  Summary: host <update> command test (if applicable)
+  Summary: Host <update> command test (if applicable)
   Description: |
     This test will perform `<update>` commands on the objects created during
     `epp-11` and will confirm that the server correctly rejects invalid
@@ -423,7 +423,7 @@ epp-13:
     - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
 epp-14:
-  Summary: domain <create> command test
+  Summary: Domain <create> command test
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
     random ASCII domain names under each TLD in the TLD set. If the
@@ -515,7 +515,7 @@ epp-15:
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
 epp-16:
-  Summary: domain <update> command test
+  Summary: Domain <update> command test
   Description: |
     This test will confirm that the client is able to perform an `<update>`
     command on the domain names created in `epp-14`, including:
@@ -547,7 +547,7 @@ epp-16:
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
 epp-16:
-  Summary: domain <renew> command test
+  Summary: Domain <renew> command test
   Description: |
     This test will confirm that the client is able to renew domain names. The
     client will submit a number of `<renew>` commands for the domains created in
@@ -571,7 +571,7 @@ epp-16:
     - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
 
 epp-17:
-  Summary: domain <transfer> command test
+  Summary: Domain <transfer> command test
   Description: |
     This test will confirm that the client is able to initiate a domain
     transfer.
@@ -626,7 +626,7 @@ epp-17:
     - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
 
 epp-18:
-  Summary: domain <transfer> rejection test
+  Summary: Domain <transfer> rejection test
   Description:
     This test confirms that the server behaves correctly if the sponsoring
     registrar of a domain rejects a transfer request.
@@ -641,7 +641,7 @@ epp-18:
     - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
 
 epp-19:
-  Summary: domain <delete> command test
+  Summary: Domain <delete> command test
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-14` and will confirm that the server accepts the `<delete>` command
@@ -663,7 +663,7 @@ epp-19:
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
 
 epp-20:
-  Summary: domain restore test
+  Summary: Domain restore test
   Description: |
     This test will perform RGP restore operations on the objects deleted
     during `epp-19`, in order to confirm the correct operation of the server's
@@ -680,7 +680,7 @@ epp-20:
     - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
 
 epp-21:
-  Summary: host rename test (if applicable)
+  Summary: Host rename test (if applicable)
   Description: |
     This tests verifies the server's support for host rename operations.
 
@@ -718,7 +718,7 @@ epp-21:
     - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
 
 epp-22:
-  Summary: host <delete> command test (if applicable)
+  Summary: Host <delete> command test (if applicable)
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-11` and will confirm that the server accepts the `<delete>` command
