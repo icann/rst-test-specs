@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.260
-Last-Updated: 2024-01-22
+Version: 3.0.263
+Last-Updated: 2024-01-24
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -106,11 +106,11 @@ Preamble: |
   Where possible, test cases will reuse existing connections and any objects
   created as part of previous test cases, to reduce the resources required to
   perform service testing. However, it is anticipated that registry services will
-  see a moderate volumne of connections from test systems, and a moderate number
-  of objects may be created as part of the test. The level of resource consumption
-  is anticipated to be significantly lower than that experienced by a live
-  production system, so in "business as usual" scenarios, where production
-  systems are being tested, no impact to those systems is expected.
+  see a moderate volume of connections from test systems, and a moderate number of
+  objects may be created as part of the test. The level of resource consumption is
+  anticipated to be significantly lower than that experienced by a live production
+  system, so in "business as usual" scenarios, where production systems are being
+  tested, no impact to those systems is expected.
   
   Where a test is being carried out using test, staging or OT&E environments, then
   those systems should be provisioned with sufficient capacity to allow testing to
@@ -2958,7 +2958,7 @@ Test-Cases:
         value that is not a valid ISO 3166-1 alpha-2 code;
       * The server **MUST NOT** accept a `<contact:voice>` element that contains
         a value that does not conform to the format described in Section 2.5 of
-        RFC5733;
+        RFC 5733;
       * The server **MUST NOT** accept a `<contact:email>` element that contains
         a value that does not conform to the format specified in RFC 5322.
   
