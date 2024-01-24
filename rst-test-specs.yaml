@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.263
+Version: 3.0.266
 Last-Updated: 2024-01-24
 Contact:
   Name: GDS Technical Services
@@ -738,6 +738,8 @@ Test-Suites:
   
       As with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.
     Test-Cases: ^integration-
+    Input-Parameters:
+      - general.minimalPublicDataSet
 
 Resources:
   rde.encryptionKey:
@@ -2782,6 +2784,7 @@ Test-Cases:
       - EPP_TLS_CERTIFICATE_CHAIN_MISSING
       - EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
       - EPP_TLS_BAD_CIPHER
+  
   epp-02:
     Summary: Protocol conformance test
     Description: |
@@ -2828,6 +2831,7 @@ Test-Cases:
       - EPP_GREETING_DOES_NOT_MATCH
     Input-Parameters:
     Dependencies:
+  
   epp-03:
     Summary: Authentication test
     Description: |
@@ -2852,8 +2856,9 @@ Test-Cases:
     Input-Parameters:
     Resources:
     Errors:
+  
   epp-04:
-    Summary: domain <check> command test
+    Summary: Domain <check> command test
     Description: |
       The client will perform a series of `<check>` commands and will validate
       the `avail` attribute of the `<domain:name>` elements in the server
@@ -2877,8 +2882,9 @@ Test-Cases:
       - EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL
       - EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL
       - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
+  
   epp-05:
-    Summary: host <check> command test (if applicable)
+    Summary: Host <check> command test (if applicable)
     Description: |
       If the EPP server supports host objects, this test will perform a series
       of `<check>` commands and will validate the `avail` attribute of the
@@ -2902,8 +2908,9 @@ Test-Cases:
       - EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL
       - EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL
       - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
+  
   epp-06:
-    Summary: contact <check> command test (if applicable for the registry type)
+    Summary: Contact <check> command test (if applicable for the registry type)
     Description: |
       If the EPP server supports contact objects, this test will perform a
       series of `<check>` commands and will validate the `avail` attribute of
@@ -2923,8 +2930,9 @@ Test-Cases:
       - EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL
       - EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL
       - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
+  
   epp-07:
-    Summary: contact <create> command test (if applicable for the registry type)
+    Summary: Contact <create> command test (if applicable for the registry type)
     Description: |
       This test attempts to create a number of contact objects, and validates
       the server's response. For example, the test will expect that the server
@@ -2987,6 +2995,7 @@ Test-Cases:
       - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
       - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
       - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+  
   epp-08:
     Summary: Contact object access control (if applicable)
     Description: |
@@ -3005,8 +3014,9 @@ Test-Cases:
     Errors:
       - EPP_CONTACT_INFO_RESPONSE_NOT_2201
       - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
+  
   epp-09:
-    Summary: contact <update> command test (if applicable for the registry type)
+    Summary: Contact <update> command test (if applicable for the registry type)
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-07` and will confirm that the server correctly rejects invalid
@@ -3061,11 +3071,12 @@ Test-Cases:
       - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
       - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
       - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+  
   epp-10:
-    Summary: contact <delete> command test (if applicable for the registry type)
+    Summary: Contact <delete> command test (if applicable for the registry type)
     Description: |
       This test will perform `<delete>` commands on the objects created during
-      `epp-22` and will confirm that the server accepts the `<delete>` command
+      `epp-24` and will confirm that the server accepts the `<delete>` command
       with a `1xxx` response code.
   
       If the `general.minimalPublicDataSet` input parameter is `true`, this
@@ -3081,6 +3092,7 @@ Test-Cases:
     Errors:
       - EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001
       - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
+  
   epp-11:
     Summary: host <create> command test (if applicable)
     Description: |
@@ -3116,8 +3128,9 @@ Test-Cases:
       - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
       - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
       - EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+  
   epp-12:
-    Summary: host object access control (if applicable)
+    Summary: Host object access control (if applicable)
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
@@ -3132,8 +3145,9 @@ Test-Cases:
       - epp-11
     Errors:
       - EPP_HOST_UPDATE_AUTHZ_ERROR
+  
   epp-13:
-    Summary: host <update> command test (if applicable)
+    Summary: Host <update> command test (if applicable)
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-11` and will confirm that the server correctly rejects invalid
@@ -3164,8 +3178,9 @@ Test-Cases:
       - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
       - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
       - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+  
   epp-14:
-    Summary: domain <create> command test
+    Summary: Domain <create> command test
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
       random ASCII domain names under each TLD in the TLD set. If the
@@ -3238,6 +3253,7 @@ Test-Cases:
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+  
   epp-15:
     Summary: Registry object integrity test
     Description: |
@@ -3256,8 +3272,9 @@ Test-Cases:
     Errors:
       - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
       - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
+  
   epp-16:
-    Summary: domain <update> command test
+    Summary: Domain <update> command test
     Description: |
       This test will confirm that the client is able to perform an `<update>`
       command on the domain names created in `epp-14`, including:
@@ -3288,8 +3305,25 @@ Test-Cases:
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
-  epp-16:
-    Summary: domain <renew> command test
+  
+  epp-17:
+    Summary: Service Port consistency test
+    Description: |
+      This test confirms that all EPP service ports respond with consistent object
+      information.
+  
+      The client will establish seperate connections to each EPP service port
+      (defined as an IP address and TCP port) and perform `<info>` commands on the
+      objects created in `epp-14`. In all cases, the server **MUST** respond with
+      a `1000` response and the content of the `<infData>` element **MUST** be
+      identical on all service ports.
+    Dependencies:
+      - epp-14
+    Errors:
+      - EPP_SERVICE_PORT_NOT_CONSISTENT
+  
+  epp-18:
+    Summary: Domain <renew> command test
     Description: |
       This test will confirm that the client is able to renew domain names. The
       client will submit a number of `<renew>` commands for the domains created in
@@ -3312,8 +3346,8 @@ Test-Cases:
       - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
       - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
   
-  epp-17:
-    Summary: domain <transfer> command test
+  epp-19:
+    Summary: Domain <transfer> command test
     Description: |
       This test will confirm that the client is able to initiate a domain
       transfer.
@@ -3367,13 +3401,13 @@ Test-Cases:
       - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
       - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
   
-  epp-18:
-    Summary: domain <transfer> rejection test
+  epp-20:
+    Summary: Domain <transfer> rejection test
     Description:
       This test confirms that the server behaves correctly if the sponsoring
       registrar of a domain rejects a transfer request.
   
-      The test procedure matches that of `epp-17`, but the transfer request will
+      The test procedure matches that of `epp-19`, but the transfer request will
       be rejected rather than approved. An `<info>` command will be used to
       confirm that the domain name remains under the sponsorship of the original
       registrar.
@@ -3382,8 +3416,8 @@ Test-Cases:
     Errors:
       - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
   
-  epp-19:
-    Summary: domain <delete> command test
+  epp-21:
+    Summary: Domain <delete> command test
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-14` and will confirm that the server accepts the `<delete>` command
@@ -3404,11 +3438,11 @@ Test-Cases:
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
       - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
   
-  epp-20:
-    Summary: domain restore test
+  epp-22:
+    Summary: Domain restore test
     Description: |
       This test will perform RGP restore operations on the objects deleted
-      during `epp-19`, in order to confirm the correct operation of the server's
+      during `epp-21`, in order to confirm the correct operation of the server's
       implementation of RFC 3915.
   
       Once the restore request has been procssed, the client will perform
@@ -3417,12 +3451,12 @@ Test-Cases:
     Input-Parameters:
       - epp.restoreReportRequired
     Dependencies:
-      - epp-19
+      - epp-21
     Errors:
       - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
   
-  epp-21:
-    Summary: host rename test (if applicable)
+  epp-23:
+    Summary: Host rename test (if applicable)
     Description: |
       This tests verifies the server's support for host rename operations.
   
@@ -3459,8 +3493,8 @@ Test-Cases:
       - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
       - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
   
-  epp-22:
-    Summary: host <delete> command test (if applicable)
+  epp-24:
+    Summary: Host <delete> command test (if applicable)
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-11` and will confirm that the server accepts the `<delete>` command
@@ -3473,7 +3507,7 @@ Test-Cases:
       received from the server, the client will perform `<check>` and `<info>`
       commands to confirm that the objects have been deleted.
     Dependencies:
-      - epp-21
+      - epp-23
     Errors:
       - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
   rdap-01-domainCaseFoldingValidation:
@@ -4213,17 +4247,28 @@ Test-Cases:
       are reflected in the RDAP system within the Service Level Requirement of
       the SLA.
   
-      The test system will perform RDAP queries to confirm that the RDAP server
-      provides responses for the domains created in `epp-14`, and host objects
-      created in `epp-11` (if applicable). The RDAP server **MUST** provide a 200
-      response within 1 hour of the object's `<crDate>` element.
+      The test system will connect to the EPP server and create domain and (if
+      applicable) host and contact objects using the same methodology as `epp-14`
+      `epp-11`. It will then perform RDAP queries for those objects.
+  
+      The RDAP server **MUST** provide a 200 response for every object created
+      within 1 hour of the object's `<crDate>` element.
     Input-Parameters:
+      - epp.hostName
+      - epp.serverIssuedClientCertificate01
+      - epp.clid01
+      - epp.pwd01
       - epp.hostModel
       - rdap.baseURLs
-    Dependencies:
-      - epp-14
-      - epp-11
     Errors:
+      - EPP_DNS_RESOLUTION_ERROR
+      - EPP_SERVICE_PORT_UNREACHABLE
+      - EPP_TLS_CONNECTION_ERROR
+      - EPP_LOGIN_ERROR
+      - EPP_XML_PARSE_ERROR
+      - EPP_GENERIC_COMMAND_ERROR
+      - EPP_UNEXPECTED_COMMAND_FAILURE
+      - EPP_SCHEMA_VALIDATION_ERROR
       - INTEGRATION_RDAP_REQUEST_FAILED
       - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
   integration-02:
@@ -4236,13 +4281,13 @@ Test-Cases:
       the SLA.
   
       The test system will perform DNS queries to confirm that the DNS servers
-      provides responses for the domain names created in `epp-14`. All DNS
-      servers **MUST** provide the correct DNS response within 1 hour of the
-      object's `<crDate>` element.
+      provide responses for the domain names created in `integration-01`. All DNS
+      servers **MUST** provide the correct DNS response for all domains within 1
+      hour of the domains's `<crDate>` element.
     Input-Parameters:
       - dns.nameservers
     Dependencies:
-      - epp-14
+      - integration-01
     Errors:
       - INTEGRATION_DNS_QUERY_FAILED
       - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
@@ -4264,10 +4309,9 @@ Test-Cases:
       listed in the `integration.rdeSFTPACL` resource have been added to the
       Access Control List for the SFTP server (if any).
   
-      All objects created in the `epp-14` and `epp-11` (if applicable) tests
-      **MUST** be found within a valid RDE deposit file (that is, the deposit
-      passes all the tests in the RDE test suite) within 24 hours of each
-      object's `<crDate>` element.
+      All objects created in the `integration-01` test case **MUST** be found
+      within a valid RDE deposit file (that is, the deposit passes all the tests
+      in the RDE test suite) within 24 hours of each object's `<crDate>` element.
   
       Furthermore, for each deposit found in the directory, the corresponding
       RDE report (as described in [Section 2.1 of
@@ -4288,8 +4332,7 @@ Test-Cases:
       - integration.rdeSFTPUsername
       - integration.rriACL
     Dependencies:
-      - epp-14
-      - epp-11
+      - integration-01
     Errors:
       - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
       - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR
@@ -7336,6 +7379,51 @@ Errors:
   EPP_GREETING_DOES_NOT_MATCH:
     Severity: ERROR
     Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_SERVICE_PORT_NOT_CONSISTENT:
+    Severity: ERROR
+    Description: TBA
+  
   RPMS_MISSING_CLAIMS_KEY:
     Severity: ERROR
     Description: TBA.

@@ -7,17 +7,28 @@ integration-01:
     are reflected in the RDAP system within the Service Level Requirement of
     the SLA.
 
-    The test system will perform RDAP queries to confirm that the RDAP server
-    provides responses for the domains created in `epp-14`, and host objects
-    created in `epp-11` (if applicable). The RDAP server **MUST** provide a 200
-    response within 1 hour of the object's `<crDate>` element.
+    The test system will connect to the EPP server and create domain and (if
+    applicable) host and contact objects using the same methodology as `epp-14`
+    `epp-11`. It will then perform RDAP queries for those objects.
+
+    The RDAP server **MUST** provide a 200 response for every object created
+    within 1 hour of the object's `<crDate>` element.
   Input-Parameters:
+    - epp.hostName
+    - epp.serverIssuedClientCertificate01
+    - epp.clid01
+    - epp.pwd01
     - epp.hostModel
     - rdap.baseURLs
-  Dependencies:
-    - epp-14
-    - epp-11
   Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_SCHEMA_VALIDATION_ERROR
     - INTEGRATION_RDAP_REQUEST_FAILED
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
 integration-02:
@@ -30,13 +41,13 @@ integration-02:
     the SLA.
 
     The test system will perform DNS queries to confirm that the DNS servers
-    provides responses for the domain names created in `epp-14`. All DNS
-    servers **MUST** provide the correct DNS response within 1 hour of the
-    object's `<crDate>` element.
+    provide responses for the domain names created in `integration-01`. All DNS
+    servers **MUST** provide the correct DNS response for all domains within 1
+    hour of the domains's `<crDate>` element.
   Input-Parameters:
     - dns.nameservers
   Dependencies:
-    - epp-14
+    - integration-01
   Errors:
     - INTEGRATION_DNS_QUERY_FAILED
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
@@ -58,10 +69,9 @@ integration-03:
     listed in the `integration.rdeSFTPACL` resource have been added to the
     Access Control List for the SFTP server (if any).
 
-    All objects created in the `epp-14` and `epp-11` (if applicable) tests
-    **MUST** be found within a valid RDE deposit file (that is, the deposit
-    passes all the tests in the RDE test suite) within 24 hours of each
-    object's `<crDate>` element.
+    All objects created in the `integration-01` test case **MUST** be found
+    within a valid RDE deposit file (that is, the deposit passes all the tests
+    in the RDE test suite) within 24 hours of each object's `<crDate>` element.
 
     Furthermore, for each deposit found in the directory, the corresponding
     RDE report (as described in [Section 2.1 of
@@ -82,8 +92,7 @@ integration-03:
     - integration.rdeSFTPUsername
     - integration.rriACL
   Dependencies:
-    - epp-14
-    - epp-11
+    - integration-01
   Errors:
     - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
     - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR

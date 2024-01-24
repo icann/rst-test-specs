@@ -40,6 +40,7 @@ epp-01:
     - EPP_TLS_CERTIFICATE_CHAIN_MISSING
     - EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
     - EPP_TLS_BAD_CIPHER
+
 epp-02:
   Summary: Protocol conformance test
   Description: |
@@ -86,6 +87,7 @@ epp-02:
     - EPP_GREETING_DOES_NOT_MATCH
   Input-Parameters:
   Dependencies:
+
 epp-03:
   Summary: Authentication test
   Description: |
@@ -110,6 +112,7 @@ epp-03:
   Input-Parameters:
   Resources:
   Errors:
+
 epp-04:
   Summary: Domain <check> command test
   Description: |
@@ -135,6 +138,7 @@ epp-04:
     - EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL
     - EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL
     - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
+
 epp-05:
   Summary: Host <check> command test (if applicable)
   Description: |
@@ -160,6 +164,7 @@ epp-05:
     - EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL
     - EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL
     - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
+
 epp-06:
   Summary: Contact <check> command test (if applicable for the registry type)
   Description: |
@@ -181,6 +186,7 @@ epp-06:
     - EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL
     - EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL
     - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
+
 epp-07:
   Summary: Contact <create> command test (if applicable for the registry type)
   Description: |
@@ -245,6 +251,7 @@ epp-07:
     - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
     - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
     - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+
 epp-08:
   Summary: Contact object access control (if applicable)
   Description: |
@@ -263,6 +270,7 @@ epp-08:
   Errors:
     - EPP_CONTACT_INFO_RESPONSE_NOT_2201
     - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
+
 epp-09:
   Summary: Contact <update> command test (if applicable for the registry type)
   Description: |
@@ -319,11 +327,12 @@ epp-09:
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+
 epp-10:
   Summary: Contact <delete> command test (if applicable for the registry type)
   Description: |
     This test will perform `<delete>` commands on the objects created during
-    `epp-22` and will confirm that the server accepts the `<delete>` command
+    `epp-24` and will confirm that the server accepts the `<delete>` command
     with a `1xxx` response code.
 
     If the `general.minimalPublicDataSet` input parameter is `true`, this
@@ -339,6 +348,7 @@ epp-10:
   Errors:
     - EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001
     - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
+
 epp-11:
   Summary: host <create> command test (if applicable)
   Description: |
@@ -374,6 +384,7 @@ epp-11:
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+
 epp-12:
   Summary: Host object access control (if applicable)
   Description: |
@@ -390,6 +401,7 @@ epp-12:
     - epp-11
   Errors:
     - EPP_HOST_UPDATE_AUTHZ_ERROR
+
 epp-13:
   Summary: Host <update> command test (if applicable)
   Description: |
@@ -422,6 +434,7 @@ epp-13:
     - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
     - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+
 epp-14:
   Summary: Domain <create> command test
   Description: |
@@ -496,6 +509,7 @@ epp-14:
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+
 epp-15:
   Summary: Registry object integrity test
   Description: |
@@ -514,6 +528,7 @@ epp-15:
   Errors:
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
+
 epp-16:
   Summary: Domain <update> command test
   Description: |
@@ -546,7 +561,24 @@ epp-16:
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA
-epp-16:
+
+epp-17:
+  Summary: Service Port consistency test
+  Description: |
+    This test confirms that all EPP service ports respond with consistent object
+    information.
+
+    The client will establish seperate connections to each EPP service port
+    (defined as an IP address and TCP port) and perform `<info>` commands on the
+    objects created in `epp-14`. In all cases, the server **MUST** respond with
+    a `1000` response and the content of the `<infData>` element **MUST** be
+    identical on all service ports.
+  Dependencies:
+    - epp-14
+  Errors:
+    - EPP_SERVICE_PORT_NOT_CONSISTENT
+
+epp-18:
   Summary: Domain <renew> command test
   Description: |
     This test will confirm that the client is able to renew domain names. The
@@ -570,7 +602,7 @@ epp-16:
     - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
     - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
 
-epp-17:
+epp-19:
   Summary: Domain <transfer> command test
   Description: |
     This test will confirm that the client is able to initiate a domain
@@ -625,13 +657,13 @@ epp-17:
     - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
     - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
 
-epp-18:
+epp-20:
   Summary: Domain <transfer> rejection test
   Description:
     This test confirms that the server behaves correctly if the sponsoring
     registrar of a domain rejects a transfer request.
 
-    The test procedure matches that of `epp-17`, but the transfer request will
+    The test procedure matches that of `epp-19`, but the transfer request will
     be rejected rather than approved. An `<info>` command will be used to
     confirm that the domain name remains under the sponsorship of the original
     registrar.
@@ -640,7 +672,7 @@ epp-18:
   Errors:
     - EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER
 
-epp-19:
+epp-21:
   Summary: Domain <delete> command test
   Description: |
     This test will perform `<delete>` commands on the objects created during
@@ -662,11 +694,11 @@ epp-19:
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
 
-epp-20:
+epp-22:
   Summary: Domain restore test
   Description: |
     This test will perform RGP restore operations on the objects deleted
-    during `epp-19`, in order to confirm the correct operation of the server's
+    during `epp-21`, in order to confirm the correct operation of the server's
     implementation of RFC 3915.
 
     Once the restore request has been procssed, the client will perform
@@ -675,11 +707,11 @@ epp-20:
   Input-Parameters:
     - epp.restoreReportRequired
   Dependencies:
-    - epp-19
+    - epp-21
   Errors:
     - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
 
-epp-21:
+epp-23:
   Summary: Host rename test (if applicable)
   Description: |
     This tests verifies the server's support for host rename operations.
@@ -717,7 +749,7 @@ epp-21:
     - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
     - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
 
-epp-22:
+epp-24:
   Summary: Host <delete> command test (if applicable)
   Description: |
     This test will perform `<delete>` commands on the objects created during
@@ -731,6 +763,6 @@ epp-22:
     received from the server, the client will perform `<check>` and `<info>`
     commands to confirm that the objects have been deleted.
   Dependencies:
-    - epp-21
+    - epp-23
   Errors:
     - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS

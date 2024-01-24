@@ -341,6 +341,46 @@
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "EPP_GENERIC_COMMAND_ERROR" : {
          "Description" : "The client received a 2400 error from the server.",
          "Severity" : "ERROR"
@@ -527,6 +567,10 @@
       },
       "EPP_SCHEMA_VALIDATION_ERROR" : {
          "Description" : "The response from the server failed schema validation.",
+         "Severity" : "ERROR"
+      },
+      "EPP_SERVICE_PORT_NOT_CONSISTENT" : {
+         "Description" : "TBA",
          "Severity" : "ERROR"
       },
       "EPP_SERVICE_PORT_UNREACHABLE" : {
@@ -2907,7 +2951,7 @@
             "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
             "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"
          ],
-         "Summary" : "domain <check> command test"
+         "Summary" : "Domain <check> command test"
       },
       "epp-05" : {
          "Dependencies" : [
@@ -2922,7 +2966,7 @@
          "Input-Parameters" : [
             "epp.registeredNameservers"
          ],
-         "Summary" : "host <check> command test (if applicable)"
+         "Summary" : "Host <check> command test (if applicable)"
       },
       "epp-06" : {
          "Dependencies" : [
@@ -2937,7 +2981,7 @@
          "Input-Parameters" : [
             "epp.registeredContacts"
          ],
-         "Summary" : "contact <check> command test (if applicable for the registry type)"
+         "Summary" : "Contact <check> command test (if applicable for the registry type)"
       },
       "epp-07" : {
          "Dependencies" : [
@@ -2965,7 +3009,7 @@
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Summary" : "contact <create> command test (if applicable for the registry type)"
+         "Summary" : "Contact <create> command test (if applicable for the registry type)"
       },
       "epp-08" : {
          "Dependencies" : [
@@ -3008,19 +3052,19 @@
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Summary" : "contact <update> command test (if applicable for the registry type)"
+         "Summary" : "Contact <update> command test (if applicable for the registry type)"
       },
       "epp-10" : {
          "Dependencies" : [
             "epp-09"
          ],
-         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-22` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nOnce the `<delete>` commands have been submitted, the client will perform\n`<info>` commands to confirm that the objects have actually been removed\nfrom the repository. If the response to the previous `<delete>` command\nwas 1001, this step will be skipped.\n",
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-24` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nOnce the `<delete>` commands have been submitted, the client will perform\n`<info>` commands to confirm that the objects have actually been removed\nfrom the repository. If the response to the previous `<delete>` command\nwas 1001, this step will be skipped.\n",
          "Errors" : [
             "EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001",
             "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS"
          ],
          "Input-Parameters" : null,
-         "Summary" : "contact <delete> command test (if applicable for the registry type)"
+         "Summary" : "Contact <delete> command test (if applicable for the registry type)"
       },
       "epp-11" : {
          "Description" : "This test attempts to create a number of host objects, and validates\nthe server's response. For example, the test will expect that the server\nwill reject a command that creates an object with missing or invalid\nproperties, but will accept a command to create an object with valid\nproperties. Property values will be randomly generated but will contain\nrealistic values. No personal information will be transmitted as part\nof this test.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe test will confirm that the server checks and validates the values of\nthe following elements:\n\n* `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD\n  set)\n* `<host:status>`\n* `<host:addr>` elements (both IPv4 and IPv6)\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nThe client will then perform `<info>` commands on the objects successfully\ncreated to confirm that the server has correctly stored the provided\nvalues.\n",
@@ -3042,7 +3086,7 @@
          "Errors" : [
             "EPP_HOST_UPDATE_AUTHZ_ERROR"
          ],
-         "Summary" : "host object access control (if applicable)"
+         "Summary" : "Host object access control (if applicable)"
       },
       "epp-13" : {
          "Dependencies" : [
@@ -3057,7 +3101,7 @@
             "EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
             "EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
-         "Summary" : "host <update> command test (if applicable)"
+         "Summary" : "Host <update> command test (if applicable)"
       },
       "epp-14" : {
          "Dependencies" : [
@@ -3084,7 +3128,7 @@
          "Input-Parameters" : [
             "epp.secDNSInterfaces"
          ],
-         "Summary" : "domain <create> command test"
+         "Summary" : "Domain <create> command test"
       },
       "epp-15" : {
          "Dependencies" : [
@@ -3101,6 +3145,36 @@
          "Dependencies" : [
             "epp-14"
          ],
+         "Description" : "This test will confirm that the client is able to perform an `<update>`\ncommand on the domain names created in `epp-14`, including:\n\n* adding and removing client-assigned status codes\n* adding and removing nameservers (whether objects or attributes)\n* changing registrant object (if applicable)\n* adding and remove DNSSEC information\n\nThe client will also confirm that it cannot perform an `<update>` command\non a domain sponsored by another registrar, and that the server responds\nwith a `2201` authorization error.\n\nOnce the `<update>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the changes have been correctly\nstored by the server.\n",
+         "Errors" : [
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA",
+            "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA"
+         ],
+         "Input-Parameters" : null,
+         "Summary" : "Domain <update> command test"
+      },
+      "epp-17" : {
+         "Dependencies" : [
+            "epp-14"
+         ],
+         "Description" : "This test confirms that all EPP service ports respond with consistent object\ninformation.\n\nThe client will establish seperate connections to each EPP service port\n(defined as an IP address and TCP port) and perform `<info>` commands on the\nobjects created in `epp-14`. In all cases, the server **MUST** respond with\na `1000` response and the content of the `<infData>` element **MUST** be\nidentical on all service ports.\n",
+         "Errors" : [
+            "EPP_SERVICE_PORT_NOT_CONSISTENT"
+         ],
+         "Summary" : "Service Port consistency test"
+      },
+      "epp-18" : {
+         "Dependencies" : [
+            "epp-14"
+         ],
          "Description" : "This test will confirm that the client is able to renew domain names. The\nclient will submit a number of `<renew>` commands for the domains created in\n`epp-14`.\n\n* Following a succesful `<renew>` command, the expiry date of the domain\n  **MUST** have been increased by the period specified by the client;\n* The domain **MUST** have an RGP status of `renewPeriod`;\n* The server **MUST** reject a `<renew>` command if it would result in\n  the expiry date being more than 10 years into the future.\n\nThe client will issue the `<renew>` commands and then perform `<info>`\ncommands to ensure that the expiry date and RGP status of the domain are\nset correctly.\n",
          "Errors" : [
             "EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD",
@@ -3108,9 +3182,9 @@
             "EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE",
             "EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS"
          ],
-         "Summary" : "domain <renew> command test"
+         "Summary" : "Domain <renew> command test"
       },
-      "epp-17" : {
+      "epp-19" : {
          "Dependencies" : [
             "epp-14"
          ],
@@ -3126,19 +3200,19 @@
             "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS",
             "EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET"
          ],
-         "Summary" : "domain <transfer> command test"
+         "Summary" : "Domain <transfer> command test"
       },
-      "epp-18" : {
+      "epp-20" : {
          "Dependencies" : [
             "epp-14"
          ],
-         "Description" : "This test confirms that the server behaves correctly if the sponsoring registrar of a domain rejects a transfer request.\nThe test procedure matches that of `epp-17`, but the transfer request will be rejected rather than approved. An `<info>` command will be used to confirm that the domain name remains under the sponsorship of the original registrar.",
+         "Description" : "This test confirms that the server behaves correctly if the sponsoring registrar of a domain rejects a transfer request.\nThe test procedure matches that of `epp-19`, but the transfer request will be rejected rather than approved. An `<info>` command will be used to confirm that the domain name remains under the sponsorship of the original registrar.",
          "Errors" : [
             "EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER"
          ],
-         "Summary" : "domain <transfer> rejection test"
+         "Summary" : "Domain <transfer> rejection test"
       },
-      "epp-19" : {
+      "epp-21" : {
          "Dependencies" : [
             "epp-14"
          ],
@@ -3148,22 +3222,22 @@
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE",
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE"
          ],
-         "Summary" : "domain <delete> command test"
+         "Summary" : "Domain <delete> command test"
       },
-      "epp-20" : {
+      "epp-22" : {
          "Dependencies" : [
-            "epp-19"
+            "epp-21"
          ],
-         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-19`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n\nOnce the restore request has been procssed, the client will perform\n`<info>` commands on the deleted to object to confirm that the domain no\nlonger has the `pendingDelete` status and RGP status.\n",
+         "Description" : "This test will perform RGP restore operations on the objects deleted\nduring `epp-21`, in order to confirm the correct operation of the server's\nimplementation of RFC 3915.\n\nOnce the restore request has been procssed, the client will perform\n`<info>` commands on the deleted to object to confirm that the domain no\nlonger has the `pendingDelete` status and RGP status.\n",
          "Errors" : [
             "EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE"
          ],
          "Input-Parameters" : [
             "epp.restoreReportRequired"
          ],
-         "Summary" : "domain restore test"
+         "Summary" : "Domain restore test"
       },
-      "epp-21" : {
+      "epp-23" : {
          "Dependencies" : [
             "epp-14",
             "epp-11"
@@ -3176,17 +3250,17 @@
             "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN",
             "EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME"
          ],
-         "Summary" : "host rename test (if applicable)"
+         "Summary" : "Host rename test (if applicable)"
       },
-      "epp-22" : {
+      "epp-24" : {
          "Dependencies" : [
-            "epp-21"
+            "epp-23"
          ],
          "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-11` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `epp.hostModel` input parameter is `attributes`, this test will\nbe skipped.\n\nOnce the `<delete>` commands have been submitted, if a `1000` response was\nreceived from the server, the client will perform `<check>` and `<info>`\ncommands to confirm that the objects have been deleted.\n",
          "Errors" : [
             "EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS"
          ],
-         "Summary" : "host <delete> command test (if applicable)"
+         "Summary" : "Host <delete> command test (if applicable)"
       },
       "idn-01" : {
          "Description" : "This test confirms that the EPP server correctly accepts or rejects domain\n`<create>` commands for valid and invalid IDN labels, respectively.\n\nIf there are no IDN tables supported under any of the TLDs associated with\nthe test, then this test will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe server **MUST** reject all `<create>` commands for invalid labels and\n**MUST** accept all `<create>` commands for valid labels.\n",
@@ -3216,16 +3290,24 @@
          "Summary" : "Level 3 variant handling test"
       },
       "integration-01" : {
-         "Dependencies" : [
-            "epp-14",
-            "epp-11"
-         ],
-         "Description" : "This test confirms that the EPP and RDAP systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform RDAP queries to confirm that the RDAP server\nprovides responses for the domains created in `epp-14`, and host objects\ncreated in `epp-11` (if applicable). The RDAP server **MUST** provide a 200\nresponse within 1 hour of the object's `<crDate>` element.\n",
+         "Description" : "This test confirms that the EPP and RDAP systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will connect to the EPP server and create domain and (if\napplicable) host and contact objects using the same methodology as `epp-14`\n`epp-11`. It will then perform RDAP queries for those objects.\n\nThe RDAP server **MUST** provide a 200 response for every object created\nwithin 1 hour of the object's `<crDate>` element.\n",
          "Errors" : [
+            "EPP_DNS_RESOLUTION_ERROR",
+            "EPP_SERVICE_PORT_UNREACHABLE",
+            "EPP_TLS_CONNECTION_ERROR",
+            "EPP_LOGIN_ERROR",
+            "EPP_XML_PARSE_ERROR",
+            "EPP_GENERIC_COMMAND_ERROR",
+            "EPP_UNEXPECTED_COMMAND_FAILURE",
+            "EPP_SCHEMA_VALIDATION_ERROR",
             "INTEGRATION_RDAP_REQUEST_FAILED",
             "INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP"
          ],
          "Input-Parameters" : [
+            "epp.hostName",
+            "epp.serverIssuedClientCertificate01",
+            "epp.clid01",
+            "epp.pwd01",
             "epp.hostModel",
             "rdap.baseURLs"
          ],
@@ -3234,9 +3316,9 @@
       },
       "integration-02" : {
          "Dependencies" : [
-            "epp-14"
+            "integration-01"
          ],
-         "Description" : "This test confirms that the EPP and DNS systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform DNS queries to confirm that the DNS servers\nprovides responses for the domain names created in `epp-14`. All DNS\nservers **MUST** provide the correct DNS response within 1 hour of the\nobject's `<crDate>` element.\n",
+         "Description" : "This test confirms that the EPP and DNS systems are properly integrated,\nthat is, that transform commands performed on objects in the EPP system\nare reflected in the RDAP system within the Service Level Requirement of\nthe SLA.\n\nThe test system will perform DNS queries to confirm that the DNS servers\nprovide responses for the domain names created in `integration-01`. All DNS\nservers **MUST** provide the correct DNS response for all domains within 1\nhour of the domains's `<crDate>` element.\n",
          "Errors" : [
             "INTEGRATION_DNS_QUERY_FAILED",
             "INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS",
@@ -3250,10 +3332,9 @@
       },
       "integration-03" : {
          "Dependencies" : [
-            "epp-14",
-            "epp-11"
+            "integration-01"
          ],
-         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `epp-14` and `epp-11` (if applicable) tests\n**MUST** be found within a valid RDE deposit file (that is, the deposit\npasses all the tests in the RDE test suite) within 24 hours of each\nobject's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on\nthe date specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
+         "Description" : "This test confirms that the EPP and RDE systems are properly integrated,\nthat is, that objects created in the EPP system are reflected in a valid\nRDE deposit file within the Service Level Requirement of the SLA.\n\nThe test system will periodically connect to the SFTP server specified by\nthe `integration.rdeSFTPHostname` input parameter, using the username\nspecified in the `integration.rdeSFTPUsername` input parameter and the SSH\nkey in the `integration.rdeSFTPPublicKey` resource, and look for .ryde\nfiles in the directory specified by the `integration.rdeSFTPDirectory`\ninput parameter. Note that operators **MUST** ensure that the IP addresses\nlisted in the `integration.rdeSFTPACL` resource have been added to the\nAccess Control List for the SFTP server (if any).\n\nAll objects created in the `integration-01` test case **MUST** be found\nwithin a valid RDE deposit file (that is, the deposit passes all the tests\nin the RDE test suite) within 24 hours of each object's `<crDate>` element.\n\nFurthermore, for each deposit found in the directory, the corresponding\nRDE report (as described in [Section 2.1 of\ndraft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))\n**MUST** be recieved on the test RRI environment before 23:59:59 UTC on\nthe date specified in the Watermark element of the deposit file.\n\nTo facilitate submission of RDE reports, the RRI test environment will be\nconfigured to accept submissions for the TLDs associated with the test\nfrom clients using the same TLSA DNS hostnames that are configured for the\ntest.\n",
          "Errors" : [
             "INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE",
             "INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR",
@@ -3973,6 +4054,9 @@
       },
       "StandardIntegrationTest" : {
          "Description" : "This test suite verifies that the critical registry services of the TLD are\nproperly integrated and functioning within the requirements of the Service\nLevel Agreement.\n\n# Pass/fail criteria\n\nAs with all other [test suites](#test-suites), for this test suite to pass **all** the listed test cases **MUST** pass: if **any** fail, then the suite as a whole will fail.\n",
+         "Input-Parameters" : [
+            "general.minimalPublicDataSet"
+         ],
          "Name" : "Standard Integration Test",
          "Order" : "10",
          "Test-Cases" : "^integration-"
@@ -4056,5 +4140,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.263"
+   "Version" : "3.0.266"
 }
