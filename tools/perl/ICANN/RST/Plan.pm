@@ -9,7 +9,6 @@ eval qq(use ICANN::RST::Graph;) if (eval qq(use GraphViz2 ; 1));
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
-sub graph       { ICANN::RST::Graph->new($_[0]->cases) }
 
 sub suites {
     my $self = shift;
@@ -79,6 +78,47 @@ sub errors {
     }
 
     return sort { $a->id cmp $b->id } values(%errors);
+}
+
+sub graph {
+    my $self = shift;
+
+    my $graph = ICANN::RST::Graph->new;
+
+    $graph->add_node(
+        'name'  => 'START',
+        'shape' => 'box',
+    );
+
+    foreach my $suite ($self->suites) {
+        $graph->add_node(
+            'name'  => $suite->id,
+            'shape' => 'box',
+        );
+
+        $graph->add_edge(
+            'from'  => 'START',
+            'to'    => $suite->id,
+        );
+
+        $graph->push_subgraph(
+            'name' => 'cluster_'.$suite->id,
+            'graph' => {'bgcolor' => '#F8F8F8'},
+        );
+
+        my @cases = $suite->cases;
+
+        $graph->add_edge(
+            'from'  => $suite->id,
+            'to'    => $cases[0]->id,
+        );
+
+        $graph->add_cases(@cases);
+
+        $graph->pop_subgraph;
+    }
+
+    return $graph;
 }
 
 1;
