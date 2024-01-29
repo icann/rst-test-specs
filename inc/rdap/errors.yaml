@@ -1,0 +1,32 @@
+RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_UNTRUSTED_CERTIFICATE:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_EXPIRED_CERTIFICATE:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_CERTIFICATE_CHAIN_MISSING:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_TLS_BAD_CIPHER:
+  Severity: ERROR
+  Description: TBA
+
+RDAP_SERVICE_PORT_NOT_CONSISTENT:
+  Severity: ERROR
+  Description: TBA
+
