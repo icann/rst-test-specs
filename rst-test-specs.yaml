@@ -1,7 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.266
-Last-Updated: 2024-01-24
+Version: 3.0.270
+Last-Updated: 2024-01-29
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -3699,6 +3699,57 @@ Test-Cases:
       This test case comes from the RDAP Conformance Tool. For more information, see
         <https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf>.
   
+  rdap-91:
+    Summary: TLS version conformance check
+    Maturity: ALPHA
+    Description: |
+      **NOTE: this test case is a placeholder for a test case that will eventually
+      be added to the RDAP Conformance Tool.**
+  
+      This test case verifies that the RDAP server properly implements a secure
+      TLS configuration.
+  
+      1. All service ports **MUST** support TLSv1.2 and optionally any subsequent
+         protocol published by the IETF.
+      2. TLSv1.1 and all previous versions have known security issues and **MUST
+         NOT** be supported by any service ports.
+      3. To ensure that the connection can be trusted, all service ports
+         **MUST** present a certificate issued by a trusted CA, such as those
+         supported by major browsers.
+      4. All TLS certificates **MUST NOT** have expired, and **MUST** be
+         presented wth any required intermediate certificates.
+      5. The RDAP server name **MUST** match at least one `subjectAltName` field
+         in all presented certificates (either exact match or wildcard).
+      6. Service ports **MUST** use at least one of the ciphers recommended in
+         RFC 9325 (or any successor document).
+    Errors:
+      - RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED
+      - RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED
+      - RDAP_TLS_UNTRUSTED_CERTIFICATE
+      - RDAP_TLS_EXPIRED_CERTIFICATE
+      - RDAP_TLS_CERTIFICATE_CHAIN_MISSING
+      - RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
+      - RDAP_TLS_BAD_CIPHER
+  
+  rdap-92:
+    Summary: Service port consistency check
+    Maturity: ALPHA
+    Description: |
+      **NOTE: this test case is a placeholder for a test case that will eventually
+      be added to the RDAP Conformance Tool.**
+  
+      This test confirms that all RDAP service ports return identical responses.
+  
+      The client will establish seperate connections to each RDAP service port
+      (defined as an IP address and TCP port) and perform RDAP queries on the
+      objects specified in the `rdap.testDomains`, `rdap.testEntities`, and
+      `rdap.testNameservers` input parameters.
+  
+      The responses returned by each service port **MUST**, with the exception
+      of the `last update of RDAP database` event, be consistent, once the JSON
+      body has been parsed and canonicalised.
+    Errors:
+      - RDAP_SERVICE_PORT_NOT_CONSISTENT
   minimumRPMs-01:
     Summary: Claims <check> command test
     Description: |
@@ -7421,6 +7472,38 @@ Errors:
     Description: TBA
   
   EPP_SERVICE_PORT_NOT_CONSISTENT:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_UNTRUSTED_CERTIFICATE:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_EXPIRED_CERTIFICATE:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_CERTIFICATE_CHAIN_MISSING:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_TLS_BAD_CIPHER:
+    Severity: ERROR
+    Description: TBA
+  
+  RDAP_SERVICE_PORT_NOT_CONSISTENT:
     Severity: ERROR
     Description: TBA
   

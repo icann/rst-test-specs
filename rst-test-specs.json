@@ -717,6 +717,38 @@
          "Description" : "TBA.",
          "Severity" : "ERROR"
       },
+      "RDAP_SERVICE_PORT_NOT_CONSISTENT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_BAD_CIPHER" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_CERTIFICATE_CHAIN_MISSING" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_EXPIRED_CERTIFICATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "RDAP_TLS_UNTRUSTED_CERTIFICATE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "RDE_CONTACT_HAS_INVALID_CC" : {
          "Description" : "TBA.",
          "Severity" : "ERROR"
@@ -2246,7 +2278,7 @@
          "Type" : "string"
       }
    },
-   "Last-Updated" : "2024-01-24",
+   "Last-Updated" : "2024-01-29",
    "Preamble" : "This file describes each test [plan](#test-plans), [suite](#test-suites) and\n[case](#test-cases) in the RST system, as well as the\n[input parameters](#input-parameters) required for each, relevant\n[resources](#resources), any inter-case dependencies, and the\n[errors](#errors) that might occur during testing.\n\nThe key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\",\n\"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this\ndocument are to be interpreted as described in [RFC\n2119](https://www.rfc-editor.org/rfc/rfc2119.html) when, and only when, they\nappear in all capitals, as shown here.\n\n# 2.1. Test plans\n\nAn individual *Test Plan* addresses a particular scenario (for example, RSP\nevaluation or Pre-Delegation Testing). Each plan consists of one or more *test\nsuites*, which in turn include one or more *test cases*.\n\n## 2.1.1. Test plan types\n\nThere are two types of test plan described in this document:\n\n* **Business as usual** plans, which are used as part of the lifecycle of a\ngTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway\nTest)\n* **RSP evaluation** plans, which are used as part of the RSP evaluation\nprogram.\n\n# 2.2. Test suites\n\nA *Test Suite* is a collection of *test cases* with a common theme or subject\nmatter, for example, Authoritative DNS or Registry Data Escrow.\n\n# 2.3. Test cases\n\nA *Test Case* describes a process for determining the conformance or\nacceptability of a certain element of the system.\n\nA test case consists of a *test procedure* which accepts zero or more **input\nparameters**, and generates one or more **test results**.\n\n## 2.3.1. Input parameters\n\nAll test cases require some information about the subject of the test, for\nexample, service hostnames, credentials, and functional parameters. These\n*input parameters* may be shared across multiple test cases.\n\n## 2.3.2. Test environments\n\nEach test plan indicates whether the test is to be carried out in the\nproduction environment, or whether a test, staging or OT&E environment may be\nused. In general, test plans which are designed for \"business as usual\" use\nduring the lifecycle of a TLD **MUST** be carried out in the production\nregistry infrastructure, while RSP evaluation tests **MAY** be carried out in\ntest, staging or OT&E environments.\n\n## 2.3.3. Test results\n\nTest cases will generate one or more *test results*. Test results indicate the\noutcome of the test and other relevant information.\n\n## 2.3.4. General pass/fail criteria\n\nIn general, for a test to pass, **all** the test cases specified in the test\nsuite(s) for the test plan **MUST** pass: if *any* fail, then the test as a\nwhole will fail.\n\nA test case will fail if it produces one or more [errors](#errors) with the\n`ERROR` or `CRITICAL` severities.\n\n## 2.3.5. Error severity levels\n\nThe supported severity levels are a subset of the values defined in RFC 5424.\n\n2. `WARNING` - an issue which does not prevent the test from *passing*, but\n which may benefit from further investigation.\n1. `ERROR` - an issue which prevents the test case from *passing*, but does not\n prevent the test case from *continuing*. A test case may produce multiple\n `ERROR` results.\n2. `CRITICAL` - an issue which prevents the test case from continuing any\n further. A test case will only produce a single `CRITICAL` result and it\n will always be the last result in the log.\n\n## 2.3.6. Common errors\n\nFor each test case, various errors and critical errors are defined which will\nbe used to signal why that the case might have failed.\n\nIn addition to these, there are a number of errors which any test case may\nproduce, which are:\n\n* [TBA]\n\n# 2.4. Test procedures\n\nWhere possible, test cases will reuse existing connections and any objects\ncreated as part of previous test cases, to reduce the resources required to\nperform service testing. However, it is anticipated that registry services will\nsee a moderate volume of connections from test systems, and a moderate number of\nobjects may be created as part of the test. The level of resource consumption is\nanticipated to be significantly lower than that experienced by a live production\nsystem, so in \"business as usual\" scenarios, where production systems are being\ntested, no impact to those systems is expected.\n\nWhere a test is being carried out using test, staging or OT&E environments, then\nthose systems should be provisioned with sufficient capacity to allow testing to\nbe carried out without interruption. Any existing OT&E environment supporting\nregistrar integration testing and onboarding is likely to be sufficiently robust\nto support Registry System Testing with no further additional capacity\nrequirements.\n\n# 2.5. Key acronyms and terms\n\nRST\n: Registry System Testing. This system.\n\nPDT\n: Pre-Delegation Test. A test carried out prior to the delegation of a new TLD\ninto the DNS root zone.\n\nRSP\n: Registry Service Provider. A specialist provider of critical registry\nservices.\n\nDNS\n: Domain Name System. The internet's system of globally unique identifiers.\n\nTLD\n: Top-level domain. The highest level of the DNS namespace hierarchy.\n\ngTLD\n: generic top-level domain.\n\nDNSSEC\n: DNS Security Extensions. DNSSEC is described in [BCP\n237](https://www.rfc-editor.org/info/bcp237).\n\nEPP\n: Extensible Provisioning Protocol. The protocol used by registrars to create\nand manage domain name registrations in an SRS. EPP is defined in [STD\n69](https://www.rfc-editor.org/info/std69).\n\nSRS\n: Shared Registry System. A TLD registry in which registrations are managed\nby one or more registrars, using EPP.\n\nRDDS\n: Registration Data Directory Services. A service to provide access to\ndata about domain registrations to third parties.\n\nRDAP\n: Registration Data Access Protocol. The protocol used to deliver the RDDS.\nRDAP is defined in [STD 95](https://www.rfc-editor.org/info/std95).\n\nRDE\n: Registry Data Escrow. A system whereby the registration data stored in a\nShared Registry System is backed up to a trusted third party. RDE is defined\nin [RFC 8909](https://www.rfc-editor.org/info/rfc8909) and [RFC\n9022](https://www.rfc-editor.org/info/rfc9022).\n\nIDN\n: Internationalized Domain Name. A domain name that contains characters not in\nthe ASCII character set. The technical specification for IDNs may be found in\n[RFC 5890](https://www.rfc-editor.org/info/rfc5890). All gTLDs must comply\nwith ICANN's [IDN\nGuidelines](https://www.icann.org/resources/pages/implementation-guidelines-2012-02-25-en).\n\nLGR\n: Label Generation Ruleset. The rules by which IDNs are validated. LGRs are\ndescribed in [RFC 7940](https://www.rfc-editor.org/info/rfc7940).\n\nRO\n: Registry Operator. The entity to which ICANN has granted the right to\noperate a gTLD.\n\nRA\n: Registry Agreement. The contract between a Registry Operator and ICANN. The\nbase Registry Agreement may be reviewed at\n<https://www.icann.org/en/registry-agreements/base-agreement>.\n\nKSK\n: Key Signing Key. A cryptographic key which acts as the Secure Entry Point\nfor a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is\npublished in the parent zone (ie. the root zone for a TLD).\n\nZSK\n: Zone Signing Key. A cryptographic key which signs a DNS zone's resource\nrecords.\n\nCSK\n: Combined Signing Key. A cryptographic key used as **both** a KSK and a ZSK.\n\nRPMs\n: Rights Protection Mechanisms, intended to discourage or prevent registration\nof domain names that violate or abuse another party’s legal rights. These\n**MUST** include (but are not limited to): (1) Sunrise Periods, and (2)\nTrademark Claims Periods (see [Specification 7 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).\n\nTMCH\n: Trademark Clearinghouse. The system established by ICANN to maintain a\ndatabase of validated and registered trademarks which is used to enforce\nRights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of\nthe TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).\n\nSLA\n: Service Level Agreement. The registry performance specifications laid out in\n[Specification 10 of the Registry\nAgreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification10).\n\nRRI\n: Registration Reporting Interfaces. The interfaces provided by ICANN to\ncontracted parties including Registry Operators to fulfill and monitor their\napplicable reporting requirements, including per-registrar transaction\nreports; registry functions activity reports; data escrow deposits reports and\ndata escrow deposits notifications. For registry operators, the relevant\ninterfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).\n",
    "RST-Test-Plan-Schema-Version" : "1.6.1",
    "Resources" : {
@@ -3520,6 +3552,28 @@
          "Maturity" : "GAMMA",
          "Summary" : "Web URI validation"
       },
+      "rdap-91" : {
+         "Description" : "**NOTE: this test case is a placeholder for a test case that will eventually\nbe added to the RDAP Conformance Tool.**\n\nThis test case verifies that the RDAP server properly implements a secure\nTLS configuration.\n\n1. All service ports **MUST** support TLSv1.2 and optionally any subsequent\n   protocol published by the IETF.\n2. TLSv1.1 and all previous versions have known security issues and **MUST\n   NOT** be supported by any service ports.\n3. To ensure that the connection can be trusted, all service ports\n   **MUST** present a certificate issued by a trusted CA, such as those\n   supported by major browsers.\n4. All TLS certificates **MUST NOT** have expired, and **MUST** be\n   presented wth any required intermediate certificates.\n5. The RDAP server name **MUST** match at least one `subjectAltName` field\n   in all presented certificates (either exact match or wildcard).\n6. Service ports **MUST** use at least one of the ciphers recommended in\n   RFC 9325 (or any successor document).\n",
+         "Errors" : [
+            "RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED",
+            "RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED",
+            "RDAP_TLS_UNTRUSTED_CERTIFICATE",
+            "RDAP_TLS_EXPIRED_CERTIFICATE",
+            "RDAP_TLS_CERTIFICATE_CHAIN_MISSING",
+            "RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH",
+            "RDAP_TLS_BAD_CIPHER"
+         ],
+         "Maturity" : "ALPHA",
+         "Summary" : "TLS version conformance check"
+      },
+      "rdap-92" : {
+         "Description" : "**NOTE: this test case is a placeholder for a test case that will eventually\nbe added to the RDAP Conformance Tool.**\n\nThis test confirms that all RDAP service ports return identical responses.\n\nThe client will establish seperate connections to each RDAP service port\n(defined as an IP address and TCP port) and perform RDAP queries on the\nobjects specified in the `rdap.testDomains`, `rdap.testEntities`, and\n`rdap.testNameservers` input parameters.\n\nThe responses returned by each service port **MUST**, with the exception\nof the `last update of RDAP database` event, be consistent, once the JSON\nbody has been parsed and canonicalised.\n",
+         "Errors" : [
+            "RDAP_SERVICE_PORT_NOT_CONSISTENT"
+         ],
+         "Maturity" : "ALPHA",
+         "Summary" : "Service port consistency check"
+      },
       "rde-01" : {
          "Description" : "* The deposit filename **MUST** conform to the format specified in the RA.\n* The type of the deposit **MUST** be `FULL`.\n* The TLD in the filename **MUST** be present in the list of TLDs\n  associated with the test.\n",
          "Errors" : [
@@ -4140,5 +4194,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.266"
+   "Version" : "3.0.270"
 }
