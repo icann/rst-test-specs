@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.7.0
-Version: 3.0.300
+Version: 3.0.301
 Last-Updated: 2024-01-30
 Contact:
   Name: GDS Technical Services
@@ -227,13 +227,16 @@ Preamble: |
   interfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).
 
 ChangeLog:
-  2024-01-30:
-    - Created this ChangeLog.
-    - add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).
-    - add [dnssec-93](#test-case-dnssec-93) test case.
-    - remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.
-    - the [ZM_ALGORITHM_NOT_RECOMMENDED](#error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.
-    - the maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**.
+  2024-01-31:
+    - Added this ChangeLog.
+    - Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).
+    - Add [dnssec-93](#test-case-dnssec-93) test case.
+    - Remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.
+    - The [ZM_ALGORITHM_NOT_RECOMMENDED](#error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.
+    - The maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**.
+    - Added additional error codes to [epp-16](#test-case-epp-16).
+    - Added check for `transferPeriod` RGP status to [epp-19](#test-case-epp-19).
+    - Add [epp-25](#test-case-epp-25) test case.
 
 Test-Plans:
   
@@ -3042,7 +3045,7 @@ Test-Cases:
       - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
   
   epp-11:
-    Summary: host <create> command test (if applicable)
+    Summary: Host <create> command test (if applicable)
     Maturity: BETA
     Description: |
       This test attempts to create a number of host objects, and validates
@@ -3192,16 +3195,15 @@ Test-Cases:
     Errors:
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD
-      - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES
+      - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE
-      - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY
-      - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES
-      - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS
+      - EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES
+      - EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS
       - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
       - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
@@ -3249,6 +3251,14 @@ Test-Cases:
     Dependencies:
       - epp-14
     Errors:
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT
+      - EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES
+      - EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS
+      - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
       - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT
@@ -3339,9 +3349,10 @@ Test-Cases:
       Once the gaining registrar has also received a message on the queue, the
       client will use an `<info>` command to confirm that:
   
-      * the domain is now under the sponsorship of the gaining registrar
+      * the domain is now under the sponsorship of the gaining registrar;
       * the authInfo code has been reset by the server (if the server supports
-        RFC 9154).
+        RFC 9154);
+      * the domain has the `transferPeriod` RGP status.
   
       This message **MUST** be received within 120 seconds of the transfer
       approval.
@@ -3472,6 +3483,26 @@ Test-Cases:
       - epp-23
     Errors:
       - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
+  
+  
+  epp-25:
+    Summary: Contact <delete> command test (if applicable)
+    Maturity: BETA
+    Description: |
+      This test will perform `<delete>` commands on the objects created during
+      `epp-07` and will confirm that the server accepts the `<delete>` command
+      with a `1xxx` response code.
+  
+      If the `general.minimalPublicDataSet` input parameter is `true`, this
+      test will be skipped.
+  
+      Once the `<delete>` commands have been submitted, if a `1000` response was
+      received from the server, the client will perform `<check>` and `<info>`
+      commands to confirm that the objects have been deleted.
+    Dependencies:
+      - epp-23
+    Errors:
+      - EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
   rdap-01-domainCaseFoldingValidation:
     Summary: Domain label case folding validation 
     Maturity: GAMMA
@@ -7098,18 +7129,6 @@ Errors:
     Severity: ERROR
     Description: TBA
   
-  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES:
-    Severity: ERROR
-    Description: TBA
-  
-  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
-    Severity: ERROR
-    Description: TBA
-  
-  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE:
-    Severity: ERROR
-    Description: TBA
-  
   EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
     Severity: ERROR
     Description: TBA
@@ -7127,14 +7146,6 @@ Errors:
     Description: TBA
   
   EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY:
-    Severity: ERROR
-    Description: TBA
-  
-  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES:
-    Severity: ERROR
-    Description: TBA
-  
-  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS:
     Severity: ERROR
     Description: TBA
   
@@ -7306,6 +7317,57 @@ Errors:
     Severity: ERROR
     Description: TBA
   
+  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
+    Severity: ERROR
+    Description: TBA
+  
+  EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
+    Severity: ERROR
+    Description: TBA
   RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
     Severity: ERROR
     Description: TBA

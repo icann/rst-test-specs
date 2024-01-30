@@ -1,12 +1,15 @@
 {
    "ChangeLog" : {
-      "2024-01-30" : [
-         "Created this ChangeLog.",
-         "add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).",
-         "add [dnssec-93](#test-case-dnssec-93) test case.",
-         "remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.",
-         "the [ZM_ALGORITHM_NOT_RECOMMENDED](#error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.",
-         "the maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**."
+      "2024-01-31" : [
+         "Added this ChangeLog.",
+         "Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).",
+         "Add [dnssec-93](#test-case-dnssec-93) test case.",
+         "Remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.",
+         "The [ZM_ALGORITHM_NOT_RECOMMENDED](#error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.",
+         "The maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**.",
+         "Added additional error codes to [epp-16](#test-case-epp-16).",
+         "Added check for `transferPeriod` RGP status to [epp-19](#test-case-epp-19).",
+         "Add [epp-25](#test-case-epp-25) test case."
       ]
    },
    "Contact" : {
@@ -167,6 +170,10 @@
          "Description" : "TBA.",
          "Severity" : "ERROR"
       },
+      "EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
       "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS" : {
          "Description" : "TBA.",
          "Severity" : "ERROR"
@@ -303,15 +310,7 @@
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
-      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
       "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS" : {
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
@@ -323,11 +322,7 @@
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
-      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE" : {
-         "Description" : "TBA",
-         "Severity" : "ERROR"
-      },
-      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES" : {
+      "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT" : {
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
@@ -348,6 +343,14 @@
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS" : {
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
@@ -400,6 +403,38 @@
          "Severity" : "ERROR"
       },
       "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES" : {
+         "Description" : "TBA",
+         "Severity" : "ERROR"
+      },
+      "EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS" : {
          "Description" : "TBA",
          "Severity" : "ERROR"
       },
@@ -2989,7 +3024,7 @@
             "EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
          "Maturity" : "BETA",
-         "Summary" : "host <create> command test (if applicable)"
+         "Summary" : "Host <create> command test (if applicable)"
       },
       "epp-12" : {
          "Dependencies" : [
@@ -3026,16 +3061,15 @@
          "Errors" : [
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD",
-            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE",
-            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY",
-            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES",
-            "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS",
+            "EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS",
             "EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO",
             "EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID",
             "EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
@@ -3064,6 +3098,14 @@
          ],
          "Description" : "This test will confirm that the client is able to perform an `<update>`\ncommand on the domain names created in `epp-14`, including:\n\n* adding and removing client-assigned status codes\n* adding and removing nameservers (whether objects or attributes)\n* changing registrant object (if applicable)\n* adding and remove DNSSEC information\n\nThe client will also confirm that it cannot perform an `<update>` command\non a domain sponsored by another registrar, and that the server responds\nwith a `2201` authorization error.\n\nOnce the `<update>` commands have been processed, the client will then\nperform `<info>` commands to confirm that the changes have been correctly\nstored by the server.\n",
          "Errors" : [
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE",
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA",
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT",
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT",
+            "EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES",
+            "EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS",
+            "EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO",
             "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE",
             "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE",
             "EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT",
@@ -3108,7 +3150,7 @@
          "Dependencies" : [
             "epp-14"
          ],
-         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-14`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently\nsecure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nThe client will use an `<info>` command to ensure that the\n`pendingTransfer` status code is added to the domain after a successul\ntransfer request.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer. This message **MUST** be received within 120\nseconds of the transfer request.\n\nOnce the gaining registrar has also received a message on the queue, the\nclient will use an `<info>` command to confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154).\n\nThis message **MUST** be received within 120 seconds of the transfer\napproval.\n",
+         "Description" : "This test will confirm that the client is able to initiate a domain\ntransfer.\n\nThe client will perform an `<update>` command to set the authInfo code for\nthe test domain (taken from the set created in `epp-14`) to a\nrandomly-determined value. If the server implements RFC 9154, it **MUST**\nreject the `<update>` command if the authInfo code is insufficently\nsecure.\n\nThen, using a second set of credentials, the client will connect to the\nEPP server and authenticate, submit `<transfer>` commands, and validate\nthe responses.\n\nThis test will confirm that:\n\n* the server rejects a `<transfer>` command with an invalid authInfo code\n* the server rejects a command which would extend the domain's validity\n  period more than 10 years into the future\n* the server accepts a `<transfer>` command with a valid authInfo code\n  and period.\n\nThe client will use an `<info>` command to ensure that the\n`pendingTransfer` status code is added to the domain after a successul\ntransfer request.\n\nOnce the transfer request has been accepted, the sponsoring client will\nwait for a message to be received on the server's message queue, and will\nthen approve the transfer. This message **MUST** be received within 120\nseconds of the transfer request.\n\nOnce the gaining registrar has also received a message on the queue, the\nclient will use an `<info>` command to confirm that:\n\n* the domain is now under the sponsorship of the gaining registrar;\n* the authInfo code has been reset by the server (if the server supports\n  RFC 9154);\n* the domain has the `transferPeriod` RGP status.\n\nThis message **MUST** be received within 120 seconds of the transfer\napproval.\n",
          "Errors" : [
             "EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO",
             "EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO",
@@ -3187,6 +3229,17 @@
          ],
          "Maturity" : "BETA",
          "Summary" : "Host <delete> command test (if applicable)"
+      },
+      "epp-25" : {
+         "Dependencies" : [
+            "epp-23"
+         ],
+         "Description" : "This test will perform `<delete>` commands on the objects created during\n`epp-07` and will confirm that the server accepts the `<delete>` command\nwith a `1xxx` response code.\n\nIf the `general.minimalPublicDataSet` input parameter is `true`, this\ntest will be skipped.\n\nOnce the `<delete>` commands have been submitted, if a `1000` response was\nreceived from the server, the client will perform `<check>` and `<info>`\ncommands to confirm that the objects have been deleted.\n",
+         "Errors" : [
+            "EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS"
+         ],
+         "Maturity" : "BETA",
+         "Summary" : "Contact <delete> command test (if applicable)"
       },
       "idn-01" : {
          "Description" : "This test confirms that the EPP server correctly accepts or rejects domain\n`<create>` commands for valid and invalid IDN labels, respectively.\n\nIf there are no IDN tables supported under any of the TLDs associated with\nthe test, then this test will be skipped.\n\nFor each supported IDN table, the test client will perform a series of\n`<create>` commands using a pre-defined catalogue of test labels. If\nrequired, the client will create any contact object(s) needed.\n\nThe server **MUST** reject all `<create>` commands for invalid labels and\n**MUST** accept all `<create>` commands for valid labels.\n",
@@ -4091,5 +4144,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.300"
+   "Version" : "3.0.301"
 }
