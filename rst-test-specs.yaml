@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.7.0
-Version: 3.0.281
+Version: 3.0.283
 Last-Updated: 2024-01-30
 Contact:
   Name: GDS Technical Services
@@ -6220,22 +6220,6 @@ Errors:
     Description: TBA.
   
   EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-    Severity: ERROR
-    Description: TBA.
-  
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-    Severity: ERROR
-    Description: TBA.
-  
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-    Severity: ERROR
-    Description: TBA.
-  
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-    Severity: ERROR
-    Description: TBA.
-  
-  EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
     Severity: ERROR
     Description: TBA.
   
