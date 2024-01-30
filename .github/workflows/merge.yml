@@ -1,20 +1,26 @@
 name: Weekly update of the main branch
+
 on:
   workflow_dispatch:
   schedule:
     - cron: "00 06 * * 3"
 
+permissions:
+  contents: write
+
 jobs:
   merge:
+    name: Merge dev to main
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@master
+        with:
+          fetch-depth: 0
 
       - name: merge
-        uses: devmasx/merge-branch@master
+        uses: devvspaces/merge-branches@v1
         with:
-          type: now
+          token: ${{ secrets.GITHUB_TOKEN }}
           from_branch: dev
-          target_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          to_branch: main
