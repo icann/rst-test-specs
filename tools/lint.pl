@@ -124,6 +124,8 @@ sub check_case {
     foreach my $error (@{$case->{'Errors'}}) {
         warn(sprintf("Case '%s' uses non-existent error '%s'", $case->id, $error)) if (none { $_->id eq $error } $spec->errors);
     }
+
+    warn(sprintf("Case '%s' has maturity of '%s' (expected one of ALPHA|BETA|GAMMA)", $case->id, $case->{'Maturity'})) unless (any { $_ eq $case->{'Maturity'} } qw(ALPHA BETA GAMMA));
 }
 
 sub check_input {
