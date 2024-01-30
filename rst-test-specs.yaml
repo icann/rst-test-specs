@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.7.0
-Version: 3.0.283
+Version: 3.0.287
 Last-Updated: 2024-01-30
 Contact:
   Name: GDS Technical Services
@@ -2367,6 +2367,7 @@ Test-Cases:
       - DNSSEC_INVALID_DIGEST_ALGORITHM
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
+    Maturity: ALPHA
     Description: |
       This test case verifies the RSP's ability to perform a ZSK rollover (as
       described in [Section 4.1.1 of
@@ -2409,6 +2410,7 @@ Test-Cases:
     
   dnssecOps02-KSKRollover:
     Summary: KSK rollover
+    Maturity: ALPHA
     Description: |
       This test case verifies the RSP's ability to perform a CSK/KSK rollover
       (as described in [Sections 4.1.2 and 4.13 of
@@ -2444,6 +2446,7 @@ Test-Cases:
   
   dnssecOps03-AlgorithmRollover:
     Summary: algorithm rollover
+    Maturity: ALPHA
     Description: |
       This test case verifies the RSP's ability to perform an algorithm rollover
       (as described in [Section 4.1.4 of
@@ -2748,6 +2751,7 @@ Test-Cases:
       - RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS
   epp-01:
     Summary: Service connectivity test
+    Maturity: ALPHA
     Description: |
       This test confirms that the EPP service is reachable from the probe
       servers.
@@ -2791,6 +2795,7 @@ Test-Cases:
   
   epp-02:
     Summary: Protocol conformance test
+    Maturity: ALPHA
     Description: |
       Once a connection is established, all service ports **MUST** send a
       valid `<greeting>` frame to the client.
@@ -2838,6 +2843,7 @@ Test-Cases:
   
   epp-03:
     Summary: Authentication test
+    Maturity: ALPHA
     Description: |
       This test case validates the server's implementation of client
       authentication. The client will submit a series of `<login>` commands to
@@ -2863,6 +2869,7 @@ Test-Cases:
   
   epp-04:
     Summary: Domain <check> command test
+    Maturity: ALPHA
     Description: |
       The client will perform a series of `<check>` commands and will validate
       the `avail` attribute of the `<domain:name>` elements in the server
@@ -2889,6 +2896,7 @@ Test-Cases:
   
   epp-05:
     Summary: Host <check> command test (if applicable)
+    Maturity: ALPHA
     Description: |
       If the EPP server supports host objects, this test will perform a series
       of `<check>` commands and will validate the `avail` attribute of the
@@ -2915,6 +2923,7 @@ Test-Cases:
   
   epp-06:
     Summary: Contact <check> command test (if applicable for the registry type)
+    Maturity: ALPHA
     Description: |
       If the EPP server supports contact objects, this test will perform a
       series of `<check>` commands and will validate the `avail` attribute of
@@ -2937,6 +2946,7 @@ Test-Cases:
   
   epp-07:
     Summary: Contact <create> command test (if applicable for the registry type)
+    Maturity: ALPHA
     Description: |
       This test attempts to create a number of contact objects, and validates
       the server's response. For example, the test will expect that the server
@@ -3002,6 +3012,7 @@ Test-Cases:
   
   epp-08:
     Summary: Contact object access control (if applicable)
+    Maturity: ALPHA
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
@@ -3021,6 +3032,7 @@ Test-Cases:
   
   epp-09:
     Summary: Contact <update> command test (if applicable for the registry type)
+    Maturity: ALPHA
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-07` and will confirm that the server correctly rejects invalid
@@ -3078,6 +3090,7 @@ Test-Cases:
   
   epp-10:
     Summary: Contact <delete> command test (if applicable for the registry type)
+    Maturity: ALPHA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-24` and will confirm that the server accepts the `<delete>` command
@@ -3099,6 +3112,7 @@ Test-Cases:
   
   epp-11:
     Summary: host <create> command test (if applicable)
+    Maturity: ALPHA
     Description: |
       This test attempts to create a number of host objects, and validates
       the server's response. For example, the test will expect that the server
@@ -3135,6 +3149,7 @@ Test-Cases:
   
   epp-12:
     Summary: Host object access control (if applicable)
+    Maturity: ALPHA
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
@@ -3152,6 +3167,7 @@ Test-Cases:
   
   epp-13:
     Summary: Host <update> command test (if applicable)
+    Maturity: ALPHA
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-11` and will confirm that the server correctly rejects invalid
@@ -3185,6 +3201,7 @@ Test-Cases:
   
   epp-14:
     Summary: Domain <create> command test
+    Maturity: ALPHA
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
       random ASCII domain names under each TLD in the TLD set. If the
@@ -3260,6 +3277,7 @@ Test-Cases:
   
   epp-15:
     Summary: Registry object integrity test
+    Maturity: ALPHA
     Description: |
       This test confirms that the EPP server will refuse a request to delete a
       linked object.
@@ -3279,6 +3297,7 @@ Test-Cases:
   
   epp-16:
     Summary: Domain <update> command test
+    Maturity: ALPHA
     Description: |
       This test will confirm that the client is able to perform an `<update>`
       command on the domain names created in `epp-14`, including:
@@ -3312,6 +3331,7 @@ Test-Cases:
   
   epp-17:
     Summary: Service Port consistency test
+    Maturity: ALPHA
     Description: |
       This test confirms that all EPP service ports respond with consistent object
       information.
@@ -3328,6 +3348,7 @@ Test-Cases:
   
   epp-18:
     Summary: Domain <renew> command test
+    Maturity: ALPHA
     Description: |
       This test will confirm that the client is able to renew domain names. The
       client will submit a number of `<renew>` commands for the domains created in
@@ -3352,6 +3373,7 @@ Test-Cases:
   
   epp-19:
     Summary: Domain <transfer> command test
+    Maturity: ALPHA
     Description: |
       This test will confirm that the client is able to initiate a domain
       transfer.
@@ -3407,7 +3429,8 @@ Test-Cases:
   
   epp-20:
     Summary: Domain <transfer> rejection test
-    Description:
+    Maturity: ALPHA
+    Description: |
       This test confirms that the server behaves correctly if the sponsoring
       registrar of a domain rejects a transfer request.
   
@@ -3422,6 +3445,7 @@ Test-Cases:
   
   epp-21:
     Summary: Domain <delete> command test
+    Maturity: ALPHA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-14` and will confirm that the server accepts the `<delete>` command
@@ -3444,6 +3468,7 @@ Test-Cases:
   
   epp-22:
     Summary: Domain restore test
+    Maturity: ALPHA
     Description: |
       This test will perform RGP restore operations on the objects deleted
       during `epp-21`, in order to confirm the correct operation of the server's
@@ -3461,6 +3486,7 @@ Test-Cases:
   
   epp-23:
     Summary: Host rename test (if applicable)
+    Maturity: ALPHA
     Description: |
       This tests verifies the server's support for host rename operations.
   
@@ -3499,6 +3525,7 @@ Test-Cases:
   
   epp-24:
     Summary: Host <delete> command test (if applicable)
+    Maturity: ALPHA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-11` and will confirm that the server accepts the `<delete>` command
@@ -3756,6 +3783,7 @@ Test-Cases:
       - RDAP_SERVICE_PORT_NOT_CONSISTENT
   minimumRPMs-01:
     Summary: Claims <check> command test
+    Maturity: ALPHA
     Description: |
       This test is used to confirm the conformance of the EPP server's
       implementation of the Claims Check Form, as described in Section
@@ -3781,6 +3809,7 @@ Test-Cases:
   minimumRPMs-02:
     Summary: |
       Sunrise domain/launch application <create> command test
+    Maturity: ALPHA
     Description: |
       This test is used to confirm the conformance of the EPP server's
       implementation of the Sunrise Create Form, as described in Section
@@ -3827,6 +3856,7 @@ Test-Cases:
   
   minimumRPMs-03:
     Summary: Trademark claims domain <create> command test
+    Maturity: ALPHA
     Description: |
       This test is used to confirm the conformance of the EPP server's
       implementation of the Claims Create Form, as described in Section

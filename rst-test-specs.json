@@ -2908,6 +2908,7 @@
             "dnssecOps.csk",
             "dnssecOps.zskRolloverZone"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "ZSK rollover"
       },
       "dnssecOps02-KSKRollover" : {
@@ -2919,6 +2920,7 @@
          "Input-Parameters" : [
             "dnssecOps.kskRolloverZone"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "KSK rollover"
       },
       "dnssecOps03-AlgorithmRollover" : {
@@ -2931,6 +2933,7 @@
          "Input-Parameters" : [
             "dnssecOps.algorithmRolloverZone"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "algorithm rollover"
       },
       "epp-01" : {
@@ -2947,6 +2950,7 @@
             "EPP_TLS_BAD_CIPHER"
          ],
          "Input-Parameters" : null,
+         "Maturity" : "ALPHA",
          "Resources" : [
             "epp.tlsCertificateStore"
          ],
@@ -2969,12 +2973,14 @@
             "EPP_GREETING_DOES_NOT_MATCH"
          ],
          "Input-Parameters" : null,
+         "Maturity" : "ALPHA",
          "Summary" : "Protocol conformance test"
       },
       "epp-03" : {
          "Description" : "This test case validates the server's implementation of client\nauthentication. The client will submit a series of `<login>` commands to\nconfirm that:\n\n* the server rejects a `<login>` command with a (randomly generated) non-\n  existent client ID;\n* the server rejects a `<login>` command with a valid client ID, but an\n  invalid password;\n* the server rejects a `<login>` command with a valid client ID and password\n  but an incorrect client certificate;\n* the server accepts a `<login>` command with a valid client ID, password\n  and client certificate;\n\nThe client will use the object and extension XML namespaces from the\nserver's `<greeting>` as part of the `<login>` command.\n\nIf the server supports the Login Security Extension (see RFC 8807) then\nthis will be used by the client.\n",
          "Errors" : null,
          "Input-Parameters" : null,
+         "Maturity" : "ALPHA",
          "Resources" : null,
          "Summary" : "Authentication test"
       },
@@ -2988,6 +2994,7 @@
             "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
             "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <check> command test"
       },
       "epp-05" : {
@@ -3003,6 +3010,7 @@
          "Input-Parameters" : [
             "epp.registeredNameservers"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Host <check> command test (if applicable)"
       },
       "epp-06" : {
@@ -3018,6 +3026,7 @@
          "Input-Parameters" : [
             "epp.registeredContacts"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Contact <check> command test (if applicable for the registry type)"
       },
       "epp-07" : {
@@ -3046,6 +3055,7 @@
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Contact <create> command test (if applicable for the registry type)"
       },
       "epp-08" : {
@@ -3057,6 +3067,7 @@
             "EPP_CONTACT_INFO_RESPONSE_NOT_2201",
             "EPP_CONTACT_UPDATE_RESPONSE_NOT_2201"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Contact object access control (if applicable)"
       },
       "epp-09" : {
@@ -3089,6 +3100,7 @@
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Contact <update> command test (if applicable for the registry type)"
       },
       "epp-10" : {
@@ -3101,6 +3113,7 @@
             "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS"
          ],
          "Input-Parameters" : null,
+         "Maturity" : "ALPHA",
          "Summary" : "Contact <delete> command test (if applicable for the registry type)"
       },
       "epp-11" : {
@@ -3113,6 +3126,7 @@
             "EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
             "EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "host <create> command test (if applicable)"
       },
       "epp-12" : {
@@ -3123,6 +3137,7 @@
          "Errors" : [
             "EPP_HOST_UPDATE_AUTHZ_ERROR"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Host object access control (if applicable)"
       },
       "epp-13" : {
@@ -3138,6 +3153,7 @@
             "EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
             "EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Host <update> command test (if applicable)"
       },
       "epp-14" : {
@@ -3165,6 +3181,7 @@
          "Input-Parameters" : [
             "epp.secDNSInterfaces"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <create> command test"
       },
       "epp-15" : {
@@ -3176,6 +3193,7 @@
             "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT",
             "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Registry object integrity test"
       },
       "epp-16" : {
@@ -3196,6 +3214,7 @@
             "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA"
          ],
          "Input-Parameters" : null,
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <update> command test"
       },
       "epp-17" : {
@@ -3206,6 +3225,7 @@
          "Errors" : [
             "EPP_SERVICE_PORT_NOT_CONSISTENT"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Service Port consistency test"
       },
       "epp-18" : {
@@ -3219,6 +3239,7 @@
             "EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE",
             "EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <renew> command test"
       },
       "epp-19" : {
@@ -3237,16 +3258,18 @@
             "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS",
             "EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <transfer> command test"
       },
       "epp-20" : {
          "Dependencies" : [
             "epp-14"
          ],
-         "Description" : "This test confirms that the server behaves correctly if the sponsoring registrar of a domain rejects a transfer request.\nThe test procedure matches that of `epp-19`, but the transfer request will be rejected rather than approved. An `<info>` command will be used to confirm that the domain name remains under the sponsorship of the original registrar.",
+         "Description" : "This test confirms that the server behaves correctly if the sponsoring\nregistrar of a domain rejects a transfer request.\n\nThe test procedure matches that of `epp-19`, but the transfer request will\nbe rejected rather than approved. An `<info>` command will be used to\nconfirm that the domain name remains under the sponsorship of the original\nregistrar.\n",
          "Errors" : [
             "EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <transfer> rejection test"
       },
       "epp-21" : {
@@ -3259,6 +3282,7 @@
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE",
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain <delete> command test"
       },
       "epp-22" : {
@@ -3272,6 +3296,7 @@
          "Input-Parameters" : [
             "epp.restoreReportRequired"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Domain restore test"
       },
       "epp-23" : {
@@ -3287,6 +3312,7 @@
             "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN",
             "EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Host rename test (if applicable)"
       },
       "epp-24" : {
@@ -3297,6 +3323,7 @@
          "Errors" : [
             "EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Host <delete> command test (if applicable)"
       },
       "idn-01" : {
@@ -3397,6 +3424,7 @@
             "RPMS_MISSING_CLAIMS_KEY",
             "RPMS_UNEXPECTED_CLAIMS_KEY"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Claims <check> command test"
       },
       "minimumRPMs-02" : {
@@ -3409,6 +3437,7 @@
             "RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST",
             "RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Sunrise domain/launch application <create> command test\n"
       },
       "minimumRPMs-03" : {
@@ -3420,6 +3449,7 @@
             "RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST",
             "RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES"
          ],
+         "Maturity" : "ALPHA",
          "Summary" : "Trademark claims domain <create> command test"
       },
       "rdap-01-domainCaseFoldingValidation" : {
@@ -4199,5 +4229,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.283"
+   "Version" : "3.0.287"
 }

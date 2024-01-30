@@ -168,7 +168,7 @@ window.addEventListener('beforeprint', (event) => {
     </g>
   </g>
 </svg>
-<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.283</p>
+<h1>Registry System Testing - Test Specifications</h1><p>Version 3.0.287</p>
 <p>Last Updated: 2024-01-30</p>
 <p><a href="mailto:rst@icann.org">GDS Technical Services, Internet Corporation for Assigned Names and Numbers (ICANN)</a></p>
 </header><nav><a name="table-of-contents"></a><h2>1. Table of Contents</h2><ol><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#change-log">Change Log</a></li><li><details open="1"><summary><a href="#preamble">Preamble</a></summary><div class="markdown-content"><ol type="1">
@@ -2677,6 +2677,10 @@ Content-Length: 2666
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 938)">
 <title>Perl</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-938 8270.25,-938 8270.25,4 -4,4"/>
+<g id="clust7" class="cluster">
+<title>cluster_StandardIntegrationTest</title>
+<polygon fill="#f8f8f8" stroke="black" points="86.75,-8 86.75,-114 691.12,-114 691.12,-8 86.75,-8"/>
+</g>
 <g id="clust1" class="cluster">
 <title>cluster_StandardDNS</title>
 <polygon fill="#f8f8f8" stroke="black" points="114.5,-874 114.5,-926 8258.25,-926 8258.25,-874 114.5,-874"/>
@@ -2700,10 +2704,6 @@ Content-Length: 2666
 <g id="clust6" class="cluster">
 <title>cluster_StandardIDN</title>
 <polygon fill="#f8f8f8" stroke="black" points="116,-122 116,-174 1053,-174 1053,-122 116,-122"/>
-</g>
-<g id="clust7" class="cluster">
-<title>cluster_StandardIntegrationTest</title>
-<polygon fill="#f8f8f8" stroke="black" points="86.75,-8 86.75,-114 691.12,-114 691.12,-8 86.75,-8"/>
 </g>
 <!-- START -->
 <g id="node1" class="node">
@@ -12300,7 +12300,7 @@ domain to be tested return exactly one SOA record.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.34.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.34.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li></ul></details></section><section><a name="Test-Case-dns-zz-idna2008-compliance"></a><h3>7.35. dns-zz-idna2008-compliance - IDNA2008 compliance check</h3><h4>7.35.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.35.2. Description</h4><div class="markdown-content"><p>In addition to the other tests case in this suite, which come from
+<ul><li><a href="#Test-Suite-StandardDNS">Authoritative DNS Service</a></li></ul></details></section><section><a name="Test-Case-dns-zz-idna2008-compliance"></a><h3>7.35. dns-zz-idna2008-compliance - IDNA2008 compliance check</h3><h4>7.35.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.35.2. Description</h4><div class="markdown-content"><p>In addition to the other tests case in this suite, which come from
 Zonemaster, this test case exists to confirm that all DNS host names
 which appear in resource records at the TLD apex conform to the IDNA2008
 specifications.</p>
@@ -13090,7 +13090,7 @@ NOT</strong> be used.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.53.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.53.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li></ul></details></section><section><a name="Test-Case-dnssecOps01-ZSKRollover"></a><h3>7.54. dnssecOps01-ZSKRollover - ZSK rollover</h3><h4>7.54.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.54.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform a ZSK rollover
+<ul><li><a href="#Test-Suite-StandardDNSSEC">DNS Security Extensions (DNSSEC)</a></li></ul></details></section><section><a name="Test-Case-dnssecOps01-ZSKRollover"></a><h3>7.54. dnssecOps01-ZSKRollover - ZSK rollover</h3><h4>7.54.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.54.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform a ZSK rollover
 (as described in <a
 href="https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1">Section
 4.1.1 of RFC 6781</a> for a zone.</p>
@@ -13132,7 +13132,7 @@ a ZSK rollover is guaranteed to occur within the 48 test period.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.54.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.54.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-dnssecOps02-KSKRollover"></a><h3>7.55. dnssecOps02-KSKRollover - KSK rollover</h3><h4>7.55.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.55.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform a CSK/KSK
+<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-dnssecOps02-KSKRollover"></a><h3>7.55. dnssecOps02-KSKRollover - KSK rollover</h3><h4>7.55.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.55.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform a CSK/KSK
 rollover (as described in <a
 href="https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2">Sections
 4.1.2 and 4.13 of RFC 6781</a> for a zone.</p>
@@ -13169,7 +13169,7 @@ parent zone is updated, without disrupting the chain of trust.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.55.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.55.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-dnssecOps03-AlgorithmRollover"></a><h3>7.56. dnssecOps03-AlgorithmRollover - algorithm rollover</h3><h4>7.56.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.56.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform an algorithm
+<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-dnssecOps03-AlgorithmRollover"></a><h3>7.56. dnssecOps03-AlgorithmRollover - algorithm rollover</h3><h4>7.56.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.56.2. Description</h4><div class="markdown-content"><p>This test case verifies the RSP’s ability to perform an algorithm
 rollover (as described in <a
 href="https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2">Section
 4.1.4 of RFC 6781</a> for a zone.</p>
@@ -13214,7 +13214,7 @@ from algorithm 13 (<code>ECDSAP256SHA256</code>) to algorithm 8
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.56.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.56.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-epp-01"></a><h3>7.57. epp-01 - Service connectivity test</h3><h4>7.57.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.57.2. Description</h4><div class="markdown-content"><p>This test confirms that the EPP service is reachable from the probe
+<ul><li><a href="#Test-Suite-DNSSECOperations">DNSSEC Operations</a></li></ul></details></section><section><a name="Test-Case-epp-01"></a><h3>7.57. epp-01 - Service connectivity test</h3><h4>7.57.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.57.2. Description</h4><div class="markdown-content"><p>This test confirms that the EPP service is reachable from the probe
 servers.</p>
 <ol type="1">
 <li>At least one <code>A</code> record <strong>MUST</strong> be
@@ -13258,7 +13258,7 @@ recommended in RFC 9325 (or any successor document).</li>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.57.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.57.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-02"></a><h3>7.58. epp-02 - Protocol conformance test</h3><h4>7.58.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.58.2. Description</h4><div class="markdown-content"><p>Once a connection is established, all service ports
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-02"></a><h3>7.58. epp-02 - Protocol conformance test</h3><h4>7.58.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.58.2. Description</h4><div class="markdown-content"><p>Once a connection is established, all service ports
 <strong>MUST</strong> send a valid <code>&lt;greeting&gt;</code> frame
 to the client.</p>
 <ol type="1">
@@ -13310,7 +13310,7 @@ those found in the <code>epp.greeting</code> input parameter.</li>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.58.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.58.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-03"></a><h3>7.59. epp-03 - Authentication test</h3><h4>7.59.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.59.2. Description</h4><div class="markdown-content"><p>This test case validates the server’s implementation of client
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-03"></a><h3>7.59. epp-03 - Authentication test</h3><h4>7.59.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.59.2. Description</h4><div class="markdown-content"><p>This test case validates the server’s implementation of client
 authentication. The client will submit a series of
 <code>&lt;login&gt;</code> commands to confirm that:</p>
 <ul>
@@ -13340,7 +13340,7 @@ then this will be used by the client.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.59.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-04">epp-04 - Domain &lt;check&gt; command test</a></li><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.59.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-04"></a><h3>7.60. epp-04 - Domain &lt;check&gt; command test</h3><h4>7.60.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.60.2. Description</h4><div class="markdown-content"><p>The client will perform a series of <code>&lt;check&gt;</code>
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-04"></a><h3>7.60. epp-04 - Domain &lt;check&gt; command test</h3><h4>7.60.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.60.2. Description</h4><div class="markdown-content"><p>The client will perform a series of <code>&lt;check&gt;</code>
 commands and will validate the <code>avail</code> attribute of the
 <code>&lt;domain:name&gt;</code> elements in the server response, as
 follows:</p>
@@ -13369,7 +13369,7 @@ names).</p>
 <ul><li><a href="#Test-Case-epp-03">epp-03 - Authentication test</a></li></ul></details><details><summary><h4>7.60.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-05">epp-05 - Host &lt;check&gt; command test (if applicable)</a></li></ul></details><details><summary><h4>7.60.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-05"></a><h3>7.61. epp-05 - Host &lt;check&gt; command test (if applicable)</h3><h4>7.61.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.61.2. Description</h4><div class="markdown-content"><p>If the EPP server supports host objects, this test will perform a
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-05"></a><h3>7.61. epp-05 - Host &lt;check&gt; command test (if applicable)</h3><h4>7.61.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.61.2. Description</h4><div class="markdown-content"><p>If the EPP server supports host objects, this test will perform a
 series of <code>&lt;check&gt;</code> commands and will validate the
 <code>avail</code> attribute of the <code>&lt;host:name&gt;</code>
 elements in the server response, as follows:</p>
@@ -13396,7 +13396,7 @@ specified in RFC 1123 (this test case does not consider IDN names).</p>
 <ul><li><a href="#Test-Case-epp-04">epp-04 - Domain &lt;check&gt; command test</a></li></ul></details><details><summary><h4>7.61.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-06">epp-06 - Contact &lt;check&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.61.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-06"></a><h3>7.62. epp-06 - Contact &lt;check&gt; command test (if applicable for the registry type)</h3><h4>7.62.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.62.2. Description</h4><div class="markdown-content"><p>If the EPP server supports contact objects, this test will perform a
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-06"></a><h3>7.62. epp-06 - Contact &lt;check&gt; command test (if applicable for the registry type)</h3><h4>7.62.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.62.2. Description</h4><div class="markdown-content"><p>If the EPP server supports contact objects, this test will perform a
 series of <code>&lt;check&gt;</code> commands and will validate the
 <code>avail</code> attribute of the <code>&lt;contact:id&gt;</code>
 elements in the server response, as follows:</p>
@@ -13421,7 +13421,7 @@ will be generated using random characters.</li>
 <ul><li><a href="#Test-Case-epp-05">epp-05 - Host &lt;check&gt; command test (if applicable)</a></li></ul></details><details><summary><h4>7.62.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-07">epp-07 - Contact &lt;create&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.62.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-07"></a><h3>7.63. epp-07 - Contact &lt;create&gt; command test (if applicable for the registry type)</h3><h4>7.63.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.63.2. Description</h4><div class="markdown-content"><p>This test attempts to create a number of contact objects, and
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-07"></a><h3>7.63. epp-07 - Contact &lt;create&gt; command test (if applicable for the registry type)</h3><h4>7.63.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.63.2. Description</h4><div class="markdown-content"><p>This test attempts to create a number of contact objects, and
 validates the server’s response. For example, the test will expect that
 the server will reject a command that creates an object with missing or
 invalid properties, but will accept a command to create an object with
@@ -13476,7 +13476,7 @@ correctly stored the provided values.</p>
 <ul><li><a href="#Test-Case-epp-06">epp-06 - Contact &lt;check&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.63.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-08">epp-08 - Contact object access control (if applicable)</a></li></ul></details><details><summary><h4>7.63.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-08"></a><h3>7.64. epp-08 - Contact object access control (if applicable)</h3><h4>7.64.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.64.2. Description</h4><div class="markdown-content"><p>This test will confirm that EPP clients are unable to perform
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-08"></a><h3>7.64. epp-08 - Contact object access control (if applicable)</h3><h4>7.64.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.64.2. Description</h4><div class="markdown-content"><p>This test will confirm that EPP clients are unable to perform
 <code>&lt;info&gt;</code> commands on objects that they do not
 sponsor.</p>
 <p>If the <code>general.minimalPublicDataSet</code> input parameter is
@@ -13498,7 +13498,7 @@ response.</p>
 <ul><li><a href="#Test-Case-epp-07">epp-07 - Contact &lt;create&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.64.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-09">epp-09 - Contact &lt;update&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.64.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-09"></a><h3>7.65. epp-09 - Contact &lt;update&gt; command test (if applicable for the registry type)</h3><h4>7.65.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.65.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;update&gt;</code> commands on the
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-09"></a><h3>7.65. epp-09 - Contact &lt;update&gt; command test (if applicable for the registry type)</h3><h4>7.65.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.65.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;update&gt;</code> commands on the
 objects created during <code>epp-07</code> and will confirm that the
 server correctly rejects invalid commands (which would specify invalid
 property values) and accepts valid commands.</p>
@@ -13541,7 +13541,7 @@ correctly stored the provided values.</p>
 <ul><li><a href="#Test-Case-epp-08">epp-08 - Contact object access control (if applicable)</a></li></ul></details><details><summary><h4>7.65.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-10">epp-10 - Contact &lt;delete&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.65.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-10"></a><h3>7.66. epp-10 - Contact &lt;delete&gt; command test (if applicable for the registry type)</h3><h4>7.66.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.66.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-10"></a><h3>7.66. epp-10 - Contact &lt;delete&gt; command test (if applicable for the registry type)</h3><h4>7.66.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.66.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
 objects created during <code>epp-24</code> and will confirm that the
 server accepts the <code>&lt;delete&gt;</code> command with a
 <code>1xxx</code> response code.</p>
@@ -13564,7 +13564,7 @@ this step will be skipped.</p>
 <ul><li><a href="#Test-Case-epp-09">epp-09 - Contact &lt;update&gt; command test (if applicable for the registry type)</a></li></ul></details><details><summary><h4>7.66.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.66.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-11"></a><h3>7.67. epp-11 - host &lt;create&gt; command test (if applicable)</h3><h4>7.67.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.67.2. Description</h4><div class="markdown-content"><p>This test attempts to create a number of host objects, and validates
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-11"></a><h3>7.67. epp-11 - host &lt;create&gt; command test (if applicable)</h3><h4>7.67.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.67.2. Description</h4><div class="markdown-content"><p>This test attempts to create a number of host objects, and validates
 the server’s response. For example, the test will expect that the server
 will reject a command that creates an object with missing or invalid
 properties, but will accept a command to create an object with valid
@@ -13598,7 +13598,7 @@ correctly stored the provided values.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.67.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-12">epp-12 - Host object access control (if applicable)</a></li><li><a href="#Test-Case-epp-13">epp-13 - Host &lt;update&gt; command test (if applicable)</a></li><li><a href="#Test-Case-epp-23">epp-23 - Host rename test (if applicable)</a></li></ul></details><details><summary><h4>7.67.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-12"></a><h3>7.68. epp-12 - Host object access control (if applicable)</h3><h4>7.68.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.68.2. Description</h4><div class="markdown-content"><p>This test will confirm that EPP clients are unable to perform
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-12"></a><h3>7.68. epp-12 - Host object access control (if applicable)</h3><h4>7.68.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.68.2. Description</h4><div class="markdown-content"><p>This test will confirm that EPP clients are unable to perform
 <code>&lt;info&gt;</code> commands on objects that they do not
 sponsor.</p>
 <p>If the <code>epp.hostModel</code> input parameter is
@@ -13619,7 +13619,7 @@ with a 2201 “authorization error” response.</p>
 <ul><li><a href="#Test-Case-epp-11">epp-11 - host &lt;create&gt; command test (if applicable)</a></li></ul></details><details><summary><h4>7.68.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.68.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-13"></a><h3>7.69. epp-13 - Host &lt;update&gt; command test (if applicable)</h3><h4>7.69.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.69.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;update&gt;</code> commands on the
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-13"></a><h3>7.69. epp-13 - Host &lt;update&gt; command test (if applicable)</h3><h4>7.69.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.69.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;update&gt;</code> commands on the
 objects created during <code>epp-11</code> and will confirm that the
 server correctly rejects invalid commands (which would specify invalid
 property values) and accepts valid commands.</p>
@@ -13649,7 +13649,7 @@ correctly stored the updated values.</p>
 <ul><li><a href="#Test-Case-epp-11">epp-11 - host &lt;create&gt; command test (if applicable)</a></li></ul></details><details><summary><h4>7.69.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.69.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-14"></a><h3>7.70. epp-14 - Domain &lt;create&gt; command test</h3><h4>7.70.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.70.2. Description</h4><div class="markdown-content"><p>This test performs a series domain <code>&lt;create&gt;</code>
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-14"></a><h3>7.70. epp-14 - Domain &lt;create&gt; command test</h3><h4>7.70.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.70.2. Description</h4><div class="markdown-content"><p>This test performs a series domain <code>&lt;create&gt;</code>
 commands, using pseudo- random ASCII domain names under each TLD in the
 TLD set. If the <code>general.minimalPublicDataSet</code> input
 parameter is <code>false</code>, then a contact object (containing
@@ -13721,7 +13721,7 @@ command is present and correct.</li>
 <ul><li><a href="#Test-Case-epp-03">epp-03 - Authentication test</a></li></ul></details><details><summary><h4>7.70.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-15">epp-15 - Registry object integrity test</a></li><li><a href="#Test-Case-epp-16">epp-16 - Domain &lt;update&gt; command test</a></li><li><a href="#Test-Case-epp-17">epp-17 - Service Port consistency test</a></li><li><a href="#Test-Case-epp-18">epp-18 - Domain &lt;renew&gt; command test</a></li><li><a href="#Test-Case-epp-19">epp-19 - Domain &lt;transfer&gt; command test</a></li><li><a href="#Test-Case-epp-20">epp-20 - Domain &lt;transfer&gt; rejection test</a></li><li><a href="#Test-Case-epp-21">epp-21 - Domain &lt;delete&gt; command test</a></li><li><a href="#Test-Case-epp-23">epp-23 - Host rename test (if applicable)</a></li></ul></details><details><summary><h4>7.70.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-15"></a><h3>7.71. epp-15 - Registry object integrity test</h3><h4>7.71.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.71.2. Description</h4><div class="markdown-content"><p>This test confirms that the EPP server will refuse a request to
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-15"></a><h3>7.71. epp-15 - Registry object integrity test</h3><h4>7.71.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.71.2. Description</h4><div class="markdown-content"><p>This test confirms that the EPP server will refuse a request to
 delete a linked object.</p>
 <p>If the <code>epp.hostModel</code> input parameter is
 <code>attributes</code>, <strong>and</strong> the
@@ -13743,7 +13743,7 @@ association prohibits operation” error.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.71.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.71.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-16"></a><h3>7.72. epp-16 - Domain &lt;update&gt; command test</h3><h4>7.72.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.72.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to perform an
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-16"></a><h3>7.72. epp-16 - Domain &lt;update&gt; command test</h3><h4>7.72.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.72.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to perform an
 <code>&lt;update&gt;</code> command on the domain names created in
 <code>epp-14</code>, including:</p>
 <ul>
@@ -13771,7 +13771,7 @@ confirm that the changes have been correctly stored by the server.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.72.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.72.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-17"></a><h3>7.73. epp-17 - Service Port consistency test</h3><h4>7.73.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.73.2. Description</h4><div class="markdown-content"><p>This test confirms that all EPP service ports respond with consistent
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-17"></a><h3>7.73. epp-17 - Service Port consistency test</h3><h4>7.73.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.73.2. Description</h4><div class="markdown-content"><p>This test confirms that all EPP service ports respond with consistent
 object information.</p>
 <p>The client will establish seperate connections to each EPP service
 port (defined as an IP address and TCP port) and perform
@@ -13792,7 +13792,7 @@ on all service ports.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.73.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.73.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-18"></a><h3>7.74. epp-18 - Domain &lt;renew&gt; command test</h3><h4>7.74.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.74.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to renew domain names.
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-18"></a><h3>7.74. epp-18 - Domain &lt;renew&gt; command test</h3><h4>7.74.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.74.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to renew domain names.
 The client will submit a number of <code>&lt;renew&gt;</code> commands
 for the domains created in <code>epp-14</code>.</p>
 <ul>
@@ -13820,7 +13820,7 @@ expiry date and RGP status of the domain are set correctly.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.74.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.74.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-19"></a><h3>7.75. epp-19 - Domain &lt;transfer&gt; command test</h3><h4>7.75.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.75.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to initiate a domain
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-19"></a><h3>7.75. epp-19 - Domain &lt;transfer&gt; command test</h3><h4>7.75.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.75.2. Description</h4><div class="markdown-content"><p>This test will confirm that the client is able to initiate a domain
 transfer.</p>
 <p>The client will perform an <code>&lt;update&gt;</code> command to set
 the authInfo code for the test domain (taken from the set created in
@@ -13870,12 +13870,12 @@ the transfer approval.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.75.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.75.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-20"></a><h3>7.76. epp-20 - Domain &lt;transfer&gt; rejection test</h3><h4>7.76.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.76.2. Description</h4><div class="markdown-content"><p>This test confirms that the server behaves correctly if the
-sponsoring registrar of a domain rejects a transfer request. The test
-procedure matches that of <code>epp-19</code>, but the transfer request
-will be rejected rather than approved. An <code>&lt;info&gt;</code>
-command will be used to confirm that the domain name remains under the
-sponsorship of the original registrar.</p>
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-20"></a><h3>7.76. epp-20 - Domain &lt;transfer&gt; rejection test</h3><h4>7.76.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.76.2. Description</h4><div class="markdown-content"><p>This test confirms that the server behaves correctly if the
+sponsoring registrar of a domain rejects a transfer request.</p>
+<p>The test procedure matches that of <code>epp-19</code>, but the
+transfer request will be rejected rather than approved. An
+<code>&lt;info&gt;</code> command will be used to confirm that the
+domain name remains under the sponsorship of the original registrar.</p>
 </div><details><summary><h4>7.76.3. Errors</h4></summary><p>This test case may produce the following errors, in addition to
         those defined in test suite:</p>
 <ul><li><a href="#Error-EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER">EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER (ERROR)</a></li></ul></details><details><summary><h4>7.76.4. Input parameters</h4></summary><p>This test case requires the following input parameters, in
@@ -13888,7 +13888,7 @@ sponsorship of the original registrar.</p>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.76.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.76.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-21"></a><h3>7.77. epp-21 - Domain &lt;delete&gt; command test</h3><h4>7.77.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.77.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-21"></a><h3>7.77. epp-21 - Domain &lt;delete&gt; command test</h3><h4>7.77.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.77.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
 objects created during <code>epp-14</code> and will confirm that the
 server accepts the <code>&lt;delete&gt;</code> command with a
 <code>1xxx</code> response code.</p>
@@ -13915,7 +13915,7 @@ RGP status.</li>
 <ul><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.77.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-22">epp-22 - Domain restore test</a></li></ul></details><details><summary><h4>7.77.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-22"></a><h3>7.78. epp-22 - Domain restore test</h3><h4>7.78.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.78.2. Description</h4><div class="markdown-content"><p>This test will perform RGP restore operations on the objects deleted
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-22"></a><h3>7.78. epp-22 - Domain restore test</h3><h4>7.78.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.78.2. Description</h4><div class="markdown-content"><p>This test will perform RGP restore operations on the objects deleted
 during <code>epp-21</code>, in order to confirm the correct operation of
 the server’s implementation of RFC 3915.</p>
 <p>Once the restore request has been procssed, the client will perform
@@ -13934,7 +13934,7 @@ RGP status.</p>
 <ul><li><a href="#Test-Case-epp-21">epp-21 - Domain &lt;delete&gt; command test</a></li></ul></details><details><summary><h4>7.78.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.78.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-23"></a><h3>7.79. epp-23 - Host rename test (if applicable)</h3><h4>7.79.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.79.2. Description</h4><div class="markdown-content"><p>This tests verifies the server’s support for host rename
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-23"></a><h3>7.79. epp-23 - Host rename test (if applicable)</h3><h4>7.79.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.79.2. Description</h4><div class="markdown-content"><p>This tests verifies the server’s support for host rename
 operations.</p>
 <p>If the <code>epp.hostModel</code> input parameter is
 <code>attributes</code>, this test will be skipped.</p>
@@ -13972,7 +13972,7 @@ correctly stored the updated values.</p>
 <ul><li><a href="#Test-Case-epp-11">epp-11 - host &lt;create&gt; command test (if applicable)</a></li><li><a href="#Test-Case-epp-14">epp-14 - Domain &lt;create&gt; command test</a></li></ul></details><details><summary><h4>7.79.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><a href="#Test-Case-epp-24">epp-24 - Host &lt;delete&gt; command test (if applicable)</a></li></ul></details><details><summary><h4>7.79.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-24"></a><h3>7.80. epp-24 - Host &lt;delete&gt; command test (if applicable)</h3><h4>7.80.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.80.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
+<ul><li><a href="#Test-Suite-StandardEPP">Extensible Provisioning Protocol (EPP)</a></li></ul></details></section><section><a name="Test-Case-epp-24"></a><h3>7.80. epp-24 - Host &lt;delete&gt; command test (if applicable)</h3><h4>7.80.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.80.2. Description</h4><div class="markdown-content"><p>This test will perform <code>&lt;delete&gt;</code> commands on the
 objects created during <code>epp-11</code> and will confirm that the
 server accepts the <code>&lt;delete&gt;</code> command with a
 <code>1xxx</code> response code.</p>
@@ -14189,7 +14189,7 @@ configured for the test.</p>
 <ul><li><a href="#Test-Case-integration-01">integration-01 - EPP -&gt; RDAP Integration Test</a></li></ul></details><details><summary><h4>7.87.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.87.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardIntegrationTest">Standard Integration Test</a></li></ul></details></section><section><a name="Test-Case-minimumRPMs-01"></a><h3>7.88. minimumRPMs-01 - Claims &lt;check&gt; command test</h3><h4>7.88.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.88.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
+<ul><li><a href="#Test-Suite-StandardIntegrationTest">Standard Integration Test</a></li></ul></details></section><section><a name="Test-Case-minimumRPMs-01"></a><h3>7.88. minimumRPMs-01 - Claims &lt;check&gt; command test</h3><h4>7.88.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.88.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
 implementation of the Claims Check Form, as described in Section 3.1.1
 of RFC 8334.</p>
 <p>For this test, it is assumed that the EPP server has been configured
@@ -14223,7 +14223,7 @@ present on the DNL does not contain a
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.88.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
 <ul><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li></ul></details></section><section><a name="Test-Case-minimumRPMs-02"></a><h3>7.89. minimumRPMs-02 - Sunrise domain/launch application &lt;create&gt; command test
-</h3><h4>7.89.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.89.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
+</h3><h4>7.89.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.89.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
 implementation of the Sunrise Create Form, as described in Section 3.3.1
 of RFC 8334.</p>
 <p>For this test, it is assumed that the EPP server has been configured
@@ -14267,7 +14267,7 @@ that the submitted object properties have been correctly stored.</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.89.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.89.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li></ul></details></section><section><a name="Test-Case-minimumRPMs-03"></a><h3>7.90. minimumRPMs-03 - Trademark claims domain &lt;create&gt; command test</h3><h4>7.90.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.90.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
+<ul><li><a href="#Test-Suite-MinimumRPMs">Minimum Rights Protection Mechanisms (RPMs)</a></li></ul></details></section><section><a name="Test-Case-minimumRPMs-03"></a><h3>7.90. minimumRPMs-03 - Trademark claims domain &lt;create&gt; command test</h3><h4>7.90.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.90.2. Description</h4><div class="markdown-content"><p>This test is used to confirm the conformance of the EPP server’s
 implementation of the Claims Create Form, as described in Section 3.3.2
 of RFC 8334.</p>
 <p>For this test, it is assumed that the EPP server has been configured
@@ -14737,7 +14737,7 @@ class="uri">https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPC
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.117.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.117.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardRDAP">Registration Data Access Protocol (RDAP)</a></li></ul></details></section><section><a name="Test-Case-rdap-91"></a><h3>7.118. rdap-91 - TLS version conformance check</h3><h4>7.118.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.118.2. Description</h4><div class="markdown-content"><p><strong>NOTE: this test case is a placeholder for a test case that
+<ul><li><a href="#Test-Suite-StandardRDAP">Registration Data Access Protocol (RDAP)</a></li></ul></details></section><section><a name="Test-Case-rdap-91"></a><h3>7.118. rdap-91 - TLS version conformance check</h3><h4>7.118.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.118.2. Description</h4><div class="markdown-content"><p><strong>NOTE: this test case is a placeholder for a test case that
 will eventually be added to the RDAP Conformance Tool.</strong></p>
 <p>This test case verifies that the RDAP server properly implements a
 secure TLS configuration.</p>
@@ -14770,7 +14770,7 @@ recommended in RFC 9325 (or any successor document).</li>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.118.7. Dependants</h4></summary><p>The following test cases require this test case to have
                     successfully passed:</p>
 <ul><li><em>None specified.</em></li></ul></details><details><summary><h4>7.118.8. Test suites</h4></summary><p>This test case is used in the following test suite(s):</p>
-<ul><li><a href="#Test-Suite-StandardRDAP">Registration Data Access Protocol (RDAP)</a></li></ul></details></section><section><a name="Test-Case-rdap-92"></a><h3>7.119. rdap-92 - Service port consistency check</h3><h4>7.119.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>very rough outline, much more work needed</li></ul><h4>7.119.2. Description</h4><div class="markdown-content"><p><strong>NOTE: this test case is a placeholder for a test case that
+<ul><li><a href="#Test-Suite-StandardRDAP">Registration Data Access Protocol (RDAP)</a></li></ul></details></section><section><a name="Test-Case-rdap-92"></a><h3>7.119. rdap-92 - Service port consistency check</h3><h4>7.119.1. Maturity Level</h4><ul><li><strong>ALPHA: </strong>rough outline, more work needed</li></ul><h4>7.119.2. Description</h4><div class="markdown-content"><p><strong>NOTE: this test case is a placeholder for a test case that
 will eventually be added to the RDAP Conformance Tool.</strong></p>
 <p>This test confirms that all RDAP service ports return identical
 responses.</p>
