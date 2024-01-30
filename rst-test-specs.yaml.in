@@ -1,5 +1,5 @@
 ---
-RST-Test-Plan-Schema-Version: 1.6.1
+RST-Test-Plan-Schema-Version: 1.7.0
 Version: #exec perl ./tools/generate-version.pl
 Last-Updated: #date %Y-%m-%d
 
@@ -10,6 +10,9 @@ Contact:
 
 Preamble: |
 #exec sed 's/^/  /' inc/preamble.md
+
+ChangeLog:
+#exec sed 's/^/  /' ChangeLog.yaml
 
 Test-Plans:
 #exec gpp -x inc/plans.yaml.in | sed 's/^/  /'
