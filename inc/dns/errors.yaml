@@ -6,3 +6,6 @@ DNS_IDNA2008_INVALID_RNAME:
   Severity: ERROR
   Description: TBA.
 
+DNS_IDNA2008_INVALID_NS_NSDNAME:
+  Severity: ERROR
+  Description: TBA.
