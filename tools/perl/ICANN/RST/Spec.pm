@@ -1,6 +1,7 @@
 package ICANN::RST::Spec;
 use Carp;
 use ICANN::RST::Case;
+use ICANN::RST::ChangeLog;
 use ICANN::RST::Error;
 use ICANN::RST::Input;
 use ICANN::RST::Plan;
@@ -9,7 +10,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => v1.6.1;
+use constant SCHEMA_VERSION => v1.7.0;
 use strict;
 
 sub new {
@@ -26,6 +27,18 @@ sub new {
     croak(sprintf("Unsupported schema version '%s', must be '%s'", $v, SCHEMA_VERSION)) unless (SCHEMA_VERSION == $v);
 
     return $self;
+}
+
+sub changelog {
+    my $self = shift;
+
+    my @log;
+
+    foreach my $date (reverse(sort(keys(%{$self->{'spec'}->{'ChangeLog'}})))) {
+        push(@log, ICANN::RST::ChangeLog->new($date, $self->{'spec'}->{'ChangeLog'}->{$date}, $self));
+    }
+
+    return @log;
 }
 
 sub schemaVersion   { $_[0]->{'spec'}->{'RST-Test-Plan-Schema-Version'}     }
@@ -91,6 +104,10 @@ Returns a string containing the date the spec was last updated.
 =head2 preamble()
 
 Returns a L<ICANN::RST::Text> object containing the preamble.
+
+=head2 changelog()
+
+Returns an array of L<ICANN::RST::ChangeLog> objects.
 
 =head2 contactName()
 
