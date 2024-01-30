@@ -1,7 +1,12 @@
 {
    "ChangeLog" : {
       "2024-01-30" : [
-         "Created this ChangeLog."
+         "Created this ChangeLog.",
+         "add content of `NS` records to the list of names checked in\n`dns-zz-idna2008-compliance`.\n",
+         "add `dnssec-93` test case.",
+         "remove the `dnssec-12`, `dnssec-15`, `dnssec-16`, `dnssec-17` and\n`dnssec-18` test cases.\n",
+         "the `ALGORITHM_NOT_RECOMMENDED` error raised by `dnssec-05` is now an\n**ERROR**.\n",
+         "The maturity of all cases in the EPP suite has been raised to **BETA**."
       ]
    },
    "Contact" : {
@@ -20,6 +25,14 @@
       },
       "DNSSEC_INVALID_SIGNING_ALGORITHM" : {
          "Description" : "An invalid algorithm is used to sign the zone.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO" : {
+         "Description" : "The `iterations` field of the `NSEC3PARAM` record is not zero.",
+         "Severity" : "ERROR"
+      },
+      "DNSSEC_NSEC3_SALT_IS_NOT_EMPTY" : {
+         "Description" : "The `salt` field of the `NSEC3PARAM` record is not zero (represented as a\n`-` in the presentation format).\n",
          "Severity" : "ERROR"
       },
       "DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN" : {
@@ -55,6 +68,10 @@
          "Severity" : "ERROR"
       },
       "DNS_IDNA2008_INVALID_MNAME" : {
+         "Description" : "TBA.",
+         "Severity" : "ERROR"
+      },
+      "DNS_IDNA2008_INVALID_NS_NSDNAME" : {
          "Description" : "TBA.",
          "Severity" : "ERROR"
       },
@@ -1200,7 +1217,7 @@
       },
       "ZM_ALGORITHM_NOT_RECOMMENDED" : {
          "Description" : "*Not available.*",
-         "Severity" : "WARNING"
+         "Severity" : "ERROR"
       },
       "ZM_ALGORITHM_NOT_ZONE_SIGN" : {
          "Description" : "*Not available.*",
@@ -1352,10 +1369,6 @@
       },
       "ZM_DNSSEC_06_FAILED" : {
          "Description" : "The `dnssec-06` test case failed, but no further information is available. Please consult the result log for this test case.",
-         "Severity" : "ERROR"
-      },
-      "ZM_DNSSEC_12_FAILED" : {
-         "Description" : "The `dnssec-12` test case failed, but no further information is available. Please consult the result log for this test case.",
          "Severity" : "ERROR"
       },
       "ZM_DNS_ADDRESS01_FAILED" : {
@@ -1552,106 +1565,6 @@
       },
       "ZM_DS13_ALGO_NOT_SIGNED_SOA" : {
          "Description" : "The SOA RRset is not signed with an algorithm present in the DNSKEY\nRRset\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS15_INCONSISTENT_CDNSKEY" : {
-         "Description" : "All servers do not have the same CDNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS15_INCONSISTENT_CDS" : {
-         "Description" : "All servers do not have the same CDS RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS15_MISMATCH_CDS_CDNSKEY" : {
-         "Description" : "Both CDS and CDNSKEY RRsets are found but they do not match.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_INVALID_RRSIG" : {
-         "Description" : "CDS RRset is signed with an invalid RRSIG.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY" : {
-         "Description" : "CDS record matches a DNSKEY with SEP bit (bit 15) unset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY" : {
-         "Description" : "CDS record matches a DNSKEY with zone bit (bit 7) unset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_MATCHES_NO_DNSKEY" : {
-         "Description" : "CDS record does not match any DNSKEY in DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_NOT_SIGNED_BY_CDS" : {
-         "Description" : "CDS RRset is not signed by the key that the CDS record points to.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY" : {
-         "Description" : "CDS RRset is signed by a key not in DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_UNSIGNED" : {
-         "Description" : "CDS RRset is unsigned.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_CDS_WITHOUT_DNSKEY" : {
-         "Description" : "CDS RRset exists, but there is no DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS" : {
-         "Description" : "DNSKEY RRset is not signed by the key or keys that the CDS records point\nto.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS16_MIXED_DELETE_CDS" : {
-         "Description" : "\"Delete\" CDS record is mixed with normal CDS record.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_INVALID_RRSIG" : {
-         "Description" : "CDNSKEY RRset signed with an invalid RRSIG.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_IS_NON_SEP" : {
-         "Description" : "CDNSKEY record has the SEP bit (bit 15) unset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_IS_NON_ZONE" : {
-         "Description" : "CDNSKEY record has the zone bit (bit 7) unset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY" : {
-         "Description" : "CDNSKEY record does not match any DNSKEY in DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY" : {
-         "Description" : "CDNSKEY RRset is not signed by the key that the CDNSKEY record points\nto.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY" : {
-         "Description" : "CDNSKEY RRset is signed by a key not in DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_UNSIGNED" : {
-         "Description" : "CDNSKEY RRset is unsigned.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_CDNSKEY_WITHOUT_DNSKEY" : {
-         "Description" : "CDNSKEY RRset exists, but there is no DNSKEY RRset.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY" : {
-         "Description" : "DNSKEY RRset is not signed by the key or keys that the CDNSKEY records\npoint to.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS17_MIXED_DELETE_CDNSKEY" : {
-         "Description" : "\"Delete\" CDNSKEY record is mixed with normal CDNSKEY record.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS" : {
-         "Description" : "CDNSKEY RRset is not signed with a DNSKEY record that a DS record points\nto.\n",
-         "Severity" : "ERROR"
-      },
-      "ZM_DS18_NO_MATCH_CDS_RRSIG_DS" : {
-         "Description" : "The CDS RRset is not signed with a DNSKEY record that a DS record points\nto.\n",
          "Severity" : "ERROR"
       },
       "ZM_EDNS_RESPONSE_WITHOUT_EDNS" : {
@@ -2345,7 +2258,7 @@
          "Summary" : "Reverse DNS entry matches name server name"
       },
       "dns-connectivity01" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nUDP is the fundamental protocol to reach a general purpose name server\nhosting a zone, \"DNS servers MUST be able to service UDP \\[...\\]\" ([RFC\n1123](https://www.rfc-editor.org/rfc/rfc1123), section 6.1.3.2, page\n75), also restated in [RFC\n7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5.\n\nThis Test Case will verify if the name servers of *Child Zone* are\nreachable over UDP. The name servers tested are both those in the\ndelegation of *Child Zone* and those in the NS records in the *Child\nZone* itself.\n\nMost Zonemaster Test Cases will query the name servers in the delegation\nor the name servers appointed by the NS records in the zone for the NS\nor SOA record, or both. It is crucial that problems are reported, but\ninstead of letting several Test Cases report the same problems found,\nmost Test Cases assume that this test case is run. Only this Test Case\nwill report problems found in the following areas over UDP:\n\n-   Name Server not responding to a query without EDNS.\n-   Name Server not including SOA record of *Child Zone* in the answer\n    section in the response on a SOA query for *Child Zone*.\n-   Name Server not including NS record of *Child Zone* in the answer\n    section in the response on an NS query for *Child Zone*.\n-   Name Server not setting the AA flag in a response with SOA or NS in\n    answer section.\n-   Name Server responding with unexpected [RCODE\n    Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)\n    (any except \"NoError\") on query for SOA or NS for *Child Zone*.\n\nIn addition, this test case will output a message if transport over IPv4\nor IPv6 has been disabled.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nUDP is the fundamental protocol to reach a general purpose name server\nhosting a zone, \"DNS servers MUST be able to service UDP \\[...\\]\" ([RFC\n1123](https://www.rfc-editor.org/rfc/rfc1123), section 6.1.3.2, page\n75), also restated in [RFC\n7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5.\n\nThis Test Case will verify if the name servers of *Child Zone* are\nreachable over UDP. The name servers tested are both those in the\ndelegation of *Child Zone* and those in the NS records in the *Child\nZone* itself.\n\nMost Zonemaster Test Cases will query the name servers in the delegation\nor the name servers appointed by the NS records in the zone for the NS\nor SOA record, or both. It is crucial that problems are reported, but\ninstead of letting several Test Cases report the same problems found,\nmost Test Cases assume that this test case is run. Only this Test Case\nwill report problems found in the following areas over UDP:\n\n-   Name Server not responding to a query without EDNS.\n-   Name Server not including SOA record of *Child Zone* in the answer\n    section in the response on a SOA query for *Child Zone*.\n-   Name Server not including NS record of *Child Zone* in the answer\n    section in the response on an NS query for *Child Zone*.\n-   Name Server not setting the AA flag in a response with SOA or NS in\n    answer section.\n-   Name Server responding with unexpected [RCODE\n    Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)\n    (any except \"NoError\") on query for SOA or NS for *Child Zone*.\n\nIn addition, this test case will output a message if transport over IPv4\nor IPv6 has been disabled.\n",
          "Errors" : [
             "ZM_CN01_MISSING_NS_RECORD_UDP",
             "ZM_CN01_SOA_RECORD_NOT_AA_UDP",
@@ -2363,7 +2276,7 @@
          "Summary" : "UDP connectivity to name servers"
       },
       "dns-connectivity02" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nTCP is a protocol to reach a general purpose name server hosting a zone,\n\"All general-purpose DNS implementations MUST support \\[...\\] TCP\ntransport\" ([RFC\n7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5).\n\nThis Test Case will verify if the name servers of *Child Zone* are\nreachable over TCP. The name servers tested are both those in the\ndelegation of *Child Zone* and those in the NS records in the *Child\nZone* itself.\n\nThis Test Case will mimic the tests done by\n[Connectivity01](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md),\nbut over TCP instead:\n\n-   Name Server responding to a query.\n-   Name Server including SOA record of *Child Zone* in the answer\n    section in the response on a SOA query for *Child Zone*.\n-   Name Server including NS record of *Child Zone* in the answer\n    section in the response on an NS query for *Child Zone*.\n-   Name Server setting the AA flag in a response with SOA or NS in\n    answer section.\n-   Name Server responding with expected [RCODE\n    Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)\n    (\"NoError\") on query for SOA or NS for *Child Zone*.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nTCP is a protocol to reach a general purpose name server hosting a zone,\n\"All general-purpose DNS implementations MUST support \\[...\\] TCP\ntransport\" ([RFC\n7766](https://www.rfc-editor.org/rfc/rfc7766#section-5), section 5).\n\nThis Test Case will verify if the name servers of *Child Zone* are\nreachable over TCP. The name servers tested are both those in the\ndelegation of *Child Zone* and those in the NS records in the *Child\nZone* itself.\n\nThis Test Case will mimic the tests done by\n[Connectivity01](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md),\nbut over TCP instead:\n\n-   Name Server responding to a query.\n-   Name Server including SOA record of *Child Zone* in the answer\n    section in the response on a SOA query for *Child Zone*.\n-   Name Server including NS record of *Child Zone* in the answer\n    section in the response on an NS query for *Child Zone*.\n-   Name Server setting the AA flag in a response with SOA or NS in\n    answer section.\n-   Name Server responding with expected [RCODE\n    Name](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)\n    (\"NoError\") on query for SOA or NS for *Child Zone*.\n",
          "Errors" : [
             "ZM_CN02_MISSING_NS_RECORD_TCP",
             "ZM_CN02_SOA_RECORD_NOT_AA_TCP",
@@ -2381,7 +2294,7 @@
          "Summary" : "TCP connectivity to name servers"
       },
       "dns-connectivity03" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe objective in this test is to verify that all IP addresses of the\ndomain's authoritative name servers are announced from different ASNs\n(autonomous system number). See [RFC\n1930](https://datatracker.ietf.org/doc/html/rfc1930) and\n[Wikipedia](https://en.wikipedia.org/wiki/Autonomous_system_(Internet))\nfor an explanation of AS (autonomous system).\n\nThis test is done separately on IPv4 and IPv6, and both must match the\ncriterion.\n\n[RFC 2182](https://datatracker.ietf.org/doc/html/rfc2182#section-3.1),\nsection 3.1, clearly specifies that distinct authoritative name servers\nfor a child domain should be placed in different topological and\ngeographical locations. The objective is to minimise the likelihood of a\nsingle failure disabling all of them.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe objective in this test is to verify that all IP addresses of the\ndomain's authoritative name servers are announced from different ASNs\n(autonomous system number). See [RFC\n1930](https://datatracker.ietf.org/doc/html/rfc1930) and\n[Wikipedia](https://en.wikipedia.org/wiki/Autonomous_system_(Internet))\nfor an explanation of AS (autonomous system).\n\nThis test is done separately on IPv4 and IPv6, and both must match the\ncriterion.\n\n[RFC 2182](https://datatracker.ietf.org/doc/html/rfc2182#section-3.1),\nsection 3.1, clearly specifies that distinct authoritative name servers\nfor a child domain should be placed in different topological and\ngeographical locations. The objective is to minimise the likelihood of a\nsingle failure disabling all of them.\n",
          "Errors" : [
             "ZM_EMPTY_ASN_SET",
             "ZM_IPV4_ONE_ASN",
@@ -2392,7 +2305,7 @@
          "Summary" : "AS Diversity"
       },
       "dns-consistency02" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same SOA record for the\ntested domain (section 4.2.1 of [RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1034)). As per section\n3.3.13 of [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), the\nRNAME field in the SOA RDATA refers to the administrative contact. An\ninconsistency in the administrative contact for the domain might result\nin operational failures being reported to different persons.\n\nThe objective of this test is to verify that the administrative contact\nis consistent between different authoritative name servers.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same SOA record for the\ntested domain (section 4.2.1 of [RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1034)). As per section\n3.3.13 of [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035), the\nRNAME field in the SOA RDATA refers to the administrative contact. An\ninconsistency in the administrative contact for the domain might result\nin operational failures being reported to different persons.\n\nThe objective of this test is to verify that the administrative contact\nis consistent between different authoritative name servers.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_MULTIPLE_SOA_RNAMES",
@@ -2402,7 +2315,7 @@
          "Summary" : "SOA RNAME consistency"
       },
       "dns-consistency03" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll SOA record timer fields must be consistent across all authoritative\nname servers. An inconsistency in these fields might result in\noperational inconsistencies for the designated zone.\n\nThere are other test cases that provide consistency tests for the other\nSOA fields:\n\n-   [CONSISTENCY02](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md)\n    (RNAME)\n-   [CONSISTENCY06](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md)\n    (MNAME)\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll SOA record timer fields must be consistent across all authoritative\nname servers. An inconsistency in these fields might result in\noperational inconsistencies for the designated zone.\n\nThere are other test cases that provide consistency tests for the other\nSOA fields:\n\n-   [CONSISTENCY02](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md)\n    (RNAME)\n-   [CONSISTENCY06](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md)\n    (MNAME)\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_MULTIPLE_SOA_TIME_PARAMETER_SET",
@@ -2412,7 +2325,7 @@
          "Summary" : "SOA timers consistency"
       },
       "dns-consistency04" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same NS record set for the\ntested domain, child zone ([RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1034), section 4.2.2).\nAny inconsistencies in NS records described in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), section 3.3.11,\nmight result in operational failures.\n\nThe objective of this test is to verify that the NS records are\nconsistent between all authoritative name servers of the child zone.\n\nTwo NS RR sets are considered to be equal if both sets have the same\nnumber of NS records, and for each NS record in one of the sets there is\nexactly one NS record with identical owner name, class, TTL and RDATA in\nthe other NS set.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same NS record set for the\ntested domain, child zone ([RFC\n1034](https://datatracker.ietf.org/doc/html/rfc1034), section 4.2.2).\nAny inconsistencies in NS records described in [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035), section 3.3.11,\nmight result in operational failures.\n\nThe objective of this test is to verify that the NS records are\nconsistent between all authoritative name servers of the child zone.\n\nTwo NS RR sets are considered to be equal if both sets have the same\nnumber of NS records, and for each NS record in one of the sets there is\nexactly one NS record with identical owner name, class, TTL and RDATA in\nthe other NS set.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_MULTIPLE_NS_SET",
@@ -2422,7 +2335,7 @@
          "Summary" : "Name server NS consistency"
       },
       "dns-consistency05" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nFor name servers that have IP addresses listed as glue, the IP addresses\nmust match the authoritative A and AAAA records for that host. This is\nan IANA [name server\nrequirement](https://www.iana.org/help/nameserver-requirements).\n\nThe objective of this test is to verify that the [glue\nrecords](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md#terminology)\nin the delegation are consistent with authoritative data.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nFor name servers that have IP addresses listed as glue, the IP addresses\nmust match the authoritative A and AAAA records for that host. This is\nan IANA [name server\nrequirement](https://www.iana.org/help/nameserver-requirements).\n\nThe objective of this test is to verify that the [glue\nrecords](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md#terminology)\nin the delegation are consistent with authoritative data.\n",
          "Errors" : [
             "ZM_CHILD_NS_FAILED",
             "ZM_OUT_OF_BAILIWICK_ADDR_MISMATCH",
@@ -2435,7 +2348,7 @@
          "Summary" : "Consistency between glue and authoritative data"
       },
       "dns-consistency06" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same SOA record (section\n4.2.1) of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1035) for\nthe tested domain. As per section 3.3.13 of [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035) the MNAME field in\nthe SOA RDATA refers to the name of \"the name server that was the\noriginal or primary source of data for this zone\". Inconsistency in\nMNAME of the domain might result in operational failures for\napplications that uses MNAME.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nAll authoritative name servers must serve the same SOA record (section\n4.2.1) of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1035) for\nthe tested domain. As per section 3.3.13 of [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035) the MNAME field in\nthe SOA RDATA refers to the name of \"the name server that was the\noriginal or primary source of data for this zone\". Inconsistency in\nMNAME of the domain might result in operational failures for\napplications that uses MNAME.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_MULTIPLE_SOA_MNAMES",
@@ -2445,7 +2358,7 @@
          "Summary" : "SOA MNAME consistency"
       },
       "dns-delegation01" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nSection 4.1 of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)\nspecifies that there must be a minimum of two name servers for a domain.\nThis test is done to verify this condition.\n\nThe RFC ([RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034))\npredates IPv6. Since IPv4 and IPv6 work as separate networks, this test\ncase has been extended to test for two name servers that resolve into\nIPv4 addresses and IPv6 addresses respectively.\n\nBoth [RFC 3901](https://datatracker.ietf.org/doc/html/rfc3901) (section\n3) and [RFC 4472](https://datatracker.ietf.org/doc/html/rfc4472)\n(section 1.3) states that a domain (zone) should be available over IPv4\nfor the time being. Therefore, it is by the default level in this test\ncase considered to be more problematic not being available over IPv4\nthan not being available over IPv6.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nSection 4.1 of [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)\nspecifies that there must be a minimum of two name servers for a domain.\nThis test is done to verify this condition.\n\nThe RFC ([RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034))\npredates IPv6. Since IPv4 and IPv6 work as separate networks, this test\ncase has been extended to test for two name servers that resolve into\nIPv4 addresses and IPv6 addresses respectively.\n\nBoth [RFC 3901](https://datatracker.ietf.org/doc/html/rfc3901) (section\n3) and [RFC 4472](https://datatracker.ietf.org/doc/html/rfc4472)\n(section 1.3) states that a domain (zone) should be available over IPv4\nfor the time being. Therefore, it is by the default level in this test\ncase considered to be more problematic not being available over IPv4\nthan not being available over IPv6.\n",
          "Errors" : [
             "ZM_NOT_ENOUGH_IPV4_NS_CHILD",
             "ZM_NO_IPV4_NS_CHILD",
@@ -2471,7 +2384,7 @@
          "Summary" : "Name servers must have distinct IP addresses"
       },
       "dns-delegation03" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe Domain Name System defaults to using UDP for queries and answers\nwith a DNS payload limit of 512 octets (bytes). Larger replies cause an\ninitial truncation indication leading to a subsequent handling via TCP\nwith substantially higher overhead. EDNS0 is used to allow for larger\nUDP responses thus reducing the need for use of TCP.\n\nBut [IANA](https://www.iana.org/help/nameserver-requirements) still\nmaintains that referrals from the parent zone name servers must fit into\na non-EDNS0 UDP DNS packet.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe Domain Name System defaults to using UDP for queries and answers\nwith a DNS payload limit of 512 octets (bytes). Larger replies cause an\ninitial truncation indication leading to a subsequent handling via TCP\nwith substantially higher overhead. EDNS0 is used to allow for larger\nUDP responses thus reducing the need for use of TCP.\n\nBut [IANA](https://www.iana.org/help/nameserver-requirements) still\nmaintains that referrals from the parent zone name servers must fit into\na non-EDNS0 UDP DNS packet.\n",
          "Errors" : [
             "ZM_REFERRAL_SIZE_TOO_LARGE"
          ],
@@ -2487,7 +2400,7 @@
          "Summary" : "Name server is authoritative"
       },
       "dns-delegation05" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nName servers for a zone are defined in NS records. An NS record points\nat a name, i.e. the RDATA for an NS record is a domain name. That name\nis the name of the name server. [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181#section-10.3),\nsection 10.3, states that the name of the name server must not itself\npoint at a CNAME.\n\nThe objective of this test is to verify that name servers of the tested\ndomain (zone) do not point at CNAME records.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nName servers for a zone are defined in NS records. An NS record points\nat a name, i.e. the RDATA for an NS record is a domain name. That name\nis the name of the name server. [RFC\n2181](https://datatracker.ietf.org/doc/html/rfc2181#section-10.3),\nsection 10.3, states that the name of the name server must not itself\npoint at a CNAME.\n\nThe objective of this test is to verify that name servers of the tested\ndomain (zone) do not point at CNAME records.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_NS_IS_CNAME",
@@ -2505,7 +2418,7 @@
          "Summary" : "Parent glue name records present in child"
       },
       "dns-nameserver01" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nTo ensure consistency in DNS, an authoritative name server should not be\nconfigured to do recursive lookups. Also, open recursive resolvers are\nconsidered bad internet practice due to their capability of assisting in\nlarge scale DDoS attacks. The introduction to [RFC\n5358](https://datatracker.ietf.org/doc/html/rfc5358) elaborates on\nmixing recursor and authoritative functionality, and the issue is\nfurther elaborated by [D.J.\nBernstein](https://cr.yp.to/djbdns/separation.html).\n\nSection 2.5 of [RFC 2870](https://datatracker.ietf.org/doc/html/rfc2870)\nhave very specific requirement on disabling recursion functionality on\nroot name servers.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nTo ensure consistency in DNS, an authoritative name server should not be\nconfigured to do recursive lookups. Also, open recursive resolvers are\nconsidered bad internet practice due to their capability of assisting in\nlarge scale DDoS attacks. The introduction to [RFC\n5358](https://datatracker.ietf.org/doc/html/rfc5358) elaborates on\nmixing recursor and authoritative functionality, and the issue is\nfurther elaborated by [D.J.\nBernstein](https://cr.yp.to/djbdns/separation.html).\n\nSection 2.5 of [RFC 2870](https://datatracker.ietf.org/doc/html/rfc2870)\nhave very specific requirement on disabling recursion functionality on\nroot name servers.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_IS_A_RECURSOR"
@@ -2514,7 +2427,7 @@
          "Summary" : "A name server should not be a recursor"
       },
       "dns-nameserver02" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS(0) is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC. EDNS(0) is standardized in [RFC\n6891](https://datatracker.ietf.org/doc/html/rfc6891).\n\nThis test case checks that all name servers has the capability to do\nEDNS(0) or if not, correctly replies to queries containing EDNS (OPT\nrecord).\n\nServers not supporting EDNS(0) must return FORMERR ([RFC 6891, section\n7](https://datatracker.ietf.org/doc/html/rfc6891#section-7)):\n\n> Responders that choose not to implement the protocol extensions\n> defined in this document MUST respond with a return code (RCODE) of\n> FORMERR to messages containing an OPT record in the additional section\n> and MUST NOT include an OPT record in the response.\n\nServers supporting EDNS(0) must reply with EDNS(0) ([RFC 6891, section\n6.1.1](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.1)):\n\n> If an OPT record is present in a received request, compliant\n> responders MUST include an OPT record in their respective responses.\n\nTo eliminating the risk of falsely classifying the server as not\nsupporting EDNS due e.g. firewall issues, the UDP buffer size is set to\n512 bytes (octets).\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS(0) is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC. EDNS(0) is standardized in [RFC\n6891](https://datatracker.ietf.org/doc/html/rfc6891).\n\nThis test case checks that all name servers has the capability to do\nEDNS(0) or if not, correctly replies to queries containing EDNS (OPT\nrecord).\n\nServers not supporting EDNS(0) must return FORMERR ([RFC 6891, section\n7](https://datatracker.ietf.org/doc/html/rfc6891#section-7)):\n\n> Responders that choose not to implement the protocol extensions\n> defined in this document MUST respond with a return code (RCODE) of\n> FORMERR to messages containing an OPT record in the additional section\n> and MUST NOT include an OPT record in the response.\n\nServers supporting EDNS(0) must reply with EDNS(0) ([RFC 6891, section\n6.1.1](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.1)):\n\n> If an OPT record is present in a received request, compliant\n> responders MUST include an OPT record in their respective responses.\n\nTo eliminating the risk of falsely classifying the server as not\nsupporting EDNS due e.g. firewall issues, the UDP buffer size is set to\n512 bytes (octets).\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_EDNS_VERSION_ERROR",
@@ -2535,7 +2448,7 @@
          "Summary" : "Same source address"
       },
       "dns-nameserver05" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nOlder implementations of authoritative name servers have shown different\nmisbehaviours trying to answer queries for AAAA records, as described in\n[RFC 4074](https://datatracker.ietf.org/doc/html/rfc4074). This test\ncase is intended to find out if the name server authoritative for the\ndomain shows any of these behaviours.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nOlder implementations of authoritative name servers have shown different\nmisbehaviours trying to answer queries for AAAA records, as described in\n[RFC 4074](https://datatracker.ietf.org/doc/html/rfc4074). This test\ncase is intended to find out if the name server authoritative for the\ndomain shows any of these behaviours.\n",
          "Errors" : [
             "ZM_AAAA_BAD_RDATA",
             "ZM_NO_RESPONSE",
@@ -2571,7 +2484,7 @@
          "Summary" : "Testing QNAME case sensitivity"
       },
       "dns-nameserver10" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)) is a\nmechanism to announce capabilities of a DNS implementation, and is\nrequired by new functionality in DNS such as DNSSEC ([RFC\n4033](https://datatracker.ietf.org/doc/html/rfc4033#section-3), section\n3).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),\nsection 6.1.3, states that if a nameserver has implemented EDNS but has\nnot implemented the version level of the request, then it MUST respond\nwith RCODE \"BADVERS\". Only version \"0\" has been defined for EDNS.\n\nNote that RCODE \"BADVERS\" is an extended RCODE which is calculated from\nthe combination of the normal RCODE field in the DNS package header\n([RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1),\nsection 4.1.1) and the OPT record EXTENDED-RCODE field ([RFC\n6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),\nsection 6.1.3). Also see [IANA RCODE\nRegistry](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)) is a\nmechanism to announce capabilities of a DNS implementation, and is\nrequired by new functionality in DNS such as DNSSEC ([RFC\n4033](https://datatracker.ietf.org/doc/html/rfc4033#section-3), section\n3).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),\nsection 6.1.3, states that if a nameserver has implemented EDNS but has\nnot implemented the version level of the request, then it MUST respond\nwith RCODE \"BADVERS\". Only version \"0\" has been defined for EDNS.\n\nNote that RCODE \"BADVERS\" is an extended RCODE which is calculated from\nthe combination of the normal RCODE field in the DNS package header\n([RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1),\nsection 4.1.1) and the OPT record EXTENDED-RCODE field ([RFC\n6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.3),\nsection 6.1.3). Also see [IANA RCODE\nRegistry](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).\n",
          "Errors" : [
             "ZM_N10_NO_RESPONSE_EDNS1_QUERY",
             "ZM_N10_EDNS_RESPONSE_ERROR",
@@ -2581,7 +2494,7 @@
          "Summary" : "Test for undefined EDNS version"
       },
       "dns-nameserver11" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.2),\nsection 6.1.2, states that any OPTION-CODE values not understood by a\nresponder or requestor MUST be ignored. Unknown OPTION-CODE values must\nbe processed as though the OPTION-CODE was not even there.\n\nIn this test case, we will query with an unknown EDNS OPTION-CODE and\nexpect that the OPTION-CODE is not present in the response for the\nquery.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.2),\nsection 6.1.2, states that any OPTION-CODE values not understood by a\nresponder or requestor MUST be ignored. Unknown OPTION-CODE values must\nbe processed as though the OPTION-CODE was not even there.\n\nIn this test case, we will query with an unknown EDNS OPTION-CODE and\nexpect that the OPTION-CODE is not present in the response for the\nquery.\n",
          "Errors" : [
             "ZM_N11_NO_EDNS",
             "ZM_N11_UNEXPECTED_RCODE",
@@ -2594,7 +2507,7 @@
          "Summary" : "Test for unknown EDNS OPTION-CODE"
       },
       "dns-nameserver12" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver12.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a dns implementation,\nand is now basically required by any new functionality in dns such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.4),\nsection 6.1.4, states that \"Z\" flag bits must be set to zero by senders\nand ignored by receiver.\n\n[IANA](https://www.iana.org/) lists the flags in the [EDNS Header\nFlags](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-13)\nassignment list.\n\nIn this test case, the query will have an unknown EDNS flag set, i.e.\none of the Z flag bits set to \"1\", and it is expected that all \"Z\" bits\nto be clear in the response (set to \"0\").\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver12.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a dns implementation,\nand is now basically required by any new functionality in dns such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891#section-6.1.4),\nsection 6.1.4, states that \"Z\" flag bits must be set to zero by senders\nand ignored by receiver.\n\n[IANA](https://www.iana.org/) lists the flags in the [EDNS Header\nFlags](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-13)\nassignment list.\n\nIn this test case, the query will have an unknown EDNS flag set, i.e.\none of the Z flag bits set to \"1\", and it is expected that all \"Z\" bits\nto be clear in the response (set to \"0\").\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_NS_ERROR",
@@ -2605,7 +2518,7 @@
          "Summary" : "Test for unknown EDNS flags"
       },
       "dns-nameserver13" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891, section\n7](https://datatracker.ietf.org/doc/html/rfc6891#section-7) states that\nan OPT record must be included in a truncated response, if the query\nincludes an OPT pseudo record.\n\nThis Test Case will try to verify that if the response to a query with\nan OPT record is truncated, then the response will contain an OPT\nrecord.\n\nTo trigger a truncated response, the OPT pseudo record 'DO' bit is set\nand the buffer size is limited to 512 bytes. If the zone is not signed\nwith DNSSEC, the response will probably not be truncated anyway.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nEDNS is a mechanism to announce capabilities of a DNS implementation,\nand is now basically required by any new functionality in DNS such as\nDNSSEC ([RFC 6891](https://datatracker.ietf.org/doc/html/rfc6891)).\n\n[RFC 6891, section\n7](https://datatracker.ietf.org/doc/html/rfc6891#section-7) states that\nan OPT record must be included in a truncated response, if the query\nincludes an OPT pseudo record.\n\nThis Test Case will try to verify that if the response to a query with\nan OPT record is truncated, then the response will contain an OPT\nrecord.\n\nTo trigger a truncated response, the OPT pseudo record 'DO' bit is set\nand the buffer size is limited to 512 bytes. If the zone is not signed\nwith DNSSEC, the response will probably not be truncated anyway.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_NS_ERROR",
@@ -2616,7 +2529,7 @@
          "Summary" : "Test for truncated response on EDNS query"
       },
       "dns-nameserver14" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThis test case actually combines the test options in test cases\n[NAMESERVER10](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md)\nand\n[NAMESERVER11](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md).\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThis test case actually combines the test options in test cases\n[NAMESERVER10](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md)\nand\n[NAMESERVER11](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md).\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_UNSUPPORTED_EDNS_VER",
@@ -2636,7 +2549,7 @@
          "Summary" : "Misuse of '@' character in the SOA RNAME field"
       },
       "dns-syntax06" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe SOA RNAME field is a mailbox address. The SOA RNAME field is defined\nin [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13),\nsection 3.3.13 and in [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912#section-2.2),\nsection 2.2. The RNAME field should follow the rules of an e-mail\naddress also defined in [RFC\n5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1),\nsection 3.4.1.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe SOA RNAME field is a mailbox address. The SOA RNAME field is defined\nin [RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-3.3.13),\nsection 3.3.13 and in [RFC\n1912](https://datatracker.ietf.org/doc/html/rfc1912#section-2.2),\nsection 2.2. The RNAME field should follow the rules of an e-mail\naddress also defined in [RFC\n5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1),\nsection 3.4.1.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_RNAME_MAIL_DOMAIN_LOCALHOST",
@@ -2665,7 +2578,7 @@
          "Summary" : "SOA master is not an alias"
       },
       "dns-zone10" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe SOA record is crucial for the DNS zone and \"exactly one SOA RR\nshould be present at the top of the zone\" ([RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-5.2),\nsection 5.2). This test case will verify that the zone of the domain to\nbe tested return exactly one SOA record.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe SOA record is crucial for the DNS zone and \"exactly one SOA RR\nshould be present at the top of the zone\" ([RFC\n1035](https://datatracker.ietf.org/doc/html/rfc1035#section-5.2),\nsection 5.2). This test case will verify that the zone of the domain to\nbe tested return exactly one SOA record.\n",
          "Errors" : [
             "ZM_MULTIPLE_SOA",
             "ZM_NO_SOA_IN_RESPONSE",
@@ -2676,16 +2589,17 @@
          "Summary" : "No multiple SOA records"
       },
       "dns-zz-idna2008-compliance" : {
-         "Description" : "In addition to the other tests case in this suite, which come from\nZonemaster, this test case exists to confirm that all DNS host names which\nappear in resource records at the TLD apex conform to the IDNA2008\nspecifications.\n\nThe names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`\nrecord **MUST** be comprised solely of (a) ASCII-only labels or (b) IDN\nlabels that conform to the requirements of IDNA2008.\n",
+         "Description" : "In addition to the other tests case in this suite, which come from\nZonemaster, this test case exists to confirm that all DNS host names which\nappear in resource records at the TLD apex conform to the IDNA2008\nspecifications.\n\nThe names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`\nrecord, and in the apex `NS` records, **MUST** be comprised solely of (a)\nASCII-only labels or (b) IDN labels that conform to the requirements of\nIDNA2008.\n",
          "Errors" : [
             "DNS_IDNA2008_INVALID_MNAME",
-            "DNS_IDNA2008_INVALID_RNAME"
+            "DNS_IDNA2008_INVALID_RNAME",
+            "DNS_IDNA2008_INVALID_NS_NSDNAME"
          ],
          "Maturity" : "ALPHA",
          "Summary" : "IDNA2008 compliance check"
       },
       "dnssec-01" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe list of allowed Digest Algorithms in a DS record published by the\nparent is specified by [RFC\n8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3),\nsection 3.3, and is published in the [IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)\nof *DS RR Type Digest Algorithms*. No DS Digest Algorithm values, other\nthan those specified in the RFC and allocated by IANA, should be used in\npublic DNS.\n\nIf [RFC 8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3)\nand the [IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)\ndisagree on the same DS digest algorithm, the RFC takes precedence until\nthe registry has a been updated with a reference to the RFC.\n\nThe table of algorithms below is for reference only and is copied from\n[IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml).\nIt is here to make it easier to read the steps when symbolic names are\ngiven. This is only an excerpt from the table. The full table is\navailable at the IANA registry.\n\n  Algorithm number   Algorithm (or description)\n  ------------------ ----------------------------\n  0                  (Reserved)\n  1                  SHA-1\n  2                  SHA-256\n  3                  GOST R 34.11-94\n  4                  SHA-384\n  5-255              (Unassigned)\n\nThis test case will verify that the Zonemaster implementation has\nsupport for the DS digest algorithm of the DS record found, and if not\noutput a message tag. If the support is missing other test cases will\nnot be able to verify that DS record.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe list of allowed Digest Algorithms in a DS record published by the\nparent is specified by [RFC\n8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3),\nsection 3.3, and is published in the [IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)\nof *DS RR Type Digest Algorithms*. No DS Digest Algorithm values, other\nthan those specified in the RFC and allocated by IANA, should be used in\npublic DNS.\n\nIf [RFC 8624](https://datatracker.ietf.org/doc/html/rfc8624#section-3.3)\nand the [IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml)\ndisagree on the same DS digest algorithm, the RFC takes precedence until\nthe registry has a been updated with a reference to the RFC.\n\nThe table of algorithms below is for reference only and is copied from\n[IANA\nregistry](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xml).\nIt is here to make it easier to read the steps when symbolic names are\ngiven. This is only an excerpt from the table. The full table is\navailable at the IANA registry.\n\n  Algorithm number   Algorithm (or description)\n  ------------------ ----------------------------\n  0                  (Reserved)\n  1                  SHA-1\n  2                  SHA-256\n  3                  GOST R 34.11-94\n  4                  SHA-384\n  5-255              (Unassigned)\n\nThis test case will verify that the Zonemaster implementation has\nsupport for the DS digest algorithm of the DS record found, and if not\noutput a message tag. If the support is missing other test cases will\nnot be able to verify that DS record.\n",
          "Errors" : [
             "ZM_DS01_DS_ALGO_DEPRECATED",
             "ZM_DS01_DS_ALGO_NOT_DS",
@@ -2696,7 +2610,7 @@
          "Summary" : "Legal values for the DS hash digest algorithm"
       },
       "dnssec-02" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nDNS delegations from a parent to a child are secured with DNSSEC by\npublishing one or several Delegation Signer (DS) records in the parent\nzone, along with the NS records for the delegation.\n\nFor the secure delegation to work, at least one DS record must match a\nDNSKEY record in the child zone ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-5), section\n5). Each DS record should match a DNSKEY record in the child zone. More\nthan one DS may match the same DNSKEY. The DNSKEY that the DS record\nrefer to must be used to sign the DNSKEY RRset in the child zone ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-5), section\n5).\n\nThe DNSKEY record that the DS record refer to must have bit 7 (\"Zone Key\nflag\") set in the DNSKEY RR Flags ([RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-5.2),\nsection 5.2).\n\nBit 15 (\"Secure Entry Point flag\") on a DNSKEY record signals that it is\nmeant to be a KSK and pointed out by a DS record. It is noted if the\nDNSKEY record that the DS points at does not have that flag set ([RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-2.1.1),\nsection 2.1.1).\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\n**Note:** References to \"Key Signing Keys\" in the description below also\nrefer to Combined Signing Keys, if used.\n\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nDNS delegations from a parent to a child are secured with DNSSEC by\npublishing one or several Delegation Signer (DS) records in the parent\nzone, along with the NS records for the delegation.\n\nFor the secure delegation to work, at least one DS record must match a\nDNSKEY record in the child zone ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-5), section\n5). Each DS record should match a DNSKEY record in the child zone. More\nthan one DS may match the same DNSKEY. The DNSKEY that the DS record\nrefer to must be used to sign the DNSKEY RRset in the child zone ([RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-5), section\n5).\n\nThe DNSKEY record that the DS record refer to must have bit 7 (\"Zone Key\nflag\") set in the DNSKEY RR Flags ([RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-5.2),\nsection 5.2).\n\nBit 15 (\"Secure Entry Point flag\") on a DNSKEY record signals that it is\nmeant to be a KSK and pointed out by a DS record. It is noted if the\nDNSKEY record that the DS points at does not have that flag set ([RFC\n4034](https://datatracker.ietf.org/doc/html/rfc4034#section-2.1.1),\nsection 2.1.1).\n",
          "Errors" : [
             "ZM_DS02_DNSKEY_NOT_FOR_ZONE_SIGNING",
             "ZM_DS02_NO_MATCHING_DNSKEY_RRSIG",
@@ -2727,7 +2641,7 @@
          "Summary" : "Check for too short or too long RRSIG lifetimes"
       },
       "dnssec-05" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nA domain name (zone) should only use DNSKEY algorithms that are\nspecified by [RFC\n8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1), section\n3.1 and the [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml)\nof *DNSSEC Algorithm Numbers* to be used for DNSSEC signing. A public\ndomain name (zone) should not use private algorithms.\n\nIf [RFC 8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1)\nand [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml)\ndisagree on the same algorithm, the RFC takes precedence until the\nregistry has a been updated with a reference to the RFC.\n\nThe table of algorithms below is for reference only and is copied from\n[IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\nIt is here to make it easier to read the steps when symbolic names are\ngiven. This is only an excerpt from the table. The full table is\navailable at [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\n\n  Algorithm number   Algorithm (or description)\n  ------------------ --------------------------------\n  0                  (Delete DS)\n  1                  RSA/MD5\n  2                  Diffie-Hellman\n  3                  DSA/SHA1\n  4                  (Reserved)\n  5                  RSA/SHA-1\n  6                  DSA-NSEC3-SHA1\n  7                  RSASHA1-NSEC3-SHA1\n  8                  RSA/SHA-256\n  9                  (Reserved)\n  10                 RSA/SHA-512\n  11                 (Reserved)\n  12                 GOST R 34.10-2001\n  13                 ECDSA Curve P-256 with SHA-256\n  14                 ECDSA Curve P-384 with SHA-384\n  15                 Ed25519\n  16                 Ed448\n  17-122             (Unassigned)\n  123-251            (Reserved)\n  252                (Indirect Keys)\n  253                (Private algorithm)\n  254                (Private algorithm OID)\n  255                (Reserved)\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nA domain name (zone) should only use DNSKEY algorithms that are\nspecified by [RFC\n8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1), section\n3.1 and the [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml)\nof *DNSSEC Algorithm Numbers* to be used for DNSSEC signing. A public\ndomain name (zone) should not use private algorithms.\n\nIf [RFC 8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1)\nand [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml)\ndisagree on the same algorithm, the RFC takes precedence until the\nregistry has a been updated with a reference to the RFC.\n\nThe table of algorithms below is for reference only and is copied from\n[IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\nIt is here to make it easier to read the steps when symbolic names are\ngiven. This is only an excerpt from the table. The full table is\navailable at [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\n\n  Algorithm number   Algorithm (or description)\n  ------------------ --------------------------------\n  0                  (Delete DS)\n  1                  RSA/MD5\n  2                  Diffie-Hellman\n  3                  DSA/SHA1\n  4                  (Reserved)\n  5                  RSA/SHA-1\n  6                  DSA-NSEC3-SHA1\n  7                  RSASHA1-NSEC3-SHA1\n  8                  RSA/SHA-256\n  9                  (Reserved)\n  10                 RSA/SHA-512\n  11                 (Reserved)\n  12                 GOST R 34.10-2001\n  13                 ECDSA Curve P-256 with SHA-256\n  14                 ECDSA Curve P-384 with SHA-384\n  15                 Ed25519\n  16                 Ed448\n  17-122             (Unassigned)\n  123-251            (Reserved)\n  252                (Indirect Keys)\n  253                (Private algorithm)\n  254                (Private algorithm OID)\n  255                (Reserved)\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_ALGORITHM_UNASSIGNED",
@@ -2792,16 +2706,8 @@
          "Maturity" : "BETA",
          "Summary" : "Zone contains NSEC or NSEC3 records"
       },
-      "dnssec-12" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe objectives for this Test Case has yet to be defined. This is a\nplaceholder for a complete defintion of the Test Case. The Test Case is\nnot yet implemented.\n\nTest for DNSSEC Algorithm Completeness (DS-\\>DNSKEY-\\>RRSIG)\n\nSee issues [#588](https://github.com/zonemaster/zonemaster/issues/588),\n[#528](https://github.com/zonemaster/zonemaster/issues/528),\n[#529](https://github.com/zonemaster/zonemaster/issues/529) and\n[#231](https://github.com/zonemaster/zonemaster/issues/231).\n",
-         "Errors" : [
-            "ZM_DNSSEC_12_FAILED"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Test for DNSSEC Algorithm Completeness"
-      },
       "dnssec-13" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nFrom [RFC\n6840](https://datatracker.ietf.org/doc/html/rfc6840#section-5.11),\nsection 5.11:\n\n> The DS RRset and DNSKEY RRset are used to signal which algorithms are\n> used to sign a zone. \\[...\\] The zone MUST also be signed with each\n> algorithm (though not each key) present in the DNSKEY RRset. \\[...\\]\n\nTo verify that the whole zone is signed with all algorithms require\naccess to the complete zone, which is generally not possible for public\nzones. This test case is limited to three RRsets that must be present in\na signed zone, the SOA RRset, the NS RRset and the DNSKEY RRset.\n\nThis test case will verify that for each DNSKEY algorithm, there is a\nRRSIG of that algorithm for the three selected RRsets.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nFrom [RFC\n6840](https://datatracker.ietf.org/doc/html/rfc6840#section-5.11),\nsection 5.11:\n\n> The DS RRset and DNSKEY RRset are used to signal which algorithms are\n> used to sign a zone. \\[...\\] The zone MUST also be signed with each\n> algorithm (though not each key) present in the DNSKEY RRset. \\[...\\]\n\nTo verify that the whole zone is signed with all algorithms require\naccess to the complete zone, which is generally not possible for public\nzones. This test case is limited to three RRsets that must be present in\na signed zone, the SOA RRset, the NS RRset and the DNSKEY RRset.\n\nThis test case will verify that for each DNSKEY algorithm, there is a\nRRSIG of that algorithm for the three selected RRsets.\n",
          "Errors" : [
             "ZM_DS13_ALGO_NOT_SIGNED_DNSKEY",
             "ZM_DS13_ALGO_NOT_SIGNED_SOA",
@@ -2811,7 +2717,7 @@
          "Summary" : "All DNSKEY algorithms used to sign the zone"
       },
       "dnssec-14" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe DNSKEYs based on RSA have different minimum and maximum key sizes,\nwhich must be followed. This test case will validate the keys size of\nsuch keys. RSA based algorithms that are deprecated or else not suitable\nfor DNSKEY ([RFC\n8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1) and [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml))\nare just ignored. See test case\n[DNSSEC05](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md)\nfor test of algorithm.\n\nThe table 1 below specify the maximum and minimum key size,\nrespectively. Algorithm number can be found in [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\n\nTable 1: Minimum and maximum RSA key sizes in bits\n\n  Algorithm   Min size   Max size   Reference\n  ----------- ---------- ---------- ---------------------------------------------------------------------\n  5           512        4096       [RFC 3110](https://datatracker.ietf.org/doc/html/rfc3110)\n  7           512        4096       [RFC 5155](https://datatracker.ietf.org/doc/html/rfc5155)\n  8           512        4096       [RFC 5702](https://datatracker.ietf.org/doc/html/rfc5702#section-2)\n  10          1024       4096       [RFC 5702](https://datatracker.ietf.org/doc/html/rfc5702#section-2)\n\nIt is also recommended that an RSA based algorithm has a key length of\nat least 2048 bit as stated in [NIST SP 800-57 Part 1\nRev. 4](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-4/archive/2016-01-28),\ntable 2 on page 53 in section 5.6.1 and table 4 on page 55 in section\n5.6.2.\n\nThis test case verifies that RSA DNSKEYs follows the stated key lengths\nfrom the RFCs and also the NIST recommended shortest key length.\n",
+         "Description" : "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\nThis test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nThe DNSKEYs based on RSA have different minimum and maximum key sizes,\nwhich must be followed. This test case will validate the keys size of\nsuch keys. RSA based algorithms that are deprecated or else not suitable\nfor DNSKEY ([RFC\n8624](https://www.rfc-editor.org/rfc/rfc8624.html#section-3.1) and [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml))\nare just ignored. See test case\n[DNSSEC05](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md)\nfor test of algorithm.\n\nThe table 1 below specify the maximum and minimum key size,\nrespectively. Algorithm number can be found in [IANA\nregistry](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml).\n\nTable 1: Minimum and maximum RSA key sizes in bits\n\n  Algorithm   Min size   Max size   Reference\n  ----------- ---------- ---------- ---------------------------------------------------------------------\n  5           512        4096       [RFC 3110](https://datatracker.ietf.org/doc/html/rfc3110)\n  7           512        4096       [RFC 5155](https://datatracker.ietf.org/doc/html/rfc5155)\n  8           512        4096       [RFC 5702](https://datatracker.ietf.org/doc/html/rfc5702#section-2)\n  10          1024       4096       [RFC 5702](https://datatracker.ietf.org/doc/html/rfc5702#section-2)\n\nIt is also recommended that an RSA based algorithm has a key length of\nat least 2048 bit as stated in [NIST SP 800-57 Part 1\nRev. 4](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-4/archive/2016-01-28),\ntable 2 on page 53 in section 5.6.1 and table 4 on page 55 in section\n5.6.2.\n\nThis test case verifies that RSA DNSKEYs follows the stated key lengths\nfrom the RFCs and also the NIST recommended shortest key length.\n",
          "Errors" : [
             "ZM_NO_RESPONSE",
             "ZM_DNSKEY_TOO_LARGE_FOR_ALGO",
@@ -2821,59 +2727,6 @@
          ],
          "Maturity" : "BETA",
          "Summary" : "Check for valid RSA DNSKEY key size"
-      },
-      "dnssec-15" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nCDS and CDNSKEY record types are defined in [RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC\n8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types\nare optional in a zone. The objective of this test case is to verify\nthat they are correctly set-up, if included in the zone.\n\nIf a CDS record is included in the zone, the corresponding CDNSKEY\nrecord should also be included ([RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section\n4).\n\nThe CDS and CDNSKEY RRsets should be consistent between all name servers\nfor the zone in question.\n\nIf there are both CDS RRs and CDNSKEY RRs in the zone they must match in\ncontent ([RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section\n4). It means that both must be derived from the same DNSKEY or both\nbeing \"delete\" CDS and CDNSKEY.\n",
-         "Errors" : [
-            "ZM_DS15_INCONSISTENT_CDNSKEY",
-            "ZM_DS15_MISMATCH_CDS_CDNSKEY",
-            "ZM_DS15_INCONSISTENT_CDS"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Existence of CDS and CDNSKEY"
-      },
-      "dnssec-16" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nCDS and CDNSKEY record types are defined in [RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC\n8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types\nare optional in a zone. The objective of this test case is to verify\nthat the CDS RRset is valid. This test case is only relevant if the zone\nhas at least one CDS record. For tests of the CDNSKEY, see test case\n[DNSSEC17](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md).\n",
-         "Errors" : [
-            "ZM_DS16_CDS_INVALID_RRSIG",
-            "ZM_DS16_CDS_UNSIGNED",
-            "ZM_DS16_CDS_NOT_SIGNED_BY_CDS",
-            "ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS",
-            "ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY",
-            "ZM_DS16_CDS_WITHOUT_DNSKEY",
-            "ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY",
-            "ZM_DS16_MIXED_DELETE_CDS",
-            "ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY",
-            "ZM_DS16_CDS_MATCHES_NO_DNSKEY"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Validate CDS"
-      },
-      "dnssec-17" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nCDS and CDNSKEY record types are defined in [RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC\n8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types\nare optional in a zone. The objective of this test case is to verify\nthat the CDNSKEY RRset is valid. This test case is only relevant if the\nzone has at least one CDNSKEY record. For tests of the CDS, see test\ncase\n[DNSSEC16](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md).\n",
-         "Errors" : [
-            "ZM_DS17_CDNSKEY_INVALID_RRSIG",
-            "ZM_DS17_CDNSKEY_UNSIGNED",
-            "ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY",
-            "ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY",
-            "ZM_DS17_CDNSKEY_IS_NON_ZONE",
-            "ZM_DS17_CDNSKEY_WITHOUT_DNSKEY",
-            "ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY",
-            "ZM_DS17_MIXED_DELETE_CDNSKEY",
-            "ZM_DS17_CDNSKEY_IS_NON_SEP",
-            "ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Validate CDNSKEY"
-      },
-      "dnssec-18" : {
-         "Description" : "This test case comes from version v2023.1.4 of Zonemaster. For more\ninformation, see\n<https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.\nSome of the information below may not be applicable to the RST system.\n\n# Objective\n\nCDS and CDNSKEY record types are defined in [RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC\n8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types\nare optional in a zone. The objective of this test case is to verify\nthat there is a correct chain of trust from DS, in the parent zone to\nthe CDS and CDNSKEY RRsets ([RFC\n7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4.1),\nsection 4.1).\n\nAs stated in [RFC\n4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.4),\nsection 2.4: \\> A DS RR SHOULD point to a DNSKEY RR that is present in\nthe child's \\> apex DNSKEY RRset, and the child's apex DNSKEY RRset\nSHOULD be \\> signed by the corresponding private key.\"\n\nThis Test case is only relevant if \\* The *Child Zone* has either CDS or\nCDNSKEY record or both, and \\* The parent zone has a DS RRset for the\n*Child Zone*.\n",
-         "Errors" : [
-            "ZM_DS18_NO_MATCH_CDS_RRSIG_DS",
-            "ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS"
-         ],
-         "Maturity" : "BETA",
-         "Summary" : "Validate trust from DS to CDS and CDNSKEY"
       },
       "dnssec-91" : {
          "Dependencies" : [
@@ -2897,6 +2750,15 @@
          "Input-Parameters" : null,
          "Maturity" : "BETA",
          "Summary" : "Permitted DS record hash algorithm(s)"
+      },
+      "dnssec-93" : {
+         "Description" : "RFC 9276 defines best practice relating to the use of NSEC3 for\nAuthenticated Denial of Existence. This test case verifies that the zone's\nNSEC3 configuration complies with this best practice.\n\nIf the zone does not use NSEC3, then this test will be skipped.\n\nThe `NSEC3PARAM` record will be checked to ensure that:\n\n* the value of the `iterations` field of the NSEC3 record is zero;\n* the value of the `salt` field of the NSEC3 record is empty (represented as\n  a `-` in the presentation format).\n",
+         "Errors" : [
+            "DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO",
+            "DNSSEC_NSEC3_SALT_IS_NOT_EMPTY"
+         ],
+         "Maturity" : "ALPHA",
+         "Summary" : "RFC 9276 (NSEC3 iterations) compliance check"
       },
       "dnssecOps01-ZSKRollover" : {
          "Description" : "This test case verifies the RSP's ability to perform a ZSK rollover (as\ndescribed in [Section 4.1.1 of\nRFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1) for\na zone.\n\nIf the value of the `dnssecOps.csk` input parameter is `true`, then this\ntest will be skipped.\n\nThe system will monitor the zone specified in the `dnssec.zskRolloverZone`\ninput parameter. The domain may be present anywhere in the DNS hierarchy\n(that is, it does not need to be a TLD), but **MUST** have a secure chain of\ntrust up to the root zone, so that it can be validated using the root zone\ntrust anchor.\n\nThe zone **MUST** contain at least 10,000 delegations, where a delegation is\nconsidered to be one or more `NS` records with owner names that are below\nthe zone's origin. If NSEC3 is used for secure denial of existence, the\nopt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be\npresent for all `NS` rrsets, irrespective of whether a corresponding `DS`\nrecord is published)*.\n\nMonitoring will be carried out using `SOA` queries sent to multiple\nvalidating DNS resolvers, and by validating the result of a a zone transfer\nfrom the server specified in the `dnssecOps.primaryServer` input parameter.\n\nDuring the test period (currently defined as 48 hours) the operator\n**MUST** successfully carry out a ZSK rollover for the domain, where the\nZone Signing Key is replaced, without disrupting the chain of trust.\n\nTo simplify testing, applicants may wish to provision the zone such that it\nis configured with short TTLs and a short ZSK lifetime, so that a ZSK\nrollover is guaranteed to occur within the 48 test period.\n",
@@ -2950,7 +2812,7 @@
             "EPP_TLS_BAD_CIPHER"
          ],
          "Input-Parameters" : null,
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Resources" : [
             "epp.tlsCertificateStore"
          ],
@@ -2973,14 +2835,14 @@
             "EPP_GREETING_DOES_NOT_MATCH"
          ],
          "Input-Parameters" : null,
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Protocol conformance test"
       },
       "epp-03" : {
          "Description" : "This test case validates the server's implementation of client\nauthentication. The client will submit a series of `<login>` commands to\nconfirm that:\n\n* the server rejects a `<login>` command with a (randomly generated) non-\n  existent client ID;\n* the server rejects a `<login>` command with a valid client ID, but an\n  invalid password;\n* the server rejects a `<login>` command with a valid client ID and password\n  but an incorrect client certificate;\n* the server accepts a `<login>` command with a valid client ID, password\n  and client certificate;\n\nThe client will use the object and extension XML namespaces from the\nserver's `<greeting>` as part of the `<login>` command.\n\nIf the server supports the Login Security Extension (see RFC 8807) then\nthis will be used by the client.\n",
          "Errors" : null,
          "Input-Parameters" : null,
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Resources" : null,
          "Summary" : "Authentication test"
       },
@@ -2994,7 +2856,7 @@
             "EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL",
             "EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <check> command test"
       },
       "epp-05" : {
@@ -3010,7 +2872,7 @@
          "Input-Parameters" : [
             "epp.registeredNameservers"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Host <check> command test (if applicable)"
       },
       "epp-06" : {
@@ -3026,7 +2888,7 @@
          "Input-Parameters" : [
             "epp.registeredContacts"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Contact <check> command test (if applicable for the registry type)"
       },
       "epp-07" : {
@@ -3055,7 +2917,7 @@
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Contact <create> command test (if applicable for the registry type)"
       },
       "epp-08" : {
@@ -3067,7 +2929,7 @@
             "EPP_CONTACT_INFO_RESPONSE_NOT_2201",
             "EPP_CONTACT_UPDATE_RESPONSE_NOT_2201"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Contact object access control (if applicable)"
       },
       "epp-09" : {
@@ -3100,7 +2962,7 @@
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE",
             "EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Contact <update> command test (if applicable for the registry type)"
       },
       "epp-10" : {
@@ -3113,7 +2975,7 @@
             "EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS"
          ],
          "Input-Parameters" : null,
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Contact <delete> command test (if applicable for the registry type)"
       },
       "epp-11" : {
@@ -3126,7 +2988,7 @@
             "EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
             "EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "host <create> command test (if applicable)"
       },
       "epp-12" : {
@@ -3137,7 +2999,7 @@
          "Errors" : [
             "EPP_HOST_UPDATE_AUTHZ_ERROR"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Host object access control (if applicable)"
       },
       "epp-13" : {
@@ -3153,7 +3015,7 @@
             "EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST",
             "EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Host <update> command test (if applicable)"
       },
       "epp-14" : {
@@ -3181,7 +3043,7 @@
          "Input-Parameters" : [
             "epp.secDNSInterfaces"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <create> command test"
       },
       "epp-15" : {
@@ -3193,7 +3055,7 @@
             "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT",
             "EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Registry object integrity test"
       },
       "epp-16" : {
@@ -3214,7 +3076,7 @@
             "EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA"
          ],
          "Input-Parameters" : null,
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <update> command test"
       },
       "epp-17" : {
@@ -3225,7 +3087,7 @@
          "Errors" : [
             "EPP_SERVICE_PORT_NOT_CONSISTENT"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Service Port consistency test"
       },
       "epp-18" : {
@@ -3239,7 +3101,7 @@
             "EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE",
             "EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <renew> command test"
       },
       "epp-19" : {
@@ -3258,7 +3120,7 @@
             "EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS",
             "EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <transfer> command test"
       },
       "epp-20" : {
@@ -3269,7 +3131,7 @@
          "Errors" : [
             "EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <transfer> rejection test"
       },
       "epp-21" : {
@@ -3282,7 +3144,7 @@
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE",
             "EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain <delete> command test"
       },
       "epp-22" : {
@@ -3296,7 +3158,7 @@
          "Input-Parameters" : [
             "epp.restoreReportRequired"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Domain restore test"
       },
       "epp-23" : {
@@ -3312,7 +3174,7 @@
             "EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN",
             "EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Host rename test (if applicable)"
       },
       "epp-24" : {
@@ -3323,7 +3185,7 @@
          "Errors" : [
             "EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS"
          ],
-         "Maturity" : "ALPHA",
+         "Maturity" : "BETA",
          "Summary" : "Host <delete> command test (if applicable)"
       },
       "idn-01" : {
@@ -4229,5 +4091,5 @@
          "Test-Cases" : "^srsgw-"
       }
    },
-   "Version" : "3.0.287"
+   "Version" : "3.0.299"
 }

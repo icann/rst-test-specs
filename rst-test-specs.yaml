@@ -1,6 +1,6 @@
 ---
 RST-Test-Plan-Schema-Version: 1.7.0
-Version: 3.0.287
+Version: 3.0.299
 Last-Updated: 2024-01-30
 Contact:
   Name: GDS Technical Services
@@ -229,6 +229,17 @@ Preamble: |
 ChangeLog:
   2024-01-30:
     - Created this ChangeLog.
+    - |
+      add content of `NS` records to the list of names checked in
+      `dns-zz-idna2008-compliance`.
+    - add `dnssec-93` test case.
+    - |
+      remove the `dnssec-12`, `dnssec-15`, `dnssec-16`, `dnssec-17` and
+      `dnssec-18` test cases.
+    - |
+      the `ALGORITHM_NOT_RECOMMENDED` error raised by `dnssec-05` is now an
+      **ERROR**.
+    - The maturity of all cases in the EPP suite has been raised to **BETA**.
 
 Test-Plans:
   
@@ -874,6 +885,8 @@ Test-Cases:
   
   dns-connectivity01:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.
@@ -929,6 +942,8 @@ Test-Cases:
   
   dns-connectivity02:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
@@ -977,6 +992,8 @@ Test-Cases:
   
   dns-connectivity03:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.
@@ -1009,6 +1026,8 @@ Test-Cases:
   
   dns-consistency02:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
@@ -1035,6 +1054,8 @@ Test-Cases:
   
   dns-consistency03:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency03.md>.
@@ -1062,6 +1083,8 @@ Test-Cases:
   
   dns-consistency04:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.
@@ -1092,6 +1115,8 @@ Test-Cases:
   
   dns-consistency05:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md>.
@@ -1119,6 +1144,8 @@ Test-Cases:
   
   dns-consistency06:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
@@ -1143,6 +1170,8 @@ Test-Cases:
   
   dns-delegation01:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation01.md>.
@@ -1203,6 +1232,8 @@ Test-Cases:
   
   dns-delegation03:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.
@@ -1245,6 +1276,8 @@ Test-Cases:
   
   dns-delegation05:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.
@@ -1288,6 +1321,8 @@ Test-Cases:
   
   dns-nameserver01:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver01.md>.
@@ -1315,6 +1350,8 @@ Test-Cases:
   
   dns-nameserver02:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver02.md>.
@@ -1378,6 +1415,8 @@ Test-Cases:
   
   dns-nameserver05:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.
@@ -1475,6 +1514,8 @@ Test-Cases:
   
   dns-nameserver10:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.
@@ -1510,6 +1551,8 @@ Test-Cases:
   
   dns-nameserver11:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.
@@ -1541,6 +1584,8 @@ Test-Cases:
   
   dns-nameserver12:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver12.md>.
@@ -1573,6 +1618,8 @@ Test-Cases:
   
   dns-nameserver13:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.
@@ -1606,6 +1653,8 @@ Test-Cases:
   
   dns-nameserver14:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.
@@ -1646,6 +1695,8 @@ Test-Cases:
   
   dns-syntax06:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.
@@ -1727,6 +1778,8 @@ Test-Cases:
   
   dns-zone10:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.
@@ -1749,6 +1802,8 @@ Test-Cases:
   
   dnssec-01:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.
@@ -1801,6 +1856,12 @@ Test-Cases:
   
   dnssec-02:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
+      **Note:** References to "Key Signing Keys" in the description below also
+      refer to Combined Signing Keys, if used.
+  
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md>.
@@ -1914,6 +1975,8 @@ Test-Cases:
   
   dnssec-05:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md>.
@@ -2094,32 +2157,10 @@ Test-Cases:
     Maturity: BETA
     Summary: Zone contains NSEC or NSEC3 records
   
-  dnssec-12:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.
-      Some of the information below may not be applicable to the RST system.
-  
-      # Objective
-  
-      The objectives for this Test Case has yet to be defined. This is a
-      placeholder for a complete defintion of the Test Case. The Test Case is
-      not yet implemented.
-  
-      Test for DNSSEC Algorithm Completeness (DS-\>DNSKEY-\>RRSIG)
-  
-      See issues [#588](https://github.com/zonemaster/zonemaster/issues/588),
-      [#528](https://github.com/zonemaster/zonemaster/issues/528),
-      [#529](https://github.com/zonemaster/zonemaster/issues/529) and
-      [#231](https://github.com/zonemaster/zonemaster/issues/231).
-    Errors:
-    - ZM_DNSSEC_12_FAILED
-    Maturity: BETA
-    Summary: Test for DNSSEC Algorithm Completeness
-  
   dnssec-13:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md>.
@@ -2151,6 +2192,8 @@ Test-Cases:
   
   dnssec-14:
     Description: |
+      **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+  
       This test case comes from version v2023.1.4 of Zonemaster. For more
       information, see
       <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md>.
@@ -2198,135 +2241,6 @@ Test-Cases:
     Maturity: BETA
     Summary: Check for valid RSA DNSKEY key size
   
-  dnssec-15:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.
-      Some of the information below may not be applicable to the RST system.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that they are correctly set-up, if included in the zone.
-  
-      If a CDS record is included in the zone, the corresponding CDNSKEY
-      record should also be included ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-      4).
-  
-      The CDS and CDNSKEY RRsets should be consistent between all name servers
-      for the zone in question.
-  
-      If there are both CDS RRs and CDNSKEY RRs in the zone they must match in
-      content ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-      4). It means that both must be derived from the same DNSKEY or both
-      being "delete" CDS and CDNSKEY.
-    Errors:
-    - ZM_DS15_INCONSISTENT_CDNSKEY
-    - ZM_DS15_MISMATCH_CDS_CDNSKEY
-    - ZM_DS15_INCONSISTENT_CDS
-    Maturity: BETA
-    Summary: Existence of CDS and CDNSKEY
-  
-  dnssec-16:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.
-      Some of the information below may not be applicable to the RST system.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that the CDS RRset is valid. This test case is only relevant if the zone
-      has at least one CDS record. For tests of the CDNSKEY, see test case
-      [DNSSEC17](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md).
-    Errors:
-    - ZM_DS16_CDS_INVALID_RRSIG
-    - ZM_DS16_CDS_UNSIGNED
-    - ZM_DS16_CDS_NOT_SIGNED_BY_CDS
-    - ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS
-    - ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY
-    - ZM_DS16_CDS_WITHOUT_DNSKEY
-    - ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY
-    - ZM_DS16_MIXED_DELETE_CDS
-    - ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY
-    - ZM_DS16_CDS_MATCHES_NO_DNSKEY
-    Maturity: BETA
-    Summary: Validate CDS
-  
-  dnssec-17:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.
-      Some of the information below may not be applicable to the RST system.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that the CDNSKEY RRset is valid. This test case is only relevant if the
-      zone has at least one CDNSKEY record. For tests of the CDS, see test
-      case
-      [DNSSEC16](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md).
-    Errors:
-    - ZM_DS17_CDNSKEY_INVALID_RRSIG
-    - ZM_DS17_CDNSKEY_UNSIGNED
-    - ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY
-    - ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
-    - ZM_DS17_CDNSKEY_IS_NON_ZONE
-    - ZM_DS17_CDNSKEY_WITHOUT_DNSKEY
-    - ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY
-    - ZM_DS17_MIXED_DELETE_CDNSKEY
-    - ZM_DS17_CDNSKEY_IS_NON_SEP
-    - ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY
-    Maturity: BETA
-    Summary: Validate CDNSKEY
-  
-  dnssec-18:
-    Description: |
-      This test case comes from version v2023.1.4 of Zonemaster. For more
-      information, see
-      <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
-      Some of the information below may not be applicable to the RST system.
-  
-      # Objective
-  
-      CDS and CDNSKEY record types are defined in [RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-      8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-      are optional in a zone. The objective of this test case is to verify
-      that there is a correct chain of trust from DS, in the parent zone to
-      the CDS and CDNSKEY RRsets ([RFC
-      7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4.1),
-      section 4.1).
-  
-      As stated in [RFC
-      4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.4),
-      section 2.4: \> A DS RR SHOULD point to a DNSKEY RR that is present in
-      the child's \> apex DNSKEY RRset, and the child's apex DNSKEY RRset
-      SHOULD be \> signed by the corresponding private key."
-  
-      This Test case is only relevant if \* The *Child Zone* has either CDS or
-      CDNSKEY record or both, and \* The parent zone has a DS RRset for the
-      *Child Zone*.
-    Errors:
-    - ZM_DS18_NO_MATCH_CDS_RRSIG_DS
-    - ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS
-    Maturity: BETA
-    Summary: Validate trust from DS to CDS and CDNSKEY
-  
   dns-zz-idna2008-compliance:
     Summary: IDNA2008 compliance check
     Maturity: ALPHA
@@ -2337,11 +2251,13 @@ Test-Cases:
       specifications.
   
       The names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`
-      record **MUST** be comprised solely of (a) ASCII-only labels or (b) IDN
-      labels that conform to the requirements of IDNA2008.
+      record, and in the apex `NS` records, **MUST** be comprised solely of (a)
+      ASCII-only labels or (b) IDN labels that conform to the requirements of
+      IDNA2008.
     Errors:
       - DNS_IDNA2008_INVALID_MNAME
       - DNS_IDNA2008_INVALID_RNAME
+      - DNS_IDNA2008_INVALID_NS_NSDNAME
   dnssec-91:
     Summary: Permitted signing algorithms
     Maturity: BETA
@@ -2355,6 +2271,7 @@ Test-Cases:
       - DNSSEC_INVALID_SIGNING_ALGORITHM
     Dependencies:
       - dnssec-05
+  
   dnssec-92:
     Summary: Permitted DS record hash algorithm(s)
     Maturity: BETA
@@ -2365,6 +2282,26 @@ Test-Cases:
     Errors:
       - DNSSEC_DNS_QUERY_ERROR
       - DNSSEC_INVALID_DIGEST_ALGORITHM
+  
+  dnssec-93:
+    Summary: RFC 9276 (NSEC3 iterations) compliance check
+    Maturity: ALPHA
+    Description: |
+      RFC 9276 defines best practice relating to the use of NSEC3 for
+      Authenticated Denial of Existence. This test case verifies that the zone's
+      NSEC3 configuration complies with this best practice.
+  
+      If the zone does not use NSEC3, then this test will be skipped.
+  
+      The `NSEC3PARAM` record will be checked to ensure that:
+  
+      * the value of the `iterations` field of the NSEC3 record is zero;
+      * the value of the `salt` field of the NSEC3 record is empty (represented as
+        a `-` in the presentation format).
+    Errors:
+      - DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO
+      - DNSSEC_NSEC3_SALT_IS_NOT_EMPTY
+  
   dnssecOps01-ZSKRollover:
     Summary: ZSK rollover
     Maturity: ALPHA
@@ -2751,7 +2688,7 @@ Test-Cases:
       - RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS
   epp-01:
     Summary: Service connectivity test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test confirms that the EPP service is reachable from the probe
       servers.
@@ -2795,7 +2732,7 @@ Test-Cases:
   
   epp-02:
     Summary: Protocol conformance test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       Once a connection is established, all service ports **MUST** send a
       valid `<greeting>` frame to the client.
@@ -2843,7 +2780,7 @@ Test-Cases:
   
   epp-03:
     Summary: Authentication test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test case validates the server's implementation of client
       authentication. The client will submit a series of `<login>` commands to
@@ -2869,7 +2806,7 @@ Test-Cases:
   
   epp-04:
     Summary: Domain <check> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       The client will perform a series of `<check>` commands and will validate
       the `avail` attribute of the `<domain:name>` elements in the server
@@ -2896,7 +2833,7 @@ Test-Cases:
   
   epp-05:
     Summary: Host <check> command test (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       If the EPP server supports host objects, this test will perform a series
       of `<check>` commands and will validate the `avail` attribute of the
@@ -2923,7 +2860,7 @@ Test-Cases:
   
   epp-06:
     Summary: Contact <check> command test (if applicable for the registry type)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       If the EPP server supports contact objects, this test will perform a
       series of `<check>` commands and will validate the `avail` attribute of
@@ -2946,7 +2883,7 @@ Test-Cases:
   
   epp-07:
     Summary: Contact <create> command test (if applicable for the registry type)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test attempts to create a number of contact objects, and validates
       the server's response. For example, the test will expect that the server
@@ -3012,7 +2949,7 @@ Test-Cases:
   
   epp-08:
     Summary: Contact object access control (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
@@ -3032,7 +2969,7 @@ Test-Cases:
   
   epp-09:
     Summary: Contact <update> command test (if applicable for the registry type)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-07` and will confirm that the server correctly rejects invalid
@@ -3090,7 +3027,7 @@ Test-Cases:
   
   epp-10:
     Summary: Contact <delete> command test (if applicable for the registry type)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-24` and will confirm that the server accepts the `<delete>` command
@@ -3112,7 +3049,7 @@ Test-Cases:
   
   epp-11:
     Summary: host <create> command test (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test attempts to create a number of host objects, and validates
       the server's response. For example, the test will expect that the server
@@ -3149,7 +3086,7 @@ Test-Cases:
   
   epp-12:
     Summary: Host object access control (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will confirm that EPP clients are unable to perform `<info>`
       commands on objects that they do not sponsor.
@@ -3167,7 +3104,7 @@ Test-Cases:
   
   epp-13:
     Summary: Host <update> command test (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform `<update>` commands on the objects created during
       `epp-11` and will confirm that the server correctly rejects invalid
@@ -3201,7 +3138,7 @@ Test-Cases:
   
   epp-14:
     Summary: Domain <create> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test performs a series domain `<create>` commands, using pseudo-
       random ASCII domain names under each TLD in the TLD set. If the
@@ -3277,7 +3214,7 @@ Test-Cases:
   
   epp-15:
     Summary: Registry object integrity test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test confirms that the EPP server will refuse a request to delete a
       linked object.
@@ -3297,7 +3234,7 @@ Test-Cases:
   
   epp-16:
     Summary: Domain <update> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will confirm that the client is able to perform an `<update>`
       command on the domain names created in `epp-14`, including:
@@ -3331,7 +3268,7 @@ Test-Cases:
   
   epp-17:
     Summary: Service Port consistency test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test confirms that all EPP service ports respond with consistent object
       information.
@@ -3348,7 +3285,7 @@ Test-Cases:
   
   epp-18:
     Summary: Domain <renew> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will confirm that the client is able to renew domain names. The
       client will submit a number of `<renew>` commands for the domains created in
@@ -3373,7 +3310,7 @@ Test-Cases:
   
   epp-19:
     Summary: Domain <transfer> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will confirm that the client is able to initiate a domain
       transfer.
@@ -3429,7 +3366,7 @@ Test-Cases:
   
   epp-20:
     Summary: Domain <transfer> rejection test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test confirms that the server behaves correctly if the sponsoring
       registrar of a domain rejects a transfer request.
@@ -3445,7 +3382,7 @@ Test-Cases:
   
   epp-21:
     Summary: Domain <delete> command test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-14` and will confirm that the server accepts the `<delete>` command
@@ -3468,7 +3405,7 @@ Test-Cases:
   
   epp-22:
     Summary: Domain restore test
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform RGP restore operations on the objects deleted
       during `epp-21`, in order to confirm the correct operation of the server's
@@ -3486,7 +3423,7 @@ Test-Cases:
   
   epp-23:
     Summary: Host rename test (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This tests verifies the server's support for host rename operations.
   
@@ -3525,7 +3462,7 @@ Test-Cases:
   
   epp-24:
     Summary: Host <delete> command test (if applicable)
-    Maturity: ALPHA
+    Maturity: BETA
     Description: |
       This test will perform `<delete>` commands on the objects created during
       `epp-11` and will confirm that the server accepts the `<delete>` command
@@ -4876,7 +4813,7 @@ Errors:
   
   ZM_ALGORITHM_NOT_RECOMMENDED:
     Description: '*Not available.*'
-    Severity: WARNING
+    Severity: ERROR
   
   ZM_ALGORITHM_NOT_ZONE_SIGN:
     Description: '*Not available.*'
@@ -5068,11 +5005,6 @@ Errors:
   
   ZM_DNSSEC_06_FAILED:
     Description: The `dnssec-06` test case failed, but no further information is available.
-      Please consult the result log for this test case.
-    Severity: ERROR
-  
-  ZM_DNSSEC_12_FAILED:
-    Description: The `dnssec-12` test case failed, but no further information is available.
       Please consult the result log for this test case.
     Severity: ERROR
   
@@ -5340,134 +5272,6 @@ Errors:
       RRset
     Severity: ERROR
   
-  ZM_DS15_INCONSISTENT_CDNSKEY:
-    Description: |
-      All servers do not have the same CDNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS15_INCONSISTENT_CDS:
-    Description: |
-      All servers do not have the same CDS RRset.
-    Severity: ERROR
-  
-  ZM_DS15_MISMATCH_CDS_CDNSKEY:
-    Description: |
-      Both CDS and CDNSKEY RRsets are found but they do not match.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_INVALID_RRSIG:
-    Description: |
-      CDS RRset is signed with an invalid RRSIG.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY:
-    Description: |
-      CDS record matches a DNSKEY with SEP bit (bit 15) unset.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY:
-    Description: |
-      CDS record matches a DNSKEY with zone bit (bit 7) unset.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_MATCHES_NO_DNSKEY:
-    Description: |
-      CDS record does not match any DNSKEY in DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_NOT_SIGNED_BY_CDS:
-    Description: |
-      CDS RRset is not signed by the key that the CDS record points to.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY:
-    Description: |
-      CDS RRset is signed by a key not in DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS16_CDS_UNSIGNED:
-    Description: "CDS RRset is unsigned.\n"
-    Severity: ERROR
-  
-  ZM_DS16_CDS_WITHOUT_DNSKEY:
-    Description: |
-      CDS RRset exists, but there is no DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS:
-    Description: |
-      DNSKEY RRset is not signed by the key or keys that the CDS records point
-      to.
-    Severity: ERROR
-  
-  ZM_DS16_MIXED_DELETE_CDS:
-    Description: |
-      "Delete" CDS record is mixed with normal CDS record.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_INVALID_RRSIG:
-    Description: |
-      CDNSKEY RRset signed with an invalid RRSIG.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_IS_NON_SEP:
-    Description: |
-      CDNSKEY record has the SEP bit (bit 15) unset.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_IS_NON_ZONE:
-    Description: |
-      CDNSKEY record has the zone bit (bit 7) unset.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY:
-    Description: |
-      CDNSKEY record does not match any DNSKEY in DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY:
-    Description: |
-      CDNSKEY RRset is not signed by the key that the CDNSKEY record points
-      to.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY:
-    Description: |
-      CDNSKEY RRset is signed by a key not in DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_UNSIGNED:
-    Description: "CDNSKEY RRset is unsigned.\n"
-    Severity: ERROR
-  
-  ZM_DS17_CDNSKEY_WITHOUT_DNSKEY:
-    Description: |
-      CDNSKEY RRset exists, but there is no DNSKEY RRset.
-    Severity: ERROR
-  
-  ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY:
-    Description: |
-      DNSKEY RRset is not signed by the key or keys that the CDNSKEY records
-      point to.
-    Severity: ERROR
-  
-  ZM_DS17_MIXED_DELETE_CDNSKEY:
-    Description: |
-      "Delete" CDNSKEY record is mixed with normal CDNSKEY record.
-    Severity: ERROR
-  
-  ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS:
-    Description: |
-      CDNSKEY RRset is not signed with a DNSKEY record that a DS record points
-      to.
-    Severity: ERROR
-  
-  ZM_DS18_NO_MATCH_CDS_RRSIG_DS:
-    Description: |
-      The CDS RRset is not signed with a DNSKEY record that a DS record points
-      to.
-    Severity: ERROR
-  
   ZM_EDNS_RESPONSE_WITHOUT_EDNS:
     Description: '*Not available.*'
     Severity: ERROR
@@ -5704,15 +5508,30 @@ Errors:
     Severity: ERROR
     Description: TBA.
   
+  DNS_IDNA2008_INVALID_NS_NSDNAME:
+    Severity: ERROR
+    Description: TBA.
   DNSSEC_DNS_QUERY_ERROR:
     Severity: ERROR
     Description: An error occurred while performing DNS query(s).
+  
   DNSSEC_INVALID_SIGNING_ALGORITHM:
     Severity: ERROR
     Description: An invalid algorithm is used to sign the zone.
+  
   DNSSEC_INVALID_DIGEST_ALGORITHM:
     Severity: ERROR
     Description: An invalid algorithm is used in the provided DS record(s).
+  
+  DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO:
+    Severity: ERROR
+    Description: The `iterations` field of the `NSEC3PARAM` record is not zero.
+  
+  DNSSEC_NSEC3_SALT_IS_NOT_EMPTY:
+    Severity: ERROR
+    Description: |
+      The `salt` field of the `NSEC3PARAM` record is not zero (represented as a
+      `-` in the presentation format).
   DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
     Severity: ERROR
     Description: TBA.

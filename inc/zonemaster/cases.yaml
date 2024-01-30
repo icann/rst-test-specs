@@ -69,6 +69,8 @@ dns-address03:
 
 dns-connectivity01:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity01.md>.
@@ -124,6 +126,8 @@ dns-connectivity01:
 
 dns-connectivity02:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity02.md>.
@@ -172,6 +176,8 @@ dns-connectivity02:
 
 dns-connectivity03:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Connectivity-TP/connectivity03.md>.
@@ -204,6 +210,8 @@ dns-connectivity03:
 
 dns-consistency02:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency02.md>.
@@ -230,6 +238,8 @@ dns-consistency02:
 
 dns-consistency03:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency03.md>.
@@ -257,6 +267,8 @@ dns-consistency03:
 
 dns-consistency04:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency04.md>.
@@ -287,6 +299,8 @@ dns-consistency04:
 
 dns-consistency05:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency05.md>.
@@ -314,6 +328,8 @@ dns-consistency05:
 
 dns-consistency06:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Consistency-TP/consistency06.md>.
@@ -338,6 +354,8 @@ dns-consistency06:
 
 dns-delegation01:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation01.md>.
@@ -398,6 +416,8 @@ dns-delegation02:
 
 dns-delegation03:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation03.md>.
@@ -440,6 +460,8 @@ dns-delegation04:
 
 dns-delegation05:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Delegation-TP/delegation05.md>.
@@ -483,6 +505,8 @@ dns-delegation07:
 
 dns-nameserver01:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver01.md>.
@@ -510,6 +534,8 @@ dns-nameserver01:
 
 dns-nameserver02:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver02.md>.
@@ -573,6 +599,8 @@ dns-nameserver04:
 
 dns-nameserver05:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver05.md>.
@@ -670,6 +698,8 @@ dns-nameserver09:
 
 dns-nameserver10:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver10.md>.
@@ -705,6 +735,8 @@ dns-nameserver10:
 
 dns-nameserver11:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver11.md>.
@@ -736,6 +768,8 @@ dns-nameserver11:
 
 dns-nameserver12:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver12.md>.
@@ -768,6 +802,8 @@ dns-nameserver12:
 
 dns-nameserver13:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver13.md>.
@@ -801,6 +837,8 @@ dns-nameserver13:
 
 dns-nameserver14:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Nameserver-TP/nameserver14.md>.
@@ -841,6 +879,8 @@ dns-syntax05:
 
 dns-syntax06:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Syntax-TP/syntax06.md>.
@@ -922,6 +962,8 @@ dns-zone07:
 
 dns-zone10:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/Zone-TP/zone10.md>.
@@ -944,6 +986,8 @@ dns-zone10:
 
 dnssec-01:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec01.md>.
@@ -996,6 +1040,12 @@ dnssec-01:
 
 dnssec-02:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
+    **Note:** References to "Key Signing Keys" in the description below also
+    refer to Combined Signing Keys, if used.
+
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec02.md>.
@@ -1109,6 +1159,8 @@ dnssec-04:
 
 dnssec-05:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec05.md>.
@@ -1289,32 +1341,10 @@ dnssec-10:
   Maturity: BETA
   Summary: Zone contains NSEC or NSEC3 records
 
-dnssec-12:
-  Description: |
-    This test case comes from version v2023.1.4 of Zonemaster. For more
-    information, see
-    <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec12.md>.
-    Some of the information below may not be applicable to the RST system.
-
-    # Objective
-
-    The objectives for this Test Case has yet to be defined. This is a
-    placeholder for a complete defintion of the Test Case. The Test Case is
-    not yet implemented.
-
-    Test for DNSSEC Algorithm Completeness (DS-\>DNSKEY-\>RRSIG)
-
-    See issues [#588](https://github.com/zonemaster/zonemaster/issues/588),
-    [#528](https://github.com/zonemaster/zonemaster/issues/528),
-    [#529](https://github.com/zonemaster/zonemaster/issues/529) and
-    [#231](https://github.com/zonemaster/zonemaster/issues/231).
-  Errors:
-  - ZM_DNSSEC_12_FAILED
-  Maturity: BETA
-  Summary: Test for DNSSEC Algorithm Completeness
-
 dnssec-13:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec13.md>.
@@ -1346,6 +1376,8 @@ dnssec-13:
 
 dnssec-14:
   Description: |
+    **Note:** the severity levels of one or more error codes for this test case have been changed from the default.
+
     This test case comes from version v2023.1.4 of Zonemaster. For more
     information, see
     <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec14.md>.
@@ -1392,133 +1424,4 @@ dnssec-14:
   - ZM_DNSKEY_TOO_SMALL_FOR_ALGO
   Maturity: BETA
   Summary: Check for valid RSA DNSKEY key size
-
-dnssec-15:
-  Description: |
-    This test case comes from version v2023.1.4 of Zonemaster. For more
-    information, see
-    <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec15.md>.
-    Some of the information below may not be applicable to the RST system.
-
-    # Objective
-
-    CDS and CDNSKEY record types are defined in [RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-    8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-    are optional in a zone. The objective of this test case is to verify
-    that they are correctly set-up, if included in the zone.
-
-    If a CDS record is included in the zone, the corresponding CDNSKEY
-    record should also be included ([RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-    4).
-
-    The CDS and CDNSKEY RRsets should be consistent between all name servers
-    for the zone in question.
-
-    If there are both CDS RRs and CDNSKEY RRs in the zone they must match in
-    content ([RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4), section
-    4). It means that both must be derived from the same DNSKEY or both
-    being "delete" CDS and CDNSKEY.
-  Errors:
-  - ZM_DS15_INCONSISTENT_CDNSKEY
-  - ZM_DS15_MISMATCH_CDS_CDNSKEY
-  - ZM_DS15_INCONSISTENT_CDS
-  Maturity: BETA
-  Summary: Existence of CDS and CDNSKEY
-
-dnssec-16:
-  Description: |
-    This test case comes from version v2023.1.4 of Zonemaster. For more
-    information, see
-    <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md>.
-    Some of the information below may not be applicable to the RST system.
-
-    # Objective
-
-    CDS and CDNSKEY record types are defined in [RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-    8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-    are optional in a zone. The objective of this test case is to verify
-    that the CDS RRset is valid. This test case is only relevant if the zone
-    has at least one CDS record. For tests of the CDNSKEY, see test case
-    [DNSSEC17](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md).
-  Errors:
-  - ZM_DS16_CDS_INVALID_RRSIG
-  - ZM_DS16_CDS_UNSIGNED
-  - ZM_DS16_CDS_NOT_SIGNED_BY_CDS
-  - ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS
-  - ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY
-  - ZM_DS16_CDS_WITHOUT_DNSKEY
-  - ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY
-  - ZM_DS16_MIXED_DELETE_CDS
-  - ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY
-  - ZM_DS16_CDS_MATCHES_NO_DNSKEY
-  Maturity: BETA
-  Summary: Validate CDS
-
-dnssec-17:
-  Description: |
-    This test case comes from version v2023.1.4 of Zonemaster. For more
-    information, see
-    <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec17.md>.
-    Some of the information below may not be applicable to the RST system.
-
-    # Objective
-
-    CDS and CDNSKEY record types are defined in [RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-    8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-    are optional in a zone. The objective of this test case is to verify
-    that the CDNSKEY RRset is valid. This test case is only relevant if the
-    zone has at least one CDNSKEY record. For tests of the CDS, see test
-    case
-    [DNSSEC16](https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec16.md).
-  Errors:
-  - ZM_DS17_CDNSKEY_INVALID_RRSIG
-  - ZM_DS17_CDNSKEY_UNSIGNED
-  - ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY
-  - ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY
-  - ZM_DS17_CDNSKEY_IS_NON_ZONE
-  - ZM_DS17_CDNSKEY_WITHOUT_DNSKEY
-  - ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY
-  - ZM_DS17_MIXED_DELETE_CDNSKEY
-  - ZM_DS17_CDNSKEY_IS_NON_SEP
-  - ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY
-  Maturity: BETA
-  Summary: Validate CDNSKEY
-
-dnssec-18:
-  Description: |
-    This test case comes from version v2023.1.4 of Zonemaster. For more
-    information, see
-    <https://github.com/zonemaster/zonemaster/blob/v2023.1.4/docs/public/specifications/tests/DNSSEC-TP/dnssec18.md>.
-    Some of the information below may not be applicable to the RST system.
-
-    # Objective
-
-    CDS and CDNSKEY record types are defined in [RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344) and [RFC
-    8078](https://datatracker.ietf.org/doc/html/rfc8078). Both record types
-    are optional in a zone. The objective of this test case is to verify
-    that there is a correct chain of trust from DS, in the parent zone to
-    the CDS and CDNSKEY RRsets ([RFC
-    7344](https://datatracker.ietf.org/doc/html/rfc7344#section-4.1),
-    section 4.1).
-
-    As stated in [RFC
-    4035](https://datatracker.ietf.org/doc/html/rfc4035#section-2.4),
-    section 2.4: \> A DS RR SHOULD point to a DNSKEY RR that is present in
-    the child's \> apex DNSKEY RRset, and the child's apex DNSKEY RRset
-    SHOULD be \> signed by the corresponding private key."
-
-    This Test case is only relevant if \* The *Child Zone* has either CDS or
-    CDNSKEY record or both, and \* The parent zone has a DS RRset for the
-    *Child Zone*.
-  Errors:
-  - ZM_DS18_NO_MATCH_CDS_RRSIG_DS
-  - ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS
-  Maturity: BETA
-  Summary: Validate trust from DS to CDS and CDNSKEY
 

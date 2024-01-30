@@ -16,7 +16,7 @@ ZM_ALGORITHM_DEPRECATED:
 
 ZM_ALGORITHM_NOT_RECOMMENDED:
   Description: '*Not available.*'
-  Severity: WARNING
+  Severity: ERROR
 
 ZM_ALGORITHM_NOT_ZONE_SIGN:
   Description: '*Not available.*'
@@ -208,11 +208,6 @@ ZM_DNSSEC_04_FAILED:
 
 ZM_DNSSEC_06_FAILED:
   Description: The `dnssec-06` test case failed, but no further information is available.
-    Please consult the result log for this test case.
-  Severity: ERROR
-
-ZM_DNSSEC_12_FAILED:
-  Description: The `dnssec-12` test case failed, but no further information is available.
     Please consult the result log for this test case.
   Severity: ERROR
 
@@ -478,134 +473,6 @@ ZM_DS13_ALGO_NOT_SIGNED_SOA:
   Description: |
     The SOA RRset is not signed with an algorithm present in the DNSKEY
     RRset
-  Severity: ERROR
-
-ZM_DS15_INCONSISTENT_CDNSKEY:
-  Description: |
-    All servers do not have the same CDNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS15_INCONSISTENT_CDS:
-  Description: |
-    All servers do not have the same CDS RRset.
-  Severity: ERROR
-
-ZM_DS15_MISMATCH_CDS_CDNSKEY:
-  Description: |
-    Both CDS and CDNSKEY RRsets are found but they do not match.
-  Severity: ERROR
-
-ZM_DS16_CDS_INVALID_RRSIG:
-  Description: |
-    CDS RRset is signed with an invalid RRSIG.
-  Severity: ERROR
-
-ZM_DS16_CDS_MATCHES_NON_SEP_DNSKEY:
-  Description: |
-    CDS record matches a DNSKEY with SEP bit (bit 15) unset.
-  Severity: ERROR
-
-ZM_DS16_CDS_MATCHES_NON_ZONE_DNSKEY:
-  Description: |
-    CDS record matches a DNSKEY with zone bit (bit 7) unset.
-  Severity: ERROR
-
-ZM_DS16_CDS_MATCHES_NO_DNSKEY:
-  Description: |
-    CDS record does not match any DNSKEY in DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS16_CDS_NOT_SIGNED_BY_CDS:
-  Description: |
-    CDS RRset is not signed by the key that the CDS record points to.
-  Severity: ERROR
-
-ZM_DS16_CDS_SIGNED_BY_UNKNOWN_DNSKEY:
-  Description: |
-    CDS RRset is signed by a key not in DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS16_CDS_UNSIGNED:
-  Description: "CDS RRset is unsigned.\n"
-  Severity: ERROR
-
-ZM_DS16_CDS_WITHOUT_DNSKEY:
-  Description: |
-    CDS RRset exists, but there is no DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS16_DNSKEY_NOT_SIGNED_BY_CDS:
-  Description: |
-    DNSKEY RRset is not signed by the key or keys that the CDS records point
-    to.
-  Severity: ERROR
-
-ZM_DS16_MIXED_DELETE_CDS:
-  Description: |
-    "Delete" CDS record is mixed with normal CDS record.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_INVALID_RRSIG:
-  Description: |
-    CDNSKEY RRset signed with an invalid RRSIG.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_IS_NON_SEP:
-  Description: |
-    CDNSKEY record has the SEP bit (bit 15) unset.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_IS_NON_ZONE:
-  Description: |
-    CDNSKEY record has the zone bit (bit 7) unset.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_MATCHES_NO_DNSKEY:
-  Description: |
-    CDNSKEY record does not match any DNSKEY in DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY:
-  Description: |
-    CDNSKEY RRset is not signed by the key that the CDNSKEY record points
-    to.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_SIGNED_BY_UNKNOWN_DNSKEY:
-  Description: |
-    CDNSKEY RRset is signed by a key not in DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_UNSIGNED:
-  Description: "CDNSKEY RRset is unsigned.\n"
-  Severity: ERROR
-
-ZM_DS17_CDNSKEY_WITHOUT_DNSKEY:
-  Description: |
-    CDNSKEY RRset exists, but there is no DNSKEY RRset.
-  Severity: ERROR
-
-ZM_DS17_DNSKEY_NOT_SIGNED_BY_CDNSKEY:
-  Description: |
-    DNSKEY RRset is not signed by the key or keys that the CDNSKEY records
-    point to.
-  Severity: ERROR
-
-ZM_DS17_MIXED_DELETE_CDNSKEY:
-  Description: |
-    "Delete" CDNSKEY record is mixed with normal CDNSKEY record.
-  Severity: ERROR
-
-ZM_DS18_NO_MATCH_CDNSKEY_RRSIG_DS:
-  Description: |
-    CDNSKEY RRset is not signed with a DNSKEY record that a DS record points
-    to.
-  Severity: ERROR
-
-ZM_DS18_NO_MATCH_CDS_RRSIG_DS:
-  Description: |
-    The CDS RRset is not signed with a DNSKEY record that a DS record points
-    to.
   Severity: ERROR
 
 ZM_EDNS_RESPONSE_WITHOUT_EDNS:
