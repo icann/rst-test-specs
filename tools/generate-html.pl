@@ -32,7 +32,7 @@ my $json = JSON::XS->new->pretty->canonical;
 my $h = HTML::Tiny->new;
 
 my $mdesc = {
-    'ALPHA'     => 'very rough outline, much more work needed',
+    'ALPHA'     => 'rough outline, more work needed',
     'BETA'      => 'complete but likely to require further changes',
     'GAMMA'     => 'finalized and ready for review',
 };
