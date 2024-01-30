@@ -25,6 +25,10 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://icann.gi
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, `perl` a couple of modules to create the JSON file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
   * If you don't want to install all the dependencies, but have Docker installed, you can use `docker compose up` to build the YAML, JSON and HTML files.
 
+## Branches
+
+All development is done on the `dev` branch. The `main` branch is updated every Wednesday from the `dev` branch.
+
 ## See Also
 
 * [RST API Specification](https://github.com/icann/rst-api-spec)
