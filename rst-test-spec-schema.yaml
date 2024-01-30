@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: YAML Schema for the RST Test Specifications
-  version: 1.6.1
+  version: 1.7.0
   description: |
     This file contains a schema which describes the RST Test
     Specifications YAML format.
@@ -34,6 +34,18 @@ components:
           description: |
             a description of the contents of the file, in Markdown format.
           type: string
+        ChangeLog:
+          description: |
+            a log of all changes made to the specification. The object property
+            names are dates in `YYYY-MM-DD` format, and the values are arrays
+            of Markdown text.
+          type: object
+          patternProperties:
+            "^[0-9]{4}-[0-9]{2}-[0-9]{2}$":
+              type: array
+              items:
+                type: string
+
         Contact:
           description: a `rstTestSpecContact` object.
           type: object

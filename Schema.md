@@ -24,6 +24,9 @@ document, and is updated whenever a material change to the schema is made.
 `Preamble`
 : a description of the contents of the file, in Markdown format.
 
+`ChangeLog`
+: a [Change Log object](#change-log).
+
 `Contact`
 : a [Contact object](#contact-object).
 
@@ -50,6 +53,14 @@ by a unique ID.
 `Errors`
 : a mapping containing one or more [Error objects](#error-object), keyed by a
 unique ID.
+
+# ChangeLog object
+
+A **ChangeLog** object contains a chronological narrative of changes to the test
+specifications.
+
+Its property names are dates in `YYYY-MM-DD` format, and the property values are
+collections of changes in Markdown format.
 
 # Contact object
 
