@@ -1,5 +1,6 @@
 epp-01:
   Summary: Service connectivity test
+  Maturity: ALPHA
   Description: |
     This test confirms that the EPP service is reachable from the probe
     servers.
@@ -43,6 +44,7 @@ epp-01:
 
 epp-02:
   Summary: Protocol conformance test
+  Maturity: ALPHA
   Description: |
     Once a connection is established, all service ports **MUST** send a
     valid `<greeting>` frame to the client.
@@ -90,6 +92,7 @@ epp-02:
 
 epp-03:
   Summary: Authentication test
+  Maturity: ALPHA
   Description: |
     This test case validates the server's implementation of client
     authentication. The client will submit a series of `<login>` commands to
@@ -115,6 +118,7 @@ epp-03:
 
 epp-04:
   Summary: Domain <check> command test
+  Maturity: ALPHA
   Description: |
     The client will perform a series of `<check>` commands and will validate
     the `avail` attribute of the `<domain:name>` elements in the server
@@ -141,6 +145,7 @@ epp-04:
 
 epp-05:
   Summary: Host <check> command test (if applicable)
+  Maturity: ALPHA
   Description: |
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the `avail` attribute of the
@@ -167,6 +172,7 @@ epp-05:
 
 epp-06:
   Summary: Contact <check> command test (if applicable for the registry type)
+  Maturity: ALPHA
   Description: |
     If the EPP server supports contact objects, this test will perform a
     series of `<check>` commands and will validate the `avail` attribute of
@@ -189,6 +195,7 @@ epp-06:
 
 epp-07:
   Summary: Contact <create> command test (if applicable for the registry type)
+  Maturity: ALPHA
   Description: |
     This test attempts to create a number of contact objects, and validates
     the server's response. For example, the test will expect that the server
@@ -254,6 +261,7 @@ epp-07:
 
 epp-08:
   Summary: Contact object access control (if applicable)
+  Maturity: ALPHA
   Description: |
     This test will confirm that EPP clients are unable to perform `<info>`
     commands on objects that they do not sponsor.
@@ -273,6 +281,7 @@ epp-08:
 
 epp-09:
   Summary: Contact <update> command test (if applicable for the registry type)
+  Maturity: ALPHA
   Description: |
     This test will perform `<update>` commands on the objects created during
     `epp-07` and will confirm that the server correctly rejects invalid
@@ -330,6 +339,7 @@ epp-09:
 
 epp-10:
   Summary: Contact <delete> command test (if applicable for the registry type)
+  Maturity: ALPHA
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-24` and will confirm that the server accepts the `<delete>` command
@@ -351,6 +361,7 @@ epp-10:
 
 epp-11:
   Summary: host <create> command test (if applicable)
+  Maturity: ALPHA
   Description: |
     This test attempts to create a number of host objects, and validates
     the server's response. For example, the test will expect that the server
@@ -387,6 +398,7 @@ epp-11:
 
 epp-12:
   Summary: Host object access control (if applicable)
+  Maturity: ALPHA
   Description: |
     This test will confirm that EPP clients are unable to perform `<info>`
     commands on objects that they do not sponsor.
@@ -404,6 +416,7 @@ epp-12:
 
 epp-13:
   Summary: Host <update> command test (if applicable)
+  Maturity: ALPHA
   Description: |
     This test will perform `<update>` commands on the objects created during
     `epp-11` and will confirm that the server correctly rejects invalid
@@ -437,6 +450,7 @@ epp-13:
 
 epp-14:
   Summary: Domain <create> command test
+  Maturity: ALPHA
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
     random ASCII domain names under each TLD in the TLD set. If the
@@ -512,6 +526,7 @@ epp-14:
 
 epp-15:
   Summary: Registry object integrity test
+  Maturity: ALPHA
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
     linked object.
@@ -531,6 +546,7 @@ epp-15:
 
 epp-16:
   Summary: Domain <update> command test
+  Maturity: ALPHA
   Description: |
     This test will confirm that the client is able to perform an `<update>`
     command on the domain names created in `epp-14`, including:
@@ -564,6 +580,7 @@ epp-16:
 
 epp-17:
   Summary: Service Port consistency test
+  Maturity: ALPHA
   Description: |
     This test confirms that all EPP service ports respond with consistent object
     information.
@@ -580,6 +597,7 @@ epp-17:
 
 epp-18:
   Summary: Domain <renew> command test
+  Maturity: ALPHA
   Description: |
     This test will confirm that the client is able to renew domain names. The
     client will submit a number of `<renew>` commands for the domains created in
@@ -604,6 +622,7 @@ epp-18:
 
 epp-19:
   Summary: Domain <transfer> command test
+  Maturity: ALPHA
   Description: |
     This test will confirm that the client is able to initiate a domain
     transfer.
@@ -659,7 +678,8 @@ epp-19:
 
 epp-20:
   Summary: Domain <transfer> rejection test
-  Description:
+  Maturity: ALPHA
+  Description: |
     This test confirms that the server behaves correctly if the sponsoring
     registrar of a domain rejects a transfer request.
 
@@ -674,6 +694,7 @@ epp-20:
 
 epp-21:
   Summary: Domain <delete> command test
+  Maturity: ALPHA
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-14` and will confirm that the server accepts the `<delete>` command
@@ -696,6 +717,7 @@ epp-21:
 
 epp-22:
   Summary: Domain restore test
+  Maturity: ALPHA
   Description: |
     This test will perform RGP restore operations on the objects deleted
     during `epp-21`, in order to confirm the correct operation of the server's
@@ -713,6 +735,7 @@ epp-22:
 
 epp-23:
   Summary: Host rename test (if applicable)
+  Maturity: ALPHA
   Description: |
     This tests verifies the server's support for host rename operations.
 
@@ -751,6 +774,7 @@ epp-23:
 
 epp-24:
   Summary: Host <delete> command test (if applicable)
+  Maturity: ALPHA
   Description: |
     This test will perform `<delete>` commands on the objects created during
     `epp-11` and will confirm that the server accepts the `<delete>` command
