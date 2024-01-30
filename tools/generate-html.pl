@@ -116,6 +116,8 @@ sub print_toc {
 
     print $h->li($h->a({href => '#table-of-contents'}, 'Table of Contents'));
 
+    print $h->li($h->a({href => '#change-log'}, 'Change Log'));
+
     print $h->open(li);
     print_preamble_toc_list();
     print $h->close(li);
@@ -320,6 +322,8 @@ sub print_error_toc_list {
 sub print_main {
     print $h->open('main');
 
+    print_change_log();
+
     print_preamble();
 
     print_plans();
@@ -339,7 +343,33 @@ sub print_main {
     print $h->close('main');
 }
 
-sub print_preamble() {
+sub print_change_log {
+    print $h->open(section);
+    print $h->a({name => 'change-log'});
+    print $h->h2(sprintf('%d. Change Log', ++$section));
+
+    my $i = 0;
+    foreach my $log ($spec->changelog) {
+        undef($log->{'spec'});
+
+        my $dt = $log->date;
+
+        print $h->open(section);
+        print $h->h3(sprintf('%d.%s. %s, %s %u, %04u', $section, ++$i, $dt->day_name, $dt->month_name, $dt->day, $dt->year));
+
+        print $h->open(ol);
+        foreach my $change ($log->changes) {
+            print $h->li($change->html);
+        }
+        print $h->close(ol);
+
+        print $h->close(section);
+    }
+
+    print $h->close(section);
+}
+
+sub print_preamble {
     print $h->open(section);
     print $h->a({name => 'preamble'});
     print $h->h2(sprintf('%d. Preamble', ++$section));
@@ -364,7 +394,7 @@ sub print_preamble() {
     print $h->close(section);
 }
 
-sub print_meta() {
+sub print_meta {
     print $h->open(section);
     print $h->a({name => 'meta'});
     print $h->h2(sprintf('%d. About this document', ++$section));
