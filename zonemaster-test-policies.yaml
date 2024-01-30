@@ -15,6 +15,10 @@ skip:
   - delegation06
   - dnssec07
   - dnssec11
+  - dnssec15
+  - dnssec16
+  - dnssec17
+  - dnssec18
   - nameserver03
   - nameserver07
   - nameserver15
