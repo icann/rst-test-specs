@@ -130,6 +130,8 @@ foreach my $row ($list->getElementsByTagName('tr')) {
 
     my @case_errors;
 
+    my $upgraded = 0;
+
     my $section;
     my $sections = {};
     foreach my $el ($cdoc->getElementsByTagName('body')->shift->childNodes) {
@@ -191,6 +193,8 @@ foreach my $row ($list->getElementsByTagName('tr')) {
                                 $sev_cell->appendText(' (changed from ');
                                 $sev_cell->appendTextChild('code', $was);
                                 $sev_cell->appendText(')');
+
+                                $upgraded++;
 
                                 last;
                             }
@@ -305,10 +309,20 @@ foreach my $row ($list->getElementsByTagName('tr')) {
 
     printf(STDERR "Warning: case %s has no errors\n", $case_id) if (scalar(@case_errors) < 1);
 
+    my $description_md = unidecode(html2md($idoc->toStringHTML));
+
+    if ($config->{'case_comments'}->{lc($id)}) {
+        $description_md = $config->{'case_comments'}->{lc($id)}."\n\n".$description_md;
+    }
+
+    if ($upgraded) {
+        $description_md = "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.\n\n".$description_md;
+    }
+
     push(@cases, {
         'id'            => $case_id,
         'summary'       => unidecode($summary),
-        'description'   => unidecode(html2md($idoc->toStringHTML)),
+        'description'   => $description_md,
         'errors'        => [sort { $a cmp $b } @case_errors],
     });
 }

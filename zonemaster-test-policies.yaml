@@ -15,6 +15,7 @@ skip:
   - delegation06
   - dnssec07
   - dnssec11
+  - dnssec12
   - dnssec15
   - dnssec16
   - dnssec17
@@ -58,6 +59,14 @@ error_levels:
   - WARNING
   - ERROR
   - CRITICAL
+
+#
+# this contains text we want to insert before the case description
+#
+case_comments:
+  dnssec02: |
+    **Note:** References to "Key Signing Keys" in the description below also
+    refer to Combined Signing Keys, if used.
 
 #
 # the error level of messages can be overridden by putting the message tag in
@@ -146,3 +155,4 @@ error_level_overrides:
     - UNSUPPORTED_EDNS_VER
     - WRONG_SOA
     - Z_FLAGS_NOTCLEAR
+    - ALGORITHM_NOT_RECOMMENDED
