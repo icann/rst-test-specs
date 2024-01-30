@@ -1,7 +1,7 @@
 ---
-RST-Test-Plan-Schema-Version: 1.6.1
-Version: 3.0.270
-Last-Updated: 2024-01-29
+RST-Test-Plan-Schema-Version: 1.7.0
+Version: 3.0.281
+Last-Updated: 2024-01-30
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
@@ -225,6 +225,10 @@ Preamble: |
   reports; registry functions activity reports; data escrow deposits reports and
   data escrow deposits notifications. For registry operators, the relevant
   interfaces are defined in [draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces).
+
+ChangeLog:
+  2024-01-30:
+    - Created this ChangeLog.
 
 Test-Plans:
   
