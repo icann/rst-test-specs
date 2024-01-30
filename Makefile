@@ -15,7 +15,7 @@ includes:
 	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" --errors zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > inc/zonemaster/errors.yaml
 
 	@echo Generating RDAP cases...
-	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > inc/rdap/cases.yaml
+	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > inc/rdap/rdapct-cases.yaml
 
 yaml:
 	@echo Compiling YAML...
