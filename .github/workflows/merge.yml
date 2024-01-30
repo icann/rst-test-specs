@@ -22,5 +22,5 @@ jobs:
         uses: devvspaces/merge-branches@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_branch: dev
+          from_branch: origin/dev
           to_branch: main
