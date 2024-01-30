@@ -1,9 +1,21 @@
 DNSSEC_DNS_QUERY_ERROR:
   Severity: ERROR
   Description: An error occurred while performing DNS query(s).
+
 DNSSEC_INVALID_SIGNING_ALGORITHM:
   Severity: ERROR
   Description: An invalid algorithm is used to sign the zone.
+
 DNSSEC_INVALID_DIGEST_ALGORITHM:
   Severity: ERROR
   Description: An invalid algorithm is used in the provided DS record(s).
+
+DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO:
+  Severity: ERROR
+  Description: The `iterations` field of the `NSEC3PARAM` record is not zero.
+
+DNSSEC_NSEC3_SALT_IS_NOT_EMPTY:
+  Severity: ERROR
+  Description: |
+    The `salt` field of the `NSEC3PARAM` record is not zero (represented as a
+    `-` in the presentation format).

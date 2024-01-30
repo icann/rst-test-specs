@@ -1,3 +1,4 @@
 2024-01-30:
   - Created this ChangeLog.
   - add content of `NS` records to the list of names checked in `dns-zz-idna2008-compliance`
+  - add `dnssec-93` test case.

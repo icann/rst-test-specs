@@ -11,6 +11,7 @@ dnssec-91:
     - DNSSEC_INVALID_SIGNING_ALGORITHM
   Dependencies:
     - dnssec-05
+
 dnssec-92:
   Summary: Permitted DS record hash algorithm(s)
   Maturity: BETA
@@ -21,3 +22,23 @@ dnssec-92:
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM
+
+dnssec-93:
+  Summary: RFC 9276 (NSEC3 iterations) compliance check
+  Maturity: ALPHA
+  Description: |
+    RFC 9276 defines best practice relating to the use of NSEC3 for
+    Authenticated Denial of Existence. This test case verifies that the zone's
+    NSEC3 configuration complies with this best practice.
+
+    If the zone does not use NSEC3, then this test will be skipped.
+
+    The `NSEC3PARAM` record will be checked to ensure that:
+
+    * the value of the `iterations` field of the NSEC3 record is zero;
+    * the value of the `salt` field of the NSEC3 record is empty (represented as
+      a `-` in the presentation format).
+  Errors:
+    - DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO
+    - DNSSEC_NSEC3_SALT_IS_NOT_EMPTY
+
