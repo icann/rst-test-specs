@@ -360,7 +360,7 @@ epp-10:
     - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
 
 epp-11:
-  Summary: host <create> command test (if applicable)
+  Summary: Host <create> command test (if applicable)
   Maturity: BETA
   Description: |
     This test attempts to create a number of host objects, and validates
@@ -510,16 +510,15 @@ epp-14:
   Errors:
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD
-    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES
+    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE
-    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTE
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY
-    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES
-    - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_OBJECTS
+    - EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES
+    - EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
@@ -567,6 +566,14 @@ epp-16:
   Dependencies:
     - epp-14
   Errors:
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT
+    - EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES
+    - EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS
+    - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE
     - EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT
@@ -657,9 +664,10 @@ epp-19:
     Once the gaining registrar has also received a message on the queue, the
     client will use an `<info>` command to confirm that:
 
-    * the domain is now under the sponsorship of the gaining registrar
+    * the domain is now under the sponsorship of the gaining registrar;
     * the authInfo code has been reset by the server (if the server supports
-      RFC 9154).
+      RFC 9154);
+    * the domain has the `transferPeriod` RGP status.
 
     This message **MUST** be received within 120 seconds of the transfer
     approval.
@@ -790,3 +798,23 @@ epp-24:
     - epp-23
   Errors:
     - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
+
+
+epp-25:
+  Summary: Contact <delete> command test (if applicable)
+  Maturity: BETA
+  Description: |
+    This test will perform `<delete>` commands on the objects created during
+    `epp-07` and will confirm that the server accepts the `<delete>` command
+    with a `1xxx` response code.
+
+    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    test will be skipped.
+
+    Once the `<delete>` commands have been submitted, if a `1000` response was
+    received from the server, the client will perform `<check>` and `<info>`
+    commands to confirm that the objects have been deleted.
+  Dependencies:
+    - epp-23
+  Errors:
+    - EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
