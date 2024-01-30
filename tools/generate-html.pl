@@ -359,7 +359,12 @@ sub print_change_log {
 
         print $h->open(ol);
         foreach my $change ($log->changes) {
-            print $h->li($change->html);
+            print $h->open(li);
+            my $doc = XML::LibXML->load_html('string' => $change->html);
+            foreach my $el ($doc->getElementsByTagName('div')->item(0)->childNodes) {
+                print $el->toString;
+            }
+            print $h->close(li);
         }
         print $h->close(ol);
 
