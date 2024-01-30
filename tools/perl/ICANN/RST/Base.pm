@@ -1,11 +1,12 @@
 package ICANN::RST::Base;
+use Carp;
 use YAML::XS;
 use strict;
 
 sub new {
     my ($package, $id, $ref, $spec) = @_;
 
-    warn("No reference for '$id'") unless (defined($ref));
+    carp("No reference for '$id'") unless (defined($ref));
 
     return bless(
         {
