@@ -44,7 +44,7 @@ into RST test cases.
 
 =head1 SYNOPSIS
 
-    generate-zonemaster-cases.pl [--errors] ZONEMASTER_DIRECTORY
+    generate-zonemaster-cases.pl [--errors] --version=VERSION ZONEMASTER_DIRECTORY
 
 =head1 OPTIONS
 
@@ -52,8 +52,15 @@ into RST test cases.
 
 =item *
 
+C<--version> tells the script what version of Zonemaster is in
+C<ZONEMASTER_DIRECTORY>.
+
+=item *
+
 C<--errors> causes the script to emit a YAML fragment for the Zonemaster errors
 rather than the test cases.
+
+=item *
 
 C<--devel> tells the script not to munge the table in the Outcomes section (if
 present) to remove unused message tags. This helps with reviewing those tags to
