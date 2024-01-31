@@ -157,3 +157,16 @@ error_level_overrides:
     - WRONG_SOA
     - Z_FLAGS_NOTCLEAR
     - ALGORITHM_NOT_RECOMMENDED
+
+#
+# the list of messages above doesn't identify the module which they come from.
+# the default profile contains a mapping of module to message for *most* (but
+# not all) messages. This object maps message to module for those messages that
+# are present above, but which aren't in the default profile.
+#
+module_hints:
+  UNKNOWN_OPTION_CODE: NAMESERVER
+  Z_FLAGS_NOTCLEAR: NAMESERVER
+  RNAME_MAIL_DOMAIN_LOCALHOST: SYNTAX
+  RNAME_MAIL_ILLEGAL_CNAME: SYNTAX
+  UNSUPPORTED_EDNS_VER: NAMESERVER
