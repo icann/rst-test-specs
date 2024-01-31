@@ -22,6 +22,8 @@ is via the RST-API, which is documented at [icann/rst-api-spec](https://icann.gi
 
 * [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains the policies that are applied to Zonemaster tests.
 
+* [rst.json](rst.json) is a Zonemaster [profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md) that's generated from the above policy file.
+
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses [gpp](https://logological.org/gpp) to create the YAML file, `perl` a couple of modules to create the JSON file, and [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
   * If you don't want to install all the dependencies, but have Docker installed, you can use `docker compose up` to build the YAML, JSON and HTML files.
 
