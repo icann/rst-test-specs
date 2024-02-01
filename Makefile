@@ -23,6 +23,7 @@ includes:
 	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > inc/rdap/rdapct-cases.yaml
 
 yaml:
+	@ls -lR `pwd`
 	@echo Compiling YAML...
 	@ZM_VERSION="$(ZONEMASTER_VERSION)" gpp -x $(src).yaml.in > $(src).yaml
 	@echo wrote $(src).yaml

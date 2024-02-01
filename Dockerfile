@@ -6,7 +6,8 @@ RUN apk update
 # to speed the cpanm stage up, install as many transient dependencies as apk
 # packages as possible
 #
-RUN apk add curl \
+RUN apk add --quiet \
+    curl \
     gcc \
     git \
     graphviz \
