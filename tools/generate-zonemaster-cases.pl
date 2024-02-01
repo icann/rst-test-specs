@@ -242,5 +242,6 @@ if ('errors' eq $mode) {
 }
 
 $yaml =~ s/^---\n//g;
+$yaml =~ s/\.\.\.\n$//g;
 
 print $yaml;
