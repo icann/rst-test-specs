@@ -7,6 +7,6 @@ services:
       context: .
       args:
         - ZONEMASTER_ENGINE_VERSION=$ZONEMASTER_ENGINE_VERSION
-    command: make -C /app
+    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app\""
     volumes:
       - .:/app
