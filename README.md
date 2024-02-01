@@ -25,18 +25,20 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 
 * [rst.json](https://icann.github.io/rst-test-specs/rst.json) is a Zonemaster
   [profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
-  that's generated from the above policy file.
+  that's generated once per week.
 
 ## Repository Contents
 
 * The files in [inc/](inc/) are what you need to edit if you want to make
   changes to the test specifications.
 
-* [Schema.md](Schema.md) documents the schema for the YAML files. There is a
-  YAML version of this schema in [`rst-test-spec-schema.yaml`](rst-test-spec-schema.yaml).
+* [Schema.md](Schema.md) documents the schema for the YAML spec file. There is a
+  YAML version of this schema in [`rst-test-spec-schema.yaml`](rst-test-spec-schema.yaml),
+  this allows for automated validation of the YAML and JSON spec files.
 
-* [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains the
-  policies that are applied to Zonemaster tests.
+* [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains 
+  policies that are applied to Zonemaster tests when generating the spec files
+  and the Zonemaster profile.
 
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses
   [gpp](https://logological.org/gpp) to create the YAML file, `perl` and a
@@ -55,7 +57,7 @@ every Wednesday from the `dev` branch.
 
 ## See Also
 
-* [RST API Specification](https://github.com/icann/rst-api-spec)
+* [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
 
 ## Copyright Statement
 
