@@ -46,4 +46,4 @@ clean:
 
 pages:
 	@echo Generating pages...
-	@tools/build-pages.sh
+	@tools/build-pages
