@@ -24,13 +24,13 @@ Resources:
 #exec sed 's/^/  /' inc/resources.yaml
 
 Test-Cases:
-#exec sed 's/^/  /' inc/zonemaster/cases.yaml
+#exec sed 's/^/  /' tmp/zonemaster-cases.yaml
 #exec sed 's/^/  /' inc/dns/cases.yaml
 #exec sed 's/^/  /' inc/dnssec/cases.yaml
 #exec sed 's/^/  /' inc/dnssec-ops/cases.yaml
 #exec sed 's/^/  /' inc/rde/cases.yaml
 #exec sed 's/^/  /' inc/epp/cases.yaml
-#exec sed 's/^/  /' inc/rdap/rdapct-cases.yaml
+#exec sed 's/^/  /' tmp/rdapct-cases.yaml
 #exec sed 's/^/  /' inc/rdap/cases.yaml
 #exec sed 's/^/  /' inc/minimum-rpms/cases.yaml
 #exec sed 's/^/  /' inc/srsgw/cases.yaml
@@ -51,7 +51,7 @@ Input-Parameters:
 #exec sed 's/^/  /' inc/integration/inputs.yaml
 
 Errors:
-#exec sed 's/^/  /' inc/zonemaster/errors.yaml
+#exec sed 's/^/  /' tmp/zonemaster-errors.yaml
 #exec sed 's/^/  /' inc/dns/errors.yaml
 #exec sed 's/^/  /' inc/dnssec/errors.yaml
 #exec sed 's/^/  /' inc/dnssec-ops/errors.yaml

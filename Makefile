@@ -14,13 +14,15 @@ includes:
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
 
 	@echo Generating Zonemaster cases...
-	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > inc/zonemaster/cases.yaml
+	@rm -rf tmp
+	@mkdir tmp
+	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > tmp/zonemaster-cases.yaml
 
 	@echo Generating Zonemaster errors...
-	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" --errors zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > inc/zonemaster/errors.yaml
+	@tools/generate-zonemaster-cases.pl --version="$(ZONEMASTER_VERSION)" --errors zonemaster/zonemaster-"$(ZONEMASTER_VERSION)" > tmp/zonemaster-errors.yaml
 
 	@echo Generating RDAP cases...
-	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > inc/rdap/rdapct-cases.yaml
+	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > tmp/rdapct-cases.yaml
 
 yaml:
 	@echo Compiling YAML...
@@ -40,9 +42,6 @@ html:
 	@echo Compiling HTML...
 	@perl tools/generate-html.pl $(src).yaml > $(src).html
 	@echo wrote $(src).html
-
-clean:
-	@rm -rf zonemaster
 
 pages:
 	@echo Generating pages...
