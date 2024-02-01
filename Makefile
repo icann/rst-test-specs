@@ -1,5 +1,4 @@
-ZONEMASTER_VERSION=2023.1.4
-ZONEMASTER_ENGINE_VERSION=4.7.3
+include .env
 src = rst-test-specs
 
 all: export PERL5LIB=./tools/perl
