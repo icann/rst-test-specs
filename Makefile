@@ -43,3 +43,7 @@ html:
 
 clean:
 	@rm -rf zonemaster
+
+pages:
+	@echo Generating pages...
+	@tools/build-pages.sh
