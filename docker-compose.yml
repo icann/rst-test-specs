@@ -3,7 +3,10 @@ version: "3"
 services:
   builder:
     restart: "no"
-    build: .
+    build:
+      context: .
+      args:
+        - ZONEMASTER_ENGINE_VERSION=$ZONEMASTER_ENGINE_VERSION
     command: make -C /app
     volumes:
       - .:/app
