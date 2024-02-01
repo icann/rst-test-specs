@@ -9,18 +9,25 @@ Registry System Testing) service. Unlike its predecessor, the new system is
 fully automated. All interaction with the system is via the RST-API, which is
 documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 
-## Repository Contents
-
 * **[rst-test-specs.html](https://icann.github.io/rst-test-specs/rst-test-specs.html)
-  is the human-readable version of the RST test specification.**
+  is the human-readable version of the RST test specification.** This is updated
+  once per week.
 
 * [rst-test-specs.yaml](https://icann.github.io/rst-test-specs/rst-test-specs.yaml)
   is the machine-readable version, intended to be consumed by internal ICANN
-  clients. Like the HTML file above, this file is a build artefact.
+  clients. Like the HTML file above, this file is a build artefact and is
+  updated once per week.
 
 * [rst-test-specs.json](https://icann.github.io/rst-test-specs/rst-test-specs.json)
-  is the above file in JSON, in case you prefer that kind of thing. Note that
-  the conversion from YAML causes keys in dictionaries to be reordered.
+  is the above file in JSON. Note that the conversion from YAML causes keys in
+  dictionaries to be reordered. As with the HTML and YAML versions, this is
+  updated once per week.
+
+* [rst.json](https://icann.github.io/rst-test-specs/rst.json) is a Zonemaster
+  [profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
+  that's generated from the above policy file.
+
+## Repository Contents
 
 * The files in [inc/](inc/) are what you need to edit if you want to make
   changes to the test specifications.
@@ -30,10 +37,6 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 
 * [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains the
   policies that are applied to Zonemaster tests.
-
-* [rst.json](https://icann.github.io/rst-test-specs/rst.json) is a Zonemaster
-  [profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
-  that's generated from the above policy file.
 
 * [Makefile](Makefile) provides a way to generate the build artefacts. It uses
   [gpp](https://logological.org/gpp) to create the YAML file, `perl` and a
