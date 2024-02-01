@@ -1,3 +1,6 @@
+2024-02-07:
+  - Zonemaster cases are now generated directly from `Zonemaster::Engine`, so now include all possible error messages.
+
 2024-01-31:
   - Added this ChangeLog.
   - Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).
