@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  builder:
+  spec:
     restart: "no"
     build:
       context: .
@@ -10,3 +10,7 @@ services:
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app\""
     volumes:
       - .:/app
+
+  pages:
+    extends: spec
+    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app pages\""
