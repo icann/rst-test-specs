@@ -4,10 +4,13 @@ SITEDIR="_site"
 rm -rf "$SITEDIR"
 mkdir "$SITEDIR"
 
-pandoc --from markdown \
+pandoc \
+    --from markdown \
     --to html \
     --standalone \
-    --metadata title="" \
+    --embed-resources=true \
+    --metadata title="Registry System Testing - Test Specifications" \
+    --css=inc/html/style.css \
     --output="$SITEDIR/index.html" \
     README.md
 
