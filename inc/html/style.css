@@ -1,0 +1,129 @@
+html {
+    background-color: #fefefe;
+    font-size: 15px;
+}
+
+html,body,p,div,ol,li,table,tr,td,th,input,button,select,option,textarea,* {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
+}
+
+a {
+    color: #036aa6;
+}
+
+a:active,a:hover {
+    text-decoration: none;
+}
+
+header {
+    text-align:center;
+}
+
+strong,h1,h2,h3,h4,h5,h6 {
+    font-weight: 600;
+}
+
+h5,h6 {
+    font-size: 15px;
+}
+
+header,nav,main,section {
+    margin:0;
+    padding:0;
+    border-bottom: 0.0625em solid #ddd;
+}
+
+h2 {
+    break-before: page;
+}
+
+section {
+    break-inside: avoid;
+}
+
+dl {
+    margin: auto 2em;
+}
+
+dt {
+    font-weight:bold;
+}
+
+dt:after {
+    content: ":";
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+code,tt,pre {
+    font-family: "Fira Code", "Menlo", "Consolas", "Andale Mono", "Courier New",
+        Courier, monospace;
+}
+
+code,tt {
+    white-space:nowrap;
+}
+
+pre {
+    margin: auto auto auto 2em;
+}
+
+summary {
+    cursor: pointer;
+}
+
+summary h4 {
+    display:inline;
+    margin:0;
+}
+
+summary:has(> h4) {
+    margin: 1em 0;
+}
+
+summary h4:active, summary h4:hover {
+    text-decoration: underline;
+}
+
+.toc-link {
+    position:fixed;
+    margin:0;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    top:1em;
+    right:3em;
+    font-size:50%;
+    display:inline-block;
+    line-height:100%;
+    text-decoration:none;
+    border: 1px solid #00c;
+}
+
+header svg {
+    height: 5em;
+    margin: 1em auto 0 auto;
+}
+
+main svg {
+    display:block;
+    max-width:100%;
+    max-height:100vh;
+    margin:1em auto;
+}
+
+footer {
+    text-align:center;
+}
+
+table {
+    width:100%;
+}
+
+th {
+    font-weight:bold;
+}
