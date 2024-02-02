@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.7.1
+  version: 1.8.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -204,11 +204,6 @@ components:
             An array of resource IDs which may be used to prepare for the
             tests in this test suite, in addition to those specified by the
             test cases for the suite.
-          type: array
-        Errors:
-          description: |
-            An array of error IDs which may be produced by this test suite,
-            in addition to those specified by the test cases for the suite.
           type: array
 
     rstTestCase:
