@@ -16,7 +16,8 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 * [rst-test-specs.yaml](https://icann.github.io/rst-test-specs/rst-test-specs.yaml)
   is the machine-readable version, intended to be consumed by internal ICANN
   clients. Like the HTML file above, this file is a build artefact and is
-  updated once per week.
+  updated once per week. The YAML file is the normative reference, other
+  representations are informational only.
 
 * [rst-test-specs.json](https://icann.github.io/rst-test-specs/rst-test-specs.json)
   is the above file in JSON. Note that the conversion from YAML causes keys in
@@ -45,8 +46,9 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
   couple of modules to create the JSON file, and
   [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
 
-* If you don't want to install all the dependencies, but have Docker installed,
-  you can use `docker compose up` to build the YAML, JSON and HTML files.
+* If you don't want to install all the dependencies, but have
+  [Docker](https://docker.com) installed, you can use `docker compose up spec`
+  to build the YAML, JSON and HTML files.
 
 ## Branches
 
