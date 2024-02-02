@@ -29,9 +29,8 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 * The files in [inc/](inc/) are what you need to edit if you want to make
   changes to the test specifications.
 
-* [Schema.md](Schema.md) documents the schema for the YAML spec file. There is a
-  YAML version of this schema in [`rst-test-spec-schema.yaml`](rst-test-spec-schema.yaml),
-  this allows for automated validation of the YAML and JSON spec files.
+* [rst-test-spec-schema.yaml](rst-test-spec-schema.yaml) is a schema for the
+  YAML spec file.
 
 * [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains 
   policies that are applied to Zonemaster tests when generating the spec files
