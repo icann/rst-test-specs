@@ -29,3 +29,7 @@ DNSSEC_OPS_INVALID_ALGORITHM:
 DNSSEC_OPS_XFR_FAILED:
   Severity: ERROR
   Description: TBA.
+
+DNSSEC_OPS_DNS_QUERY_FAILED:
+  Severity: ERROR
+  Description: TBA.

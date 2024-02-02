@@ -38,6 +38,8 @@ dnssecOps01-ZSKRollover:
     - dnssecOps.csk
     - dnssecOps.zskRolloverZone
   Errors:
+    - DNSSEC_OPS_DNS_QUERY_FAILED
+    - DNSSEC_OPS_XFR_FAILED
     - DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
     - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
   
@@ -74,6 +76,8 @@ dnssecOps02-KSKRollover:
   Input-Parameters:
     - dnssecOps.kskRolloverZone
   Errors:
+    - DNSSEC_OPS_DNS_QUERY_FAILED
+    - DNSSEC_OPS_XFR_FAILED
     - DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
     - DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED
 
@@ -118,6 +122,8 @@ dnssecOps03-AlgorithmRollover:
   Input-Parameters:
     - dnssecOps.algorithmRolloverZone
   Errors:
+    - DNSSEC_OPS_DNS_QUERY_FAILED
+    - DNSSEC_OPS_XFR_FAILED
     - DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN
     - DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED
     - DNSSEC_OPS_INVALID_ALGORITHM

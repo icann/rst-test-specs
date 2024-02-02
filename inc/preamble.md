@@ -81,16 +81,6 @@ The supported severity levels are a subset of the values defined in RFC 5424.
    further. A test case will only produce a single `CRITICAL` result and it will
    always be the last result in the log.
 
-## 2.3.6. Common errors
-
-For each test case, various errors and critical errors are defined which will
-be used to signal why that the case might have failed.
-
-In addition to these, there are a number of errors which any test case may
-produce, which are:
-
-* [TBA]
-
 # 2.4. Test procedures
 
 Where possible, test cases will reuse existing connections and any objects

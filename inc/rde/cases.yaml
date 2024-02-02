@@ -8,6 +8,7 @@ rde-01:
       associated with the test.
   Errors:
     - RDE_INVALID_FILENAME
+
 rde-02:
   Summary: validate signature over deposit file
   Maturity: BETA
@@ -19,6 +20,7 @@ rde-02:
     - rde.signatureFile
   Errors:
     - RDE_INVALID_SIGNATURE
+
 rde-03:
   Summary: decrypt deposit file(s)
   Maturity: BETA
@@ -30,6 +32,7 @@ rde-03:
     - rde.encryptionKey
   Errors:
     - RDE_DECRYPTION_FAILED
+
 rde-04:
   Summary: validate XML/CSV
   Maturity: BETA
@@ -40,9 +43,11 @@ rde-04:
     * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
       contents.
   Errors:
-    - RDE_INVALID_XML
+    - RDE_XML_PARSE_ERROR
+    - RDE_SCHEMA_VALIDATION_ERROR
     - RDE_INVALID_CSV
     - RDE_MIXED_TYPES
+
 rde-05:
   Summary: validate object types
   Maturity: BETA
@@ -182,6 +187,7 @@ rde-09:
     - RDE_CONTACT_HAS_UNKNOWN_UPRR
     - RDE_CONTACT_HAS_UNKNOWN_RERR
     - RDE_CONTACT_HAS_UNKNOWN_ACRR
+
 rde-10:
   Summary: validate registrar objects
   Maturity: BETA
@@ -202,6 +208,7 @@ rde-10:
     - RDE_REGISTRAR_HAS_INVALID_NAME
     - RDE_REGISTRAR_HAS_MISSING_GURID
     - RDE_REGISTRAR_HAS_INVALID_GURID
+
 rde-11:
   Summary: validate IDN table objects (if applicable)
   Maturity: BETA
@@ -217,6 +224,7 @@ rde-11:
     - RDE_IDN_OBJECT_INVALID
     - RDE_IDN_OBJECT_MISSING
     - RDE_IDN_OBJECT_UNEXPECTED
+
 rde-12:
   Summary: validate NNDN objects
   Maturity: BETA
@@ -243,6 +251,7 @@ rde-13:
     - epp.greeting
   Errors:
     - RDE_GREETING_DOES_NOT_MATCH
+
 rde-14:
   Summary: validate policy object (if applicable)
   Maturity: BETA
