@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-use lib qw(/Users/gavin.brown/Code/zonemaster-engine/lib);
 use Cwd qw(getcwd realpath);
 use Data::Mirror qw(mirror_json);
 use File::Basename;
