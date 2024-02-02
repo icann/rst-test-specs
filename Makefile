@@ -1,8 +1,12 @@
 include .env
-src = rst-test-specs
+
+SRC = rst-test-specs
 ZM_DIR="zonemaster/zonemaster-$(ZONEMASTER_VERSION)"
 
-all: export PERL5LIB=./tools/perl
+yaml: export ZM_VERSION="$(ZONEMASTER_VERSION)"
+lint: export PERL5LIB=./tools/perl
+html: export PERL5LIB=./tools/perl
+
 all: zonemaster-profile includes yaml lint json html
 
 zonemaster-profile:
@@ -27,22 +31,22 @@ includes:
 
 yaml:
 	@echo Compiling YAML...
-	@ZM_VERSION="$(ZONEMASTER_VERSION)" gpp -x $(src).yaml.in > $(src).yaml
-	@echo wrote $(src).yaml
+	@gpp -x $(SRC).yaml.in > $(SRC).yaml
+	@echo wrote $(SRC).yaml
 
 lint:
 	@echo Checking YAML...
-	@perl tools/lint.pl $(src).yaml
+	@perl tools/lint.pl $(SRC).yaml
 
 json:
 	@echo Compiling JSON...
-	@perl -MYAML::XS -MJSON::XS -e 'print JSON::XS->new->utf8->canonical->pretty->encode(YAML::XS::LoadFile("./$(src).yaml"))' > $(src).json
-	@echo wrote $(src).json
+	@perl -MYAML::XS -MJSON::XS -e 'print JSON::XS->new->utf8->canonical->pretty->encode(YAML::XS::LoadFile("./$(SRC).yaml"))' > $(SRC).json
+	@echo wrote $(SRC).json
 
 html:
 	@echo Compiling HTML...
-	@perl tools/generate-html.pl $(src).yaml > $(src).html
-	@echo wrote $(src).html
+	@perl tools/generate-html.pl $(SRC).yaml > $(SRC).html
+	@echo wrote $(SRC).html
 
 pages:
 	@echo Generating pages...
