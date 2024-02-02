@@ -821,8 +821,7 @@ sub print_case {
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Errors', $section, $i, ++$j)));
-    print $h->p('This test case may produce the following errors, in addition to
-        those defined in test suite:');
+    print $h->p('This test case may produce the following errors:');
 
     my @errors = $case->errors;
     if (scalar(@errors) < 1) {
