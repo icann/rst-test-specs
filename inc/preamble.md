@@ -1,5 +1,5 @@
 This file describes each test [plan](#test-plans), [suite](#test-suites) and
-[case](#test-cases) in the RST system, as well as the
+[case](#test-cases) in the RST service, as well as the
 [input parameters](#input-parameters) required for each, relevant
 [resources](#resources), any inter-case dependencies, and the
 [errors](#errors) that might occur during testing.
@@ -20,11 +20,11 @@ suites*, which in turn include one or more *test cases*.
 
 There are two types of test plan described in this document:
 
-* **Business as usual** plans, which are used as part of the lifecycle of a
-gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
-Test)
-* **RSP evaluation** plans, which are used as part of the RSP evaluation
-program.
+* **"Business as usual"** plans, which are used as part of the lifecycle of a
+  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway Test)
+
+* **RSP evaluation** plans, which are used as part of the [RSP evaluation
+  program](https://community.icann.org/display/SPIR/RSP+%7C+Registry+Service+Provider+Pre-Evaluation).
 
 # 2.2. Test suites
 
@@ -73,13 +73,13 @@ A test case will fail if it produces one or more [errors](#errors) with the
 The supported severity levels are a subset of the values defined in RFC 5424.
 
 2. `WARNING` - an issue which does not prevent the test from *passing*, but
- which may benefit from further investigation.
+   which may benefit from further investigation.
 1. `ERROR` - an issue which prevents the test case from *passing*, but does not
- prevent the test case from *continuing*. A test case may produce multiple
- `ERROR` results.
+   prevent the test case from *continuing*. A test case may produce multiple
+   `ERROR` results.
 2. `CRITICAL` - an issue which prevents the test case from continuing any
- further. A test case will only produce a single `CRITICAL` result and it
- will always be the last result in the log.
+   further. A test case will only produce a single `CRITICAL` result and it will
+   always be the last result in the log.
 
 ## 2.3.6. Common errors
 
