@@ -22,6 +22,7 @@ use constant {
     'name'          => 'name',
     'details'       => 'details',
 };
+use feature qw(say);
 use bytes;
 use utf8;
 use strict;
@@ -37,6 +38,17 @@ my $mdesc = {
     'BETA'      => 'complete but likely to require further changes',
     'GAMMA'     => 'finalized and ready for review',
 };
+
+my $sdev = {
+    'WARNING'   => ICANN::RST::Text->new('an issue which does not prevent the test from *passing*, but which may benefit from further investigation.')->raw_html,
+    'ERROR'     => ICANN::RST::Text->new('an issue which prevents the test case from *passing*, but does not prevent the test case from *continuing*. A test case may produce multiple `ERROR` results.')->raw_html,
+    'CRITICAL'  => ICANN::RST::Text->new('an issue which prevents the test case from continuing any further. A test case will only produce a single `CRITICAL` result and it will always be the last result in the log.')->raw_html,
+};
+foreach my $s (keys(%{$sdev})) {
+    chomp($sdev->{$s});
+    $sdev->{$s} =~ s/^<p>//;
+    $sdev->{$s} =~ s/<\/p>$//;
+}
 
 my $assets = File::Spec->catdir(dirname($ARGV[0]), qw(inc html));
 
@@ -57,6 +69,8 @@ print $h->head([
     $h->title($title),
 ]);
 
+say STDERR 'wrote header';
+
 print $h->open('body');
 
 print_title();
@@ -70,6 +84,10 @@ print_footer();
 print $h->close('body');
 print $h->close('html');
 
+say STDERR 'done';
+
+exit(0);
+
 sub print_title {
     print $h->header([
         join('', read_file(File::Spec->catfile($assets, 'icann-logo.svg'))),
@@ -81,6 +99,8 @@ sub print_title {
             e($spec->contactName.', '.$spec->contactOrg),
         )),
     ]);
+
+    say STDERR 'wrote title';
 }
 
 sub print_nav {
@@ -98,6 +118,8 @@ sub print_nav {
     );
 
     print $h->close('nav');
+
+    say STDERR 'wrote nav';
 }
 
 sub print_toc {
@@ -141,6 +163,8 @@ sub print_toc {
     print $h->li($h->a({href => '#meta'}, 'About this document'));
 
     print $h->close(ol);
+
+    say STDERR 'wrote toc';
 }
 
 sub print_preamble_toc_list {
@@ -364,6 +388,8 @@ sub print_change_log {
     }
 
     print $h->close(section);
+
+    say STDERR 'wrote change log';
 }
 
 sub print_preamble {
@@ -389,6 +415,8 @@ sub print_preamble {
     print $doc->toStringHTML;
 
     print $h->close(section);
+
+    say STDERR 'wrote preamble';
 }
 
 sub print_meta {
@@ -399,6 +427,8 @@ sub print_meta {
     print ICANN::RST::Text->new(join('', read_file(File::Spec->catfile($assets, 'meta.md'))))->html(2);
 
     print $h->close(section);
+
+    say STDERR 'wrote meta';
 }
 
 sub print_plans {
@@ -411,6 +441,8 @@ sub print_plans {
         print_plan($plan, ++$i);
         print $h->close(section);
     }
+
+    say STDERR 'wrote plans';
 }
 
 sub print_plan {
@@ -596,6 +628,8 @@ sub print_suites {
         print_suite($suite, ++$i);
         print $h->close(section);
     }
+
+    say STDERR 'wrote suites';
 }
 
 sub print_suite {
@@ -764,6 +798,8 @@ sub print_resources {
         print_resource($resource, ++$i);
         print $h->close(section);
     }
+
+    say STDERR 'wrote resources';
 }
 
 sub print_resource {
@@ -793,6 +829,8 @@ sub print_cases {
         print_case($case, ++$i);
         print $h->close(section);
     }
+
+    say STDERR 'wrote cases';
 }
 
 sub print_case {
@@ -980,6 +1018,8 @@ sub print_inputs {
         print_input($input, ++$i);
         print $h->close(section);
     }
+
+    say STDERR 'wrote inputs';
 }
 
 sub print_input {
@@ -1034,7 +1074,7 @@ sub print_input {
         foreach my $case (@cases) {
             print $h->li($h->a(
             { href => sprintf('#Test-Case-%s', $case->id) },
-            e($case->title),
+            e($case->id),
             ));
         }
 
@@ -1051,9 +1091,13 @@ sub print_errors {
     my $i = 0;
     foreach my $error ($spec->errors) {
         print $h->open(section);
+
         print_error($error, ++$i);
+
         print $h->close(section);
     }
+
+    say STDERR 'wrote errors';
 }
 
 sub print_error {
@@ -1066,10 +1110,35 @@ sub print_error {
     my $j = 0;
 
     print $h->h4(sprintf('%u.%u.%u. Severity', $section, $i, ++$j));
-    print $h->pre(e($error->severity));
+    print $h->p(
+        $h->code(e($error->severity))
+        .' - '
+        .$sdev->{$error->severity}
+    );
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $error->description->html(3);
+
+    print $h->h4(sprintf('%u.%u.%u. Test cases', $section, $i, ++$j));
+    print $h->p('This error may be produced by the following test cases:');
+
+    my @cases = $error->cases;
+    if (scalar(@cases) < 1) {
+        print $h->ul($h->li($h->em('None specified.')));
+
+    } else {
+        print $h->open(ul);
+
+        foreach my $case (@cases) {
+            print $h->li($h->a(
+            { href => sprintf('#Test-Case-%s', $case->id) },
+            e($case->id),
+            ));
+        }
+
+        print $h->close(ul);
+    }
+
 }
 
 sub print_footer {
@@ -1078,6 +1147,8 @@ sub print_footer {
         substr($spec->lastUpdated, 0, 4),
         $spec->contactOrg
     ))));
+
+    say STDERR 'wrote footer';
 }
 
 sub e { $h->entity_encode(shift) }
