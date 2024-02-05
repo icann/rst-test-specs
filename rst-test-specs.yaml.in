@@ -1,6 +1,7 @@
 ---
 RST-Test-Plan-Schema-Version: 1.8.0
-Version: #exec perl ./tools/generate-version.pl
+Version: 3.1.#date %Y%j
+
 Last-Updated: #date %Y-%m-%d
 
 Contact:
