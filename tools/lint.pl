@@ -167,6 +167,8 @@ sub check_error {
         $used += scalar(grep { $error->id eq $_ } @{$case->{'Errors'}});
     }
 
+    warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
+
     warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used > 0);
 }
 
