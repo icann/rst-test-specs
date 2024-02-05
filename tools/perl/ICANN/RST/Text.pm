@@ -20,6 +20,12 @@ sub text { $_[0]->{'text'} }
 sub html {
     my ($self, $shift) = @_;
 
+    return '<div class="markdown-content">'.$self->raw_html.'</div>';
+}
+
+sub raw_html {
+    my ($self, $shift) = @_;
+
     my $key = sprintf('%s.%u', sha1_hex(unidecode($self->text)), $shift);
 
     if (!defined($CACHE->{$key})) {
@@ -39,7 +45,7 @@ sub html {
             waitpid($pid, 0);
         }
 
-        $CACHE->{$key} = '<div class="markdown-content">'.read_file($f, 'binmode' => ':encoding(UTF-8)').'</div>';
+        $CACHE->{$key} = read_file($f, 'binmode' => ':encoding(UTF-8)');
     }
 
     return $CACHE->{$key};
