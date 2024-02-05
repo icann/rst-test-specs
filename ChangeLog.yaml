@@ -1,5 +1,8 @@
 2024-02-07:
   - Zonemaster cases are now generated directly from `Zonemaster::Engine`, so now include all possible error messages.
+  - Rather than placing "common" errors at the suite level, each case now lists all the errors it may emit. In the HTML output, the cases that may emit an error are listed for each error.
+  - Began providing descriptions of errors, and adjusting their severity levels accordingly.
+  - Protocol-related errors are now standardised, so (for example the SRSGW and IDN cases use the same errors as the EPP cases, for EPP-related errors).
 
 2024-01-31:
   - Added this ChangeLog.
