@@ -21,8 +21,15 @@ minimumRPMs-01:
     * a `<check>` response for a domain that is NOT present on the DNL
       does not contain a `<launch:claimKey>` element.
   Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
     - RPMS_MISSING_CLAIMS_KEY
     - RPMS_UNEXPECTED_CLAIMS_KEY
+
 minimumRPMs-02:
   Summary: |
     Sunrise domain/launch application <create> command test
@@ -64,6 +71,12 @@ minimumRPMs-02:
     2. create a domain using a revoked SMD;
     3. create a domain using an SMD signed by a revoked certificate.
   Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
     - RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD
@@ -103,6 +116,12 @@ minimumRPMs-03:
     3. create a domain using an acceptance datetime more than 48 hours in the
       past.
   Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
     - RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY
     - RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY
     - RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE
