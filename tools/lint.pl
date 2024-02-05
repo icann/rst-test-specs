@@ -1,5 +1,4 @@
 #!perl
-use Data::Dumper;
 use List::Util qw(any none);
 use ICANN::RST::Spec;
 use feature qw(say);
@@ -72,7 +71,7 @@ sub check_suite {
 
     $used = {};
     foreach my $case (@cases) {
-        foreach my $key (qw(Input-Parameters Resources Errors)) {
+        foreach my $key (qw(Input-Parameters Resources)) {
             my $type = $key;
             $type =~ s/s$//;
             $type =~ s/-/ /;
@@ -81,7 +80,7 @@ sub check_suite {
                 next if ($key eq 'Errors' && $suite->id =~ /^StandardDNS/);
 
                 if (any { $id eq $_ } @{$suite->{$key}}) {
-                    warn(sprintf("%s '%s' is already present %s, consider removing from %s", $type, $id, $suite->id, $case->id));
+                    warn(sprintf("%s '%s' is already present in %s, consider removing from %s", $type, $id, $suite->id, $case->id));
                 }
 
                 if (!defined($used->{$key}->{$id})) {
@@ -168,11 +167,7 @@ sub check_error {
         $used += scalar(grep { $error->id eq $_ } @{$case->{'Errors'}});
     }
 
-    foreach my $suite ($spec->suites) {
-        $used += scalar(grep { $error->id eq $_ } @{$suite->{'Errors'}});
-    }
-
-    warn(sprintf("Error '%s' is not used by any cases or suites", $error->id)) unless ($used > 0);
+    warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used > 0);
 }
 
 sub fail {
