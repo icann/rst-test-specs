@@ -5,6 +5,20 @@ use strict;
 sub severity { $_[0]->{'Severity'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 
+sub cases {
+    my $self = shift;
+
+    my %cases;
+
+    foreach my $case ($self->spec->cases) {
+        foreach my $error ($case->errors) {
+            $cases{$case->id} = $case if ($error->id eq $self->id && !defined($cases{$case->id}));
+        }
+    }
+
+    return sort { $a->id cmp $b->id } values(%cases);
+}
+
 1;
 
 __END__
@@ -26,5 +40,9 @@ error.
 =head2 severity()
 
 A string containing one of C<WARNING>, C<ERROR> or C<CRITICAL>.
+
+=head2 cases()
+
+A list of all C<ICANN::RST::Case> objects that produce this error.
 
 =cut
