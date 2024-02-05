@@ -24,19 +24,19 @@ sub new {
         $package,
     );
 
-    my $v = version->parse($self->{'spec'}->{'RST-Test-Plan-Schema-Version'});
+    my $v = version->parse($self->spec->{'RST-Test-Plan-Schema-Version'});
     croak(sprintf("Unsupported schema version '%s', must be '%s'", $v, SCHEMA_VERSION)) unless (SCHEMA_VERSION == $v);
 
     #
     # precompile everything
     #
-    $self->{'_preamble'}    = ICANN::RST::Text->new($_[0]->{'spec'}->{'Preamble'});
-    $self->{'_plans'}       = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self)       } %{$self->{'spec'}->{'Test-Plans'}}        ];
-    $self->{'_suites'}      = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self)       } %{$self->{'spec'}->{'Test-Suites'}}       ];
-    $self->{'_cases'}       = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self)       } %{$self->{'spec'}->{'Test-Cases'}}        ];
-    $self->{'_inputs'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self)       } %{$self->{'spec'}->{'Input-Parameters'}}  ];
-    $self->{'_resources'}   = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Resource->new($a, $b, $self)    } %{$self->{'spec'}->{'Resources'}}         ];
-    $self->{'_errors'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Error->new($a, $b, $self)       } %{$self->{'spec'}->{'Errors'}}            ];
+    $self->{'_preamble'}    = ICANN::RST::Text->new($self->spec->{'Preamble'});
+    $self->{'_plans'}       = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self)       } %{$self->spec->{'Test-Plans'}}        ];
+    $self->{'_suites'}      = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self)       } %{$self->spec->{'Test-Suites'}}       ];
+    $self->{'_cases'}       = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self)       } %{$self->spec->{'Test-Cases'}}        ];
+    $self->{'_inputs'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self)       } %{$self->spec->{'Input-Parameters'}}  ];
+    $self->{'_resources'}   = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Resource->new($a, $b, $self)    } %{$self->spec->{'Resources'}}         ];
+    $self->{'_errors'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Error->new($a, $b, $self)       } %{$self->spec->{'Errors'}}            ];
 
     return $self;
 }
@@ -46,19 +46,20 @@ sub changelog {
 
     my @log;
 
-    foreach my $date (reverse(sort(keys(%{$self->{'spec'}->{'ChangeLog'}})))) {
-        push(@log, ICANN::RST::ChangeLog->new($date, $self->{'spec'}->{'ChangeLog'}->{$date}, $self));
+    foreach my $date (reverse(sort(keys(%{$self->spec->{'ChangeLog'}})))) {
+        push(@log, ICANN::RST::ChangeLog->new($date, $self->spec->{'ChangeLog'}->{$date}, $self));
     }
 
     return @log;
 }
 
-sub schemaVersion   { $_[0]->{'spec'}->{'RST-Test-Plan-Schema-Version'}                 }
-sub version         { $_[0]->{'spec'}->{'Version'}                                      }
-sub lastUpdated     { $_[0]->{'spec'}->{'Last-Updated'}                                 }
-sub contactName     { $_[0]->{'spec'}->{'Contact'}->{'Name'}                            }
-sub contactOrg      { $_[0]->{'spec'}->{'Contact'}->{'Organization'}                    }
-sub contactEmail    { $_[0]->{'spec'}->{'Contact'}->{'Email'}                           }
+sub spec            { $_[0]->{'spec'}                                                   }
+sub schemaVersion   { $_[0]->spec->{'RST-Test-Plan-Schema-Version'}                     }
+sub version         { $_[0]->spec->{'Version'}                                          }
+sub lastUpdated     { $_[0]->spec->{'Last-Updated'}                                     }
+sub contactName     { $_[0]->spec->{'Contact'}->{'Name'}                                }
+sub contactOrg      { $_[0]->spec->{'Contact'}->{'Organization'}                        }
+sub contactEmail    { $_[0]->spec->{'Contact'}->{'Email'}                               }
 sub preamble        { $_[0]->{'_preamble'}                                              }
 sub plans           { @{ $_[0]->{'_plans'} }                                            }
 sub suites          { @{ $_[0]->{'_suites'} }                                           }
@@ -180,5 +181,9 @@ Returns an array of L<ICANN::RST::Error> objects.
 =head2 error($id)
 
 Returns the L<ICANN::RST::Error> object with the given ID.
+
+=head2 spec()
+
+Returns a hashref of the specification data structure.
 
 =cut
