@@ -48,7 +48,7 @@ sub check_plan {
     my $plan = shift;
     my @suites = $plan->suites;
 
-    warn(sprintf("%s has no test suites defined", $plan->id)) unless (scalar(@suites) > 0);
+    warn(sprintf("Plan '%s' has no test suites defined", $plan->id)) unless (scalar(@suites) > 0);
 }
 
 sub check_suite {
@@ -64,10 +64,10 @@ sub check_suite {
         }
     }
 
-    warn(sprintf("%s is not used by any plans", $suite->id)) unless ($used);
+    warn(sprintf("Suite '%s' is not used by any plans", $suite->id)) unless ($used);
 
     my @cases = $suite->cases;
-    warn(sprintf("%s has no cases defined", $suite->id)) unless (scalar(@cases) > 0);
+    warn(sprintf("Suite '%s' has no cases defined", $suite->id)) unless (scalar(@cases) > 0);
 
     $used = {};
     foreach my $case (@cases) {
@@ -145,16 +145,22 @@ sub check_input {
 sub check_resource {
     my $resource = shift;
 
-    my $used = 0;
-    foreach my $case ($spec->cases) {
-        $used += scalar(grep { $resource->id eq $_ } @{$case->{'Resources'}});
+    my $used;
+    CASE: foreach my $case ($spec->cases) {
+        if (scalar(grep { $resource->id eq $_ } @{$case->{'Resources'}}) > 0) {
+            $used = 1;
+            last CASE;
+        }
     }
 
-    foreach my $suite ($spec->suites) {
-        $used += scalar(grep { $resource->id eq $_ } @{$suite->{'Resources'}});
+    SUITE: foreach my $suite ($spec->suites) {
+        if (scalar(grep { $resource->id eq $_ } @{$suite->{'Resources'}}) > 0) {
+            $used = 1;
+            last SUITE;
+        }
     }
 
-    warn(sprintf("Resource '%s' is not used by any cases or suites", $resource->id)) unless ($used > 0);
+    warn(sprintf("Resource '%s' is not used by any cases or suites", $resource->id)) unless ($used);
 }
 
 sub check_error {
@@ -164,17 +170,15 @@ sub check_error {
         warn(sprintf("Error '%s' has unsupported severity '%s'", $error->id, $error->severity));
     }
 
-    my $used = 0;
-    foreach my $case ($spec->cases) {
-        $used += scalar(grep { $error->id eq $_ } @{$case->{'Errors'}});
+    my $used;
+    CASE: foreach my $case ($spec->cases) {
+        if (scalar(grep { $error->id eq $_ } @{$case->{'Errors'}}) > 0) {
+            $used = 1;
+            last CASE;
+        }
     }
 
     warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
 
-    warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used > 0);
-}
-
-sub fail {
-    my $msg = shift;
-    printf(STDERR "Assertion '%s' failed\n", $msg);
+    warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used);
 }
