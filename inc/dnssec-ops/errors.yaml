@@ -1,35 +1,56 @@
 DNSSEC_OPS_ALGORITHM_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The Chain-of-Trust from the root trust anchor was broken during the
+    algorith rollover.
 
 DNSSEC_OPS_ALGORITHM_ROLLOVER_NOT_COMPLETED:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The algorith rollover was not completed within the test period.
 
 DNSSEC_OPS_KSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The Chain-of-Trust from the root trust anchor was broken during the
+    KSK rollover.
 
 DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The KSK rollover was not completed within the test period.
 
 DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The Chain-of-Trust from the root trust anchor was broken during the
+    ZSK rollover.
 
 DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The ZSK rollover was not completed within the test period.
 
 DNSSEC_OPS_INVALID_ALGORITHM:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The zone was rolled to an invalid algorithm. Please see the details of
+    [dnssec-91](#Test-case-dnssec-91) for more information.
 
-DNSSEC_OPS_XFR_FAILED:
+DNSSEC_OPS_XFR_FAILED_TOO_MANY_TIMES:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    There was an error performing a zone transfer on three concurrent attempts.
 
-DNSSEC_OPS_DNS_QUERY_FAILED:
+DNSSEC_OPS_DNS_QUERY_FAILED_TOO_MANY_TIMES:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    There was an error performing a DNS query on three concurrent attempts.
+
+DNSSEC_OPS_ZONE_IS_INVALID:
+  Severity: CRITICAL
+  Description: |
+    The zone file returned by a zone transfer request was invalid. This may be
+    because:
+      1. it was not properly signed, or
+      2. it contained an insufficient number of resource records.

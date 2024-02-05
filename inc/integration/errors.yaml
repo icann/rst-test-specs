@@ -1,35 +1,51 @@
-INTEGRATION_DNS_ANSWER_IS_INCORRECT:
-  Severity: ERROR
-  Description: TBA.
+INTEGRATION_RDAP_REQUEST_FAILED:
+  Severity: WARNING
+  Description: |
+    An RDAP query failed. Persistent errors may result in the test failing if
+    the expected resource records are not observed within the Service Level
+    Requirement.
 
 INTEGRATION_DNS_QUERY_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: WARNING
+  Description: |
+    A DNS query failed. Persistent errors may result in the test failing if the
+    expected resource records are not observed within the Service Level
+    Requirement.
 
 INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    One or more expected DNS records were not observed within the Service Level
+    Requirement. This may be due to recurrent errors performing DNS queries, or
+    because the DNS server(s) did not respond with the expected resource
+    records.
 
 INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    One or more expected RDAP responses were not observed within the Service
+    Level Requirement. This may be due to recurrent errors performing RDAP
+    queries, or because the RDAP server(s) did not respond with the expected
+    responses.
 
-INTEGRATION_RDAP_REQUEST_FAILED:
+INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDE:
   Severity: ERROR
-  Description: TBA.
-
-INTEGRATION_RDE_DEADLINE_MISSED:
-  Severity: ERROR
-  Description: TBA.
-
-INTEGRATION_RDE_MISSING_OBJECTS:
-  Severity: ERROR
-  Description: TBA.
-
-INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    One or more expected RDE objects were not observed within the Service Level
+    Requirement. This may be due to recurrent errors accessing the SFTP server,
+    because the deposit file(s) could not be found, or because the objects were
+    not present in those files.
 
 INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE:
-  Severity: ERROR
-  Description: TBA.
+  Severity: WARNING
+  Description: |
+    There was an issue connecting to the SFTP server. Persistent errors may
+    result in the test failing if the expected objects are not observed in a
+    valid deposit within the Service Level Requirement.
+
+INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
+  Severity: WARNING
+  Description: |
+    There was an issue authenticating with the SFTP server. Persistent errors
+    may result in the test failing if the expected objects are not observed in a
+    valid deposit within the Service Level Requirement.

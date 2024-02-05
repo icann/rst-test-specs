@@ -22,6 +22,9 @@ rdap-91:
     6. Service ports **MUST** use at least one of the ciphers recommended in
        RFC 9325 (or any successor document).
   Errors:
+    - RDAP_TLS_DNS_RESOLUTION_ERROR
+    - RDAP_TLS_SERVICE_PORT_UNREACHABLE
+    - RDAP_TLS_NO_SERVICE_PORTS_REACHABLE
     - RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED
     - RDAP_TLS_FORBIDDEN_PROTOCOL_SUPPORTED
     - RDAP_TLS_UNTRUSTED_CERTIFICATE
@@ -48,4 +51,7 @@ rdap-92:
     of the `last update of RDAP database` event, be consistent, once the JSON
     body has been parsed and canonicalised.
   Errors:
+    - RDAP_TLS_DNS_RESOLUTION_ERROR
+    - RDAP_TLS_SERVICE_PORT_UNREACHABLE
+    - RDAP_TLS_NO_SERVICE_PORTS_REACHABLE
     - RDAP_SERVICE_PORT_NOT_CONSISTENT

@@ -104,7 +104,6 @@ rde-07:
     admin and tech contacts) which are referenced in domain objects **MUST**
     be present in the deposit.
   Errors:
-    - RDE_DOMAIN_HAS_MISSING_NAME
     - RDE_DOMAIN_HAS_INVALID_NAME
     - RDE_DOMAIN_HAS_MISSING_ROID
     - RDE_DOMAIN_HAS_INVALID_ROID
@@ -143,7 +142,6 @@ rde-08:
     Registrar objects which are referenced in host objects **MUST**
     be present in the deposit.
   Errors:
-    - RDE_HOST_HAS_MISSING_NAME
     - RDE_HOST_HAS_INVALID_NAME
     - RDE_HOST_HAS_MISSING_ROID
     - RDE_HOST_HAS_INVALID_ROID

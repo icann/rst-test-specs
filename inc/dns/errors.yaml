@@ -1,11 +1,22 @@
+DNS_IDNA2008_QUERY_FAILED:
+  Severity: CRITICAL
+  Description: |
+    The `SOA` query failed.
+
 DNS_IDNA2008_INVALID_MNAME:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The `mname` field of the `SOA` record contains one or more labels that are
+    not compliant with IDNA2008.
 
 DNS_IDNA2008_INVALID_RNAME:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The `rname` field of the `SOA` record contains one or more labels that are
+    not compliant with IDNA2008.
 
 DNS_IDNA2008_INVALID_NS_NSDNAME:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    One or more `NS` records at the zone apex contains one or more labels that
+    are not compliant with IDNA2008.
