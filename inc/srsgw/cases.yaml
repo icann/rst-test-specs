@@ -151,7 +151,6 @@ srsgw-05:
     - EPP_LOGIN_ERROR
     - SRSGW_DOMAIN_RENEW_FAILED
     - SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
-    - SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE
 
 srsgw-06:
   Summary: Domain <transfer> synchronisation
@@ -174,10 +173,10 @@ srsgw-06:
     an `<info>` command for the domain. The server **MUST** respond with a
     1000 response.
 
-    * if the response to the `<transfer op="request">` command was 1000, then
-      the `<domain:clID>` element **MUST** contain the value of the
+    * if the response to the original `<transfer op="request">` command was
+      `1000`, then the `<clID>` element **MUST** contain the value of the
       `srsgw.eppClid01` input parameter.
-    * if the response to the `<transfer op="request">` command was 1001, then
+    * if the response to the `<transfer op="request">` command was `1001`, then
       the domain **MUST** have the `pendingTransfer` status.
   Dependencies:
     - srsgw-05
@@ -190,7 +189,6 @@ srsgw-06:
     - EPP_LOGIN_ERROR
     - SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED
     - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
-    - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID
     - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER
 
 srsgw-07:
@@ -347,7 +345,7 @@ srsgw-11:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - SRSGW_EPP_CONTACT_UPDATE_FAILED
-    - SRSGW_EPP_CONTACT_UPDATE_OBJECT_STILL_EXISTS
+    - SRSGW_EPP_CONTACT_UPDATE_INFO_RESPONSES_DIFFER
 
 srsgw-12:
   Summary: Contact <delete> synchronization (if applicable)

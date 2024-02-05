@@ -1,207 +1,193 @@
 SRSGW_CONTACT_CREATE_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The contact `<create>` command at the SRS Gateway EPP server failed.
 
 SRSGW_CONTACT_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, the `<info>` response
+    from the SRS Gateway EPP server has missing or invalid object properties.
 
 SRSGW_CONTACT_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, the primary EPP server
+    did not respond with a successful `<info>` response within the deadline.
 
 SRSGW_DOMAIN_CREATE_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The domain `<create>` command at the SRS Gateway EPP server failed.
 
 SRSGW_DOMAIN_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful domain `<create>` command, the `<info>` response
+    from the SRS Gateway EPP server has missing or invalid object properties.
 
 SRSGW_DOMAIN_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful domain `<create>` command, the primary EPP server
+    did not respond with a successful `<info>` response within the deadline.
 
 SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful domain `<delete>` command, the domain did not have
+    the `pendingDelete` status at the primary EPP server.
 
 SRSGW_DOMAIN_DELETE_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The domain `<delete>` command at the SRS Gateway EPP server failed.
 
 SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful domain `<delete>` command, the domain did not have
+    the `pendingDeleteRestorable` RGP status at the primary EPP server.
 
 SRSGW_DOMAIN_RENEW_FAILED:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_DOMAIN_RENEW_OBJECT_HAS_INVALID_EXDATE:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The domain `<renew>` command at the SRS Gateway EPP server failed.
 
 SRSGW_DOMAIN_RENEW_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful `<renew>` command, the domain's expiry date was not
+    updated at the primary EPP server within the deadline.
 
 SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The domain `<transfer op="approve">` command at the SRS Gateway EPP server
+    failed.
 
 SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful `<transfer op="approve">` command, the domain is
+    under the sponsorship of the wrong registrar.
 
 SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful `<transfer op="approve">` command at the SRS Gateway,
+    the domain's sponsor was not updated at the primary EPP server within the
+    deadline.
 
 SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The domain `<transfer op="approve">` command at the SRS Gateway, the
+    domain's still has the `pendingTransfer` status.
 
 SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_HAS_INCORRECT_CLID:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The domain `<transfer op="request">` command at the SRS Gateway EPP server
+    failed.
 
 SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful `<transfer op="request">` command at the SRS Gateway,
+    which resulted in a `1001` response, the domain does not have the
+    `pendingTransfer` status.
 
 SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_DNS_RESOLUTION_ERROR:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_LOGIN_ERROR:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_SCHEMA_VALIDATION_ERROR:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_SERVICE_PORT_UNREACHABLE:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_TLS_CONNECTION_ERROR:
-  Severity: ERROR
-  Description: TBA.
-
-SRSGW_EPP_XML_PARSE_ERROR:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    Following a successful `<transfer op="request">` command at the SRS Gateway,
+    which resulted in a `1000` response, the domain's sponsor was not updated at
+    the primary EPP server within the deadline.
 
 SRSGW_HOST_CREATE_FAILED:
-  Severity: ERROR
-  Description: TBA.
+  Severity: CRITICAL
+  Description: |
+    The host `<create>` command at the SRS Gateway EPP server failed.
 
 SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful host `<create>` command, the `<info>` response
+    from the SRS Gateway EPP server has missing or invalid object properties.
 
 SRSGW_HOST_CREATE_OBJECT_NOT_FOUND_WITHIN_DEADLINE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful host `<create>` command, the primary EPP server
+    did not respond with a successful `<info>` response within the deadline.
 
 SRSGW_EPP_HOST_UPDATE_FAILED:
-  Description: TBA
-  Severity: ERROR
+  Severity: CRITICAL
+  Description: |
+    The host `<update>` command at the SRS Gateway EPP server failed.
 
 SRSGW_EPP_HOST_UPDATE_INFO_RESPONSES_DIFFER:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    Following a successful host `<update>` command, the `<info>` response from
+    the primary EPP server was not updated within the deadline.
 
 SRSGW_EPP_HOST_DELETE_FAILED:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    The host `<delete>` command at the SRS Gateway EPP server failed.
 
 SRSGW_EPP_HOST_DELETE_OBJECT_STILL_EXISTS:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    Following a successful host `<delete>` command, the object was not purged
+    from the primary EPP server within the deadline.
 
 SRSGW_EPP_CONTACT_UPDATE_FAILED:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    The contact `<update>` command at the SRS Gateway EPP server failed.
 
-SRSGW_EPP_CONTACT_UPDATE_OBJECT_STILL_EXISTS:
-  Description: TBA
+SRSGW_EPP_CONTACT_UPDATE_INFO_RESPONSES_DIFFER:
   Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, the `<info>` response
+    from the primary EPP server was not updated within the deadline.
 
 SRSGW_EPP_CONTACT_DELETE_FAILED:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    The contact `<delete>` command at the SRS Gateway EPP server failed.
 
 SRSGW_EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    Following a successful contact `<delete>` command, the object was not purged
+    from the primary EPP server within the deadline.
 
 SRSGW_RDAP_DNS_RESOLUTION_ERROR:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    None of the RDAP base URL(s) could be resolved.
 
 SRSGW_RDAP_SERVICE_PORT_UNREACHABLE:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    None of the RDAP service ports could be reached.
 
 SRSGW_RDAP_TLS_CONNECTION_ERROR:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    A TLS connection could not be established to the service port.
 
 SRSGW_RDAP_QUERY_FAILED:
-  Description: TBA
   Severity: ERROR
+  Description: |
+    The RDAP query resulted in an unexpected response (HTTP status, media type,
+    etc).
 
 SRSGW_RDAP_RESPONSES_DIFFER:
-  Description: TBA
   Severity: ERROR
-
-SRSGW_RDAP_DNS_RESOLUTION_ERROR:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_SERVICE_PORT_UNREACHABLE:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_TLS_CONNECTION_ERROR:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_QUERY_FAILED:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_RESPONSES_DIFFER:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_DNS_RESOLUTION_ERROR:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_SERVICE_PORT_UNREACHABLE:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_TLS_CONNECTION_ERROR:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_QUERY_FAILED:
-  Description: TBA
-  Severity: ERROR
-
-SRSGW_RDAP_RESPONSES_DIFFER:
-  Description: TBA
-  Severity: ERROR
+  Description: |
+    The responses from the SRS Gateway and Primary RDAP servers differ.
