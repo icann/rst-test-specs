@@ -166,10 +166,6 @@ RDE_INVALID_SIGNATURE:
   Severity: ERROR
   Description: TBA.
 
-RDE_INVALID_XML:
-  Severity: ERROR
-  Description: TBA.
-
 RDE_MISSING_OBJECT_URI:
   Severity: ERROR
   Description: TBA.
