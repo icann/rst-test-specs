@@ -1,51 +1,73 @@
 RPMS_MISSING_CLAIMS_KEY:
   Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE:
-  Severity: ERROR
-  Description: TBA.
-
-RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The `<check>` response did not include an expected `<launch:claimKey>`
+    element.
 
 RPMS_UNEXPECTED_CLAIMS_KEY:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The `<check>` response included an unexpected `<launch:claimKey>` element.
+
+RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
+  Severity: ERROR
+  Description: |
+    Following a sunrise `<create>` command, the `<info>` response did not return
+    the created object.
+
+RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
+  Severity: ERROR
+  Description: |
+    Following a sunrise `<create>` command, the `<info>` response contained
+    missing or invalid object properties.
+
+RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD:
+  Severity: ERROR
+  Description: |
+    A sunrise `<create>` command using a **valid** SMD unexpectedly failed.
+
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD:
+  Severity: ERROR
+  Description: |
+    A sunrise `<create>` command using a **invalid** SMD unexpectedly succeeded.
+
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD:
+  Severity: ERROR
+  Description: |
+    A sunrise `<create>` command using a **revoked** SMD unexpectedly succeeded.
+
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE:
+  Severity: ERROR
+  Description: |
+    A sunrise `<create>` command using an SMD signed with a revoked certificate
+    unexpectedly succeeded.
+
+RPMS_TRADEMARK_CREATE_INFO_OBJECT_DOES_NOT_EXIST:
+  Severity: ERROR
+  Description: |
+    Following a trademark claims `<create>` command, the `<info>` response did
+    not return the created object.
+
+RPMS_TRADEMARK_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES:
+  Severity: ERROR
+  Description: |
+    Following a trademark claims `<create>` command, the `<info>` response
+    contained missing or invalid object properties.
+
+RPMS_TRADEMARK_CREATE_UNEXPECTED_FAILURE_USING_VALID_CLAIM_KEY:
+  Severity: ERROR
+  Description: |
+    A trademark claims `<create>` command using a **valid** claim
+    key unexpectedly failed.
+
+RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_ACCEPTANCE_DATE:
+  Severity: ERROR
+  Description: |
+    A trademark claims `<create>` command using an **invalid** acceptance date
+    unexpectedly succeeded.
+
+RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY:
+  Severity: ERROR
+  Description: |
+    A trademark claims `<create>` command using an **invalid** claim
+    key unexpectedly succeeded.
