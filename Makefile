@@ -29,6 +29,9 @@ includes:
 	@echo Generating RDAP cases...
 	@tools/generate-rdap-cases.pl "./etc/rdap conformance tool_v5.docx" > tmp/rdapct-cases.yaml
 
+	@echo Generating RDAP errors...
+	@tools/generate-rdap-cases.pl --errors "./etc/rdap conformance tool_v5.docx" > tmp/rdapct-errors.yaml
+
 yaml:
 	@echo Compiling YAML...
 	@gpp -x $(SRC).yaml.in > $(SRC).yaml

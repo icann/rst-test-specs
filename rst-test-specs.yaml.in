@@ -58,6 +58,7 @@ Errors:
 #exec sed 's/^/  /' inc/dnssec-ops/errors.yaml
 #exec sed 's/^/  /' inc/rde/errors.yaml
 #exec sed 's/^/  /' inc/epp/errors.yaml
+#exec sed 's/^/  /' tmp/rdapct-errors.yaml
 #exec sed 's/^/  /' inc/rdap/errors.yaml
 #exec sed 's/^/  /' inc/minimum-rpms/errors.yaml
 #exec sed 's/^/  /' inc/srsgw/errors.yaml
