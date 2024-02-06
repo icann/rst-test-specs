@@ -10,10 +10,9 @@ use constant {
 };
 use utf8;
 use open qw(:std :utf8);
-use feature qw(say);
 use strict;
 
-my $mode;
+my $mode = 'cases';
 GetOptions('errors' => sub { $mode = 'errors'});
 
 my $file = $ARGV[0] || pod2usage(1);
@@ -23,16 +22,12 @@ my $file = $ARGV[0] || pod2usage(1);
 #
 my $pid = open2(my $out, undef, qw(pandoc --metadata title=html --standalone -f docx -t html), $file);
 
-my $html;
-$html .= $out->getline while (!$out->eof);
-$out->close;
-
-waitpid($pid, 0);
-
 #
 # parse the HTML
 #
-my $doc = XML::LibXML->load_xml('string' => $html);
+my $doc = XML::LibXML->load_xml('string' => join('', $out->getlines));
+
+waitpid($pid, 0);
 
 my $cases = {};
 my $errors = {};

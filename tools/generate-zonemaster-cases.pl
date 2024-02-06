@@ -4,7 +4,7 @@ use Data::Mirror qw(mirror_json);
 use File::Basename;
 use File::Slurp;
 use File::Spec;
-use Getopt::Long;
+use Getopt::Long 2.32; # enable auto_help
 use List::Util qw(any none);
 use Pod::Usage;
 use URI;
@@ -26,8 +26,7 @@ my $version;
 GetOptions(
     'version=s' => \$version,
     'errors'    => sub { $mode = 'errors'},
-    'help'      => sub { pod2usage() },
-) || pod2usage();
+) || pod2usage(1);
 
 #
 # this the directory where the Zonemaster documentation is located
