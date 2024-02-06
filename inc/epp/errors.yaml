@@ -1,33 +1,39 @@
 EPP_SERVICE_PORT_UNREACHABLE:
-  Severity: ERROR
-  Description: The client was unable to successfully connect to the EPP serer.
-EPP_LOGIN_ERROR:
-  Severity: ERROR
+  Severity: WARNING
   Description: |
-    The client was unable to successfullt authenticate with the EPP server.
+    The client was unable to successfully connect to the EPP server. This is not
+    a fatal error, but if no service ports are reachable, the test will fail.
+
+EPP_NO_SERVICE_PORTS_REACHABLE:
+  Severity: CRITICAL
+  Description: |
+    No service ports could be reached, for either IPv4 or (if supported) IPv6.
+
+EPP_LOGIN_ERROR:
+  Severity: CRITICAL
+  Description: |
+    The client was unable to successfully authenticate with the EPP server.
+
 EPP_GENERIC_COMMAND_ERROR:
   Severity: ERROR
   Description: The client received a 2400 error from the server.
+
 EPP_SCHEMA_VALIDATION_ERROR:
   Severity: ERROR
   Description: The response from the server failed schema validation.
 
 EPP_DNS_RESOLUTION_ERROR:
-  Severity: ERROR
+  Severity: CRITICAL
   Description: |
     There was an error while performing a DNS query for the EPP server hostname.
 
 EPP_MISSING_A_RECORDS:
-  Severity: ERROR
+  Severity: CRITICAL
   Description: No `A` record(s) were found for the EPP server hostname.
 
 EPP_MISSING_AAAA_RECORDS:
   Severity: WARNING
   Description: No `AAAA` record(s) were found for the EPP server hostname.
-
-EPP_SERVICE_PORT_UNREACHABLE:
-  Severity: ERROR
-  Description: The EPP service port (tcp/700) could not be connected to.
 
 EPP_TLS_CONNECTION_ERROR:
   Severity: ERROR
@@ -175,1362 +181,710 @@ EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
     The server responded to a `<check>` command with an unexpected value in one
     or more of the `avail` attributes.
 
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<cc>`
+    element.
 
 EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<city>`
+    element.
 
 EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<email>`
+    element.
 
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<id>`
+    element.
 
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<name>`
+    element.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<org>`
+    element.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<pc>`
+    element.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained a `<postalInfo>` element with an
+    incorrect or missing `type` attribute.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<sp>`
+    element.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<status>`
+    element.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<status>`
+    element.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<voice>`
+    element.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object did not result in a response with the `1000`
+    result code.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<cc>` element in a
+    contact `<create>` command.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<email>` element
+    in a contact `<create>` command.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<id>` element
+    in a contact `<create>` command.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `type` attribute of
+    the `<postalInfo>` element in a contact `<create>` command.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `s` attribute of
+    the `<status>` element in a contact `<create>` command.
 
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<voice>` element
+    in a contact `<create>` command.
 
 EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    Following a successful contact `<delete>` command, a subsequent `<info>`
+    response for the deleted object did not result in a response with the `2303`
+    ("Object does not exist") result code.
 
-EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
+EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
   Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server did not response to a contact `<delete>` command with a `1xxx`
+    result code.
 
 EPP_CONTACT_INFO_RESPONSE_NOT_2201:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server did not response to a contact `<info>` command on a contact
+    object not under the sponsorship of the connected client with a `2201`
+    result code.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<cc>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<city>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<email>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<id>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<name>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<org>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<pc>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained a `<postalInfo>` element with an
+    incorrect or missing value for the `type` attribute.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<sp>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained a `<status>` element with an
+    incorrect or missing value for the `s` attribute.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<street>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<voice>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object did not result in a response with the `1000`
+    result code.
 
 EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
   Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server did not response to a contact `<update>` command on a contact
+    object not under the sponsorship of the connected client with a `2201`
+    result code.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<cc>` element in a
+    contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<city>` element in
+    a contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<email>` element
+    in a contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<org>` element in
+    a contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<pc>` element in a
+    contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `type` attribute of
+    a `<postalInfo>` element in a contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_VALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_VALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_VALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<sp>` element in a
+    contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_ORG:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid status code in a contact
+    `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
-  Severity: ERROR
-  Description: TBA.
+  Description: |
+    The server incorrectly accepted an invalid value for the `<street>` element
+    in a contact `<update>` command.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_VOICE:
   Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ID:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STATUS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_POSTALINFO_TYPE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_NAME:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_ORG:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_STREET:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_SP:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_PC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA.
-
-EPP_UNEXPECTED_COMMAND_FAILURE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_AUTHZ_ERROR:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO:
-  Severity: ERROR
-  Description: TBA
+  Description: |
+    The server incorrectly accepted an invalid value for the `<voice>` element
+    in a contact `<update>` command.
 
 EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID:
   Severity: ERROR
-  Description: TBA
+  Description: |
+    Following a successful domain `<create>` command, a subsequent `<info>`
+    response for the created object contained an invalid value in the `<roid>`
+    element, or which has a suffix not present in the IANA registry.
 
 EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES:
   Severity: ERROR
-  Description: TBA
+  Description: |
+    Following a successful domain `<create>` command, a subsequent `<info>`
+    response for the created object did not include one or more elements from
+    the `<create>` command.
 
-EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT:
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO:
   Severity: ERROR
-  Description: TBA
-
-EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD:
-  Severity: ERROR
-  Description: TBA
-
-EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET:
-  Severity: ERROR
-  Description: TBA
-
-EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_GREETING_DOES_NOT_MATCH:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA:
-  Severity: ERROR
-  Description: TBA
-
-EPP_SERVICE_PORT_NOT_CONSISTENT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
-  Severity: ERROR
-  Description: TBA
-
-EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO:
-  Severity: ERROR
-  Description: TBA
-
-EPP_CONTACT_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
-  Severity: ERROR
-  Description: TBA
+  Description: |
+    The server accepts a domain `<create>` command with a `<pw>` element with an
+    invalid value.
 
 EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
   Severity: ERROR
-  Description: TBA
+  Description: |
+    The server accepts a domain `<create>` command with one or more `<hostAttr>`
+    elements containing hostnames that are in-bailiwick, but for which
+    `<hostAddr>` elements are not provided.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command with one or more `<hostAttr>`
+    elements containing hostnames that are in-bailiwick, but for which
+    `<hostAddr>` elements are not provided.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command for a syntactically invalid
+    domain name.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which contains a `<hostObj>`
+    element referencing a syntactically invalid hostname.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which contains a `<period>`
+    element with an invalid content and/or `unit` attribute.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which contains a
+    `<registrant>` and/or `<contact>` element referencing a non-existent
+    contact object.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which contains a `<hostObj>`
+    element referencing a non-existent host object.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NO_REGISTRANT_FOR_THICK_REGISTRY:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which does not include a
+    `<registrant>` object.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_REGISTRANT_FOR_THIN_REGISTRY:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which includes a
+    `<registrant>` object.
+
+EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which uses `<hostAttr>`
+    objects.
+
+EPP_DOMAIN_CREATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which uses `<hostObj>`
+    objects.
+
+EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE:
+  Severity: ERROR
+  Description: |
+    Following a successful domain `<delete>` command, which resulted in a `1001`
+    response, the domain did not have the `pendingDelete` status.
+
+EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
+  Severity: ERROR
+  Description: |
+    Following a successful domain `<delete>` command, which resulted in a `1000`
+    response, a subsequent `<info>` command did not result in a `2303` ("Object
+    does not exist") result code.
+
+EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE:
+  Severity: ERROR
+  Description: |
+    Following a successful domain `<delete>` command, which resulted in a `1001`
+    response, the domain did not have the `pendingDeleteRestorable` RGP status.
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_ATTRIBUTE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_REGISTRANT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_DNSSEC_DATA:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_ATTRIBUTE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_REGISTRANT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_INFO_RESPONSE_UNEXPECTED_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_AUTHINFO:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_HOST_ATTRIBUTES:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_ATTRIBUTES:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_DOMAIN_UPDATE_SERVER_INCORRECTLY_ACCEPTS_HOST_OBJECTS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_GREETING_DOES_NOT_MATCH:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_AUTHZ_ERROR:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT:
+  Severity: ERROR
+  Description: |
+    TBA
 
 EPP_LOGIN_UNEXEPECTEDLY_FAILED:
   Severity: ERROR
-  Description: TBA
+  Description: |
+    TBA
 
 EPP_LOGIN_UNEXEPECTEDLY_SUCCEEDED:
   Severity: ERROR
-  Description: TBA
+  Description: |
+    TBA
+
+EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_SERVICE_PORT_NOT_CONSISTENT:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER:
+  Severity: ERROR
+  Description: |
+    TBA
+
+EPP_UNEXPECTED_COMMAND_FAILURE:
+  Severity: ERROR
+  Description: |
+    TBA
