@@ -4,7 +4,7 @@
   - Began providing descriptions of errors, and adjusting their severity levels accordingly.
   - Protocol-related errors are now standardised, so for example, the SRSGW and IDN cases use the same errors as the EPP cases, for EPP-related errors.
   - The way that the specification version is calculated has changed to accommodate the new release process (now that the repository has multiple branches, counting commits can result in two files having the same version).
-  - Case maturity metrics: ALPHA 5% (-2%), BETA 57% (-17%), GAMMA 38% (+19%)
+  - "Case maturity metrics: ALPHA 5% (-2%), BETA 57% (-17%), GAMMA 38% (+19%)"
 
 2024-01-31:
   - Added this ChangeLog.
@@ -16,4 +16,4 @@
   - Added additional error codes to [epp-16](#test-case-epp-16).
   - Added check for `transferPeriod` RGP status to [epp-19](#test-case-epp-19).
   - Add [epp-25](#test-case-epp-25) test case.
-  - Case maturity metrics: ALPHA 7% , BETA 74%, GAMMA 19%
+  - "Case maturity metrics: ALPHA 7% , BETA 74%, GAMMA 19%"
