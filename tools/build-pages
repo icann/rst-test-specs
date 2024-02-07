@@ -19,3 +19,7 @@ BRANCH="$(git branch --show-current)" perl -pi -e 's!</head>!<base href="https:/
 make all
 
 mv rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml "$SITEDIR/"
+
+chmod -R 0755 "$SITEDIR"
+
+ls -Rl "$SITEDIR"

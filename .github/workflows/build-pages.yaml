@@ -20,9 +20,6 @@ jobs:
       - name: build
         run: docker compose up pages
 
-      - name: package
-        run: chmod -R 0755 _site ; tar --directory=_site -z -c -v -f github-pages .
-
       - name: configure
         uses: actions/configure-pages@v4
 
