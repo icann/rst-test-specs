@@ -13,16 +13,16 @@ jobs:
       id-token: write
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: build
         run: docker compose up pages
 
       - name: package
-        run: tar zcf -C _site github-pages .
+        run: tar --directory=_site -z -c -v -f github-pages .
 
       - name: configure
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: upload
         uses: actions/upload-artifact@v4
