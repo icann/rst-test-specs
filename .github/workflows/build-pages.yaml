@@ -9,6 +9,8 @@ on:
 jobs:
   build-pages:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -24,5 +26,3 @@ jobs:
 
       - name: deploy
         uses: actions/deploy-pages@v4
-        permissions:
-          id-token: write
