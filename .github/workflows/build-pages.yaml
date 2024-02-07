@@ -21,3 +21,6 @@ jobs:
 
       - name: upload
         uses: actions/upload-pages-artifact@v1
+
+      - name: deploy
+        uses: actions/deploy-pages@v4
