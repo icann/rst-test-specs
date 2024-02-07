@@ -1,4 +1,4 @@
-name: build
+name: build-pages
 
 on:
   push:
@@ -13,11 +13,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: build pages
+      - name: build
         run: docker compose up pages
 
-      - name: configure pages
+      - name: configure
         uses: actions/configure-pages@v3
 
-      - name: upload pages
+      - name: upload
         uses: actions/upload-pages-artifact@v1
