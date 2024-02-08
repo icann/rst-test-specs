@@ -1,3 +1,5 @@
+2024-02-14:
+
 2024-02-07:
   - Zonemaster cases are now generated directly from [`Zonemaster::Engine`](https://metacpan.org/dist/Zonemaster-Engine), so now include all possible error messages.
   - Rather than placing "common" errors at the suite level, each case now lists all the errors it may emit. In the HTML output, the cases that may emit an error are listed for each error.
@@ -11,7 +13,7 @@
   - Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).
   - Add [dnssec-93](#test-case-dnssec-93) test case.
   - Remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.
-  - The [ZM_ALGORITHM_NOT_RECOMMENDED](#error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.
+  - The [ZM_ALGORITHM_NOT_RECOMMENDED](#Error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.
   - The maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**.
   - Added additional error codes to [epp-16](#test-case-epp-16).
   - Added check for `transferPeriod` RGP status to [epp-19](#test-case-epp-19).
