@@ -109,6 +109,12 @@ RSPEvaluationIDNTest:
     This test plan is identical to the Standard IDN Test, but is intended
     solely for use in the RSP evaluation program.
 
+    One key difference between this plan and the Standard IDN Test is that the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
+
     BAU_PLAN_ENVIRONMENT_NOTE
 
     # Pass/fail criteria
@@ -156,6 +162,12 @@ MainRSPEvaluationTest:
     through reporting, the Registration Data Access Protocol (RDAP), and other
     mechanisms.
 
+    Unlike the "business as usual" test plans (e.g. The Pre-Delegation Test) the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
+
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
     # Pass/fail criteria
@@ -175,7 +187,13 @@ DNSRSPEvaluationTest:
     this test plan only covers the DNS area.
 
     RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
-    also be evaluated using the DNSSEC RSP Evaluation Test below.
+    also be evaluated using the DNSSEC RSP Evaluation Test.
+
+    Unlike the "business as usual" test plans (e.g. The Pre-Delegation Test) the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
@@ -192,8 +210,14 @@ DNSSECRSPEvaluationTest:
     DNSSEC RSPs provide signing of TLD zone files as a service. They do not
     provide primary or secondary authoritative DNS services.
 
-    RSPs wishing to offer DNSSEC services in addition to authoritative DNS will
-    also be evaluated using the DNSSEC RSP Evaluation Test below.
+    RSPs wishing to offer authoritative DNS services in addition to
+    authoritative DNS will also be evaluated using the DNS RSP Evaluation Test.
+
+    Unlike the "business as usual" test plans (e.g. The Pre-Delegation Test) the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 
@@ -220,6 +244,12 @@ SRSGatewayRSPTest:
     RSPs wishing to offer SRS gateway services **MUST** identify such a primary
     registry system, which **MUST** be independent of the SRS gateway system,
     and **MAY** be operated by a third party.
+
+    Unlike the "business as usual" test plans (e.g. The Pre-Delegation Test) the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
 
     RSP_EVALUATION_ENVIRONMENT_NOTE
 

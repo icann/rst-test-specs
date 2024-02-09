@@ -105,6 +105,7 @@ StandardEPP:
     - epp.hostModel
     - epp.hostName
     - epp.registeredNames
+    - epp.requiredContactTypes
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -141,6 +142,7 @@ StandardIDN:
     TS_PASSFAIL
   Test-Cases: ^idn-
   Input-Parameters:
+    - general.minimalPublicDataSet
     - epp.hostName
     - epp.clid01
     - epp.pwd01
@@ -148,6 +150,8 @@ StandardIDN:
     - epp.serverIssuedClientCertificate02
     - epp.clid02
     - epp.pwd02
+    - epp.hostModel
+    - epp.requiredContactTypes
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -166,22 +170,25 @@ StandardSRSGateway:
     TS_PASSFAIL
   Test-Cases: ^srsgw-
   Input-Parameters:
-    - epp.hostName
     - epp.clid01
-    - epp.pwd01
-    - epp.serverIssuedClientCertificate01
     - epp.clid02
+    - epp.hostModel
+    - epp.hostName
+    - epp.pwd01
     - epp.pwd02
+    - epp.requiredContactTypes
+    - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
-    - srsgw.eppHostName
-    - srsgw.serverIssuedClientCertificate01
-    - srsgw.eppClid01
-    - srsgw.eppPwd01
-    - srsgw.eppClid02
-    - srsgw.eppPwd02
-    - srsgw.serverIssuedClientCertificate02
-    - srsgw.rdapBaseURLs
+    - general.minimalPublicDataSet
     - rdap.baseURLs
+    - srsgw.eppClid01
+    - srsgw.eppClid02
+    - srsgw.eppHostName
+    - srsgw.eppPwd01
+    - srsgw.eppPwd02
+    - srsgw.rdapBaseURLs
+    - srsgw.serverIssuedClientCertificate01
+    - srsgw.serverIssuedClientCertificate02
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -228,6 +235,9 @@ MinimumRPMs:
     - minimumRPMS.sunriseModels
     - minimumRPMS.sunriseTLD
     - minimumRPMS.claimsTLD
+    - general.minimalPublicDataSet
+    - epp.hostModel
+    - epp.requiredContactTypes
 
 StandardIntegrationTest:
   Order: 10
@@ -241,5 +251,3 @@ StandardIntegrationTest:
 
     TS_PASSFAIL
   Test-Cases: ^integration-
-  Input-Parameters:
-    - general.minimalPublicDataSet
