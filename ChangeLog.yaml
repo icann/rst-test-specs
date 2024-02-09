@@ -14,12 +14,12 @@
 
 2024-01-31:
   - Added this ChangeLog.
-  - Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#test-case-dns-zz-idna2008-compliance).
-  - Add [dnssec-93](#test-case-dnssec-93) test case.
+  - Add content of NS records to the list of names checked in [dns-zz-idna2008-compliance](#Test-Case-dns-zz-idna2008-compliance).
+  - Add [dnssec-93](#Test-Case-dnssec-93) test case.
   - Remove the dnssec-12, dnssec-15, dnssec-16, dnssec-17 and dnssec-18 test cases.
-  - The [ZM_ALGORITHM_NOT_RECOMMENDED](#Error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#test-case-dnssec-05) is now an **ERROR**.
+  - The [ZM_ALGORITHM_NOT_RECOMMENDED](#Error-ZM_ALGORITHM_NOT_RECOMMENDED) error raised by [dnssec-05](#Test-Case-dnssec-05) is now an **ERROR**.
   - The maturity of all cases in the [EPP suite](#Test-Suite-StandardEPP) has been raised to **BETA**.
-  - Added additional error codes to [epp-16](#test-case-epp-16).
-  - Added check for `transferPeriod` RGP status to [epp-19](#test-case-epp-19).
-  - Add [epp-25](#test-case-epp-25) test case.
+  - Added additional error codes to [epp-16](#Test-Case-epp-16).
+  - Added check for `transferPeriod` RGP status to [epp-19](#Test-Case-epp-19).
+  - Add [epp-25](#Test-Case-epp-25) test case.
   - "Case maturity metrics: ALPHA 7% , BETA 74%, GAMMA 19%"
