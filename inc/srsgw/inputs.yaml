@@ -2,14 +2,22 @@ srsgw.eppHostName:
   Description: the fully-qualified domain name of the SRS Gateway EPP server
   Type: string
   Example: epp.rsp.tech
+  Schema:
+    type: string
+    format: hostname
 srsgw.eppClid01:
   Description: the username used to log in to the SRS Gateway EPP server
   Type: string
   Example: clid-01
+  Schema:
+    type: string
+    minLength: 3
 srsgw.eppPwd01:
   Description: the password used to log in to the SRS Gateway EPP server
   Type: string
   Example: foo2bar
+  Schema:
+    type: string
 srsgw.serverIssuedClientCertificate01:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
@@ -18,8 +26,9 @@ srsgw.serverIssuedClientCertificate01:
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be empty.
-  Type: string
-  Example:
+  Type: file
+  Schema:
+    type: string
 srsgw.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
@@ -28,16 +37,21 @@ srsgw.serverIssuedClientCertificate02:
     conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be empty.
-  Type: string
-  Example:
+  Type: file
+  Schema:
+    type: string
 srsgw.eppClid02:
   Description: the username used for transfer tests
   Type: string
   Example: clid-02
+  Schema:
+    type: string
 srsgw.eppPwd02:
   Description: the password used for transfer tests
   Type: string
   Example: foo3bar
+  Schema:
+    type: string
 srsgw.rdapBaseURLs:
   Description: |
     The RDAP base URL(s) for the TLD(s). This input parameter is an object,
@@ -45,3 +59,9 @@ srsgw.rdapBaseURLs:
     containing the base URL. The URL **MUST** end with a slash ("/").
   Type: object
   Example: {"example": "https://rdap.example.com/example/"}
+  Schema:
+    Type: object
+    patternProperties:
+      ^[a-z]+[a-z0-9\.]*[a-z]\$:
+        type: string
+        format: url

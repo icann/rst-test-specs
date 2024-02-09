@@ -51,6 +51,8 @@ dnssecOps.csk:
     KSK/ZSK configuration.
   Type: boolean
   Example: false
+  Schema:
+    type: boolean
 
 dnssecOps.zskRolloverZone:
   Description: |
@@ -58,6 +60,9 @@ dnssecOps.zskRolloverZone:
     rollover.
   Type: string
   Example: example.com
+  Schema:
+    type: string
+    format: hostname
 
 dnssecOps.kskRolloverZone:
   Description: |
@@ -65,6 +70,9 @@ dnssecOps.kskRolloverZone:
     rollover.
   Type: string
   Example: example.com
+  Schema:
+    type: string
+    format: hostname
 
 dnssecOps.algorithmRolloverZone:
   Description: |
@@ -72,3 +80,6 @@ dnssecOps.algorithmRolloverZone:
     rollover.
   Type: string
   Example: example.com
+  Schema:
+    type: string
+    format: hostname

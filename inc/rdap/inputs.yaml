@@ -33,7 +33,8 @@ rdap.testEntities:
   Description: |
     The entities(s) that will be queried to validate entity responses. This
     input parameter is an object, where the object properties are the TLD
-    names and the values entity handles.
+    names and the values entity handles. Note that IANA Registrar IDs must be
+    encoded as strings, not integers.
   Type: object
   Example: {"example": "9999"}
   Schema:

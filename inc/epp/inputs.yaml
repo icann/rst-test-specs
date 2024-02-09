@@ -13,69 +13,69 @@ epp.hostName:
 epp.greeting:
   Description: |
     an XML instance which contains a copy of the server's `<greeting>`.
-  Type: string
-  Example: |
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
-      <greeting>
-        <svID>EPP server</svID>
-        <svDate>2024-06-08T22:00:00.0Z</svDate>
-        <svcMenu>
-          <version>1.0</version>
-          <lang>en</lang>
-          <objURI>urn:ietf:params:xml:ns:domain-1.0</objURI>
-          <svcExtension>
-            <extURI>urn:ietf:params:xml:ns:rgp-1.0</extURI>
-            <extURI>urn:ietf:params:xml:ns:secDNS-1.1</extURI>
-            <extURI>urn:ietf:params:xml:ns:launch-1.0</extURI>
-          </svcExtension>
-        </svcMenu>
-        <dcp>
-          <access><all/></access>
-          <statement>
-            <purpose><admin/><prov/></purpose>
-            <recipient><ours/><public/></recipient>
-            <retention><stated/></retention>
-          </statement>
-        </dcp>
-      </greeting>
-    </epp>
+  Type: file
+  Example: greeting.xml
+  Schema:
+    type: string
+    
 epp.clid01:
   Description: the username used to log in to the EPP server
   Type: string
   Example: clid-01
+  Schema:
+    type: string
+    minLength: 3
+    maxLength: 16
+
 epp.pwd01:
   Description: the password used to log in to the EPP server
   Type: string
   Example: foo2bar
+  Schema:
+    type: string
+
 epp.serverIssuedClientCertificate01:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR` may
-    be provided using this parameter. This certificate will only be used in
-    conjunction with the `epp.clid01` and `epp.pwd01` credentials. If the
-    server will accept ICANN's own client certificate, this parameter
+    a certificate generated using the CSR provided in the `epp.clientCSR`
+    resource may be provided using this parameter. This certificate will only be
+    used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
+    the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be empty.
-  Type: string
+  Type: file
   Example: rst_test_client_cert.pem
+  Schema:
+    type: string
+
 epp.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR` may
-    be provided using this parameter. This certificate will only be used in
-    conjunction with the `epp.clid02` and `epp.pwd02` credentials. If the
-    server will accept ICANN's own client certificate, this parameter
+    a certificate generated using the CSR provided in the `epp.clientCSR`
+    resource may be provided using this parameter. This certificate will only be
+    used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
+    the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be empty.
-  Type: string
+  Type: file
   Example: rst_test_client_cert.pem
+  Schema:
+    type: string
+
 epp.clid02:
   Description: the username used for transfer tests
   Type: string
   Example: clid-02
+  Schema:
+    type: string
+    minLength: 3
+    maxLength: 16
+
 epp.pwd02:
   Description: the password used for transfer tests
   Type: string
   Example: foo3bar
+  Schema:
+    type: string
+
 epp.hostModel:
   Description: |
     The host model supported by the EPP server. The possible values for this
@@ -89,6 +89,7 @@ epp.hostModel:
     enum:
       - objects
       - attributes
+
 epp.secDNSInterfaces:
   Description: |
     Which of the interfaces defined in Section 4 of RFC 5910 the server
@@ -100,6 +101,7 @@ epp.secDNSInterfaces:
     enum:
       - dsData
       - keyData
+
 epp.registeredNames:
   Description: |
     An array of domain names that exist in the EPP server and which are
@@ -113,6 +115,7 @@ epp.registeredNames:
     items:
       type: string
       format: hostname
+
 epp.registeredNameservers:
   Description: |
     An array of host objects that exist in the EPP server and which are
@@ -128,6 +131,7 @@ epp.registeredNameservers:
     items:
       type: string
       format: hostname
+
 epp.registeredContacts:
   Description: |
     An array of contact IDs that exist in the EPP server and which are
@@ -142,14 +146,29 @@ epp.registeredContacts:
     type: array
     items:
       type: string
+
 epp.restoreReportRequired:
   Description: |
     Whether the server requires submission of a restore report when a client
     attempts to restore a domain.
-
-    If the value of `general.gracePeriodsSupported` is `false`, then this
-    input parameter is ignored.
   Type: boolean
   Example: false
   Schema:
     type: boolean
+
+epp.requiredContactTypes:
+  Description: |
+    An array containing the values of the `type` attribute of `<contact>`
+    element(s) that are required to successfully create a domain name. If the
+    value of `general.minimalPublicDataSet` is `false`, this array `MUST` be
+    empty.
+  Type: array
+  Example: ["admin"]
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - admin
+        - tech
+        - billing

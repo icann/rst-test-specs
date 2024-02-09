@@ -7,15 +7,27 @@ minimumRPMS.sunriseModels:
       * `both`
   Type: string
   Example: start-date
+  Schema:
+    type: string
+    enum:
+      - start-date
+      - end-date
+      - both
 minimumRPMS.sunriseTLD:
   Description: |
     A TLD, or other registry-class zone, which has been configured to be in
     perpetual sunrise.
   Type: string
   Example: tmclaims.rsp.tech
+  Schema:
+    type: string
+    format: hostname
 minimumRPMS.claimsTLD:
   Description: |
     A TLD, or other registry-class zone, which has been configured to be in
     perpetual trademark claims.
   Type: string
   Example: tmclaims.rsp.tech
+  Schema:
+    type: string
+    format: hostname

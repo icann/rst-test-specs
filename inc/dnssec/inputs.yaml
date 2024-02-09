@@ -9,3 +9,23 @@ dnssec.dsRecords:
     be at least one DS record for each TLD.
   Type: object
   Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
+  Schema:
+    type: object
+    patternProperties:
+      ^[a-z]+[a-z0-9\.]*[a-z]\$:
+        type: array
+        items:
+          type: object
+          properties:
+            keyTag:
+              type: integer
+              format: uint16
+            alg:
+              type: integer
+              format: uint16
+            digestType:
+              type: integer
+              format: uint16
+            digest:
+              type: string
+              pattern: "^[0-9A-Fa-f]+$"

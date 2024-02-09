@@ -5,3 +5,5 @@ general.minimalPublicDataSet:
     registrars.
   Type: boolean
   Example: true
+  Schema:
+    type: boolean
