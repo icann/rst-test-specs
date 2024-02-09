@@ -1,4 +1,7 @@
 2024-02-14:
+  - the [`epp.greeting`](#Input-Parameter-epp.greeting) input parameter is now a file upload.
+  - added schemas to all input parameters that didn't have them.
+  - "Case maturity metrics: ALPHA XX% (-XX%), BETA XX% (-XX%), GAMMA XX% (+XX%)"
 
 2024-02-07:
   - Zonemaster cases are now generated directly from [`Zonemaster::Engine`](https://metacpan.org/dist/Zonemaster-Engine), so now include all possible error messages.
