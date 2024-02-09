@@ -134,6 +134,8 @@ sub process_case {
     foreach my $message (sort(@messages)) {
         my $severity = $levels{$message} || $profile->{'test_levels'}->{uc($module)}->{$message} || 'WARNING';
 
+        $upgraded = 1 if (defined($levels{$message}) && $levels{$message} ne $profile->{'test_levels'}->{uc($module)}->{$message});
+
         #
         # skip if the level isn't listed
         #
@@ -157,15 +159,13 @@ sub process_case {
             ),
             'Severity' => $severity,
         };
-
-        $upgraded = $upgraded || exists($levels{$message});
     }
 
     #
     # append upgrade notice
     #
     if ($upgraded) {
-        $cases->{$id}->{'Description'} .= "\n\n".$cases->{$id}->{'Description'};
+        $cases->{$id}->{'Description'} .= UPGRADE_NOTE;
     }
 
     #
@@ -204,7 +204,7 @@ sub process_case {
     # extract the wanted sections from the Markdown text and append to the
     # description
     #
-    my ($section, $wanted);
+    my ($section, $wanted, %references);
     foreach my $line (@lines) {
         if ($line =~ /^(\#+)\s+(.+)$/) {
             #
@@ -220,7 +220,25 @@ sub process_case {
             }
         }
 
-        $cases->{$id}->{'Description'} .= $line if ($wanted);
+        #
+        # line appears to match the reference format:
+        # https://www.markdownguide.org/basic-syntax/#reference-style-links
+        #
+        if ($line =~ /^\[(.+?)\]:\s*([^\s]+)$/) {
+            $references{$1} = URI->new_abs($2, $url)->as_string;
+
+        } elsif ($wanted) {
+            $cases->{$id}->{'Description'} .= $line;
+
+        }
+    }
+
+    #
+    # append references so links work once HTMLified
+    #
+    $cases->{$id}->{'Description'} .= "\n" if (scalar(%references) > 0);
+    while (my ($ref, $url) = each(%references)) {
+        $cases->{$id}->{'Description'} .= sprintf("[%s]: %s\n", $ref, $url);
     }
 }
 
