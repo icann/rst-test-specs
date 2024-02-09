@@ -14,6 +14,8 @@ integration-01:
     The RDAP server **MUST** provide a 200 response for every object created
     within 1 hour of the object's `<crDate>` element.
   Input-Parameters:
+    - general.minimalPublicDataSet
+    - epp.requiredContactTypes
     - epp.hostName
     - epp.serverIssuedClientCertificate01
     - epp.clid01

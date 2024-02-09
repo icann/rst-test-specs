@@ -242,9 +242,7 @@ srsgw-08:
     The client will connect to the SRS Gateway EPP system, authenticate using
     the credentials provided in `epp.clid02` and `epp.pwd02`, and
     submit a `<delete>` command for the domain transferred in `srsgw-07`.
-    If the value of the `general.gracePeriodsSupported` input parameter is
-    `false`, the server **MUST** respond with a 1000 response. Otherwise it
-    **MUST** respond with a 1001 response.
+    The server **MUST** respond with a `1001` response.
 
     It will then connect to the primary EPP system, authenticate, and perform
     an `<info>` command for the domain renewed in the first step.
