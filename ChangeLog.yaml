@@ -1,4 +1,5 @@
 2024-02-14:
+  - Links to references and notes about upgraded message severities in Zonemaster cases have been fixed.
   - the [`epp.greeting`](#Input-Parameter-epp.greeting) input parameter is now a file upload.
   - added schemas to all input parameters that didn't have them.
   - "Case maturity metrics: ALPHA XX% (-XX%), BETA XX% (-XX%), GAMMA XX% (+XX%)"
