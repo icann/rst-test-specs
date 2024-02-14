@@ -16,9 +16,9 @@ dnssecOps.nameservers:
         type: array
         items:
           type: string
-          format:
-            - ipv4
-            - ipv6
+          anyOf:
+            - format: ipv4
+            - format: ipv6
 
 dnssecOps.primaryServer:
   Description: The primary nameserver from which zones can be transferred.
@@ -26,9 +26,9 @@ dnssecOps.primaryServer:
   Example: 192.0.2.1
   Schema:
     type: string
-    format:
-      - ipv4
-      - ipv6
+    anyOf:
+      - format: ipv4
+      - format: ipv6
 
 dnssecOps.tsigKey:
   Description: The TSIG key which should be used to perform zone transfers.

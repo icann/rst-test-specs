@@ -22,6 +22,6 @@ dns.nameservers:
         type: array
         items:
           type: string
-          format:
-            - ipv4
-            - ipv6
+          anyOf:
+            - format: ipv4
+            - format: ipv6
