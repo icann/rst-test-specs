@@ -3,9 +3,9 @@ dnssec-91:
   Maturity: BETA
   Description: |
     In addition to the requirements outlined in `dnssec-05`, this test imposes
-    an additional requirement on the signing algorithms used to sign zones,
-    specifically, the algorithm number **MUST NOT** be lower than 8.
-  Input-Parameters:
+    an additional requirement on the signing algorithms used to sign zones.
+
+    Specifically, the algorithm number **MUST NOT** be lower than 8.
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_SIGNING_ALGORITHM
@@ -16,15 +16,14 @@ dnssec-92:
   Summary: Permitted DS record hash algorithm(s)
   Maturity: BETA
   Description: |
-    The DS record(s) submitted in the `dnssec.dsRecords` input parameters will
+    The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
     be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
-  Input-Parameters:
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM
 
 dnssec-93:
-  Summary: RFC 9276 (NSEC3 iterations) compliance check
+  Summary: NSEC3 iterations check
   Maturity: ALPHA
   Description: |
     RFC 9276 defines best practice relating to the use of NSEC3 for
