@@ -140,6 +140,8 @@ sub check_input {
     warn(sprintf("Input Parameter '%s' is not used by any cases or suites", $input->id)) unless ($used > 0);
 
     warn(sprintf("Input Parameter '%s' doesn't have a schema", $input->id)) unless (defined($input->schema));
+
+    warn(sprintf("Input Parameter '%s' doesn't have an example", $input->id)) unless (exists($input->{'Example'}));
 }
 
 sub check_resource {
