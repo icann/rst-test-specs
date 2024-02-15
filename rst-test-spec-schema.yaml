@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.8.0
+  version: 1.8.1
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -146,6 +146,7 @@ components:
         - Order
         - Description
         - Test-Suites
+        - Environments
       properties:
         Name:
           description: The name of the plan.
@@ -164,6 +165,12 @@ components:
           type: array
           items:
             type: string
+        OTE-Only:
+          description: |
+            A boolean indicating that this test plan is only available in OT&E.
+            If `false`, then this test plan is available in both production and
+            OT&E.
+          type: boolean
 
     rstTestSuite:
       description: An object describing a test suite.
