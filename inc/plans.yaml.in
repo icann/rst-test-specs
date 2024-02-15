@@ -268,3 +268,73 @@ SRSGatewayRSPTest:
     TP_PASSFAIL
   Test-Suites:
     - StandardSRSGateway
+
+StandardDNSOnly:
+  Order: 11
+  OTE-Only: true
+  Name: StandardDNS
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardDNS` suite.
+  Test-Suites:
+    - StandardDNS
+
+StandardDNSSECOnly:
+  Order: 12
+  OTE-Only: true
+  Name: StandardDNSSEC
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardDNSSEC` suite.
+  Test-Suites:
+    - StandardDNSSEC
+
+StandardRDAPOnly:
+  Order: 13
+  OTE-Only: true
+  Name: StandardRDAP
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardRDAP` suite.
+  Test-Suites:
+    - StandardRDAP
+
+StandardEPPOnly:
+  Order: 14
+  OTE-Only: true
+  Name: StandardEPP
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardEPP` suite.
+  Test-Suites:
+    - StandardEPP
+
+StandardRDEOnly:
+  Order: 15
+  OTE-Only: true
+  Name: StandardRDE
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardRDE` suite.
+  Test-Suites:
+    - StandardRDE
+
+StandardSRSGatewayOnly:
+  Order: 16
+  OTE-Only: true
+  Name: StandardSRSGateway
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardSRSGateway` suite.
+  Test-Suites:
+    - StandardSRSGateway
+
+MinimumRPMsOnly:
+  Order: 17
+  OTE-Only: true
+  Name: MinimumRPMs
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `MinimumRPMs` suite.
+  Test-Suites:
+    - MinimumRPMs
