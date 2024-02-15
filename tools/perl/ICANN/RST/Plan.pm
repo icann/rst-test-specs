@@ -1,14 +1,11 @@
 package ICANN::RST::Plan;
 use base qw(ICANN::RST::Base);
+use GraphViz2;
 use strict;
-
-#
-# if GraphViz2 is available then we can load ICANN::RST::Graph
-#
-eval qq(use ICANN::RST::Graph;) if (eval qq(use GraphViz2 ; 1));
 
 sub name        { $_[0]->{'Name'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
+sub oteOnly     { $_[0]->{'OTE-Only'} }
 
 sub suites {
     my $self = shift;
@@ -161,8 +158,18 @@ suites used by this plan.
 
 A list of L<ICANN::RST::Resource> objects relevant to this plan.
 
-=head2 inputs()
+=head2 errors()
 
-A list of L<ICANN::RST::Inputs> objects which may be produced by this plan.
+A list of L<ICANN::RST::Error> objects which may be produced by this plan.
+
+=head2 graph()
+
+Returns a L<ICANN::RST::Graph> object representing the sequence diagram for this
+plan.
+
+=head2 oteOnly()
+
+Returns a boolean indicating whether this plan is only available in the OT&E
+environment.
 
 =cut

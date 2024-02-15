@@ -223,7 +223,7 @@ sub print_test_plan_toc_list {
 
         print $h->li($h->a(
             { href => $anchor },
-            e($plan->name)
+            e($plan->name. ($plan->oteOnly ? ' (OT&E only)' : ''))
         ));
     }
 
@@ -449,11 +449,18 @@ sub print_plan {
     my ($plan, $i) = @_;
 
     print $h->a({name => sprintf('Test-Plan-%s', $plan->id)});
-    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name)));
+    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name . ($plan->oteOnly ? ' (OT&E only)' : ''))));
 
     my $j = 0;
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
+
+    if ($plan->oteOnly) {
+        print $h->p($h->em(
+            $h->strong('Note:'). ' this plan is only available in the OT&E environment.',
+        ));
+    }
+
     print $plan->description->html(3);
 
     print $h->open(details);
