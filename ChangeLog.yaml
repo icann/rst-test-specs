@@ -1,3 +1,7 @@
+2024-02-17:
+  - Added new test plans that will only be available in OT&E, to allow testing of specific test suites.
+  - Added the `OTE-Only` property to test plan objects indicating the above, and bumped the schema version accordingly.
+
 2024-02-14:
   - Links to references and notes about upgraded message severities in Zonemaster cases have been fixed.
   - the [`epp.greeting`](#Input-Parameter-epp.greeting) input parameter is now a file upload.
