@@ -29,6 +29,7 @@ srsgw.serverIssuedClientCertificate01:
   Type: file
   Schema:
     type: string
+  Example: cert.pem
 srsgw.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
@@ -40,6 +41,7 @@ srsgw.serverIssuedClientCertificate02:
   Type: file
   Schema:
     type: string
+  Example: cert.pem
 srsgw.eppClid02:
   Description: the username used for transfer tests
   Type: string
