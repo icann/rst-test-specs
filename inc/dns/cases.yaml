@@ -1,16 +1,16 @@
 dns-zz-idna2008-compliance:
   Summary: IDNA2008 compliance check
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     In addition to the other tests case in this suite, which come from
     Zonemaster, this test case exists to confirm that all DNS host names which
     appear in resource records at the TLD apex conform to the IDNA2008
-    specifications.
+    specifications, described in RFC 5980.
 
     The names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`
     record, and in the apex `NS` records, **MUST** be comprised solely of (a)
-    ASCII-only labels or (b) IDN labels that conform to the requirements of
-    IDNA2008.
+    NR-LDH labels (see Section 2.3.2.2 of RFC 5980) or (b) IDN labels that
+    conform to the requirements of IDNA2008.
   Errors:
     - DNS_IDNA2008_QUERY_FAILED
     - DNS_IDNA2008_INVALID_MNAME

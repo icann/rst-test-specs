@@ -867,69 +867,89 @@ EPP_RENEW_SERVER_ACCEPTS_INVALID_CURRENT_EXPIRY_DATE:
 EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD:
   Severity: ERROR
   Description: |
-    TBA
+    The server accepted an EPP `<renew>` command with a `<period>` element
+    that contains an incorrect value or `unit` attribute.
 
 EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful RGP restore command, a subsequent `<info>`
+    command for the domain showed that the domain still had the `pendingDelete`
+    status.
 
 EPP_SERVICE_PORT_NOT_CONSISTENT:
   Severity: ERROR
   Description: |
-    TBA
+    One or more `<info>` commands sent to the advertised EPP service ports
+    resulted in inconsistent responses.
 
 EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful `<transfer op="approve">` command submitted by the
+    losing registrar of a transfer, the gaining registrar did not receive a
+    message on the EPP message queue within the deadline (120 seconds).
 
 EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful domain transfer, the authInfo of the transferred
+    domain was not changed.
 
 EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful domain transfer, a subsequent `<info>` response did
+    not include the expected RGP status (`transferPeriod`).
 
 EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful `<transfer op="request">` command, a subsequent
+    `<info>` response did not include the `pendingTransfer` status.
 
 EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful domain transfer, a subsequent `<info>` response did
+    not include the expected value of the `<exDate>` element.
 
 EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful `<transfer op="request">` command submitted by the
+    gaining registrar of a transfer, the losinng registrar did not receive a
+    message on the EPP message queue within the deadline (120 seconds).
 
 EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO:
   Severity: ERROR
   Description: |
-    TBA
+    The server incorrectly accepted a `<transfer op="request">` command
+    containing an invalid authInfo code.
 
 EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO:
   Severity: ERROR
   Description: |
-    TBA
+    An EPP server implementing Secure Authorization Information for Transfer
+    (RFC 9154) accepted an `<update>` command that specified an authInfo code
+    with insufficient entropy.
 
 EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD:
   Severity: ERROR
   Description: |
-    TBA
+    The server incorrectly accepted a `<transfer op="request">` command
+    containing a `<period>` element that contains an incorrect value or `unit`
+    attribute.
 
 EPP_TRANSFER_SERVER_PROCESSED_REJECTED_TRANSFER:
   Severity: ERROR
   Description: |
-    TBA
+    Following a successful `<transfer op="reject">` command submitted by the
+    losing registrar of a transfer, the domain was still transferred away from
+    that registrar.
 
 EPP_UNEXPECTED_COMMAND_FAILURE:
   Severity: ERROR
   Description: |
-    TBA
+    A command that should have succeeded return a response with a status code of
+    2000 or higher.

@@ -53,3 +53,32 @@ dnssecOps.xfrACL:
     primary DNS servers will be made. The list is a plain text file with
     each IP address on a separate line.
   URL: https://rst.icann.org/v2/resources/dnssecOps.xfrACL.txt
+
+tmch.testCert:
+  Description: |
+    The x509 certificate that is the trust anchor for the test TMCH system. This
+    certificate can be used to validate the digital signatures on SMD files.
+  URL: https://ca.icann.org/tmch_pilot.crt
+
+tmch.testCRL:
+  Description: |
+    A Certificate Revocation List (CRL) that identifies revoked TMCH
+    certificates.
+  URL: http://crl.icann.org/tmch_pilot.crl
+
+tmch.testDNL:
+  Description: |
+    A file containing the list of labels subject to Trademark Claims in the
+    TMCH test environment.
+  URL: https://example.com/tba
+
+tmch.testSMDRL:
+  Description: |
+    A CSV file containing a list of revoked SMDs.
+  URL: https://newgtlds.icann.org/en/about/trademark-clearinghouse/smd-test-revocation-22nov22-en.csv
+
+tmch.testSURL:
+  Description: |
+    A file containing the list of labels for which SMDs have been produced in
+    the TMCH test environment.    
+  URL: https://example.com/tba

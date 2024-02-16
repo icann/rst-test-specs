@@ -1,6 +1,6 @@
 rdap-91:
   Summary: TLS version conformance check
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     **NOTE: this test case is a placeholder for a test case that will eventually
     be added to the RDAP Conformance Tool.**
@@ -14,13 +14,15 @@ rdap-91:
        NOT** be supported by any service ports.
     3. To ensure that the connection can be trusted, all service ports
        **MUST** present a certificate issued by a trusted CA, such as those
-       supported by major browsers.
+       supported by major browsers (see the `epp.tlsCertificateStore` resource).
     4. All TLS certificates **MUST NOT** have expired, and **MUST** be
        presented wth any required intermediate certificates.
     5. The RDAP server name **MUST** match at least one `subjectAltName` field
        in all presented certificates (either exact match or wildcard).
     6. Service ports **MUST** use at least one of the ciphers recommended in
        RFC 9325 (or any successor document).
+  Resources:
+    - epp.tlsCertificateStore
   Errors:
     - RDAP_TLS_DNS_RESOLUTION_ERROR
     - RDAP_TLS_SERVICE_PORT_UNREACHABLE
@@ -35,12 +37,15 @@ rdap-91:
 
 rdap-92:
   Summary: Service port consistency check
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     **NOTE: this test case is a placeholder for a test case that will eventually
     be added to the RDAP Conformance Tool.**
 
     This test confirms that all RDAP service ports return identical responses.
+
+    Since applicants must provide an RDAP service over both IPv4 and IPv6, at
+    least two service ports will be checked.
 
     The client will establish seperate connections to each RDAP service port
     (defined as an IP address and TCP port) and perform RDAP queries on the

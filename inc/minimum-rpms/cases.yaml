@@ -1,14 +1,19 @@
 minimumRPMs-01:
   Summary: Claims <check> command test
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     This test is used to confirm the conformance of the EPP server's
     implementation of the Claims Check Form, as described in Section
     3.1.1 of RFC 8334.
 
-    For this test, it is assumed that the EPP server has been configured to
-    use data (specifically the Domain Name Label List, as described in Section
-    5.3.3.1 of RFC 9361) from the TMCH test environment.
+    For this test, the applicant must configure their system using the test
+    TMCH data files found in the following resources:
+
+    * `tmch.testCert`
+    * `tmch.testCRL`
+    * `tmch.testDNL`
+    * `tmch.testSMDRL`
+    * `tmch.testSURL`
 
     The client will connect to the EPP server using the provided credentials
     and will then perform a series of `<check>` commands, using the Launch
@@ -34,15 +39,20 @@ minimumRPMs-01:
 minimumRPMs-02:
   Summary: |
     Sunrise domain/launch application <create> command test
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     This test is used to confirm the conformance of the EPP server's
     implementation of the Sunrise Create Form, as described in Section
     3.3.1 of RFC 8334.
 
-    For this test, it is assumed that the EPP server has been configured to
-    use data (specifically the Domain Name Label List, as described in Section
-    5.3.3.1 of RFC 9361) from the TMCH test environment.
+    For this test, the applicant must configure their system using the test
+    TMCH data files found in the following resources:
+
+    * `tmch.testCert`
+    * `tmch.testCRL`
+    * `tmch.testDNL`
+    * `tmch.testSMDRL`
+    * `tmch.testSURL`
 
     The client will connect to the EPP server and will submit `<create>`
     commands, using domain names and SMD files present in the TMCH test
@@ -68,9 +78,10 @@ minimumRPMs-02:
 
     The client will also confirm that the server rejects attempts to:
 
-    1. create a domain using an invalid SMD;
+    1. create a domain using an expired SMD;
     2. create a domain using a revoked SMD;
     3. create a domain using an SMD signed by a revoked certificate.
+    4. create a domain using an SMD for a different domain.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -80,9 +91,10 @@ minimumRPMs-02:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD
-    - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD
+    - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE
+    - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INCORRECT_SMD
     - RPMS_SUNRISE_CREATE_INFO_OBJECT_DOES_NOT_EXIST
     - RPMS_SUNRISE_CREATE_INFO_OBJECT_IS_HAS_MISSING_OR_INVALID_PROPERTIES
 
@@ -94,9 +106,14 @@ minimumRPMs-03:
     implementation of the Claims Create Form, as described in Section
     3.3.2 of RFC 8334.
 
-    For this test, it is assumed that the EPP server has been configured to
-    use data (specifically the Domain Name Label List, as described in Section
-    5.3.3.1 of RFC 9361) from the TMCH test environment.
+    For this test, the applicant must configure their system using the test
+    TMCH data files found in the following resources:
+
+    * `tmch.testCert`
+    * `tmch.testCRL`
+    * `tmch.testDNL`
+    * `tmch.testSMDRL`
+    * `tmch.testSURL`
 
     The client will connect to the EPP server and will submit `<create>`
     commands, using domain names present in the TMCH test environment.

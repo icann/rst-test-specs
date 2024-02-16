@@ -1,6 +1,13 @@
 2024-02-17:
+  - All cases in the [Minimum RPMs](#Test-Suite-MinimumRPMs) suite are now at BETA maturity, except for [minimumRPMs-03](#Test-Case-minimumRPMs-03), which may change due to anticipated changes to the Trademark Claims policy.
+  - All cases in the [DNSSEC Operations](#Test-Suite-DNSSECOperations) suite are now at BETA maturity.
+  - Clarified wording of the DNSSEC operations test cases and added configuration guidance for applicants.
+  - Any DNS query or XFR that fails is now an error.
+  - Added the [epp.tlsCertificateStore](#resource-epp.tlsCertificateStore) resource to [rdap-91](#Test-Case-rdap-91).
   - Added new test plans that will only be available in OT&E, to allow testing of specific test suites.
   - Added the `OTE-Only` property to test plan objects indicating the above, and bumped the schema version accordingly.
+  - All error messages are now documented.
+  - "Case maturity metrics: ALPHA <1% (-5%), BETA 50% (+7%), GAMMA 50% (+0%)"
 
 2024-02-14:
   - Links to references and notes about upgraded message severities in Zonemaster cases have been fixed.

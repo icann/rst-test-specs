@@ -26,10 +26,10 @@ RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD:
   Description: |
     A sunrise `<create>` command using a **valid** SMD unexpectedly failed.
 
-RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD:
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD:
   Severity: ERROR
   Description: |
-    A sunrise `<create>` command using a **invalid** SMD unexpectedly succeeded.
+    A sunrise `<create>` command using a **expired** SMD unexpectedly succeeded.
 
 RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD:
   Severity: ERROR
@@ -71,3 +71,9 @@ RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_CLAIM_KEY:
   Description: |
     A trademark claims `<create>` command using an **invalid** claim
     key unexpectedly succeeded.
+
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INCORRECT_SMD:
+  Severity: ERROR
+  Description:
+    A sunrise `<create>` command using an SMD that did not contain the domain
+    unexpectedly succeeded.

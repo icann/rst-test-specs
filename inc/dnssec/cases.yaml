@@ -24,7 +24,7 @@ dnssec-92:
 
 dnssec-93:
   Summary: NSEC3 iterations check
-  Maturity: ALPHA
+  Maturity: BETA
   Description: |
     RFC 9276 defines best practice relating to the use of NSEC3 for
     Authenticated Denial of Existence. This test case verifies that the zone's
@@ -38,6 +38,7 @@ dnssec-93:
     * the value of the `salt` field of the NSEC3 record is empty (represented as
       a `-` in the presentation format).
   Errors:
+    - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO
     - DNSSEC_NSEC3_SALT_IS_NOT_EMPTY
 

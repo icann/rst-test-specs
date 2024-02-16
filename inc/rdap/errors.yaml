@@ -1,10 +1,10 @@
 RDAP_TLS_DNS_RESOLUTION_ERROR:
-  Severity: WARNING
+  Severity: ERROR
   Description: |
     An error occurred during DNS resolution of one of the RDAP base URL(s).
 
 RDAP_TLS_SERVICE_PORT_UNREACHABLE:
-  Severity: WARNING
+  Severity: ERROR
   Description: |
     A service port was not reachable. If all service ports are unreachable, then
     the test case will fail.

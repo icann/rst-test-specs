@@ -224,6 +224,12 @@ MinimumRPMs:
 
     TS_PASSFAIL
   Test-Cases: ^minimumRPMs-
+  Resources:
+    - tmch.testCert
+    - tmch.testCRL
+    - tmch.testDNL
+    - tmch.testSMDRL
+    - tmch.testSURL
   Input-Parameters:
     - epp.hostName
     - epp.serverIssuedClientCertificate01

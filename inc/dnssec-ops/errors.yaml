@@ -40,12 +40,12 @@ DNSSEC_OPS_INVALID_ALGORITHM:
 DNSSEC_OPS_XFR_FAILED_TOO_MANY_TIMES:
   Severity: ERROR
   Description: |
-    There was an error performing a zone transfer on three concurrent attempts.
+    There was an error performing a zone transfer.
 
 DNSSEC_OPS_DNS_QUERY_FAILED_TOO_MANY_TIMES:
   Severity: ERROR
   Description: |
-    There was an error performing a DNS query on three concurrent attempts.
+    There was an error performing a DNS query.
 
 DNSSEC_OPS_ZONE_IS_INVALID:
   Severity: CRITICAL
