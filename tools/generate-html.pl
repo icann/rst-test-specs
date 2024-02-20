@@ -1041,9 +1041,6 @@ sub print_input {
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $input->description->html(3);
 
-    print $h->h4(sprintf('%u.%u.%u. Type', $section, $i, ++$j));
-    print $h->pre(e($input->type));
-
     print $h->open(details);
     print $h->summary($h->h4(sprintf('%u.%u.%u. Schema', $section, $i, ++$j)));
 
