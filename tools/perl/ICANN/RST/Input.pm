@@ -39,6 +39,20 @@ sub cases {
     return sort { $a->id cmp $b->id } values(%cases);
 }
 
+sub suites {
+    my $self = shift;
+
+    my %suites;
+
+    foreach my $suite ($self->spec->suites) {
+        foreach my $id (@{$suite->{'Input-Parameters'}}) {
+            $suites{$suite->id} = $suite if ($id eq $self->id && !defined($suites{$suite->id}));
+        }
+    }
+
+    return sort { $a->order cmp $b->order } values(%suites);
+}
+
 1;
 
 __END__
@@ -80,5 +94,9 @@ parameter.
 =head2 cases()
 
 A list of all C<ICANN::RST::Case> objects that use this input parameter.
+
+=head2 suites()
+
+A list of all C<ICANN::RST::Suite> objects that use this input parameter.
 
 =cut
