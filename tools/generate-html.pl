@@ -1138,16 +1138,14 @@ sub print_error {
     my $j = 0;
 
     print $h->h4(sprintf('%u.%u.%u. Severity', $section, $i, ++$j));
-    print $h->p(
-        $h->code(e($error->severity))
-        .' - '
-        .$sdev->{$error->severity}
-    );
+    print $h->ul($h->li($h->code($h->strong(e($error->severity)))));
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $error->description->html(3);
 
-    print $h->h4(sprintf('%u.%u.%u. Test cases', $section, $i, ++$j));
+    print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Test cases', $section, $i, ++$j)));
     print $h->p('This error may be produced by the following test cases:');
 
     my @cases = $error->cases;
@@ -1166,6 +1164,8 @@ sub print_error {
 
         print $h->close(ul);
     }
+
+    print $h->close(details);
 
 }
 
