@@ -73,6 +73,8 @@ case_comments:
 # this structure
 #
 error_level_overrides:
+  CRITICAL:
+    - NAMESERVER_IP_PRIVATE_NETWORK
   ERROR:
     - A_UNEXPECTED_RCODE
     - CHILD_NS_FAILED
