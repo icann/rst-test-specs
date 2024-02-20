@@ -1077,8 +1077,32 @@ sub print_input {
 
         foreach my $case (@cases) {
             print $h->li($h->a(
-            { href => sprintf('#Test-Case-%s', $case->id) },
-            e($case->id),
+                { href => sprintf('#Test-Case-%s', $case->id) },
+                e($case->id),
+            ));
+        }
+
+        print $h->close(ul);
+    }
+
+    print $h->close(details);
+
+    print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Test suites', $section, $i, ++$j)));
+    print $h->p('This input parameter is also used in the following test suites:');
+
+    my @suites = $input->suites;
+    if (scalar(@suites) < 1) {
+        print $h->ul($h->li($h->em('None specified.')));
+
+    } else {
+        print $h->open(ul);
+
+        foreach my $suite (@suites) {
+            print $h->li($h->a(
+                { href => sprintf('#Test-Suite-%s', $suite->id) },
+                e($suite->name),
             ));
         }
 
