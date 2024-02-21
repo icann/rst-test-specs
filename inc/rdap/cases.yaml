@@ -47,9 +47,10 @@ rdap-92:
     Since applicants must provide an RDAP service over both IPv4 and IPv6, at
     least two service ports will be checked.
 
-    The client will establish seperate connections to each RDAP service port
-    (defined as an IP address and TCP port) and perform RDAP queries on the
-    objects specified in the `rdap.testDomains`, `rdap.testEntities`, and
+    The client will establish separate connections to each RDAP service port
+    (defined as an IP address and TCP port, where at least one IPv4 address/port
+    pair and IPv6 address/port pair are expected) and perform RDAP queries on
+    the objects specified in the `rdap.testDomains`, `rdap.testEntities`, and
     `rdap.testNameservers` input parameters.
 
     The responses returned by each service port **MUST**, with the exception

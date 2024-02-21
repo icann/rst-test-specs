@@ -10,10 +10,10 @@ dnssecOps01-ZSKRollover:
     test will be skipped.
 
     The system will monitor the zone specified in the `dnssec.zskRolloverZone`
-    input parameter. The domain may be present anywhere in the global DNS hierarchy
-    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
-    trust up to the root zone, so that it can be validated using the root zone
-    trust anchor.
+    input parameter. The domain may be present anywhere in the global DNS
+    hierarchy (that is, it does not need to be a TLD), but **MUST** have a
+    secure chain of trust up to the root zone, so that it can be validated using
+    the root zone trust anchor.
 
     The zone **MUST** contain at least 10,000 delegations, where a delegation is
     considered to be one or more `NS` records with owner names that are below
@@ -23,7 +23,7 @@ dnssecOps01-ZSKRollover:
     record is published)*.
 
     Monitoring will be carried out using `SOA` queries sent to multiple
-    validating DNS resolvers, and by validating the result of a a zone transfer
+    validating DNS resolvers, and by validating the result of a zone transfer
     from the server specified in the `dnssecOps.primaryServer` input parameter.
 
     During the test period (currently defined as 48 hours) the operator
@@ -55,10 +55,10 @@ dnssecOps02-KSKRollover:
     RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2).
 
     The system will monitor the zone specified in the `dnssec.kskRolloverZone`
-    input parameter. The domain may be present anywhere in the global DNS hierarchy
-    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
-    trust up to the root zone, so that it can be validated using the root zone
-    trust anchor.
+    input parameter. The domain may be present anywhere in the global DNS
+    hierarchy (that is, it does not need to be a TLD), but **MUST** have a
+    secure chain of trust up to the root zone, so that it can be validated using
+    the root zone trust anchor.
 
     The zone **MUST** contain at least 10,000 delegations, where a delegation is
     considered to be one or more `NS` records with owner names that are below
@@ -68,7 +68,7 @@ dnssecOps02-KSKRollover:
     record is published)*.
 
     Monitoring will be carried out using `SOA` queries sent to multiple
-    validating DNS resolvers, and by validating the result of a a zone transfer
+    validating DNS resolvers, and by validating the result of a zone transfer
     from the server specified in the `dnssecOps.primaryServer` input parameter.
 
     During the test period (currently defined as 48 hours) the operator
@@ -100,10 +100,10 @@ dnssecOps03-AlgorithmRollover:
     RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2).
 
     The system will monitor the zone specified in the `dnssec.algorithmRolloverZone`
-    input parameter. The domain may be present anywhere in the global DNS hierarchy
-    (that is, it does not need to be a TLD), but **MUST** have a secure chain of
-    trust up to the root zone, so that it can be validated using the root zone
-    trust anchor.
+    input parameter. The domain may be present anywhere in the global DNS
+    hierarchy (that is, it does not need to be a TLD), but **MUST** have a
+    secure chain of trust up to the root zone, so that it can be validated using
+    the root zone trust anchor.
 
     The zone **MUST** contain at least 10,000 delegations, where a delegation is
     considered to be one or more `NS` records with owner names that are below
@@ -113,7 +113,7 @@ dnssecOps03-AlgorithmRollover:
     record is published)*.
 
     Monitoring will be carried out using `SOA` queries sent to multiple
-    validating DNS resolvers, and by validating the result of a a zone transfer
+    validating DNS resolvers, and by validating the result of a zone transfer
     from the server specified in the `dnssecOps.primaryServer` input parameter.
 
     During the test period (currently defined as 48 hours) the operator
