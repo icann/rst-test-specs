@@ -16,6 +16,7 @@ use constant {
     CASE_DESCRIPTION_TEMPLATE => 'This test case comes from version v%s of Zonemaster. For more information, please refer to the [Zonemaster documentation for this test case](%s).',
     ERROR_DESCRIPTION_TEMPLATE => 'For more information about this error, please refer to the [Zonemaster documentation for the test case this error comes from](%s#:~:text=%s).',
     UPGRADE_NOTE => "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.",
+    INCONSISTENT_RESPONSES_ERROR_DESCRIPTION => 'One or more responses to DNS queries sent to the subject DNS servers were not consistent across all vantage points.',
 };
 use utf8;
 use open qw(:std :utf8);
@@ -56,7 +57,12 @@ foreach my $level (keys(%{$config->{'error_level_overrides'}})) {
 # cases and errors are stored here
 #
 my $cases = {};
-my $errors = {};
+my $errors = {
+    'DNS_INCONSISTENT_RESPONSES' => {
+        'Description' => INCONSISTENT_RESPONSES_ERROR_DESCRIPTION,
+        'Severity' => 'ERROR',
+    }
+};
 
 #
 # get metadata about each module
@@ -113,7 +119,7 @@ sub process_case {
     $cases->{$id} = {
         'Description'   => '',
         'Maturity'      => 'GAMMA',
-        'Errors'        => [],
+        'Errors'        => ['DNS_INCONSISTENT_RESPONSES'],
     };
 
     #

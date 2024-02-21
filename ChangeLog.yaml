@@ -1,3 +1,6 @@
+2024-02-28:
+  - Added the [DNS_INCONSISTENT_RESPONSES](#Error-DNS_INCONSISTENT_RESPONSES) to all test cases in the [DNS](#Test-Suite-StandardDNS) and [DNSSEC](#Test-Suite-StandardDNSSEC) suites.
+
 2024-02-21:
   - The [ZM_NAMESERVER_IP_PRIVATE_NETWORK](#Error-ZM_NAMESERVER_IP_PRIVATE_NETWORK) error now has `CRITICAL` severity.
   - The suites that use an Input Parameter are now listed, in addition to any test cases.
