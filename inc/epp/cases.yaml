@@ -57,7 +57,8 @@ epp-02:
     2. The `<svDate>` element in the `<greeting>` **MUST** specify a time
        within 30 seconds of the current date and time as received from the NTP
        network.
-    3. The `<version>` element in the <greeting> **MUST** be exactly `1.0`.
+    3. There **MUST** be exactly one `<version>` element in the <greeting> and
+       it **MUST** contain exactly `1.0`.
     4. All `<lang>` element(s) in the `<greeting>` **MUST** contain valid
        language codes. At least `en` **MUST** be included.
     5. All `<objURI>` element(s) in the `<greeting>` **MUST** contain XML
