@@ -1,5 +1,6 @@
 2024-02-28:
   - Added the [DNS_INCONSISTENT_RESPONSES](#Error-DNS_INCONSISTENT_RESPONSES) to all test cases in the [DNS](#Test-Suite-StandardDNS) and [DNSSEC](#Test-Suite-StandardDNSSEC) suites.
+  - Upgraded the [ZM_RNAME_MISUSED_AT_SIGN](#Error-ZM_RNAME_MISUSED_AT_SIGN) and [ZM_DIFFERENT_SOURCE_IP](#Error-ZM_DIFFERENT_SOURCE_IP) errors to `ERROR`.
 
 2024-02-21:
   - The [ZM_NAMESERVER_IP_PRIVATE_NETWORK](#Error-ZM_NAMESERVER_IP_PRIVATE_NETWORK) error now has `CRITICAL` severity.

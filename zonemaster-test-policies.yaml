@@ -159,6 +159,8 @@ error_level_overrides:
     - WRONG_SOA
     - Z_FLAGS_NOTCLEAR
     - ALGORITHM_NOT_RECOMMENDED
+    - RNAME_MISUSED_AT_SIGN
+    - DIFFERENT_SOURCE_IP
 
 #
 # the list of messages above doesn't identify the module which they come from.
