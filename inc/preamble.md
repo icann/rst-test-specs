@@ -1,7 +1,7 @@
 This file describes each test [plan](#test-plans), [suite](#test-suites) and
 [case](#test-cases) in the RST service, as well as the
 [input parameters](#input-parameters) required for each, relevant
-[resources](#resources), any inter-case dependencies, and the
+[resources](#resources), <!--- any inter-case dependencies, --> and the
 [errors](#errors) that might occur during testing.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -99,7 +99,19 @@ registrar integration testing and onboarding is likely to be sufficiently robust
 to support Registry System Testing with no further additional capacity
 requirements.
 
-# 2.5. Key acronyms and terms
+# 2.5. Test sequence
+
+The test system will generate a linear _test sequence_ based on the
+test suite(s) and test case(s) used by the specified test plan. The test cases
+will be sorted in canonical alphanumeric order and executed in that order.
+
+If a test case produces any `ERROR` or `CRITICAL` messages, the test run will
+stop at that point.
+
+Future versions may optimise the test sequence using knowledge of inter-case
+dependencies to allow certain parts of the sequence to be run in parallel.
+
+# 2.6. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.

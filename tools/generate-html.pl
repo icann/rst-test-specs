@@ -611,6 +611,8 @@ sub print_plan {
 
     print $h->close(details);
 
+=pod
+
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Sequence diagram', $section, $i, ++$j)));
@@ -623,6 +625,9 @@ sub print_plan {
     unlink($file);
 
     print $h->close(details);
+
+=cut
+
 }
 
 sub print_suites {
@@ -781,6 +786,8 @@ sub print_suite {
 
     print $h->close(details);
 
+=pod
+
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Sequence diagram', $section, $i, ++$j)));
@@ -793,6 +800,9 @@ sub print_suite {
     unlink($file);
 
     print $h->close(details);
+
+=cut
+
 }
 
 sub print_resources {
@@ -940,6 +950,8 @@ sub print_case {
 
     print $h->close(details);
 
+=pod
+
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Dependencies', $section, $i, ++$j)));
@@ -989,6 +1001,8 @@ sub print_case {
     }
 
     print $h->close(details);
+
+=cut
 
     print $h->open(details);
 
