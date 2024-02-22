@@ -20,7 +20,7 @@ sub text { $_[0]->{'text'} }
 sub html {
     my ($self, $shift) = @_;
 
-    return '<div class="markdown-content">'.$self->raw_html.'</div>';
+    return '<div class="markdown-content">'.$self->raw_html($shift).'</div>';
 }
 
 sub raw_html {
