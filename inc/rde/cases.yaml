@@ -58,12 +58,12 @@ rde-05:
     The correct URIs is determined by the `general.minimalPublicDataSet` and
     `epp.hostModel` input parameters.
 
-    * if the `general.minimalPublicDataSet` input parameter is `true`, then the
-      contact URI **MUST** be present. If the value is `false`, then it **MUST
+    * if the `general.minimalPublicDataSet` input parameter is `false`, then the
+      contact URI **MUST** be present. If the value is `true`, then it **MUST
       NOT** be present.
 
-    * if the `epp.hostModel` input parameter is `true`, then the host URI
-      **MUST** be present. If the value is `false`, then it **MUST NOT** be
+    * if the `epp.hostModel` input parameter is 'objects', then the host URI
+      **MUST** be present. If the value is `attributes`, then it **MUST NOT** be
       present.
 
     All expected URIs **MUST** be present in the header, and the header **MUST
@@ -97,8 +97,10 @@ rde-07:
     * at least one `<domain:status>` element
     * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
     * `<domain:clID>` (sponsoring registrar ID)
-    * `<domain:crDate>` (creation date)
-    * `<domain:exDate>` (expiry date)
+    * `<domain:crDate>` (creation date), which **MUST** be before the timestamp
+      in the deposit's '`<watermark>` element.
+    * `<domain:exDate>` (expiry date), which **MUST** be after the timestamp
+      in the deposit's '`<watermark>` element.
 
     Contact, host and registrar objects (including optional objects such as
     admin and tech contacts) which are referenced in domain objects **MUST**
