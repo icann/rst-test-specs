@@ -148,11 +148,37 @@ sub check_input {
 
     warn(sprintf("Input Parameter '%s' has an invalid type ('%s')", $input->id, $input->type)) unless (any { $input->type eq $_} qw(file input));
 
-    warn(sprintf("Input Parameter '%s' doesn't have an example", $input->id)) unless (exists($input->{'Example'}));
+    if (!exists($input->{'Schema'})) {
+        warn(sprintf("Input Parameter '%s' doesn't have a schema", $input->id));
 
-    warn(sprintf("Schema for Input Parameter '%s' is invalid", $input->id)) if (defined($input->schema) && !validate_input_schema($input->schema));
+        if (!exists($input->{'Example'})) {
+            warn(sprintf("Input Parameter '%s' doesn't have an example", $input->id));
+        }
 
-    warn(sprintf("Input Parameter '%s' type '%s' doesn't match the schema ('%s')", $input->id, $input->type, $input->{'Schema'}->{'type'})) unless ('file' eq $input->type || $input->type eq $input->{'Schema'}->{'type'});
+    } else {
+        my $schema = $input->schema;
+
+        if (!validate_input_schema($schema)) {
+            warn(sprintf("Schema for Input Parameter '%s' is invalid", $input->id));
+
+        } else {
+            if (!exists($input->{'Example'})) {
+                warn(sprintf("Input Parameter '%s' doesn't have an example", $input->id));
+
+            } else {
+                my @errors = validate_input_example($schema, $input->example);
+                if (scalar(@errors) > 0) {
+                    printf(STDERR "example for Input Parameter '%s' is invalid:\n", $input->id);
+
+                    foreach my $error (@errors) {
+                        printf(STDERR "  * {%s}: %s\n", $error->property, $error->message);
+                    }
+
+                    print STDERR JSON::XS->new->utf8->canonical->pretty->encode($input->example);
+                }
+            }
+        }
+    }
 
     warn(sprintf("Input Parameter '%s' has redundant examples", $input->id)) if (exists($input->{'Example'}) && exists($input->{'Schema'}->{'examples'}));
 }
@@ -223,4 +249,27 @@ sub validate_input_schema {
     }
 
     return 1;
+}
+
+sub validate_input_example {
+    my ($schema, $example) = @_;
+
+    #
+    # gotcha - JSON::Schema assumes that if a scalar is passed to validate(),
+    # then it is JSON, so we need to encode scalars into JSON before passing
+    #
+    if ('' eq ref($example)) {
+        $example = JSON::XS->new->utf8->canonical->encode($example);
+    }
+
+    my @errors;
+
+    my $result = $schema->validate($example);
+    if (!$result) {
+        foreach my $error ($result->errors) {
+            push(@errors, $error);
+        }
+    }
+
+    return @errors;
 }
