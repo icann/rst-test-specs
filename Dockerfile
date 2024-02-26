@@ -16,6 +16,7 @@ RUN apk add --quiet \
     musl-dev \
     openssl-dev \
     pandoc \
+    go \
     perl \
     perl-app-cpanminus \
     perl-autovivification \
@@ -91,3 +92,5 @@ ARG ZONEMASTER_ENGINE_VERSION
 #
 RUN cpanm --quiet --notest HTML::Tiny GraphViz2 JSON::Schema Data::Mirror \
     Zonemaster::LDNS Zonemaster::Engine@${ZONEMASTER_ENGINE_VERSION}
+
+RUN GOPATH=/usr/local go install github.com/giantswarm/schemalint/v2@latest
