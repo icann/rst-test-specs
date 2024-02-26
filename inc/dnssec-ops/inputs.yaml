@@ -2,33 +2,71 @@ dnssecOps.nameservers:
   Description: |
     The set of nameservers that will be authoritative for the zones used in the
     DNSSEC operations test suite.
-
-    This input parameter is an object where the object properties are the
-    zone names, and the values are objects. For these objects, the properties
-    are the nameserver names, and the values are arrays of IPv4 and IPv6
-    addresses.
-  Type: object
-  Example: {"example":{"ns1.example.com":["192.0.2.1","2001:DB8::53:1"],"ns2.example.com":["192.0.2.2","2001:DB8::53:2"]}}
+  Type: array
+  Example:
+    - name: ns1.example.com
+      v4addrs:
+        - 192.0.2.1
+      v6addrs:
+        - 2001:DB8::53:1
+    - name: ns2.example.net
+      v4addrs:
+        - 192.0.2.2
+      v6addrs:
+        - 2001:DB8::53:2
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z]+[a-z0-9\.]*[a-z]\$:
-        type: array
-        items:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+        - addrs
+      properties:
+        name:
+          description: The fully-qualified nameserver name
+          examples:
+            - ns1.example.com
+            - ns2.example.net
           type: string
-          anyOf:
-            - format: ipv4
-            - format: ipv6
+          format: hostname
 
-dnssecOps.primaryServer:
-  Description: The primary nameserver from which zones can be transferred.
-  Type: string
-  Example: 192.0.2.1
+        v4Addrs:
+          description: The IPv4 address(es) for the nameserver.
+          type: array
+          minItems: 1
+          items:
+            type: string
+            format: ipv4
+          examples:
+            - 192.0.2.1
+            - 192.0.2.2
+
+        v6Addrs:
+          description: The IPv6 address(es) for the nameserver.
+          type: array
+          minItems: 1
+          items:
+            type: string
+            format: ipv6
+            examples:
+              - 2001:DB8::53:1
+              - 2001:DB8::53:2
+
+dnssecOps.primaryServers:
+  Description: The primary nameserver(s) from which zones can be transferred.
+  Type: array
+  Example:
+    - 192.0.2.1
+    - 2001:DB8::53:2
   Schema:
-    type: string
-    anyOf:
-      - format: ipv4
-      - format: ipv6
+    type: array
+    minItems: 1
+    items:
+      type: string
+      anyOf:
+        - format: ipv4
+        - format: ipv6
 
 dnssecOps.tsigKey:
   Description: The TSIG key which should be used to perform zone transfers.

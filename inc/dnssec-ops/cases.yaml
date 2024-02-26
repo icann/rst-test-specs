@@ -24,7 +24,8 @@ dnssecOps01-ZSKRollover:
 
     Monitoring will be carried out using `SOA` queries sent to multiple
     validating DNS resolvers, and by validating the result of a zone transfer
-    from the server specified in the `dnssecOps.primaryServer` input parameter.
+    from the server(s) specified in the `dnssecOps.primaryServers` input
+    parameter.
 
     During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out a ZSK rollover for the domain, where the
@@ -69,7 +70,8 @@ dnssecOps02-KSKRollover:
 
     Monitoring will be carried out using `SOA` queries sent to multiple
     validating DNS resolvers, and by validating the result of a zone transfer
-    from the server specified in the `dnssecOps.primaryServer` input parameter.
+    from the server(s) specified in the `dnssecOps.primaryServers` input
+    parameter.
 
     During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out a KSK rollover for the domain, where the
@@ -114,7 +116,8 @@ dnssecOps03-AlgorithmRollover:
 
     Monitoring will be carried out using `SOA` queries sent to multiple
     validating DNS resolvers, and by validating the result of a zone transfer
-    from the server specified in the `dnssecOps.primaryServer` input parameter.
+    from the server(s) specified in the `dnssecOps.primaryServesr` input
+    parameter.
 
     During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out an algorithm rollover for the domain

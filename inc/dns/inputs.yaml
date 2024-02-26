@@ -1,27 +1,44 @@
 dns.nameservers:
   Description: |
-    The set of nameservers that will be authoritative for the TLD(s).
-
-    This input parameter is an object where the object properties are the
-    TLD names, and the values are objects. For these objects, the properties
-    are the nameserver names, and the values are arrays of IPv4 and IPv6
-    addresses.
-
-    There **MUST** be at least two nameservers, and at least two nameservers
-    **MUST** have at least one IPv6 address.
-
-    All DNS server names **MUST** comply with the requirements for valid
-    hostnames described in RFC 1123, section 2.1. Additionally, all IDN labels
-    in those hostnames **MUST** comply with IDNA2008.
-  Type: object
+    The set of nameservers that will be authoritative for the zones used in the
+    DNSSEC operations test suite.
+  Type: array
   Example: {"example":{"ns1.example.com":["192.0.2.1","2001:DB8::53:1"],"ns2.example.com":["192.0.2.2","2001:DB8::53:2"]}}
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z]+[a-z0-9\.]*[a-z]\$:
-        type: array
-        items:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+        - addrs
+      properties:
+        name:
+          description: The fully-qualified nameserver name
+          examples:
+            - ns1.example.com
+            - ns2.example.net
           type: string
-          anyOf:
-            - format: ipv4
-            - format: ipv6
+          format: hostname
+
+        v4Addrs:
+          description: The IPv4 address(es) for the nameserver.
+          type: array
+          minItems: 1
+          items:
+            type: string
+            format: ipv4
+          examples:
+            - 192.0.2.1
+            - 192.0.2.2
+
+        v6Addrs:
+          description: The IPv6 address(es) for the nameserver.
+          type: array
+          minItems: 1
+          items:
+            type: string
+            format: ipv6
+            examples:
+              - 2001:DB8::53:1
+              - 2001:DB8::53:2

@@ -7,25 +7,42 @@ dnssec.dsRecords:
 
     There **MUST** be an entry for every TLD in the TLD set and there **MUST**
     be at least one DS record for each TLD.
-  Type: object
+  Type: array
   Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z]+[a-z0-9\.]*[a-z]\$:
-        type: array
-        items:
-          type: object
-          properties:
-            keyTag:
-              type: integer
-              format: uint16
-            alg:
-              type: integer
-              format: uint16
-            digestType:
-              type: integer
-              format: uint16
-            digest:
-              type: string
-              pattern: "^[0-9A-Fa-f]+$"
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+        - dsRecords
+      properties:
+        name:
+          description: the zone name
+          type: string
+          format: hostname
+        dsRecords:
+          description: the DS record(s)
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - keyTag
+              - alg
+              - digestType
+              - digest
+            properties:
+              keyTag:
+                type: integer
+                format: uint16
+              alg:
+                type: integer
+                format: uint16
+              digestType:
+                type: integer
+                format: uint16
+              digest:
+                type: string
+                pattern: "^[0-9A-Fa-f]+$"

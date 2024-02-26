@@ -5,6 +5,7 @@ srsgw.eppHostName:
   Schema:
     type: string
     format: hostname
+
 srsgw.eppClid01:
   Description: the username used to log in to the SRS Gateway EPP server
   Type: string
@@ -12,12 +13,14 @@ srsgw.eppClid01:
   Schema:
     type: string
     minLength: 3
+
 srsgw.eppPwd01:
   Description: the password used to log in to the SRS Gateway EPP server
   Type: string
   Example: foo2bar
   Schema:
     type: string
+
 srsgw.serverIssuedClientCertificate01:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
@@ -30,6 +33,7 @@ srsgw.serverIssuedClientCertificate01:
   Schema:
     type: string
   Example: cert.pem
+
 srsgw.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
@@ -42,28 +46,45 @@ srsgw.serverIssuedClientCertificate02:
   Schema:
     type: string
   Example: cert.pem
+
 srsgw.eppClid02:
   Description: the username used for transfer tests
   Type: string
   Example: clid-02
   Schema:
     type: string
+
 srsgw.eppPwd02:
   Description: the password used for transfer tests
   Type: string
   Example: foo3bar
   Schema:
     type: string
+
 srsgw.rdapBaseURLs:
   Description: |
-    The RDAP base URL(s) for the TLD(s). This input parameter is an object,
-    where the object properties are the TLD names and the values are strings
-    containing the base URL. The URL **MUST** end with a slash ("/").
-  Type: object
+    The RDAP base URL(s) for the TLD(s).
+
+    The host name component of each URL **MUST** comply with the requirements
+    for valid hostnames described in RFC 1123, section 2.1. Additionally, all
+    IDN labels in the host name **MUST** comply with IDNA2008.
+  Type: array
   Example: {"example": "https://rdap.example.com/example/"}
   Schema:
-    Type: object
-    patternProperties:
-      ^[a-z]+[a-z0-9\.]*[a-z]\$:
-        type: string
-        format: url
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - tld
+        - baseURL
+      properties:
+        tld:
+          description: The TLD or equivalent registry-class domain name.
+          type: string
+          format: hostname
+        baseURL:
+          description: |
+            The RDAP Base URL. The URL **MUST** have trailing slash (`/`).
+          type: string
+          format: url

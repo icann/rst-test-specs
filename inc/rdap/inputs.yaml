@@ -1,57 +1,98 @@
 rdap.baseURLs:
-  Descrption: |
-    The RDAP base URL(s) for the TLD(s). This input parameter is an object,
-    where the object properties are the TLD names, and the values are strings
-    containing the base URL. The URL **MUST** use the `https:` scheme and
-    **MUST** end with a slash ("/").
+  Description: |
+    The RDAP base URL(s) for the TLD(s).
 
     The host name component of each URL **MUST** comply with the requirements
     for valid hostnames described in RFC 1123, section 2.1. Additionally, all
     IDN labels in the host name **MUST** comply with IDNA2008.
-  Type: object
+  Type: array
   Example: {"example": "https://rdap.example.com/example/"}
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z][a-\0-9-]*[a-z]\$:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - tld
+        - baseURL
+      properties:
+        tld:
+          description: The TLD or equivalent registry-class domain name.
+          type: string
+          format: hostname
+        baseURL:
+          description: |
+            The RDAP Base URL. The URL **MUST** have trailing slash (`/`).
           type: string
           format: url
+
 rdap.testDomains:
   Description: |
     The domain(s) that will be queried to validate domain responses. This
-    input parameter is an object, where the object properties are the TLD
-    names and the values domain names.
-  Type: object
-  Example: {"example": "example.example"}
+    input parameter is an array of domain names, which **MUST** include at least
+    one domain name for each TLD being tested.
+  Example:
+    - example.com
+    - example.net
+  Type: array
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z][a-\0-9-]*[a-z]\$:
-          type: string
-          format: hostname
+    type: array
+    minItems: 1
+    items:
+      type: string
+      format: hostname
+
 rdap.testEntities:
   Description: |
     The entities(s) that will be queried to validate entity responses. This
-    input parameter is an object, where the object properties are the TLD
-    names and the values entity handles. Note that IANA Registrar IDs must be
-    encoded as strings, not integers.
-  Type: object
-  Example: {"example": "9999"}
+    input parameter is an array of objects. At least one entity **MUST** be
+    provided for each TLD being tested.
+  Example:
+    - tld: example
+      handle: "9995"
+  Type: array
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z][a-\0-9-]*[a-z]\$:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - tld
+        - handle
+      properties:
+        tld:
+          description: The TLD.
           type: string
+          format: hostname
+        handle:
+          description: the entity handle.
+          type: string
+
 rdap.testNameservers:
   Description: |
     The nameservers(s) that will be queried to validate nameserver responses.
-    This input parameter is an object, where the object properties are the TLD
-    names and the values host names.
-  Type: object
-  Example: {"example": "ns1.example.com"}
+    This input parameter is an array of objects. At least one nameserver
+    **MUST** be provided for each TLD being tested.
+  Type: array
+  Example:
+    - tld: example1
+      nameserver: ns1.example.com
+    - tld: example2
+      nameserver: ns1.example.com
   Schema:
-    type: object
-    patternProperties:
-      ^[a-z][a-\0-9-]*[a-z]\$:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - tld
+        - nameserver
+      properties:
+        tld:
+          description: The TLD.
+          type: string
+          format: hostname
+        nameserver:
+          description: The nameserver name.
           type: string
           format: hostname

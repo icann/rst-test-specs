@@ -1,4 +1,6 @@
 2024-02-28:
+  - Various changes to input parameter schema to address issues with OpenAPI code generators not being able to support various JSON Schema features.
+  - The [`dnssecOps.primaryServer`](#Input-Parameter-dnssecOps.primaryServers) input parameter has been changed to an array to allow for multiple servers to be specified.
   - Documented the [test sequence](#Preamble-2.5.-Test-sequence).
   - In order to simplify the specifications and avoid confusion, inter-case dependencies have been removed from the HTML representation.
   - Added the [DNS_INCONSISTENT_RESPONSES](#Error-DNS_INCONSISTENT_RESPONSES) to all test cases in the [DNS](#Test-Suite-StandardDNS) and [DNSSEC](#Test-Suite-StandardDNSSEC) suites.
