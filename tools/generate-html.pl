@@ -1056,6 +1056,14 @@ sub print_input {
     print $input->description->html(3);
 
     print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Example', $section, $i, ++$j)));
+    print $h->pre(e($json->encode({$input->id => $input->jsonExample})));
+
+    print $h->close(details);
+
+    print $h->open(details);
+
     print $h->summary($h->h4(sprintf('%u.%u.%u. Schema', $section, $i, ++$j)));
 
     if (!$input->schema) {
@@ -1067,13 +1075,6 @@ sub print_input {
         print $h->pre(e($yaml));
 
     }
-
-    print $h->close(details);
-
-    print $h->open(details);
-
-    print $h->summary($h->h4(sprintf('%u.%u.%u. Example', $section, $i, ++$j)));
-    print $h->pre(e($json->encode({$input->id => $input->jsonExample})));
 
     print $h->close(details);
 
@@ -1135,7 +1136,7 @@ sub print_errors {
         print $h->open(section);
 
         print_error($error, ++$i);
-
+        
         print $h->close(section);
     }
 
