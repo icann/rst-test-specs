@@ -5,24 +5,19 @@ use strict;
 
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub type        { $_[0]->{'Type'} }
-sub example     { $_[0]->{'Example'} }
+sub example     { numify($_[0]->{'Example'}) }
 sub schema      { $_[0]->{'Schema'} ? JSON::Schema->new(numify($_[0]->{'Schema'})) : undef }
 
 sub jsonExample {
     my $self = shift;
 
-    if ('integer' eq $self->type) {
-        return int($self->example);
-
-    } elsif ('number' eq $self->type) {
-        return 0 + int($self->example);
-
-    } elsif ('boolean' eq $self->type) {
+    if ('boolean' eq $self->{'Schema'}->{'type'}) {
         return ($self->example ? \1 : \0);
 
-    }
+    } else {
+        return numify($self->example);
 
-    return $self->example;
+    }
 }
 
 sub cases {
@@ -53,6 +48,9 @@ sub suites {
     return sort { $a->order cmp $b->order } values(%suites);
 }
 
+#
+# iteratively convert scalars into numeric values where appropriate
+#
 sub numify {
     my $value = shift;
 
