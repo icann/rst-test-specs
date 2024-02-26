@@ -208,7 +208,7 @@ DNSSECOperations:
   Test-Cases: ^dnssecOps
   Input-Parameters:
     - dnssecOps.nameservers
-    - dnssecOps.primaryServer
+    - dnssecOps.primaryServers
     - dnssecOps.tsigKey
   Resources:
     - dnssecOps.xfrACL
