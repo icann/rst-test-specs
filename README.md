@@ -42,8 +42,6 @@ The simplest way to build the specification is to run `docker compose up spec`
 (you obviously need Docker). The first run will take a while as it needs to
 build the image, but it will be quite fast after that.
 
-To validate the spec, use `docker compose up lint`.
-
 ## Branches
 
 The [`main`](https://icann.github.io/rst-api-spec/tree/main) branch is the
