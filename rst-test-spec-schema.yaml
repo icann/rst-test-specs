@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.8.1
+  version: 1.9.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -226,11 +226,10 @@ components:
           type: string
         Maturity:
           description: The maturity level of the test case.
-          type: string
           enum:
-          - ALPHA
-          - BETA
-          - GAMMA
+            - ALPHA
+            - BETA
+            - GAMMA
         Description:
           description: A description of the case in Markdown format.
           type: string
@@ -269,17 +268,11 @@ components:
           description: A description of the parameter in Markdown format.
           type: string
         Type:
-          description: The type of the parameter
-          type: string
+          description: |
+            The type of the parameter, one of `file` or `input`.
           enum:
-          - "file"
-          - "string"
-          - "integer"
-          - "number"
-          - "boolean"
-          - "null"
-          - "object"
-          - "array"
+            - "file"
+            - "input"
         Example:
           description: An example value for this parameter.
         Schema:
@@ -316,10 +309,9 @@ components:
           type: string
         Severity:
           description: The severity of the error.
-          type: string
           enum:
-          - INFO
-          - NOTICE
-          - WARNING
-          - ERROR
-          - CRITICAL
+            - INFO
+            - NOTICE
+            - WARNING
+            - ERROR
+            - CRITICAL
