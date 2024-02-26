@@ -17,7 +17,6 @@ RUN apk add --quiet \
     openssl-dev \
     pandoc \
     go \
-    python3 \
     perl \
     perl-app-cpanminus \
     perl-autovivification \
