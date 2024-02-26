@@ -2,7 +2,7 @@ dnssecOps.nameservers:
   Description: |
     The set of nameservers that will be authoritative for the zones used in the
     DNSSEC operations test suite.
-  Type: array
+  Type: input
   Example:
     - name: ns1.example.com
       v4addrs:
@@ -24,10 +24,7 @@ dnssecOps.nameservers:
         - addrs
       properties:
         name:
-          description: The fully-qualified nameserver name
-          examples:
-            - ns1.example.com
-            - ns2.example.net
+          description: The fully-qualified nameserver name.
           type: string
           format: hostname
 
@@ -38,9 +35,6 @@ dnssecOps.nameservers:
           items:
             type: string
             format: ipv4
-          examples:
-            - 192.0.2.1
-            - 192.0.2.2
 
         v6Addrs:
           description: The IPv6 address(es) for the nameserver.
@@ -49,37 +43,66 @@ dnssecOps.nameservers:
           items:
             type: string
             format: ipv6
-            examples:
-              - 2001:DB8::53:1
-              - 2001:DB8::53:2
 
 dnssecOps.primaryServers:
   Description: The primary nameserver(s) from which zones can be transferred.
-  Type: array
+  Type: input
   Example:
-    - 192.0.2.1
-    - 2001:DB8::53:2
+    v4Addrs:
+      - 192.0.2.1
+    v6Addrs:
+      - 2001:DB8::53:2
   Schema:
-    type: array
-    minItems: 1
-    items:
-      type: string
-      anyOf:
-        - format: ipv4
-        - format: ipv6
+    type: object
+    required:
+      - v4Addrs
+      - v6Addrs
+    properties:
+      v4Addrs:
+        description: The IPv4 address(es) for the primary server(s).
+        type: array
+        minItems: 1
+        items:
+          type: string
+          format: ipv4
+      v6Addrs:
+        description: The IPv6 address(es) for the primary server(s).
+        type: array
+        minItems: 1
+        items:
+          type: string
+          format: ipv6
 
 dnssecOps.tsigKey:
   Description: The TSIG key which should be used to perform zone transfers.
-  Type: object
-  Example: {"name": "rst-tsig-01", "algorithm": "hmac-sha256", "secret": "NQO...xQ="}
+  Type: input
+  Example:
+    name: rst-tsig-01
+    algorithm: hmac-sha256
+    secret: cSevMti9Wj6P2i4SsK4bHRnzUKT8k/FGOUoPLZ7kYm8=
   Schema:
     type: object
     properties:
       name:
+        description: The TSIG name.
         type: string
+        format: hostname
       algorithm:
-        type: string
+        description: |
+          The TSIG algorithm. The mnemonics are taken from
+          <https://www.iana.org/assignments/tsig-algorithm-names/tsig-algorithm-names.xhtml>.
+        enum:
+          - HMAC-MD5.SIG-ALG.REG.INT
+          - hmac-sha1
+          - hmac-sha224
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-sha256-128
+          - hmac-sha384-192
+          - hmac-sha512-256
       secret:
+        description: The TSIG secret.
         type: string
 
 dnssecOps.csk:
@@ -87,7 +110,7 @@ dnssecOps.csk:
     A boolean indicating whether the RSP uses a Combined Signing Key (CSK,
     also referred to as a "Single Type Signing Scheme") instead of a split
     KSK/ZSK configuration.
-  Type: boolean
+  Type: input
   Example: false
   Schema:
     type: boolean
@@ -96,7 +119,7 @@ dnssecOps.zskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a ZSK
     rollover.
-  Type: string
+  Type: input
   Example: example.com
   Schema:
     type: string
@@ -106,7 +129,7 @@ dnssecOps.kskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a KSK
     rollover.
-  Type: string
+  Type: input
   Example: example.com
   Schema:
     type: string
@@ -116,7 +139,7 @@ dnssecOps.algorithmRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of an algorithm
     rollover.
-  Type: string
+  Type: input
   Example: example.com
   Schema:
     type: string

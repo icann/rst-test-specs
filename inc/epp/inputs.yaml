@@ -5,7 +5,7 @@ epp.hostName:
     The server name **MUST** comply with the requirements for valid
     hostnames described in RFC 1123, section 2.1. Additionally, all IDN labels
     in the server name **MUST** comply with IDNA2008.
-  Type: string
+  Type: input
   Example: epp.rsp.tech
   Schema:
     type: string
@@ -20,7 +20,7 @@ epp.greeting:
     
 epp.clid01:
   Description: the username used to log in to the EPP server
-  Type: string
+  Type: input
   Example: clid-01
   Schema:
     type: string
@@ -29,7 +29,7 @@ epp.clid01:
 
 epp.pwd01:
   Description: the password used to log in to the EPP server
-  Type: string
+  Type: input
   Example: foo2bar
   Schema:
     type: string
@@ -62,7 +62,7 @@ epp.serverIssuedClientCertificate02:
 
 epp.clid02:
   Description: the username used for transfer tests
-  Type: string
+  Type: input
   Example: clid-02
   Schema:
     type: string
@@ -71,7 +71,7 @@ epp.clid02:
 
 epp.pwd02:
   Description: the password used for transfer tests
-  Type: string
+  Type: input
   Example: foo3bar
   Schema:
     type: string
@@ -82,7 +82,7 @@ epp.hostModel:
     parameter are:
       * `objects`
       * `attributes`
-  Type: string
+  Type: input
   Example: objects
   Schema:
     type: string
@@ -94,7 +94,7 @@ epp.secDNSInterfaces:
   Description: |
     Which of the interfaces defined in Section 4 of RFC 5910 the server
     supports (either `dsData` or `keyData`).
-  Type: string
+  Type: input
   Example: dsData
   Schema:
     type: string
@@ -108,7 +108,7 @@ epp.registeredNames:
     therefore unavailable for registration. The domains **MUST NOT** be under
     the sponsorship of the `epp.clid01` or `epp.clid02` registrars. The array
     **MUST** contain one member for each TLD in the TLD set.
-  Type: array
+  Type: input
   Example: ["example.example1", "example.example2"]
   Schema:
     type: array
@@ -124,7 +124,7 @@ epp.registeredNameservers:
     If the value of `epp.hostModel` is `objects`, this array **MUST** contain
     one member for each TLD in the TLD set. However, if it is `attributes`,
     the array **MUST** be empty.
-  Type: array
+  Type: input
   Example: ["ns1.example.com", "ns2.example.org"]
   Schema:
     type: array
@@ -140,7 +140,7 @@ epp.registeredContacts:
     If the value of `general.minimalPublicDataSet` is `false`, this array
     **MUST** contain one member for each TLD in the TLD set. However, if it is
     `false`, the array **MUST** be empty.
-  Type: array
+  Type: input
   Example: ["abc123", "def321"]
   Schema:
     type: array
@@ -151,7 +151,7 @@ epp.restoreReportRequired:
   Description: |
     Whether the server requires submission of a restore report when a client
     attempts to restore a domain.
-  Type: boolean
+  Type: input
   Example: false
   Schema:
     type: boolean
@@ -162,7 +162,7 @@ epp.requiredContactTypes:
     element(s) that are required to successfully create a domain name. If the
     value of `general.minimalPublicDataSet` is `false`, this array `MUST` be
     empty.
-  Type: array
+  Type: input
   Example: ["admin"]
   Schema:
     type: array

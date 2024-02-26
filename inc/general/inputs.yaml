@@ -3,7 +3,7 @@ general.minimalPublicDataSet:
     if true, then the registry only supports the minimum public data set, and
     does not collect registrant and/or technical contact information from
     registrars.
-  Type: boolean
+  Type: input
   Example: true
   Schema:
     type: boolean

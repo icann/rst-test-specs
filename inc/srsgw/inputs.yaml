@@ -1,6 +1,6 @@
 srsgw.eppHostName:
   Description: the fully-qualified domain name of the SRS Gateway EPP server
-  Type: string
+  Type: input
   Example: epp.rsp.tech
   Schema:
     type: string
@@ -8,7 +8,7 @@ srsgw.eppHostName:
 
 srsgw.eppClid01:
   Description: the username used to log in to the SRS Gateway EPP server
-  Type: string
+  Type: input
   Example: clid-01
   Schema:
     type: string
@@ -16,7 +16,7 @@ srsgw.eppClid01:
 
 srsgw.eppPwd01:
   Description: the password used to log in to the SRS Gateway EPP server
-  Type: string
+  Type: input
   Example: foo2bar
   Schema:
     type: string
@@ -49,14 +49,14 @@ srsgw.serverIssuedClientCertificate02:
 
 srsgw.eppClid02:
   Description: the username used for transfer tests
-  Type: string
+  Type: input
   Example: clid-02
   Schema:
     type: string
 
 srsgw.eppPwd02:
   Description: the password used for transfer tests
-  Type: string
+  Type: input
   Example: foo3bar
   Schema:
     type: string
@@ -68,8 +68,10 @@ srsgw.rdapBaseURLs:
     The host name component of each URL **MUST** comply with the requirements
     for valid hostnames described in RFC 1123, section 2.1. Additionally, all
     IDN labels in the host name **MUST** comply with IDNA2008.
-  Type: array
-  Example: {"example": "https://rdap.example.com/example/"}
+  Type: input
+  Example:
+    - tld: example
+      baseURL: "https://rdap.example.com/example/"
   Schema:
     type: array
     minItems: 1

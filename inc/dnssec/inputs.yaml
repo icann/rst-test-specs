@@ -7,8 +7,14 @@ dnssec.dsRecords:
 
     There **MUST** be an entry for every TLD in the TLD set and there **MUST**
     be at least one DS record for each TLD.
-  Type: array
-  Example: {"example":[{"keyTag":12345,"alg":8,"digestType":2,"digest":"E2D3...5766"}]}
+  Type: input
+  Example:
+    - name: example
+      dsRecords:
+        - keyTag: 12345
+          alg: 8
+          digestType: 2
+          digest: "E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D"
   Schema:
     type: array
     minItems: 1
