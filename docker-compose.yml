@@ -14,3 +14,7 @@ services:
   pages:
     extends: spec
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app pages\""
+
+  lint:
+    extends: spec
+    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app includes yaml lint\""
