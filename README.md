@@ -36,14 +36,13 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
   policies that are applied to Zonemaster tests when generating the spec files
   and the Zonemaster profile.
 
-* [Makefile](Makefile) provides a way to generate the build artefacts. It uses
-  [gpp](https://logological.org/gpp) to create the YAML file, `perl` and a
-  couple of modules to create the JSON file, and
-  [tools/generate-html.pl](tools/generate-html.pl) to render the HTML.
+## Building the specification
 
-* If you don't want to install all the dependencies, but have
-  [Docker](https://docker.com) installed, you can use `docker compose up spec`
-  to build the YAML, JSON and HTML files.
+The simplest way to build the specification is to run `docker compose up spec`
+(you obviously need Docker). The first run will take a while as it needs to
+build the image, but it will be quite fast after that.
+
+To validate the spec, use `docker compose up lint`.
 
 ## Branches
 
