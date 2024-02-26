@@ -149,6 +149,12 @@ sub check_input {
     warn(sprintf("Input Parameter '%s' doesn't have a schema", $input->id)) unless (defined($input->schema));
 
     warn(sprintf("Input Parameter '%s' doesn't have an example", $input->id)) unless (exists($input->{'Example'}));
+
+    warn(sprintf("Schema for Input Parameter '%s' is invalid", $input->id)) if (defined($input->schema) && !validate_input_schema($input->schema));
+
+    warn(sprintf("Input Parameter '%s' type '%s' doesn't match the schema ('%s')", $input->id, $input->type, $input->{'Schema'}->{'type'})) unless ('file' eq $input->type || $input->type eq $input->{'Schema'}->{'type'});
+
+    warn(sprintf("Input Parameter '%s' has redundant examples", $input->id)) if (exists($input->{'Example'}) && exists($input->{'Schema'}->{'examples'}));
 }
 
 sub check_resource {
