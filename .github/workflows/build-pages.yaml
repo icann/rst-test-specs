@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build
-        run: docker compose up pages
+        run: docker compose run pages
 
       - name: package
         run: tar --directory=_site -z -c -v -f github-pages .

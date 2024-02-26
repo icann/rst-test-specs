@@ -38,7 +38,7 @@ documented at [icann/rst-api-spec](https://icann.github.io/rst-api-spec).
 
 ## Building the specification
 
-The simplest way to build the specification is to run `docker compose up spec`
+The simplest way to build the specification is to run `docker compose run spec`
 (you obviously need Docker). The first run will take a while as it needs to
 build the image, but it will be quite fast after that.
 
