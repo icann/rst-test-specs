@@ -6,7 +6,7 @@ use strict;
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub type        { $_[0]->{'Type'} }
 sub example     { $_[0]->{'Example'} }
-sub schema      { $_[0]->{'Schema'} ? JSON::Schema->new($_[0]->{'Schema'}) : undef }
+sub schema      { $_[0]->{'Schema'} ? JSON::Schema->new(numify($_[0]->{'Schema'})) : undef }
 
 sub jsonExample {
     my $self = shift;
@@ -51,6 +51,53 @@ sub suites {
     }
 
     return sort { $a->order cmp $b->order } values(%suites);
+}
+
+sub numify {
+    my $value = shift;
+
+    if ('HASH' eq ref($value)) {
+        return numify_hash($value);
+
+    } elsif ('ARRAY' eq ref($value)) {
+        return numify_array($value);
+
+    } else {
+        return numify_scalar($value);
+
+    }
+}
+
+sub numify_hash {
+    my $ref = shift;
+
+    my $ref2 = {};
+    foreach my $key (keys(%{$ref})) {
+        $ref2->{$key} = numify($ref->{$key});
+    }
+
+    return $ref2;
+}
+
+sub numify_array {
+    my $ref = shift;
+
+    my @array;
+    foreach my $value (@{$ref}) {
+        push (@array, numify($value));
+    }
+
+    return \@array;
+}
+
+sub numify_scalar {
+    my $value = shift;
+
+    if ($value =~ /^\d+\.?\d*$/) {
+        $value += 0;
+    }
+
+    return $value;
 }
 
 1;
