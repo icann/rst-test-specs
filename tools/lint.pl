@@ -1,6 +1,13 @@
 #!perl
-use List::Util qw(any none);
+use Digest::SHA qw(sha256_hex);
+use File::Slurp;
+use File::Spec;
 use ICANN::RST::Spec;
+use IPC::Open3;
+use JSON::XS;
+use List::Util qw(any none);
+use Symbol qw(gensym);
+use YAML::XS;
 use feature qw(say);
 use strict;
 
@@ -183,4 +190,31 @@ sub check_error {
     warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
 
     warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used);
+}
+
+sub validate_input_schema {
+    my $schema = shift;
+
+    my $json = JSON::XS->new->utf8->canonical->pretty->encode($schema->schema);
+    my $file = File::Spec->catfile(File::Spec->tmpdir, sha256_hex($json).'.json');
+
+    write_file($file, $json);
+
+    my $err = gensym;
+    my $pid = open3(undef, my $out, $err, qw(schemalint verify --skip-normalization), $file);
+
+    my $output = join('', $out->getlines);
+    $out->close;
+
+    my $errors = join('', $err->getlines);
+    $err->close;
+
+    waitpid($pid, 0);
+
+    if ($? > 0) {
+        warn($output.$errors);
+        return undef;
+    }
+
+    return 1;
 }
