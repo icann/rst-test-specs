@@ -14,3 +14,13 @@ services:
   pages:
     extends: spec
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app pages\""
+
+  pageserver:
+    extends: spec
+    command: "sh -c \"cd /app/_site ; python3 -m http.server 8080 -b 0.0.0.0\""
+    networks:
+      - rst
+
+networks:
+  rst:
+    external: true
