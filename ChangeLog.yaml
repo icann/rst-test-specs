@@ -1,4 +1,5 @@
 2024-02-28:
+  - added the [EPP_GREETING_MISSING_EN_LANG](#Error-EPP_GREETING_MISSING_EN_LANG) error to [epp-02](#Test-Case-epp-02).
   - Various changes to input parameter schema to address issues with OpenAPI code generators not being able to support various JSON Schema features.
   - The [`dnssecOps.primaryServer`](#Input-Parameter-dnssecOps.primaryServers) input parameter has been changed to an array to allow for multiple servers to be specified.
   - Documented the [test sequence](#Preamble-2.5.-Test-sequence).

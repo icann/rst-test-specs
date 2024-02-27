@@ -953,3 +953,8 @@ EPP_UNEXPECTED_COMMAND_FAILURE:
   Description: |
     A command that should have succeeded return a response with a status code of
     2000 or higher.
+
+EPP_GREETING_MISSING_EN_LANG:
+  Severity: ERROR
+  Description: |
+    A `<lang>` element with the value `en` was not found in the `<greeting>`.
