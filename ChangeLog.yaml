@@ -1,7 +1,7 @@
 2024-02-28:
-  - added the [EPP_GREETING_MISSING_EN_LANG](#Error-EPP_GREETING_MISSING_EN_LANG) error to [epp-02](#Test-Case-epp-02).
+  - Added the [EPP_GREETING_MISSING_EN_LANG](#Error-EPP_GREETING_MISSING_EN_LANG) error to [epp-02](#Test-Case-epp-02). The circumstances under which the [EPP_GREETING_RECOMMENDED_EXTENSION_MISSING](#Error-EPP_GREETING_RECOMMENDED_EXTENSION_MISSING) warning will be produced have been clarified.
   - Various changes to input parameter schema to address issues with OpenAPI code generators not being able to support various JSON Schema features.
-  - The [`dnssecOps.primaryServer`](#Input-Parameter-dnssecOps.primaryServers) input parameter has been changed to an array to allow for multiple servers to be specified.
+  - The [dnssecOps.primaryServer](#Input-Parameter-dnssecOps.primaryServers) input parameter has been changed to an array to allow for multiple servers to be specified.
   - Documented the [test sequence](#Preamble-2.5.-Test-sequence).
   - In order to simplify the specifications and avoid confusion, inter-case dependencies have been removed from the HTML representation.
   - Added the [DNS_INCONSISTENT_RESPONSES](#Error-DNS_INCONSISTENT_RESPONSES) to all test cases in the [DNS](#Test-Suite-StandardDNS) and [DNSSEC](#Test-Suite-StandardDNSSEC) suites.
@@ -22,12 +22,12 @@
 
 2024-02-14:
   - Links to references and notes about upgraded message severities in Zonemaster cases have been fixed.
-  - the [`epp.greeting`](#Input-Parameter-epp.greeting) input parameter is now a file upload.
+  - the [epp.greeting](#Input-Parameter-epp.greeting) input parameter is now a file upload.
   - added schemas to all input parameters that didn't have them.
   - "Case maturity metrics: ALPHA 7% (+2%), BETA 43% (-14%), GAMMA 50% (+12%)"
 
 2024-02-07:
-  - Zonemaster cases are now generated directly from [`Zonemaster::Engine`](https://metacpan.org/dist/Zonemaster-Engine), so now include all possible error messages.
+  - Zonemaster cases are now generated directly from [Zonemaster::Engine](https://metacpan.org/dist/Zonemaster-Engine), so now include all possible error messages.
   - Rather than placing "common" errors at the suite level, each case now lists all the errors it may emit. In the HTML output, the cases that may emit an error are listed for each error.
   - Began providing descriptions of errors, and adjusting their severity levels accordingly.
   - Protocol-related errors are now standardised, so for example, the SRSGW and IDN cases use the same errors as the EPP cases, for EPP-related errors.
