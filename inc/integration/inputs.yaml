@@ -5,6 +5,7 @@ integration.rdeSFTPHostname:
   Schema:
     type: string
     format: hostname
+
 integration.rdeSFTPDirectory:
   Description: |
     The directory on the SFTP server where deposit files may be found.
@@ -12,21 +13,40 @@ integration.rdeSFTPDirectory:
   Example: /path/to/deposits
   Schema:
     type: string
+
 integration.rdeSFTPUsername:
   Description: The username that can be used to connect to the SFTP server.
   Type: input
   Example: icann
   Schema:
     type: string
+
 integration.rriACL:
   Description: |
-    An array of IP addresses from which requests to the RRI will be sent.
+    An object representing the IP addresses from which requests to the RRI will
+    be sent.
   Type: input
-  Example: ["192.0.2.1", "2001:DB8::22:1"]
+  Example:
+    v4Addrs:
+      - 192.0.2.1
+      - 192.0.2.2
+    v6Addrs:
+      - 2001:DB8::22:1
+      - 2001:DB8::22:2
   Schema:
-    type: array
-    items:
-      type: string
-      anyOf:
-        - format: ipv4
-        - format: ipv6
+    type: object
+    required:
+      - v4Addrs
+      - v6Addrs
+    properties:
+      v4Addrs:
+        type: array
+        minItems: 1
+        items:
+          type: string
+          format: ipv4
+      v6Addrs:
+        type: array
+        items:
+          type: string
+          format: ipv6
