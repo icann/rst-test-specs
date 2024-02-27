@@ -91,6 +91,7 @@ dnssecOps.tsigKey:
         description: |
           The TSIG algorithm. The mnemonics are taken from
           <https://www.iana.org/assignments/tsig-algorithm-names/tsig-algorithm-names.xhtml>.
+        type: string
         enum:
           - HMAC-MD5.SIG-ALG.REG.INT
           - hmac-sha1

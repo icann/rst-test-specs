@@ -85,6 +85,7 @@ epp.hostModel:
   Type: input
   Example: objects
   Schema:
+    type: string
     enum:
       - objects
       - attributes
@@ -96,6 +97,7 @@ epp.secDNSInterfaces:
   Type: input
   Example: dsData
   Schema:
+    type: string
     enum:
       - dsData
       - keyData
@@ -165,6 +167,7 @@ epp.requiredContactTypes:
   Schema:
     type: array
     items:
+      type: string
       enum:
         - admin
         - tech

@@ -8,10 +8,12 @@ minimumRPMS.sunriseModels:
   Type: input
   Example: start-date
   Schema:
+    type: string
     enum:
       - start-date
       - end-date
       - both
+
 minimumRPMS.sunriseTLD:
   Description: |
     A TLD, or other registry-class zone, which has been configured to be in
@@ -21,6 +23,7 @@ minimumRPMS.sunriseTLD:
   Schema:
     type: string
     format: hostname
+
 minimumRPMS.claimsTLD:
   Description: |
     A TLD, or other registry-class zone, which has been configured to be in
