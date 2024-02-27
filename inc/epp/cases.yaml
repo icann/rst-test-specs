@@ -77,6 +77,14 @@ epp-02:
     8. With the exception of the `<svDate>` element, all values in the
        `<greeting>` **MUST** match those found in the `epp.greeting` input
        parameter.
+
+    This test case will produce the `EPP_GREETING_RECOMMENDED_EXTENSION_MISSING`
+    warning if any of the following XML namespace URIs are not included in the
+    `<svcExtension>` element:
+
+    * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
+    * `urn:ietf:params:xml:ns:epp:unhandled-namespaces-1.0`
+    * `urn:ietf:params:xml:schema:epp:loginSec-1.0`
   Input-Parameters:
     - epp.greeting
   Errors:
