@@ -9,12 +9,10 @@ pandoc \
     --to html \
     --standalone \
     --embed-resources=true \
-    --metadata title="Registry System Testing - Test Specifications" \
+    --metadata title="Registry System Testing (RST) Test Specifications" \
     --css=inc/html/style.css \
     --output="$SITEDIR/index.html" \
-    README.md
-
-BRANCH="$(git branch --show-current)" perl -pi -e 's!</head>!<base href="https://github.com/icann/rst-test-specs/tree/$ENV{BRANCH}/"></head>!' _site/index.html
+    etc/index.md
 
 make all
 
