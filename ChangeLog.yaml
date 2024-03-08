@@ -1,3 +1,7 @@
+2024-03-13:
+  - Added a number of new errors to [epp-07](#Test-Case-epp-07).
+  - "Case maturity metrics: ALPHA <1% (no change), BETA 50% (no change), GAMMA 50% (no change)"
+
 2024-02-28:
   - Added the [EPP_GREETING_MISSING_EN_LANG](#Error-EPP_GREETING_MISSING_EN_LANG) error to [epp-02](#Test-Case-epp-02). The circumstances under which the [EPP_GREETING_RECOMMENDED_EXTENSION_MISSING](#Error-EPP_GREETING_RECOMMENDED_EXTENSION_MISSING) warning will be produced have been clarified.
   - Various changes to input parameter schema to address issues with OpenAPI code generators not being able to support various JSON Schema features.
