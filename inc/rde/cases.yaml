@@ -100,7 +100,8 @@ rde-07:
     * `<domain:crDate>` (creation date), which **MUST** be before the timestamp
       in the deposit's '`<watermark>` element.
     * `<domain:exDate>` (expiry date), which **MUST** be after the timestamp
-      in the deposit's '`<watermark>` element.
+      in the deposit's '`<watermark>` element, unless the domain has the
+      `pendingDelete` status.
 
     Contact, host and registrar objects (including optional objects such as
     admin and tech contacts) which are referenced in domain objects **MUST**
