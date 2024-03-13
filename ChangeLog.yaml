@@ -1,6 +1,6 @@
 2024-03-13:
   - Added a number of new errors to [epp-07](#Test-Case-epp-07).
-  - In [rde-07(#Test-Case-rde-07), clarify that a domain with the `pendingDelete` status can have an `<exDate>` element that is before the watermark.
+  - In [rde-07](#Test-Case-rde-07), clarify that a domain with the `pendingDelete` status can have an `<exDate>` element that is before the watermark.
   - "Case maturity metrics: ALPHA <1% (no change), BETA 50% (no change), GAMMA 50% (no change)"
 
 2024-02-28:
