@@ -253,12 +253,14 @@ epp-07:
     test will be skipped.
 
     The test will confirm that the server checks and validates the values of
-    the following elements:
+    the following elements against the XML schema provided in RFC 5733:
 
     * `<contact:id>`
-    * `<contact:status>`
     * `<contact:postalInfo>` element(s)
     * `<contact:name>` element
+    * `<contact:org>` element
+    * `<contact:street>` element
+    * `<contact:city>` element
     * `<contact:cc>` element
     * `<contact:voice>`
     * `<contact:email>`
