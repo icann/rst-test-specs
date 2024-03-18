@@ -1,8 +1,8 @@
 This file describes each test [plan](#test-plans), [suite](#test-suites) and
 [case](#test-cases) in the RST service, as well as the
-[input parameters](#input-parameters) required for each, relevant
-[resources](#resources), <!--- any inter-case dependencies, --> and the
-[errors](#errors) that might occur during testing.
+[input parameters](#input-parameters) required for each; relevant
+[resources](#resources); <!--- any inter-case dependencies, --> and the
+[errors](#errors) that may occur during testing.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
@@ -21,7 +21,8 @@ suites*, which in turn include one or more *test cases*.
 There are two types of test plan described in this document:
 
 * **"Business as usual"** plans, which are used as part of the lifecycle of a
-  gTLD (Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway Test)
+  gTLD (e.g., Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
+  Test);
 
 * **RSP evaluation** plans, which are used as part of the [RSP evaluation
   program](https://community.icann.org/display/SPIR/RSP+%7C+Registry+Service+Provider+Pre-Evaluation).
@@ -36,7 +37,7 @@ matter, for example, Authoritative DNS or Registry Data Escrow.
 A *Test Case* describes a process for determining the conformance or
 acceptability of a certain element of the system.
 
-A test case consists of a *test procedure* which accepts zero or more **input
+A test case consists of a *test procedure* that accepts zero or more **input
 parameters**, and generates one or more **test results**.
 
 ## 2.3.1. Input parameters
@@ -48,11 +49,11 @@ example, service hostnames, credentials, and functional parameters. These
 ## 2.3.2. Test environments
 
 Each test plan indicates whether the test is to be carried out in the
-production environment, or whether a test, staging or OT&E environment may be
-used. In general, test plans which are designed for "business as usual" use
-during the lifecycle of a TLD **MUST** be carried out in the production
-registry infrastructure, while RSP evaluation tests **MAY** be carried out in
-test, staging or OT&E environments.
+production environment, or whether a test, staging or Operational Testing and
+Evaluation (OT&E) environment may be used. In general, test plans which are
+designed for "business as usual" use during the lifecycle of a TLD **MUST** be
+carried out in the production registry infrastructure, while RSP evaluation
+tests **MAY** be carried out in test, staging or OT&E environments.
 
 ## 2.3.3. Test results
 
@@ -108,7 +109,7 @@ will be sorted in canonical alphanumeric order and executed in that order.
 If a test case produces any `ERROR` or `CRITICAL` messages, the test run will
 stop at that point.
 
-Future versions may optimise the test sequence using knowledge of inter-case
+Future versions may optimize the test sequence using knowledge of intercase
 dependencies to allow certain parts of the sequence to be run in parallel.
 
 # 2.6. Key acronyms and terms
@@ -181,12 +182,12 @@ base Registry Agreement may be reviewed at
 <https://www.icann.org/en/registry-agreements/base-agreement>.
 
 KSK
-: Key Signing Key. A cryptographic key which acts as the Secure Entry Point
+: Key Signing Key. A cryptographic key that serves as the Secure Entry Point
 for a DNS zone, and which signs a DNS zone's ZSKs. A digest of this key is
 published in the parent zone (ie. the root zone for a TLD).
 
 ZSK
-: Zone Signing Key. A cryptographic key which signs a DNS zone's resource
+: Zone Signing Key. A cryptographic key that signs a DNS zone's resource
 records.
 
 CSK
