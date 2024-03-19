@@ -126,7 +126,7 @@ RSP
 services.
 
 DNS
-: Domain Name System. The internet's system of globally unique identifiers.
+: Domain Name System. The Internet's system of globally unique identifiers.
 
 TLD
 : Top-level domain. The highest level of the DNS namespace hierarchy.
@@ -201,10 +201,10 @@ Trademark Claims Periods (see [Specification 7 of the Registry
 Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-30-04-2023-en.html#specification7)).
 
 TMCH
-: Trademark Clearinghouse. The system established by ICANN to maintain a
-database of validated and registered trademarks which is used to enforce
-Rights Protection Mechanisms (RPMs) in gTLDs. The functional specifications of
-the TMCH are defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).
+: Trademark Clearinghouse. The system used by ICANN to maintain a database of
+validated and registered trademarks which is used to enforce Rights Protection
+Mechanisms (RPMs) in gTLDs. The functional specifications of the TMCH are
+defined in [RFC 9361](https://www.rfc-editor.org/info/rfc9361).
 
 SLA
 : Service Level Agreement. The registry performance specifications laid out in
