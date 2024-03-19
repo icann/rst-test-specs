@@ -21,8 +21,8 @@ suites*, which in turn include one or more *test cases*.
 There are two types of test plan described in this document:
 
 * **"Business as usual"** plans, which are used as part of the lifecycle of a
-  gTLD (e.g., Pre-Delegion Test, RSP/DNS RSP change Test, IDN Test, SRS Gateway
-  Test);
+  gTLD (e.g., Pre-Delegation Test, RSP/DNS RSP change Test, IDN Test, SRS
+  Gateway Test);
 
 * **RSP evaluation** plans, which are used as part of the [RSP evaluation
   program](https://community.icann.org/display/SPIR/RSP+%7C+Registry+Service+Provider+Pre-Evaluation).
