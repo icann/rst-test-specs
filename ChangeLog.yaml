@@ -1,5 +1,6 @@
 2024-03-20:
   - clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
+  - added `Configuration` section to the YAML file which holds internal test system configuration parameters.
 
 2024-03-13:
   - Added a number of new errors to [epp-07](#Test-Case-epp-07).

@@ -1,5 +1,5 @@
 ---
-RST-Test-Plan-Schema-Version: 1.9.0
+RST-Test-Plan-Schema-Version: 1.9.1
 Version: 3.1.#date %Y%j
 
 Last-Updated: #date %Y-%m-%d
@@ -8,6 +8,12 @@ Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
   Email: rst@icann.org
+
+Configuration:
+  - Name: \ZONEMASTER_VERSION
+    Value: "ZONEMASTER_VERSION"
+  - Name: \ZONEMASTER_ENGINE_VERSION
+    Value: "ZONEMASTER_ENGINE_VERSION"
 
 Preamble: |
 #exec sed 's/^/  /' inc/preamble.md

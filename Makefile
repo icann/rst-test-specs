@@ -34,7 +34,7 @@ includes:
 
 yaml:
 	@echo Compiling YAML...
-	@gpp -x $(SRC).yaml.in > $(SRC).yaml
+	@gpp -DZONEMASTER_VERSION=$(ZONEMASTER_VERSION) -DZONEMASTER_ENGINE_VERSION=$(ZONEMASTER_ENGINE_VERSION) -x $(SRC).yaml.in > $(SRC).yaml
 	@echo wrote $(SRC).yaml
 
 lint:
