@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.9.0
+  version: 1.9.1
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -20,6 +20,7 @@ components:
         - Preamble
         - ChangeLog
         - Contact
+        - Configuration
         - Test-Plans
         - Test-Suites
         - Test-Cases
@@ -67,6 +68,24 @@ components:
           type: object
           schema:
             $ref: "#/components/schemas/rstTestSpecContact"
+
+        Configuration:
+          description: |
+            A collection of configuration parameters for the RST test system
+            itself.
+          type: array
+          items:
+            type: object
+            required:
+              - Name
+              - Value
+            properties:
+              Name:
+                description: The name of the parameter.
+                type: string
+              Value:
+                description: The value of the parameter.
+                type: string
 
         Test-Plans:
           description: An object containing Test Plan objects.
