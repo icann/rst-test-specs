@@ -1,6 +1,17 @@
+2024-03-26:
+  - This is the final release of the test specifications before the start of the Public Comment. No changes to the specification will be published until after the Public Comment process has been completed.
+  - |
+    Since the [Registration Data Policy](https://www.icann.org/resources/pages/registration-data-policy-2024-02-21-en#trd-registrar-registry)
+    allows for different registry data models to apply to different registrar accounts (depending on whether or not there is an appropriate
+    legal basis, and data processing agreement is in place), the `general.minimalPublicDataSet` input parameter has been replaced with
+    [`general.registryDataModel`](#Input-Parameter-general.registryDataModel), which is an enum. To support this, the
+    [`epp.clid01DataModel`](#Input-Parameter-epp.clid01DataModel) and [`epp.clid02DataModel`](#Input-Parameter-epp.clid02DataModel) input
+    parameters have been added, so that different registry data models can be specified for each registrar account.
+
 2024-03-20:
   - clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
   - added `Configuration` section to the YAML file which holds internal test system configuration parameters.
+  - "Case maturity metrics: ALPHA <1% (no change), BETA 50% (no change), GAMMA 50% (no change)"
 
 2024-03-13:
   - Added a number of new errors to [epp-07](#Test-Case-epp-07).
