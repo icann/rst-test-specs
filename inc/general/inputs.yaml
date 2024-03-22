@@ -1,9 +1,31 @@
-general.minimalPublicDataSet:
+general.registryDataModel:
   Description: |
-    if true, then the registry only supports the minimum public data set, and
-    does not collect registrant and/or technical contact information from
-    registrars.
+    This input parameter describes the data model(s) supported by the registry,
+    determined in accordance with Section 7 of the Registration Data Policy. The
+    possible values are:
+
+    * `minimum`: the registry does not collect registrant contact information
+      from registrars. This policy applies to all registrars.
+    * `maximum`: the registry requires the transmission of registrant contact
+      information from registrars for all registrations. This policy applies to
+      all registrars.
+    * `per-registrar`: the registry may or may not require transmission of
+      registrant contact information, depending on whether there is an
+      appropriate legal basis, and a data processing agreement is in place
+      between the registry operator and the registrar. Therefore, the data model
+      is determined per-registrar rather than globally.
+
+    If the value of this parameter is `per-registrar`, then one of the registrar
+    accounts specified by the `epp.clid01` and `epp.clid02` input parameters
+    **MUST** be configured to use the minimum data model, and one **MUST** be
+    configured to use the maximum data model. The `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters are used to identify the data model
+    configured for each account.
   Type: input
-  Example: true
+  Example: minimal
   Schema:
-    type: boolean
+    type: string
+    enum:
+      - minimum
+      - maximum
+      - per-registrar
