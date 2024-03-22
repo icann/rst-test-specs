@@ -556,13 +556,14 @@ epp-14:
   Maturity: BETA
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
-    random ASCII domain names under each TLD in the TLD set. Depending on the
-    value of the `general.registryDataModel` input parameter, a contact
-    object (containing pseudo-random contact information) will be created
-    beforehand and used as the registrant. If the `epp.hostModel` parameter is
-    `objects`, then two host objects with pseudo-random names will be created
-    and used as the nameservers (otherwise the names will be provided as
-    attributes).
+    random syntactically valid ASCII domain names under each TLD in the TLD set.
+    Depending on the value of the `general.registryDataModel` and
+    `epp.requiredContactTypes` input parameters, one or more contact objects
+    will be created (using pseudo-random contact information) beforehand and
+    used as the registrant (and other) contacts. If the `epp.hostModel`
+    parameter is `objects`, then two host objects with syntactically valid
+    pseudo-random names will be created and used as the nameservers (otherwise
+    the names will be provided as attributes).
 
     The client will perform several `<create>` commands, each of which will
     test certain aspects of the server's processing of those commands, for
@@ -581,13 +582,11 @@ epp-14:
     * to confirm that the server does not accept commands which reference
       non-existent host/contact objects (if applicable)
     * to confirm that the server rejects a `<create>` command which
-      specifies a registrant contact (where the
-      `general.registryDataModel` input parameter is `minimum` or
-      `per-registrar`)
+      specifies a registrant contact (where the `general.registryDataModel`
+      input parameter is `minimum` or `per-registrar`)
     * to confirm that the server rejects a `<create>` command which does not
-      specify a registrant contact (where the
-      `general.registryDataModel` input parameter is `maximum` or
-      `per-registrar`)
+      specify a registrant contact (where the `general.registryDataModel` input
+      parameter is `maximum` or `per-registrar`)
     * to confirm that the server rejects a `<create>` command containing
       host objects when the `epp.hostModel` parameter is `attributes`
     * to confirm that the server rejects a `<create>` command containing
@@ -596,7 +595,11 @@ epp-14:
       `<create>` command without an authInfo command.
 
     Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
-    input parameters) will be used to create domains.
+    input parameters) will be used to create domains. If the value of the
+    `epp.registryDataModel` input parameter is `per-registrar`, then the
+    `epp.clid01DataModel` and `epp.clid02DataModel` input parameters will be
+    taken into consideration when determining whether contact objects are needed
+    to successfully create a domain name.
 
     Once the `<create>` commands have been processed, the client will then
     perform `<info>` commands to confirm that:
