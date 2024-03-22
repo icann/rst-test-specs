@@ -95,13 +95,15 @@ StandardEPP:
     TS_PASSFAIL
   Test-Cases: ^epp-
   Input-Parameters:
-    - general.minimalPublicDataSet
+    - general.registryDataModel
     - epp.clid01
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
+    - epp.clid01DataModel
     - epp.clid02
     - epp.pwd02
     - epp.serverIssuedClientCertificate02
+    - epp.clid02DataModel
     - epp.hostModel
     - epp.hostName
     - epp.registeredNames
@@ -142,12 +144,14 @@ StandardIDN:
     TS_PASSFAIL
   Test-Cases: ^idn-
   Input-Parameters:
-    - general.minimalPublicDataSet
+    - general.registryDataModel
     - epp.hostName
     - epp.clid01
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
+    - epp.clid01DataModel
+    - epp.clid02DataModel
     - epp.clid02
     - epp.pwd02
     - epp.hostModel
@@ -179,7 +183,7 @@ StandardSRSGateway:
     - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
-    - general.minimalPublicDataSet
+    - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
     - srsgw.eppClid02
@@ -189,6 +193,8 @@ StandardSRSGateway:
     - srsgw.rdapBaseURLs
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
+    - epp.clid01DataModel
+    - epp.clid02DataModel
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -241,9 +247,11 @@ MinimumRPMs:
     - minimumRPMS.sunriseModels
     - minimumRPMS.sunriseTLD
     - minimumRPMS.claimsTLD
-    - general.minimalPublicDataSet
+    - general.registryDataModel
     - epp.hostModel
     - epp.requiredContactTypes
+    - epp.clid01DataModel
+    - epp.clid02DataModel
 
 StandardIntegrationTest:
   Order: 10
