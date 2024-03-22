@@ -22,7 +22,7 @@ general.registryDataModel:
     `epp.clid02DataModel` input parameters are used to identify the data model
     configured for each account.
   Type: input
-  Example: minimal
+  Example: minimum
   Schema:
     type: string
     enum:
