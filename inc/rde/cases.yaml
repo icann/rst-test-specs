@@ -55,12 +55,12 @@ rde-05:
     The header object **MUST** reference the correct object XML namespace
     URIs.
 
-    The correct URIs is determined by the `general.minimalPublicDataSet` and
+    The correct URIs are determined by the `general.registryDataModel` and
     `epp.hostModel` input parameters.
 
-    * if the `general.minimalPublicDataSet` input parameter is `false`, then the
-      contact URI **MUST** be present. If the value is `true`, then it **MUST
-      NOT** be present.
+    * if the `general.registryDataModel` input parameter is `maximum` or
+      `per-registrar`, then the contact URI **MUST** be present. If the value is
+      `true`, then it **MUST NOT** be present.
 
     * if the `epp.hostModel` input parameter is 'objects', then the host URI
       **MUST** be present. If the value is `attributes`, then it **MUST NOT** be
@@ -95,7 +95,7 @@ rde-07:
     * `<domain:roid>` (which **MUST** have a repository ID registered with
       IANA)
     * at least one `<domain:status>` element
-    * `<domain:registrant>` (if `general.minimalPublicDataSet` is `false`)
+    * `<domain:registrant>` (if `general.registryDataModel` is `maximum`)
     * `<domain:clID>` (sponsoring registrar ID)
     * `<domain:crDate>` (creation date), which **MUST** be before the timestamp
       in the deposit's '`<watermark>` element.
@@ -163,8 +163,8 @@ rde-09:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
-    If the value of the `general.minimalPublicDataSet` input parameter is
-    `true`, then this test will be skipped.
+    If the value of the `general.registryDataModel` input parameter is
+    `minimum`, then this test will be skipped.
 
     * The value of the `<contact:id>` element **MUST** be unique in the deposit
     * The value of the `<contact:roid>` **MUST** have a repository ID registered
@@ -260,7 +260,7 @@ rde-14:
     The object policies included in the `<rdePolicy:policy>` object **MUST**
     conform to the Registration Data Policy and the applicable data model.
 
-    * If the `general.minimalPublicDataSet` input parameter is `true`, then
+    * If the `general.registryDataModel` input parameter is `minimum`, then
       contact objects **MUST NOT** be present in the deposit.
     * If the `epp.hostModel` input parameter is `attributes`, then
       host objects **MUST NOT** be present in the deposit.

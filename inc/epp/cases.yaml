@@ -65,7 +65,7 @@ epp-02:
        namespace URIs that are appropriate. The only mandatory URI that
        **MUST** be present is the domain namespace URI. The host and contact
        namespace URIs may be required depending on the `epp.hostModel` and
-       `general.minimalPublicDataSet` parameters.
+       `general.registryDataModel` parameters.
     6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
        namespace URIs that have been registered in the IANA registry, and that
        the mandatory extensions are also included.
@@ -249,8 +249,10 @@ epp-07:
     realistic values. No personal information will be transmitted as part
     of this test.
 
-    If the `general.minimalPublicDataSet` input parameter is `true`, this
-    test will be skipped.
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The test will confirm that the server checks and validates the values of
     the following elements against the XML schema provided in RFC 5733:
@@ -325,7 +327,7 @@ epp-08:
     This test will confirm that EPP clients are unable to perform `<info>`
     commands on objects that they do not sponsor.
 
-    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    If the `general.registryDataModel` input parameter is `minimum`, this
     test will be skipped.
 
     The client will connect using a set of alternate credentials and will
@@ -354,8 +356,10 @@ epp-09:
     commands (which would specify invalid property values) and accepts valid
     commands.
 
-    If the `general.minimalPublicDataSet` input parameter is `true`, this
-    test will be skipped.
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The test will confirm that the server checks and validates `<update>`
     commands which transform the values of the following elements:
@@ -418,7 +422,7 @@ epp-10:
     `epp-24` and will confirm that the server accepts the `<delete>` command
     with a `1xxx` response code.
 
-    If the `general.minimalPublicDataSet` input parameter is `true`, this
+    If the `general.registryDataModel` input parameter is `minimum`, this
     test will be skipped.
 
     Once the `<delete>` commands have been submitted, the client will perform
@@ -552,8 +556,8 @@ epp-14:
   Maturity: BETA
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
-    random ASCII domain names under each TLD in the TLD set. If the
-    `general.minimalPublicDataSet` input parameter is `false`, then a contact
+    random ASCII domain names under each TLD in the TLD set. Depending on the
+    value of the `general.registryDataModel` input parameter, a contact
     object (containing pseudo-random contact information) will be created
     beforehand and used as the registrant. If the `epp.hostModel` parameter is
     `objects`, then two host objects with pseudo-random names will be created
@@ -578,10 +582,12 @@ epp-14:
       non-existent host/contact objects (if applicable)
     * to confirm that the server rejects a `<create>` command which
       specifies a registrant contact (where the
-      `general.minimalPublicDataSet` input parameter is `true`)
+      `general.registryDataModel` input parameter is `minimum` or
+      `per-registrar`)
     * to confirm that the server rejects a `<create>` command which does not
       specify a registrant contact (where the
-      `general.minimalPublicDataSet`) input parameter is `false`
+      `general.registryDataModel` input parameter is `maximum` or
+      `per-registrar`)
     * to confirm that the server rejects a `<create>` command containing
       host objects when the `epp.hostModel` parameter is `attributes`
     * to confirm that the server rejects a `<create>` command containing
@@ -637,8 +643,10 @@ epp-15:
     linked object.
 
     If the `epp.hostModel` input parameter is `attributes`, **and** the
-    `general.minimalPublicDataSet` input parameter is `true`, then this test
-    will be skipped.
+    `general.registryDataModel` input parameter is `minimum`, then this test
+    will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The client will submit `<delete>` commands for any contact and host
     objects created during `epp-14`. The server **MUST** respond with a `2305`

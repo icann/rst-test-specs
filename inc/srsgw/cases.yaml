@@ -60,8 +60,10 @@ srsgw-03:
     This test confirms that contact objects created in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the value of the `general.minimalPublicDataSet` input parameter is
-    `true`, then this test will be skipped.
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The client will connect to the SRS Gateway EPP system, authenticate, and
     submit a `<create>` command for a pseudo-randomly generated contact
@@ -332,8 +334,10 @@ srsgw-11:
     This test confirms that contact objects updated in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the value of the `general.minimalPublicDataSet` input parameter is
-    `true`, then this test will be skipped.
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The test client will connect to the SRS Gateway EPP server and perform
     `<update>` commands on the objects created in `srsgw-03`. It will then
@@ -363,8 +367,10 @@ srsgw-12:
     This test confirms that contact objects delete in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the value of the `general.minimalPublicDataSet` input parameter is
-    `true`, then this test will be skipped.
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The test client will connect to the SRS Gateway EPP server and perform
     `<delete>` commands on objects created in `srsgw-03`. The server **MUST**
