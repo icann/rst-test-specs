@@ -80,9 +80,16 @@ epp.clid01DataModel:
   Description: |
     the data model configured for this registrar. This may be omitted and will
     in any case be ignored unless the value of the `general.registryDataModel`
-    input parameter is `per-registrar`. Consult the documentation for that
-    input parameter for the semantics of the permitted values for this
-    parameter.
+    input parameter is `per-registrar`.
+
+    * A value of `minimum` means that this registrar does not need to specify a
+      registrant object when creating a domain name.
+    * A value of `maximum` means that this registrar **MUST** specify a
+      registrant object when creating a domain name.
+
+    If the value of the `general.registryDataModel` input parameter is
+    `per-registrar`, then the value of this input parameter **MUST** be
+    different from the value of the `epp.clid02DataModel` input parameter.
   Type: input
   Example: minimum
   Schema:
@@ -90,15 +97,21 @@ epp.clid01DataModel:
     enum:
       - minimum
       - maximum
-      - per-registrar
 
 epp.clid02DataModel:
   Description: |
     the data model configured for this registrar. This may be omitted and will
     in any case be ignored unless the value of the `general.registryDataModel`
-    input parameter is `per-registrar`. Consult the documentation for that
-    input parameter for the semantics of the permitted values for this
-    parameter.
+    input parameter is `per-registrar`.
+
+    * A value of `minimum` means that this registrar does not need to specify a
+      registrant object when creating a domain name.
+    * A value of `maximum` means that this registrar **MUST** specify a
+      registrant object when creating a domain name.
+
+    If the value of the `general.registryDataModel` input parameter is
+    `per-registrar`, then the value of this input parameter **MUST** be
+    different from the value of the `epp.clid01DataModel` input parameter.
   Type: input
   Example: minimum
   Schema:
@@ -106,7 +119,6 @@ epp.clid02DataModel:
     enum:
       - minimum
       - maximum
-      - per-registrar
   
 epp.hostModel:
   Description: |
