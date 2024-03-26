@@ -127,3 +127,7 @@ table {
 th {
     font-weight:bold;
 }
+
+blockquote {
+  font-style: italic;
+}
