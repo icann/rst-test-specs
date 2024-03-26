@@ -264,7 +264,7 @@ into RST test cases.
 
 =head1 SYNOPSIS
 
-    generate-zonemaster-cases.pl [--errors] --version=VERSION ZONEMASTER_DIRECTORY
+    generate-zonemaster-cases.pl [--errors] --version=VERSION
 
 =head1 OPTIONS
 
@@ -272,8 +272,8 @@ into RST test cases.
 
 =item *
 
-C<--version> tells the script what version of Zonemaster is in
-C<ZONEMASTER_DIRECTORY>.
+C<--version> tells the script what version of Zonemaster should be referenced in
+the generated documentation.
 
 =item *
 
@@ -286,9 +286,6 @@ C<--version=VERSION> specifies the version of Zonemaster which should be provide
 in test case descriptions.
 
 =item *
-
-C<ZONEMASTER_DIRECTORY> is the only argument, and is the location of the
-Zonemaster repository on the local system.
 
 =back
 
