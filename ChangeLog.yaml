@@ -10,7 +10,7 @@
   - The algorithm mnemonics that can be specified in the [`dnssecOps.tsigKey`](#Input-Parameter-dnssecOps.tsigKey) input parameter have been restricted to those that are (a) applicable for DNS and (b) secure.
   - Error messages extracted from Zonemaster now include the tag descriptions from `Zonemaster::Engine`.
   - In [minimumRPMs-03](#Test-Case-minimumRPMs-03), the maximum time period between when the trademark claim notice acknowledgement and the submission of the domain `<create>` command has been increased from 48 hours to one year. The maturity of this test has been changed to BETA.
-  - "Case maturity metrics: ALPHA 0% (-1%), BETA 50% (no change), GAMMA 50% (no change)"
+  - "Case maturity metrics: ALPHA 0% (-1%), BETA 0% (-50%), GAMMA 100% (+50%)."
 
 2024-03-20:
   - clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
