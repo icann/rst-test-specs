@@ -10,17 +10,36 @@ use Pod::Usage;
 use URI;
 use YAML::XS;
 use Zonemaster::Engine;
-use constant {
-    PROFILE_URL => 'https://raw.githubusercontent.com/zonemaster/zonemaster-engine/%s/share/profile.json',
-    ZM_URL_FMT => 'https://github.com/zonemaster/zonemaster/blob/v%s/%s',
-    CASE_DESCRIPTION_TEMPLATE => 'This test case comes from version v%s of Zonemaster. For more information, please refer to the [Zonemaster documentation for this test case](%s).',
-    ERROR_DESCRIPTION_TEMPLATE => 'For more information about this error, please refer to the [Zonemaster documentation for the test case this error comes from](%s#:~:text=%s).',
-    UPGRADE_NOTE => "**Note:** the severity levels of one or more error codes for this test case have been changed from the default.",
-    INCONSISTENT_RESPONSES_ERROR_DESCRIPTION => 'One or more responses to DNS queries sent to the subject DNS servers were not consistent across all vantage points.',
-};
 use utf8;
 use open qw(:std :utf8);
 use strict;
+
+use constant {
+    PROFILE_URL =>
+        'https://raw.githubusercontent.com/zonemaster/zonemaster-engine/%s/'.
+        'share/profile.json',
+
+    ZM_URL_FMT =>
+        'https://github.com/zonemaster/zonemaster/blob/v%s/%s',
+
+    CASE_DESCRIPTION_TEMPLATE =>
+        'This test case comes from version v%s of Zonemaster. For more '.
+        'information, please refer to [the documentation for this test '.
+        'case](%s).',
+
+    ERROR_DESCRIPTION_TEMPLATE =>
+        "Zonemaster describes this error as follows:\n\n%s\n\nFor more '.
+        'information about this error, please refer to [the documentation '.
+        'for the test case this error comes from](%s#:~:text=%s).",
+
+    UPGRADE_NOTE =>
+        "_**Note:** the severity levels of one or more error codes for '.
+        'this test case have been changed from the default._",
+
+    INCONSISTENT_RESPONSES_ERROR_DESCRIPTION =>
+        'One or more responses to DNS queries sent to the subject DNS '.
+        'servers were not consistent across all vantage points.',
+};
 
 my $mode = 'cases';
 my $version;
