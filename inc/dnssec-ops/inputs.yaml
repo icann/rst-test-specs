@@ -89,19 +89,14 @@ dnssecOps.tsigKey:
         format: hostname
       algorithm:
         description: |
-          The TSIG algorithm. The mnemonics are taken from
+          The TSIG algorithm. The mnemonics are a subset of those published in
+          the IANA registry at
           <https://www.iana.org/assignments/tsig-algorithm-names/tsig-algorithm-names.xhtml>.
         type: string
         enum:
-          - HMAC-MD5.SIG-ALG.REG.INT
-          - hmac-sha1
-          - hmac-sha224
           - hmac-sha256
           - hmac-sha384
           - hmac-sha512
-          - hmac-sha256-128
-          - hmac-sha384-192
-          - hmac-sha512-256
       secret:
         description: The TSIG secret.
         type: string
