@@ -28,13 +28,13 @@ use constant {
         'case](%s).',
 
     ERROR_DESCRIPTION_TEMPLATE =>
-        "Zonemaster describes this error as follows:\n\n%s\n\nFor more '.
+        'Zonemaster describes this error as follows:\n\n> %s\n\nFor more '.
         'information about this error, please refer to [the documentation '.
-        'for the test case this error comes from](%s#:~:text=%s).",
+        'for the test case this error comes from](%s#:~:text=%s).',
 
     UPGRADE_NOTE =>
-        "_**Note:** the severity levels of one or more error codes for '.
-        'this test case have been changed from the default._",
+        '_**Note:** the severity levels of one or more error codes for '.
+        'this test case have been changed from the default._',
 
     INCONSISTENT_RESPONSES_ERROR_DESCRIPTION =>
         'One or more responses to DNS queries sent to the subject DNS '.
@@ -160,7 +160,6 @@ sub process_case {
         my $severity = $levels{$message} || $profile->{'test_levels'}->{uc($module)}->{$message} || 'WARNING';
 
         my $description = &{$tag_descriptions->{$message}}() || '(no description provided)';
-        $description = '> '.$description;
         $description =~ s/\n/\n> /g;
         $description =~ s/{/`{/g;
         $description =~ s/}/}`/g;
