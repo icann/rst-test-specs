@@ -65,8 +65,15 @@ error_levels:
 #
 case_comments:
   dnssec02: |
-    **Note:** References to "Key Signing Keys" in the description below also
-    refer to Combined Signing Keys, if used.
+    _**Note:** References to "Key Signing Keys" in the description below also
+    refer to Combined Signing Keys, if used._
+
+  dnssec03: |
+    _**Note:** while failure conditions defined in this test case are weaker
+    than those defined in [dnssec-93](#Test-Case-dnssec-93), as of
+    `Zonemaster::Engine` v5.0.0, this test case emits the
+    [`ZM_DS03_NO_DNSSEC_SUPPORT`](#Error-ZM_DS03_NO_DNSSEC_SUPPORT) error, which
+    is required to ensure that the TLD zone is properly signed with DNSSEC._
 
 #
 # the error level of messages can be overridden by putting the message tag in
