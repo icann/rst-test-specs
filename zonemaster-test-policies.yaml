@@ -13,6 +13,7 @@ skip:
   - connectivity04
   - consistency01
   - delegation06
+  - dnssec03
   - dnssec07
   - dnssec11
   - dnssec12

@@ -7,6 +7,9 @@
     [`general.registryDataModel`](#Input-Parameter-general.registryDataModel), which is an enum. To support this, the
     [`epp.clid01DataModel`](#Input-Parameter-epp.clid01DataModel) and [`epp.clid02DataModel`](#Input-Parameter-epp.clid02DataModel) input
     parameters have been added, so that different registry data models can be specified for each registrar account.
+  - The algorithm mnemonics that can be specified in the [`dnssecOps.tsigKey`](#Input-Parameter-dnssecOps.tsigKey) input parameter have been restricted to those that are (a) applicable for DNS and (b) secure.
+  - The `dnssec-03` test case has been removed since its failure condition is weaker than that of [dnssec-93](#Test-Case-dnssec-93).
+  - "Case maturity metrics: ALPHA <1% (no change), BETA 50% (no change), GAMMA 50% (no change)"
 
 2024-03-20:
   - clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
