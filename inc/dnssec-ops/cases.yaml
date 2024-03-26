@@ -1,6 +1,6 @@
 dnssecOps01-ZSKRollover:
   Summary: ZSK rollover
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform a ZSK rollover (as
     described in [Section 4.1.1 of
@@ -49,7 +49,7 @@ dnssecOps01-ZSKRollover:
   
 dnssecOps02-KSKRollover:
   Summary: KSK rollover
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform a CSK/KSK rollover
     (as described in [Sections 4.1.2 and 4.13 of
@@ -95,7 +95,7 @@ dnssecOps02-KSKRollover:
 
 dnssecOps03-AlgorithmRollover:
   Summary: algorithm rollover
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform an algorithm rollover
     (as described in [Section 4.1.4 of

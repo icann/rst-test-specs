@@ -1,6 +1,6 @@
 idn-01:
   Summary: Label validation test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the EPP server correctly accepts or rejects domain
     `<create>` commands for valid and invalid IDN labels, respectively.
@@ -27,7 +27,7 @@ idn-01:
 
 idn-02:
   Summary: Level 1 variant handling test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms the EPP server's conformance with the Level 1 variant
     support (no support for variant activation, all variants are blocked).
@@ -54,7 +54,7 @@ idn-02:
 
 idn-03:
   Summary: Level 2 variant handling test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms the EPP server's conformance with the Level 2 variant
     support (variants are supported within the same TLD).
@@ -91,7 +91,7 @@ idn-03:
 
 idn-04:
   Summary: Level 3 variant handling test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms the EPP server's conformance with the Level 3 variant
     support (variants are supported within variant TLD(s)).

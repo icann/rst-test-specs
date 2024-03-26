@@ -1,6 +1,6 @@
 integration-01:
   Summary: EPP -> RDAP Integration Test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the EPP and RDAP systems are properly integrated,
     that is, that transform commands performed on objects in the EPP system
@@ -37,7 +37,7 @@ integration-01:
 
 integration-02:
   Summary: EPP -> DNS Integration Test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the EPP and DNS systems are properly integrated,
     that is, that transform commands performed on objects in the EPP system
@@ -58,7 +58,7 @@ integration-02:
 
 integration-03:
   Summary: EPP -> RDE Integration Test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the EPP and RDE systems are properly integrated,
     that is, that objects created in the EPP system are reflected in a valid

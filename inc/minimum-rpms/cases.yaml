@@ -1,6 +1,6 @@
 minimumRPMs-01:
   Summary: Claims <check> command test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test is used to confirm the conformance of the EPP server's
     implementation of the Claims Check Form, as described in Section
@@ -39,7 +39,7 @@ minimumRPMs-01:
 minimumRPMs-02:
   Summary: |
     Sunrise domain/launch application <create> command test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test is used to confirm the conformance of the EPP server's
     implementation of the Sunrise Create Form, as described in Section
@@ -100,7 +100,7 @@ minimumRPMs-02:
 
 minimumRPMs-03:
   Summary: Trademark claims domain <create> command test
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test is used to confirm the conformance of the EPP server's
     implementation of the Claims Create Form, as described in Section

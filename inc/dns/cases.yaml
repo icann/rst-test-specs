@@ -1,6 +1,6 @@
 dns-zz-idna2008-compliance:
   Summary: IDNA2008 compliance check
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     In addition to the other tests case in this suite, which come from
     Zonemaster, this test case exists to confirm that all DNS host names which

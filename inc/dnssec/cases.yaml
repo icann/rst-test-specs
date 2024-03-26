@@ -1,6 +1,6 @@
 dnssec-91:
   Summary: Permitted signing algorithms
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     In addition to the requirements outlined in `dnssec-05`, this test imposes
     an additional requirement on the signing algorithms used to sign zones.
@@ -14,7 +14,7 @@ dnssec-91:
 
 dnssec-92:
   Summary: Permitted DS record hash algorithm(s)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
     be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
@@ -24,7 +24,7 @@ dnssec-92:
 
 dnssec-93:
   Summary: NSEC3 iterations check
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     RFC 9276 defines best practice relating to the use of NSEC3 for
     Authenticated Denial of Existence. This test case verifies that the zone's

@@ -1,6 +1,6 @@
 srsgw-01:
   Summary: IPv4 and IPv6 connectivity
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the SRS Gateway EPP system is reachable over IPv4
     and IPv6.
@@ -19,7 +19,7 @@ srsgw-01:
 
 srsgw-02:
   Summary: Host <create> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that host objects created in the SRS Gateway EPP system
     are correctly synchronized with the primary registry system.
@@ -55,7 +55,7 @@ srsgw-02:
 
 srsgw-03:
   Summary: Contact <create> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that contact objects created in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -92,7 +92,7 @@ srsgw-03:
 
 srsgw-04:
   Summary: Domain <create> synchronization
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that domain objects created in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -129,7 +129,7 @@ srsgw-04:
 
 srsgw-05:
   Summary: Domain <renew> synchronisation
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the expiry dates of domain objects renewed in the
     SRS Gateway EPP system are correctly synchronized with the primary
@@ -161,7 +161,7 @@ srsgw-05:
 
 srsgw-06:
   Summary: Domain <transfer> synchronisation
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that transfer requests submitted in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -201,7 +201,7 @@ srsgw-06:
 
 srsgw-07:
   Summary: Domain <transfer> approval synchronisation
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that transfer request approvals submitted in the SRS
     Gateway EPP system are correctly synchronized with the primary registry
@@ -236,7 +236,7 @@ srsgw-07:
 
 srsgw-08:
   Summary: Domain <delete> synchronisation
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that domain objects deleted in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -267,7 +267,7 @@ srsgw-08:
 
 srsgw-09:
   Summary: Host <update> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that host objects updated in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -299,7 +299,7 @@ srsgw-09:
 
 srsgw-10:
   Summary: Host <delete> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that host objects deleted in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -329,7 +329,7 @@ srsgw-10:
 
 srsgw-11:
   Summary: Contact <update> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that contact objects updated in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -362,7 +362,7 @@ srsgw-11:
 
 srsgw-12:
   Summary: Contact <delete> synchronization (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that contact objects delete in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
@@ -394,7 +394,7 @@ srsgw-12:
 
 srsgw-13:
   Summary: Domain RDAP synchronization
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the SRS Gateway's RDAP service provides responses
     to domain lookups that match those of the primary registry RDAP server.
@@ -414,7 +414,7 @@ srsgw-13:
 
 srsgw-14:
   Summary: Nameserver RDAP synchronization
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the SRS Gateway's RDAP service provides responses
     to domain lookups that match those of the primary registry RDAP server.
@@ -437,7 +437,7 @@ srsgw-14:
 
 srsgw-15:
   Summary: Registrar RDAP synchronization
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     This test confirms that the SRS Gateway's RDAP service provides responses
     to registrar (entity) lookups that match those of the primary registry

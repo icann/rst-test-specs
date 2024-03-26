@@ -1,6 +1,6 @@
 rdap-91:
   Summary: TLS version conformance check
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     **NOTE: this test case is a placeholder for a test case that will eventually
     be added to the RDAP Conformance Tool.**
@@ -37,7 +37,7 @@ rdap-91:
 
 rdap-92:
   Summary: Service port consistency check
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     **NOTE: this test case is a placeholder for a test case that will eventually
     be added to the RDAP Conformance Tool.**

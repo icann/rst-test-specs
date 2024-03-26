@@ -1,6 +1,6 @@
 rde-01:
   Summary: validate deposit filename format
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     * The deposit filename **MUST** conform to the format specified in the RA.
     * The type of the deposit **MUST** be `FULL`.
@@ -11,7 +11,7 @@ rde-01:
 
 rde-02:
   Summary: validate signature over deposit file
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The PGP signature **MUST** be valid for the deposit file and the RSP's
     key.
@@ -23,7 +23,7 @@ rde-02:
 
 rde-03:
   Summary: decrypt deposit file(s)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     It **MUST** be possible to decrypt the deposit file using the RST key. The
     PGP public key for which the deposit **MUST** be encrypted may be found in
@@ -35,7 +35,7 @@ rde-03:
 
 rde-04:
   Summary: validate XML/CSV
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     * XML deposit files **MUST** be well-formed and validate against the XML
       schema.
@@ -50,7 +50,7 @@ rde-04:
 
 rde-05:
   Summary: validate object types
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The header object **MUST** reference the correct object XML namespace
     URIs.
@@ -74,7 +74,7 @@ rde-05:
 
 rde-06:
   Summary: validate object counts
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The number of each type of object **MUST** match the number of objects
     actually present in the deposit file.
@@ -83,7 +83,7 @@ rde-06:
 
 rde-07:
   Summary: validate domain objects
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     Domain objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -123,7 +123,7 @@ rde-07:
 
 rde-08:
   Summary: validate host objects (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     Host objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -157,7 +157,7 @@ rde-08:
 
 rde-09:
   Summary: validate contact objects (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     Contact objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -191,7 +191,7 @@ rde-09:
 
 rde-10:
   Summary: validate registrar objects
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     Registrar objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -212,7 +212,7 @@ rde-10:
 
 rde-11:
   Summary: validate IDN table objects (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     IDN table objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -228,7 +228,7 @@ rde-11:
 
 rde-12:
   Summary: validate NNDN objects
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     NNDN table objects (whether CSV or XML) **MUST** have the required object
     properties, and the values of those object properties **MUST** be
@@ -241,7 +241,7 @@ rde-12:
 
 rde-13:
   Summary: validate EPP parameters object
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The EPP Parameters object **MUST** match the `<greeting>` element provided
     as an input parameter.
@@ -255,7 +255,7 @@ rde-13:
 
 rde-14:
   Summary: validate policy object (if applicable)
-  Maturity: BETA
+  Maturity: GAMMA
   Description: |
     The object policies included in the `<rdePolicy:policy>` object **MUST**
     conform to the Registration Data Policy and the applicable data model.
