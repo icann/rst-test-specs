@@ -78,7 +78,7 @@ foreach my $module (qw(Address Connectivity Consistency Delegation DNSSEC Namese
 
         next if (any { $case eq $_ } @{$config->{'skip'}});
 
-        process_case($case, $module, @{$meta->{$case}});
+        process_case($case, $module, $class->tag_descriptions, @{$meta->{$case}});
     }
 }
 
@@ -99,7 +99,7 @@ print $yaml;
 exit(0);
 
 sub process_case {
-    my ($case, $module, @messages) = @_;
+    my ($case, $module, $tag_descriptions, @messages) = @_;
 
     #
     # transform case ID into one suitable for RST
@@ -140,6 +140,12 @@ sub process_case {
     foreach my $message (sort(@messages)) {
         my $severity = $levels{$message} || $profile->{'test_levels'}->{uc($module)}->{$message} || 'WARNING';
 
+        my $description = &{$tag_descriptions->{$message}}() || '(no description provided)';
+        $description = '> '.$description;
+        $description =~ s/\n/\n> /g;
+        $description =~ s/{/`{/g;
+        $description =~ s/}/}`/g;
+
         $upgraded = 1 if (defined($levels{$message}) && $levels{$message} ne $profile->{'test_levels'}->{uc($module)}->{$message});
 
         #
@@ -160,6 +166,7 @@ sub process_case {
         $errors->{$message} = {
             'Description' => sprintf(
                 ERROR_DESCRIPTION_TEMPLATE,
+                $description,
                 $url,
                 substr($message, 3),
             ),
