@@ -822,12 +822,12 @@ EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT:
     The server accepts a `<delete>` command for a host object that has the
     `linked` status.
 
-EPP_LOGIN_UNEXEPECTEDLY_FAILED:
+EPP_LOGIN_UNEXPECTEDLY_FAILED:
   Severity: ERROR
   Description: |
     The client was not able to authenticate with the provided credentials.
 
-EPP_LOGIN_UNEXEPECTEDLY_SUCCEEDED:
+EPP_LOGIN_UNEXPECTEDLY_SUCCEEDED:
   Severity: ERROR
   Description: |
     A `<login>` command that should have failed unexpectedly succeeded.
