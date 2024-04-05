@@ -160,6 +160,10 @@ sub print_toc {
     print_error_toc_list();
     print $h->close(li);
 
+    print $h->open(li);
+    print_provider_toc_list();
+    print $h->close(li);
+
     print $h->li($h->a({href => '#meta'}, 'About this document'));
 
     print $h->close(ol);
@@ -335,6 +339,25 @@ sub print_error_toc_list {
     print $h->close(details);
 }
 
+sub print_provider_toc_list {
+    print $h->open(details, {'open' => 1});
+
+    print $h->summary($h->a({href => '#data-providers'}, 'Data Providers'));
+
+    print $h->open(ol);
+
+    foreach my $provider ($spec->providers) {
+        print $h->li($h->a(
+            {href => sprintf('#Data-Provider-%s', $provider->id)},
+            e($provider->id),
+        ));
+    }
+
+    print $h->close(ol);
+
+    print $h->close(details);
+}
+
 sub print_main {
     print $h->open('main');
 
@@ -353,6 +376,8 @@ sub print_main {
     print_inputs();
 
     print_errors();
+
+    print_providers();
 
     print_meta();
 
@@ -788,6 +813,8 @@ sub print_suite {
 
 =pod
 
+This is disabled until it becomes meaningful.
+
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Sequence diagram', $section, $i, ++$j)));
@@ -926,6 +953,30 @@ sub print_case {
     print $h->close(details);
 
     print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Data providers', $section, $i, ++$j)));
+    print $h->p('This test case uses the following data providers(s):');
+
+    my @providers = $case->providers;
+    if (scalar(@providers) < 1) {
+        print $h->ul($h->li($h->em('None specified.')));
+
+    } else {
+        print $h->open(ul);
+
+        foreach my $provider (@providers) {
+            print $h->li($h->a(
+                { href => sprintf('#Data-Provider-%s', $provider->id) },
+                e($provider->id),
+            ));
+        }
+
+        print $h->close(ul);
+    }
+
+    print $h->close(details);
+
+    print $h->open(details);
     print $h->summary($h->h4(sprintf('%u.%u.%u. Resources', $section, $i, ++$j)));
     print $h->p('The following resources may be required to prepare for this
                     test case, in addition to those defined in the test
@@ -951,6 +1002,8 @@ sub print_case {
     print $h->close(details);
 
 =pod
+
+This is disabled until it becomes meaningful.
 
     print $h->open(details);
 
@@ -1136,7 +1189,7 @@ sub print_errors {
         print $h->open(section);
 
         print_error($error, ++$i);
-        
+
         print $h->close(section);
     }
 
@@ -1181,7 +1234,89 @@ sub print_error {
     }
 
     print $h->close(details);
+}
 
+sub print_providers {
+    print $h->a({name => 'providers'});
+    print $h->h2(sprintf('%d. Data Providers', ++$section));
+
+    my $i = 0;
+    foreach my $provider ($spec->providers) {
+        print $h->open(section);
+
+        print_provider($provider, ++$i);
+
+        print $h->close(section);
+    }
+
+    say STDERR 'wrote errors';
+}
+
+sub print_provider {
+    my ($provider, $i) = @_;
+
+    print $h->a({name => sprintf('Data-Provider-%s', $provider->id)});
+
+    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($provider->id)));
+
+    my $j = 0;
+
+    print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
+    print $provider->description->html(3);
+
+    print $h->h4(sprintf('%u.%u.%u. Data table', $section, $i, ++$j));
+
+    print $h->open(details);
+
+    print $h->open('table');
+
+    my @columns = $provider->columns;
+
+    print $h->thead([
+        $h->tr([ map { $h->th($h->pre(e($_->name))) } @columns ]),
+        $h->tr([ map { $h->th($h->pre(e($_->type))) } @columns ]),
+        $h->tr([ map { $h->th($_->description->raw_html) } @columns ]),
+    ]);
+
+    print $h->tbody([
+        map {
+            $h->tr([
+                map {
+                    $h->td($h->pre(e($_)))
+                }
+                @{$_}
+            ])
+        }
+        @{$provider->rows}
+    ]);
+
+    print $h->close('table');
+
+    print $h->close(details);
+
+    print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Test cases', $section, $i, ++$j)));
+    print $h->p('This data provider is used by the following test cases:');
+
+    my @cases = $provider->cases;
+    if (scalar(@cases) < 1) {
+        print $h->ul($h->li($h->em('None specified.')));
+
+    } else {
+        print $h->open(ul);
+
+        foreach my $case (@cases) {
+            print $h->li($h->a(
+            { href => sprintf('#Test-Case-%s', $case->id) },
+            e($case->id),
+            ));
+        }
+
+        print $h->close(ul);
+    }
+
+    print $h->close(details);
 }
 
 sub print_footer {
