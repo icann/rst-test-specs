@@ -324,15 +324,15 @@ epp-08:
   Summary: Contact object access control (if applicable)
   Maturity: GAMMA
   Description: |
-    This test will confirm that EPP clients are unable to perform `<info>` and
-    `<update>` commands on objects that they do not sponsor.
+    This test will confirm that EPP clients are unable to perform `<info>`
+    commands on objects that they do not sponsor.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
     test will be skipped.
 
     The client will connect using a set of alternate credentials and will
     submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** respond with a 2201 "authorization error"
+    `epp-08`. The server **MUST** respond with a 2201 "authorization error"
     response.
   Dependencies:
     - epp-07
