@@ -1,5 +1,5 @@
 ---
-RST-Test-Plan-Schema-Version: 1.9.1
+RST-Test-Plan-Schema-Version: 1.10.0
 Version: 3.1.#date %Y%j
 
 Last-Updated: #date %Y-%m-%d
@@ -70,3 +70,6 @@ Errors:
 #exec sed 's/^/  /' inc/srsgw/errors.yaml
 #exec sed 's/^/  /' inc/idn/errors.yaml
 #exec sed 's/^/  /' inc/integration/errors.yaml
+
+Data-Providers:
+#exec sed 's/^/  /' tmp/data-providers.yaml
