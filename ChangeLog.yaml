@@ -1,3 +1,10 @@
+2024-05-15:
+  - This is the first release since the end of the Public Comment period, but does any changes made as a result of that proceeding. These will come in a future release.
+  - The specification has been updated to include *data providers* which are associated with test cases.
+  - Clarified that the [epp-05](#Test-Case-epp-05) test case will be skipped if the server uses host attributes.
+  - Clarified that the [epp-06](#Test-Case-epp-06) test case will be skipped if the `general.registryDataModel` input parameter is `minimum`.
+  - Updated the wording of [epp-08](#Test-Case-epp-08) to clarify that both `<info>` and `<update>` commands will be used.
+
 2024-03-26:
   - This is the final release of the test specifications before the start of the Public Comment. No changes to the specification will be published until after the Public Comment process has been completed.
   - |

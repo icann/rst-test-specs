@@ -191,6 +191,9 @@ epp-05:
 
     A "syntactically valid" hostname is one that complies with the format
     specified in RFC 1123 (this test case does not consider IDN names).
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will be
+    skipped.
   Input-Parameters:
     - epp.registeredNameservers
   Dependencies:
@@ -221,6 +224,9 @@ epp-06:
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
       `true`. The ID will be generated using random characters.
+
+    If the `general.registryDataModel` input parameter is `minimum`, this
+    test will be skipped.
   Input-Parameters:
     - epp.registeredContacts
   Dependencies:
