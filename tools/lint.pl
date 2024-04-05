@@ -49,6 +49,11 @@ sub check_spec {
     foreach my $error ($spec->errors) {
         check_error($error);
     }
+
+    say 'checking data providers...';
+    foreach my $provider ($spec->providers) {
+        check_provider($provider);
+    }
 }
 
 sub check_plan {
@@ -222,6 +227,12 @@ sub check_error {
     warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
 
     warn(sprintf("Error '%s' is not used by any cases", $error->id)) unless ($used);
+}
+
+sub check_provider {
+    my $provider = shift;
+
+    # TODO
 }
 
 sub validate_input_schema {
