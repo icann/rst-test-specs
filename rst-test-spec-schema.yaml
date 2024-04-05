@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.9.1
+  version: 1.10.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -27,6 +27,7 @@ components:
         - Input-Parameters
         - Resources
         - Errors
+        - Data-Providers
 
       properties:
         RST-Test-Plan-Schema-Version:
@@ -135,6 +136,14 @@ components:
               type: object
               schema:
                 $ref: "#/components/schemas/rstError"
+        Data-Providers:
+          description: An object containing Data Provider objects.
+          type: object
+          patternProperties:
+            "^.+$":
+              type: object
+              schema:
+                $ref: "#/components/schemas/rstDataProvider"
 
     rstTestSpecContact:
       description: |
@@ -275,6 +284,11 @@ components:
             in addition to those specified by the test suite(s) that use
             this test case.
           type: array
+        Data-Providers:
+          description: |
+            An array of Data Provider IDs which identify the Data Provider(s)
+            that will be used to perform tests for this test case.
+          type: array
 
     rstInputParameter:
       description: An object describing an input parameter.
@@ -334,3 +348,68 @@ components:
             - WARNING
             - ERROR
             - CRITICAL
+
+    rstDataProvider:
+      description: |
+        An object describing a Data Provider.
+      type: object
+      required:
+        - Description
+        - Columns
+        - Rows
+      properties:
+        Description:
+          description: A description of the Data Provider in Markdown format.
+          type: string
+        Columns:
+          description: A list of columns.
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/rstDataProviderColumn"
+        Rows:
+          description: |
+            A two-dimensional array (array of arrays) containing the data.
+          type: array
+          minItems: 1
+          items:
+            type: array
+            minItems: 1
+
+    rstDataProviderColumn:
+      description: An object describing a column in a data provider.
+      type: object
+      required:
+        - Name
+        - Description
+        - Type
+      properties:
+        Name:
+          description: The name of the column.
+          type: string
+        Description:
+          description: A description of the column in Markdown format.
+          type: string
+        Type:
+          description: |
+            The type of the column. The possible values are a subset of the
+            basic JSON Schema types found at
+            <https://json-schema.org/understanding-json-schema/reference/type>.
+            The permitted values are:
+
+            * `string` - a sequence of Unicode text.
+            * `integer` - a positive or negative number with no fractional part.
+            * `number` - a positive or negative decimal number which may
+              optionally have a fractional part.
+            * `boolean` - `true` or `false`.
+          type: string
+          enum:
+            - string
+            - integer
+            - number
+            - boolean
+        Nullable:
+          description: Whether this column can contain a `NULL` value.
+          type: boolean
+          default: false
+
