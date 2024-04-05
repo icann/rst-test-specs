@@ -37,6 +37,12 @@ sub errors {
     return sort { $a->id cmp $b->id } map { $self->spec->error($_) } @{$self->{'Errors'}};
 }
 
+sub providers {
+    my $self = shift;
+
+    return sort { $a->id cmp $b->id } map { $self->spec->provider($_) } @{$self->{'Data-Providers'}};
+}
+
 sub dependencies {
     my $self = shift;
 
@@ -115,5 +121,9 @@ A list of test cases that depend on this test case.
 =head2 suites()
 
 A list of all L<ICANN::RST::Suite> objects that use this test case.
+
+=head2 providers()
+
+A list of all L<ICANN::RST::DataProvider> objects used by this test case.
 
 =cut

@@ -2,6 +2,7 @@ package ICANN::RST::Spec;
 use Carp;
 use ICANN::RST::Case;
 use ICANN::RST::ChangeLog;
+use ICANN::RST::DataProvider;
 use ICANN::RST::Error;
 use ICANN::RST::Input;
 use ICANN::RST::Plan;
@@ -10,7 +11,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => v1.9.1;
+use constant SCHEMA_VERSION => v1.10.0;
 use feature qw(say);
 use strict;
 
@@ -31,12 +32,13 @@ sub new {
     # precompile everything
     #
     $self->{'_preamble'}    = ICANN::RST::Text->new($self->spec->{'Preamble'});
-    $self->{'_plans'}       = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Plan->new($a,  $b, $self)       } %{$self->spec->{'Test-Plans'}}        ];
-    $self->{'_suites'}      = [ sort { $a->order <=> $b->order  } pairmap { ICANN::RST::Suite->new($a, $b, $self)       } %{$self->spec->{'Test-Suites'}}       ];
-    $self->{'_cases'}       = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Case->new($a,  $b, $self)       } %{$self->spec->{'Test-Cases'}}        ];
-    $self->{'_inputs'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Input->new($a, $b, $self)       } %{$self->spec->{'Input-Parameters'}}  ];
-    $self->{'_resources'}   = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Resource->new($a, $b, $self)    } %{$self->spec->{'Resources'}}         ];
-    $self->{'_errors'}      = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::Error->new($a, $b, $self)       } %{$self->spec->{'Errors'}}            ];
+    $self->{'_plans'}       = [ sort { $a->order <=> $b->order  } pairmap {     ICANN::RST::Plan     -> new($a, $b, $self) } %{$self->spec->{'Test-Plans'}}       ];
+    $self->{'_suites'}      = [ sort { $a->order <=> $b->order  } pairmap {     ICANN::RST::Suite    -> new($a, $b, $self) } %{$self->spec->{'Test-Suites'}}      ];
+    $self->{'_cases'}       = [ sort {    $a->id cmp $b->id     } pairmap {     ICANN::RST::Case     -> new($a, $b, $self) } %{$self->spec->{'Test-Cases'}}       ];
+    $self->{'_inputs'}      = [ sort {    $a->id cmp $b->id     } pairmap {     ICANN::RST::Input    -> new($a, $b, $self) } %{$self->spec->{'Input-Parameters'}} ];
+    $self->{'_resources'}   = [ sort {    $a->id cmp $b->id     } pairmap {   ICANN::RST::Resource   -> new($a, $b, $self) } %{$self->spec->{'Resources'}}        ];
+    $self->{'_errors'}      = [ sort {    $a->id cmp $b->id     } pairmap {    ICANN::RST::Error     -> new($a, $b, $self) } %{$self->spec->{'Errors'}}           ];
+    $self->{'_providers'}   = [ sort {    $a->id cmp $b->id     } pairmap { ICANN::RST::DataProvider -> new($a, $b, $self) } %{$self->spec->{'Data-Providers'}}   ];
 
     return $self;
 }
@@ -67,12 +69,14 @@ sub cases           { @{ $_[0]->{'_cases'} }                                    
 sub inputs          { @{ $_[0]->{'_inputs'} }                                           }
 sub resources       { @{ $_[0]->{'_resources'} }                                        }
 sub errors          { @{ $_[0]->{'_errors'} }                                           }
+sub providers       { @{ $_[0]->{'_providers'} }                                        }
 sub plan            { my ($self, $id) = @_ ; return $self->find($id, $self->plans)      }
 sub suite           { my ($self, $id) = @_ ; return $self->find($id, $self->suites)     }
 sub case            { my ($self, $id) = @_ ; return $self->find($id, $self->cases)      }
 sub resource        { my ($self, $id) = @_ ; return $self->find($id, $self->resources)  }
 sub error           { my ($self, $id) = @_ ; return $self->find($id, $self->errors)     }
 sub input           { my ($self, $id) = @_ ; return $self->find($id, $self->inputs)     }
+sub provider        { my ($self, $id) = @_ ; return $self->find($id, $self->providers)  }
 
 sub find {
     my ($self, $needle, @haystack) = @_;
@@ -150,11 +154,11 @@ Returns an array of L<ICANN::RST::Suite> objects.
 
 Returns the L<ICANN::RST::Suite> object with the given ID.
 
-=head2 resources
+=head2 resources()
 
 Returns an array of L<ICANN::RST::Resource> objects.
 
-=head2 resource
+=head2 resource($id)
 
 Returns the L<ICANN::RST::Resource> object with the given ID.
 
@@ -180,7 +184,13 @@ Returns an array of L<ICANN::RST::Error> objects.
 
 =head2 error($id)
 
-Returns the L<ICANN::RST::Error> object with the given ID.
+=head2 providers()
+
+Returns an array of L<ICANN::RST::Error> objects.
+
+=head2 provider($id)
+
+Returns the L<ICANN::RST::DataProvider> object with the given ID.
 
 =head2 spec()
 
