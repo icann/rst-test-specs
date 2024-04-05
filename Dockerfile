@@ -17,7 +17,6 @@ RUN apk add --quiet \
     openssl-dev \
     pandoc \
     go \
-    perl \
     perl-app-cpanminus \
     perl-autovivification \
     perl-carp-assert \
@@ -68,7 +67,8 @@ RUN apk add --quiet \
     perl-uri \
     perl-xml-libxml \
     perl-yaml \
-    perl-yaml-libyaml
+    perl-yaml-libyaml \
+    perl-spreadsheet-xlsx
 
 #
 # we have to compile this the old-fashioned way!
