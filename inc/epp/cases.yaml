@@ -319,6 +319,8 @@ epp-07:
     - EPP_SERVICE_PORT_UNREACHABLE
     - EPP_TLS_CONNECTION_ERROR
     - EPP_XML_PARSE_ERROR
+  Data-Providers:
+    - epp-07-data
 
 epp-08:
   Summary: Contact object access control (if applicable)
