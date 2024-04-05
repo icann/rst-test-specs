@@ -408,8 +408,3 @@ components:
             - integer
             - number
             - boolean
-        Nullable:
-          description: Whether this column can contain a `NULL` value.
-          type: boolean
-          default: false
-
