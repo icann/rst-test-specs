@@ -14,15 +14,3 @@ services:
   pages:
     extends: spec
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app pages\""
-
-  spec-persistent:
-    extends: spec
-    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app includes yaml lint json ; cp -vf /app/rst-test-specs.yaml /tmp/rst/\""
-    volumes:
-      - rst:/tmp/rst
-
-volumes:
-  rst:
-    external: true
-    name: rst-test-spec-persistent
-

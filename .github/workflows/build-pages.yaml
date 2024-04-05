@@ -17,9 +17,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: create docker volume (if needed)
-        run: docker volume create rst-test-spec-persistent
-
       - name: build
         run: docker compose run pages
 
