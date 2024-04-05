@@ -1,8 +1,8 @@
 This file describes each test [plan](#test-plans), [suite](#test-suites) and
 [case](#test-cases) in the RST service, as well as the
 [input parameters](#input-parameters) required for each; relevant
-[resources](#resources); <!--- any inter-case dependencies, --> and the
-[errors](#errors) that may occur during testing.
+[resources](#resources); [data providers](#data-providers); <!--- any inter-case
+dependencies, --> and the [errors](#errors) that may occur during testing.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
@@ -46,7 +46,17 @@ All test cases require some information about the subject of the test, for
 example, service hostnames, credentials, and functional parameters. These
 *input parameters* may be shared across multiple test cases.
 
-## 2.3.2. Test environments
+## 2.3.2. Data providers
+
+Some test cases involve performing multiple operations (such as creating
+objects) using slightly different input values each time, in order to test the
+behaviour of a system and its ability to validate inputs. To simplify
+implementation and provide clarity for test subjects, *data providers* are used
+to enumerate all the possible permutations of input values. A data provider
+consists of sets of input values, plus the expected outcome, and the error code
+that should be raised if the outcome does not match the expected outcome.
+
+## 2.3.3. Test environments
 
 Each test plan indicates whether the test is to be carried out in the
 production environment, or whether a test, staging or Operational Testing and
@@ -55,12 +65,12 @@ designed for "business as usual" use during the lifecycle of a TLD **MUST** be
 carried out in the production registry infrastructure, while RSP evaluation
 tests **MAY** be carried out in test, staging or OT&E environments.
 
-## 2.3.3. Test results
+## 2.3.4. Test results
 
 Test cases will generate one or more *test results*. Test results indicate the
 outcome of the test and other relevant information.
 
-## 2.3.4. General pass/fail criteria
+## 2.3.5. General pass/fail criteria
 
 In general, for a test to pass, **all** the test cases specified in the test
 suite(s) for the test plan **MUST** pass: if *any* fail, then the test as a
@@ -69,7 +79,7 @@ whole will fail.
 A test case will fail if it produces one or more [errors](#errors) with the
 `ERROR` or `CRITICAL` severities.
 
-## 2.3.5. Error severity levels
+## 2.3.6. Error severity levels
 
 The supported severity levels are a subset of the values defined in RFC 5424.
 
