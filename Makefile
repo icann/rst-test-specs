@@ -32,6 +32,10 @@ includes:
 	@echo Generating RDAP errors...
 	@tools/generate-rdap-cases.pl --errors "./etc/rdap conformance tool_v5.docx" > tmp/rdapct-errors.yaml
 
+	@echo Generating data providers...
+	@find tools -maxdepth 1 -type f -iname '*.pl' -print
+	@tools/generate-data-providers.pl ./data > tmp/data-providers.yaml
+
 yaml:
 	@echo Compiling YAML...
 	@gpp -DZONEMASTER_VERSION=$(ZONEMASTER_VERSION) -DZONEMASTER_ENGINE_VERSION=$(ZONEMASTER_ENGINE_VERSION) -x $(SRC).yaml.in > $(SRC).yaml
