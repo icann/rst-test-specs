@@ -1237,7 +1237,7 @@ sub print_error {
 }
 
 sub print_providers {
-    print $h->a({name => 'providers'});
+    print $h->a({name => 'data-providers'});
     print $h->h2(sprintf('%d. Data Providers', ++$section));
 
     my $i = 0;
@@ -1264,9 +1264,9 @@ sub print_provider {
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $provider->description->html(3);
 
-    print $h->h4(sprintf('%u.%u.%u. Data table', $section, $i, ++$j));
-
     print $h->open(details);
+
+    print $h->summary($h->h4(sprintf('%u.%u.%u. Data table', $section, $i, ++$j)));
 
     print $h->open('table');
 
