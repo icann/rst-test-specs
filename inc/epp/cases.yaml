@@ -150,15 +150,16 @@ epp-04:
     * syntactically invalid domain name: `avail` attribute **MUST** be `0`
       or `false`.
     * valid but registered domain name: `avail` attribute **MUST** be `0` or
-      `false`.
+      `false`. The names provided in the `epp.registeredNames` input parameter
+      will be used to test this.
     * syntactically valid, unregistered domain name: `avail` attribute
       **MUST** be `1` or `true`. The domain name will be generated using
       random characters.
 
     A "syntactically valid" domain name is one that complies with the format
-    specified in RFC 1123 (this test case does not consider IDN names).
+    specified in RFC 1123. This test case does not consider IDN names.
 
-    These checks will be carried out for each TLD in the TLD set.
+    Checks will be carried out for each TLD in the TLD set.
   Dependencies:
     - epp-03
   Errors:
