@@ -160,6 +160,8 @@ epp-04:
     specified in RFC 1123. This test case does not consider IDN names.
 
     Checks will be carried out for each TLD in the TLD set.
+  Input-Parameters:
+    - epp.registeredNames
   Dependencies:
     - epp-03
   Errors:
