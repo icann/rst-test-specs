@@ -159,9 +159,10 @@ epp-04:
     A "syntactically valid" domain name is one that complies with the format
     specified in RFC 1123. This test case does not consider IDN names.
 
-    Checks will be carried out for each TLD in the TLD set.
-  Input-Parameters:
-    - epp.registeredNames
+    Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
+    property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
+    will be skipped (the functionality of the `<check>` command for these TLDs
+    will be checked in the `idn-01` test case).
   Dependencies:
     - epp-03
   Errors:

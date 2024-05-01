@@ -9,8 +9,12 @@ idn-01:
     the test, then this test will be skipped.
 
     For each supported IDN table, the test client will perform a series of
-    `<create>` commands using a pre-defined catalogue of test labels. If
-    required, the client will create any contact object(s) needed.
+    `<check>` and `<create>` commands using a pre-defined catalogue of test
+    labels. If required, the client will create any contact object(s) needed.
+
+    The `avail` attribute of `<domain:name>` elements in the response to the
+    `<check>` commands **MUST** be `0` or `false` for invalid labels, and `1` or
+    `true` for valid labels.
 
     The server **MUST** reject all `<create>` commands for invalid labels and
     **MUST** accept all `<create>` commands for valid labels.
