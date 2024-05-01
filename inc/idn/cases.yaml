@@ -153,3 +153,25 @@ idn-05:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - IDN_IDNONLY_TLD_ACCEPTS_ASCII_DOMAIN
+
+idn-06:
+  Summary: IDNA2008 conformance test
+  Maturity: BETA
+  Description: |
+    This test confirms that the EPP server rejects EPP `<create>` commands for
+    domains that do not conform to the requirements of IDNA2008 (but which may
+    be valid in IDNA2003).
+
+    EPP `<create>` commands will be sent to the server for a variety of
+    pre-generated test labels. The server **MUST** reject all these commands.
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - IDN_SERVER_ACCEPTS_INVALID_LABEL
+  Data-Providers:
+    - idn-06-data
