@@ -38,3 +38,9 @@ IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_WITH_SAME_REGISTRANT:
   Description: |
     The server rejects a `<create>` command for a variant of an existing domain
     using the same registrant as of the original domain.
+
+IDN_IDNONLY_TLD_ACCEPTS_ASCII_DOMAIN:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted a `<create>` command for an ASCII domain in
+    a TLD whose `idnOnly` property is `true`.

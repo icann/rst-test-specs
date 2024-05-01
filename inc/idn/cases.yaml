@@ -126,3 +126,30 @@ idn-04:
     - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT
     - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_FROM_SAME_REGISTRAR
     - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_WITH_SAME_REGISTRANT
+
+idn-05:
+  Summary: ASCII domains in IDN-only TLD test
+  Maturity: BETA
+  Description: |
+    This test confirms that the EPP server rejects EPP `<create>` commands for
+    a domain under a TLD that is configured to be "IDN only" (that is, pure
+    ASCII domains are not permitted).
+
+    If all TLDs in the test have `idnOnly` properties that are `false`, this
+    test will be skipped.
+
+    For those TLDs for which the `idnOnly` property is `true`, an EPP `<create>`
+    command will be sent to the EPP server for a domain name that is
+    syntactically valid, comprised only of characters from the LDH ASCII range,
+    and not already registered.
+
+    The EPP server **MUST** reject the command.
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - IDN_IDNONLY_TLD_ACCEPTS_ASCII_DOMAIN
