@@ -26,7 +26,8 @@ rdap.baseURLs:
           format: hostname
         baseURL:
           description: |
-            The RDAP Base URL. The URL **MUST** have trailing slash (`/`).
+            The RDAP Base URL. The URL **MUST** have trailing slash (`/`). If
+            specified, the port **MUST** be 443.
           type: string
           format: url
 
