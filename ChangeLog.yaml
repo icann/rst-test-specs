@@ -1,4 +1,4 @@
-2024-05-08:
+2024-05-16:
   - This is the first release since the end of the Public Comment period, but does not include any changes made as a result of that proceeding. These will come in a future release.
   - The specification has been updated to include *data providers* which are associated with test cases.
   - Clarified that the [epp-05](#Test-Case-epp-05) test case will be skipped if the server uses host attributes.
