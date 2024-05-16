@@ -185,6 +185,14 @@ sub check_input {
         }
     }
 
+    if (!exists($input->{'Required'})) {
+        warn(sprintf("Missing 'Required' property for Input Parameter '%s'", $input->id));
+
+    } elsif ($input->{'Required'} ne !1 && $input->{'Required'} ne !!1) {
+        warn(sprintf("'Required' property for Input Parameter '%s' is not a boolean", $input->id));
+
+    }
+
     warn(sprintf("Input Parameter '%s' has redundant examples", $input->id)) if (exists($input->{'Example'}) && exists($input->{'Schema'}->{'examples'}));
 }
 
