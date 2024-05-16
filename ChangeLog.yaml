@@ -8,6 +8,8 @@
   - Added [idn-05](#Test-Case-idn-05) which checks that the EPP server rejects `<create>` commands for pure ASCII domains in TLDs that are IDN-only.
   - Added [idn-06](#Test-Case-idn-06) which checks that the EPP server rejects `<create>` commands for domains that do not comply with the requirements of IDNA2008.
   - Updated [idn-01](#Test-Case-idn-01) to include `<check>` commands for valid and invalid labels.
+  - Input parameters now have a boolean `Required` parameter indicating whether they are required or optional. Where the description of the input parameter says the value can be empty, it now says it can be omitted.
+  - If a port is specified in an RDAP Base URL, it **MUST** be `443`.
 
 2024-03-26:
   - This is the final release of the test specifications before the start of the Public Comment. No changes to the specification will be published until after the Public Comment process has been completed.
