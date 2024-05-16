@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.10.0
+  version: 1.11.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -308,6 +308,12 @@ components:
             - "input"
         Example:
           description: An example value for this parameter.
+        Required:
+          description: |
+            Whether this input parameter is required or optional. If not set,
+            then it is optional.
+          type: boolean
+          default: false
         Schema:
           description: |
             an [OpenAPI `Schema`
