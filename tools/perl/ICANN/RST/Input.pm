@@ -7,6 +7,7 @@ sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub type        { $_[0]->{'Type'} }
 sub example     { numify($_[0]->{'Example'}) }
 sub schema      { $_[0]->{'Schema'} ? JSON::Schema->new(numify($_[0]->{'Schema'})) : undef }
+sub required    { exists($_[0]->{'Required'}) && $_[0]->{'Required'} }
 
 sub jsonExample {
     my $self = shift;
@@ -143,5 +144,9 @@ A list of all C<ICANN::RST::Case> objects that use this input parameter.
 =head2 suites()
 
 A list of all C<ICANN::RST::Suite> objects that use this input parameter.
+
+=head2 required()
+
+Whether or not this input parameter is required.
 
 =cut

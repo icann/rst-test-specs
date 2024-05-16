@@ -11,7 +11,7 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => v1.10.0;
+use constant SCHEMA_VERSION => v1.11.0;
 use feature qw(say);
 use strict;
 
