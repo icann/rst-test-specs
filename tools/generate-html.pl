@@ -1108,6 +1108,13 @@ sub print_input {
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $input->description->html(3);
 
+    print $h->h4(sprintf('%u.%u.%u. Required', $section, $i, ++$j));
+    print $h->p($input->required ?
+        'This input parameter is REQUIRED.'
+        :
+        'This input parameter is NOT required.'
+    );
+
     print $h->open(details);
 
     print $h->summary($h->h4(sprintf('%u.%u.%u. Example', $section, $i, ++$j)));
