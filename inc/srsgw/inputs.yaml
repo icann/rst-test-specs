@@ -1,5 +1,6 @@
 srsgw.eppHostName:
-  Description: the fully-qualified domain name of the SRS Gateway EPP server
+  Description: the fully-qualified domain name of the SRS Gateway EPP server.
+  Required: true
   Type: input
   Example: epp.rsp.tech
   Schema:
@@ -7,7 +8,8 @@ srsgw.eppHostName:
     format: hostname
 
 srsgw.eppClid01:
-  Description: the username used to log in to the SRS Gateway EPP server
+  Description: the username used to log in to the SRS Gateway EPP server.
+  Required: true
   Type: input
   Example: clid-01
   Schema:
@@ -15,7 +17,8 @@ srsgw.eppClid01:
     minLength: 3
 
 srsgw.eppPwd01:
-  Description: the password used to log in to the SRS Gateway EPP server
+  Description: the password used to log in to the SRS Gateway EPP server.
+  Required: true
   Type: input
   Example: foo2bar
   Schema:
@@ -28,8 +31,9 @@ srsgw.serverIssuedClientCertificate01:
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be empty.
-  Type: file
+    **SHOULD** be omitted.
+  Required: true
+  Type: input
   Schema:
     type: string
   Example: cert.pem
@@ -41,21 +45,24 @@ srsgw.serverIssuedClientCertificate02:
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
     If the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be empty.
+    **SHOULD** be omitted.
   Type: file
+  Required: true
   Schema:
     type: string
   Example: cert.pem
 
 srsgw.eppClid02:
-  Description: the username used for transfer tests
+  Description: the username used for transfer tests.
+  Required: true
   Type: input
   Example: clid-02
   Schema:
     type: string
 
 srsgw.eppPwd02:
-  Description: the password used for transfer tests
+  Description: the password used for transfer tests.
+  Required: true
   Type: input
   Example: foo3bar
   Schema:
@@ -69,6 +76,7 @@ srsgw.rdapBaseURLs:
     for valid hostnames described in RFC 1123, section 2.1. Additionally, all
     IDN labels in the host name **MUST** comply with IDNA2008.
   Type: input
+  Required: true
   Example:
     - tld: example
       baseURL: "https://rdap.example.com/example/"

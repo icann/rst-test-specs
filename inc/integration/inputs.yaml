@@ -1,6 +1,7 @@
 integration.rdeSFTPHostname:
   Description: The hostname of the operator's SFTP server.
   Type: input
+  Required: true
   Example: sftp.rsp.tech
   Schema:
     type: string
@@ -10,6 +11,7 @@ integration.rdeSFTPDirectory:
   Description: |
     The directory on the SFTP server where deposit files may be found.
   Type: input
+  Required: true
   Example: /path/to/deposits
   Schema:
     type: string
@@ -17,6 +19,7 @@ integration.rdeSFTPDirectory:
 integration.rdeSFTPUsername:
   Description: The username that can be used to connect to the SFTP server.
   Type: input
+  Required: true
   Example: icann
   Schema:
     type: string
@@ -25,6 +28,7 @@ integration.rriACL:
   Description: |
     An object representing the IP addresses from which requests to the RRI will
     be sent.
+  Required: true
   Type: input
   Example:
     v4Addrs:

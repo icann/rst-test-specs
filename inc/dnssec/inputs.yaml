@@ -8,6 +8,7 @@ dnssec.dsRecords:
     There **MUST** be an entry for every TLD in the TLD set and there **MUST**
     be at least one DS record for each TLD.
   Type: input
+  Required: true
   Example:
     - name: example
       dsRecords:

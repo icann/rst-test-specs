@@ -5,7 +5,9 @@ rdap.baseURLs:
     The host name component of each URL **MUST** comply with the requirements
     for valid hostnames described in RFC 1123, section 2.1. Additionally, all
     IDN labels in the host name **MUST** comply with IDNA2008.
+
   Type: input
+  Required: true
   Example:
     - tld: example
       baseURL: "https://rdap.example.com/example/"
@@ -37,6 +39,7 @@ rdap.testDomains:
     - example.com
     - example.net
   Type: input
+  Required: true
   Schema:
     type: array
     minItems: 1
@@ -53,6 +56,7 @@ rdap.testEntities:
     - tld: example
       handle: "9995"
   Type: input
+  Required: true
   Schema:
     type: array
     minItems: 1
@@ -76,6 +80,7 @@ rdap.testNameservers:
     This input parameter is an array of objects. At least one nameserver
     **MUST** be provided for each TLD being tested.
   Type: input
+  Required: true
   Example:
     - tld: example1
       nameserver: ns1.example.com

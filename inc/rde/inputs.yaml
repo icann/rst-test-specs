@@ -3,17 +3,20 @@ rde.depositFile:
     an RDE deposit file. The TLD to which the deposit relates **MUST** match
     one of the TLDs that are associated with the test object.
   Type: file
+  Required: true
   Example: example_20231004_FULL_S1_R0.ryde
   Schema:
     type: string
 rde.signatureFile:
   Description: an ASCII-armoured OpenPGP signature covering the deposit file
+  Required: true
   Type: file
   Example: example_20231004_FULL_S1_R0.sig
   Schema:
     type: string
 rde.publicKey:
   Description: a PGP public key block
+  Required: true
   Type: file
   Example: rsp-rde-signing-key.asc
   Schema:

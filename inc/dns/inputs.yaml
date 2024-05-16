@@ -3,6 +3,7 @@ dns.nameservers:
     The set of nameservers that will be authoritative for the zones used in the
     DNSSEC operations test suite.
   Type: input
+  Required: true
   Example:
     - name: ns1.example.com
       v4Addrs:

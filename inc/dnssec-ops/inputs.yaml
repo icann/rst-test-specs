@@ -3,6 +3,7 @@ dnssecOps.nameservers:
     The set of nameservers that will be authoritative for the zones used in the
     DNSSEC operations test suite.
   Type: input
+  Required: true
   Example:
     - name: ns1.example.com
       v4addrs:
@@ -47,6 +48,7 @@ dnssecOps.nameservers:
 dnssecOps.primaryServers:
   Description: The primary nameserver(s) from which zones can be transferred.
   Type: input
+  Required: true
   Example:
     v4Addrs:
       - 192.0.2.1
@@ -76,6 +78,7 @@ dnssecOps.primaryServers:
 dnssecOps.tsigKey:
   Description: The TSIG key which should be used to perform zone transfers.
   Type: input
+  Required: true
   Example:
     name: rst-tsig-01
     algorithm: hmac-sha256
@@ -108,6 +111,7 @@ dnssecOps.csk:
     KSK/ZSK configuration.
   Type: input
   Example: false
+  Required: true
   Schema:
     type: boolean
 
@@ -117,6 +121,7 @@ dnssecOps.zskRolloverZone:
     rollover.
   Type: input
   Example: example.com
+  Required: true
   Schema:
     type: string
     format: hostname
@@ -127,6 +132,7 @@ dnssecOps.kskRolloverZone:
     rollover.
   Type: input
   Example: example.com
+  Required: true
   Schema:
     type: string
     format: hostname
@@ -137,6 +143,7 @@ dnssecOps.algorithmRolloverZone:
     rollover.
   Type: input
   Example: example.com
+  Required: true
   Schema:
     type: string
     format: hostname

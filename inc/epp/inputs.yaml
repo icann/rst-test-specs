@@ -7,6 +7,7 @@ epp.hostName:
     in the server name **MUST** comply with IDNA2008.
   Type: input
   Example: epp.rsp.tech
+  Required: true
   Schema:
     type: string
     format: hostname
@@ -14,13 +15,15 @@ epp.greeting:
   Description: |
     an XML instance which contains a copy of the server's `<greeting>`.
   Type: file
+  Required: true
   Example: greeting.xml
   Schema:
     type: string
     
 epp.clid01:
-  Description: the username used to log in to the EPP server
+  Description: the username used to log in to the EPP server.
   Type: input
+  Required: true
   Example: clid-01
   Schema:
     type: string
@@ -28,8 +31,9 @@ epp.clid01:
     maxLength: 16
 
 epp.pwd01:
-  Description: the password used to log in to the EPP server
+  Description: the password used to log in to the EPP server.
   Type: input
+  Required: true
   Example: foo2bar
   Schema:
     type: string
@@ -43,6 +47,7 @@ epp.serverIssuedClientCertificate01:
     the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be empty.
   Type: file
+  Required: false
   Example: rst_test_client_cert.pem
   Schema:
     type: string
@@ -54,15 +59,17 @@ epp.serverIssuedClientCertificate02:
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be empty.
+    **SHOULD** be omitted.
   Type: file
+  Required: false
   Example: rst_test_client_cert.pem
   Schema:
     type: string
 
 epp.clid02:
-  Description: the username used for transfer tests
+  Description: the username used for transfer tests.
   Type: input
+  Required: true
   Example: clid-02
   Schema:
     type: string
@@ -70,8 +77,9 @@ epp.clid02:
     maxLength: 16
 
 epp.pwd02:
-  Description: the password used for transfer tests
+  Description: the password used for transfer tests.
   Type: input
+  Required: true
   Example: foo3bar
   Schema:
     type: string
@@ -91,6 +99,7 @@ epp.clid01DataModel:
     `per-registrar`, then the value of this input parameter **MUST** be
     different from the value of the `epp.clid02DataModel` input parameter.
   Type: input
+  Required: true
   Example: minimum
   Schema:
     type: string
@@ -113,6 +122,7 @@ epp.clid02DataModel:
     `per-registrar`, then the value of this input parameter **MUST** be
     different from the value of the `epp.clid01DataModel` input parameter.
   Type: input
+  Required: true
   Example: minimum
   Schema:
     type: string
@@ -127,6 +137,7 @@ epp.hostModel:
       * `objects`
       * `attributes`
   Type: input
+  Required: true
   Example: objects
   Schema:
     type: string
@@ -139,6 +150,7 @@ epp.secDNSInterfaces:
     Which of the interfaces defined in Section 4 of RFC 5910 the server
     supports (either `dsData` or `keyData`).
   Type: input
+  Required: true
   Example: dsData
   Schema:
     type: string
@@ -154,6 +166,7 @@ epp.registeredNames:
     **MUST** contain one member for each TLD in the TLD set.
   Type: input
   Example: ["example.example1", "example.example2"]
+  Required: true
   Schema:
     type: array
     items:
@@ -169,6 +182,7 @@ epp.registeredNameservers:
     one member for each TLD in the TLD set. However, if it is `attributes`,
     the array **MUST** be empty.
   Type: input
+  Required: true
   Example: ["ns1.example.com", "ns2.example.org"]
   Schema:
     type: array
@@ -185,6 +199,7 @@ epp.registeredContacts:
     then this array **MUST** contain one member for each TLD in the TLD set.
     However, if it is `minimum`, the array **MUST** be empty.
   Type: input
+  Required: true
   Example: ["abc123", "def321"]
   Schema:
     type: array
@@ -196,6 +211,7 @@ epp.restoreReportRequired:
     Whether the server requires submission of a restore report when a client
     attempts to restore a domain.
   Type: input
+  Required: true
   Example: false
   Schema:
     type: boolean
@@ -207,6 +223,7 @@ epp.requiredContactTypes:
     value of `general.registryDataModel` is `minimum`, this array `MUST` be
     empty.
   Type: input
+  Required: true
   Example: ["admin"]
   Schema:
     type: array
