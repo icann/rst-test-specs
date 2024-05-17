@@ -115,6 +115,8 @@ srsgw-04:
   Dependencies:
     - srsgw-02
     - srsgw-03
+  Input-Parameters:
+    - srsgw.domainCreateExtension
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -146,6 +148,8 @@ srsgw-05:
 
     The `<exDate>` element of the two `<info>` responses will then be compared
     and **MUST** be identical.
+  Input-Parameters:
+    - srsgw.domainRenewExtension
   Dependencies:
     - srsgw-04
   Errors:
@@ -185,6 +189,8 @@ srsgw-06:
       `srsgw.eppClid01` input parameter.
     * if the response to the `<transfer op="request">` command was `1001`, then
       the domain **MUST** have the `pendingTransfer` status.
+  Input-Parameters:
+    - srsgw.domainTransferRequestExtension
   Dependencies:
     - srsgw-05
   Errors:
@@ -219,6 +225,8 @@ srsgw-07:
     an `<info>` command for the domain. The server **MUST** respond with a
     1000 response. The `<domain:clID>` element **MUST** contain the value of
     the  `srsgw.eppClid01` input parameter.
+  Input-Parameters:
+    - srsgw.domainTransferApproveExtension
   Dependencies:
     - srsgw-06
   Errors:
@@ -251,6 +259,8 @@ srsgw-08:
 
     The domain object **MUST** have the `pendingDelete` status and have an RGP
     status of `pendingDeleteRestorable`.
+  Input-Parameters:
+    - srsgw.domainDeleteExtension
   Dependencies:
     - srsgw-07
   Errors:
