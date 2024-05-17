@@ -75,6 +75,9 @@ srsgw.rdapBaseURLs:
     The host name component of each URL **MUST** comply with the requirements
     for valid hostnames described in RFC 1123, section 2.1. Additionally, all
     IDN labels in the host name **MUST** comply with IDNA2008.
+
+    If an RDAP Base URL includes a port, it **MUST** be 443.
+
   Type: input
   Required: true
   Example:
