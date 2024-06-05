@@ -20,3 +20,14 @@ DNS_IDNA2008_INVALID_NS_NSDNAME:
   Description: |
     One or more `NS` records at the zone apex contains one or more labels that
     are not compliant with IDNA2008.
+
+DNS_CONSISTENCY_QUERY_FAILED:
+  Severity: ERROR
+  Description: |
+    One or more responses to DNS queries sent to the subject DNS servers failed.
+
+DNS_INCONSISTENT_RESPONSES:
+  Severity: ERROR
+  Description: |
+    One or more responses to DNS queries sent to the subject DNS servers were
+    not consistent across all vantage points.

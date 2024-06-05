@@ -10,11 +10,13 @@ dns.nameservers:
         - 192.0.2.1
       v6Addrs:
         - 2001:DB8::53:1
+      supportsDoT: true
     - name: ns2.example.net
       v4Addrs:
         - 192.0.2.2
       v6Addrs:
         - 2001:DB8::53:2
+      supportsDoH: true
   Schema:
     type: array
     minItems: 1
@@ -44,3 +46,22 @@ dns.nameservers:
           items:
             type: string
             format: ipv6
+
+        supportsDoT:
+          description: |
+            Whether this nameserver supports DNS over TLS (RFC 7858).
+          type: boolean
+          default: false
+
+        supportsDoH:
+          description: |
+            Whether this nameserver supports DNS over HTTPS (RFC 8484).
+          type: boolean
+          default: false
+
+        supportsDoQ:
+          description: |
+            Whether this nameserver supports DNS over Dedicated QUIC Connections
+            (RFC 9250).
+          type: boolean
+          default: false

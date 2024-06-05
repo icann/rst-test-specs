@@ -35,10 +35,6 @@ use constant {
     UPGRADE_NOTE =>
         "_**Note:** the severity levels of one or more error codes for ".
         "this test case have been changed from the default._",
-
-    INCONSISTENT_RESPONSES_ERROR_DESCRIPTION =>
-        "One or more responses to DNS queries sent to the subject DNS ".
-        "servers were not consistent across all vantage points.",
 };
 
 my $mode = 'cases';
@@ -77,10 +73,6 @@ foreach my $level (keys(%{$config->{'error_level_overrides'}})) {
 #
 my $cases = {};
 my $errors = {
-    'DNS_INCONSISTENT_RESPONSES' => {
-        'Description' => INCONSISTENT_RESPONSES_ERROR_DESCRIPTION,
-        'Severity' => 'ERROR',
-    }
 };
 
 #
@@ -138,7 +130,7 @@ sub process_case {
     $cases->{$id} = {
         'Description'   => '',
         'Maturity'      => 'GAMMA',
-        'Errors'        => ['DNS_INCONSISTENT_RESPONSES'],
+        'Errors'        => [],
     };
 
     #
