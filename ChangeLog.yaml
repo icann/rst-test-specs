@@ -1,12 +1,13 @@
 2024-06-19:
   - Correct errors in [epp-12](#Test-Case-epp-12).
   - |
-    add the [`srsgw.domainCreateExtension`](#Input-parameter-srsgw.domainCreateExtension),
+    Added the [`srsgw.domainCreateExtension`](#Input-parameter-srsgw.domainCreateExtension),
     [`srsgw.domainDeleteExtension`](#Input-parameter-srsgw.domainDeleteExtension),
     [`srsgw.domainRenewExtension`](#Input-parameter-srsgw.domainRenewExtension),
     [`srsgw.domainTransferRequestExtension`](#Input-parameter-srsgw.domainTransferRequestExtension) and
     [`srsgw.domainTransferApproveExtension`](#Input-parameter-srsgw.domainTransferApproveExtension)
     input parameters, and the [`SRSGW_EPP_INVALID_EXTENSION`](#Error-SRSGW_EPP_INVALID_EXTENSION) error.
+  - Added the [Additional DNS Transports](#Test-Plan-AdditionalDNSTransportsTest) plan.
 
 2024-06-05:
   - This is the first release since the end of the [Public Comment](https://www.icann.org/en/public-comment/proceeding/review-of-the-registry-system-testing-20-test-specifications-and-api-26-03-2024) proceeding.
