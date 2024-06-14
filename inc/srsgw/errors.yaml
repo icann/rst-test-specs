@@ -191,3 +191,14 @@ SRSGW_RDAP_RESPONSES_DIFFER:
   Severity: ERROR
   Description: |
     The responses from the SRS Gateway and Primary RDAP servers differ.
+
+SRSGW_EPP_INVALID_EXTENSION:
+  Severity: ERROR
+  Description: |
+    The XML instance provided in the `srsgw.domainCreateExtension`,
+    `srsgw.domainDeleteExtension`, `srsgw.domainRenewExtension`,
+    `srsgw.domainTransferRequestExtension` or
+    `srsgw.domainTransferApproveExtension` input parameters was invalid. This
+    may be because (a) it was not a well-formed XML instance, (b) specified an
+    extension that was not registered in the EPP Extension Registry or (c)
+    could not be validated against the XML schema(s) for that extension.

@@ -118,7 +118,9 @@ srsgw.domainCreateExtension:
     extensions **MUST** be registered in the
     [EPP Extension Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
 
-    If no extensions are required, this input parameter **MUST** be omitted.
+    If no extensions are required, this input parameter **MUST** be omitted. If
+    provided, it will not be validated until the test run occurs, at which point
+    an `SRSGW_EPP_INVALID_EXTENSION` error will be emitted.
   Type: input
   Required: false
   Example: |
