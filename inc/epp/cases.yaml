@@ -502,17 +502,15 @@ epp-12:
   Summary: Host object access control (if applicable)
   Maturity: GAMMA
   Description: |
-    This test will confirm that EPP clients are unable to perform `<info>`
+    This test will confirm that EPP clients are unable to perform `<update>`
     commands on objects that they do not sponsor.
 
     If the `epp.hostModel` input parameter is `attributes`, this test will
     be skipped.
 
-    The client will connect using a set of alternate credentials and will
-    submit `<update>` commands on the contact objects created in `epp-11`. The
-    server **MUST** respond with a 2201 "authorization error" response.
-  Dependencies:
-    - epp-11
+    The client will create a host object, and then use a set of alternate
+    credentials to submit `<update>` commands on that object. The server
+    **MUST** respond with a 2201 "authorization error" response.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE

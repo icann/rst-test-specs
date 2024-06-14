@@ -3,40 +3,41 @@ rde.encryptionKey:
     RDE deposit files **MUST** be encrypted using OpenPGP (RFC 4880). The PGP
     key that **MUST** be used to encrypt the escrow deposit file may be found
     at this URL.
-  URL: https://rst.icann.org/v2/resources/rde.encryptionKey.asc
+  URL: https://rst-api.icann.org/v1/resource/rde.encryptionKey.asc
 
 epp.clientCertificate:
   Description: |
     RFC 5734 requires servers to perform authentication of clients by means of
     a client certificate. Operators **MUST** configure their systems to permit
     the test client to connect using the certificate found at this URL.
-  URL: https://rst.icann.org/v2/resources/epp.clientCertificate.pem
+  URL: https://rst-api.icann.org/v1/resource/epp.clientCertificate.pem
 
 epp.clientCSR:
   Description: |
     For servers that operate a private CA, this CSR may be used to issue a
     client certificate. This certificate must then be provided in the
     `epp.clientCertificate` input parameter.
+  URL: https://rst-api.icann.org/v1/resource/epp.clientCSR.pem
 
 epp.clientACL:
   Description: |
     A list of IPv4 and IPv6 address(es) from which client connections to the
     operator's EPP server will be made. The list is a plain text file with
     each IP address on a separate line.
-  URL: https://rst.icann.org/v2/resources/epp.clientACL.txt
+  URL: https://rst-api.icann.org/v1/resource/epp.clientACL.txt
 
 integration.rdeSFTPPublicKey:
   Description: |
     The SSH public key that will be used to authenticate connections to the
     operator's SFTP server.
-  URL: https://rst.icann.org/v2/resources/integration.rdeSFTPPublicKey.pem
+  URL: https://rst-api.icann.org/v1/resource/integration.rdeSFTPPublicKey.pem
 
 integration.rdeSFTPACL:
   Description: |
     A list of IPv4 and IPv6 address(es) from which client connections to the
     operator's SFTP server will be made. The list is a plain text file with
     each IP address on a separate line.
-  URL: https://rst.icann.org/v2/resources/integration.rdeSFTPACL.txt
+  URL: https://rst-api.icann.org/v1/resource/integration.rdeSFTPACL.txt
 
 epp.tlsCertificateStore:
   Description: |
@@ -45,14 +46,14 @@ epp.tlsCertificateStore:
 
     EPP servers **MUST** use a certificate that has a chain of trust to one of
     the CAs present in this file.
-  URL: https://rst.icann.org/v2/resources/epp.tlsCertificateStore.pem
+  URL: https://rst-api.icann.org/v1/resource/epp.tlsCertificateStore.pem
 
 dnssecOps.xfrACL:
   Description: |
     A list of IPv4 and IPv6 address(es) from which zone file transfers to
     primary DNS servers will be made. The list is a plain text file with
     each IP address on a separate line.
-  URL: https://rst.icann.org/v2/resources/dnssecOps.xfrACL.txt
+  URL: https://rst-api.icann.org/v1/resource/dnssecOps.xfrACL.txt
 
 tmch.testCert:
   Description: |
@@ -70,7 +71,7 @@ tmch.testDNL:
   Description: |
     A file containing the list of labels subject to Trademark Claims in the
     TMCH test environment.
-  URL: https://example.com/tba
+  URL: https://rst-api.icann.org/v1/resource/tmch.testDNL.csv
 
 tmch.testSMDRL:
   Description: |
@@ -81,4 +82,4 @@ tmch.testSURL:
   Description: |
     A file containing the list of labels for which SMDs have been produced in
     the TMCH test environment.    
-  URL: https://example.com/tba
+  URL: https://rst-api.icann.org/v1/resource/tmch.testSURL.csv

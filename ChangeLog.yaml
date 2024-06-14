@@ -1,5 +1,8 @@
-2024-05-16:
-  - This is the first release since the end of the Public Comment period, but does not include any changes made as a result of that proceeding. These will come in a future release.
+2024-06-19:
+  - Correct errors in [epp-12](#Test-Case-epp-12).
+
+2024-06-05:
+  - This is the first release since the end of the [Public Comment](https://www.icann.org/en/public-comment/proceeding/review-of-the-registry-system-testing-20-test-specifications-and-api-26-03-2024) proceeding.
   - The specification has been updated to include *data providers* which are associated with test cases.
   - Clarified that the [epp-05](#Test-Case-epp-05) test case will be skipped if the server uses host attributes.
   - Clarified that the [epp-06](#Test-Case-epp-06) test case will be skipped if the `general.registryDataModel` input parameter is `minimum`.
@@ -8,8 +11,19 @@
   - Added [idn-05](#Test-Case-idn-05) which checks that the EPP server rejects `<create>` commands for pure ASCII domains in TLDs that are IDN-only.
   - Added [idn-06](#Test-Case-idn-06) which checks that the EPP server rejects `<create>` commands for domains that do not comply with the requirements of IDNA2008.
   - Updated [idn-01](#Test-Case-idn-01) to include `<check>` commands for valid and invalid labels.
-  - Input parameters now have a boolean `Required` parameter indicating whether they are required or optional. Where the description of the input parameter says the value can be empty, it now says it can be omitted.
+  - Input parameters now have a boolean `Required` parameter indicating whether they are required or optional. Where the description of the input parameter previously said that the value must be empty, it now says it must be omitted.
   - If a port is specified in an RDAP Base URL, it **MUST** be `443`.
+  - |
+    The [`DNS_INCONSISTENT_RESPONSES`](#Error-DNS_INCONSISTENT_RESPONSES) error
+    has been removed from all test cases in the DNS and DNSSEC test cases, and a
+    new test case, [dns-zz-consistency](#Test-Case-dns-zz-consistency) has been
+    added which will perform consistency checks using the SLA Monitoring system
+    (SLAM).
+  - |
+    The [`dns.nameservers`](#Input-Parameter-dns.nameservers) input parameter has
+    been updated to add the `supportsDoT`, `supportsDoH` and `supportsDoQ`
+    boolean flags to nameservers. This allows test subjects to indicate whether
+    a nameserver supports DoT, DoH or DoQ, respectively.
 
 2024-03-26:
   - This is the final release of the test specifications before the start of the Public Comment. No changes to the specification will be published until after the Public Comment process has been completed.

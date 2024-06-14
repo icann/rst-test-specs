@@ -16,3 +16,48 @@ dns-zz-idna2008-compliance:
     - DNS_IDNA2008_INVALID_MNAME
     - DNS_IDNA2008_INVALID_RNAME
     - DNS_IDNA2008_INVALID_NS_NSDNAME
+
+dns-zz-consistency:
+  Summary: Nameserver consistency check
+  Maturity: BETA
+  Description: |
+    This test case verifies that all the nameservers (both logical and physical)
+    specified in the `dns.nameservers` input parameters provide consistent
+    responses.
+
+    The test system will perform DNS queries from multiple nodes in the SLA
+    Monitoring system (SLAM) so that multiple physical nodes within an anycasted
+    logical nameserver are tested.
+
+    For each TLD in the test, the following queries will be sent, over UDP, TCP,
+    and any additional transports that are supported (based on the
+    `supportsDoT`, `supportsDoH` and `supportsDoQ` properties for the nameserver
+    in question) to each IPv4 and IPv6 address for each nameserver:
+
+    * apex `SOA` query;
+    * apex `NS` query;
+    * apex `DNSKEY` query;
+    * apex `NSEC3PARAM` query;
+    * apex `TXT` query;
+    * `A` and `AAAA` queries for in-bailiwick nameservers, if any;
+    * `nic.tld` `NS` query;
+    * `nic.tld` `DS` query.
+
+    The EDNS(0) `do` bit, `NSID` option, and `ZONEVERSION` options will be set
+    on all queries. The reported `NSID` and `ZONEVERSION` values in the response
+    (if any) will be included in logs for debugging purposes.
+
+    For DoT, DoH and DoQ, no certificate validation will be performed.
+
+    The test case will fail if:
+
+    1. one or more queries timeout (within 1000ms for UDP and 3000ms for
+       any other protocol), or
+    2. The RCODE header field, or answer, authority or additional sections of
+       the response differs, after normalization, from those of any previously
+       received response, with the sole exception of the `serial` field of `SOA`
+       records.
+
+  Errors:
+    - DNS_CONSISTENCY_QUERY_FAILED
+    - DNS_INCONSISTENT_RESPONSES
