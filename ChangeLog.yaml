@@ -1,3 +1,6 @@
+2024-06-19:
+  - Correct errors in [epp-12](#Test-Case-epp-12).
+
 2024-06-05:
   - This is the first release since the end of the [Public Comment](https://www.icann.org/en/public-comment/proceeding/review-of-the-registry-system-testing-20-test-specifications-and-api-26-03-2024) proceeding.
   - The specification has been updated to include *data providers* which are associated with test cases.
