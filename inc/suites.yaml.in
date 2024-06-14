@@ -265,3 +265,15 @@ StandardIntegrationTest:
 
     TS_PASSFAIL
   Test-Cases: ^integration-
+
+AdditionalDNSTransports:
+  Order: 11
+  Name: Additional DNS Transports
+  Description: |
+    This test suite verifies that Registry Operators wishing to offer their
+    authoritative DNS service over additional transport protocols (specifically
+    TLS, HTTPS and QUIC) can do so in conformance with the relevant RFCs.
+  Test-Cases:
+    - dns-zz-consistency
+  Input-Parameters:
+    - dns.nameservers

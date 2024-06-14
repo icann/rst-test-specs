@@ -338,3 +338,19 @@ MinimumRPMsOnly:
     specifically the `MinimumRPMs` suite.
   Test-Suites:
     - MinimumRPMs
+
+AdditionalDNSTransportsTest:
+  Order: 18
+  Name: Additional DNS Transports Test
+  Description: |
+    Registry Operators may optionally provide authoritative DNS services over
+    additional transports, such as TLS, HTTPS and QUIC.
+
+    This test plan uses the `AdditionalDNSTransports` test suite to verify the
+    conformance of these services with the relevant RFCs.
+
+    # Pass/fail criteria
+
+    TP_PASSFAIL
+  Test-Suites:
+    - AdditionalDNSTransports
