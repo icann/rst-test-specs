@@ -11,7 +11,7 @@ fully automated. All interaction with the system is via the
 
 * [rst-test-specs.yaml](rst-test-specs.yaml)
   is the machine-readable version, intended to be consumed by internal ICANN
-  clients. Like the HTML file above, this file is a build artefact and is
+  clients. Like the HTML file above, this file is a build artifact and is
   updated once per week. The YAML file is the normative reference, other
   representations are informational only.
 
