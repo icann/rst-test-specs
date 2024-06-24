@@ -1,3 +1,13 @@
+2924-06-26:
+  - |
+    The [RDAP test suite](#Test-Suite-StandardEPP) has been significantly
+    refactored to split out separate test cases for [domain](#Test-case-rdap-01),
+    [nameserver](#Test-case-rdap-02), [registrar](#Test-case-rdap-03) and
+    [help](#Test-case-rdap-04) queries. The test coverage has not changed (since
+    the RDAP Conformance Tool will still be used), this change is mainly to
+    ensure that any errors are properly associated with the type of query being
+    performed.
+
 2024-06-19:
   - Correct errors in [epp-12](#Test-Case-epp-12).
   - |

@@ -56,3 +56,38 @@ RDAP_SERVICE_PORT_NOT_CONSISTENT:
   Severity: ERROR
   Description: |
     The responses received are not consistent across all service ports.
+
+RDAP_DOMAIN_RESPONSE_VALIDATION_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_NAMESERVER_RESPONSE_VALIDATION_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_ENTITY_RESPONSE_VALIDATION_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_HELP_RESPONSE_VALIDATION_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_DOMAIN_HEAD_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_NAMESERVER_HEAD_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.
+
+RDAP_ENTITY_HEAD_FAILED:
+  Severity: ERROR
+  Description:
+    The response from the server could not be validated.

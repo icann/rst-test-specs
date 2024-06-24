@@ -80,6 +80,7 @@ StandardRDAP:
     - rdap.testDomains
     - rdap.testEntities
     - rdap.testNameservers
+    - epp.hostModel
 
 StandardEPP:
   Order: 4
