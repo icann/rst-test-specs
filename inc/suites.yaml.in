@@ -66,10 +66,11 @@ StandardRDAP:
   Description: |
     The RDAP test suite validates the RDAP service of the TLD or RSP.
 
-    The RDAP test suite is derived from the test specification of the [RDAP
-    Conformance Tool](https://github.com/icann/rdap-conformance-tool/blob/master/doc/RDAPConformanceToolSpecifications.pdf).
-    As with the DNS and DNSSEC tests, the test IDs can be mapped to the test
-    IDs in this document by removing the `rdap-NN-` prefix.
+    The RDAP test suite uses the [RDAP Conformance Tool](https://github.com/icann/rdap-conformance-tool)
+    to perform conformance testing of RDAP services.
+
+    The RDAP Conformance Tool checks that an RDAP server properly implements the
+    RDAP RFCs and the [gTLD RDAP Profile](https://icann.org/gtld-rdap-profile).
 
     # Pass/fail criteria
 
