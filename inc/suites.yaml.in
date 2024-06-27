@@ -110,6 +110,8 @@ StandardEPP:
     - epp.hostName
     - epp.registeredNames
     - epp.requiredContactTypes
+    - epp.supportedContactElements
+    - epp.requiredContactElements
   Resources:
     - epp.clientACL
     - epp.clientCSR

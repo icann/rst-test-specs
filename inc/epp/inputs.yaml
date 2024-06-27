@@ -233,3 +233,73 @@ epp.requiredContactTypes:
         - admin
         - tech
         - billing
+
+epp.supportedContactElements:
+  Description: |
+    In [RFC 5733](https://datatracker.ietf.org/doc/html/rfc5733#section-3.2.1),
+    the mandatory elements that **MUST** be included in contact `<create>`
+    commands are `<name>`, `<city>`, `<cc>` and `<email>`. RFC 5733 also
+    specifies a set of optional elements. To comply with RFC 5733, EPP
+    servers **MUST** accept and process the mandatory elements, but **MAY**
+    reject commands that contain optional elements.
+
+    This input parameter should be used to indicate which of the optional
+    elements the EPP server supports.
+
+    If the value contains a colon (`:`), then the first part is the element name
+    and the second part is an attribute name.
+
+    Elements that are listed in this parameter **MAY** also be listed in the
+    `epp.requiredContactElements` parameter.
+  Type: input
+  Required: false
+  Example:
+    - org
+    - street
+    - sp
+    - pc
+    - voice
+    - voice:ext
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - org
+        - street
+        - sp
+        - pc
+        - voice
+        - voice:ext
+        - fax
+        - fax:ext
+
+epp.requiredContactElements:
+  Description: |
+    This input parameter is complementary to the `epp.supportedContactElements`
+    parameter. It may be used to indicate those elements which are optional in
+    RFC 5733 but are mandatory in the server policy.
+
+    All elements that are listed in this parameter **MUST** also be listed in
+    the `epp.supportedContactElements` parameter.
+
+    This input parameter is an array of element tag names, optionally suffixed
+    with a colon (`:`) followed by an attribute name.
+  Type: input
+  Required: false
+  Example:
+    - street
+    - voice
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - org
+        - street
+        - sp
+        - pc
+        - voice
+        - voice:ext
+        - fax
+        - fax:ext

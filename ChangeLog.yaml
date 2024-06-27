@@ -1,4 +1,11 @@
-2924-06-26:
+2024-07-03:
+  - |
+    The [epp-07](#Test-Case-epp-07) test case has been updated to use the
+    newly-added [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
+    and [`epp.requiredContactElements`](#Input-parameter-epp.requiredContactElements)
+    input parameters.
+
+2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
   - |
     Added the [`srsgw.domainCreateExtension`](#Input-parameter-srsgw.domainCreateExtension),

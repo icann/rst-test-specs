@@ -268,17 +268,28 @@ epp-07:
     `epp.clid02DataModel` input parameters.
 
     The test will confirm that the server checks and validates the values of
-    the following elements against the XML schema provided in RFC 5733:
+    the following mandatory elements against the XML schema provided in RFC
+    5733:
 
-    * `<contact:id>`
+    * `<contact:id>` element
     * `<contact:postalInfo>` element(s)
     * `<contact:name>` element
-    * `<contact:org>` element
-    * `<contact:street>` element
     * `<contact:city>` element
     * `<contact:cc>` element
-    * `<contact:voice>`
-    * `<contact:email>`
+    * `<contact:email>` element
+
+    Depending on the list of elements provided in the `epp.requiredContactElements`
+    input parameters, the test will also confirm that the server checks and
+    validates the values of the following optional elements:
+
+    * `<contact:org>` element
+    * `<contact:street>` element(s)
+    * `<contact:sp>` element
+    * `<contact:pc>` element
+    * `<contact:voice>` element
+    * `ext` attribute of the `<contact:voice>` element
+    * `<contact:fax>` element
+    * `ext` attribute of the `<contact:fax>` element
 
     * The server **MUST NOT** accept a `<contact:id>` element that
       contains a value that is not a valid `clIDType` value;
@@ -286,11 +297,11 @@ epp-07:
       contains a `type` attribute that is neither `int` nor `loc`;
     * The server **MUST NOT** accept a `<contact:cc>` element that contains a
       value that is not a valid ISO 3166-1 alpha-2 code;
-    * The server **MUST NOT** accept a `<contact:voice>` element that contains
-      a value that does not conform to the format described in Section 2.5 of
-      RFC 5733;
     * The server **MUST NOT** accept a `<contact:email>` element that contains
-      a value that does not conform to the format specified in RFC 5322.
+      a value that does not conform to the format specified in RFC 5322;
+    * If supported, the server **MUST NOT** accept a `<contact:voice>` element
+      that contains a value that does not conform to the format described in
+      Section 2.5 of RFC 5733.
 
     Once objects have been created, the client will then perform `<info>`
     commands to verify that the server has correctly stored the provided
