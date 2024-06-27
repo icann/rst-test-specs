@@ -278,8 +278,8 @@ epp-07:
     * `<contact:cc>` element
     * `<contact:email>` element
 
-    Depending on the list of elements provided in the `epp.requiredContactElements`
-    input parameters, the test will also confirm that the server checks and
+    Depending on the list of elements provided in the `epp.supportedContactElements`
+    input parameter, the test will also confirm that the server checks and
     validates the values of the following optional elements:
 
     * `<contact:org>` element
