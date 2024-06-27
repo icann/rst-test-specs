@@ -393,14 +393,17 @@ epp-09:
     * `<contact:status>`
     * `<contact:postalInfo>` elements (both `int` and `loc`)
         * `<contact:name>`
-        * `<contact:org>`
+        * `<contact:org>` (if supported)
         * `<contact:addr>` elements
-          * `<contact:street>` element(s)
-          * `<contact:city>` element
+          * `<contact:street>` element(s) (if supported)
+          * `<contact:city>` element (if supported)
           * `<contact:sp>` element
-          * `<contact:pc>` element
+          * `<contact:pc>` element (if supported)
           * `<contact:cc>` element
-    * `<contact:voice>`
+    * `<contact:voice>` (if supported)
+    * `ext` attribute of `<contact:voice>` (if supported)
+    * `<contact:fax>` (if supported)
+    * `ext` attribute of `<contact:fax>` (if supported)
     * `<contact:email>`
 
     Once objects have been updated, the client will then perform `<info>`
