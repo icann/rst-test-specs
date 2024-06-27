@@ -1,10 +1,9 @@
 2024-07-03:
   - |
-    The [epp-07](#Test-Case-epp-07) test case has been updated to use the
-    newly-added [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
+    The [epp-07](#Test-Case-epp-07) and [epp-09](#Test-Case-epp-09) test cases
+    have been updated to use the newly-added [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
     and [`epp.requiredContactElements`](#Input-parameter-epp.requiredContactElements)
-    input parameters. The [epp-09](#Test-Case-epp-09) test case has been updated
-    to use these input parameters.
+    input parameters.
 
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
