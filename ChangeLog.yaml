@@ -4,6 +4,10 @@
     have been updated to use the newly-added [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
     and [`epp.requiredContactElements`](#Input-parameter-epp.requiredContactElements)
     input parameters.
+  - |
+    The [epp-07-data](#Data-Provider-epp-07-data) data provider has been updated
+    to correct the error codes generated when the server accepts a `<voice>`
+    element with invalid content.
 
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
