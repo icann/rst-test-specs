@@ -1,7 +1,8 @@
 2024-07-03:
   - |
     The [epp-07](#Test-Case-epp-07) and [epp-09](#Test-Case-epp-09) test cases
-    have been updated to use the newly-added [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
+    have been updated to use the newly-added
+    [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
     and [`epp.requiredContactElements`](#Input-parameter-epp.requiredContactElements)
     input parameters.
   - |
@@ -13,6 +14,9 @@
     been updated to allow different nameservers to be specified for each TLD
     being tested. The description of the [DNS](#Test-Suite-StandardDNS) has been
     updated to reflect this change.
+  - |
+    documented [Test TLDs for RSP
+    Evaluation](#Preamble-2.6.-Test-TLDs-for-RSP%0AEvaluation).
 
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
