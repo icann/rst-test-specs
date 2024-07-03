@@ -8,6 +8,11 @@
     The [epp-07-data](#Data-Provider-epp-07-data) data provider has been updated
     to correct the error codes generated when the server accepts a `<voice>`
     element with invalid content.
+  - |
+    The [`dns.nameservers`](#Input-Parameter-dns.nameservers) input parameter has
+    been updated to allow different nameservers to be specified for each TLD
+    being tested. The description of the [DNS](#Test-Suite-StandardDNS) has been
+    updated to reflect this change.
 
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
