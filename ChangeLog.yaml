@@ -10,13 +10,17 @@
     to correct the error codes generated when the server accepts a `<voice>`
     element with invalid content.
   - |
-    The [`dns.nameservers`](#Input-Parameter-dns.nameservers) input parameter has
-    been updated to allow different nameservers to be specified for each TLD
+    The [`dns.nameservers`](#Input-Parameter-dns.nameservers) input parameter
+    has been updated to allow different nameservers to be specified for each TLD
     being tested. The description of the [DNS](#Test-Suite-StandardDNS) has been
     updated to reflect this change.
   - |
-    documented [Test TLDs for RSP
+    Documented [Test TLDs for RSP
     Evaluation](#Preamble-2.6.-Test-TLDs-for-RSP%0AEvaluation).
+  - |
+    Updated the test cases in the [Integration test
+    suite](#Test-Suite-StandardIntegrationTest) to be independent from each
+    other.
 
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
