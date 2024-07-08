@@ -124,8 +124,8 @@ srsgw.domainCreateExtension:
   Type: input
   Required: false
   Example: |
-    <extension xmlns="urn:ietf:params:xml:ns:epp-1.0">
-      <allocationToken xmlns="urn:ietf:params:xml:ns:allocationToken-1.0">
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <allocationToken xmlns='urn:ietf:params:xml:ns:allocationToken-1.0'>
         abc123
       </allocationToken>
     </extension>
