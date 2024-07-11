@@ -1,5 +1,9 @@
 2024-07-07:
   - |
+    Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
+    provider, so that elements that can be empty do not result in errors when
+    empty values are accepted by the server.
+  - |
     clarified the relationship between the items in the
     [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers)
     input parameters and the TLDs in the TLD set. This input parameter is now

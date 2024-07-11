@@ -970,12 +970,6 @@ EPP_CONTACT_CREATE_SERVER_ACCEPTS_EMPTY_NAME:
     The server incorrectly accepted an empty value for the `<name>` element in a
     contact `<create>` command.
 
-EPP_CONTACT_CREATE_SERVER_ACCEPTS_EMPTY_STREET:
-  Severity: ERROR
-  Description: |
-    The server incorrectly accepted an empty value for the `<street>` element in
-    a contact `<create>` command.
-
 EPP_CONTACT_CREATE_SERVER_ACCEPTS_EMPTY_VOICE:
   Severity: ERROR
   Description: |
@@ -1005,3 +999,65 @@ EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_STREET:
   Description: |
     The server incorrectly accepted an invalid value for the `<street>` element
     in a contact `<create>` command.
+
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<fax>`
+    element.
+
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX_EXT:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `ext`
+    attribute of the `<fax>` element.
+
+EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE_EXT:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<create>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `ext`
+    attribute of the `<voice>` element.
+
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_EMPTY_FAX:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an empty value for the `<fax>` element in
+    a contact `<create>` command.
+
+EPP_CONTACT_CREATE_SERVER_ACCEPTS_INVALID_FAX:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an invalid value for the `<fax>` element in
+    a contact `<create>` command.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<fax>`
+    element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX_EXT:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `ext`
+    attribute of the `<fax>` element.
+
+EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_VOICE_EXT:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `ext`
+    attribute of the `<voice>` element.
+
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_FAX:
+  Severity: ERROR
+  Description: |
+    Following a successful contact `<update>` command, a subsequent `<info>`
+    response for the created object contained an incorrect or missing `<fax>`
+    element.
+
