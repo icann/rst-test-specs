@@ -178,12 +178,13 @@ epp.registeredNameservers:
     An array of host objects that exist in the EPP server and which are
     therefore unavailable for registration.
 
-    If the value of `epp.hostModel` is `objects`, this array **MUST** contain
-    one member for each TLD in the TLD set. However, if it is `attributes`,
-    the array **MUST** be empty.
+    If the value of `epp.hostModel` is `objects`, for each TLD in the TLD set,
+    this array **MUST** contain one hostname which is subordinate to that TLD.
+
+    However, if it is `attributes`, this parameter **SHOULD** be omitted.
   Type: input
-  Required: true
-  Example: ["ns1.example.com", "ns2.example.org"]
+  Required: false
+  Example: ["ns1.example.example1", "ns2.example.example2"]
   Schema:
     type: array
     items:
@@ -192,17 +193,18 @@ epp.registeredNameservers:
 
 epp.registeredContacts:
   Description: |
-    An array of contact IDs that exist in the EPP server and which are
-    therefore unavailable for registration.
+    An array of contact IDs that exist in the EPP server and which are therefore
+    unavailable for registration. 
 
-    If the value of `general.registryDataModel` is `maximum`, or `per-registrar`,
-    then this array **MUST** contain one member for each TLD in the TLD set.
-    However, if it is `minimum`, the array **MUST** be empty.
+    If the value of `general.registryDataModel` is `minimum`, this parameter
+    **SHOULD** be omitted. Otherwise, at least two contact IDs **MUST** be
+    provided.
   Type: input
-  Required: true
+  Required: false
   Example: ["abc123", "def321"]
   Schema:
     type: array
+    minItems: 2
     items:
       type: string
 

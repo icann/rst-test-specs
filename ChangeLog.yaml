@@ -1,3 +1,14 @@
+2024-07-07:
+  - |
+    clarified the relationship between the items in the
+    [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers)
+    input parameters and the TLDs in the TLD set. This input parameter is now
+    also optional.
+  - |
+    updated the definition of the
+    [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts) to make
+    a bit more sense. This is also now optional.
+
 2024-07-03:
   - |
     The [epp-07](#Test-Case-epp-07) and [epp-09](#Test-Case-epp-09) test cases
