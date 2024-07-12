@@ -12,6 +12,7 @@
     updated the definition of the
     [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts) to make
     a bit more sense. This is also now optional.
+  - added a list of namespace URIs to [rde-05](#Test-Case-rde-05).
 
 2024-07-03:
   - |

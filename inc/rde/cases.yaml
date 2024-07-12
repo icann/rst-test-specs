@@ -56,7 +56,8 @@ rde-05:
     URIs.
 
     The correct URIs are determined by the `general.registryDataModel` and
-    `epp.hostModel` input parameters.
+    `epp.hostModel` input parameters. At minimum, the list of URIs will include
+    the `rdeDomain` URI (if using XML) or `csvDomain` (if using CSV).
 
     * if the `general.registryDataModel` input parameter is `maximum` or
       `per-registrar`, then the contact URI **MUST** be present. If the value is
@@ -68,6 +69,23 @@ rde-05:
 
     All expected URIs **MUST** be present in the header, and the header **MUST
     NOT** contain any unexpected URIs.
+
+    | **Namespace URI**                         | **Deposit type** | **Notes** |
+    | :---------------------------------------- | :------------:   | :-------- |
+    | `urn:ietf:params:xml:ns:csvContact-1.0`   | CSV              | `general.registryDataModel` != 'minimum'
+    | `urn:ietf:params:xml:ns:csvDomain-1.0`    | CSV              |
+    | `urn:ietf:params:xml:ns:csvHost-1.0`      | CSV              | `epp.hostModel` = 'objects'
+    | `urn:ietf:params:xml:ns:csvIDN-1.0`       | CSV              |
+    | `urn:ietf:params:xml:ns:csvNNDN-1.0`      | CSV              |
+    | `urn:ietf:params:xml:ns:csvRegistrar-1.0` | CSV              |
+    | `urn:ietf:params:xml:ns:rdeContact-1.0`   | XML              | `general.registryDataModel` != 'minimum'
+    | `urn:ietf:params:xml:ns:rdeDomain-1.0`    | XML              |
+    | `urn:ietf:params:xml:ns:rdeEppParams-1.0` | XML              |
+    | `urn:ietf:params:xml:ns:rdeHost-1.0`      | XML              | `epp.hostModel` = 'objects'
+    | `urn:ietf:params:xml:ns:rdeIDN-1.0`       | XML              |
+    | `urn:ietf:params:xml:ns:rdeNNDN-1.0`      | XML              |
+    | `urn:ietf:params:xml:ns:rdeRegistrar-1.0` | XML              |
+
   Errors:
     - RDE_UNEXPECTED_OBJECT_URI
     - RDE_MISSING_OBJECT_URI
