@@ -941,6 +941,12 @@ EPP_UNEXPECTED_COMMAND_FAILURE:
     A command that should have succeeded return a response with a status code of
     2000 or higher.
 
+EPP_UNEXPECTED_COMMAND_SUCCESS:
+  Severity: ERROR
+  Description: |
+    A command that should have failed return a response with a status code of
+    1999 or lower.
+
 EPP_GREETING_MISSING_EN_LANG:
   Severity: ERROR
   Description: |
