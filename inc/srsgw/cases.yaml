@@ -458,15 +458,20 @@ srsgw-15:
     to registrar (entity) lookups that match those of the primary registry
     RDAP server.
 
-    The test system will perform RDAP queries for some of the objects created
-    in `srsgw-04` against the primary registry RDAP server in order to obtain
-    the `handle` property of the entity with the `registrar` role. It will
-    then construct two URLs using this value and the values of the
-    `rdap.baseURLs` and `srsgw.rdapBaseURLs` input parameters. It will then
-    retrieve those URLs.
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated domain name.
+    Host and/or contact objects will created as needed.
 
-    After canonicalisation, the JSON responses from each server **MUST** be
-    identical.
+    The test system will then perform RDAP queries for this domain against the
+    primary registry RDAP server in order to obtain the `handle` property of the
+    entity with the `registrar` role. It will then construct two URLs using this
+    value and the values of the `rdap.baseURLs` and `srsgw.rdapBaseURLs` input
+    parameters. It will then retrieve those URLs.
+
+    After canonicalization (see [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)),
+    the JSON responses from each server **MUST** be identical, with the sole
+    exception of event objects with `eventAction` properties equal to "last
+    update of RDAP database".
   Dependencies:
     - srsgw-02
   Errors:

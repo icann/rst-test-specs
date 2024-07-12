@@ -13,6 +13,10 @@
     [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts) to make
     a bit more sense. This is also now optional.
   - added a list of namespace URIs to [rde-05](#Test-Case-rde-05).
+  - |
+    updated the test procedure for [srsgw-15](#Test-Case-srsgw-15), and added a
+    reference to [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785). The two
+    RDAP responses may have different "last update of RDAP database" events.
 
 2024-07-03:
   - |
