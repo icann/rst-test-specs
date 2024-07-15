@@ -33,7 +33,7 @@ srsgw.serverIssuedClientCertificate01:
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be omitted.
   Required: true
-  Type: input
+  Type: file
   Schema:
     type: string
   Example: cert.pem

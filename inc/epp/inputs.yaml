@@ -19,7 +19,7 @@ epp.greeting:
   Example: greeting.xml
   Schema:
     type: string
-    
+
 epp.clid01:
   Description: the username used to log in to the EPP server.
   Type: input
@@ -129,7 +129,7 @@ epp.clid02DataModel:
     enum:
       - minimum
       - maximum
-  
+
 epp.hostModel:
   Description: |
     The host model supported by the EPP server. The possible values for this
@@ -194,7 +194,7 @@ epp.registeredNameservers:
 epp.registeredContacts:
   Description: |
     An array of contact IDs that exist in the EPP server and which are therefore
-    unavailable for registration. 
+    unavailable for registration.
 
     If the value of `general.registryDataModel` is `minimum`, this parameter
     **SHOULD** be omitted. Otherwise, at least two contact IDs **MUST** be

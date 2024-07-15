@@ -1,4 +1,5 @@
 2024-07-07:
+  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#srsgw.serverIssuedClientCertificate01).
   - |
     Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
     provider, so that elements that can be empty do not result in errors when
