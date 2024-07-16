@@ -594,13 +594,15 @@ epp-14:
   Description: |
     This test performs a series domain `<create>` commands, using pseudo-
     random syntactically valid ASCII domain names under each TLD in the TLD set.
+
     Depending on the value of the `general.registryDataModel` and
     `epp.requiredContactTypes` input parameters, one or more contact objects
     will be created (using pseudo-random contact information) beforehand and
-    used as the registrant (and other) contacts. If the `epp.hostModel`
-    parameter is `objects`, then two host objects with syntactically valid
-    pseudo-random names will be created and used as the nameservers (otherwise
-    the names will be provided as attributes).
+    used as the registrant (and other) contacts.
+
+    If the `epp.hostModel` parameter is `objects`, then two host objects with
+    syntactically valid pseudo-random names will be created and used as the
+    nameservers (otherwise the names will be provided as attributes).
 
     The client will perform several `<create>` commands, each of which will
     test certain aspects of the server's processing of those commands, for
@@ -628,15 +630,17 @@ epp-14:
       host objects when the `epp.hostModel` parameter is `attributes`
     * to confirm that the server rejects a `<create>` command containing
       host attributes when the `epp.hostModel` parameter is `objects`
-    * to confirm that the the server which implements RFC 9154 accepts a
-      `<create>` command without an authInfo command.
+    * to confirm that the the server which implements [RFC
+      9154](https://www.rfc-editor.org/rfc/rfc9154.html) accepts a `<create>`
+      command with an empty `<pw>` element.
 
     Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
-    input parameters) will be used to create domains. If the value of the
-    `epp.registryDataModel` input parameter is `per-registrar`, then the
-    `epp.clid01DataModel` and `epp.clid02DataModel` input parameters will be
-    taken into consideration when determining whether contact objects are needed
-    to successfully create a domain name.
+    input parameters) will be used to create domains.
+
+    If the value of the `epp.registryDataModel` input parameter is
+    `per-registrar`, then the `epp.clid01DataModel` and `epp.clid02DataModel`
+    input parameters will be taken into consideration when determining whether
+    contact objects are needed to successfully create a domain name.
 
     Once the `<create>` commands have been processed, the client will then
     perform `<info>` commands to confirm that:
