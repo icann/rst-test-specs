@@ -1,4 +1,11 @@
 2024-07-07:
+  - |
+    EPP-related test cases are being revised to avoid reuse of objects created
+    previous test cases. Instead, each test case will be "standalone", and will
+    created any required objects itself. Any such objects will be deleted when
+    the test case is finished. Any test case that still describes the reuse of
+    objects created in a previous test case will eventually be updated to become
+    "standalone".
   - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#srsgw.serverIssuedClientCertificate01).
   - |
     Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
