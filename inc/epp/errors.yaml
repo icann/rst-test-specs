@@ -1067,3 +1067,8 @@ EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_FAX:
     response for the created object contained an incorrect or missing `<fax>`
     element.
 
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITH_INVALID_GLUE:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an invalid value for the `<hostAddr>`
+    element in a `<hostAttr>` element in a domain `<create>` command.
