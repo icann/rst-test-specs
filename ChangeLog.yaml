@@ -25,7 +25,9 @@
     updated the test procedure for [srsgw-15](#Test-Case-srsgw-15), and added a
     reference to [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785). The two
     RDAP responses may have different "last update of RDAP database" events.
-  - added data providers to [epp-13](#Test-Case-epp-13).
+  - |
+    added data providers to [epp-13](#Test-Case-epp-13) and
+    [epp-14](#Test-Case-epp-14).
 
 2024-07-03:
   - |
