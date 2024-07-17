@@ -677,6 +677,8 @@ epp-14:
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+  Data-Providers:
+    - epp-14-data
 
 epp-15:
   Summary: Registry object integrity test
