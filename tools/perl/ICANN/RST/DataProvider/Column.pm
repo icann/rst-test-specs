@@ -6,8 +6,8 @@ sub new {
     return bless($ref, $package);
 }
 
-sub name        { $_->{'Name'} }
-sub type        { $_->{'Type'} }
+sub name        { $_[0]->{'Name'} }
+sub type        { $_[0]->{'Type'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 
 1;
