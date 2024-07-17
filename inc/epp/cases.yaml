@@ -654,8 +654,6 @@ epp-14:
       correct.
   Input-Parameters:
     - epp.secDNSInterfaces
-  Dependencies:
-    - epp-03
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
