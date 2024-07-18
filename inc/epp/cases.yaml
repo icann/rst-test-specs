@@ -232,7 +232,9 @@ epp-06:
       `true`. The ID will be generated using random characters.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
-    test will be skipped.
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
   Input-Parameters:
     - epp.registeredContacts
   Dependencies:
@@ -359,7 +361,9 @@ epp-08:
     `<update>` commands on objects that they do not sponsor.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
-    test will be skipped.
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     The client will connect using a set of alternate credentials and will
     submit `<info>` and `<update>` commands on the contact objects created in
@@ -461,7 +465,9 @@ epp-10:
     with a `1xxx` response code.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
-    test will be skipped.
+    test will be skipped. Otherwise, this client will select the appropriate
+    registrar credentials based on the values of the `epp.clid01DataModel` and
+    `epp.clid02DataModel` input parameters.
 
     Once the `<delete>` commands have been submitted, the client will perform
     `<info>` commands to confirm that the objects have actually been removed
