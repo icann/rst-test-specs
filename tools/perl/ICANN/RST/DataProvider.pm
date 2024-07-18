@@ -23,6 +23,28 @@ sub cases {
     return sort { $a->id cmp $b->id } values(%cases);
 }
 
+sub errors {
+    my $self = shift;
+
+    my $i = 0;
+
+    my @errors;
+
+    foreach my $column ($self->columns) {
+        if ('errorCode' eq $column->name) {
+            foreach my $row (@{$self->rows}) {
+                push(@errors, $self->spec->error($row->[$i]));
+            }
+
+            last;
+        }
+
+        $i++;
+    }
+
+    return @errors;
+}
+
 1;
 
 __END__
@@ -53,5 +75,9 @@ An arrayref of arrayrefs containing the rows for this data provider.
 =head2 cases()
 
 A list of all C<ICANN::RST::Case> objects that use this data provider.
+
+=head2 errors()
+
+A list of all C<ICANN::RST::Error> objects referenced by this data provider.
 
 =cut
