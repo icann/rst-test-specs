@@ -136,6 +136,14 @@ sub check_case {
         warn(sprintf("Case '%s' uses non-existent error '%s'", $case->id, $error)) if (none { $_->id eq $error } $spec->errors);
     }
 
+    foreach my $provider ($case->providers) {
+        foreach my $error ($provider->errors) {
+            if (none { $_ eq $error->id } @{$case->{'Errors'}}) {
+                warn(sprintf("Error '%s' referenced in data provider '%s' is not included in the list of errors for case '%s'", $error->id, $provider->id, $case->id));
+            }
+        }
+    }
+
     warn(sprintf("Case '%s' has maturity of '%s' (expected one of ALPHA|BETA|GAMMA)", $case->id, $case->{'Maturity'})) unless (any { $_ eq $case->{'Maturity'} } qw(ALPHA BETA GAMMA));
 }
 
@@ -255,7 +263,17 @@ sub check_error {
 sub check_provider {
     my $provider = shift;
 
-    # TODO
+    my $i = 0;
+    COLUMN: foreach my $column ($provider->columns) {
+        if ('errorCode' eq $column->name) {
+            my $j = 0;
+            ROW: foreach my $row (@{$provider->rows}) {
+                $j++;
+                warn(sprintf("Row #%u in Data Provider '%s' uses non-existent error '%s'", $j, $provider->id, $row->[$i])) if (none { $_->id eq $row->[$i] } $spec->errors);
+            }
+        }
+        $i++;
+    }
 }
 
 sub validate_input_schema {
