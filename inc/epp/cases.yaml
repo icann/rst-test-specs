@@ -386,10 +386,9 @@ epp-09:
   Summary: Contact <update> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
-    This test will perform `<update>` commands on the objects created during
-    `epp-07` and will confirm that the server correctly rejects invalid
-    commands (which would specify invalid property values) and accepts valid
-    commands.
+    This test will perform `<update>` commands on the contact objects and will
+    confirm that the server correctly rejects invalid commands (which would
+    specify invalid property values) and accepts valid commands.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
     test will be skipped. Otherwise, this client will select the appropriate
@@ -410,16 +409,14 @@ epp-09:
           * `<contact:pc>` element (if supported)
           * `<contact:cc>` element
     * `<contact:voice>` (if supported)
-    * `ext` attribute of `<contact:voice>` (if supported)
+      * `ext` attribute of `<contact:voice>` (if supported)
     * `<contact:fax>` (if supported)
-    * `ext` attribute of `<contact:fax>` (if supported)
+      * `ext` attribute of `<contact:fax>` (if supported)
     * `<contact:email>`
 
     Once objects have been updated, the client will then perform `<info>`
     commands to verify that the server has correctly stored the provided
     values.
-  Dependencies:
-    - epp-08
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -455,6 +452,16 @@ epp-09:
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_FAX_EXT
     - EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_EMAIL
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_NAME
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_CITY
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_CC
+    - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
+    - EPP_UNEXPECTED_COMMAND_SUCCESS
+  Data-Providers:
+    - epp-09-postalinfo-data
+    - epp-09-other-data
+    - epp-09-status-data
 
 epp-10:
   Summary: Contact <delete> command test (if applicable for the registry type)
@@ -590,6 +597,8 @@ epp-13:
     - EPP_HOST_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
     - EPP_HOST_UPDATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_UPDATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_UNEXPECTED_COMMAND_SUCCESS
   Data-Providers:
     - epp-13-status-data
     - epp-13-addr-data
@@ -683,6 +692,7 @@ epp-14:
     - EPP_DOMAIN_CREATE_SERVER_ACCEPTS_AUTHINFO
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_INVALID_ROID
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+    - EPP_UNEXPECTED_COMMAND_FAILURE
   Data-Providers:
     - epp-14-data
 

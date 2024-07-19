@@ -1072,3 +1072,27 @@ EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITH_INVALID_GLUE:
   Description: |
     The server incorrectly accepted an invalid value for the `<hostAddr>`
     element in a `<hostAttr>` element in a domain `<create>` command.
+
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_NAME:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an empty `<name>` element in a
+    `<postalInfo>` element in a contact `<update>` command.
+
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_CITY:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an empty `<city>` element in a
+    `<postalInfo>` element in a contact `<update>` command.
+
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_EMPTY_CC:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted an empty `<cc>` element in a
+    `<postalInfo>` element in a contact `<update>` command.
+
+EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted a `<status>` element in element with an
+    invalid `s` attribute in a contact `<update>` command.
