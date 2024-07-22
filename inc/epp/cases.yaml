@@ -404,8 +404,8 @@ epp-09:
         * `<contact:org>` (if supported)
         * `<contact:addr>` elements
           * `<contact:street>` element(s) (if supported)
-          * `<contact:city>` element (if supported)
-          * `<contact:sp>` element
+          * `<contact:city>` element
+          * `<contact:sp>` element (if supported)
           * `<contact:pc>` element (if supported)
           * `<contact:cc>` element
     * `<contact:voice>` (if supported)
