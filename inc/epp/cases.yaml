@@ -607,7 +607,7 @@ epp-14:
   Summary: Domain <create> command test
   Maturity: GAMMA
   Description: |
-    This test performs a series domain `<create>` commands, using pseudo-
+    This test performs a series of domain `<create>` commands, using pseudo-
     random syntactically valid ASCII domain names under each TLD in the TLD set.
 
     Depending on the value of the `general.registryDataModel` and
@@ -619,9 +619,8 @@ epp-14:
     syntactically valid pseudo-random names will be created and used as the
     nameservers (otherwise the names will be provided as attributes).
 
-    The client will perform several `<create>` commands, each of which will
-    test certain aspects of the server's processing of those commands, for
-    example:
+    The client will `<create>` commands to test aspects of the server's
+    processing of those commands, for example:
 
     * to confirm that the server does not accept invalid values for object
       properties (such as domain name, registration period, registant ID,
@@ -731,24 +730,23 @@ epp-16:
   Summary: Domain <update> command test
   Maturity: GAMMA
   Description: |
-    This test will confirm that the client is able to perform an `<update>`
-    command on the domain names created in `epp-14`, including:
+    This test will confirm that the client is able to perform `<update>`
+    commands on domain names, including:
 
     * adding and removing client-assigned status codes
     * adding and removing nameservers (whether objects or attributes)
     * changing registrant object (if applicable)
     * adding and remove DNSSEC information
 
+    The client will create a domain name (and any contact and/or host objects
+    required) and perform `<update>` commands as described above.
+
+    It will then perform `<info>` commands to confirm that the changes have been
+    correctly stored by the server.
+
     The client will also confirm that it cannot perform an `<update>` command
     on a domain sponsored by another registrar, and that the server responds
     with a `2201` authorization error.
-
-    Once the `<update>` commands have been processed, the client will then
-    perform `<info>` commands to confirm that the changes have been correctly
-    stored by the server.
-  Input-Parameters:
-  Dependencies:
-    - epp-14
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
