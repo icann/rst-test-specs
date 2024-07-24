@@ -1,3 +1,6 @@
+2024-07-24:
+  - clarified the description of [epp-17](#Test-Case-epp-17).
+
 2024-07-17:
   - |
     EPP-related test cases are being revised to avoid reuse of objects created

@@ -782,13 +782,15 @@ epp-17:
     This test confirms that all EPP service ports respond with consistent object
     information.
 
-    The client will establish seperate connections to each EPP service port
-    (defined as an IP address and TCP port) and perform `<info>` commands on the
-    objects created in `epp-14`. In all cases, the server **MUST** respond with
-    a `1000` response and the content of the `<infData>` element **MUST** be
+    The client will establish separate connections to each EPP service port
+    (defined as TCP port 700 on all IP addresses found in the `A` and `AAAA`
+    records for the EPP server name) and create a contact, host or domain name,
+    as applicable.
+
+    It will then perform `<info>` commands on that object over each service
+    port. In all cases, the server **MUST** respond with a `1000` response,
+    and the content of the `<infData>` element of the response **MUST** be
     identical on all service ports.
-  Dependencies:
-    - epp-14
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
