@@ -85,7 +85,7 @@ sub find {
         return $stick if ($stick->id eq $needle);
     }
 
-    warn("object '$needle' not found");
+    carp("object '$needle' not found");
 
     return undef;
 }
