@@ -922,20 +922,22 @@ epp-21:
   Summary: Domain <delete> command test
   Maturity: GAMMA
   Description: |
-    This test will perform `<delete>` commands on the objects created during
-    `epp-14` and will confirm that the server accepts the `<delete>` command
-    with a `1xxx` response code.
+    This test will create and then delete a domain name, to confirm that the
+    server accepts the `<delete>` command with a `1xxx` response code.
 
-    Once the `<delete>` commands have been processed, the client will perform
-    `<info>` commands on the deleted to object to confirm that:
+    Once the `<delete>` command has been processed, the client will perform
+    and `<info>` command to confirm that:
 
     * if the server responded to the `<delete>` command with a `1000`
-      response, then the domain no longer exists
+      response, then the domain no longer exists;
     * if the server responded to the `<delete>` command with a `1001`
       response, then the domain has the `pendingDelete` status and the
       `redemptionPeriod` RGP status.
-  Dependencies:
-    - epp-14
+
+    If the `<delete>` command resulted in a `1000` response, the client will
+    also submit `<delete>` commands for any host and/or contact objects created.
+    These commands **MUST** succeed, and an `<info>` command for them **MUST**
+    result in a `2303` "object does not exist" error.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
