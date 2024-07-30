@@ -163,8 +163,6 @@ epp-04:
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
     will be skipped (the functionality of the `<check>` command for these TLDs
     will be checked in the `idn-01` test case).
-  Dependencies:
-    - epp-03
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -201,8 +199,6 @@ epp-05:
     skipped.
   Input-Parameters:
     - epp.registeredNameservers
-  Dependencies:
-    - epp-04
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -237,8 +233,6 @@ epp-06:
     `epp.clid02DataModel` input parameters.
   Input-Parameters:
     - epp.registeredContacts
-  Dependencies:
-    - epp-05
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -309,8 +303,6 @@ epp-07:
     Once objects have been created, the client will then perform `<info>`
     commands to verify that the server has correctly stored the provided
     values.
-  Dependencies:
-    - epp-06
   Errors:
     - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC
     - EPP_CONTACT_CREATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CITY
@@ -787,13 +779,13 @@ epp-17:
 
     The client will establish separate connections to each EPP service port
     (defined as TCP port 700 on all IP addresses found in the `A` and `AAAA`
-    records for the EPP server name) and create a contact, host or domain name,
-    as applicable.
+    records for the EPP server name) and, using one of these connections,
+    create a domain name, and any contact and/or host objects, as required.
 
-    It will then perform `<info>` commands on that object over each service
-    port. In all cases, the server **MUST** respond with a `1000` response,
-    and the content of the `<infData>` element of the response **MUST** be
-    identical on all service ports.
+    It will then perform `<info>` commands on those object(s) on each of the
+    other ports. In all cases, the server **MUST** respond with a `1000`
+    response, and the content of the `<infData>` element of the response
+    **MUST** be identical on all service ports.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -808,21 +800,19 @@ epp-18:
   Summary: Domain <renew> command test
   Maturity: GAMMA
   Description: |
-    This test will confirm that the client is able to renew domain names. The
-    client will submit a number of `<renew>` commands for the domains created in
-    `epp-14`.
+    This test will confirm that the client is able to renew domain names.
 
-    * Following a succesful `<renew>` command, the expiry date of the domain
-      **MUST** have been increased by the period specified by the client;
-    * The domain **MUST** have an RGP status of `renewPeriod`;
-    * The server **MUST** reject a `<renew>` command if it would result in
-      the expiry date being more than 10 years into the future.
+    The client will create a domain name, and any contact and/or host objects,
+    as required, then submit `<renew>` commands for that object.
 
-    The client will issue the `<renew>` commands and then perform `<info>`
-    commands to ensure that the expiry date and RGP status of the domain are
-    set correctly.
-  Dependencies:
-    - epp-14
+    1. Following a succesful `<renew>` command, the expiry date of the domain
+       **MUST** have been increased by the period specified by the client;
+    2. The domain **MUST** have an RGP status of `renewPeriod`;
+    3. The server **MUST** reject a `<renew>` command if it would result in
+       the expiry date being more than 10 years into the future.
+
+    After each `<renew>` command, the client will perform an `<info>` command to
+    ensure that the expiry date and RGP status of the domain are set correctly.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -843,10 +833,9 @@ epp-19:
     This test will confirm that the client is able to initiate a domain
     transfer.
 
-    The client will perform an `<update>` command to set the authInfo code for
-    the test domain (taken from the set created in `epp-14`) to a
-    randomly-determined value. If the server implements RFC 9154, it **MUST**
-    reject the `<update>` command if the authInfo code is insufficently
+    The client will create a domain name, and any contact and/or host objects,
+    as required. If the server implements RFC 9154, it **MUST**
+    reject the `<create>` command if the authInfo code is insufficently
     secure.
 
     Then, using a second set of credentials, the client will connect to the
@@ -855,9 +844,9 @@ epp-19:
 
     This test will confirm that:
 
-    * the server rejects a `<transfer>` command with an invalid authInfo code
+    * the server rejects a `<transfer>` command with an invalid authInfo code;
     * the server rejects a command which would extend the domain's validity
-      period more than 10 years into the future
+      period more than 10 years into the future;
     * the server accepts a `<transfer>` command with a valid authInfo code
       and period.
 
@@ -880,8 +869,6 @@ epp-19:
 
     This message **MUST** be received within 120 seconds of the transfer
     approval.
-  Dependencies:
-    - epp-14
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -911,8 +898,6 @@ epp-20:
     be rejected rather than approved. An `<info>` command will be used to
     confirm that the domain name remains under the sponsorship of the original
     registrar.
-  Dependencies:
-    - epp-14
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -957,17 +942,29 @@ epp-22:
   Summary: Domain restore test
   Maturity: GAMMA
   Description: |
-    This test will perform RGP restore operations on the objects deleted
-    during `epp-21`, in order to confirm the correct operation of the server's
-    implementation of RFC 3915.
+    This test will perform RGP restore operations on domain objects that have
+    previously been deleted, in order to confirm the correct operation of the
+    server's implementation of RFC 3915.
 
-    Once the restore request has been procssed, the client will perform
-    `<info>` commands on the deleted to object to confirm that the domain no
-    longer has the `pendingDelete` status and RGP status.
+    The client will create a domain name, and any contact and/or host objects,
+    as required.
+
+    It will then submit a `<renew>` command, which **MUST** succeed. After the
+    `<renew>` command has been submitted, the value of the `s` attribute of the
+    `<rgpStatus>` element **MUST** be `renewPeriod`.
+
+    *(The purpose of the `<renew>` command is to ensure that the domain does not
+    have the `addPeriod` RGP status, which ensures that the domain may be
+    restored once deleted.)*
+
+    The client will then submit a `<delete>` command for the domain, which
+    **MUST** succeed. The client will then submit an RGP restore request.
+
+    Once the restore request has been processed, the client will perform an
+    `<info>` command on the object to confirm that the domain no longer has the
+    `pendingDelete` status and RGP status.
   Input-Parameters:
     - epp.restoreReportRequired
-  Dependencies:
-    - epp-21
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE

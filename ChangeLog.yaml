@@ -1,3 +1,11 @@
+2024-07-31:
+  - added data providers to some EPP test cases.
+  - resolved error message inconsistency in [epp-16](#Test-Case-epp-16).
+  - further clarifications to [epp-17](#Test-Case-epp-17).
+  - made [epp-18](#Test-Case-epp-18) standalone.
+  - made [epp-19](#Test-Case-epp-19) standalone.
+  - made [epp-21](#Test-Case-epp-21) standalone.
+
 2024-07-24:
   - clarified the description of [epp-17](#Test-Case-epp-17).
 
@@ -8,8 +16,8 @@
     created any required objects itself. Any such objects will be deleted when
     the test case is finished. Any test case that still describes the reuse of
     objects created in a previous test case will eventually be updated to become
-    "standalone".
-  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#srsgw.serverIssuedClientCertificate01).
+    "standalone" and should be read as such.
+  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#Input-parameter-srsgw.serverIssuedClientCertificate01).
   - |
     Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
     provider, so that elements that can be empty do not result in errors when
