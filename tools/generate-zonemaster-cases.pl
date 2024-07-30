@@ -128,6 +128,7 @@ sub process_case {
     # initialise the case object
     #
     $cases->{$id} = {
+        'Implemented'   => \1,
         'Description'   => '',
         'Maturity'      => 'GAMMA',
         'Errors'        => [],
@@ -211,7 +212,7 @@ sub process_case {
     $cases->{$id}->{'Description'} .= "\n\n";
 
     #
-    # read Markdown 
+    # read Markdown
     #
     my @lines = read_file(File::Spec->catfile($base, $mdfile));
 
