@@ -455,12 +455,6 @@ EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_SP:
     The server incorrectly accepted an invalid value for the `<sp>` element in a
     contact `<update>` command.
 
-EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS:
-  Severity: ERROR
-  Description: |
-    The server incorrectly accepted an invalid status code in a contact
-    `<update>` command.
-
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STREET:
   Severity: ERROR
   Description: |
@@ -1096,3 +1090,9 @@ EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
   Description: |
     The server incorrectly accepted a `<status>` element in element with an
     invalid `s` attribute in a contact `<update>` command.
+
+EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted a `<status>` element in element with an
+    invalid `s` attribute in a domain `<update>` command.
