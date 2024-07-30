@@ -6,6 +6,7 @@ use strict;
 sub summary     { $_[0]->{'Summary'} }
 sub description { ICANN::RST::Text->new($_[0]->{'Description'}) }
 sub maturity    { $_[0]->{'Maturity'} || 'ALPHA' }
+sub implemented { $_[0]->{'Implemented'} }
 
 sub title {
     my $self = shift;
@@ -125,5 +126,9 @@ A list of all L<ICANN::RST::Suite> objects that use this test case.
 =head2 providers()
 
 A list of all L<ICANN::RST::DataProvider> objects used by this test case.
+
+=head2 implemented()
+
+Returns true of this test case has been implemented in the RST system.
 
 =cut

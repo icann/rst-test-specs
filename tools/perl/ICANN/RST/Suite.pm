@@ -89,6 +89,16 @@ sub errors {
     return sort { $a->id cmp $b->id } values(%errors);
 }
 
+sub implemented {
+    my $self = shift;
+
+    my @cases = $self->cases;
+
+    my $implemented = scalar(grep { $_->implemented } @cases);
+
+    return $implemented / scalar(@cases);
+}
+
 1;
 
 __END__
@@ -132,5 +142,10 @@ A list of L<ICANN::RST::Error> objects which may be produced by this suite.
 =head2 graph()
 
 Returns a L<GraphViz2> object visualising the sequence of tests for this suite.
+
+=head2 implemented()
+
+Returns a number in the range 0-1 indicating what fraction of this suite's test
+cases have been implemented.
 
 =cut
