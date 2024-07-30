@@ -1,10 +1,15 @@
 2024-07-31:
+  - |
+    The schema has been updated to add an `Implemented` property to test cases,
+    allowing the proportion of implemented test cases to be reported for each
+    suite and plan.
   - added data providers to some EPP test cases.
   - resolved error message inconsistency in [epp-16](#Test-Case-epp-16).
   - further clarifications to [epp-17](#Test-Case-epp-17).
   - made [epp-18](#Test-Case-epp-18) standalone.
   - made [epp-19](#Test-Case-epp-19) standalone.
   - made [epp-21](#Test-Case-epp-21) standalone.
+  - made [epp-22](#Test-Case-epp-22) standalone.
 
 2024-07-24:
   - clarified the description of [epp-17](#Test-Case-epp-17).
