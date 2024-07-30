@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.11.0
+  version: 1.12.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -289,8 +289,12 @@ components:
             An array of Data Provider IDs which identify the Data Provider(s)
             that will be used to perform tests for this test case.
           type: array
-
-    rstInputParameter:
+        Implemented:
+          description: |
+            Whether or not this test case has been implemented, as of the date
+            of publication.
+          type: boolean
+          default: false
       description: An object describing an input parameter.
       type: object
       required:
