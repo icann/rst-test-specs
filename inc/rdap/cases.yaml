@@ -1,4 +1,5 @@
 rdap-01:
+  Implemented: true
   Summary: Domain query test
   Maturity: BETA
   Description: |
@@ -21,6 +22,7 @@ rdap-01:
     - RDAP_DOMAIN_RESPONSE_VALIDATION_FAILED
 
 rdap-02:
+  Implemented: true
   Summary: Nameserver query test
   Maturity: BETA
   Description:
@@ -38,6 +40,7 @@ rdap-02:
     - RDAP_NAMESERVER_RESPONSE_VALIDATION_FAILED
 
 rdap-03:
+  Implemented: true
   Summary: Registrar query test
   Maturity: BETA
   Description: |
@@ -53,6 +56,7 @@ rdap-03:
     - RDAP_ENTITY_RESPONSE_VALIDATION_FAILED
 
 rdap-04:
+  Implemented: true
   Summary: Help query test
   Maturity: BETA
   Description: |
@@ -70,6 +74,7 @@ rdap-04:
     - RDAP_HELP_RESPONSE_VALIDATION_FAILED
 
 rdap-05:
+  Implemented: true
   Summary: Domain HEAD test
   Maturity: BETA
   Description: |
@@ -84,6 +89,7 @@ rdap-05:
     - RDAP_DOMAIN_HEAD_FAILED
 
 rdap-06:
+  Implemented: true
   Summary: Nameserver HEAD test
   Maturity: BETA
   Description: |
@@ -98,6 +104,7 @@ rdap-06:
     - RDAP_NAMESERVER_HEAD_FAILED
 
 rdap-07:
+  Implemented: true
   Summary: Entity HEAD test
   Maturity: BETA
   Description: |
@@ -111,6 +118,7 @@ rdap-07:
     - RDAP_ENTITY_HEAD_FAILED
 
 rdap-91:
+  Implemented: true
   Summary: TLS version conformance check
   Maturity: GAMMA
   Description: |
@@ -148,6 +156,7 @@ rdap-91:
     - RDAP_TLS_BAD_CIPHER
 
 rdap-92:
+  Implemented: true
   Summary: Service port consistency check
   Maturity: GAMMA
   Description: |

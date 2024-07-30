@@ -1,4 +1,5 @@
 srsgw-01:
+  Implemented: true
   Summary: IPv4 and IPv6 connectivity
   Maturity: GAMMA
   Description: |
@@ -54,6 +55,7 @@ srsgw-02:
     - SRSGW_HOST_CREATE_OBJECT_HAS_MISSING_OR_INVALID_PROPERTIES
 
 srsgw-03:
+  Implemented: true
   Summary: Contact <create> synchronization (if applicable)
   Maturity: GAMMA
   Description: |

@@ -1,4 +1,5 @@
 epp-01:
+  Implemented: true
   Summary: Service connectivity test
   Maturity: GAMMA
   Description: |
@@ -46,6 +47,7 @@ epp-01:
     - EPP_TLS_BAD_CIPHER
 
 epp-02:
+  Implemented: true
   Summary: Protocol conformance test
   Maturity: GAMMA
   Description: |
@@ -108,6 +110,7 @@ epp-02:
     - EPP_GREETING_DOES_NOT_MATCH
 
 epp-03:
+  Implemented: true
   Summary: Authentication test
   Maturity: GAMMA
   Description: |
@@ -140,6 +143,7 @@ epp-03:
     - EPP_LOGIN_UNEXPECTEDLY_SUCCEEDED
 
 epp-04:
+  Implemented: true
   Summary: Domain <check> command test
   Maturity: GAMMA
   Description: |
@@ -177,6 +181,7 @@ epp-04:
     - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
 
 epp-05:
+  Implemented: true
   Summary: Host <check> command test (if applicable)
   Maturity: GAMMA
   Description: |
@@ -213,6 +218,7 @@ epp-05:
     - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
 
 epp-06:
+  Implemented: true
   Summary: Contact <check> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -247,6 +253,7 @@ epp-06:
     - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
 
 epp-07:
+  Implemented: true
   Summary: Contact <create> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -346,6 +353,7 @@ epp-07:
     - epp-07-data
 
 epp-08:
+  Implemented: true
   Summary: Contact object access control (if applicable)
   Maturity: GAMMA
   Description: |
@@ -375,6 +383,7 @@ epp-08:
     - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
 
 epp-09:
+  Implemented: true
   Summary: Contact <update> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -455,6 +464,7 @@ epp-09:
     - epp-09-status-data
 
 epp-10:
+  Implemented: true
   Summary: Contact <delete> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |

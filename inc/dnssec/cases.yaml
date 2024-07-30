@@ -1,4 +1,5 @@
 dnssec-91:
+  Implemented: true
   Summary: Permitted signing algorithms
   Maturity: GAMMA
   Description: |
@@ -13,6 +14,7 @@ dnssec-91:
     - dnssec-05
 
 dnssec-92:
+  Implemented: true
   Summary: Permitted DS record hash algorithm(s)
   Maturity: GAMMA
   Description: |
@@ -23,6 +25,7 @@ dnssec-92:
     - DNSSEC_INVALID_DIGEST_ALGORITHM
 
 dnssec-93:
+  Implemented: true
   Summary: NSEC3 iterations check
   Maturity: GAMMA
   Description: |
