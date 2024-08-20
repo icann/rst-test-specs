@@ -515,7 +515,6 @@ epp-11:
 
     * `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD
       set)
-    * `<host:status>`
     * `<host:addr>` elements (both IPv4 and IPv6)
 
     If the `epp.hostModel` input parameter is `attributes`, this test will
@@ -533,10 +532,15 @@ epp-11:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME
+    - EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
     - EPP_HOST_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_UNEXPECTED_COMMAND_SUCCESS
+  Data-Providers:
+    - epp-11-data
 
 epp-12:
   Summary: Host object access control (if applicable)
