@@ -174,11 +174,14 @@ StandardSRSGateway:
   Test-Cases: ^srsgw-
   Input-Parameters:
     - epp.clid01
+    - epp.clid01DataModel
     - epp.clid02
+    - epp.clid02DataModel
     - epp.hostModel
     - epp.hostName
     - epp.pwd01
     - epp.pwd02
+    - epp.requiredContactElements
     - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
@@ -192,8 +195,6 @@ StandardSRSGateway:
     - srsgw.rdapBaseURLs
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
-    - epp.clid01DataModel
-    - epp.clid02DataModel
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -240,8 +241,10 @@ MinimumRPMs:
     - epp.serverIssuedClientCertificate01
     - epp.clid01
     - epp.pwd01
+    - epp.clid01DataModel
     - epp.clid02
     - epp.pwd02
+    - epp.clid02DataModel
     - epp.serverIssuedClientCertificate02
     - minimumRPMS.sunriseModels
     - minimumRPMS.sunriseTLD
@@ -249,6 +252,7 @@ MinimumRPMs:
     - general.registryDataModel
     - epp.hostModel
     - epp.requiredContactTypes
+    - epp.requiredContactElements
     - epp.clid01DataModel
     - epp.clid02DataModel
 
