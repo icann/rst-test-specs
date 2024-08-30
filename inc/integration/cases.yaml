@@ -9,18 +9,11 @@ integration-01:
 
     The test system will connect to the EPP server and create domain and (if
     applicable) host and contact objects using the same methodology as `epp-14`
-    `epp-11`. It will then perform RDAP queries for those objects.
+    and `epp-11`. It will then perform RDAP queries for those objects.
 
     The RDAP server **MUST** provide a 200 response for every object created
     within 1 hour of the object's `<crDate>` element.
   Input-Parameters:
-    - general.registryDataModel
-    - epp.requiredContactTypes
-    - epp.hostName
-    - epp.serverIssuedClientCertificate01
-    - epp.clid01
-    - epp.pwd01
-    - epp.hostModel
     - rdap.baseURLs
   Errors:
     - EPP_DNS_RESOLUTION_ERROR

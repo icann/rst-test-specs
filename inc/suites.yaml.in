@@ -264,6 +264,16 @@ StandardIntegrationTest:
 
     TS_PASSFAIL
   Test-Cases: ^integration-
+  Input-Parameters:
+    - epp.hostName
+    - epp.serverIssuedClientCertificate01
+    - epp.clid01
+    - epp.pwd01
+    - epp.clid01DataModel
+    - epp.hostModel
+    - general.registryDataModel
+    - epp.requiredContactTypes
+    - epp.requiredContactElements
 
 AdditionalDNSTransports:
   Order: 11
