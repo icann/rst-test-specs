@@ -45,7 +45,7 @@ epp.serverIssuedClientCertificate01:
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
     the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be empty.
+    **MUST** be empty.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
@@ -59,7 +59,7 @@ epp.serverIssuedClientCertificate02:
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be omitted.
+    **MUST** be omitted.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
@@ -181,7 +181,7 @@ epp.registeredNameservers:
     If the value of `epp.hostModel` is `objects`, for each TLD in the TLD set,
     this array **MUST** contain one hostname which is subordinate to that TLD.
 
-    However, if it is `attributes`, this parameter **SHOULD** be omitted.
+    However, if it is `attributes`, this parameter **MUST** be omitted.
   Type: input
   Required: false
   Example: ["ns1.example.example1", "ns2.example.example2"]
@@ -197,7 +197,7 @@ epp.registeredContacts:
     unavailable for registration.
 
     If the value of `general.registryDataModel` is `minimum`, this parameter
-    **SHOULD** be omitted. Otherwise, at least two contact IDs **MUST** be
+    **MUST** be omitted. Otherwise, at least two contact IDs **MUST** be
     provided.
   Type: input
   Required: false

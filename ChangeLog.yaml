@@ -1,3 +1,11 @@
+2024-09-04:
+  - |
+    upgraded **SHOULD** to **MUST** for
+    [`epp.serverIssuedClientCertificate01`](#Input-parameter-epp.serverIssuedClientCertificate01),
+    [`epp.serverIssuedClientCertificate02`](#Input-parameter-epp.serverIssuedClientCertificate02),
+    [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers) and
+    [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts).
+
 2024-08-30:
   - fixed test data sets in [epp-11-data](#Data-Provider-epp-11-data).
 
