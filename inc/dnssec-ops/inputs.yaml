@@ -119,6 +119,10 @@ dnssecOps.zskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a ZSK
     rollover.
+
+    This value of this input parameter **MUST NOT** be the same as the values of
+    the `dnssecOps.kskRolloverZone` and `dnssecOps.algorithmRolloverZone`
+    parameters.
   Type: input
   Example: example.com
   Required: true
@@ -130,6 +134,10 @@ dnssecOps.kskRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of a KSK
     rollover.
+
+    This value of this input parameter **MUST NOT** be the same as the values of
+    the `dnssecOps.zskRolloverZone` and `dnssecOps.algorithmRolloverZone`
+    parameters.
   Type: input
   Example: example.com
   Required: true
@@ -141,6 +149,10 @@ dnssecOps.algorithmRolloverZone:
   Description: |
     The domain name which will be monitored for the occurrence of an algorithm
     rollover.
+
+    This value of this input parameter **MUST NOT** be the same as the values of
+    the `dnssecOps.kskRolloverZone` and `dnssecOps.zskRolloverZone`
+    parameters.
   Type: input
   Example: example.com
   Required: true

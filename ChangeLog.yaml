@@ -5,6 +5,12 @@
     [`epp.serverIssuedClientCertificate02`](#Input-parameter-epp.serverIssuedClientCertificate02),
     [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers) and
     [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts).
+  - |
+    clarified that the values of the
+    [`dnssecOps.zskRolloverZone`](#Input-parameter-dnssecOps.zskRolloverZone),
+    [`dnssecOps.kskRolloverZone`](#Input-parameter-dnssecOps.kskRolloverZone),
+    [`dnssecOps.algorithmRolloverZone`](#Input-parameter-dnssecOps.algorithmRolloverZone)
+    input parameters must be different.
 
 2024-08-30:
   - fixed test data sets in [epp-11-data](#Data-Provider-epp-11-data).
