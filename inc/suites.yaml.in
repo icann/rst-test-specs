@@ -76,6 +76,7 @@ StandardRDAP:
     - rdap.testDomains
     - rdap.testEntities
     - rdap.testNameservers
+    - rdap.profileVersion
     - epp.hostModel
 
 StandardEPP:

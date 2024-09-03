@@ -37,16 +37,27 @@ rdap.testDomains:
     input parameter is an array of domain names, which **MUST** include at least
     one domain name for each TLD being tested.
   Example:
-    - example.com
-    - example.net
+    - tld: example
+      name: example.example
   Type: input
   Required: true
   Schema:
     type: array
     minItems: 1
     items:
-      type: string
-      format: hostname
+      type: object
+      required:
+        - tld
+        - name
+      properties:
+        tld:
+          description: The TLD or equivalent registry-class domain name.
+          type: string
+          format: hostname
+        name:
+          description: The domain name.
+          type: string
+          format: hostname
 
 rdap.testEntities:
   Description: |
@@ -104,3 +115,26 @@ rdap.testNameservers:
           description: The nameserver name.
           type: string
           format: hostname
+
+rdap.profileVersion:
+  Description: |
+    The version of the gTLD RDAP Profile that is supported. For more information,
+    please see <https://www.icann.org/gtld-rdap-profile>.
+
+    * Before 2024-08-21, gTLD registries **MUST** implement the February-2019
+      version of the gTLD RDAP profile.
+
+    * From 2024-08-21 to 2025-08-20, gTLD registries **MAY** implement
+      either the February-2019 or the February-2024 version of the gTLD RDAP
+      profile.
+
+    * From 2025-08-21 onwards, gTLD registries **MUST** implement the
+      February-2024 version of the gTLD RDAP profile.
+  Type: input
+  Required: true
+  Example: february-2019
+  Schema:
+    type: string
+    enum:
+      - february-2019
+      - february-2024

@@ -1,16 +1,22 @@
 2024-09-04:
   - |
-    upgraded **SHOULD** to **MUST** for
-    [`epp.serverIssuedClientCertificate01`](#Input-parameter-epp.serverIssuedClientCertificate01),
-    [`epp.serverIssuedClientCertificate02`](#Input-parameter-epp.serverIssuedClientCertificate02),
-    [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers) and
-    [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts).
+    Upgraded **SHOULD** to **MUST** for
+    [`epp.serverIssuedClientCertificate01`](#Input-Parameter-epp.serverIssuedClientCertificate01),
+    [`epp.serverIssuedClientCertificate02`](#Input-Parameter-epp.serverIssuedClientCertificate02),
+    [`epp.registeredNameservers`](#Input-Parameter-epp.registeredNameservers) and
+    [`epp.registeredContacts`](#Input-Parameter-epp.registeredContacts).
   - |
-    clarified that the values of the
-    [`dnssecOps.zskRolloverZone`](#Input-parameter-dnssecOps.zskRolloverZone),
-    [`dnssecOps.kskRolloverZone`](#Input-parameter-dnssecOps.kskRolloverZone),
-    [`dnssecOps.algorithmRolloverZone`](#Input-parameter-dnssecOps.algorithmRolloverZone)
+    Clarified that the values of the
+    [`dnssecOps.zskRolloverZone`](#Input-Parameter-dnssecOps.zskRolloverZone),
+    [`dnssecOps.kskRolloverZone`](#Input-Parameter-dnssecOps.kskRolloverZone),
+    [`dnssecOps.algorithmRolloverZone`](#Input-Parameter-dnssecOps.algorithmRolloverZone)
     input parameters must be different.
+  - |
+    The [`rdap.testDomains`](#Input-Parameter-rdap.testDomains) parameter is
+    now an object with the same schema as the other input parameters for the
+    RDAP suite.
+  - Added the [`rdap.profileVersion`](#Input-Parameter-rdap.profileVersion)
+    input parameter.
 
 2024-08-30:
   - fixed test data sets in [epp-11-data](#Data-Provider-epp-11-data).
@@ -42,19 +48,19 @@
     the test case is finished. Any test case that still describes the reuse of
     objects created in a previous test case will eventually be updated to become
     "standalone" and should be read as such.
-  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#Input-parameter-srsgw.serverIssuedClientCertificate01).
+  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01).
   - |
     Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
     provider, so that elements that can be empty do not result in errors when
     empty values are accepted by the server.
   - |
     clarified the relationship between the items in the
-    [`epp.registeredNameservers`](#Input-parameter-epp.registeredNameservers)
+    [`epp.registeredNameservers`](#Input-Parameter-epp.registeredNameservers)
     input parameters and the TLDs in the TLD set. This input parameter is now
     also optional.
   - |
     updated the definition of the
-    [`epp.registeredContacts`](#Input-parameter-epp.registeredContacts) to make
+    [`epp.registeredContacts`](#Input-Parameter-epp.registeredContacts) to make
     a bit more sense. This is also now optional.
   - added a list of namespace URIs to [rde-05](#Test-Case-rde-05).
   - |
@@ -69,8 +75,8 @@
   - |
     The [epp-07](#Test-Case-epp-07) and [epp-09](#Test-Case-epp-09) test cases
     have been updated to use the newly-added
-    [`epp.supportedContactElements`](#Input-parameter-epp.supportedContactElements)
-    and [`epp.requiredContactElements`](#Input-parameter-epp.requiredContactElements)
+    [`epp.supportedContactElements`](#Input-Parameter-epp.supportedContactElements)
+    and [`epp.requiredContactElements`](#Input-Parameter-epp.requiredContactElements)
     input parameters.
   - |
     The [epp-07-data](#Data-Provider-epp-07-data) data provider has been updated
@@ -92,11 +98,11 @@
 2024-06-26:
   - Correct errors in [epp-12](#Test-Case-epp-12).
   - |
-    Added the [`srsgw.domainCreateExtension`](#Input-parameter-srsgw.domainCreateExtension),
-    [`srsgw.domainDeleteExtension`](#Input-parameter-srsgw.domainDeleteExtension),
-    [`srsgw.domainRenewExtension`](#Input-parameter-srsgw.domainRenewExtension),
-    [`srsgw.domainTransferRequestExtension`](#Input-parameter-srsgw.domainTransferRequestExtension) and
-    [`srsgw.domainTransferApproveExtension`](#Input-parameter-srsgw.domainTransferApproveExtension)
+    Added the [`srsgw.domainCreateExtension`](#Input-Parameter-srsgw.domainCreateExtension),
+    [`srsgw.domainDeleteExtension`](#Input-Parameter-srsgw.domainDeleteExtension),
+    [`srsgw.domainRenewExtension`](#Input-Parameter-srsgw.domainRenewExtension),
+    [`srsgw.domainTransferRequestExtension`](#Input-Parameter-srsgw.domainTransferRequestExtension) and
+    [`srsgw.domainTransferApproveExtension`](#Input-Parameter-srsgw.domainTransferApproveExtension)
     input parameters, and the [`SRSGW_EPP_INVALID_EXTENSION`](#Error-SRSGW_EPP_INVALID_EXTENSION) error.
   - Added the [Additional DNS Transports](#Test-Plan-AdditionalDNSTransportsTest) plan.
   - |
