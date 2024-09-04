@@ -30,7 +30,7 @@ dnssecOps01-ZSKRollover:
     During the test period (currently defined as 48 hours) the operator
     **MUST** successfully carry out a ZSK rollover for the domain, where the
     Zone Signing Key is replaced, without disrupting the chain of trust.
-    
+
     The original ZSK **MUST** additionally be unpublished (removed from the
     zone) before the end of the test period.
 
@@ -46,7 +46,7 @@ dnssecOps01-ZSKRollover:
     - DNSSEC_OPS_ZONE_IS_INVALID
     - DNSSEC_OPS_ZSK_ROLLOVER_CHAIN_OF_TRUST_BROKEN
     - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
-  
+
 dnssecOps02-KSKRollover:
   Summary: KSK rollover
   Maturity: GAMMA
@@ -82,7 +82,7 @@ dnssecOps02-KSKRollover:
     parent zone before the end of the test period.
 
     To simplify testing, applicants may wish to use a subdomain of
-    an existing DNSSEC-signed zone under their control, so that completion of 
+    an existing DNSSEC-signed zone under their control, so that completion of
     the test is not dependent on interaction with a third party.
   Input-Parameters:
     - dnssecOps.kskRolloverZone
@@ -137,7 +137,7 @@ dnssecOps03-AlgorithmRollover:
     accepted as well as a rollover from `RSASHA256` to `ECDSAP256SHA256`.
 
     To simplify testing, applicants may wish to use a subdomain of
-    an existing DNSSEC-signed zone under their control, so that completion of 
+    an existing DNSSEC-signed zone under their control, so that completion of
     the test is not dependent on interaction with a third party.
   Input-Parameters:
     - dnssecOps.algorithmRolloverZone
