@@ -1,3 +1,14 @@
+2024-09-11:
+  - |
+    In [epp-20](#Test-Case-epp-20), the domain must not have the `pendingTransfer`
+    status after the transfer is rejected.
+  - |
+    Clarified how the [`epp.restoreReportRequired`](#Input-Parameter-epp.restoreReportRequired)
+    input parameter affects the restore request in [epp-22](#Test-Case-epp-22).
+  - |
+    Updated [epp-23](#Test-Case-epp-23) to be stand-alone and also use a data
+    provider.
+  - Updated [epp-24](#Test-Case-epp-24) to be stand-alone.
 2024-09-04:
   - |
     Upgraded **SHOULD** to **MUST** for
@@ -19,26 +30,26 @@
     input parameter.
 
 2024-08-30:
-  - fixed test data sets in [epp-11-data](#Data-Provider-epp-11-data).
+  - Fixed test data sets in [epp-11-data](#Data-Provider-epp-11-data).
 
 2024-08-20:
-  - added a data provider to [epp-11](#Test-Case-epp-11).
+  - Added a data provider to [epp-11](#Test-Case-epp-11).
 
 2024-07-31:
   - |
     The schema has been updated to add an `Implemented` property to test cases,
     allowing the proportion of implemented test cases to be reported for each
     suite and plan.
-  - added data providers to some EPP test cases.
-  - resolved error message inconsistency in [epp-16](#Test-Case-epp-16).
-  - further clarifications to [epp-17](#Test-Case-epp-17).
-  - made [epp-18](#Test-Case-epp-18) standalone.
-  - made [epp-19](#Test-Case-epp-19) standalone.
-  - made [epp-21](#Test-Case-epp-21) standalone.
-  - made [epp-22](#Test-Case-epp-22) standalone.
+  - Added data providers to some EPP test cases.
+  - Resolved error message inconsistency in [epp-16](#Test-Case-epp-16).
+  - Further clarifications to [epp-17](#Test-Case-epp-17).
+  - Made [epp-18](#Test-Case-epp-18) standalone.
+  - Made [epp-19](#Test-Case-epp-19) standalone.
+  - Made [epp-21](#Test-Case-epp-21) standalone.
+  - Made [epp-22](#Test-Case-epp-22) standalone.
 
 2024-07-24:
-  - clarified the description of [epp-17](#Test-Case-epp-17).
+  - Clarified the description of [epp-17](#Test-Case-epp-17).
 
 2024-07-17:
   - |
@@ -48,27 +59,27 @@
     the test case is finished. Any test case that still describes the reuse of
     objects created in a previous test case will eventually be updated to become
     "standalone" and should be read as such.
-  - fixed the type of [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01).
+  - Fixed the type of [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01).
   - |
     Revised the error codes for [epp-07](#Test-Case-epp-07), and the data
     provider, so that elements that can be empty do not result in errors when
     empty values are accepted by the server.
   - |
-    clarified the relationship between the items in the
+    Clarified the relationship between the items in the
     [`epp.registeredNameservers`](#Input-Parameter-epp.registeredNameservers)
     input parameters and the TLDs in the TLD set. This input parameter is now
     also optional.
   - |
-    updated the definition of the
+    Updated the definition of the
     [`epp.registeredContacts`](#Input-Parameter-epp.registeredContacts) to make
     a bit more sense. This is also now optional.
-  - added a list of namespace URIs to [rde-05](#Test-Case-rde-05).
+  - Added a list of namespace URIs to [rde-05](#Test-Case-rde-05).
   - |
-    updated the test procedure for [srsgw-15](#Test-Case-srsgw-15), and added a
+    Updated the test procedure for [srsgw-15](#Test-Case-srsgw-15), and added a
     reference to [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785). The two
     RDAP responses may have different "last update of RDAP database" events.
   - |
-    added data providers to [epp-13](#Test-Case-epp-13) and
+    Added data providers to [epp-13](#Test-Case-epp-13) and
     [epp-14](#Test-Case-epp-14).
 
 2024-07-03:
@@ -153,8 +164,8 @@
   - "Case maturity metrics: ALPHA 0% (-1%), BETA 0% (-50%), GAMMA 100% (+50%)."
 
 2024-03-20:
-  - clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
-  - added `Configuration` section to the YAML file which holds internal test system configuration parameters.
+  - Clarified the elements that will be tested in [epp-07](#Test-Case-epp-07).
+  - Added `Configuration` section to the YAML file which holds internal test system configuration parameters.
   - "Case maturity metrics: ALPHA <1% (no change), BETA 50% (no change), GAMMA 50% (no change)"
 
 2024-03-13:
@@ -187,8 +198,8 @@
 
 2024-02-14:
   - Links to references and notes about upgraded message severities in Zonemaster cases have been fixed.
-  - the [epp.greeting](#Input-Parameter-epp.greeting) input parameter is now a file upload.
-  - added schemas to all input parameters that didn't have them.
+  - The [epp.greeting](#Input-Parameter-epp.greeting) input parameter is now a file upload.
+  - Added schemas to all input parameters that didn't have them.
   - "Case maturity metrics: ALPHA 7% (+2%), BETA 43% (-14%), GAMMA 50% (+12%)"
 
 2024-02-07:

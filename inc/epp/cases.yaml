@@ -909,9 +909,11 @@ epp-20:
     registrar of a domain rejects a transfer request.
 
     The test procedure matches that of `epp-19`, but the transfer request will
-    be rejected rather than approved. An `<info>` command will be used to
-    confirm that the domain name remains under the sponsorship of the original
-    registrar.
+    be rejected rather than approved.
+
+    An `<info>` command will be used to confirm that the domain name remains
+    under the sponsorship of the original registrar, and that the domain does
+    not have the  `pendingTransfer` status.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -974,7 +976,15 @@ epp-22:
     restored once deleted.)*
 
     The client will then submit a `<delete>` command for the domain, which
-    **MUST** succeed. The client will then submit an RGP restore request.
+    **MUST** succeed.
+
+    The client will then submit an RGP restore request:
+    1. If the `epp.restoreReportRequired` input parameter is `true`, then the
+       `op` attribute of the `<restore>` element will be `report`, and a
+       `<report>` element will be included, that contains the required elements.
+    2. If the `epp.restoreReportRequired` input parameter is `false`, then the
+       `op` attribute of the `<restore>` element will be `request` and no
+       `<report>` element will be included.
 
     Once the restore request has been processed, the client will perform an
     `<info>` command on the object to confirm that the domain no longer has the
@@ -1000,29 +1010,29 @@ epp-23:
     If the `epp.hostModel` input parameter is `attributes`, this test will
     be skipped.
 
-    The client will perform `<update>` commands on the objects created during
-    `epp-11` and will confirm that the server correctly accepts or rejects the
-    commands, for example:
+    The client will create host one or more host objects and the perform
+    `<update>` commands to confirm that the server correctly accepts or rejects
+    those commands, for example:
 
     * an `<update>` command which specifies a syntatically invalid host name
       is rejected;
-    * an `<update>` command which places the object out-of-bailiwick is
-      accepted;
+    * an `<update>` command which places the object in a different top-level
+      domain (that uses a different EPP repository) is accepted;
     * an `<update>` command which places the object within a non-existent
-      domain is rejected;
+      domain in the same TLD is rejected;
     * an `<update>` command which places the object within a domain sponsored
       by another registrar is rejected. The domain name(s) provided in the
-      `epp.registeredNames` parameter will be used for this test.
+      `epp.registeredNames` parameter will be used for this test. A `<check>`
+      command will be used to confirm that the domain exists before the
+      `<update>` command is submitted.
     * an `<update>` command which places the object within a domain sponsored
-      by the test client is accepted. A domain created during the `epp-14`
-      test case will be used as the new parent domain.
+      by the test client is accepted.
 
     The client will then perform `<info>` commands on the objects successfully
     updated, to confirm that the server has correctly stored the updated
     values.
-  Dependencies:
-    - epp-14
-    - epp-11
+  Data-Providers:
+    - epp-23-data
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -1041,18 +1051,15 @@ epp-24:
   Summary: Host <delete> command test (if applicable)
   Maturity: GAMMA
   Description: |
-    This test will perform `<delete>` commands on the objects created during
-    `epp-11` and will confirm that the server accepts the `<delete>` command
-    with a `1xxx` response code.
+    This test will perform create host objects and then confirm that the server
+    responds to a `<delete>` command with a `1xxx` response code.
 
     If the `epp.hostModel` input parameter is `attributes`, this test will
     be skipped.
 
     Once the `<delete>` commands have been submitted, if a `1000` response was
-    received from the server, the client will perform `<check>` and `<info>`
-    commands to confirm that the objects have been deleted.
-  Dependencies:
-    - epp-23
+    received from the server, the client will perform `<info>` commands to
+    confirm that the objects have been deleted.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
