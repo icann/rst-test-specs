@@ -1,8 +1,9 @@
 2024-09-11:
   - |
-    the `idn-01`, `idn-02`, `idn-03` and `idn-04` have been folded into a
-    [single test case](#Test-Case-idn-01), as a single implementation will
-    perform all the tests.
+    The `idn-01`, `idn-02`, `idn-03`, `idn-04` and `idn-06` have been folded
+    into a [single test case (a new `idn-01`)](#Test-Case-idn-01), as a single
+    implementation will perform all the tests.
+  - As a result of the above, `idn-05` is now [`idn-02`](#Test-Case-idn-02).
   - |
     In [epp-20](#Test-Case-epp-20), the domain must not have the `pendingTransfer`
     status after the transfer is rejected.
@@ -136,7 +137,7 @@
   - Clarified that the [epp-06](#Test-Case-epp-06) test case will be skipped if the `general.registryDataModel` input parameter is `minimum`.
   - Updated the wording of [epp-08](#Test-Case-epp-08) to clarify that both `<info>` and `<update>` commands will be used.
   - Updated [epp-04](#Test-Case-epp-04) to clarify that the [`epp.registeredNames`](#Input-Parameter-epp.registeredNames) input parameter will be used in this test case.
-  - Added [idn-05](#Test-Case-idn-05) which checks that the EPP server rejects `<create>` commands for pure ASCII domains in TLDs that are IDN-only.
+  - Added [idn-02](#Test-Case-idn-02) which checks that the EPP server rejects `<create>` commands for pure ASCII domains in TLDs that are IDN-only.
   - Added [idn-06](#Test-Case-idn-06) which checks that the EPP server rejects `<create>` commands for domains that do not comply with the requirements of IDNA2008.
   - Updated [idn-01](#Test-Case-idn-01) to include `<check>` commands for valid and invalid labels.
   - Input parameters now have a boolean `Required` parameter indicating whether they are required or optional. Where the description of the input parameter previously said that the value must be empty, it now says it must be omitted.
