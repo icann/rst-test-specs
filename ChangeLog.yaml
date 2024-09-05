@@ -1,5 +1,10 @@
 2024-09-11:
   - |
+    The version of Zonemaster that the DNS and DNSSEC test suites use has been
+    changed from `2023.1.4` to `2024.1`. The changes in Zonemaster between these
+    versions may be found in the [release
+    notes](https://github.com/zonemaster/zonemaster/releases/) on GitHub.
+  - |
     The `idn-01`, `idn-02`, `idn-03`, `idn-04` and `idn-06` have been folded
     into a [single test case (a new `idn-01`)](#Test-Case-idn-01), as a single
     implementation will perform all the tests.
