@@ -6,6 +6,8 @@ services:
     env_file: .env
     build:
       context: .
+      args:
+        - ZONEMASTER_ENGINE_VERSION=$ZONEMASTER_ENGINE_VERSION
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app\""
     volumes:
       - .:/app
