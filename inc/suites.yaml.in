@@ -61,8 +61,9 @@ StandardRDAP:
   Description: |
     The RDAP test suite validates the RDAP service of the TLD(s) or RSP.
 
-    The RDAP test suite uses the [RDAP Conformance Tool](https://github.com/icann/rdap-conformance-tool)
-    to perform conformance testing of RDAP services.
+    The RDAP test suite uses the [RDAP Conformance
+    Tool](https://github.com/icann/rdap-conformance-tool) to perform conformance
+    testing of RDAP services.
 
     The RDAP Conformance Tool checks that an RDAP server properly implements the
     RDAP RFCs and the [gTLD RDAP Profile](https://icann.org/gtld-rdap-profile).
@@ -135,9 +136,10 @@ StandardIDN:
   Order: 6
   Name: Internationalized Domain Names (IDN)
   Description: |
-    The RDE test suite validates the IDN table(s) for the TLD(s) or RSP,
-    including compliance with specifications for variant labels at the top- or
-    second-level, and conformance with the IDN Guidelines.
+    The IDN test suite validates the IDN table implementation for the TLD(s) or
+    RSP, including compliance with specifications for variant labels at the top-
+    or second-level, and conformance with the [IDN Implementation
+    Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm).
 
     # Pass/fail criteria
 
@@ -145,17 +147,20 @@ StandardIDN:
   Test-Cases: ^idn-
   Input-Parameters:
     - general.registryDataModel
-    - epp.hostName
     - epp.clid01
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
-    - epp.serverIssuedClientCertificate02
     - epp.clid01DataModel
-    - epp.clid02DataModel
     - epp.clid02
     - epp.pwd02
+    - epp.serverIssuedClientCertificate02
+    - epp.clid02DataModel
     - epp.hostModel
+    - epp.hostName
+    - epp.registeredNames
     - epp.requiredContactTypes
+    - epp.supportedContactElements
+    - epp.requiredContactElements
   Resources:
     - epp.clientACL
     - epp.clientCSR
@@ -270,15 +275,15 @@ StandardIntegrationTest:
     TS_PASSFAIL
   Test-Cases: ^integration-
   Input-Parameters:
-    - epp.hostName
-    - epp.serverIssuedClientCertificate01
     - epp.clid01
-    - epp.pwd01
     - epp.clid01DataModel
     - epp.hostModel
-    - general.registryDataModel
-    - epp.requiredContactTypes
+    - epp.hostName
+    - epp.pwd01
     - epp.requiredContactElements
+    - epp.requiredContactTypes
+    - epp.serverIssuedClientCertificate01
+    - general.registryDataModel
 
 AdditionalDNSTransports:
   Order: 11

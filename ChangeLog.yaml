@@ -1,5 +1,9 @@
 2024-09-11:
   - |
+    the `idn-01`, `idn-02`, `idn-03` and `idn-04` have been folded into a
+    [single test case](#Test-Case-idn-01), as a single implementation will
+    perform all the tests.
+  - |
     In [epp-20](#Test-Case-epp-20), the domain must not have the `pendingTransfer`
     status after the transfer is rejected.
   - |

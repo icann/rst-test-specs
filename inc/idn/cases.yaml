@@ -1,131 +1,36 @@
 idn-01:
-  Summary: Label validation test
-  Maturity: GAMMA
+  Summary: IDN label validation test
+  Maturity: BETA
   Description: |
-    This test confirms that the EPP server correctly accepts or rejects domain
-    `<create>` commands for valid and invalid IDN labels, respectively.
+    This test case validates that the EPP server correctly validates IDN domains
+    during the EPP `<create>` process and applies the applicable rules in
+    relation to handling of variants.
 
-    If there are no IDN tables supported under any of the TLDs associated with
-    the test, then this test will be skipped.
+    Using the TLD(s) to which the test relates, and the sets of allocatable and
+    unallocatable test labels associated with the IDN tables specified for those
+    TLDs, a set of valid and invalid domain names will be generated.
 
-    For each supported IDN table, the test client will perform a series of
-    `<check>` and `<create>` commands using a pre-defined catalogue of test
-    labels. If required, the client will create any contact object(s) needed.
+    The test client will then connect to the EPP server, and perform `<create>`
+    commands for each domain, checking to confirm that the EPP server correctly
+    accepts or rejects the command, as applicable.
 
-    The `avail` attribute of `<domain:name>` elements in the response to the
-    `<check>` commands **MUST** be `0` or `false` for invalid labels, and `1` or
-    `true` for valid labels.
-
-    The server **MUST** reject all `<create>` commands for invalid labels and
-    **MUST** accept all `<create>` commands for valid labels.
+    Where a variant policy is applicable (which is determined by both the IDN
+    table and the policy specified for the TLD), and variant domains are
+    generated, The client will also ensure that the EPP server properly
+    implements that policy: that is, variant domains must (a) be blocked, or (b)
+    only be available for registration by (i) the same registrant, or (ii) if
+    the TLD uses the minimal public data set, the same registrant.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_LOGIN_ERROR
     - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
     - EPP_TLS_CONNECTION_ERROR
     - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
     - IDN_SERVER_ACCEPTS_INVALID_LABEL
     - IDN_SERVER_REJECTS_VALID_LABEL
-
-idn-02:
-  Summary: Level 1 variant handling test
-  Maturity: GAMMA
-  Description: |
-    This test confirms the EPP server's conformance with the Level 1 variant
-    support (no support for variant activation, all variants are blocked).
-
-    If there are no IDN tables for which Level 1 support is claimed, this
-    test will be skipped.
-
-    For each supported IDN table, the test client will perform a series of
-    `<create>` commands using a pre-defined catalogue of test labels. If
-    required, the client will create any contact object(s) needed.
-
-    The client will then submit `<create>` commands for one or more labels
-    that are variants of the names created in the first step. The server
-    **MUST** reject these commands.
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
     - IDN_VARIANT_LABEL_NOT_BLOCKED
-
-idn-03:
-  Summary: Level 2 variant handling test
-  Maturity: GAMMA
-  Description: |
-    This test confirms the EPP server's conformance with the Level 2 variant
-    support (variants are supported within the same TLD).
-
-    If there are no IDN tables for which Level 2 support is claimed, this
-    test will be skipped.
-
-    For each supported IDN table, the test client will perform a series of
-    `<create>` commands using a pre-defined catalogue of test labels. If
-    required, the client will create any contact object(s) needed.
-
-    The client will then submit `<create>` commands for one or more labels
-    that are variants of the names created in the first step. Some of these
-    commands will be made using the same registrar account as the first step,
-    while some will be made using alternate credentials. If the value of the
-    `general.registryDataModel` input parameter is `maximum` or `per-registrar`,
-    then some commands will also use a different registrant contact.
-
-    The server **MUST** reject `<create>` commands where the (a) registrar is
-    different from that of the primary label or (b) the registrant (if
-    applicable) is different.
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
-    - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR
-    - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT
-    - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_FROM_SAME_REGISTRAR
-    - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_WITH_SAME_REGISTRANT
-
-idn-04:
-  Summary: Level 3 variant handling test
-  Maturity: GAMMA
-  Description: |
-    This test confirms the EPP server's conformance with the Level 3 variant
-    support (variants are supported within variant TLD(s)).
-
-    If there are no IDN tables for which Level 3 support is claimed, this
-    test will be skipped.
-
-    For each supported IDN table, the test client will perform a series of
-    `<create>` commands using a pre-defined catalogue of test labels. If
-    required, the client will create any contact object(s) needed.
-
-    The client will then submit `<create>` commands for one or more labels
-    that are variants (at both second- and top-level) of the names created in
-    the first step. Some of these commands will be made using the same
-    registrar account as the first step, while some will be made using
-    alternate credentials. If the value of the `general.registryDataModel`
-    input parameter is `maximum` or `per-registrar`, then some commands will
-    also use a different registrant contact.
-
-    The server **MUST** reject `<create>` commands where the (a) registrar is
-    different from that of the primary label or (b) the registrant (if
-    applicable) is different.
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
     - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_FROM_INCORRECT_REGISTRAR
     - IDN_VARIANT_SERVER_ACCEPTS_VARIANT_CREATE_WITH_INCORRECT_REGISTRANT
     - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_FROM_SAME_REGISTRAR
@@ -157,25 +62,3 @@ idn-05:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - IDN_IDNONLY_TLD_ACCEPTS_ASCII_DOMAIN
-
-idn-06:
-  Summary: IDNA2008 conformance test
-  Maturity: BETA
-  Description: |
-    This test confirms that the EPP server rejects EPP `<create>` commands for
-    domains that do not conform to the requirements of IDNA2008 (but which may
-    be valid in IDNA2003).
-
-    EPP `<create>` commands will be sent to the server for a variety of
-    pre-generated test labels. The server **MUST** reject all these commands.
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
-    - IDN_SERVER_ACCEPTS_INVALID_LABEL
-  Data-Providers:
-    - idn-06-data
