@@ -11,6 +11,7 @@ use URI;
 use YAML::XS;
 use Zonemaster::Engine;
 use utf8;
+use version;
 use open qw(:std :utf8);
 use strict;
 
@@ -36,6 +37,16 @@ use constant {
         "_**Note:** the severity levels of one or more error codes for ".
         "this test case have been changed from the default._",
 };
+
+if (version->parse($ENV{ZONEMASTER_ENGINE_VERSION}) != version->parse($Zonemaster::Engine::VERSION)) {
+    printf(
+        STDERR
+        "Error: installed Zonemaster::Engine '%s' doesn't match expected '%s'.\n",
+        version->parse($Zonemaster::Engine::VERSION),
+        version->parse($ENV{ZONEMASTER_ENGINE_VERSION}),
+    );
+    exit(1);
+}
 
 my $mode = 'cases';
 my $version;
@@ -72,8 +83,7 @@ foreach my $level (keys(%{$config->{'error_level_overrides'}})) {
 # cases and errors are stored here
 #
 my $cases = {};
-my $errors = {
-};
+my $errors = {};
 
 #
 # get metadata about each module
