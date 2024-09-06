@@ -19,6 +19,7 @@
     Updated [epp-23](#Test-Case-epp-23) to be stand-alone and also use a data
     provider.
   - Updated [epp-24](#Test-Case-epp-24) to be stand-alone.
+  - Added informative references to each test suite.
 2024-09-04:
   - |
     Upgraded **SHOULD** to **MUST** for

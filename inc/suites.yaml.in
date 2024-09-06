@@ -26,6 +26,24 @@ StandardDNS:
     TS_PASSFAIL
 
     ZM_PASSFAIL
+
+    # References
+
+    Note: this list of references is not exhaustive.
+
+    * [RFC 1034 - Domain names - concepts and facilities](https://www.rfc-editor.org/rfc/rfc1034.html)
+    * [RFC 1035 - Domain names - implementation and specification](https://www.rfc-editor.org/rfc/rfc1035.html)
+    * [RFC 1123 - Requirements for Internet Hosts - Application and Support](https://www.rfc-editor.org/rfc/rfc1123.html)
+    * [RFC 1982 - Serial Number Arithmetic](https://www.rfc-editor.org/rfc/rfc1982.html)
+    * [RFC 2181 - Clarifications to the DNS Specification](https://www.rfc-editor.org/rfc/rfc2181.html)
+    * [RFC 2182 - Selection and Operation of Secondary DNS Servers](https://www.rfc-editor.org/rfc/rfc2182.html)
+    * [RFC 3226 - DNSSEC and IPv6 A6 aware server/resolver message size requirements](https://www.rfc-editor.org/rfc/rfc3226.html)
+    * [RFC 3596 - DNS Extensions to Support IP Version 6](https://www.rfc-editor.org/rfc/rfc3596.html)
+    * [RFC 3597 - Handling of Unknown DNS Resource Record (RR) Types](https://www.rfc-editor.org/rfc/rfc3597.html)
+    * [RFC 4343 - Domain Name System (DNS) Case Insensitivity Clarification](https://www.rfc-editor.org/rfc/rfc4343.html)
+    * [RFC 5966 - DNS Transport over TCP - Implementation Requirements](https://www.rfc-editor.org/rfc/rfc5966.html)
+    * [RFC 6891 - Extension Mechanisms for DNS (EDNS(0))](https://www.rfc-editor.org/rfc/rfc6891.html)
+
   Test-Cases: ^dns-
   Input-Parameters:
     - dns.nameservers
@@ -50,6 +68,19 @@ StandardDNSSEC:
     TS_PASSFAIL
 
     ZM_PASSFAIL
+
+    # References
+
+    Note: this list of references is not exhaustive.
+
+    * [RFC 4033 - DNS Security Introduction and Requirements](https://www.rfc-editor.org/rfc/rfc4033.html)
+    * [RFC 4034 - Resource Records for the DNS Security Extensions](https://www.rfc-editor.org/rfc/rfc4034.html)
+    * [RFC 4035 - Protocol Modifications for the DNS Security Extensions](https://www.rfc-editor.org/rfc/rfc4035.html)
+    * [RFC 4509 - Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)](https://www.rfc-editor.org/rfc/rfc4509.html)
+    * [RFC 5155 - DNS Security (DNSSEC) Hashed Authenticated Denial of Existence](https://www.rfc-editor.org/rfc/rfc5155.html)
+    * [RFC 6841 - A Framework for DNSSEC Policies and DNSSEC Practice Statements](https://www.rfc-editor.org/rfc/rfc6841.html)
+    * [RFC 9276 - Guidance for NSEC3 Parameter Settings](https://www.rfc-editor.org/rfc/rfc9276.html)
+
   Test-Cases: ^dnssec-
   Input-Parameters:
     - dns.nameservers
@@ -71,6 +102,14 @@ StandardRDAP:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 7480 - HTTP Usage in the Registration Data Access Protocol (RDAP)](https://www.rfc-editor.org/rfc/rfc7480.html)
+    * [RFC 7481 - Security Services for the Registration Data Access Protocol (RDAP)](https://www.rfc-editor.org/rfc/rfc7481.html)
+    * [RFC 9083 - JSON Responses for the Registration Data Access Protocol (RDAP)](https://www.rfc-editor.org/rfc/rfc9083.html)
+    * [gTLD RDAP Profile](https://www.icann.org/gtld-rdap-profile)
+
   Test-Cases: ^rdap-
   Input-Parameters:
     - rdap.baseURLs
@@ -92,6 +131,21 @@ StandardEPP:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 5730 - Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc5730.html)
+    * [RFC 5731 - Extensible Provisioning Protocol (EPP) Domain Name Mapping](https://www.rfc-editor.org/rfc/rfc5731.html)
+    * [RFC 5732 - Extensible Provisioning Protocol (EPP) Host Mapping](https://www.rfc-editor.org/rfc/rfc5732.html)
+    * [RFC 5733 - Extensible Provisioning Protocol (EPP) Contact Mapping](https://www.rfc-editor.org/rfc/rfc5733.html)
+    * [RFC 5734 - Extensible Provisioning Protocol (EPP) Transport over TCP](https://www.rfc-editor.org/rfc/rfc5734.html)
+    * [RFC 3735 - Guidelines for Extending the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc3735.html)
+    * [RFC 7451 - Extension Registry for the Extensible Provisioning Protocol](https://www.rfc-editor.org/rfc/rfc7451.html)
+    * [RFC 3915 - Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc3915.html)
+    * [RFC 5910 - Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc5910.html)
+    * [RFC 8807 - Login Security Extension for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc8807.html)
+    * [RFC 9154 - Extensible Provisioning Protocol (EPP) Secure Authorization Information for Transfer](https://www.rfc-editor.org/rfc/rfc9154.html)
+
   Test-Cases: ^epp-
   Input-Parameters:
     - general.registryDataModel
@@ -125,6 +179,13 @@ StandardRDE:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 8909 - Registry Data Escrow Specification](https://www.rfc-editor.org/rfc/rfc8909.html)
+    * [RFC 9022 - Domain Name Registration Data (DNRD) Objects Mapping](https://www.rfc-editor.org/rfc/rfc9022.html)
+    * Specification 2, Part A, Sections 3 & 4 of the [Base Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-21-01-2024-en.html#specification2.partA.3)
+
   Test-Cases: ^rde-
   Input-Parameters:
     - rde.depositFile
@@ -138,12 +199,21 @@ StandardIDN:
   Description: |
     The IDN test suite validates the IDN table implementation for the TLD(s) or
     RSP, including compliance with specifications for variant labels at the top-
-    or second-level, and conformance with the [IDN Implementation
-    Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm).
+    or second-level, and conformance with the IDN Implementation Guidelines.
 
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 5890 - Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework](https://www.rfc-editor.org/rfc/rfc5890.html)
+    * [RFC 5891 - Internationalized Domain Names in Applications (IDNA): Protocol](https://www.rfc-editor.org/rfc/rfc5891.html)
+    * [RFC 5892 - The Unicode Code Points and Internationalized Domain Names for Applications (IDNA)](https://www.rfc-editor.org/rfc/rfc5892.html)
+    * [RFC 5893 - Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)](https://www.rfc-editor.org/rfc/rfc5893.html)
+    * [RFC 5894 - Internationalized Domain Names for Applications (IDNA): Background, Explanation, and Rationale](https://www.rfc-editor.org/rfc/rfc5894.html)
+    * [IDN Implementation Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm)
+
   Test-Cases: ^idn-
   Input-Parameters:
     - general.registryDataModel
@@ -177,6 +247,12 @@ StandardSRSGateway:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [Standard Amendment Language: Registration Validation per Applicable Law
+    with Proxy](https://www.icann.org/en/system/files/files/standard-amendment-language-registration-validation-with-proxy-18sep19-en.pdf) (PDF)
+
   Test-Cases: ^srsgw-
   Input-Parameters:
     - epp.clid01
@@ -217,6 +293,11 @@ DNSSECOperations:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 6781 - DNSSEC Operational Practices, Version 2](https://www.rfc-editor.org/rfc/rfc6781.html)
+
   Test-Cases: ^dnssecOps
   Input-Parameters:
     - dnssecOps.nameservers
@@ -235,6 +316,13 @@ MinimumRPMs:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * [RFC 8334 - Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc8334.html)
+    * [RFC 9361 - ICANN Trademark Clearinghouse (TMCH) Functional Specifications](https://www.rfc-editor.org/rfc/rfc9361.html)
+    * [Trademark Clearinghouse - Rights Protection Mechanism Requirements](https://newgtlds.icann.org/sites/default/files/rpm-requirements-14may14-en.pdf) (PDF)
+
   Test-Cases: ^minimumRPMs-
   Resources:
     - tmch.testCert
@@ -292,6 +380,13 @@ AdditionalDNSTransports:
     This test suite verifies that Registry Operators wishing to offer their
     authoritative DNS service over additional transport protocols (specifically
     TLS, HTTPS and QUIC) can do so in conformance with the relevant RFCs.
+
+    # References
+
+    * [RFC 7858 - Specification for DNS over Transport Layer Security (TLS)](https://www.rfc-editor.org/rfc/rfc7858.html)
+    * [RFC 8484 - DNS Queries over HTTPS (DoH)](https://www.rfc-editor.org/rfc/rfc8484.html)
+    * [RFC 9250 - DNS over Dedicated QUIC Connections](https://www.rfc-editor.org/rfc/rfc9250.html)
+
   Test-Cases:
     - dns-zz-consistency
   Input-Parameters:
