@@ -3,8 +3,9 @@ rdap.baseURLs:
     The RDAP base URL(s) for the TLD(s).
 
     The host name component of each URL **MUST** comply with the requirements
-    for valid hostnames described in RFC 1123, section 2.1. Additionally, all
-    IDN labels in the host name **MUST** comply with IDNA2008.
+    for valid hostnames described in [RFC
+    1123](https://www.rfc-editor.org/rfc/rfc1123.html), section 2.1.
+    Additionally, all IDN labels in the host name **MUST** comply with IDNA2008.
 
   Type: input
   Required: true

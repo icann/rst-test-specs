@@ -4,7 +4,7 @@ dnssecOps01-ZSKRollover:
   Description: |
     This test case verifies the RSP's ability to perform a ZSK rollover (as
     described in [Section 4.1.1 of
-    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.1).
+    RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.1)).
 
     If the value of the `dnssecOps.csk` input parameter is `true`, then this
     test will be skipped.
@@ -53,7 +53,7 @@ dnssecOps02-KSKRollover:
   Description: |
     This test case verifies the RSP's ability to perform a CSK/KSK rollover
     (as described in [Sections 4.1.2 and 4.13 of
-    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2).
+    RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.2)).
 
     The system will monitor the zone specified in the `dnssec.kskRolloverZone`
     input parameter. The domain may be present anywhere in the global DNS
@@ -99,7 +99,7 @@ dnssecOps03-AlgorithmRollover:
   Description: |
     This test case verifies the RSP's ability to perform an algorithm rollover
     (as described in [Section 4.1.4 of
-    RFC 6781](https://datatracker.ietf.org/doc/html/rfc6781#section-4.1.2).
+    RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.2)).
 
     The system will monitor the zone specified in the `dnssec.algorithmRolloverZone`
     input parameter. The domain may be present anywhere in the global DNS

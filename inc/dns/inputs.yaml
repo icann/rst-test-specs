@@ -68,19 +68,22 @@ dns.nameservers:
 
               supportsDoT:
                 description: |
-                  Whether this nameserver supports DNS over TLS (RFC 7858).
+                  Whether this nameserver supports DNS over TLS ([RFC
+                  7858](https://www.rfc-editor.org/rfc/rfc7858.html)).
                 type: boolean
                 default: false
 
               supportsDoH:
                 description: |
-                  Whether this nameserver supports DNS over HTTPS (RFC 8484).
+                  Whether this nameserver supports DNS over HTTPS ([RFC
+                  8484](https://www.rfc-editor.org/rfc/rfc8484.html)).
                 type: boolean
                 default: false
 
               supportsDoQ:
                 description: |
-                  Whether this nameserver supports DNS over Dedicated QUIC Connections
-                  (RFC 9250).
+                  Whether this nameserver supports DNS over Dedicated QUIC
+                  Connections ([RFC
+                  9250](https://www.rfc-editor.org/rfc/rfc9250.html)).
                 type: boolean
                 default: false

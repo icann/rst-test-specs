@@ -29,9 +29,10 @@ dnssec-93:
   Summary: NSEC3 iterations check
   Maturity: GAMMA
   Description: |
-    RFC 9276 defines best practice relating to the use of NSEC3 for
-    Authenticated Denial of Existence. This test case verifies that the zone's
-    NSEC3 configuration complies with this best practice.
+    [RFC 9276](https://www.rfc-editor.org/rfc/rfc9276.html) defines best
+    practice relating to the use of NSEC3 for Authenticated Denial of Existence.
+    This test case verifies that the zone's NSEC3 configuration complies with
+    this best practice.
 
     If the zone does not use NSEC3, then this test will be skipped.
 

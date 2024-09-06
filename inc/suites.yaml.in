@@ -145,6 +145,7 @@ StandardEPP:
     * [RFC 5910 - Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc5910.html)
     * [RFC 8807 - Login Security Extension for the Extensible Provisioning Protocol (EPP)](https://www.rfc-editor.org/rfc/rfc8807.html)
     * [RFC 9154 - Extensible Provisioning Protocol (EPP) Secure Authorization Information for Transfer](https://www.rfc-editor.org/rfc/rfc9154.html)
+    * [RFC 9325 - Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)](https://www.rfc-editor.org/rfc/rfc9325.html)
 
   Test-Cases: ^epp-
   Input-Parameters:
@@ -174,7 +175,9 @@ StandardRDE:
   Description: |
     The RDE test suite validates Registry Data Escrow deposits generated for
     the TLD(s) or RSP. These deposits **MUST** comply with the specifications in
-    the Registry Agreement and with RFC 8909 and RFC 9022.
+    the Registry Agreement and with [RFC
+    8909](https://www.rfc-editor.org/rfc/rfc8909.html) and [RFC
+    9022](https://www.rfc-editor.org/rfc/rfc9022.html).
 
     # Pass/fail criteria
 
@@ -184,7 +187,7 @@ StandardRDE:
 
     * [RFC 8909 - Registry Data Escrow Specification](https://www.rfc-editor.org/rfc/rfc8909.html)
     * [RFC 9022 - Domain Name Registration Data (DNRD) Objects Mapping](https://www.rfc-editor.org/rfc/rfc9022.html)
-    * Specification 2, Part A, Sections 3 & 4 of the [Base Registry Agreement](https://itp.cdn.icann.org/en/files/registry-agreements/base-registry-agreement-21-01-2024-en.html#specification2.partA.3)
+    * Specification 2, Part A, Sections 3 & 4 of the [Base Registry Agreement](https://www.icann.org/en/registry-agreements/base-agreement)
 
   Test-Cases: ^rde-
   Input-Parameters:
@@ -311,7 +314,7 @@ MinimumRPMs:
   Name: Minimum Rights Protection Mechanisms (RPMs)
   Description: |
     This test suite verifies an RSP's support for the minimum Rights Protection
-    Mechanisms (RPMs), and the Launch Extension (RFC 8334).
+    Mechanisms (RPMs), and the Launch Extension ([RFC 8334](https://www.rfc-editor.org/rfc/rfc8334.html)).
 
     # Pass/fail criteria
 
@@ -361,6 +364,12 @@ StandardIntegrationTest:
     # Pass/fail criteria
 
     TS_PASSFAIL
+
+    # References
+
+    * Specification 10 of the [Base Registry Agreement](https://www.icann.org/en/registry-agreements/base-agreement)
+    * [ICANN Registry Interfaces (draft-lozano-icann-registry-interfaces)](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces)
+
   Test-Cases: ^integration-
   Input-Parameters:
     - epp.clid01

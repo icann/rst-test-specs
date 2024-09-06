@@ -1,15 +1,17 @@
 rde.encryptionKey:
   Description: |
-    RDE deposit files **MUST** be encrypted using OpenPGP (RFC 4880). The PGP
-    key that **MUST** be used to encrypt the escrow deposit file may be found
-    at this URL.
+    RDE deposit files **MUST** be encrypted using OpenPGP ([RFC
+    4880](https://www.rfc-editor.org/rfc/rfc4880.html)). The PGP key that
+    **MUST** be used to encrypt the escrow deposit file may be found at this
+    URL.
   URL: https://rst-api.icann.org/v1/resource/rde.encryptionKey.asc
 
 epp.clientCertificate:
   Description: |
-    RFC 5734 requires servers to perform authentication of clients by means of
-    a client certificate. Operators **MUST** configure their systems to permit
-    the test client to connect using the certificate found at this URL.
+    [RFC 5734](https://www.rfc-editor.org/rfc/rfc5734.html) requires servers to
+    perform authentication of clients by means of a client certificate.
+    Operators **MUST** configure their systems to permit the test client to
+    connect using the certificate found at this URL.
   URL: https://rst-api.icann.org/v1/resource/epp.clientCertificate.pem
 
 epp.clientCSR:
@@ -81,5 +83,5 @@ tmch.testSMDRL:
 tmch.testSURL:
   Description: |
     A file containing the list of labels for which SMDs have been produced in
-    the TMCH test environment.    
+    the TMCH test environment.
   URL: https://rst-api.icann.org/v1/resource/tmch.testSURL.csv

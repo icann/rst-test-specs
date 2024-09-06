@@ -28,7 +28,8 @@ epp-01:
     8. The EPP server name **MUST** match at least one `subjectAltName` field
        in all presented certificates (either exact match or wildcard).
     9. Service ports **MUST** use at least one of the ciphers recommended in
-       RFC 9325 (or any successor document).
+       [RFC 9325](https://www.rfc-editor.org/rfc/rfc9325.html) (or any successor
+       document).
   Resources:
     - epp.tlsCertificateStore
   Errors:
@@ -130,8 +131,10 @@ epp-03:
     The client will use the object and extension XML namespaces from the
     server's `<greeting>` as part of the `<login>` command.
 
-    If the server supports the Login Security Extension (see RFC 8807) then
-    this will be used by the client.
+    If the server supports the Login Security Extension (see [RFC
+    8807](https://www.rfc-editor.org/rfc/rfc8807.html)) then this will be used
+    by the client.
+
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -161,7 +164,8 @@ epp-04:
       random characters.
 
     A "syntactically valid" domain name is one that complies with the format
-    specified in RFC 1123. This test case does not consider IDN names.
+    specified in [RFC 1123](https://www.rfc-editor.org/rfc/rfc1123.html). This
+    test case does not consider IDN names.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -198,7 +202,8 @@ epp-05:
       characters.
 
     A "syntactically valid" hostname is one that complies with the format
-    specified in RFC 1123 (this test case does not consider IDN names).
+    specified in [RFC 1123](https://www.rfc-editor.org/rfc/rfc1123.html) (this
+    test case does not consider IDN names).
 
     If the `epp.hostModel` input parameter is `attributes`, this test will be
     skipped.
@@ -302,10 +307,11 @@ epp-07:
     * The server **MUST NOT** accept a `<contact:cc>` element that contains a
       value that is not a valid ISO 3166-1 alpha-2 code;
     * The server **MUST NOT** accept a `<contact:email>` element that contains
-      a value that does not conform to the format specified in RFC 5322;
+      a value that does not conform to the format specified in [RFC
+      5322](https://www.rfc-editor.org/rfc/rfc5322.html);
     * If supported, the server **MUST NOT** accept a `<contact:voice>` element
       that contains a value that does not conform to the format described in
-      Section 2.5 of RFC 5733.
+      Section 2.5 of [RFC 5733](https://www.rfc-editor.org/rfc/rfc5733.html).
 
     Once objects have been created, the client will then perform `<info>`
     commands to verify that the server has correctly stored the provided
@@ -848,9 +854,9 @@ epp-19:
     transfer.
 
     The client will create a domain name, and any contact and/or host objects,
-    as required. If the server implements RFC 9154, it **MUST**
-    reject the `<create>` command if the authInfo code is insufficently
-    secure.
+    as required. If the server implements [RFC
+    9154](https://www.rfc-editor.org/rfc/rfc9154.html), it **MUST** reject the
+    `<create>` command if the authInfo code is insufficently secure.
 
     Then, using a second set of credentials, the client will connect to the
     EPP server and authenticate, submit `<transfer>` commands, and validate
@@ -878,7 +884,7 @@ epp-19:
 
     * the domain is now under the sponsorship of the gaining registrar;
     * the authInfo code has been reset by the server (if the server supports
-      RFC 9154);
+      [RFC 9154](https://www.rfc-editor.org/rfc/rfc9154.html));
     * the domain has the `transferPeriod` RGP status.
 
     This message **MUST** be received within 120 seconds of the transfer
@@ -962,7 +968,8 @@ epp-22:
   Description: |
     This test will perform RGP restore operations on domain objects that have
     previously been deleted, in order to confirm the correct operation of the
-    server's implementation of RFC 3915.
+    server's implementation of [RFC
+    3915](https://www.rfc-editor.org/rfc/rfc3915.html).
 
     The client will create a domain name, and any contact and/or host objects,
     as required.

@@ -3,8 +3,10 @@ epp.hostName:
     The fully-qualified domain name of the EPP server.
 
     The server name **MUST** comply with the requirements for valid
-    hostnames described in RFC 1123, section 2.1. Additionally, all IDN labels
-    in the server name **MUST** comply with IDNA2008.
+    hostnames described in [RFC
+    1123](https://www.rfc-editor.org/rfc/rfc1123.html), section 2.1.
+    Additionally, all IDN labels in the server name **MUST** comply with
+    IDNA2008.
   Type: input
   Example: epp.rsp.tech
   Required: true
@@ -147,8 +149,9 @@ epp.hostModel:
 
 epp.secDNSInterfaces:
   Description: |
-    Which of the interfaces defined in Section 4 of RFC 5910 the server
-    supports (either `dsData` or `keyData`).
+    Which of the interfaces defined in Section 4 of [RFC
+    5910](https://www.rfc-editor.org/rfc/rfc5910.html) the server supports
+    (either `dsData` or `keyData`).
   Type: input
   Required: true
   Example: dsData
@@ -238,7 +241,7 @@ epp.requiredContactTypes:
 
 epp.supportedContactElements:
   Description: |
-    In [RFC 5733](https://datatracker.ietf.org/doc/html/rfc5733#section-3.2.1),
+    In [RFC 5733](https://www.rfc-editor.org/rfc/rfc5733.html#section-3.2.1),
     the mandatory elements that **MUST** be included in contact `<create>`
     commands are `<name>`, `<city>`, `<cc>` and `<email>`. RFC 5733 also
     specifies a set of optional elements. To comply with RFC 5733, EPP
@@ -280,7 +283,8 @@ epp.requiredContactElements:
   Description: |
     This input parameter is complementary to the `epp.supportedContactElements`
     parameter. It may be used to indicate those elements which are optional in
-    RFC 5733 but are mandatory in the server policy.
+    [RFC 5733](https://www.rfc-editor.org/rfc/rfc5733.html) but are mandatory in
+    the server policy.
 
     All elements that are listed in this parameter **MUST** also be listed in
     the `epp.supportedContactElements` parameter.

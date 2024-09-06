@@ -71,7 +71,8 @@ EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH:
 EPP_TLS_BAD_CIPHER:
   Severity: ERROR
   Description: |
-    The server uses an encryption cipher not recommended in RFC 9325.
+    The server uses an encryption cipher not recommended in [RFC
+    9325](https://www.rfc-editor.org/rfc/rfc9325.html).
 
 EPP_NO_GREETING_RECEIVED:
   Severity: ERROR
@@ -918,8 +919,9 @@ EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO:
   Severity: ERROR
   Description: |
     An EPP server implementing Secure Authorization Information for Transfer
-    (RFC 9154) accepted an `<update>` command that specified an authInfo code
-    with insufficient entropy.
+    ([RFC 9154](https://www.rfc-editor.org/rfc/rfc9154.html)) accepted an
+    `<update>` command that specified an authInfo code with insufficient
+    entropy.
 
 EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD:
   Severity: ERROR

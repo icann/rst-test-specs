@@ -81,7 +81,8 @@ A test case will fail if it produces one or more [errors](#errors) with the
 
 ## 2.3.6. Error severity levels
 
-The supported severity levels are a subset of the values defined in RFC 5424.
+The supported severity levels are a subset of the values defined in [RFC
+5424](https://www.rfc-editor.org/rfc/rfc5424.html).
 
 2. `WARNING` - an issue which does not prevent the test from *passing*, but
    which may benefit from further investigation.

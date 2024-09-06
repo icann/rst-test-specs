@@ -8,7 +8,8 @@ RDE_CONTACT_HAS_INVALID_EMAIL:
   Severity: ERROR
   Description: |
     One or more contact objects have an `<email>` element whose value does not
-    comply with RFC 5322 (sections 3.2.3 and 3.4.1).
+    comply with [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322.html)
+    (sections 3.2.3 and 3.4.1).
 
 RDE_CONTACT_HAS_INVALID_ROID:
   Severity: ERROR
@@ -203,7 +204,8 @@ RDE_IDN_OBJECT_UNEXPECTED:
 RDE_INVALID_CSV:
   Severity: ERROR
   Description: |
-    One or more CSV files in the deposit do not conform to RFC 4180.
+    One or more CSV files in the deposit do not conform to [RFC
+    4180](https://www.rfc-editor.org/rfc/rfc4180.html).
 
 RDE_INVALID_FILENAME:
   Severity: ERROR
