@@ -270,6 +270,7 @@ StandardSRSGateway:
     - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
+    - epp.supportedContactElements
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
