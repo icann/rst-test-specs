@@ -1,5 +1,10 @@
 2024-09-18:
   - |
+    Several EPP-related input parameters now have [SRS
+    Gateway](#Test-Suite-StandardSRSGateway)-specific equivalents, as it is
+    possible to allow the SRS Gateway EPP server to have a different data model
+    to the primary EPP server.
+  - |
     Clarified that IP-related tests are only applicable for internal hosts in
     [epp-13](#Test-Case-epp-13).
   - |

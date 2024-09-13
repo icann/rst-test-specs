@@ -27,7 +27,7 @@ srsgw.eppPwd01:
 srsgw.serverIssuedClientCertificate01:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR` may
+    a certificate generated using the CSR provided in the `epp.client01CSR` may
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
@@ -41,7 +41,7 @@ srsgw.serverIssuedClientCertificate01:
 srsgw.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR` may
+    a certificate generated using the CSR provided in the `epp.client02CSR` may
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
     If the server will accept ICANN's own client certificate, this parameter
@@ -180,3 +180,117 @@ srsgw.domainTransferApproveExtension:
   Example: "<!-- see srsgw.domainCreateExtension -->"
   Schema:
     type: string
+
+srsgw.registryDataModel:
+  Description: |
+    This input parameter identifies the data model for the SRS Gateway, which
+    may be different to that of the Primary EPP server (for example, because the
+    Gateway requires registrant information in order to verify their identity).
+
+    It has identical semantics to the `general.registryDataModel` input
+    parameter.
+  Type: input
+  Required: true
+  Example: minimum
+  Schema:
+    type: string
+    enum:
+      - minimum
+      - maximum
+      - per-registrar
+
+srsgw.eppClid01DataModel:
+  Description: |
+    The data model for the `srsgw.eppClid01` client. This may be omitted and
+    will in any case be ignored unless the value of the
+    `srsgw.registryDataModel` input parameter is `per-registrar`.
+
+    If set, then the value of this input parameter **MUST** be different from
+    the value of the `srsgw.eppClid02DataModel` input parameter.
+  Type: input
+  Required: false
+  Example: minimum
+  Schema:
+    type: string
+    enum:
+      - minimum
+      - maximum
+
+srsgw.eppClid02DataModel:
+  Description: |
+    The data model for the `srsgw.eppClid02` client. This may be omitted and
+    will in any case be ignored unless the value of the
+    `srsgw.registryDataModel` input parameter is `per-registrar`.
+
+    If set, then the value of this input parameter **MUST** be different from
+    the value of the `srsgw.eppClid01DataModel` input parameter.
+  Type: input
+  Required: false
+  Example: minimum
+  Schema:
+    type: string
+    enum:
+      - minimum
+      - maximum
+
+srsgw.eppRequiredContactElements:
+  Description: |
+    This input parameter has the same semantics as the
+    `epp.requiredContactTypes` input parameter but relates to the SRS Gateway
+    EPP Server.
+  Type: input
+  Required: true
+  Example: ["admin"]
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - admin
+        - tech
+        - billing
+
+srsgw.eppRequiredContactTypes:
+  Description: |
+    This input parameter has the same semantics as the
+    `epp.requiredContactTypes` input parameter but relates to the SRS Gateway
+    EPP Server.
+  Type: input
+  Required: true
+  Example: ["admin"]
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - admin
+        - tech
+        - billing
+
+srsgw.eppSupportedContactElements:
+  Description: |
+    This input parameter has the same semantics as the
+    `epp.supportedContactElements` input parameter but relates to the SRS Gateway
+    EPP Server.
+  Type: input
+  Required: false
+  Example:
+    - org
+    - street
+    - sp
+    - pc
+    - voice
+    - voice:ext
+  Schema:
+    type: array
+    items:
+      type: string
+      enum:
+        - org
+        - street
+        - sp
+        - pc
+        - voice
+        - voice:ext
+        - fax
+        - fax:ext

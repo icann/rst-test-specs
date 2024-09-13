@@ -166,8 +166,10 @@ StandardEPP:
     - epp.requiredContactElements
   Resources:
     - epp.clientACL
-    - epp.clientCSR
-    - epp.clientCertificate
+    - epp.client01CSR
+    - epp.client01Certificate
+    - epp.client02CSR
+    - epp.client02Certificate
 
 StandardRDE:
   Order: 5
@@ -236,8 +238,10 @@ StandardIDN:
     - epp.requiredContactElements
   Resources:
     - epp.clientACL
-    - epp.clientCSR
-    - epp.clientCertificate
+    - epp.client01CSR
+    - epp.client02CSR
+    - epp.client01Certificate
+    - epp.client02Certificate
 
 StandardSRSGateway:
   Order: 7
@@ -281,10 +285,18 @@ StandardSRSGateway:
     - srsgw.rdapBaseURLs
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
+    - srsgw.registryDataModel
+    - srsgw.eppClid01DataModel
+    - srsgw.eppClid02DataModel
+    - srsgw.eppRequiredContactElements
+    - srsgw.eppRequiredContactTypes
+    - srsgw.eppSupportedContactElements
   Resources:
     - epp.clientACL
-    - epp.clientCSR
-    - epp.clientCertificate
+    - epp.client01CSR
+    - epp.client02CSR
+    - epp.client01Certificate
+    - epp.client02Certificate
 
 DNSSECOperations:
   Order: 8
