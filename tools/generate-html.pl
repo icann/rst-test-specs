@@ -50,6 +50,11 @@ foreach my $s (keys(%{$sdev})) {
     $sdev->{$s} =~ s/<\/p>$//;
 }
 
+my %API_SERVERS = (
+    'OT&E' => 'rst-api-ote.icann.org',
+    'Production' => 'rst-api.icann.org',
+);
+
 my $assets = File::Spec->catdir(dirname($ARGV[0]), qw(inc html));
 
 my $section = 0;
@@ -881,8 +886,23 @@ sub print_resource {
     print $resource->description->html(3);
 
     print $h->h4(sprintf('%u.%u.%u. URL', $section, $i, ++$j));
-    my $url = $resource->url->as_string;
-    print $h->ul($h->li($h->a({href => $url}, e($url))));
+
+    my $url = $resource->url;
+    if ($API_SERVERS{'Production'} ne lc($url->host)) {
+        print $h->ul($h->li($h->a({href => $url->as_string}, e($url->as_string))));
+
+    } else {
+        print $h->p(e('This resource has different contents for different environments:'));
+
+        print $h->open(ul);
+
+        foreach my $env (sort(keys(%API_SERVERS))) {
+            $url->host($API_SERVERS{$env});
+            print $h->li([e($env.': '), $h->a({href => $url->as_string}, e($url->as_string))]);
+        }
+
+        print $h->close(ul);
+    }
 }
 
 sub print_cases {
