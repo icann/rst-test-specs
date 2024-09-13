@@ -13,6 +13,7 @@ epp.hostName:
   Schema:
     type: string
     format: hostname
+
 epp.greeting:
   Description: |
     an XML instance which contains a copy of the server's `<greeting>`.
@@ -101,7 +102,7 @@ epp.clid01DataModel:
     `per-registrar`, then the value of this input parameter **MUST** be
     different from the value of the `epp.clid02DataModel` input parameter.
   Type: input
-  Required: true
+  Required: false
   Example: minimum
   Schema:
     type: string
@@ -124,7 +125,7 @@ epp.clid02DataModel:
     `per-registrar`, then the value of this input parameter **MUST** be
     different from the value of the `epp.clid01DataModel` input parameter.
   Type: input
-  Required: true
+  Required: false
   Example: minimum
   Schema:
     type: string
