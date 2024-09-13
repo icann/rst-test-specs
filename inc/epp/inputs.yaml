@@ -44,7 +44,7 @@ epp.pwd01:
 epp.serverIssuedClientCertificate01:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR`
+    a certificate generated using the CSR provided in the `epp.client01CSR`
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
     the server will accept ICANN's own client certificate, this parameter
@@ -58,7 +58,7 @@ epp.serverIssuedClientCertificate01:
 epp.serverIssuedClientCertificate02:
   Description: |
     If the EPP server uses a private CA to issue client certificates, then
-    a certificate generated using the CSR provided in the `epp.clientCSR`
+    a certificate generated using the CSR provided in the `epp.client02CSR`
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
