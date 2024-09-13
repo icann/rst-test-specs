@@ -6,20 +6,41 @@ rde.encryptionKey:
     URL.
   URL: https://rst-api.icann.org/v1/resource/rde.encryptionKey.asc
 
-epp.clientCertificate:
+epp.client01Certificate:
   Description: |
     [RFC 5734](https://www.rfc-editor.org/rfc/rfc5734.html) requires servers to
     perform authentication of clients by means of a client certificate.
-    Operators **MUST** configure their systems to permit the test client to
-    connect using the certificate found at this URL.
-  URL: https://rst-api.icann.org/v1/resource/epp.clientCertificate.pem
 
-epp.clientCSR:
+    Operators **MUST** configure their systems to permit the client identified
+    in the `epp.clid01` and `srsgw.eppClid01` input parameters to connect using
+    the certificate found at this URL.
+  URL: https://rst-api.icann.org/v1/resource/epp.client01Certificate.pem
+
+epp.client02Certificate:
+  Description: |
+    [RFC 5734](https://www.rfc-editor.org/rfc/rfc5734.html) requires servers to
+    perform authentication of clients by means of a client certificate.
+
+    Operators **MUST** configure their systems to permit the client identified
+    in the `epp.clid02` and `srsgw.eppClid02` input parameters to connect using
+    the certificate found at this URL.
+  URL: https://rst-api.icann.org/v1/resource/epp.client02Certificate.pem
+
+epp.client01CSR:
   Description: |
     For servers that operate a private CA, this CSR may be used to issue a
-    client certificate. This certificate must then be provided in the
-    `epp.clientCertificate` input parameter.
-  URL: https://rst-api.icann.org/v1/resource/epp.clientCSR.pem
+    client certificate for the clients identified by the
+    `epp.serverIssuedClientCertificate01` and
+    `srsgw.serverIssuedClientCertificate01` input parameters.
+  URL: https://rst-api.icann.org/v1/resource/epp.client01CSR.pem
+
+epp.client02CSR:
+  Description: |
+    For servers that operate a private CA, this CSR may be used to issue a
+    client certificate for the clients identified by the
+    `epp.serverIssuedClientCertificate02` and
+    `srsgw.serverIssuedClientCertificate02` input parameters.
+  URL: https://rst-api.icann.org/v1/resource/epp.client02CSR.pem
 
 epp.clientACL:
   Description: |

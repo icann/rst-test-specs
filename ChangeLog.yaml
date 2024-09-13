@@ -2,6 +2,13 @@
   - |
     Clarified that IP-related tests are only applicable for internal hosts in
     [epp-13](#Test-Case-epp-13).
+  - |
+    Replaced the `epp.clientCertificate` and `epp.clientCSR` resources with
+    [`epp.client01Certificate`](#Resource-epp.client01Certificate) and
+    [`epp.client02Certificate`](#Resource-epp.client02Certificate), and
+    [`epp.client01CSR`](#Resource-epp.client01CSR) and
+    [`epp.client02CSR`](#Resource-epp.client02CSR) respectively, so each
+    client can use a distinct certificate.
 2024-09-12:
   - |
     The version of Zonemaster that the DNS and DNSSEC test suites use has been
@@ -205,7 +212,7 @@
   - All cases in the [DNSSEC Operations](#Test-Suite-DNSSECOperations) suite are now at BETA maturity.
   - Clarified wording of the [DNSSEC Operations](#Test-Suite-DNSSECOperations) test cases and added configuration guidance for applicants.
   - Any DNS query or XFR that fails during the [DNSSEC Operations](#Test-Suite-DNSSECOperations) suite is now an error.
-  - Added the [epp.tlsCertificateStore](#resource-epp.tlsCertificateStore) resource to [rdap-91](#Test-Case-rdap-91).
+  - Added the [epp.tlsCertificateStore](#Resource-epp.tlsCertificateStore) resource to [rdap-91](#Test-Case-rdap-91).
   - Added new test plans that will only be available in OT&E, to allow testing of specific test suites.
   - Added the `OTE-Only` property to test plan objects indicating the above, and bumped the schema version accordingly.
   - All error messages are now documented.
