@@ -62,10 +62,10 @@ srsgw-03:
     This test confirms that contact objects created in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the `general.registryDataModel` input parameter is `minimum`, this
+    If the `srsgw.registryDataModel` input parameter is `minimum`, this
     test will be skipped. Otherwise, this client will select the appropriate
-    registrar credentials based on the values of the `epp.clid01DataModel` and
-    `epp.clid02DataModel` input parameters.
+    registrar credentials based on the values of the `srsgw.eppClid01DataModel`
+    and `epp.eppClid02DataModel` input parameters.
 
     The client will connect to the SRS Gateway EPP system, authenticate, and
     submit a `<create>` command for a pseudo-randomly generated contact
@@ -78,8 +78,7 @@ srsgw-03:
     retry. The server **MUST** respond to the first or second `<info>` command
     with a 1000 response.
 
-    The two `<info>` responses will then be compared and **MUST** be
-    identical.
+    The two `<info>` responses will then be compared and **MUST** be identical.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -101,10 +100,9 @@ srsgw-04:
 
     The client will connect to the SRS Gateway EPP system, authenticate, and
     submit `<create>` commands for a pseudo-randomly generated domain names.
-    Contact and nameserver objects created in `srsgw-02` and `srsgw-03` will
-    be used if required. The server **MUST** respond with 1000 or 1001
-    responses. The client will then perform `<info>` commands and will capture
-    the responses.
+    Contact and nameserver will be created if required. The server **MUST**
+    respond with 1000 or 1001 responses. The client will then perform `<info>`
+    commands and will capture the responses.
 
     It will then connect to the primary EPP system, authenticate, and perform
     `<info>` commands for the domains created in the first step. If the
@@ -351,10 +349,10 @@ srsgw-11:
     This test confirms that contact objects updated in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the `general.registryDataModel` input parameter is `minimum`, this
+    If the `srsgw.registryDataModel` input parameter is `minimum`, this
     test will be skipped. Otherwise, this client will select the appropriate
-    registrar credentials based on the values of the `epp.clid01DataModel` and
-    `epp.clid02DataModel` input parameters.
+    registrar credentials based on the values of the `srsgw.eppClid01DataModel`
+    and `srsgw.eppClid02DataModel` input parameters.
 
     The test client will connect to the SRS Gateway EPP server and perform
     `<update>` commands on the objects created in `srsgw-03`. It will then
@@ -384,10 +382,10 @@ srsgw-12:
     This test confirms that contact objects delete in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    If the `general.registryDataModel` input parameter is `minimum`, this
+    If the `srsgw.registryDataModel` input parameter is `minimum`, this
     test will be skipped. Otherwise, this client will select the appropriate
-    registrar credentials based on the values of the `epp.clid01DataModel` and
-    `epp.clid02DataModel` input parameters.
+    registrar credentials based on the values of the `srsgw.eppClid01DataModel`
+    and `srsgw.eppClid02DataModel` input parameters.
 
     The test client will connect to the SRS Gateway EPP server and perform
     `<delete>` commands on objects created in `srsgw-03`. The server **MUST**
