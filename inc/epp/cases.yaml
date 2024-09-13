@@ -586,8 +586,8 @@ epp-13:
     confirm that the server checks and validates `<update>` commands which
     transform the values of the following elements:
 
-    * `<host:status>`
-    * `<host:addr>` elements (both IPv4 and IPv6)
+    * `<host:status>` (internal and external hosts)
+    * `<host:addr>` elements (both IPv4 and IPv6, internal hosts only)
 
     Note: the server's ability to support host renames is checked in a later
     test.

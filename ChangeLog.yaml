@@ -1,3 +1,7 @@
+2024-09-18:
+  - |
+    Clarified that IP-related tests are only applicable for internal hosts in
+    [epp-13](#Test-Case-epp-13).
 2024-09-12:
   - |
     The version of Zonemaster that the DNS and DNSSEC test suites use has been
