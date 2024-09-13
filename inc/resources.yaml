@@ -69,7 +69,7 @@ epp.tlsCertificateStore:
 
     EPP servers **MUST** use a certificate that has a chain of trust to one of
     the CAs present in this file.
-  URL: https://rst-api.icann.org/v1/resource/epp.tlsCertificateStore.pem
+  URL: https://curl.se/ca/cacert.pem
 
 dnssecOps.xfrACL:
   Description: |
