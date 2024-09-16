@@ -194,6 +194,8 @@ StandardRDE:
   Test-Cases: ^rde-
   Input-Parameters:
     - rde.depositFile
+    - epp.hostModel
+    - general.registryDataModel
   Errors:
     - RDE_XML_PARSE_ERROR
     - RDE_SCHEMA_VALIDATION_ERROR
