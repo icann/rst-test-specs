@@ -1,5 +1,8 @@
 2024-09-18:
   - |
+    Updates to test cases in the [RDE test suit](#Test-Suite-StandardRDE)
+    resulting from internal review.
+  - |
     Several EPP-related input parameters now have [SRS
     Gateway](#Test-Suite-StandardSRSGateway)-specific equivalents, as it is
     possible to allow the SRS Gateway EPP server to have a different data model

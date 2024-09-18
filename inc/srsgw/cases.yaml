@@ -432,7 +432,7 @@ srsgw-14:
   Maturity: GAMMA
   Description: |
     This test confirms that the SRS Gateway's RDAP service provides responses
-    to domain lookups that match those of the primary registry RDAP server.
+    to nameserver lookups that match those of the primary registry RDAP server.
 
     If the value of the `epp.hostModel` input parameter is `attributes`, then
     this test will be skipped.

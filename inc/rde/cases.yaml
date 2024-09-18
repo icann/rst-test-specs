@@ -112,9 +112,12 @@ rde-07:
 
     The required properties are:
 
-    * `<domain:name>`
-    * `<domain:roid>` (which **MUST** have a repository ID registered with
-      IANA)
+    * `<domain:name>` (which **MUST** be unique)
+    * `<domain:roid>` (which **MUST** comply with the specification in [Section
+      2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
+      and contain a repository ID that is registered in the [EPP Repository
+      Identifiers
+      Registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)).
     * at least one `<domain:status>` element
     * `<domain:registrant>` (if `general.registryDataModel` is `maximum`)
     * `<domain:clID>` (sponsoring registrar ID)
@@ -127,6 +130,9 @@ rde-07:
     Contact, host and registrar objects (including optional objects such as
     admin and tech contacts) which are referenced in domain objects **MUST**
     be present in the deposit.
+
+    If the domain has an `<idnTableId>` element, its value **MUST** match the
+    `id` property of one of the IDN table objects in the deposit.
   Errors:
     - RDE_DOMAIN_HAS_INVALID_NAME
     - RDE_DOMAIN_HAS_MISSING_ROID
@@ -152,9 +158,12 @@ rde-08:
 
     The required properties are:
 
-    * `<host:name>`
-    * `<host:roid>` (which **MUST** have a repository ID registered with
-      IANA)
+    * `<host:name>` (which **MUST** be unique)
+    * `<host:roid>` (which **MUST** comply with the specification in [Section
+      2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
+      and contain a repository ID that is registered in the [EPP Repository
+      Identifiers
+      Registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)).
     * at least one `<domain:status>` element
     * one or more `<addr>` elements (if the host name is subordinate to
       the TLD)
@@ -187,14 +196,20 @@ rde-09:
     If the value of the `general.registryDataModel` input parameter is
     `minimum`, then this test will be skipped.
 
-    * The value of the `<contact:id>` element **MUST** be unique in the deposit
-    * The value of the `<contact:roid>` **MUST** have a repository ID registered
-      with IANA
+    * The value of the `<contact:id>` element **MUST** be unique in the deposit;
+    * The value of the `<contact:roid>` (which **MUST** comply with the
+      specification in [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
+      and contain a repository ID that is registered in the [EPP Repository
+      Identifiers
+      Registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml));
     * The object **MUST NOT** have two `<rdeContact:postalInfo>` elements with
-      the same `type` attribute
-    * The value of the `<contact:cc>` element **MUST** contain a value on the
-      ISO-3166-alpha-2 list
-    * The value of the `<contact:email>` element **MUST** be a valid mailbox
+      the same `type` attribute;
+    * The value of the `<contact:cc>` element **MUST** contain a valid
+      [ISO-3166-alpha-2 country
+      code](https://www.iso.org/iso-3166-country-codes.html);
+    * The value of the `<contact:email>` element **MUST** be a valid email
+      address, as described in [Section 3.4.1 of RFC
+      5322](https://www.rfc-editor.org/rfc/rfc5322.html#section-3.4.1).
 
     Registrar objects which are referenced in contact objects **MUST** be
     present in the deposit.
@@ -220,9 +235,10 @@ rde-10:
 
     The required properties are:
 
-    * `<rdeRegistrar:id>`
-    * `<rdeRegistrar:name>`
-    * `<rdeRegistrar:gurid>` (IANA ID)
+    * `<rdeRegistrar:id>` which **MUST** be unique;
+    * `<rdeRegistrar:name>`;
+    * `<rdeRegistrar:gurid>` which **MUST** be a valid [Registrar
+      ID](https://www.iana.org/assignments/registrar-ids/registrar-ids.xhtml).
   Errors:
     - RDE_REGISTRAR_HAS_MISSING_ID
     - RDE_REGISTRAR_HAS_INVALID_ID
@@ -239,9 +255,12 @@ rde-11:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
-    All IDN table objects present in the deposit **MUST** correspond to IDN
-    tables approved for the TLD, and all approved tables **MUST** have a
-    corresponding object in the deposit.
+    * The value of the `id` attribute of all IDN table objects present in the
+      deposit **MUST** correspond to the language tag of all IDN tables
+      specified for the TLD in the test request, all such tables **MUST** have a
+      corresponding object in the deposit.
+    * The `<url>` element **MUST** (if present) contain a valid URL.
+    * The `<urlPolicy>` element **MUST** (if present) contain a valid URL.
   Errors:
     - RDE_IDN_OBJECT_INVALID
     - RDE_IDN_OBJECT_MISSING
@@ -255,8 +274,13 @@ rde-12:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
-    The `aName` property of NNDN objects **MUST NOT** match the `name`
-    property of a domain object.
+    * The value of the `<aName>` element **MUST NOT** match the value of the
+      `<name>` element of a domain object, or the `<aName>` element of another
+      NNDN object.
+    * The value of the `<nameState>` **MUST** contain either `blocked`,
+      `withheld` or `mirrored`.
+    * If the NNDN has an `<idnTableId>` element, its value **MUST** match the
+      `id` property of one of the IDN table objects in the deposit.
   Errors:
     - RDE_NNDN_CONFLICTS_WITH_DOMAIN
 
@@ -269,6 +293,12 @@ rde-13:
 
     A test case in the EPP Test Suite will confirm that this also matches what
     is returned when a client connects to the EPP server.
+
+    * All `<objURI>` elements present in the EPP greeting **MUST** be present in
+      the EPP Parameters object, and vice-versa.
+    * All `<extURI>` elements present in the EPP greeting **MUST** be present in
+      the EPP Parameters object, and vice-versa.
+
   Input-Parameters:
     - epp.greeting
   Errors:
