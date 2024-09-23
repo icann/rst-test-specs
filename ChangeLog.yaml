@@ -4,6 +4,10 @@
     [`integration.rdeSFTPACL`](#resource-integration.rdeSFTPACL) and
     [`dnssecOps.xfrACL`](#resource-dnssecOps.xfrACL) resources may now contain
     CIDR prefixes as well as IP addresses.
+  - |
+    Added [`EPP_GENERIC_COMMAND_ERROR`](#Error-EPP_GENERIC_COMMAND_ERROR) to all
+    EPP-related test cases.
+
 2024-09-18:
   - |
     Updates to test cases in the [RDE test suit](#Test-Suite-StandardRDE)
