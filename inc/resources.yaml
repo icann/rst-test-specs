@@ -51,7 +51,7 @@ integration.rdeSFTPPublicKey:
   Description: |
     The SSH public key that will be used to authenticate connections to the
     operator's SFTP server.
-  URL: https://rst-api.icann.org/v1/resource/integration.rdeSFTPPublicKey.pem
+  URL: https://rst-api.icann.org/v1/resource/integration.rdeSFTPPublicKey.txt
 
 integration.rdeSFTPACL:
   Description: |
