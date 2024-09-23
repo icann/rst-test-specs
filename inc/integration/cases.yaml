@@ -74,17 +74,6 @@ integration-03:
     All objects created **MUST** be found within a valid RDE deposit file (that
     is, the deposit passes all the tests in the RDE test suite) within 24 hours
     of each object's `<crDate>` element.
-
-    Furthermore, for each deposit found in the directory, the corresponding
-    RDE report (as described in [Section 2.1 of
-    draft-lozano-icann-registry-interfaces](https://datatracker.ietf.org/doc/html/draft-lozano-icann-registry-interfaces#section-2))
-    **MUST** be recieved on the test RRI environment before 23:59:59 UTC on
-    the date specified in the Watermark element of the deposit file.
-
-    To facilitate submission of RDE reports, the RRI test environment will be
-    configured to accept submissions for the TLDs associated with the test
-    from clients using the same TLSA DNS hostnames that are configured for the
-    test.
   Resources:
     - integration.rdeSFTPPublicKey
     - integration.rdeSFTPACL

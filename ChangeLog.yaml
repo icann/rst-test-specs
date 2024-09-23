@@ -1,3 +1,9 @@
+2024-09-25:
+  - |
+    The [`epp.clientACL`](#resource-epp.clientACL),
+    [`integration.rdeSFTPACL`](#resource-integration.rdeSFTPACL) and
+    [`dnssecOps.xfrACL`](#resource-dnssecOps.xfrACL) resources may now contain
+    CIDR prefixes as well as IP addresses.
 2024-09-18:
   - |
     Updates to test cases in the [RDE test suit](#Test-Suite-StandardRDE)

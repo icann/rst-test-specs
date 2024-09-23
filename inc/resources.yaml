@@ -42,9 +42,9 @@ epp.client02CSR:
 
 epp.clientACL:
   Description: |
-    A list of IPv4 and IPv6 address(es) from which client connections to the
-    operator's EPP server will be made. The list is a plain text file with
-    each IP address on a separate line.
+    A list of IPv4 and IPv6 address(es) or CIDR prefixes from which client
+    connections to the operator's EPP server will be made. The list is a plain
+    text file with each entry on a separate line.
   URL: https://rst-api.icann.org/v1/resource/epp.clientACL.txt
 
 integration.rdeSFTPPublicKey:
@@ -55,9 +55,9 @@ integration.rdeSFTPPublicKey:
 
 integration.rdeSFTPACL:
   Description: |
-    A list of IPv4 and IPv6 address(es) from which client connections to the
-    operator's SFTP server will be made. The list is a plain text file with
-    each IP address on a separate line.
+    A list of IPv4 and IPv6 address(es) or CIDR prefixes from which client
+    connections to the operator's SFTP server will be made. The list is a plain
+    text file with each entry on a separate line.
   URL: https://rst-api.icann.org/v1/resource/integration.rdeSFTPACL.txt
 
 epp.tlsCertificateStore:
@@ -71,9 +71,9 @@ epp.tlsCertificateStore:
 
 dnssecOps.xfrACL:
   Description: |
-    A list of IPv4 and IPv6 address(es) from which zone file transfers to
-    primary DNS servers will be made. The list is a plain text file with
-    each IP address on a separate line.
+    A list of IPv4 and IPv6 address(es) or CIDR prefixes from which zone file
+    transfers to primary DNS servers will be made. The list is a plain text file
+    with each entry on a separate line.
   URL: https://rst-api.icann.org/v1/resource/dnssecOps.xfrACL.txt
 
 tmch.testCert:
