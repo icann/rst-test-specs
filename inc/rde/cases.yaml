@@ -37,6 +37,7 @@ rde-03:
     - RDE_DECRYPTION_FAILED
 
 rde-04:
+  Implemented: true
   Summary: validate XML/CSV
   Maturity: GAMMA
   Description: |
@@ -52,6 +53,7 @@ rde-04:
     - RDE_MIXED_TYPES
 
 rde-05:
+  Implemented: true
   Summary: validate object types
   Maturity: GAMMA
   Description: |
@@ -94,6 +96,7 @@ rde-05:
     - RDE_MISSING_OBJECT_URI
 
 rde-06:
+  Implemented: true
   Summary: validate object counts
   Maturity: GAMMA
   Description: |

@@ -20,6 +20,7 @@ srsgw-01:
     - EPP_GENERIC_COMMAND_ERROR
 
 srsgw-02:
+  Implemented: true
   Summary: Host <create> synchronization (if applicable)
   Maturity: GAMMA
   Description: |

@@ -1,4 +1,5 @@
 dnssecOps01-ZSKRollover:
+  Implemented: false
   Summary: ZSK rollover
   Maturity: GAMMA
   Description: |
@@ -48,6 +49,7 @@ dnssecOps01-ZSKRollover:
     - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
 
 dnssecOps02-KSKRollover:
+  Implemented: false
   Summary: KSK rollover
   Maturity: GAMMA
   Description: |
@@ -94,6 +96,7 @@ dnssecOps02-KSKRollover:
     - DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED
 
 dnssecOps03-AlgorithmRollover:
+  Implemented: false
   Summary: algorithm rollover
   Maturity: GAMMA
   Description: |

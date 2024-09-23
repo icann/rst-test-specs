@@ -510,6 +510,7 @@ epp-10:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-11:
+  Implemented: false
   Summary: Host <create> command test (if applicable)
   Maturity: GAMMA
   Description: |
@@ -558,6 +559,7 @@ epp-11:
     - epp-11-data
 
 epp-12:
+  Implemented: true
   Summary: Host object access control (if applicable)
   Maturity: GAMMA
   Description: |
@@ -582,6 +584,7 @@ epp-12:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-13:
+  Implemented: true
   Summary: Host <update> command test (if applicable)
   Maturity: GAMMA
   Description: |

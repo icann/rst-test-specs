@@ -1,4 +1,5 @@
 integration-01:
+  Implemented: true
   Summary: EPP -> RDAP Integration Test
   Maturity: GAMMA
   Description: |

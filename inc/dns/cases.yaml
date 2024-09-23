@@ -1,4 +1,5 @@
 dns-zz-idna2008-compliance:
+  Implemented: false
   Summary: IDNA2008 compliance check
   Maturity: GAMMA
   Description: |
@@ -20,6 +21,7 @@ dns-zz-idna2008-compliance:
     - DNS_IDNA2008_INVALID_NS_NSDNAME
 
 dns-zz-consistency:
+  Implemented: false
   Summary: Nameserver consistency check
   Maturity: BETA
   Description: |
