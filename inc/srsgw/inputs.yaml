@@ -236,7 +236,7 @@ srsgw.eppClid02DataModel:
 srsgw.eppRequiredContactElements:
   Description: |
     This input parameter has the same semantics as the
-    `epp.requiredContactTypes` input parameter but relates to the SRS Gateway
+    `epp.requiredContactElements` input parameter but relates to the SRS Gateway
     EPP Server.
   Type: input
   Required: true
