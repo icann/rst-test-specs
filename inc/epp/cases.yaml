@@ -676,7 +676,7 @@ epp-14:
     Both registrar IDs (those specified in the `epp.clid01` and `epp.clid02`
     input parameters) will be used to create domains.
 
-    If the value of the `epp.registryDataModel` input parameter is
+    If the value of the `general.registryDataModel` input parameter is
     `per-registrar`, then the `epp.clid01DataModel` and `epp.clid02DataModel`
     input parameters will be taken into consideration when determining whether
     contact objects are needed to successfully create a domain name.
