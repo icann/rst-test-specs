@@ -1,5 +1,9 @@
-2024-10-01:
+2024-10-02:
   - Miscellaneous minor fixes.
+  - |
+    Fixed the schema for the
+    `srsgw.eppRequiredContactElements`](#Input-Parameter-srsgw.eppRequiredContactElements)
+    input parameter.
 
 2024-09-25:
   - |

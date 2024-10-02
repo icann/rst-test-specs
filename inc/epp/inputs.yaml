@@ -258,7 +258,7 @@ epp.supportedContactElements:
     Elements that are listed in this parameter **MAY** also be listed in the
     `epp.requiredContactElements` parameter.
   Type: input
-  Required: false
+  Required: true
   Example:
     - org
     - street

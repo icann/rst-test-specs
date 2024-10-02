@@ -240,15 +240,26 @@ srsgw.eppRequiredContactElements:
     EPP Server.
   Type: input
   Required: true
-  Example: ["admin"]
+  Example:
+    - org
+    - street
+    - sp
+    - pc
+    - voice
+    - voice:ext
   Schema:
     type: array
     items:
       type: string
       enum:
-        - admin
-        - tech
-        - billing
+        - org
+        - street
+        - sp
+        - pc
+        - voice
+        - voice:ext
+        - fax
+        - fax:ext
 
 srsgw.eppRequiredContactTypes:
   Description: |
