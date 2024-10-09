@@ -167,7 +167,7 @@ rde-08:
       and contain a repository ID that is registered in the [EPP Repository
       Identifiers
       Registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)).
-    * at least one `<domain:status>` element
+    * at least one `<host:status>` element
     * one or more `<addr>` elements (if the host name is subordinate to
       the TLD)
     * `<host:clID>` (sponsoring registrar ID)
