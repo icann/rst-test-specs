@@ -510,7 +510,7 @@ epp-10:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-11:
-  Implemented: false
+  Implemented: true
   Summary: Host <create> command test (if applicable)
   Maturity: GAMMA
   Description: |
