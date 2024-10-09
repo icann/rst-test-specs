@@ -946,7 +946,7 @@ This is no longer really meaningful.
 =cut
 
     print $h->h4(sprintf('%u.%u.%u. Implementation status', $section, $i, ++$j));
-    print $h->ul($h->li(sprintf('This test has <strong>%s</strong> been implemented in the RST system.', $case->implemented ? 'has' : 'has not yet')));
+    print $h->ul($h->li(sprintf('This test <strong>%s</strong> been implemented in the RST system.', $case->implemented ? 'has' : 'has not yet')));
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $case->description->html(4);
