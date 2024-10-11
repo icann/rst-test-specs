@@ -923,6 +923,14 @@ EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO:
     `<update>` command that specified an authInfo code with insufficient
     entropy.
 
+EPP_TRANSFER_SERVER_REJECTS_SECURE_AUTHINFO:
+  Severity: ERROR
+  Description: |
+    An EPP server implementing Secure Authorization Information for Transfer
+    ([RFC 9154](https://www.rfc-editor.org/rfc/rfc9154.html)) rejected an
+    `<update>` command that specified an authInfo code with at least as much
+    entropy as specified in Section 4.1 of that RFC (that is, 128 bits).
+
 EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD:
   Severity: ERROR
   Description: |

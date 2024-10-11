@@ -19,7 +19,7 @@ idn-01:
     generated, The client will also ensure that the EPP server properly
     implements that policy: that is, variant domains must (a) be blocked, or (b)
     only be available for registration by (i) the same registrant, or (ii) if
-    the TLD uses the minimal public data set, the same registrant.
+    the TLD uses the minimal public data set, the same registrar.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_LOGIN_ERROR

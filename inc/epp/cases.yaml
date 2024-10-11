@@ -481,9 +481,9 @@ epp-10:
   Summary: Contact <delete> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
-    This test will perform `<delete>` commands on the objects created during
-    `epp-24` and will confirm that the server accepts the `<delete>` command
-    with a `1xxx` response code.
+    This test will perform `<delete>` commands on contact objects, and will
+    confirm that the server accepts the `<delete>` command with a `1xxx`
+    response code.
 
     If the `general.registryDataModel` input parameter is `minimum`, this
     test will be skipped. Otherwise, this client will select the appropriate
@@ -873,9 +873,13 @@ epp-19:
     transfer.
 
     The client will create a domain name, and any contact and/or host objects,
-    as required. If the server implements [RFC
+    as required.
+
+    The client will then perform an `<update>` command to set an authInfo code.
+
+    If the server implements [RFC
     9154](https://www.rfc-editor.org/rfc/rfc9154.html), it **MUST** reject the
-    `<create>` command if the authInfo code is insufficently secure.
+    `<update>` command if the authInfo code is insufficently secure.
 
     Then, using a second set of credentials, the client will connect to the
     EPP server and authenticate, submit `<transfer>` commands, and validate
@@ -917,6 +921,7 @@ epp-19:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_TRANSFER_SERVER_ACCEPTS_INSECURE_AUTHINFO
+    - EPP_TRANSFER_SERVER_REJECTS_SECURE_AUTHINFO
     - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
     - EPP_TRANSFER_SERVER_ACCEPTS_INVALID_PERIOD
     - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE
@@ -1101,3 +1106,4 @@ epp-24:
     - EPP_LOGIN_ERROR
     - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE

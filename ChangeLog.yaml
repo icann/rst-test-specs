@@ -1,3 +1,38 @@
+2024-10-16:
+  - |
+    Updated the test procecdure for [epp-19](#Test-Case-epp-19) so that the
+    authInfo code is set during an `<update>` rather than `<create>`, to account
+    for servers that implement RFC 9154 and reject non-empty authInfo elements
+    during `<create>` commands. Also added the
+    [`EPP_TRANSFER_SERVER_REJECTS_SECURE_AUTHINFO`](#Error-EPP_TRANSFER_SERVER_REJECTS_SECURE_AUTHINFO)
+    error code for when the server rejects an authInfo code that it should
+    accept.
+  - |
+    Fix typo in [idn-01](#Test-Case-idn-01) that made the description of the
+    rules for variants logically incoherent.
+  - |
+    Added
+    [`RDE_DOMAIN_HAS_MISSING_CONTACT`](#Error-RDE_DOMAIN_HAS_MISSING_CONTACT)
+    and
+    [`RDE_DOMAIN_HAS_MISSING_NAMESERVER`](#Error-RDE_DOMAIN_HAS_MISSING_NAMESERVER)
+    to [rde-07](#Test-case-rde-07).
+  - |
+    Fixed the description of
+    [`RDE_DOMAIN_HAS_MISSING_REGISTRANT`](#Error-RDE_DOMAIN_HAS_MISSING_REGISTRANT).
+  - Clarified that domain and host names, and domain, host and
+    contact ROIDs must be unique. Added the
+    [`RDE_DOMAIN_HAS_NON_UNIQUE_NAME`](#Error-RDE_DOMAIN_HAS_NON_UNIQUE_NAME),
+    [`RDE_HOST_HAS_NON_UNIQUE_NAME`](#Error-RDE_HOST_HAS_NON_UNIQUE_NAME),
+    [`RDE_DOMAIN_HAS_NON_UNIQUE_ROID`](#Error-RDE_DOMAIN_HAS_NON_UNIQUE_ROID),
+    [`RDE_HOST_HAS_NON_UNIQUE_ROID`](#Error-RDE_HOST_HAS_NON_UNIQUE_ROID) and
+    [`RDE_CONTACT_HAS_NON_UNIQUE_ROID`](#Error-RDE_CONTACT_HAS_NON_UNIQUE_ROID)
+    error codes as needed to [rde-08](#Test-Case-rde-08),
+    [rde-09](#Test-Case-rde-09) and
+    [rde-10](#Test-Case-rde-10).
+
+2024-10-09:
+  - Miscellaneous minor fixes.
+
 2024-10-02:
   - Miscellaneous minor fixes.
   - |

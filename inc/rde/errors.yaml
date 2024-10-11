@@ -120,7 +120,8 @@ RDE_DOMAIN_HAS_MISSING_EXDATE:
 RDE_DOMAIN_HAS_MISSING_REGISTRANT:
   Severity: ERROR
   Description: |
-    One or more domain objects do not have a `<registrant>` element.
+    One or more domain objects have a `<registrant>` element which is not
+    present in the deposit.
 
 RDE_DOMAIN_HAS_MISSING_ROID:
   Severity: ERROR
@@ -305,3 +306,39 @@ RDE_XML_PARSE_ERROR:
   Description: |
     The XML in the deposit file is not well-formed.
 
+RDE_DOMAIN_HAS_MISSING_CONTACT:
+  Severity: ERROR
+  Description: |
+    One or more domain objects have a `<contact>` element which is not
+    present in the deposit.
+
+RDE_DOMAIN_HAS_MISSING_NAMESERVER:
+  Severity: ERROR
+  Description: |
+    One or more domain objects have a `<hostObj>` element which is not
+    present in the deposit.
+
+RDE_DOMAIN_HAS_NON_UNIQUE_NAME:
+  Severity: ERROR
+  Description: |
+    One or more domain objects have the same `<name>` element.
+
+RDE_HOST_HAS_NON_UNIQUE_NAME:
+  Severity: ERROR
+  Description: |
+    One or more host objects have the same `<name>` element.
+
+RDE_DOMAIN_HAS_NON_UNIQUE_ROID:
+  Severity: ERROR
+  Description:
+    One or more domain objects have the same `<roid>` element.
+
+RDE_HOST_HAS_NON_UNIQUE_ROID:
+  Severity: ERROR
+  Description:
+    One or more host objects have the same `<roid>` element.
+
+RDE_CONTACT_HAS_NON_UNIQUE_ROID:
+  Severity: ERROR
+  Description:
+    One or more contact objects have the same `<roid>` element.

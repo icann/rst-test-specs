@@ -138,12 +138,16 @@ rde-07:
     `id` property of one of the IDN table objects in the deposit.
   Errors:
     - RDE_DOMAIN_HAS_INVALID_NAME
+    - RDE_DOMAIN_HAS_NON_UNIQUE_NAME
     - RDE_DOMAIN_HAS_MISSING_ROID
     - RDE_DOMAIN_HAS_INVALID_ROID
+    - RDE_DOMAIN_HAS_NON_UNIQUE_ROID
     - RDE_DOMAIN_HAS_MISSING_STATUS
     - RDE_DOMAIN_HAS_INVALID_STATUS
     - RDE_DOMAIN_HAS_MISSING_REGISTRANT
     - RDE_DOMAIN_HAS_INVALID_REGISTRANT
+    - RDE_DOMAIN_HAS_MISSING_CONTACT
+    - RDE_DOMAIN_HAS_MISSING_NAMESERVER
     - RDE_DOMAIN_HAS_MISSING_CLID
     - RDE_DOMAIN_HAS_INVALID_CLID
     - RDE_DOMAIN_HAS_MISSING_CRDATE
@@ -162,7 +166,7 @@ rde-08:
     The required properties are:
 
     * `<host:name>` (which **MUST** be unique)
-    * `<host:roid>` (which **MUST** comply with the specification in [Section
+    * `<host:roid>` (which **MUST** be unique and **MUST** comply with the specification in [Section
       2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
       and contain a repository ID that is registered in the [EPP Repository
       Identifiers
@@ -179,8 +183,10 @@ rde-08:
     be present in the deposit.
   Errors:
     - RDE_HOST_HAS_INVALID_NAME
+    - RDE_HOST_HAS_NON_UNIQUE_NAME
     - RDE_HOST_HAS_MISSING_ROID
     - RDE_HOST_HAS_INVALID_ROID
+    - RDE_HOST_HAS_NON_UNIQUE_ROID
     - RDE_HOST_HAS_MISSING_STATUS
     - RDE_HOST_HAS_INVALID_STATUS
     - RDE_HOST_HAS_MISSING_IP_ADDRESS
@@ -200,7 +206,7 @@ rde-09:
     `minimum`, then this test will be skipped.
 
     * The value of the `<contact:id>` element **MUST** be unique in the deposit;
-    * The value of the `<contact:roid>` (which **MUST** comply with the
+    * The value of the `<contact:roid>` (which **MUST** be unique and **MUST** comply with the
       specification in [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
       and contain a repository ID that is registered in the [EPP Repository
       Identifiers
@@ -219,6 +225,7 @@ rde-09:
   Errors:
     - RDE_CONTACT_HAS_NON_UNIQUE_ID
     - RDE_CONTACT_HAS_INVALID_ROID
+    - RDE_CONTACT_HAS_NON_UNIQUE_ROID
     - RDE_CONTACT_HAS_MULTIPLE_POSTALINFO_TYPES
     - RDE_CONTACT_HAS_INVALID_CC
     - RDE_CONTACT_HAS_INVALID_EMAIL
