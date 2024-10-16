@@ -29,6 +29,10 @@
     error codes as needed to [rde-08](#Test-Case-rde-08),
     [rde-09](#Test-Case-rde-09) and
     [rde-10](#Test-Case-rde-10).
+  - |
+    Added
+    [`EPP_HOST_DELETE_RESPONSE_NOT_1000_OR_1001`](#Error-EPP_HOST_DELETE_RESPONSE_NOT_1000_OR_1001)
+    to [epp-24](#Test-Case-epp-24).
 
 2024-10-09:
   - Miscellaneous minor fixes.
