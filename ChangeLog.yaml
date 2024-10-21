@@ -7,6 +7,9 @@
     Standardized the definition of "canonicalization" across
     [srsgw-13](#Test-Case-srsgw-13), [srsgw-14](#Test-Case-srsgw-15) and
     [srsgw-15](#Test-Case-srsgw-15).
+  - |
+    Added EPP-related error codes to [srsgw-13](#Test-Case-srsgw-13),
+    [srsgw-14](#Test-Case-srsgw-15) and [srsgw-15](#Test-Case-srsgw-15).
 
 2024-10-16:
   - |
