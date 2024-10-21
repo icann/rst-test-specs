@@ -427,13 +427,27 @@ srsgw-13:
     This test confirms that the SRS Gateway's RDAP service provides responses
     to domain lookups that match those of the primary registry RDAP server.
 
-    The test system will perform RDAP queries for some of the objects created
-    in `srsgw-04` against both the primary registry RDAP server and the SRS
-    Gateway RDAP server. After canonicalisation, the responses from each
-    server **MUST** be identical.
+    The test system will connect to the SRS Gateway EPP server and create one
+    domain name for each TLD in the TLD set, and any required host and/or
+    contact objects. This stage **MUST** complete successfully. Then, after 30
+    seconds, it will perform RDAP queries for those domains against both the
+    primary registry RDAP server and the SRS Gateway RDAP server. The RDAP
+    requests **MUST** be successful.
+
+    After canonicalization (see [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)),
+    the JSON responses from each server **MUST** be identical, with the sole
+    exception of event objects with `eventAction` properties equal to "last
+    update of RDAP database".
   Dependencies:
     - srsgw-04
   Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
     - SRSGW_RDAP_DNS_RESOLUTION_ERROR
     - SRSGW_RDAP_SERVICE_PORT_UNREACHABLE
     - SRSGW_RDAP_TLS_CONNECTION_ERROR
@@ -452,8 +466,12 @@ srsgw-14:
 
     The test system will perform RDAP queries for some of the objects created
     in `srsgw-02` against both the primary registry RDAP server and the SRS
-    Gateway RDAP server. After canonicalisation, the JSON responses from each
-    server **MUST** be identical.
+    Gateway RDAP server.
+
+    After canonicalization (see [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)),
+    the JSON responses from each server **MUST** be identical, with the sole
+    exception of event objects with `eventAction` properties equal to "last
+    update of RDAP database".
   Dependencies:
     - srsgw-02
   Errors:

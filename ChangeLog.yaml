@@ -1,3 +1,13 @@
+2024-10-23:
+  - |
+    Updated the test procedure for [srsgw-13](#Test-Case-srsgw-13) to be
+    stand-alone. The same change will be made to most of the other test cases in
+    the SRS Gateway test suite; stay tuned for updates.
+  - |
+    Standardized the definition of "canonicalization" across
+    [srsgw-13](#Test-Case-srsgw-13), [srsgw-14](#Test-Case-srsgw-15) and
+    [srsgw-15](#Test-Case-srsgw-15).
+
 2024-10-16:
   - |
     Updated the test procecdure for [epp-19](#Test-Case-epp-19) so that the
