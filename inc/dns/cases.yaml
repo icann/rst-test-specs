@@ -11,8 +11,8 @@ dns-zz-idna2008-compliance:
 
     The names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`
     record, and in the apex `NS` records, **MUST** be comprised solely of (a)
-    NR-LDH labels (see Section 2.3.2.2 of [RFC
-    5980](https://www.rfc-editor.org/rfc/rfc5980.html)) or (b) IDN labels that
+    NR-LDH labels (see Section [2.3.2.2 of RFC
+    5890](https://www.rfc-editor.org/rfc/rfc5890.html#section-2.3.2.2)) or (b) IDN labels that
     conform to the requirements of IDNA2008.
   Errors:
     - DNS_IDNA2008_QUERY_FAILED
