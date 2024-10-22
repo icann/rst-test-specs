@@ -10,6 +10,10 @@
   - |
     Added EPP-related error codes to [srsgw-13](#Test-Case-srsgw-13),
     [srsgw-14](#Test-Case-srsgw-15) and [srsgw-15](#Test-Case-srsgw-15).
+  - |
+    Fixed typo in reference to [RFC
+    5890](https://www.rfc-editor.org/rfc/rfc5890.html) in
+    [dns-zz-idna2008-compliance](#Test-Case-dns-zz-idna2008-compliance).
 
 2024-10-16:
   - |

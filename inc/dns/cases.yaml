@@ -7,7 +7,7 @@ dns-zz-idna2008-compliance:
     Zonemaster, this test case exists to confirm that all DNS host names which
     appear in resource records at the TLD apex conform to the IDNA2008
     specifications, described in [RFC
-    5980](https://www.rfc-editor.org/rfc/rfc5980.html).
+    5890](https://www.rfc-editor.org/rfc/rfc5890.html).
 
     The names that appear in the `MNAME` and `RNAME` fields of the TLD `SOA`
     record, and in the apex `NS` records, **MUST** be comprised solely of (a)
