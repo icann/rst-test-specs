@@ -144,13 +144,17 @@ srsgw-05:
     registry system.
 
     The client will connect to the SRS Gateway EPP system, authenticate, and
-    submit a `<renew>` command for the domain created in `srsgw-04`. The
-    server **MUST** respond with a 1000 or 1001 response. The client will then
-    perform an `<info>` command and will capture the response.
+    submit `<create>` commands for a pseudo-randomly generated domain name.
+    Contact and nameserver will be created if required. The server **MUST**
+    respond with a 1000 or 1001 response.
 
-    It will then connect to the primary EPP system, authenticate, and perform
-    an `<info>` command for the domain renewed in the first step.
-    The server **MUST** respond with a 1000 response.
+    It will then submit a `<renew>` command. The server **MUST** respond with a
+    1000 or 1001 response. The client will then perform `<info>` commands and
+    will capture the responses.
+
+    It will wait for 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command for the domain renewed in the
+    first step. The server **MUST** respond with a 1000 response.
 
     The `<exDate>` element of the two `<info>` responses will then be compared
     and **MUST** be identical.
@@ -179,18 +183,19 @@ srsgw-06:
     system are correctly synchronized with the primary registry system.
 
     The client will connect to the SRS Gateway EPP system, authenticate, and
-    perform an `<update>` command to specify an authInfo code for the domain
-    created in `srsgw-04`. The server **MUST** respond with a 1000 or 1001
-    response.
+    submit `<create>` commands for a pseudo-randomly generated domain name.
+    Contact and nameserver will be created if required. The server **MUST**
+    respond with a 1000 or 1001 response. It will then submit an `<update>`
+    command to set an authInfo code for the domain. The server **MUST**
+    respond with a 1000 or 1001 response.
 
     It will then reconnect to the SRS Gateway EPP system using the credentials
-    of a second registrar account and submit a `<transfer op="request">`
-    command using the authInfo command set for the domain in the first step.
-    The server **MUST** respond with a 1000 or 1001 response.
+    of a second registrar account and submit a `<transfer op="request">` The
+    server **MUST** respond with a 1000 or 1001 response.
 
-    It will then connect to the primary EPP system, authenticate, and perform
-    an `<info>` command for the domain. The server **MUST** respond with a
-    1000 response.
+   It will wait for 30 seconds, and then connect to the primary EPP system,
+   authenticate, and perform an `<info>` command for the domain. The server
+   **MUST** respond with a 1000 response.
 
     * if the response to the original `<transfer op="request">` command was
       `1000`, then the `<clID>` element **MUST** contain the value of the
@@ -223,18 +228,18 @@ srsgw-07:
     Gateway EPP system are correctly synchronized with the primary registry
     system.
 
-    If the response to the `<transfer op="request">` command performed in
-    `srsgw-07` was 1000, then this test will be skipped.
+    The test client will repeat the procedure described in `srsgw-06` to create
+    a domain name, set its authInfo code, and then submit a transfer request.
 
-    The client will connect to the SRS Gateway EPP system, authenticate, and
-    perform an `<transfer op="approve">` command for the domain for which a
-    transfer was requested in `srsgw-04`. The server **MUST** respond with a
-    1000 or 1001 response.
+    If the response to the `<transfer op="request">` command is 1001, then the
+    client will connect to the SRS Gateway EPP system, authenticate, and
+    perform an `<transfer op="approve">` command. The server **MUST** respond
+    with a 1000 or 1001 response.
 
-    It will then connect to the primary EPP system, authenticate, and perform
-    an `<info>` command for the domain. The server **MUST** respond with a
-    1000 response. The `<domain:clID>` element **MUST** contain the value of
-    the  `srsgw.eppClid01` input parameter.
+    It will wait for 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command for the domain. The server
+    **MUST** respond with a 1000 response. The `<domain:clID>` element **MUST**
+    contain the value of the `srsgw.eppClid01` input parameter.
   Input-Parameters:
     - srsgw.domainTransferApproveExtension
   Dependencies:
@@ -261,13 +266,23 @@ srsgw-08:
     This test confirms that domain objects deleted in the SRS Gateway EPP
     system are correctly synchronized with the primary registry system.
 
-    The client will connect to the SRS Gateway EPP system, authenticate using
-    the credentials provided in `epp.clid02` and `epp.pwd02`, and
-    submit a `<delete>` command for the domain transferred in `srsgw-07`.
-    The server **MUST** respond with a `1001` response.
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit `<create>` commands for a pseudo-randomly generated domain name.
+    Contact and nameserver will be created if required. The server **MUST**
+    respond with a 1000 or 1001 response. It will then submit a `<renew>`
+    command to ensure that the domain does not have the `addPeriod` status.
 
-    It will then connect to the primary EPP system, authenticate, and perform
-    an `<info>` command for the domain renewed in the first step.
+    It will wait for 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command. The server **MUST**
+    respond with a 1000 response.
+
+    The client will then reconnect to the SRS Gateway EPP system, authenticate,
+    and submit a `<delete>` command.  The server **MUST** respond with a 1001
+    response.
+
+    Finally, the client will reconnect to the primary EPP system, authenticate,
+    and perform an `<info>` command. The server **MUST** respond with a 1000
+    response.
 
     The domain object **MUST** have the `pendingDelete` status and have an RGP
     status of `pendingDeleteRestorable`.
@@ -304,8 +319,8 @@ srsgw-09:
     to add and remove status codes and IP addresses. It will then perform
     `<info>` commands on those objects.
 
-    The client will then connect to the primary registry EPP server and
-    perform `<info>` commands for those objects.
+    It will wait for 30 seconds, and then connect to the primary registry EPP
+    server and perform `<info>` commands for those objects.
 
     The two sets of `<info>` responses **MUST** be identical.
   Dependencies:
