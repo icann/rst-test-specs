@@ -318,13 +318,14 @@ rde-14:
   Summary: validate policy object (if applicable)
   Maturity: GAMMA
   Description: |
-    The object policies included in the `<rdePolicy:policy>` object **MUST**
-    conform to the Registration Data Policy and the applicable data model.
+    The object policies specified by the `<rdePolicy:policy>` object(s) in the
+    deposit **MUST** conform to the Registration Data Policy and the applicable
+    data model.
 
-    * If the `general.registryDataModel` input parameter is `minimum`, then
-      contact objects **MUST NOT** be present in the deposit.
-    * If the `epp.hostModel` input parameter is `attributes`, then
-      host objects **MUST NOT** be present in the deposit.
+    * If the `general.registryDataModel` input parameter is `maximum` or
+      `per-registrar`, then a policy object that identifies the `<registrant>`
+      element of domain objects **MUST** be present.
+
   Errors:
     - RDE_POLICY_OBJECT_MISSING
     - RDE_POLICY_OBJECT_INVALID
