@@ -106,6 +106,7 @@ rde-06:
     - RDE_OBJECT_COUNT_MISMATCH
 
 rde-07:
+  Implemented: true
   Summary: validate domain objects
   Maturity: GAMMA
   Description: |
@@ -156,6 +157,7 @@ rde-07:
     - RDE_DOMAIN_HAS_INVALID_EXDATE
 
 rde-08:
+  Implemented: true
   Summary: validate host objects (if applicable)
   Maturity: GAMMA
   Description: |
@@ -195,6 +197,7 @@ rde-08:
     - RDE_HOST_HAS_INVALID_CLID
 
 rde-09:
+  Implemented: true
   Summary: validate contact objects (if applicable)
   Maturity: GAMMA
   Description: |
@@ -236,6 +239,7 @@ rde-09:
     - RDE_CONTACT_HAS_UNKNOWN_ACRR
 
 rde-10:
+  Implemented: true
   Summary: validate registrar objects
   Maturity: GAMMA
   Description: |
@@ -258,6 +262,7 @@ rde-10:
     - RDE_REGISTRAR_HAS_INVALID_GURID
 
 rde-11:
+  Implemented: true
   Summary: validate IDN table objects (if applicable)
   Maturity: GAMMA
   Description: |
@@ -277,6 +282,7 @@ rde-11:
     - RDE_IDN_OBJECT_UNEXPECTED
 
 rde-12:
+  Implemented: false
   Summary: validate NNDN objects
   Maturity: GAMMA
   Description: |

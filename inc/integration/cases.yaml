@@ -30,6 +30,7 @@ integration-01:
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
 
 integration-02:
+  Implemented: true
   Summary: EPP -> DNS Integration Test
   Maturity: GAMMA
   Description: |

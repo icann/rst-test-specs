@@ -808,6 +808,7 @@ epp-16:
     - epp-16-ns-data
 
 epp-17:
+  Implemented: true
   Summary: Service Port consistency test
   Maturity: GAMMA
   Description: |
