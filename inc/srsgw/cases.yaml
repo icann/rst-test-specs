@@ -193,9 +193,9 @@ srsgw-06:
     of a second registrar account and submit a `<transfer op="request">` The
     server **MUST** respond with a 1000 or 1001 response.
 
-   It will wait for 30 seconds, and then connect to the primary EPP system,
-   authenticate, and perform an `<info>` command for the domain. The server
-   **MUST** respond with a 1000 response.
+    It will wait for 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command for the domain. The server
+    **MUST** respond with a 1000 response.
 
     * if the response to the original `<transfer op="request">` command was
       `1000`, then the `<clID>` element **MUST** contain the value of the
