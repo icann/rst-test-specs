@@ -101,6 +101,27 @@ tmch.testSMDRL:
 
 tmch.testSURL:
   Description: |
-    A file containing the list of labels for which SMDs have been produced in
-    the TMCH test environment.
+    A CSV file containing the list of labels for which SMDs have been produced
+    in the TMCH test environment.
   URL: https://rst-api.icann.org/v1/resource/tmch.testSURL.csv
+
+idn.testLabelsForOTE:
+  Description: |
+    Test cases in the IDN test suite require a set of test labels which are used
+    to compute domain names used in EPP `<create>` commands. These test labels
+    are provided when IDN table objects are created through the API.
+
+    In production, these objects will be created by ICANN org, but for OT&E,
+    test subjects must create IDN table objects themselves, and must therefore
+    provide test labels.
+
+    Test subjects are free to submit any test labels they wish, but in order to
+    properly simulate a production test, the same set of labels should be used.
+
+    This resource is a zip file containing JSON files, each of which contains
+    the test labels for the [second-level reference
+    LGR](https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en)
+    identified by the language tag in the file name. The JSON files conform to
+    the `idnTestLabels` object type from the [RST-API
+    specification](https://icann.github.io/rst-api-spec/).
+  URL: https://to-be-determined.example.com/testLabelsForOTE.zip

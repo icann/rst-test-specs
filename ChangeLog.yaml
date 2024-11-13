@@ -1,3 +1,8 @@
+2024-11-13:
+  - |
+    Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
+    to the IDN test suite.
+
 2024-11-06:
   - |
     Updates to:

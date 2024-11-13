@@ -220,7 +220,6 @@ StandardIDN:
     * [RFC 5893 - Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)](https://www.rfc-editor.org/rfc/rfc5893.html)
     * [RFC 5894 - Internationalized Domain Names for Applications (IDNA): Background, Explanation, and Rationale](https://www.rfc-editor.org/rfc/rfc5894.html)
     * [IDN Implementation Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm)
-
   Test-Cases: ^idn-
   Input-Parameters:
     - general.registryDataModel
@@ -244,6 +243,7 @@ StandardIDN:
     - epp.client02CSR
     - epp.client01Certificate
     - epp.client02Certificate
+    - idn.testLabelsForOTE
 
 StandardSRSGateway:
   Order: 7
