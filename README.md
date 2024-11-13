@@ -1,4 +1,5 @@
-This repository contains the specifications for the RST v2.0 service.
+This repository contains the specifications for ICANN's [Registry System Testing
+(RST)](https://icann.org/resources/registry-system-testing-v2.0) v2.0 service.
 
 ## Repository Contents
 
@@ -8,7 +9,7 @@ This repository contains the specifications for the RST v2.0 service.
 * [rst-test-spec-schema.yaml](rst-test-spec-schema.yaml) is a schema for the
   YAML spec file.
 
-* [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains 
+* [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) contains
   policies that are applied to Zonemaster tests when generating the spec files
   and the Zonemaster profile.
 

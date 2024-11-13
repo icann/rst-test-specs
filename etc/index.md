@@ -1,9 +1,5 @@
-This site hosts the specifications for the Registry System Testing (RST) v2.0 service.
-
-This system will replace the original Pre-Delegation Testing (later renamed to
-Registry System Testing) service. Unlike its predecessor, the new system is
-fully automated. All interaction with the system is via the
-[RST-API](https://icann.github.io/rst-api-spec).
+This site hosts the specifications for ICANN's [Registry System Testing
+(RST)](https://icann.org/resources/registry-system-testing-v2.0) v2.0 service.
 
 * **[rst-test-specs.html](rst-test-specs.html)
   is the human-readable version of the RST test specification.** This is updated
@@ -26,6 +22,7 @@ fully automated. All interaction with the system is via the
 
 ## See Also
 
+* [GitHub repository](https://github.com/icann/rst-test-specs/)
 * [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
 
 ## Copyright Statement
