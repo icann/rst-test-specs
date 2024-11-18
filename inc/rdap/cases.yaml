@@ -122,9 +122,6 @@ rdap-91:
   Summary: TLS version conformance check
   Maturity: GAMMA
   Description: |
-    **NOTE: this test case is a placeholder for a test case that will eventually
-    be added to the RDAP Conformance Tool.**
-
     This test case verifies that the RDAP server properly implements a secure
     TLS configuration.
 
@@ -161,9 +158,6 @@ rdap-92:
   Summary: Service port consistency check
   Maturity: GAMMA
   Description: |
-    **NOTE: this test case is a placeholder for a test case that will eventually
-    be added to the RDAP Conformance Tool.**
-
     This test confirms that all RDAP service ports return identical responses.
 
     Since applicants must provide an RDAP service over both IPv4 and IPv6, at
