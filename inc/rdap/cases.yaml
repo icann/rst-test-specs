@@ -140,7 +140,8 @@ rdap-91:
     5. The RDAP server name **MUST** match at least one `subjectAltName` field
        in all presented certificates (either exact match or wildcard).
     6. Service ports **MUST** use at least one of the ciphers recommended in
-       RFC 9325 (or any successor document).
+       [RFC 9325](https://www.rfc-editor.org/rfc/rfc9325.html) (or any successor
+       document).
   Resources:
     - epp.tlsCertificateStore
   Errors:
