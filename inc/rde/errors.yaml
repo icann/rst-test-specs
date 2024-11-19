@@ -256,11 +256,6 @@ RDE_POLICY_OBJECT_MISSING_OBJECTS:
   Description: |
     The Policy Object does not contain all expected objects.
 
-RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS:
-  Severity: ERROR
-  Description: |
-    The Policy Object contains unexpected objects.
-
 RDE_REGISTRAR_HAS_INVALID_GURID:
   Severity: ERROR
   Description: |

@@ -5,6 +5,9 @@
     launching with an SRS Gateway. This test plan uses the same test suites as
     the [Pre-Delegation Test](#Test-Plan-StandardPreDelegationTest) plan plus
     the [SRS Gateway](#Test-Suite-StandardSRSGateway) test suite.
+  - |
+    Removed the `RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS` error from
+    [rde-14](#Test-Case-rde-14).
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
