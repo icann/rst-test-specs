@@ -354,3 +354,20 @@ AdditionalDNSTransportsTest:
     TP_PASSFAIL
   Test-Suites:
     - AdditionalDNSTransports
+
+PreDelegationTestWithSRSGateway:
+  Name: Pre-Delegation Test with SRS Gateway
+  Order: 19
+  OTE-Only: false
+  Description: |
+    This test plan is identical to the Pre-Delegation Test plan, but adds the
+    SRS Gateway test suite, for TLDs which intend to launch with an SRS Gateway.
+  Test-Suites:
+    - StandardDNS
+    - StandardDNSSEC
+    - StandardEPP
+    - StandardRDAP
+    - StandardIDN
+    - StandardRDE
+    - StandardIntegrationTest
+    - StandardSRSGateway

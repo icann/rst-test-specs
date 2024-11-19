@@ -1,3 +1,10 @@
+2024-11-20:
+  - |
+    Added a new test plan called [Pre-Delegation Test with SRS
+    Gateway](#Test-Plan-PreDelegationTestWithSRSGateway), for TLDs that are
+    launching with an SRS Gateway. This test plan uses the same test suites as
+    the [Pre-Delegation Test](#Test-Plan-StandardPreDelegationTest) plan plus
+    the [SRS Gateway](#Test-Suite-StandardSRSGateway) test suite.
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
