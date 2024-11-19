@@ -8,6 +8,9 @@
   - |
     Removed the `RDE_POLICY_OBJECT_UNEXPECTED_OBJECTS` error from
     [rde-14](#Test-Case-rde-14).
+  - |
+    Resolved an ordering issue in
+    [epp-16-status-data](#Data-Provider-epp-16-status-data).
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
