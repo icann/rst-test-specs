@@ -1,6 +1,6 @@
 rde-01:
   Implemented: true
-  Summary: validate deposit filename format
+  Summary: Validate deposit filename format
   Maturity: GAMMA
   Description: |
     * The deposit filename **MUST** conform to the format specified in the RA.
@@ -12,7 +12,7 @@ rde-01:
 
 rde-02:
   Implemented: true
-  Summary: validate signature over deposit file
+  Summary: Validate signature over deposit file
   Maturity: GAMMA
   Description: |
     The PGP signature **MUST** be valid for the deposit file and the RSP's
@@ -25,7 +25,7 @@ rde-02:
 
 rde-03:
   Implemented: true
-  Summary: decrypt deposit file(s)
+  Summary: Decrypt deposit file(s)
   Maturity: GAMMA
   Description: |
     It **MUST** be possible to decrypt the deposit file using the RST key. The
@@ -38,7 +38,7 @@ rde-03:
 
 rde-04:
   Implemented: true
-  Summary: validate XML/CSV
+  Summary: Validate XML/CSV
   Maturity: GAMMA
   Description: |
     * XML deposit files **MUST** be well-formed and validate against the XML
@@ -54,7 +54,7 @@ rde-04:
 
 rde-05:
   Implemented: true
-  Summary: validate object types
+  Summary: Validate object types
   Maturity: GAMMA
   Description: |
     The header object **MUST** reference the correct object XML namespace
@@ -97,7 +97,7 @@ rde-05:
 
 rde-06:
   Implemented: true
-  Summary: validate object counts
+  Summary: Validate object counts
   Maturity: GAMMA
   Description: |
     The number of each type of object **MUST** match the number of objects
@@ -107,7 +107,7 @@ rde-06:
 
 rde-07:
   Implemented: true
-  Summary: validate domain objects
+  Summary: Validate domain objects
   Maturity: GAMMA
   Description: |
     Domain objects (whether CSV or XML) **MUST** have the required object
@@ -158,7 +158,7 @@ rde-07:
 
 rde-08:
   Implemented: true
-  Summary: validate host objects (if applicable)
+  Summary: Validate host objects (if applicable)
   Maturity: GAMMA
   Description: |
     Host objects (whether CSV or XML) **MUST** have the required object
@@ -198,7 +198,7 @@ rde-08:
 
 rde-09:
   Implemented: true
-  Summary: validate contact objects (if applicable)
+  Summary: Validate contact objects (if applicable)
   Maturity: GAMMA
   Description: |
     Contact objects (whether CSV or XML) **MUST** have the required object
@@ -240,7 +240,7 @@ rde-09:
 
 rde-10:
   Implemented: true
-  Summary: validate registrar objects
+  Summary: Validate registrar objects
   Maturity: GAMMA
   Description: |
     Registrar objects (whether CSV or XML) **MUST** have the required object
@@ -263,7 +263,7 @@ rde-10:
 
 rde-11:
   Implemented: true
-  Summary: validate IDN table objects (if applicable)
+  Summary: Validate IDN table objects (if applicable)
   Maturity: GAMMA
   Description: |
     IDN table objects (whether CSV or XML) **MUST** have the required object
@@ -283,7 +283,7 @@ rde-11:
 
 rde-12:
   Implemented: false
-  Summary: validate NNDN objects
+  Summary: Validate NNDN objects
   Maturity: GAMMA
   Description: |
     NNDN table objects (whether CSV or XML) **MUST** have the required object
@@ -301,7 +301,7 @@ rde-12:
     - RDE_NNDN_CONFLICTS_WITH_DOMAIN
 
 rde-13:
-  Summary: validate EPP parameters object
+  Summary: Validate EPP parameters object
   Maturity: GAMMA
   Description: |
     The EPP Parameters object **MUST** match the `<greeting>` element provided
@@ -321,7 +321,7 @@ rde-13:
     - RDE_GREETING_DOES_NOT_MATCH
 
 rde-14:
-  Summary: validate policy object (if applicable)
+  Summary: Validate policy object (if applicable)
   Maturity: GAMMA
   Description: |
     The object policies specified by the `<rdePolicy:policy>` object(s) in the
