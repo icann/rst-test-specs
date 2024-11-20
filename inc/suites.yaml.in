@@ -99,6 +99,10 @@ StandardRDAP:
     The RDAP Conformance Tool checks that an RDAP server properly implements the
     RDAP RFCs and the [gTLD RDAP Profile](https://icann.org/gtld-rdap-profile).
 
+    The RDAP Conformance Tool will be used to check the RDAP services for each
+    TLD in the test using the Base URL(s) specified in the `rdap.baseURLs` input
+    parameter.
+
     # Pass/fail criteria
 
     TS_PASSFAIL
