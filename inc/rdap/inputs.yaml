@@ -1,6 +1,7 @@
 rdap.baseURLs:
   Description: |
-    The RDAP base URL(s) for the TLD(s).
+    The RDAP base URL(s) for the TLD(s). A base URL **MUST** be provided for
+    each TLD being tested.
 
     The host name component of each URL **MUST** comply with the requirements
     for valid hostnames described in [RFC

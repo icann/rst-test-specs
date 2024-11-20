@@ -11,6 +11,9 @@
   - |
     Resolved an ordering issue in
     [epp-16-status-data](#Data-Provider-epp-16-status-data).
+  - |
+    Clarified that there must be entry in the [`rdap.baseURLs`](#Input-Parameter-rdap.baseURLS)
+    input parameter for each TLD being tested.
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
