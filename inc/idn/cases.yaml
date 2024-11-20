@@ -41,7 +41,7 @@ idn-02:
   Maturity: BETA
   Description: |
     This test confirms that the EPP server rejects EPP `<create>` commands for
-    a domain under a TLD that is configured to be "IDN only" (that is, pure
+    a domain under TLDs that are configured to be "IDN only" (that is, pure
     ASCII domains are not permitted).
 
     If all TLDs in the test have `idnOnly` properties that are `false`, this
