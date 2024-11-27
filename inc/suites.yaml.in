@@ -353,14 +353,14 @@ MinimumRPMs:
     - tmch.testSMDRL
     - tmch.testSURL
   Input-Parameters:
-    - epp.hostName
-    - epp.serverIssuedClientCertificate01
     - epp.clid01
-    - epp.pwd01
     - epp.clid01DataModel
     - epp.clid02
-    - epp.pwd02
     - epp.clid02DataModel
+    - epp.hostName
+    - epp.pwd01
+    - epp.pwd02
+    - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - minimumRPMS.sunriseModels
     - minimumRPMS.sunriseTLD
