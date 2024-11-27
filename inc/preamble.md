@@ -126,18 +126,17 @@ dependencies to allow certain parts of the sequence to be run in parallel.
 # 2.6. Test TLDs for RSP Evaluation
 
 RSP evaluation tests do not use existing or applied-for TLDs; instead, a unique
-TLD label will be defined for each test, based on the unique Application ID of
-the RSP application in the RSP Portal. These TLD labels will take the form:
+TLD label will be defined for each test, based on the application type and a
+unique number. These TLD labels will take the form:
 
 ```
-zz-[appid]
+zz-[type]-[number]
 ```
 
-Where `[appid]` will be replaced with the Application ID. For example, a
-`MainRSPEvaluationTest` test for a Main RSP application with the ID
-`RSPI2404-M51` will use the TLD `.zz-rspi2404-m51`. Test subjects will need to
-configure their registry systems to support this TLD prior to requesting a test
-run.
+Where `[type]` will be replaced with the application type. For example, a
+`MainRSPEvaluationTest` test for a Main RSP application will use a TLD of the
+form `.zz-main-1234`. Test subjects will need to configure their registry
+systems to support this TLD prior to requesting a test run.
 
 # 2.7. Key acronyms and terms
 
