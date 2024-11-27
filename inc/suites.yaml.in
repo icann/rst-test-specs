@@ -226,21 +226,21 @@ StandardIDN:
     * [IDN Implementation Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm)
   Test-Cases: ^idn-
   Input-Parameters:
-    - general.registryDataModel
     - epp.clid01
-    - epp.pwd01
-    - epp.serverIssuedClientCertificate01
     - epp.clid01DataModel
     - epp.clid02
-    - epp.pwd02
-    - epp.serverIssuedClientCertificate02
     - epp.clid02DataModel
     - epp.hostModel
     - epp.hostName
+    - epp.pwd01
+    - epp.pwd02
     - epp.registeredNames
-    - epp.requiredContactTypes
-    - epp.supportedContactElements
     - epp.requiredContactElements
+    - epp.requiredContactTypes
+    - epp.serverIssuedClientCertificate01
+    - epp.serverIssuedClientCertificate02
+    - epp.supportedContactElements
+    - general.registryDataModel
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -284,19 +284,19 @@ StandardSRSGateway:
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
+    - srsgw.eppClid01DataModel
     - srsgw.eppClid02
+    - srsgw.eppClid02DataModel
     - srsgw.eppHostName
     - srsgw.eppPwd01
     - srsgw.eppPwd02
-    - srsgw.rdapBaseURLs
-    - srsgw.serverIssuedClientCertificate01
-    - srsgw.serverIssuedClientCertificate02
-    - srsgw.registryDataModel
-    - srsgw.eppClid01DataModel
-    - srsgw.eppClid02DataModel
     - srsgw.eppRequiredContactElements
     - srsgw.eppRequiredContactTypes
     - srsgw.eppSupportedContactElements
+    - srsgw.rdapBaseURLs
+    - srsgw.registryDataModel
+    - srsgw.serverIssuedClientCertificate01
+    - srsgw.serverIssuedClientCertificate02
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -357,20 +357,20 @@ MinimumRPMs:
     - epp.clid01DataModel
     - epp.clid02
     - epp.clid02DataModel
+    - epp.hostModel
     - epp.hostName
     - epp.pwd01
     - epp.pwd02
+    - epp.registeredNames
+    - epp.requiredContactElements
+    - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
+    - epp.supportedContactElements
+    - general.registryDataModel
+    - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModels
     - minimumRPMS.sunriseTLD
-    - minimumRPMS.claimsTLD
-    - general.registryDataModel
-    - epp.hostModel
-    - epp.requiredContactTypes
-    - epp.requiredContactElements
-    - epp.clid01DataModel
-    - epp.clid02DataModel
 
 StandardIntegrationTest:
   Order: 10
@@ -393,12 +393,18 @@ StandardIntegrationTest:
   Input-Parameters:
     - epp.clid01
     - epp.clid01DataModel
+    - epp.clid02
+    - epp.clid02DataModel
     - epp.hostModel
     - epp.hostName
     - epp.pwd01
+    - epp.pwd02
+    - epp.registeredNames
     - epp.requiredContactElements
     - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
+    - epp.serverIssuedClientCertificate02
+    - epp.supportedContactElements
     - general.registryDataModel
 
 AdditionalDNSTransports:
