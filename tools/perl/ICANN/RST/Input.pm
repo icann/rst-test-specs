@@ -92,7 +92,7 @@ sub numify_array {
 sub numify_scalar {
     my $value = shift;
 
-    if ($value =~ /^\d+\.?\d*$/) {
+    if (q{JSON::PP::Boolean} ne ref($value) && $value =~ /^\d+\.?\d*$/) {
         $value += 0;
     }
 
