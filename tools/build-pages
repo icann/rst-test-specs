@@ -1,4 +1,5 @@
 #!/bin/sh
+
 SITEDIR="_site"
 
 rm -rf "$SITEDIR"

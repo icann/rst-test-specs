@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ZM_VERSION="$1"
+
 if [ "${ZM_VERSION}" = "" ] ; then
     echo "Usage: $0 ZM_VERSION"
     exit 1
