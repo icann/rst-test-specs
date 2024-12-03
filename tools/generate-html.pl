@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # this script takes the rst-spec.yaml file and generates an HTML version of it
 #

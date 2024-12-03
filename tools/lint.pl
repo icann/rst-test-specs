@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/env perl
 use Digest::SHA qw(sha256_hex);
 use File::Slurp;
 use File::Spec;

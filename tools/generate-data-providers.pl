@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # this script generates a YAML fragment by parsing the XLSX files in the
 # provided directory

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use Cwd qw(getcwd realpath);
 use Data::Mirror qw(mirror_json);
 use File::Basename;
