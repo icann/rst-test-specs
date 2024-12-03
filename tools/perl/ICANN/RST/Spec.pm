@@ -15,8 +15,11 @@ use constant SCHEMA_VERSION => v1.12.0;
 use feature qw(say);
 use strict;
 
+$YAML::XS::Boolean = q{JSON::PP};
+
 sub new {
     my ($package, $file) = @_;
+
     my $self = bless(
         {
             'spec' => YAML::XS::LoadFile($file),
