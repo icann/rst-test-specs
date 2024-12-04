@@ -1,3 +1,8 @@
+2024-12-11:
+  - |
+    Updated [epp-19](#Test-Case-epp-19) to avoid the use of the EPP message
+    queue.
+
 2024-12-04:
   - Updated the format for test TLDs for RSP evaluation.
   - Fixed an issue with the HTML generator which resulted in boolean values

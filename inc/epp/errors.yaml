@@ -871,13 +871,6 @@ EPP_SERVICE_PORT_NOT_CONSISTENT:
     One or more `<info>` commands sent to the advertised EPP service ports
     resulted in inconsistent responses.
 
-EPP_TRANSFER_GAINING_REGISTRAR_NO_MESSAGE_RECEIVED:
-  Severity: ERROR
-  Description: |
-    Following a successful `<transfer op="approve">` command submitted by the
-    losing registrar of a transfer, the gaining registrar did not receive a
-    message on the EPP message queue within the deadline (120 seconds).
-
 EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET:
   Severity: ERROR
   Description: |
@@ -901,13 +894,6 @@ EPP_TRANSFER_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE:
   Description: |
     Following a successful domain transfer, a subsequent `<info>` response did
     not include the expected value of the `<exDate>` element.
-
-EPP_TRANSFER_LOSING_REGISTRAR_NO_MESSAGE_RECEIVED:
-  Severity: ERROR
-  Description: |
-    Following a successful `<transfer op="request">` command submitted by the
-    gaining registrar of a transfer, the losinng registrar did not receive a
-    message on the EPP message queue within the deadline (120 seconds).
 
 EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO:
   Severity: ERROR
