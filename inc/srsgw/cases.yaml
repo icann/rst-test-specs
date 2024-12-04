@@ -199,34 +199,6 @@ srsgw-06:
       `srsgw.eppClid01` input parameter.
     * if the response to the `<transfer op="request">` command was `1001`, then
       the domain **MUST** have the `pendingTransfer` status.
-  Input-Parameters:
-    - srsgw.domainTransferRequestExtension
-  Dependencies:
-    - srsgw-05
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
-    - SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED
-    - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
-    - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER
-    - SRSGW_EPP_INVALID_EXTENSION
-    - EPP_GENERIC_COMMAND_ERROR
-
-srsgw-07:
-  Summary: Domain <transfer> approval synchronisation
-  Maturity: GAMMA
-  Description: |
-    This test confirms that transfer request approvals submitted in the SRS
-    Gateway EPP system are correctly synchronized with the primary registry
-    system.
-
-    The test client will repeat the procedure described in `srsgw-06` to create
-    a domain name, set its authInfo code, and then submit a transfer request.
 
     If the response to the `<transfer op="request">` command is 1001, then the
     client will connect to the SRS Gateway EPP system, authenticate, and
@@ -236,25 +208,31 @@ srsgw-07:
     It will wait for 30 seconds, and then connect to the primary EPP system,
     authenticate, and perform an `<info>` command for the domain. The server
     **MUST** respond with a 1000 response. The `<domain:clID>` element **MUST**
-    contain the value of the `srsgw.eppClid01` input parameter.
+    contain the client ID of the client which submitted the transfer request.
   Input-Parameters:
+    - srsgw.domainTransferRequestExtension
     - srsgw.domainTransferApproveExtension
   Dependencies:
     - srsgw-06
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_LOGIN_ERROR
     - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
     - EPP_TLS_CONNECTION_ERROR
     - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
     - SRSGW_DOMAIN_TRANSFER_APPROVAL_FAILED
-    - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
     - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_HAS_INCORRECT_CLID
+    - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
     - SRSGW_DOMAIN_TRANSFER_APPROVAL_OBJECT_STILL_PENDING_TRANSFER
+    - SRSGW_DOMAIN_TRANSFER_REQUEST_FAILED
+    - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_PENDING_TRANSFER
+    - SRSGW_DOMAIN_TRANSFER_REQUEST_OBJECT_NOT_UPDATED_WITHIN_DEADLINE
     - SRSGW_EPP_INVALID_EXTENSION
-    - EPP_GENERIC_COMMAND_ERROR
+
+# srsgw-07 has been merged with srsgw-06
 
 srsgw-08:
   Summary: Domain <delete> synchronisation
