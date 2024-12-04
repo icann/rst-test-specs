@@ -157,8 +157,6 @@ srsgw-05:
     and **MUST** be identical.
   Input-Parameters:
     - srsgw.domainRenewExtension
-  Dependencies:
-    - srsgw-04
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -212,8 +210,6 @@ srsgw-06:
   Input-Parameters:
     - srsgw.domainTransferRequestExtension
     - srsgw.domainTransferApproveExtension
-  Dependencies:
-    - srsgw-06
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_GENERIC_COMMAND_ERROR
@@ -263,8 +259,6 @@ srsgw-08:
     status of `pendingDeleteRestorable`.
   Input-Parameters:
     - srsgw.domainDeleteExtension
-  Dependencies:
-    - srsgw-07
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -340,8 +334,6 @@ srsgw-10:
     `<info>` command on the primary registry EPP server.
 
     The server **MUST** respond with a 2303 "object does not exist" response.
-  Dependencies:
-    - srsgw-09
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -378,8 +370,6 @@ srsgw-11:
     server and perform an `<info>` command for the same object.
 
     The two `<info>` responses **MUST** be identical.
-  Dependencies:
-    - srsgw-03
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -419,8 +409,6 @@ srsgw-12:
     `<info>` command on the primary registry EPP server.
 
     The server **MUST** respond with a 2303 "object does not exist" response.
-  Dependencies:
-    - srsgw-11
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -451,8 +439,6 @@ srsgw-13:
     the JSON responses from each server **MUST** be identical, with the sole
     exception of event objects with `eventAction` properties equal to "last
     update of RDAP database".
-  Dependencies:
-    - srsgw-04
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
