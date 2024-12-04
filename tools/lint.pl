@@ -197,7 +197,7 @@ sub check_input {
         warn(sprintf("Missing 'Required' property for Input Parameter '%s'", $input->id));
 
     } elsif ($input->{'Required'} ne !1 && $input->{'Required'} ne !!1 && q{JSON::PP::Boolean} ne ref($input->{'Required'})) {
-        warn(sprintf("'Required' property for Input Parameter '%s' is not a boolean", $input->id)));
+        warn(sprintf("'Required' property for Input Parameter '%s' is not a boolean", $input->id));
 
     }
 
