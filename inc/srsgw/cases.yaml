@@ -116,9 +116,6 @@ srsgw-04:
 
     The pairs of `<info>` responses will then be compared and **MUST** be
     identical.
-  Dependencies:
-    - srsgw-02
-    - srsgw-03
   Input-Parameters:
     - srsgw.domainCreateExtension
   Errors:
@@ -314,17 +311,19 @@ srsgw-09:
     If the value of the `epp.hostModel` input parameter is `attributes`, then
     this test will be skipped.
 
-    The test client will connect to the SRS Gateway EPP server and perform
-    `<update>` commands on the objects created in `srsgw-02`, specifically
-    to add and remove status codes and IP addresses. It will then perform
-    `<info>` commands on those objects.
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated host name.
+    IP address information will be provided if required. The server **MUST**
+    respond with a 1000 or 1001 response.
+
+    The test client will then perform an `<update>` command that will change the
+    status codes and IP addresses. It will then perform an `<info>` command and
+    capture the response.
 
     It will wait for 30 seconds, and then connect to the primary registry EPP
-    server and perform `<info>` commands for those objects.
+    server and perform an `<info>` command for the same object.
 
-    The two sets of `<info>` responses **MUST** be identical.
-  Dependencies:
-    - srsgw-02
+    The two `<info>` responses **MUST** be identical.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -347,13 +346,22 @@ srsgw-10:
     If the value of the `epp.hostModel` input parameter is `attributes`, then
     this test will be skipped.
 
-    The test client will connect to the SRS Gateway EPP server and perform
-    `<delete>` commands on objects created in `srsgw-02`. The server **MUST**
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated host name.
+    IP address information will be provided if required. The server **MUST**
     respond with a 1000 response.
 
-    The client will then connect to the primary registry EPP server and
-    perform `<info>` commands for those objects. The server **MUST**
-    respond with a 2303 "object does not exist" response.
+    The client will wait 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command. The server **MUST** respond
+    with a 1000 response.
+
+    The client will then perform a `<delete>` command via the SRS Gateway EPP
+    system, which **MUST** result in a 1000 response.
+
+    Finally, the client will wait for another 30 seconds, and perform an
+    `<info>` command on the primary registry EPP server.
+
+    The server **MUST** respond with a 2303 "object does not exist" response.
   Dependencies:
     - srsgw-09
   Errors:
@@ -380,14 +388,18 @@ srsgw-11:
     registrar credentials based on the values of the `srsgw.eppClid01DataModel`
     and `srsgw.eppClid02DataModel` input parameters.
 
-    The test client will connect to the SRS Gateway EPP server and perform
-    `<update>` commands on the objects created in `srsgw-03`. It will then
-    perform `<info>` commands on those objects.
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated contact
+    object.
 
-    The client will then connect to the primary registry EPP server and
-    perform `<info>` commands for those objects.
+    The test client will then perform an `<update>` command that will change the
+    status codes and contact information. It will then perform an `<info>`
+    command and capture the response.
 
-    The two sets of `<info>` responses **MUST** be identical.
+    It will wait for 30 seconds, and then connect to the primary registry EPP
+    server and perform an `<info>` command for the same object.
+
+    The two `<info>` responses **MUST** be identical.
   Dependencies:
     - srsgw-03
   Errors:
@@ -414,13 +426,21 @@ srsgw-12:
     registrar credentials based on the values of the `srsgw.eppClid01DataModel`
     and `srsgw.eppClid02DataModel` input parameters.
 
-    The test client will connect to the SRS Gateway EPP server and perform
-    `<delete>` commands on objects created in `srsgw-03`. The server **MUST**
-    respond with a 1000 response.
+    The client will connect to the SRS Gateway EPP system, authenticate, and
+    submit a `<create>` command for a pseudo-randomly generated contact
+    object.
 
-    The client will then connect to the primary registry EPP server and
-    perform `<info>` commands for those objects. The server **MUST**
-    respond with a 2303 "object does not exist" response.
+    The client will wait 30 seconds, and then connect to the primary EPP system,
+    authenticate, and perform an `<info>` command. The server **MUST** respond
+    with a 1000 response.
+
+    The client will then perform a `<delete>` command via the SRS Gateway EPP
+    system, which **MUST** result in a 1000 response.
+
+    Finally, the client will wait for another 30 seconds, and perform an
+    `<info>` command on the primary registry EPP server.
+
+    The server **MUST** respond with a 2303 "object does not exist" response.
   Dependencies:
     - srsgw-11
   Errors:
@@ -479,16 +499,19 @@ srsgw-14:
     If the value of the `epp.hostModel` input parameter is `attributes`, then
     this test will be skipped.
 
-    The test system will perform RDAP queries for some of the objects created
-    in `srsgw-02` against both the primary registry RDAP server and the SRS
-    Gateway RDAP server.
+    For each TLD in the TLD set, the client will connect to the SRS Gateway EPP
+    system, authenticate, and submit a `<create>` command for a pseudo-randomly
+    generated host name. IP address information will be provided if required.
+    The server **MUST** respond with a 1000 or 1001 response.
+
+    The test system will perform RDAP queries for each created object against
+    both the primary registry RDAP server and the SRS Gateway RDAP server for
+    the relevant TLD.
 
     After canonicalization (see [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)),
     the JSON responses from each server **MUST** be identical, with the sole
     exception of event objects with `eventAction` properties equal to "last
     update of RDAP database".
-  Dependencies:
-    - srsgw-02
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -525,8 +548,6 @@ srsgw-15:
     the JSON responses from each server **MUST** be identical, with the sole
     exception of event objects with `eventAction` properties equal to "last
     update of RDAP database".
-  Dependencies:
-    - srsgw-02
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE

@@ -2,6 +2,13 @@
   - Updated the format for test TLDs for RSP evaluation.
   - Fixed an issue with the HTML generator which resulted in boolean values
     being represented in examples as `1` and `0` instead of `true` and `false`.
+  - |
+    Updates to:
+    * [srsgw-09](#Test-Case-srsgw-09)
+    * [srsgw-10](#Test-Case-srsgw-10)
+    * [srsgw-11](#Test-Case-srsgw-11)
+    * [srsgw-12](#Test-Case-srsgw-12)
+    * [srsgw-14](#Test-Case-srsgw-14)
 
 2024-11-20:
   - |
