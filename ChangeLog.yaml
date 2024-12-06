@@ -2,6 +2,9 @@
   - |
     Updated [epp-19](#Test-Case-epp-19) to avoid the use of the EPP message
     queue.
+  - |
+    Added [`EPP_TRANSFER_NOT_PROCESSED`](#Error-EPP_TRANSFER_NOT_PROCESSED) to
+    [epp-19](#Test-Case-epp-19).
 
 2024-12-04:
   - Updated the format for test TLDs for RSP evaluation.

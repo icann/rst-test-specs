@@ -1104,3 +1104,9 @@ EPP_HOST_DELETE_RESPONSE_NOT_1000_OR_1001:
   Description: |
     The server did not response to a host `<delete>` command with a `1xxx`
     result code.
+
+EPP_TRANSFER_NOT_PROCESSED:
+  Severity: ERROR
+  Description: |
+    The server did not process an approved transfer request within the allotted
+    time.
