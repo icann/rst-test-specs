@@ -232,32 +232,34 @@ sub check_error {
         warn(sprintf("Error '%s' has unsupported severity '%s'", $error->id, $error->severity));
     }
 
-    my $used;
-    CASE: foreach my $case ($spec->cases) {
-        if (scalar(grep { $error->id eq $_ } @{$case->{'Errors'}}) > 0) {
-            $used = 1;
-            last CASE;
-        }
-    }
-
-    PROVIDER: foreach my $provider ($spec->providers) {
-        my $i = 0;
-        COLUMN: foreach my $column ($provider->columns) {
-            if ('errorCode' eq $column->name) {
-                ROW: foreach my $row (@{$provider->rows}) {
-                    if ($error->id eq $row->[$i]) {
-                        $used = 1;
-                        last PROVIDER;
-                    }
-                }
-            }
-            $i++;
-        }
-    }
-
     warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
 
-    warn(sprintf("Error '%s' is not used by any cases or data providers", $error->id)) unless ($used);
+    if (q{RST_EXCEPTION} ne $error->id) {
+        my $used;
+        CASE: foreach my $case ($spec->cases) {
+            if (scalar(grep { $error->id eq $_ } @{$case->{'Errors'}}) > 0) {
+                $used = 1;
+                last CASE;
+            }
+        }
+
+        PROVIDER: foreach my $provider ($spec->providers) {
+            my $i = 0;
+            COLUMN: foreach my $column ($provider->columns) {
+                if ('errorCode' eq $column->name) {
+                    ROW: foreach my $row (@{$provider->rows}) {
+                        if ($error->id eq $row->[$i]) {
+                            $used = 1;
+                            last PROVIDER;
+                        }
+                    }
+                }
+                $i++;
+            }
+        }
+
+        warn(sprintf("Error '%s' is not used by any cases or data providers", $error->id)) unless ($used);
+    }
 }
 
 sub check_provider {

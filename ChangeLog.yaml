@@ -1,5 +1,9 @@
 2024-12-11:
   - |
+    Added the [`RST_EXCEPTION`](#Error-RST_EXCEPTION) error, which may be
+    emitted by any test case, and indicates that an internal exception has
+    occurred.
+  - |
     Updated [epp-19](#Test-Case-epp-19) to avoid the use of the EPP message
     queue.
   - |

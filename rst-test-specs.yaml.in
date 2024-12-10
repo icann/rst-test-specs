@@ -57,6 +57,16 @@ Input-Parameters:
 #exec sed 's/^/  /' inc/integration/inputs.yaml
 
 Errors:
+  RST_EXCEPTION:
+    Severity: CRITICAL
+    Description: |
+      This error occurs when an exception occurs in the RST test system that
+      cannot be recovered. This issue is with RST system, not the target
+      registry system. If this error occurs, then the test run will have a
+      `result` property of `exception`.
+
+      This error may occur in any test case.
+
 #exec sed 's/^/  /' tmp/zonemaster-errors.yaml
 #exec sed 's/^/  /' inc/dns/errors.yaml
 #exec sed 's/^/  /' inc/dnssec/errors.yaml
