@@ -21,7 +21,7 @@ use constant {
         "share/profile.json",
 
     ZM_URL_FMT =>
-        "https://github.com/zonemaster/zonemaster/blob/v%s/%s",
+        "https://doc.zonemaster.net/v%s/specifications/tests/%s-TP/%s.html",
 
     CASE_DESCRIPTION_TEMPLATE =>
         "This test case comes from version v%s of Zonemaster. For more ".
@@ -152,7 +152,7 @@ sub process_case {
     #
     # URL of case documentation
     #
-    my $url = sprintf(ZM_URL_FMT, $version, $mdfile);
+    my $url = sprintf(ZM_URL_FMT, $version, ucfirst($module), lc($case));
 
     my $upgraded;
 
