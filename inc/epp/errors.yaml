@@ -1110,3 +1110,10 @@ EPP_TRANSFER_NOT_PROCESSED:
   Description: |
     The server did not process an approved transfer request within the allotted
     time.
+
+EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD:
+  Severity: ERROR
+  Description: |
+    Following a successful RGP restore command, a subsequent `<info>`
+    command for the domain showed that the domain did not have the `renewPeriod`
+    RGP status.

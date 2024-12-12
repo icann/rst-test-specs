@@ -1027,6 +1027,7 @@ epp-22:
     - EPP_LOGIN_ERROR
     - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD
 
 epp-23:
   Summary: Host rename test (if applicable)
