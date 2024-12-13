@@ -1117,3 +1117,9 @@ EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD:
     Following a successful RGP restore command, a subsequent `<info>`
     command for the domain showed that the domain did not have the `renewPeriod`
     RGP status.
+
+EPP_RESTORE_DELETE_FAILED:
+  Severity: ERROR
+  Description: |
+    While testing the server's support for RGP restore operations, a `<delete>`
+    command did not produce a successful result.

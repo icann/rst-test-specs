@@ -2,7 +2,8 @@
   - |
     Added the
     [`EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD`](#Error-EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD)
-    error to [epp-22](#Test-Case-epp-22).
+    and [`EPP_RESTORE_DELETE_FAILED`](#Error-EPP_RESTORE_DELETE_FAILED) errors
+    to [epp-22](#Test-Case-epp-22).
 2024-12-11:
   - |
     Added the [`RST_EXCEPTION`](#Error-RST_EXCEPTION) error, which may be
