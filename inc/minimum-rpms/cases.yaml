@@ -35,6 +35,7 @@ minimumRPMs-01:
     - EPP_LOGIN_ERROR
     - RPMS_MISSING_CLAIMS_KEY
     - RPMS_UNEXPECTED_CLAIMS_KEY
+    - RPMS_INVALID_CLAIMS_KEY
 
 minimumRPMs-02:
   Summary: |

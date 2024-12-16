@@ -4,6 +4,10 @@
     [`EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD`](#Error-EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD)
     and [`EPP_RESTORE_DELETE_FAILED`](#Error-EPP_RESTORE_DELETE_FAILED) errors
     to [epp-22](#Test-Case-epp-22).
+  - |
+    Added the
+    [`RPMS_INVALID_CLAIMS_KEY`](#Error-RPMS_INVALID_CLAIMS_KEY) error
+    to [minimumRPMs-01](#Test-Case-minimumRPMs-01).
 2024-12-11:
   - |
     Added the [`RST_EXCEPTION`](#Error-RST_EXCEPTION) error, which may be

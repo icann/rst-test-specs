@@ -77,3 +77,9 @@ RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INCORRECT_SMD:
   Description:
     A sunrise `<create>` command using an SMD that did not contain the domain
     unexpectedly succeeded.
+
+RPMS_INVALID_CLAIMS_KEY:
+  Severity: ERROR
+  Description: |
+    The `<check>` response included a `<launch:claimKey>` element with an
+    invalid value.
