@@ -52,3 +52,7 @@ html:
 pages:
 	@echo Generating pages...
 	@tools/build-pages
+
+clean:
+	@echo Cleaning up...
+	@rm -rfv tmp zonemaster _site
