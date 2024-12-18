@@ -641,17 +641,6 @@ sub print_plan {
 
     print $h->close(details);
 
-    print $h->open(details);
-
-    print $h->summary($h->h4(sprintf('%u.%u.%u. Implementation status', $section, $i, ++$j)));
-
-    print $h->p(sprintf(
-        'As of the publication of this document, <strong>%u%%</strong> of the test cases in this plan have been implemented in the RST system.',
-        100 * $plan->implemented
-    ));
-
-    print $h->close(details);
-
 =pod
 
     print $h->open(details);
@@ -827,17 +816,6 @@ sub print_suite {
 
     print $h->close(details);
 
-    print $h->open(details);
-
-    print $h->summary($h->h4(sprintf('%u.%u.%u. Implementation status', $section, $i, ++$j)));
-
-    print $h->p(sprintf(
-        'As of the publication of this document, <strong>%u%%</strong> of the test cases in this suite have been implemented in the RST system.',
-        100 * $suite->implemented
-    ));
-
-    print $h->close(details);
-
 =pod
 
 This is disabled until it becomes meaningful.
@@ -935,18 +913,6 @@ sub print_case {
     }
 
     my $j = 0;
-
-=pod
-
-This is no longer really meaningful.
-
-    print $h->h4(sprintf('%u.%u.%u. Maturity Level', $section, $i, ++$j));
-    print $h->ul($h->li([$h->strong($case->maturity.': '), $mdesc->{$case->maturity}]));
-
-=cut
-
-    print $h->h4(sprintf('%u.%u.%u. Implementation status', $section, $i, ++$j));
-    print $h->ul($h->li(sprintf('This test <strong>%s</strong> been implemented in the RST system.', $case->implemented ? 'has' : 'has not yet')));
 
     print $h->h4(sprintf('%u.%u.%u. Description', $section, $i, ++$j));
     print $case->description->html(4);

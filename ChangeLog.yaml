@@ -1,3 +1,8 @@
+2025-01-08:
+  - |
+    The `Implemented` property of test cases has been removed as completion of
+    initial development approaches.
+
 2024-12-18:
   - |
     Added the
@@ -18,7 +23,6 @@
     and
     [`EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE`](#Error-EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE)
     errors to to [epp-20](#Test-Case-epp-20).
-
 
 2024-12-11:
   - |

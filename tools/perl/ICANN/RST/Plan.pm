@@ -118,16 +118,6 @@ sub graph {
     return $graph;
 }
 
-sub implemented {
-    my $self = shift;
-
-    my @cases = $self->cases;
-
-    my $implemented = scalar(grep { $_->implemented } @cases);
-
-    return $implemented / scalar(@cases);
-}
-
 1;
 
 __END__
@@ -181,10 +171,5 @@ plan.
 
 Returns a boolean indicating whether this plan is only available in the OT&E
 environment.
-
-=head2 implemented()
-
-Returns a number in the range 0-1 indicating what fraction of this suite's test
-cases have been implemented.
 
 =cut
