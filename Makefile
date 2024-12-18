@@ -55,4 +55,5 @@ pages:
 
 clean:
 	@echo Cleaning up...
-	@rm -rfv tmp zonemaster _site
+	@rm -rfv tmp zonemaster _site rst-test-specs.yaml rst.json
+
