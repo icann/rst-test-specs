@@ -8,6 +8,9 @@
     Added the
     [`RPMS_INVALID_CLAIMS_KEY`](#Error-RPMS_INVALID_CLAIMS_KEY) error
     to [minimumRPMs-01](#Test-Case-minimumRPMs-01).
+  - |
+    Fixed a syntax error in
+    [epp-14-data](#Data-Provider-epp-14-data).
 2024-12-11:
   - |
     Added the [`RST_EXCEPTION`](#Error-RST_EXCEPTION) error, which may be
