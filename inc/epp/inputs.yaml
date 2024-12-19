@@ -212,15 +212,15 @@ epp.registeredContacts:
     items:
       type: string
 
-epp.restoreReportRequired:
-  Description: |
-    Whether the server requires submission of a restore report when a client
-    attempts to restore a domain.
-  Type: input
-  Required: true
-  Example: false
-  Schema:
-    type: boolean
+#epp.restoreReportRequired:
+#  Description: |
+#    Whether the server requires submission of a restore report when a client
+#    attempts to restore a domain.
+#  Type: input
+#  Required: true
+#  Example: false
+#  Schema:
+#    type: boolean
 
 epp.requiredContactTypes:
   Description: |

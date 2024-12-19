@@ -858,12 +858,12 @@ EPP_RENEW_SERVER_ACCEPTS_INVALID_PERIOD:
     The server accepted an EPP `<renew>` command with a `<period>` element
     that contains an incorrect value or `unit` attribute.
 
-EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE:
-  Severity: ERROR
-  Description: |
-    Following a successful RGP restore command, a subsequent `<info>`
-    command for the domain showed that the domain still had the `pendingDelete`
-    status.
+#EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE:
+#  Severity: ERROR
+#  Description: |
+#    Following a successful RGP restore command, a subsequent `<info>`
+#    command for the domain showed that the domain still had the `pendingDelete`
+#    status.
 
 EPP_SERVICE_PORT_NOT_CONSISTENT:
   Severity: ERROR
@@ -1111,15 +1111,15 @@ EPP_TRANSFER_NOT_PROCESSED:
     The server did not process an approved transfer request within the allotted
     time.
 
-EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD:
-  Severity: ERROR
-  Description: |
-    Following a successful RGP restore command, a subsequent `<info>`
-    command for the domain showed that the domain did not have the `renewPeriod`
-    RGP status.
+#EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD:
+#  Severity: ERROR
+#  Description: |
+#    Following a successful RGP restore command, a subsequent `<info>`
+#    command for the domain showed that the domain did not have the `renewPeriod`
+#    RGP status.
 
-EPP_RESTORE_DELETE_FAILED:
-  Severity: ERROR
-  Description: |
-    While testing the server's support for RGP restore operations, a `<delete>`
-    command did not produce a successful result.
+#EPP_RESTORE_DELETE_FAILED:
+#  Severity: ERROR
+#  Description: |
+#    While testing the server's support for RGP restore operations, a `<delete>`
+#    command did not produce a successful result.

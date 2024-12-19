@@ -984,54 +984,54 @@ epp-21:
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
     - EPP_GENERIC_COMMAND_ERROR
 
-epp-22:
-  Summary: Domain restore test
-  Maturity: GAMMA
-  Description: |
-    This test will perform RGP restore operations on domain objects that have
-    previously been deleted, in order to confirm the correct operation of the
-    server's implementation of [RFC
-    3915](https://www.rfc-editor.org/rfc/rfc3915.html).
-
-    The client will create a domain name, and any contact and/or host objects,
-    as required.
-
-    It will then submit a `<renew>` command, which **MUST** succeed. After the
-    `<renew>` command has been submitted, the value of the `s` attribute of the
-    `<rgpStatus>` element **MUST** be `renewPeriod`.
-
-    *(The purpose of the `<renew>` command is to ensure that the domain does not
-    have the `addPeriod` RGP status, which ensures that the domain may be
-    restored once deleted.)*
-
-    The client will then submit a `<delete>` command for the domain, which
-    **MUST** succeed.
-
-    The client will then submit an RGP restore request:
-    1. If the `epp.restoreReportRequired` input parameter is `true`, then the
-       `op` attribute of the `<restore>` element will be `report`, and a
-       `<report>` element will be included, that contains the required elements.
-    2. If the `epp.restoreReportRequired` input parameter is `false`, then the
-       `op` attribute of the `<restore>` element will be `request` and no
-       `<report>` element will be included.
-
-    Once the restore request has been processed, the client will perform an
-    `<info>` command on the object to confirm that the domain no longer has the
-    `pendingDelete` status and RGP status.
-  Input-Parameters:
-    - epp.restoreReportRequired
-  Errors:
-    - EPP_DNS_RESOLUTION_ERROR
-    - EPP_SERVICE_PORT_UNREACHABLE
-    - EPP_NO_SERVICE_PORTS_REACHABLE
-    - EPP_TLS_CONNECTION_ERROR
-    - EPP_XML_PARSE_ERROR
-    - EPP_SCHEMA_VALIDATION_ERROR
-    - EPP_LOGIN_ERROR
-    - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
-    - EPP_GENERIC_COMMAND_ERROR
-    - EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD
-    - EPP_RESTORE_DELETE_FAILED
+#epp-22:
+#  Summary: Domain restore test
+#  Maturity: GAMMA
+#  Description: |
+#    This test will perform RGP restore operations on domain objects that have
+#    previously been deleted, in order to confirm the correct operation of the
+#    server's implementation of [RFC
+#    3915](https://www.rfc-editor.org/rfc/rfc3915.html).
+#
+#    The client will create a domain name, and any contact and/or host objects,
+#    as required.
+#
+#    It will then submit a `<renew>` command, which **MUST** succeed. After the
+#    `<renew>` command has been submitted, the value of the `s` attribute of the
+#    `<rgpStatus>` element **MUST** be `renewPeriod`.
+#
+#    *(The purpose of the `<renew>` command is to ensure that the domain does not
+#    have the `addPeriod` RGP status, which ensures that the domain may be
+#    restored once deleted.)*
+#
+#    The client will then submit a `<delete>` command for the domain, which
+#    **MUST** succeed.
+#
+#    The client will then submit an RGP restore request:
+#    1. If the `epp.restoreReportRequired` input parameter is `true`, then the
+#       `op` attribute of the `<restore>` element will be `report`, and a
+#       `<report>` element will be included, that contains the required elements.
+#    2. If the `epp.restoreReportRequired` input parameter is `false`, then the
+#       `op` attribute of the `<restore>` element will be `request` and no
+#       `<report>` element will be included.
+#
+#    Once the restore request has been processed, the client will perform an
+#    `<info>` command on the object to confirm that the domain no longer has the
+#    `pendingDelete` status and RGP status.
+#  Input-Parameters:
+#    - epp.restoreReportRequired
+#  Errors:
+#    - EPP_DNS_RESOLUTION_ERROR
+#    - EPP_SERVICE_PORT_UNREACHABLE
+#    - EPP_NO_SERVICE_PORTS_REACHABLE
+#    - EPP_TLS_CONNECTION_ERROR
+#    - EPP_XML_PARSE_ERROR
+#    - EPP_SCHEMA_VALIDATION_ERROR
+#    - EPP_LOGIN_ERROR
+#    - EPP_RESTORE_DOMAIN_STILL_PENDINGDELETE
+#    - EPP_GENERIC_COMMAND_ERROR
+#    - EPP_RESTORE_DOMAIN_NOT_RENEWPERIOD
+#    - EPP_RESTORE_DELETE_FAILED
 
 epp-23:
   Summary: Host rename test (if applicable)
