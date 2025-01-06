@@ -130,12 +130,12 @@ TLD label will be defined for each test, based on the application type and a
 unique number. These TLD labels will take the form:
 
 ```
-zz-[type]-[number]
+zz--[type]-[number]
 ```
 
 Where `[type]` will be replaced with the application type. For example, a
 `MainRSPEvaluationTest` test for a Main RSP application will use a TLD of the
-form `.zz-main-1234`. Test subjects will need to configure their registry
+form `.zz--main-1234`. Test subjects will need to configure their registry
 systems to support this TLD prior to requesting a test run.
 
 # 2.7. Key acronyms and terms

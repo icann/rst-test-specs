@@ -1,7 +1,8 @@
 2025-01-08:
   - |
-    The `epp-22` (domain restore test) test case has been removed, because RFC
-    3915 does not
+    The `epp-22` (domain restore test) test case has been removed, since it is
+    not possible to reliably restore a domain with the `addPeriod` RGP status.
+  - Fixed the format of the Test TLDs for RSP Evaluation.
   - |
     The `Implemented` property of test cases has been removed as completion of
     initial development approaches.
