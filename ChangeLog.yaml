@@ -6,6 +6,10 @@
   - |
     The `Implemented` property of test cases has been removed as completion of
     initial development approaches.
+  - |
+    Added [`DNSSEC_OPS_INVALID_ALGORITHM`](#Error-DNSSEC_OPS_INVALID_ALGORITHM)
+    to [dnssecOps01-ZSKRollover](#Test-Case-dnssecOps01-ZSKRollover) and
+    [dnssecOps02-KSKRollover](#Test-Case-dnssecOps02-KSKRollover).
 
 2024-12-18:
   - |
