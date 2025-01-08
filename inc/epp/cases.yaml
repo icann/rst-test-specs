@@ -1,5 +1,4 @@
 epp-01:
-  Implemented: true
   Summary: Service connectivity test
   Maturity: GAMMA
   Description: |
@@ -48,7 +47,6 @@ epp-01:
     - EPP_TLS_BAD_CIPHER
 
 epp-02:
-  Implemented: true
   Summary: Protocol conformance test
   Maturity: GAMMA
   Description: |
@@ -111,7 +109,6 @@ epp-02:
     - EPP_GREETING_DOES_NOT_MATCH
 
 epp-03:
-  Implemented: true
   Summary: Authentication test
   Maturity: GAMMA
   Description: |
@@ -147,7 +144,6 @@ epp-03:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-04:
-  Implemented: true
   Summary: Domain <check> command test
   Maturity: GAMMA
   Description: |
@@ -187,7 +183,6 @@ epp-04:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-05:
-  Implemented: true
   Summary: Host <check> command test (if applicable)
   Maturity: GAMMA
   Description: |
@@ -226,7 +221,6 @@ epp-05:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-06:
-  Implemented: true
   Summary: Contact <check> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -262,7 +256,6 @@ epp-06:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-07:
-  Implemented: true
   Summary: Contact <create> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -364,7 +357,6 @@ epp-07:
     - epp-07-data
 
 epp-08:
-  Implemented: true
   Summary: Contact object access control (if applicable)
   Maturity: GAMMA
   Description: |
@@ -395,7 +387,6 @@ epp-08:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-09:
-  Implemented: true
   Summary: Contact <update> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -477,7 +468,6 @@ epp-09:
     - epp-09-status-data
 
 epp-10:
-  Implemented: true
   Summary: Contact <delete> command test (if applicable for the registry type)
   Maturity: GAMMA
   Description: |
@@ -510,7 +500,6 @@ epp-10:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-11:
-  Implemented: true
   Summary: Host <create> command test (if applicable)
   Maturity: GAMMA
   Description: |
@@ -559,7 +548,6 @@ epp-11:
     - epp-11-data
 
 epp-12:
-  Implemented: true
   Summary: Host object access control (if applicable)
   Maturity: GAMMA
   Description: |
@@ -584,7 +572,6 @@ epp-12:
     - EPP_GENERIC_COMMAND_ERROR
 
 epp-13:
-  Implemented: true
   Summary: Host <update> command test (if applicable)
   Maturity: GAMMA
   Description: |
@@ -806,9 +793,9 @@ epp-16:
   Data-Providers:
     - epp-16-status-data
     - epp-16-ns-data
+    - epp-16-dnssec-data
 
 epp-17:
-  Implemented: true
   Summary: Service Port consistency test
   Maturity: GAMMA
   Description: |

@@ -1,3 +1,7 @@
+2025-01-15:
+  - |
+    Added the [`epp-16-dnssec-data`] data provider to[epp-16](#Test-Case-epp-16).
+
 2025-01-08:
   - |
     The `epp-22` (domain restore test) test case has been removed, since it is
