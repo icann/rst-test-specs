@@ -10,6 +10,10 @@
     Added [`DNSSEC_OPS_INVALID_ALGORITHM`](#Error-DNSSEC_OPS_INVALID_ALGORITHM)
     to [dnssecOps01-ZSKRollover](#Test-Case-dnssecOps01-ZSKRollover) and
     [dnssecOps02-KSKRollover](#Test-Case-dnssecOps02-KSKRollover).
+  - |
+    The rules for computation of domain and host names in data providers have
+    been revised to improve consistency and reduce the probability of
+    collisions.
 
 2024-12-18:
   - |
