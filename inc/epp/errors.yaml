@@ -1123,3 +1123,9 @@ EPP_TRANSFER_NOT_PROCESSED:
 #  Description: |
 #    While testing the server's support for RGP restore operations, a `<delete>`
 #    command did not produce a successful result.
+
+EPP_HOST_RENAME_OBJECT_NOT_RENAMED:
+  Severity: ERROR
+  Description: |
+    Following a successful `<update>` command to rename a host object, a
+    subsequent `<info>` command for the renamed object was not successful.
