@@ -1,6 +1,14 @@
 2025-01-15:
   - |
     Added the [`epp-16-dnssec-data`] data provider to[epp-16](#Test-Case-epp-16).
+  - |
+    Added the
+    [`EPP_HOST_RENAME_OBJECT_NOT_RENAMED`](#Error-EPP_HOST_RENAME_OBJECT_NOT_RENAMED)
+    error to [epp-23](#Test-Case-epp-23).
+  - |
+    Added the
+    [`SRSGW_DOMAIN_RENEW_INCORRECT_EXPIRY_DATE`](#Error-SRSGW_DOMAIN_RENEW_INCORRECT_EXPIRY_DATE)
+    error to [srsgw-05](#Test-Case-srsgw-05).
 
 2025-01-08:
   - |

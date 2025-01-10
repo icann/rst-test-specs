@@ -202,3 +202,10 @@ SRSGW_EPP_INVALID_EXTENSION:
     may be because (a) it was not a well-formed XML instance, (b) specified an
     extension that was not registered in the EPP Extension Registry or (c)
     could not be validated against the XML schema(s) for that extension.
+
+SRSGW_DOMAIN_RENEW_INCORRECT_EXPIRY_DATE:
+  Severity: ERROR
+  Description: |
+    Following a successful `<renew>` command, the response to an `<info>`
+    command for the domain on the Primary EPP server contained an incorrect
+    value in the `<exDate>` element.
