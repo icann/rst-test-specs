@@ -1,5 +1,4 @@
 dnssec-91:
-  Implemented: true
   Summary: Permitted signing algorithms
   Maturity: GAMMA
   Description: |
@@ -10,24 +9,18 @@ dnssec-91:
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_SIGNING_ALGORITHM
-  Dependencies:
-    - dnssec-05
 
 dnssec-92:
-  Implemented: true
   Summary: Permitted DS record hash algorithm(s)
   Maturity: GAMMA
   Description: |
     The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
     be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
   Errors:
-    - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM
 
 dnssec-93:
-  Implemented: true
   Summary: NSEC3 iterations check
-  Maturity: GAMMA
   Description: |
     [RFC 9276](https://www.rfc-editor.org/rfc/rfc9276.html) defines best
     practice relating to the use of NSEC3 for Authenticated Denial of Existence.
@@ -42,7 +35,6 @@ dnssec-93:
     * the value of the `salt` field of the NSEC3 record is empty (represented as
       a `-` in the presentation format).
   Errors:
-    - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO
     - DNSSEC_NSEC3_SALT_IS_NOT_EMPTY
 
