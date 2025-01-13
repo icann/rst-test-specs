@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.13.0
+  version: 1.14.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -247,17 +247,10 @@ components:
       required:
         - Summary
         - Description
-        - Maturity
       properties:
         Summary:
           description: A short description of the test case.
           type: string
-        Maturity:
-          description: The maturity level of the test case.
-          enum:
-            - ALPHA
-            - BETA
-            - GAMMA
         Description:
           description: A description of the case in Markdown format.
           type: string
