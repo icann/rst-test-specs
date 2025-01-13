@@ -9,6 +9,9 @@
     Added the
     [`SRSGW_DOMAIN_RENEW_INCORRECT_EXPIRY_DATE`](#Error-SRSGW_DOMAIN_RENEW_INCORRECT_EXPIRY_DATE)
     error to [srsgw-05](#Test-Case-srsgw-05).
+  - |
+    Made [`RDE_DECRYPTION_FAILED`](#Error-RDE_DECRYPTION_FAILED) a CRITICAL
+    error.
 
 2025-01-08:
   - |

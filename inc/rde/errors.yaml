@@ -59,7 +59,7 @@ RDE_CONTACT_HAS_UNKNOWN_UPRR:
     ID that is not present in the deposit.
 
 RDE_DECRYPTION_FAILED:
-  Severity: ERROR
+  Severity: CRITICAL
   Description: |
     The deposit file could not be decrypted.
 
