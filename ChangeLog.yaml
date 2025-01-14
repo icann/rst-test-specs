@@ -1,6 +1,7 @@
 2025-01-14:
   - |
-    Added the [`epp-16-dnssec-data`] data provider to[epp-16](#Test-Case-epp-16).
+    Added the [`epp-16-dnssec-data`] data provider to
+    [epp-16](#Test-Case-epp-16).
   - |
     Added the
     [`EPP_HOST_RENAME_OBJECT_NOT_RENAMED`](#Error-EPP_HOST_RENAME_OBJECT_NOT_RENAMED)
@@ -12,6 +13,9 @@
   - |
     Made [`RDE_DECRYPTION_FAILED`](#Error-RDE_DECRYPTION_FAILED) a CRITICAL
     error.
+  - |
+    Fixed a ordering issue in
+    [epp-11-data](#Data-Provider-epp-11-data).
 
 2025-01-08:
   - |
