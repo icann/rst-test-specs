@@ -1,3 +1,9 @@
+2025-01-22:
+  - |
+    Removed `RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD` from
+    [minimumRPMs-02](#Test-Case-minimumRPMs-02) as the TMCH doesn't provide an
+    expired test SMD.
+
 2025-01-14:
   - |
     Added the [`epp-16-dnssec-data`] data provider to
