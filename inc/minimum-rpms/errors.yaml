@@ -26,6 +26,12 @@ RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD:
   Description: |
     A sunrise `<create>` command using a **valid** SMD unexpectedly failed.
 
+RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD:
+  Severity: ERROR
+  Description: |
+    A sunrise `<create>` command using an **invalid** SMD unexpectedly
+    succeeded.
+
 RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD:
   Severity: ERROR
   Description: |

@@ -79,9 +79,10 @@ minimumRPMs-02:
 
     The client will also confirm that the server rejects attempts to:
 
-    1. create a domain using a revoked SMD;
-    2. create a domain using an SMD signed by a revoked certificate.
-    3. create a domain using an SMD for a different domain.
+    1. create a domain using an invalid SMD;
+    2. create a domain using a revoked SMD;
+    3. create a domain using an SMD signed by a revoked certificate.
+    4. create a domain using an SMD for a different domain.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -90,6 +91,7 @@ minimumRPMs-02:
     - EPP_XML_PARSE_ERROR
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
+    - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_FAILURE_USING_VALID_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_REVOKED_SMD
     - RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_SMD_WITH_REVOKED_SIGNATURE

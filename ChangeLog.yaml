@@ -1,8 +1,10 @@
 2025-01-22:
   - |
-    Removed `RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD` from
+    Replaced `RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD` with
+    [`RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD`](#Error-RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_INVALID_SMD)
+    in
     [minimumRPMs-02](#Test-Case-minimumRPMs-02) as the TMCH doesn't provide an
-    expired test SMD.
+    expired test SMD, only an invalid test SMD.
   - |
     Updated the syntax of randomly-generated domain names in
     [epp-14-data](#Data-Provider-epp-14-data).
