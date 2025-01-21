@@ -3,6 +3,9 @@
     Removed `RPMS_SUNRISE_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_SMD` from
     [minimumRPMs-02](#Test-Case-minimumRPMs-02) as the TMCH doesn't provide an
     expired test SMD.
+  - |
+    Updated the syntax of randomly-generated domain names in
+    [epp-14-data](#Data-Provider-epp-14-data).
 
 2025-01-14:
   - |
