@@ -6,8 +6,9 @@
     [minimumRPMs-02](#Test-Case-minimumRPMs-02) as the TMCH doesn't provide an
     expired test SMD, only an invalid test SMD.
   - |
-    Updated the syntax of randomly-generated domain names in
-    [epp-14-data](#Data-Provider-epp-14-data).
+    Updates to [epp-14](#Test-Case-epp-14), to update the syntax of randomly-
+    generated domain names, and remove the tests of the admin, tech and billing
+    contacts.
 
 2025-01-14:
   - |

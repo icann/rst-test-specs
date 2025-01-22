@@ -520,12 +520,17 @@ EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_PERIOD:
     The server accepts a domain `<create>` command which contains a `<period>`
     element with an invalid content and/or `unit` attribute.
 
-EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_CONTACT_OBJECT:
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_REGISTRANT:
   Severity: ERROR
   Description: |
     The server accepts a domain `<create>` command which contains a
-    `<registrant>` and/or `<contact>` element referencing a non-existent
-    contact object.
+    `<registrant>` element referencing a non-existent contact object.
+
+EPP_DOMAIN_CREATE_SERVER_ACCEPTS_MISSING_REGISTRANT:
+  Severity: ERROR
+  Description: |
+    The server accepts a domain `<create>` command which contains an empty
+    `<registrant>` element.
 
 EPP_DOMAIN_CREATE_SERVER_ACCEPTS_NON_EXISTENT_HOST_OBJECT:
   Severity: ERROR
