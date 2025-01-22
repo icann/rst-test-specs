@@ -2,9 +2,9 @@ minimumRPMS.sunriseModels:
   Description: |
     The sunrise models supported by the EPP server. The possible values for
     this parameter are:
+
       * `start-date`
       * `end-date`
-      * `both`
   Type: input
   Required: true
   Example: start-date
@@ -13,7 +13,6 @@ minimumRPMS.sunriseModels:
     enum:
       - start-date
       - end-date
-      - both
 
 minimumRPMS.sunriseTLD:
   Description: |

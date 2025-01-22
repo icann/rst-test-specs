@@ -9,6 +9,10 @@
     Updates to [epp-14](#Test-Case-epp-14), to update the syntax of randomly-
     generated domain names, and remove the tests of the admin, tech and billing
     contacts.
+  - |
+    The value `both` has been removed from the enum of possible values for the
+    [`minimumRPMS.sunriseModels`](#Input-Parameter-minimumRPMS.sunriseModels)
+    input parameter.
 
 2025-01-14:
   - |
