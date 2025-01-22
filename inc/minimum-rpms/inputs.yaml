@@ -1,10 +1,16 @@
-minimumRPMS.sunriseModels:
+minimumRPMS.sunriseModel:
   Description: |
     The sunrise models supported by the EPP server. The possible values for
     this parameter are:
 
       * `start-date`
       * `end-date`
+
+      These models are explained in Section 2 of the [Trademark Clearinghouse -
+      Rights Protection Mechanism
+      Requirements](https://newgtlds.icann.org/sites/default/files/rpm-requirements-14may14-en.pdf)
+      (PDF).
+
   Type: input
   Required: true
   Example: start-date

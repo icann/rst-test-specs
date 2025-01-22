@@ -366,7 +366,7 @@ MinimumRPMs:
     - epp.supportedContactElements
     - general.registryDataModel
     - minimumRPMS.claimsTLD
-    - minimumRPMS.sunriseModels
+    - minimumRPMS.sunriseModel
     - minimumRPMS.sunriseTLD
 
 StandardIntegrationTest:

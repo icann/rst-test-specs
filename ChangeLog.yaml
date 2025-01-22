@@ -10,14 +10,14 @@
     generated domain names, and remove the tests of the admin, tech and billing
     contacts.
   - |
-    The value `both` has been removed from the enum of possible values for the
-    [`minimumRPMS.sunriseModels`](#Input-Parameter-minimumRPMS.sunriseModels)
-    input parameter.
+    The `minimumRPMS.sunriseModels` input parameter has been renamed to
+    [`minimumRPMS.sunriseModel`](#Input-Parameter-minimumRPMS.sunriseModel), and
+    the value `both` has been removed from the enum of possible values.
 
 2025-01-14:
   - |
-    Added the [`epp-16-dnssec-data`] data provider to
-    [epp-16](#Test-Case-epp-16).
+    Added the [`epp-16-dnssec-data`](#Data-Provider-epp-16-dnssec-data) data
+    provider to [epp-16](#Test-Case-epp-16).
   - |
     Added the
     [`EPP_HOST_RENAME_OBJECT_NOT_RENAMED`](#Error-EPP_HOST_RENAME_OBJECT_NOT_RENAMED)
