@@ -193,10 +193,10 @@ srsgw-06:
     authenticate, and perform an `<info>` command for the domain. The server
     **MUST** respond with a 1000 response.
 
-    * if the response to the original `<transfer op="request">` command was
-      `1000`, then the `<clID>` element **MUST** contain the value of the
-      `srsgw.eppClid01` input parameter.
-    * if the response to the `<transfer op="request">` command was `1001`, then
+    * If the response to the original `<transfer op="request">` command was
+      `1000`, then the value of the `<clID>` element **MUST** correspond to the
+      ID of the client which submitted the transfer request.
+    * If the response to the `<transfer op="request">` command was `1001`, then
       the domain **MUST** have the `pendingTransfer` status.
 
     If the response to the `<transfer op="request">` command is 1001, then the
@@ -207,7 +207,7 @@ srsgw-06:
     It will wait for 30 seconds, and then connect to the primary EPP system,
     authenticate, and perform an `<info>` command for the domain. The server
     **MUST** respond with a 1000 response. The `<domain:clID>` element **MUST**
-    contain the client ID of the client which submitted the transfer request.
+    contain the ID of the client which submitted the transfer request.
   Input-Parameters:
     - srsgw.domainTransferRequestExtension
     - srsgw.domainTransferApproveExtension
