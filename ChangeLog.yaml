@@ -5,6 +5,8 @@
     Added
     [`EPP_DOMAIN_TRANSFER_REQUEST_FAILED`](#Error-EPP_DOMAIN_TRANSFER_REQUEST_FAILED)
     to [epp-19](#Test-Case-epp-19).
+  - |
+    Updated [dns-zz-consistency](#Test-Case-dns-zz-consistency).
 
 2025-01-22:
   - |
