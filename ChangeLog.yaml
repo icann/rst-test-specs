@@ -1,6 +1,10 @@
 2025-01-28:
   - |
     Fixed the wording of [srsgw-06](#Test-Case-srsgw-06).
+  - |
+    Added
+    [`EPP_DOMAIN_TRANSFER_REQUEST_FAILED`](#Error-EPP_DOMAIN_TRANSFER_REQUEST_FAILED)
+    to [epp-19](#Test-Case-epp-19).
 
 2025-01-22:
   - |

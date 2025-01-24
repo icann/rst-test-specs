@@ -1134,3 +1134,9 @@ EPP_HOST_RENAME_OBJECT_NOT_RENAMED:
   Description: |
     Following a successful `<update>` command to rename a host object, a
     subsequent `<info>` command for the renamed object was not successful.
+
+EPP_DOMAIN_TRANSFER_REQUEST_FAILED:
+  Severity: ERROR
+  Description: |
+    A `<transfer op="request">` command that should have been successful, did
+    not result in a `1000` or `1001` response code.
