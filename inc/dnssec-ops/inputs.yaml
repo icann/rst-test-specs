@@ -22,7 +22,8 @@ dnssecOps.nameservers:
       type: object
       required:
         - name
-        - addrs
+        - v4Addrs
+        - v6Addrs
       properties:
         name:
           description: The fully-qualified nameserver name.
