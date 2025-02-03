@@ -84,12 +84,12 @@ A test case will fail if it produces one or more [errors](#errors) with the
 The supported severity levels are a subset of the values defined in [RFC
 5424](https://www.rfc-editor.org/rfc/rfc5424.html).
 
-2. `WARNING` - an issue which does not prevent the test from *passing*, but
+2. `WARNING`: an issue which does not prevent the test case from *passing*, but
    which may benefit from further investigation.
-1. `ERROR` - an issue which prevents the test case from *passing*, but does not
+1. `ERROR`: an issue which prevents the *test case* from passing, but does not
    prevent the test case from *continuing*. A test case may produce multiple
    `ERROR` results.
-2. `CRITICAL` - an issue which prevents the test case from continuing any
+2. `CRITICAL`: an issue which prevents the test suite from continuing any
    further. A test case will only produce a single `CRITICAL` result and it will
    always be the last result in the log.
 
