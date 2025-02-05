@@ -84,3 +84,9 @@ RPMS_INVALID_CLAIMS_KEY:
   Description: |
     The `<check>` response included a `<launch:claimKey>` element with an
     invalid value.
+
+RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY:
+  Severity: ERROR
+  Description: |
+    A trademark claims `<create>` command using an **expired** claim
+    key unexpectedly succeeded.

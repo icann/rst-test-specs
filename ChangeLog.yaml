@@ -1,3 +1,8 @@
+2025-02-05:
+  - |
+    Added
+    [`RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY`](#Error-RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY)
+    to [minimumRPMs-03](#Test-Case-minimumRPMs-03).
 2025-01-28:
   - |
     Fixed the wording of [srsgw-06](#Test-Case-srsgw-06).
