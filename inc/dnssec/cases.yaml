@@ -17,6 +17,7 @@ dnssec-92:
     The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
     be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
   Errors:
+    - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM
 
 dnssec-93:
@@ -35,6 +36,7 @@ dnssec-93:
     * the value of the `salt` field of the NSEC3 record is empty (represented as
       a `-` in the presentation format).
   Errors:
+    - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_NSEC3_ITERATIONS_IS_NOT_ZERO
     - DNSSEC_NSEC3_SALT_IS_NOT_EMPTY
 

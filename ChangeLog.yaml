@@ -1,3 +1,7 @@
+2025-02-12:
+  - |
+    Added [`DNSSEC_DNS_QUERY_ERROR`] to [dnssec-92](#Test-Case-dnssec-92) and
+    [dnssec-93](#Test-Case-dnssec-93).
 2025-02-05:
   - |
     Added
