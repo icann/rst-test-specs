@@ -119,9 +119,11 @@ idn.testLabelsForOTE:
     properly simulate a production test, the same set of labels should be used.
 
     This resource is a zip file containing JSON files, each of which contains
-    the test labels for the [second-level reference
+    the test labels for the [Second-Level Reference
     LGR](https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en)
-    identified by the language tag in the file name. The JSON files conform to
-    the `idnTestLabels` object type from the [RST-API
+    identified by the script or language tag in the file name. The JSON files
+    conform to the `idnTableRequest` object type from the [RST-API
     specification](https://icann.github.io/rst-api-spec/).
-  URL: https://to-be-determined.example.com/testLabelsForOTE.zip
+
+    For more information, see L<https://github.com/icann/rst-idn-test-labels>.
+  URL: https://github.com/icann/rst-idn-test-labels/archive/refs/tags/v0.0.1.zip
