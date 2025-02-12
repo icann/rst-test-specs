@@ -2,6 +2,11 @@
   - |
     Added [`DNSSEC_DNS_QUERY_ERROR`] to [dnssec-92](#Test-Case-dnssec-92) and
     [dnssec-93](#Test-Case-dnssec-93).
+  - |
+    Updated the description of the
+    [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource to provide
+    more information, and an updated URL. The URL is not currently available to
+    the public but will be made available in the near future.
 2025-02-05:
   - |
     Added
