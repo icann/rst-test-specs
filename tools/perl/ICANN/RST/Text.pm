@@ -1,12 +1,16 @@
 package ICANN::RST::Text;
+use Alien::pandoc;
+use Digest::SHA qw(sha1_hex);
 use Encode qw(decode_utf8);
+use Env qw( @PATH );
 use File::Slurp;
 use File::Spec;
-use Digest::SHA qw(sha1_hex);
 use IPC::Open2;
 use Text::Unidecode;
 use utf8;
 use strict;
+
+unshift(@PATH, Alien::pandoc->bin_dir);
 
 my $CACHE;
 

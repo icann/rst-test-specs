@@ -1,5 +1,6 @@
 package ICANN::RST::Spec;
 use Carp;
+use Data::Mirror qw(mirror_file);
 use ICANN::RST::Case;
 use ICANN::RST::ChangeLog;
 use ICANN::RST::DataProvider;
@@ -11,7 +12,10 @@ use ICANN::RST::Suite;
 use ICANN::RST::Text;
 use YAML::XS;
 use List::Util qw(pairmap);
-use constant SCHEMA_VERSION => q{1.14.0};
+use constant {
+    SCHEMA_VERSION => q{1.14.0},
+    SPEC_URL => q{https://icann.github.io/rst-test-specs/rst-test-specs.yaml},
+};
 use feature qw(say);
 use strict;
 
@@ -19,6 +23,8 @@ $YAML::XS::Boolean = q{JSON::PP};
 
 sub new {
     my ($package, $file) = @_;
+
+    $file ||= mirror_file(SPEC_URL);
 
     my $self = bless(
         {
