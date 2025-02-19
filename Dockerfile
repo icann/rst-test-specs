@@ -90,7 +90,7 @@ ARG ZONEMASTER_ENGINE_VERSION
 #
 # install remaining dependencies
 #
-RUN cpanm --quiet --notest HTML::Tiny GraphViz2 JSON::Schema Data::Mirror \
-    Zonemaster::LDNS Zonemaster::Engine@${ZONEMASTER_ENGINE_VERSION}
+RUN cpanm --quiet --notest ICANN::RST HTML::Tiny GraphViz2 JSON::Schema \
+    Data::Mirror Zonemaster::LDNS Zonemaster::Engine@${ZONEMASTER_ENGINE_VERSION}
 
 RUN GOPATH=/usr/local go install github.com/giantswarm/schemalint/v2@latest

@@ -4,8 +4,6 @@ SRC = rst-test-specs
 ZM_DIR=zonemaster/zonemaster-$(ZONEMASTER_VERSION)
 
 yaml: export ZM_VERSION=$(ZONEMASTER_VERSION)
-lint: export PERL5LIB=./tools/perl
-html: export PERL5LIB=./tools/perl
 
 all: zonemaster-profile includes yaml lint json html
 
