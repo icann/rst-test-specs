@@ -125,5 +125,5 @@ idn.testLabelsForOTE:
     conform to the `idnTableRequest` object type from the [RST-API
     specification](https://icann.github.io/rst-api-spec/).
 
-    For more information, see L<https://github.com/icann/rst-idn-test-labels>.
+    For more information, see <https://github.com/icann/rst-idn-test-labels>.
   URL: https://github.com/icann/rst-idn-test-labels/archive/refs/tags/v1.0.0.zip
