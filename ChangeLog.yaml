@@ -1,3 +1,7 @@
+2025-02-XX:
+  - |
+    The data provider for [epp-14](#Test-Case-epp-14) has been updated to ensure
+    that it will pass for IDN-only TLDs.
 2025-02-12:
   - |
     Added [`DNSSEC_DNS_QUERY_ERROR`] to [dnssec-92](#Test-Case-dnssec-92) and
