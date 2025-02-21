@@ -1,4 +1,4 @@
-2025-02-XX:
+2025-02-21:
   - |
     The data provider for [epp-14](#Test-Case-epp-14) has been updated to ensure
     that it will pass for IDN-only TLDs.
