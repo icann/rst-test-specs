@@ -66,7 +66,7 @@ rde-05:
 
     * if the `general.registryDataModel` input parameter is `maximum` or
       `per-registrar`, then the contact URI **MUST** be present. If the value is
-      `true`, then it **MUST NOT** be present.
+      `minimum`, then it **MUST NOT** be present.
 
     * if the `epp.hostModel` input parameter is 'objects', then the host URI
       **MUST** be present. If the value is `attributes`, then it **MUST NOT** be
