@@ -332,6 +332,9 @@ MinimumRPMs:
     This test suite verifies an RSP's support for the minimum Rights Protection
     Mechanisms (RPMs), and the Launch Extension ([RFC 8334](https://www.rfc-editor.org/rfc/rfc8334.html)).
 
+    *Note:* RSPs do not need access to the TMCH system for this test suite, as
+    the test cases use the publicly-available test materials.
+
     # Pass/fail criteria
 
     TS_PASSFAIL
