@@ -1,7 +1,16 @@
+2025-02-26:
+  - |
+    To avoid issues where EPP servers reject commands containing IP addresses in
+    the RFC 1918 and RFC 5156 registries, data providers which use addresses
+    from these registries have been updated to use globally-routable IPv4 and
+    IPv6 addresses, as applicable, from prefixes assigned to ICANN. These
+    prefixes have been reserved for use for this purpose.
+
 2025-02-21:
   - |
     The data provider for [epp-14](#Test-Case-epp-14) has been updated to ensure
     that it will pass for IDN-only TLDs.
+
 2025-02-12:
   - |
     Added [`DNSSEC_DNS_QUERY_ERROR`] to [dnssec-92](#Test-Case-dnssec-92) and
@@ -11,11 +20,13 @@
     [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource to provide
     more information, and an updated URL. The URL is not currently available to
     the public but will be made available in the near future.
+
 2025-02-05:
   - |
     Added
     [`RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY`](#Error-RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY)
     to [minimumRPMs-03](#Test-Case-minimumRPMs-03).
+
 2025-01-28:
   - |
     Fixed the wording of [srsgw-06](#Test-Case-srsgw-06).
@@ -143,6 +154,7 @@
   - |
     Clarified that there must be entry in the [`rdap.baseURLs`](#Input-Parameter-rdap.baseURLS)
     input parameter for each TLD being tested.
+
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
@@ -251,6 +263,7 @@
     [`epp.client01CSR`](#Resource-epp.client01CSR) and
     [`epp.client02CSR`](#Resource-epp.client02CSR) respectively, so each
     client can use a distinct certificate.
+
 2024-09-12:
   - |
     The version of Zonemaster that the DNS and DNSSEC test suites use has been
@@ -273,6 +286,7 @@
     provider.
   - Updated [epp-24](#Test-Case-epp-24) to be stand-alone.
   - Added informative references to each test suite.
+
 2024-09-04:
   - |
     Upgraded **SHOULD** to **MUST** for
