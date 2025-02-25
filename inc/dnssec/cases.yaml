@@ -15,7 +15,10 @@ dnssec-92:
   Maturity: GAMMA
   Description: |
     The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
-    be validated. Algorithm 1 (SHA-1) **MUST NOT** be used.
+    be validated.
+
+    This test case will fail if any of the DS record(s) use algorithms #1
+    (SHA-1) #12 (GOST R 34.10-2001).
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM

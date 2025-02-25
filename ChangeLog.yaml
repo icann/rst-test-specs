@@ -5,6 +5,9 @@
     from these registries have been updated to use globally-routable IPv4 and
     IPv6 addresses, as applicable, from prefixes assigned to ICANN. These
     prefixes have been reserved for use for this purpose.
+  - |
+    Updated [dnssec-92](#Test-Case-dnssec-92) to disallow algorithm 12 (GOST R
+    34.10-2001).
 
 2025-02-21:
   - |
