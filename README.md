@@ -29,8 +29,9 @@ every Wednesday from the `dev` branch.
 ## See Also
 
 * [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
+* [IDN test labels for RST v2.0](https://github.com/icann/rst-idn-test-labels)
 
 ## Copyright Statement
 
-This repository is (c) 2024 Internet Corporation for Assigned Names and Numbers
+This repository is (c) 2025 Internet Corporation for Assigned Names and Numbers
 (ICANN). All rights reserved.
