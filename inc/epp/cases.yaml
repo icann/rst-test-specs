@@ -85,7 +85,7 @@ epp-02:
 
     * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
     * `urn:ietf:params:xml:ns:epp:unhandled-namespaces-1.0`
-    * `urn:ietf:params:xml:schema:epp:loginSec-1.0`
+    * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
   Input-Parameters:
     - epp.greeting
   Errors:
