@@ -337,3 +337,10 @@ RDE_CONTACT_HAS_NON_UNIQUE_ROID:
   Severity: ERROR
   Description:
     One or more contact objects have the same `<roid>` element.
+
+RDE_MENU_AND_HEADER_URIS_DIFFER:
+  Severity: ERROR
+  Description:
+    The set of URIs in the `<objURI>` elements in the `<rdeMenu>` element
+    differs from the set of URIs in the `uri` attributes of the `<count>`
+    elements in the `<rdeHeader>` element.

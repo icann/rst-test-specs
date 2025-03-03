@@ -1,3 +1,8 @@
+2025-03-05:
+  - Added
+    [`RDE_MENU_AND_HEADER_URIS_DIFFER`](#Error-RDE_MENU_AND_HEADER_URIS_DIFFER)
+    to [rde-05](#Test-Case-rde-05).
+
 2025-02-26:
   - |
     To avoid issues where EPP servers reject commands containing IP addresses in

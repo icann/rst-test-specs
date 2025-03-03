@@ -57,8 +57,8 @@ rde-05:
   Summary: Validate object types
   Maturity: GAMMA
   Description: |
-    The header object **MUST** reference the correct object XML namespace
-    URIs.
+    The `<rdeHeader>` and `<rdeMenu>` objects **MUST** reference the correct
+    object XML namespace URIs.
 
     The correct URIs are determined by the `general.registryDataModel` and
     `epp.hostModel` input parameters. At minimum, the list of URIs will include
@@ -72,8 +72,12 @@ rde-05:
       **MUST** be present. If the value is `attributes`, then it **MUST NOT** be
       present.
 
-    All expected URIs **MUST** be present in the header, and the header **MUST
-    NOT** contain any unexpected URIs.
+    All expected URIs **MUST** be present, and unexpected URIs **MUST NOT** be
+    present.
+
+    The set of URIs in the `<objURI>` elements in the `<rdeMenu>` element
+    **MUST** match the set of URIs in the `uri` attributes of the `<count>`
+    elements in the `<rdeHeader>` element.
 
     | **Namespace URI**                         | **Deposit type** | **Notes** |
     | :---------------------------------------- | :------------:   | :-------- |
@@ -94,6 +98,7 @@ rde-05:
   Errors:
     - RDE_UNEXPECTED_OBJECT_URI
     - RDE_MISSING_OBJECT_URI
+    - RDE_MENU_AND_HEADER_URIS_DIFFER
 
 rde-06:
   Implemented: true
