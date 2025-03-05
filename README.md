@@ -13,6 +13,13 @@ This repository contains the specifications for ICANN's [Registry System Testing
   policies that are applied to Zonemaster tests when generating the spec files
   and the Zonemaster profile.
 
+* The [data](data) directory contains the XLSX files from which the [data
+  providers](https://icann.github.io/rst-test-specs/rst-test-specs.html#Preamble-2.3.2.-Data-providers)
+  are generated.
+
+* The [resources](resources) directory contains static
+  [resources](https://icann.github.io/rst-test-specs/rst-test-specs.html#Preamble-2.3.3.-Resources).
+
 ## Building the specification
 
 The simplest way to build the specification is to run `docker compose run spec`
