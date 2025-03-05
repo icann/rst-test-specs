@@ -56,7 +56,18 @@ to enumerate all the possible permutations of input values. A data provider
 consists of sets of input values, plus the expected outcome, and the error code
 that should be raised if the outcome does not match the expected outcome.
 
-## 2.3.3. Test environments
+## 2.3.3. Resources
+
+A *Resource* is a file or other set of information that may assist a test
+subject in preparing for a test. For example, it might be a list of IP addresses
+from which network connections will be initiated, or the public keys used for
+encryption and authentication.
+
+Each resource has a description and one or more URLs. Some resources have
+different contents in the OT&E or Production environments, where this is the
+case, a URL for each environment will be listed.
+
+## 2.3.4. Test environments
 
 Each test plan indicates whether the test is to be carried out in the
 production environment, or whether a test, staging or Operational Testing and
@@ -65,12 +76,12 @@ designed for "business as usual" use during the lifecycle of a TLD **MUST** be
 carried out in the production registry infrastructure, while RSP evaluation
 tests **MAY** be carried out in test, staging or OT&E environments.
 
-## 2.3.4. Test results
+## 2.3.5. Test results
 
 Test cases will generate one or more *test results*. Test results indicate the
 outcome of the test and other relevant information.
 
-## 2.3.5. General pass/fail criteria
+## 2.3.6. General pass/fail criteria
 
 In general, for a test to pass, **all** the test cases specified in the test
 suite(s) for the test plan **MUST** pass: if *any* fail, then the test as a
@@ -79,7 +90,7 @@ whole will fail.
 A test case will fail if it produces one or more [errors](#errors) with the
 `ERROR` or `CRITICAL` severities.
 
-## 2.3.6. Error severity levels
+## 2.3.7. Error severity levels
 
 The supported severity levels are a subset of the values defined in [RFC
 5424](https://www.rfc-editor.org/rfc/rfc5424.html).
