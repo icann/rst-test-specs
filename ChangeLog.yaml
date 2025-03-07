@@ -1,14 +1,24 @@
 2025-03-07:
-  - Removed `epp.registeredNames`(#Input-Parameter-epp.registeredNames) from the
+  - |
+    Removed `epp.registeredNames`(#Input-Parameter-epp.registeredNames) from the
     input parameters for the [Minimum RPMs](#Test-Suite-MinimumRPMs) suite.
-  - Set the `Required` property of
+  - |
+    Set the `Required` property of
     [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01)
     and
     [`srsgw.serverIssuedClientCertificate02`](#Input-Parameter-srsgw.serverIssuedClientCertificate02)
     to `false`.
+  - |
+    Added
+    [`RDE_DOMAIN_OBJECT_MISSING`](#Error-RDE_DOMAIN_OBJECT_MISSING),
+    [`RDE_HOST_OBJECT_MISSING`](#Error-RDE_HOST_OBJECT_MISSING),
+    [`RDE_CONTACT_OBJECT_MISSING`](#Error-RDE_CONTACT_OBJECT_MISSING) and
+    [`RDE_REGISTRAR_OBJECT_MISSING`](#Error-RDE_REGISTRAR_OBJECT_MISSING) to the
+    respective test cases in the [RDE test suite](#Test-Suite-StandardRDE).
 
 2025-03-05:
-  - Added
+  - |
+    Added
     [`RDE_MENU_AND_HEADER_URIS_DIFFER`](#Error-RDE_MENU_AND_HEADER_URIS_DIFFER)
     to [rde-05](#Test-Case-rde-05).
 

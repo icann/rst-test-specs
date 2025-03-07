@@ -325,22 +325,46 @@ RDE_HOST_HAS_NON_UNIQUE_NAME:
 
 RDE_DOMAIN_HAS_NON_UNIQUE_ROID:
   Severity: ERROR
-  Description:
+  Description: |
     One or more domain objects have the same `<roid>` element.
 
 RDE_HOST_HAS_NON_UNIQUE_ROID:
   Severity: ERROR
-  Description:
+  Description: |
     One or more host objects have the same `<roid>` element.
 
 RDE_CONTACT_HAS_NON_UNIQUE_ROID:
   Severity: ERROR
-  Description:
+  Description: |
     One or more contact objects have the same `<roid>` element.
 
 RDE_MENU_AND_HEADER_URIS_DIFFER:
   Severity: ERROR
-  Description:
+  Description: |
     The set of URIs in the `<objURI>` elements in the `<rdeMenu>` element
     differs from the set of URIs in the `uri` attributes of the `<count>`
     elements in the `<rdeHeader>` element.
+
+RDE_DOMAIN_OBJECT_MISSING:
+  Severity: ERROR
+  Description: |
+    At least one domain object should be present in the deposit, but was not
+    found.
+
+RDE_HOST_OBJECT_MISSING:
+  Severity: ERROR
+  Description: |
+    At least one contact object should be present in the deposit, but was not
+    found.
+
+RDE_CONTACT_OBJECT_MISSING:
+  Severity: ERROR
+  Description: |
+    At least one contact object should be present in the deposit, but was not
+    found.
+
+RDE_REGISTRAR_OBJECT_MISSING:
+  Severity: ERROR
+  Description: |
+    At least one registrar object should be present in the deposit, but was not
+    found.
