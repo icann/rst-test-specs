@@ -1,3 +1,12 @@
+2025-03-07:
+  - Removed `epp.registeredNames`(#Input-Parameter-epp.registeredNames) from the
+    input parameters for the [Minimum RPMs](#Test-Suite-MinimumRPMs) suite.
+  - Set the `Required` property of
+    [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01)
+    and
+    [`srsgw.serverIssuedClientCertificate02`](#Input-Parameter-srsgw.serverIssuedClientCertificate02)
+    to `false`.
+
 2025-03-05:
   - Added
     [`RDE_MENU_AND_HEADER_URIS_DIFFER`](#Error-RDE_MENU_AND_HEADER_URIS_DIFFER)
@@ -58,7 +67,7 @@
     contacts.
   - |
     The `minimumRPMS.sunriseModels` input parameter has been renamed to
-    [`minimumRPMS.sunriseModel`](#Input-Parameter-minimumRPMS.sunriseModel), and
+    [`minimumRPMS.sunriseModel`](#ut-Parameter-minimumRPMS.sunriseModel), and
     the value `both` has been removed from the enum of possible values.
 
 2025-01-14:
