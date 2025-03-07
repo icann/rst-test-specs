@@ -361,7 +361,6 @@ MinimumRPMs:
     - epp.hostName
     - epp.pwd01
     - epp.pwd02
-    - epp.registeredNames
     - epp.requiredContactElements
     - epp.requiredContactTypes
     - epp.serverIssuedClientCertificate01
