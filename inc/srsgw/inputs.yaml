@@ -32,7 +32,7 @@ srsgw.serverIssuedClientCertificate01:
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be omitted.
-  Required: true
+  Required: false
   Type: file
   Schema:
     type: string
@@ -47,7 +47,7 @@ srsgw.serverIssuedClientCertificate02:
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be omitted.
   Type: file
-  Required: true
+  Required: false
   Schema:
     type: string
   Example: cert.pem
