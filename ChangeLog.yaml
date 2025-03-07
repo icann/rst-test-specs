@@ -1,5 +1,7 @@
 2025-03-07:
   - |
+    Fixed the error codes in [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data).
+  - |
     Removed `epp.registeredNames`(#Input-Parameter-epp.registeredNames) from the
     input parameters for the [Minimum RPMs](#Test-Suite-MinimumRPMs) suite.
   - |
