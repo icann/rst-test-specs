@@ -368,3 +368,8 @@ RDE_REGISTRAR_OBJECT_MISSING:
   Description: |
     At least one registrar object should be present in the deposit, but was not
     found.
+
+RDE_MISSING_EPP_PARAMS_OBJECT:
+  Severity: ERROR
+  Description: |
+    An EPP Parameters object was not found in the deposit.

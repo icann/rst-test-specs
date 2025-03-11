@@ -57,20 +57,27 @@ rde-05:
   Summary: Validate object types
   Maturity: GAMMA
   Description: |
-    The `<rdeHeader>` and `<rdeMenu>` objects **MUST** reference the correct
-    object XML namespace URIs.
+    The `<rdeHeader:header>` and `<rdeMenu>` objects **MUST** reference the
+    correct object XML namespace URIs.
 
-    The correct URIs are determined by the `general.registryDataModel` and
-    `epp.hostModel` input parameters. At minimum, the list of URIs will include
-    the `rdeDomain` URI (if using XML) or `csvDomain` (if using CSV).
+    The correct URIs are determined by the test configuration and the input
+    parameters and the `general.registryDataModel`. At minimum, the list of URIs
+    **MUST** include the `rdeDomain` (if using XML) or `csvDomain` (if using
+    CSV) URI.
 
-    * if the `general.registryDataModel` input parameter is `maximum` or
-      `per-registrar`, then the contact URI **MUST** be present. If the value is
+    * If the `general.registryDataModel` input parameter is `maximum` or
+      `per-registrar`, then either the `rdeContact` or `csvContact` URI **MUST**
+      be present, as applicable for the deposit type. If the input parameter is
       `minimum`, then it **MUST NOT** be present.
 
-    * if the `epp.hostModel` input parameter is 'objects', then the host URI
-      **MUST** be present. If the value is `attributes`, then it **MUST NOT** be
-      present.
+    * If the `epp.hostModel` input parameter is `objects`, then either the
+      `rdeHost` or `csvHost` URI **MUST** be present, as applicable for the
+      deposit type. If the input parameter is `attributes`, then it **MUST NOT**
+      be present.
+
+    * If the TLD to which the deposit relates is associated with one or more IDN
+      tables, then either the `rdeIDN` or `csvIDN` URI **MUST** be present, as
+      applicable for the deposit type.
 
     All expected URIs **MUST** be present, and unexpected URIs **MUST NOT** be
     present.
@@ -81,19 +88,19 @@ rde-05:
 
     | **Namespace URI**                         | **Deposit type** | **Notes** |
     | :---------------------------------------- | :------------:   | :-------- |
-    | `urn:ietf:params:xml:ns:csvContact-1.0`   | CSV              | `general.registryDataModel` != 'minimum'
-    | `urn:ietf:params:xml:ns:csvDomain-1.0`    | CSV              |
-    | `urn:ietf:params:xml:ns:csvHost-1.0`      | CSV              | `epp.hostModel` = 'objects'
-    | `urn:ietf:params:xml:ns:csvIDN-1.0`       | CSV              |
-    | `urn:ietf:params:xml:ns:csvNNDN-1.0`      | CSV              |
-    | `urn:ietf:params:xml:ns:csvRegistrar-1.0` | CSV              |
-    | `urn:ietf:params:xml:ns:rdeContact-1.0`   | XML              | `general.registryDataModel` != 'minimum'
-    | `urn:ietf:params:xml:ns:rdeDomain-1.0`    | XML              |
-    | `urn:ietf:params:xml:ns:rdeEppParams-1.0` | XML              |
-    | `urn:ietf:params:xml:ns:rdeHost-1.0`      | XML              | `epp.hostModel` = 'objects'
-    | `urn:ietf:params:xml:ns:rdeIDN-1.0`       | XML              |
-    | `urn:ietf:params:xml:ns:rdeNNDN-1.0`      | XML              |
-    | `urn:ietf:params:xml:ns:rdeRegistrar-1.0` | XML              |
+    | `urn:ietf:params:xml:ns:csvContact-1.0`   | CSV              | Must be present and count > 0 if `general.registryDataModel` != 'minimum'
+    | `urn:ietf:params:xml:ns:csvDomain-1.0`    | CSV              | Must be present and count > 0
+    | `urn:ietf:params:xml:ns:csvHost-1.0`      | CSV              | Must be present and count > 0 if `epp.hostModel` = 'objects'
+    | `urn:ietf:params:xml:ns:csvIDN-1.0`       | CSV              | Must be present and count > 0 if TLD has IDN tables
+    | `urn:ietf:params:xml:ns:csvNNDN-1.0`      | CSV              | May be present
+    | `urn:ietf:params:xml:ns:csvRegistrar-1.0` | CSV              | Must be present and count > 0
+    | `urn:ietf:params:xml:ns:rdeContact-1.0`   | XML              | Must be present and count > 0 if `general.registryDataModel` != 'minimum'
+    | `urn:ietf:params:xml:ns:rdeDomain-1.0`    | XML              | Must be present and count > 0
+    | `urn:ietf:params:xml:ns:rdeEppParams-1.0` | XML              | Must be present and count > 0
+    | `urn:ietf:params:xml:ns:rdeHost-1.0`      | XML              | Must be present and count > 0 if `epp.hostModel` = 'objects'
+    | `urn:ietf:params:xml:ns:rdeIDN-1.0`       | XML              | Must be present and count > 0 if TLD has IDN tables
+    | `urn:ietf:params:xml:ns:rdeNNDN-1.0`      | XML              | May be present
+    | `urn:ietf:params:xml:ns:rdeRegistrar-1.0` | XML              | Must be present and count > 0
 
   Errors:
     - RDE_UNEXPECTED_OBJECT_URI
@@ -105,8 +112,9 @@ rde-06:
   Summary: Validate object counts
   Maturity: GAMMA
   Description: |
-    The number of each type of object **MUST** match the number of objects
-    actually present in the deposit file.
+    The number of each type of object specified by the `<count>` elements in the
+    `<header`> element **MUST** match the number of objects actually present in
+    the deposit file.
   Errors:
     - RDE_OBJECT_COUNT_MISMATCH
 
@@ -119,9 +127,12 @@ rde-07:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
+    At least one domain object **MUST** be present in the deposit.
+
     The required properties are:
 
-    * `<domain:name>` (which **MUST** be unique)
+    * `<domain:name>` (which **MUST** be unique and be subordinate for the TLD
+      to which the deposit relates)
     * `<domain:roid>` (which **MUST** comply with the specification in [Section
       2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730#section-2.8)
       and contain a repository ID that is registered in the [EPP Repository
@@ -255,6 +266,8 @@ rde-10:
     properties, and the values of those object properties **MUST** be
     well-formed.
 
+    At least one registrar object **MUST** be present in the deposit.
+
     The required properties are:
 
     * `<rdeRegistrar:id>` which **MUST** be unique;
@@ -292,12 +305,12 @@ rde-11:
 
 rde-12:
   Implemented: false
-  Summary: Validate NNDN objects
+  Summary: Validate NNDN objects (if applicable)
   Maturity: GAMMA
   Description: |
-    NNDN table objects (whether CSV or XML) **MUST** have the required object
-    properties, and the values of those object properties **MUST** be
-    well-formed.
+    NNDN table objects (whether CSV or XML), if present, **MUST** have the
+    required object properties, and the values of those object properties
+    **MUST** be well-formed.
 
     * The value of the `<aName>` element **MUST NOT** match the value of the
       `<name>` element of a domain object, or the `<aName>` element of another
@@ -313,8 +326,8 @@ rde-13:
   Summary: Validate EPP parameters object
   Maturity: GAMMA
   Description: |
-    The EPP Parameters object **MUST** match the `<greeting>` element provided
-    as an input parameter.
+    The EPP Parameters object **MUST** be present and **MUST** match the
+    `<greeting>` element provided in the `epp.greeting` input parameter.
 
     A test case in the EPP Test Suite will confirm that this also matches what
     is returned when a client connects to the EPP server.
@@ -327,6 +340,7 @@ rde-13:
   Input-Parameters:
     - epp.greeting
   Errors:
+    - RDE_MISSING_EPP_PARAMS_OBJECT
     - RDE_GREETING_DOES_NOT_MATCH
 
 rde-14:

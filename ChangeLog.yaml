@@ -1,3 +1,12 @@
+2025-03-11:
+  - |
+    Clarified the text of [rde-05](#Test-Case-rde-05) and
+    [rde-06](#Test-Case-rde-06).
+  - |
+    Added
+    [`RDE_MISSING_EPP_PARAMS_OBJECT`](#Error-RDE_MISSING_EPP_PARAMS_OBJECT) to
+    [rde-13](#Test-Case-rde-13).
+
 2025-03-07:
   - |
     Fixed the error codes in [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data).
