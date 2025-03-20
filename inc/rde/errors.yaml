@@ -287,7 +287,7 @@ RDE_REGISTRAR_HAS_MISSING_NAME:
     One of more registrar objects have a missing `<name>` element.
 
 RDE_SCHEMA_VALIDATION_ERROR:
-  Severity: ERROR
+  Severity: CRITICAL
   Description: |
     The XML in the deposit file could not be validated against the schema.
 
@@ -297,7 +297,7 @@ RDE_UNEXPECTED_OBJECT_URI:
     The deposit contains an unexpected object URI in the header.
 
 RDE_XML_PARSE_ERROR:
-  Severity: ERROR
+  Severity: CRITICAL
   Description: |
     The XML in the deposit file is not well-formed.
 
@@ -373,3 +373,9 @@ RDE_MISSING_EPP_PARAMS_OBJECT:
   Severity: ERROR
   Description: |
     An EPP Parameters object was not found in the deposit.
+
+RDE_UNEXPECTED_OBJECT:
+  Severity: ERROR
+  Description: |
+    The deposit contained an object with a namespace URI that was not listed in
+    the `<rdeMenu>` or `<header>` elements of the deposit.

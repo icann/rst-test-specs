@@ -1,3 +1,13 @@
+2025-03-20:
+  - |
+    [`RDE_SCHEMA_VALIDATION_ERROR`](#Error-RDE_SCHEMA_VALIDATION_ERROR) and
+    [`RDE_XML_PARSE_ERROR`](#Error-RDE_XML_PARSE_ERROR) now have the `CRITICAL`
+    severity.
+  - |
+    Added
+    [`RDE_UNEXPECTED_OBJECT`](#Error-RDE_UNEXPECTED_OBJECT) to
+    [rde-06](#Test-Case-rde-06).
+
 2025-03-11:
   - |
     Clarified the text of [rde-05](#Test-Case-rde-05) and

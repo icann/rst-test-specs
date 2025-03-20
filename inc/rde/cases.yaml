@@ -61,9 +61,9 @@ rde-05:
     correct object XML namespace URIs.
 
     The correct URIs are determined by the test configuration and the input
-    parameters and the `general.registryDataModel`. At minimum, the list of URIs
-    **MUST** include the `rdeDomain` (if using XML) or `csvDomain` (if using
-    CSV) URI.
+    parameters. At minimum, the list of URIs **MUST** include `rdeDomain` and
+    `rdeRegistrar` (if using XML) or `csvDomain` and `csvRegistrar` (if using
+    CSV) URIs.
 
     * If the `general.registryDataModel` input parameter is `maximum` or
       `per-registrar`, then either the `rdeContact` or `csvContact` URI **MUST**
@@ -117,6 +117,7 @@ rde-06:
     the deposit file.
   Errors:
     - RDE_OBJECT_COUNT_MISMATCH
+    - RDE_UNEXPECTED_OBJECT
 
 rde-07:
   Implemented: true
