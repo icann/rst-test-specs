@@ -5,18 +5,31 @@ SITEDIR="_site"
 rm -rf "$SITEDIR"
 mkdir "$SITEDIR"
 
-pandoc \
+git config --global --add safe.directory /app
+
+CURRENT_RELEASE="$(git tag | tail -1)"
+
+if [ -z "$CURRENT_RELEASE" ] ; then
+    echo "No release tag found! Tag list follows..."
+    git tag --list
+    exit 1
+fi
+
+echo "Current release is $CURRENT_RELEASE"
+
+echo "Creating index file..."
+gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/index.md | pandoc \
     --from markdown \
     --to html \
     --standalone \
     --embed-resources=true \
-    --metadata title="Registry System Testing (RST) Test Specifications" \
+    --metadata title="ICANN Registry System Testing (RST) Test Specifications" \
     --css=inc/html/style.css \
-    --output="$SITEDIR/index.html" \
-    etc/index.md
+    --output="$SITEDIR/index.html"
 
-make all
-
-mv rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml "$SITEDIR/"
+echo "Syncing spec file..."
+curl --silent --fail --location --output "$SITEDIR/rst-test-specs.html" "https://github.com/icann/rst-test-specs/releases/download/$CURRENT_RELEASE/rst-test-specs.html"
 
 chmod -R 0755 "$SITEDIR"
+
+echo "done"
