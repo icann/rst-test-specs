@@ -16,8 +16,9 @@ includes:
 	@rm -rf tmp
 	@mkdir tmp
 
-	@echo Generating version number...
+	@echo Generating version number and last-updated...
 	@tools/generate-version.sh > tmp/version.txt
+	@tools/generate-last-updated.sh > tmp/last-updated.txt
 
 	@echo Downloading Zonemaster source code...
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
