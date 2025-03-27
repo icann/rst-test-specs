@@ -2,7 +2,7 @@
 RST-Test-Plan-Schema-Version: 1.14.0
 Version: #include tmp/version.txt
 
-Last-Updated: #date %Y-%m-%d
+Last-Updated: #include tmp/last-updated.txt
 
 Contact:
   Name: GDS Technical Services
