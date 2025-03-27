@@ -1,5 +1,5 @@
-> [!NOTE]
-> To see the current RST test specifications, [click here](https://icann.github.io/rst-test-specs/rst-test-specs.html).
+> [!TIP]
+> [Click here to go directlty to the current RST test specifications.](https://icann.github.io/rst-test-specs/rst-test-specs.html)
 
 This repository contains the specifications for ICANN's [Registry System Testing
 (RST)](https://icann.org/resources/registry-system-testing-v2.0) v2.0 service.
