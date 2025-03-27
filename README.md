@@ -20,18 +20,17 @@ This repository contains the specifications for ICANN's [Registry System Testing
 * The [resources](resources) directory contains static
   [resources](https://icann.github.io/rst-test-specs/rst-test-specs.html#Preamble-2.3.3.-Resources).
 
+* The [.env](.env) file specifies which version of Zonemaster should be used to
+  generate DNS and DNSSEC test cases, and their associated error codes.
+  [zonemaster-test-policies.yaml](zonemaster-test-policies.yaml) controls how
+  the Zonemaster test cases and documentation should be incorporated into the
+  RST specs.
+
 ## Building the specification
 
 The simplest way to build the specification is to run `docker compose run spec`
 (you obviously need Docker). The first run will take a while as it needs to
 build the image, but it will be quite fast after that.
-
-## Branches
-
-The [`main`](https://icann.github.io/rst-api-spec/tree/main) branch is the
-"stable" version of the specification. All development is done on the
-[`dev`](https://icann.github.io/rst-api-spec/tree/dev) branch. `main` is updated
-every Wednesday from the `dev` branch.
 
 ## See Also
 
