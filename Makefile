@@ -13,12 +13,16 @@ zonemaster-profile:
 	@echo wrote rst.json
 
 includes:
+	@rm -rf tmp
+	@mkdir tmp
+
+	@echo Generating version number...
+	@tools/generate-version.sh > tmp/version.txt
+
 	@echo Downloading Zonemaster source code...
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
 
 	@echo Generating Zonemaster cases...
-	@rm -rf tmp
-	@mkdir tmp
 	@tools/generate-zonemaster-cases.pl "--version=$(ZONEMASTER_VERSION)" "$(ZM_DIR)" > tmp/zonemaster-cases.yaml
 
 	@echo Generating Zonemaster errors...
