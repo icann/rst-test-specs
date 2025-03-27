@@ -7,7 +7,7 @@ Last-Updated: #include tmp/last-updated.txt
 Contact:
   Name: GDS Technical Services
   Organization: Internet Corporation for Assigned Names and Numbers (ICANN)
-  Email: rst@icann.org
+  Email: globalsupport@icann.org
 
 Configuration:
   - Name: \ZONEMASTER_VERSION
