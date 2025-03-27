@@ -1,27 +1,27 @@
 This site hosts the specifications for ICANN's [Registry System Testing
-(RST)](https://icann.org/resources/registry-system-testing-v2.0) v2.0 service.
+(RST)](https://icann.org/resources/registry-system-testing-v2.0/) v2.0 service.
 
-* **[rst-test-specs.html](rst-test-specs.html)
-  is the human-readable version of the RST test specification.**
+* [**Click here to access the RST Test Specifications RELEASE**](rst-test-specs.html)
 
-* [rst-test-specs.yaml](rst-test-specs.yaml)
-  is the machine-readable version, intended to be consumed by internal ICANN
-  clients.
+Additional resources:
 
-* [rst-test-specs.json](rst-test-specs.json)
-  is the above file in JSON. Note that the conversion from YAML causes keys in
-  dictionaries to be reordered.
-
-* [rst.json](rst.json) is the Zonemaster
-  [profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
+* [rst.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.yaml) is the [Zonemaster
+  profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
   used by the DNS and DNSSEC test suites.
+* Machine-readable
+  [YAML](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.yaml)
+  and
+  [JSON](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.json)
+  versions of the test specs, intended to be consumed by internal ICANN clients.
+* [List of releases](https://github.com/icann/rst-test-specs/releases)
+* [GitHub repository](https://github.com/icann/rst-test-specs/)
 
 ## See Also
 
-* [GitHub repository](https://github.com/icann/rst-test-specs/)
-* [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
+* [RST API Specification](https://icann.github.io/rst-api-spec)
+  ([GitHub repository](https://github.com/icann/rst-api-spec))
 * [IDN test labels for RST v2.0](https://github.com/icann/rst-idn-test-labels)
 
-## Copyright Statement
+## License
 
-This repository is (c) 2025 Internet Corporation for Assigned Names and Numbers (ICANN). All rights reserved.
+#include ../LICENSE
