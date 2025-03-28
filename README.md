@@ -38,10 +38,10 @@ build the image, but it will be quite fast after that.
 ## Releasing a new version
 
 1. Make the changes you want to make.
-2. Once committed, tag the commit. The tag should take the form `vYYYY.DD` where
-   `YYYY` is the current year and `DD` is a two-digest serial number that resets
-   to `01` at the start of each year. Then push the tag to GitHub using `git
-   push --tags.
+2. Once committed, tag the commit. The tag **MUST** take the form `vYYYY.DD`
+   where `YYYY` is the current year and `DD` is a two-digit serial number that
+   resets to `01` at the start of each year. Then push the tag to GitHub using
+   `git push --tags.
 3. Create a new [release](https://github.com/icann/rst-test-specs/releases/new)
    using the tag.
 
