@@ -114,6 +114,8 @@ StandardRDAP:
     * [RFC 9083 - JSON Responses for the Registration Data Access Protocol (RDAP)](https://www.rfc-editor.org/rfc/rfc9083.html)
     * [gTLD RDAP Profile](https://www.icann.org/gtld-rdap-profile)
 
+  Resources:
+    - rdap.clientACL
   Test-Cases: ^rdap-
   Input-Parameters:
     - rdap.baseURLs
