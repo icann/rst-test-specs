@@ -35,6 +35,23 @@ The simplest way to build the specification is to run `docker compose run spec`
 (you obviously need Docker). The first run will take a while as it needs to
 build the image, but it will be quite fast after that.
 
+## Releasing a new version
+
+1. Make the changes you want to make.
+2. Once committed, tag the commit. The tag should take the form `vYYYY.DD` where
+   `YYYY` is the current year and `DD` is a two-digest serial number that resets
+   to `01` at the start of each year. Then push the tag to GitHub using `git
+   push --tags.
+3. Create a new [release](https://github.com/icann/rst-test-specs/releases/new)
+   using the tag.
+
+Since the [RST API spec](https://github.com/icann/rst-api-spec) includes data
+elements from the test specs, every time a new version of the RST spec is
+released, a [new version of the API
+spec](https://github.com/icann/rst-api-spec?tab=readme-ov-file#releasing-a-new-version)
+must also be released, in order to incorporate any changes to those data
+elements.
+
 ## See Also
 
 * [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
