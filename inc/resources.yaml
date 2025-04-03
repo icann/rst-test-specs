@@ -127,3 +127,10 @@ idn.testLabelsForOTE:
 
     For more information, see <https://github.com/icann/rst-idn-test-labels>.
   URL: https://github.com/icann/rst-idn-test-labels/archive/refs/tags/v1.0.1.zip
+
+rdap.clientACL:
+  Description: |
+    A list of IPv4 and IPv6 address(es) or CIDR prefixes from which client
+    connections to the operator's RDAP server will be made. The list is a plain
+    text file with each entry on a separate line.
+  URL: https://rst-api.icann.org/v1/resource/rdap.clientACL.txt
