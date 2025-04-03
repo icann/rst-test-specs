@@ -371,3 +371,13 @@ MinimumRPMsOnly:
     specifically the `MinimumRPMs` suite.
   Test-Suites:
     - MinimumRPMs
+
+DNSSECOperationsOnly:
+  Order: 290
+  OTE-Only: true
+  Name: DNSSEC Operations (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `DNSSECOperations` suite.
+  Test-Suites:
+    - DNSSECOperations
