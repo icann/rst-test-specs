@@ -880,6 +880,11 @@ sub print_resource {
         }
 
         print $h->close(ul);
+
+        print $h->p($h->em(
+                e('Note that access to these URLs is restricted to authenticated clients. For more information, please review the ').
+                $h->a({href => q{https://icann.github.io/rst-api-spec}}, e('RST API specification.'))
+        ));
     }
 }
 
