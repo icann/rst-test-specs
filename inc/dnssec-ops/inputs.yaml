@@ -8,12 +8,12 @@ dnssecOps.nameservers:
     - name: ns1.example.com
       v4addrs:
         - 192.0.2.1
-      v6addrs:
+      v6Addrs:
         - 2001:DB8::53:1
     - name: ns2.example.net
       v4addrs:
         - 192.0.2.2
-      v6addrs:
+      v6Addrs:
         - 2001:DB8::53:2
   Schema:
     type: array
