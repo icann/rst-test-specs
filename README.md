@@ -44,11 +44,6 @@ build the image, but it will be quite fast after that.
    `git push --tags`.
 3. Create a new [release](https://github.com/icann/rst-test-specs/releases/new)
    using the tag.
-4. Once the [release
-   action](https://github.com/icann/rst-test-specs/actions/workflows/release.yaml)
-   has finished, run the
-   [build-pages](https://github.com/icann/rst-test-specs/actions/workflows/build-pages.yaml)
-   action to update the web pages.
 
 Since the [RST API spec](https://github.com/icann/rst-api-spec) includes data
 elements from the test specs, every time a new version of the RST spec is
