@@ -1,3 +1,17 @@
+2025-04-10:
+  - "Stable release v2025.02:"
+
+  - Fix the example in
+    [`dnssecOps.nameservers`](https://icann.github.io/rst-test-specs/rst-test-specs.html#Input-Parameter-dnssecOps.nameservers)
+    ([#1](https://github.com/icann/rst-test-specs/issues/1)).
+
+  - Update [`idn.testLabelsForOTE`](#idn.testLabelsForOTE) to v1.0.2
+    ([#17](https://github.com/icann/rst-test-specs/issues/17)).
+
+  - In [dns-zz-consistency](#Test-Case-dns-zz-consistency), clarify that a
+    secure delegation for the "nic" zone **MUST** be present in the TLD zone
+    ([#16](https://github.com/icann/rst-test-specs/issues/16)).
+
 2025-03-27:
   - Stable release v2025.01. There are no significant changes since the last
     release except the version number.
