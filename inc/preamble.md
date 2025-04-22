@@ -153,7 +153,18 @@ Where `[type]` will be replaced with the application type. For example, a
 form `.zz--main-1234`. Test subjects will need to configure their registry
 systems to support this TLD prior to requesting a test run.
 
-# 2.7. Key acronyms and terms
+# 2.7. Extensible Provisioning Protocol (EPP) Repository Identifiers
+
+EPP servers **MUST** use unique repository identifiers that are registered in the
+[EPP Repository ID registry])https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
+(see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
+
+The special ID `ICANNRST` (`#x0049 #x0043 #x0041
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
+servers during RSP evaluation tests. However, for pre- and post-delegation tests
+this repository ID **MUST NOT** be used.
+
+# 28. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
