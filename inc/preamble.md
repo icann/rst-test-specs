@@ -164,7 +164,7 @@ The special ID `ICANNRST` (`#x0049 #x0043 #x0041
 servers during RSP evaluation tests. However, for pre- and post-delegation tests
 this repository ID **MUST NOT** be used.
 
-# 28. Key acronyms and terms
+# 2.8. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
