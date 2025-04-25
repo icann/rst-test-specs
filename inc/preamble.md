@@ -153,7 +153,21 @@ Where `[type]` will be replaced with the application type. For example, a
 form `.zz--main-1234`. Test subjects will need to configure their registry
 systems to support this TLD prior to requesting a test run.
 
-# 2.7. Extensible Provisioning Protocol (EPP) Repository Identifiers
+# 2.7. External TLDs
+
+The RST system will sometimes generate domain and host names that must, for
+security and stability reasons, be guaranteed to not exist in the global DNS.
+
+To ensure this, the C<.icann> top-level domain will be used as the parent TLD
+for such domain and host names. This TLD has been selected because (1) it will
+never be delegated in the DNS and (b) unlike C<.invalid>, C<.internal> etc,
+there is no expectation that special processing should take place for it.
+
+Registry operators whose implementations validate the existence of the parent
+TLD of a nameserver name should update their implementation to exceptionally
+allow the use of C<.icann> during RST tests.
+
+# 2.8. Extensible Provisioning Protocol (EPP) Repository Identifiers
 
 EPP servers **MUST** use unique repository identifiers that are registered in the
 [EPP Repository ID registry])https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
@@ -164,7 +178,7 @@ The special ID `ICANNRST` (`#x0049 #x0043 #x0041
 servers during RSP evaluation tests. However, for pre- and post-delegation tests
 this repository ID **MUST NOT** be used.
 
-# 2.8. Key acronyms and terms
+# 2.9. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
