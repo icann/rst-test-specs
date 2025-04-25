@@ -1,8 +1,34 @@
+2025-04-25:
+  - "Stable release v2025.03:"
+
+  - Describe the use of `.icann` for external nameserver hostnames
+    ([#9](https://github.com/icann/rst-test-specs/issues/9))
+
+  - Allow `v4Addrs` and `v6Addrs` to be optional in
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
+    ([#11](https://github.com/icann/rst-test-specs/issues/11))
+
+  - Clarify that the
+    [`epp.supportedContactElements`](#Input-Parameter-epp.supportedContactElements)
+    and
+    [`epp.requiredContactElements`](#Input-Parameter-epp.requiredContactElements)
+    input parameters **MUST** be empty if the value of the
+    [`general.registryDataModel`] input parameter is `minimum`
+    ([#23](https://github.com/icann/rst-test-specs/issues/23))
+
+  - Describe the use of `ICANNRST` as an EPP repository ID that may be used in
+    RSP evaluation tests and OT&E
+    ([#24](https://github.com/icann/rst-test-specs/issues/24))
+
+  - Add a new `hostModel` column to
+    [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data)
+    ([#28](https://github.com/icann/rst-test-specs/issues/28))
+
 2025-04-10:
   - "Stable release v2025.02:"
 
   - Fix the example in
-    [`dnssecOps.nameservers`](https://icann.github.io/rst-test-specs/rst-test-specs.html#Input-Parameter-dnssecOps.nameservers)
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
     ([#1](https://github.com/icann/rst-test-specs/issues/1)).
 
   - Update [`idn.testLabelsForOTE`](#idn.testLabelsForOTE) to v1.0.2
