@@ -167,7 +167,18 @@ Registry operators whose implementations validate the existence of the parent
 TLD of a nameserver name should update their implementation to exceptionally
 allow the use of C<.icann> during RST tests.
 
-# 2.8. Key acronyms and terms
+# 2.8. Extensible Provisioning Protocol (EPP) Repository Identifiers
+
+EPP servers **MUST** use unique repository identifiers that are registered in the
+[EPP Repository ID registry])https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
+(see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
+
+The special ID `ICANNRST` (`#x0049 #x0043 #x0041
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
+servers during RSP evaluation tests. However, for pre- and post-delegation tests
+this repository ID **MUST NOT** be used.
+
+# 2.9. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
