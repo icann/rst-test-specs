@@ -225,9 +225,10 @@ epp.registeredContacts:
 epp.requiredContactTypes:
   Description: |
     An array containing the values of the `type` attribute of `<contact>`
-    element(s) that are required to successfully create a domain name. If the
-    value of `general.registryDataModel` is `minimum`, this array `MUST` be
-    empty.
+    element(s) that are required to successfully create a domain name.
+
+    If the value of `general.registryDataModel` is `minimum`, this array `MUST`
+    be empty.
   Type: input
   Required: true
   Example: ["admin"]
@@ -252,11 +253,14 @@ epp.supportedContactElements:
     This input parameter should be used to indicate which of the optional
     elements the EPP server supports.
 
-    If the value contains a colon (`:`), then the first part is the element name
+    If a value contains a colon (`:`), then the first part is the element name
     and the second part is an attribute name.
 
     Elements that are listed in this parameter **MAY** also be listed in the
     `epp.requiredContactElements` parameter.
+
+    If the value of `general.registryDataModel` is `minimum`, this array `MUST`
+    be empty.
   Type: input
   Required: true
   Example:
@@ -292,6 +296,9 @@ epp.requiredContactElements:
 
     This input parameter is an array of element tag names, optionally suffixed
     with a colon (`:`) followed by an attribute name.
+
+    If the value of `general.registryDataModel` is `minimum`, this array `MUST`
+    be empty.
   Type: input
   Required: false
   Example:
