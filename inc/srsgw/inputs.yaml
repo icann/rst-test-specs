@@ -105,79 +105,71 @@ srsgw.rdapBaseURLs:
 
 srsgw.domainCreateExtension:
   Description: |
-    If a domain `<create>` command submitted through the SRS Gateway requires
-    one or more extension in its `<extension>` element in order to succeed, then
-    this parameter can be used to provide the XML syntax that should be used.
-
-    This parameter should contain a valid EPP `<extension>` element containing
-    all the extension elements that are required for the domain `<create>`
-    command. This element will be imported into the domain `<create>` command
-    frame before being sent to the server.
-
-    The XML namespace URIs of the child elements of the `<extension>` element
-    **MUST** appear in `<extURI>` elements in the `<greeting>` and the
-    extensions **MUST** be registered in the
-    [EPP Extension Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
-
-    If no extensions are required, this input parameter **MUST** be omitted. If
-    provided, it will not be validated until the test run occurs, at which point
-    an `SRSGW_EPP_INVALID_EXTENSION` error will be emitted.
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<create>` command on the SRS
+    Gateway EPP server.
   Type: input
   Required: false
   Example: |
     <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
-      <allocationToken xmlns='urn:ietf:params:xml:ns:allocationToken-1.0'>
-        abc123
-      </allocationToken>
+      <!-- additional element(s) here -->
     </extension>
   Schema:
     type: string
 
 srsgw.domainDeleteExtension:
   Description: |
-    This input parameter is used to provide the extension elements required to
-    perform a domain `<update>` command through the SRS Gateway. Other than the
-    different EPP command it relates to, it is identical to the
-    `srsgw.domainCreateExtension` element.
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<delete>` command on the SRS
+    Gateway EPP server.
   Type: input
   Required: false
-  Example: "<!-- see srsgw.domainCreateExtension -->"
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
   Schema:
     type: string
 
 srsgw.domainRenewExtension:
   Description: |
-    This input parameter is used to provide the extension elements required to
-    perform a domain `<renew>` command through the SRS Gateway. Other than the
-    different EPP command it relates to, it is identical to the
-    `srsgw.domainCreateExtension` element.
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<renew>` command on the SRS
+    Gateway EPP server.
   Type: input
   Required: false
-  Example: "<!-- see srsgw.domainCreateExtension -->"
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
   Schema:
     type: string
 
 srsgw.domainTransferRequestExtension:
   Description: |
-    This input parameter is used to provide the extension elements required to
-    perform a domain `<transfer op="request">` command through the SRS Gateway.
-    Other than the different EPP command it relates to, it is
-    identical to the `srsgw.domainCreateExtension` element.
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<transfer op="request">` command
+    on the SRS Gateway EPP server.
   Type: input
   Required: false
-  Example: "<!-- see srsgw.domainCreateExtension -->"
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
   Schema:
     type: string
 
 srsgw.domainTransferApproveExtension:
   Description: |
-    This input parameter is used to provide the extension elements required to
-    perform a domain `<transfer op="approve">` command through the SRS Gateway.
-    Other than the different EPP command it relates to, it is
-    identical to the `srsgw.domainCreateExtension` element.
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<transfer op="approve">` command
+    on the SRS Gateway EPP server.
   Type: input
   Required: false
-  Example: "<!-- see srsgw.domainCreateExtension -->"
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
   Schema:
     type: string
 
@@ -305,3 +297,72 @@ srsgw.eppSupportedContactElements:
         - voice:ext
         - fax
         - fax:ext
+
+srsgw.LoginExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully log in to the SRS Gateway EPP server.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+srsgw.DomainUpdateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<update>` command on the SRS
+    Gateway EPP server.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+srsgw.ContactCreateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<create>` command on the SRS
+    Gateway EPP server.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+srsgw.ContactUpdateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<update>` command on the SRS
+    Gateway EPP server.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+srsgw.ContactDeleteExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<delete>` command on the SRS
+    Gateway EPP server.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>

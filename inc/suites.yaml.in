@@ -168,6 +168,16 @@ StandardEPP:
     - epp.requiredContactTypes
     - epp.supportedContactElements
     - epp.requiredContactElements
+    - epp.LoginExtension
+    - epp.DomainCreateExtension
+    - epp.DomainRenewExtension
+    - epp.DomainUpdateExtension
+    - epp.DomainDeleteExtension
+    - epp.DomainTransferRequestExtension
+    - epp.DomainTransferApproveExtension
+    - epp.ContactCreateExtension
+    - epp.ContactUpdateExtension
+    - epp.ContactDeleteExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -223,6 +233,7 @@ StandardIDN:
     * [IDN Implementation Guidelines](https://www.icann.org/en/topics/idn/implementation-guidelines.htm)
   Test-Cases: ^idn-
   Input-Parameters:
+    - idn.DomainCreateExtension
     - epp.clid01
     - epp.clid01DataModel
     - epp.clid02
@@ -238,6 +249,16 @@ StandardIDN:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.LoginExtension
+    - epp.DomainCreateExtension
+    - epp.DomainRenewExtension
+    - epp.DomainUpdateExtension
+    - epp.DomainDeleteExtension
+    - epp.DomainTransferRequestExtension
+    - epp.DomainTransferApproveExtension
+    - epp.ContactCreateExtension
+    - epp.ContactUpdateExtension
+    - epp.ContactDeleteExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -294,6 +315,17 @@ StandardSRSGateway:
     - srsgw.registryDataModel
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
+    - epp.LoginExtension
+    - epp.ContactCreateExtension
+    - epp.ContactUpdateExtension
+    - epp.DomainUpdateExtension
+    - epp.DomainDeleteExtension
+    - srsgw.LoginExtension
+    - srsgw.DomainUpdateExtension
+    - srsgw.ContactCreateExtension
+    - srsgw.ContactUpdateExtension
+    - srsgw.ContactDeleteExtension
+
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -366,6 +398,16 @@ MinimumRPMs:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
+    - epp.LoginExtension
+    - epp.ContactCreateExtension
+    - epp.ContactUpdateExtension
+    - epp.ContactDeleteExtension
+    - epp.DomainCreateExtension
+    - epp.DomainUpdateExtension
+    - epp.DomainRenewExtension
+    - epp.DomainTransferRequestExtension
+    - epp.DomainTransferApproveExtension
+    - epp.DomainDeleteExtension
     - general.registryDataModel
     - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModel
@@ -405,6 +447,16 @@ StandardIntegrationTest:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.LoginExtension
+    - epp.ContactCreateExtension
+    - epp.ContactUpdateExtension
+    - epp.ContactDeleteExtension
+    - epp.DomainCreateExtension
+    - epp.DomainUpdateExtension
+    - epp.DomainRenewExtension
+    - epp.DomainTransferRequestExtension
+    - epp.DomainTransferApproveExtension
+    - epp.DomainDeleteExtension
 
 AdditionalDNSTransports:
   Order: 11

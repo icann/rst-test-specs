@@ -317,3 +317,133 @@ epp.requiredContactElements:
         - voice:ext
         - fax
         - fax:ext
+
+epp.LoginExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully log in to the EPP server.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainCreateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<create>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainRenewExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<renew>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainUpdateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<update>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainDeleteExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<delete>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainTransferRequestExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<transfer op="request">` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.DomainTransferApproveExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a domain `<transfer op="approve">` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.ContactCreateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<create>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.ContactUpdateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<update>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
+
+epp.ContactDeleteExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a contact `<delete>` command.
+  Type: input
+  Required: false
+  Schema:
+    Type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <!-- additional element(s) here -->
+    </extension>
