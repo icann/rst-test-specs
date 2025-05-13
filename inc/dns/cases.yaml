@@ -45,8 +45,8 @@ dns-zz-consistency:
     * apex `NSEC3PARAM` query;
     * apex `TXT` query;
     * `A` and `AAAA` queries for in-bailiwick nameservers, if any;
-    * `nic.tld` `NS` query;
-    * `nic.tld` `DS` query.
+    * `nic.tld` `NS` and `DS` query (these records **MUST** be present in the
+      TLD zone).
 
     The EDNS(0) `do` bit, `NSID` option, and `ZONEVERSION` options will be set
     on all queries. The reported `NSID` and `ZONEVERSION` values in the response
