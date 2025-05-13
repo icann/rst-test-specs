@@ -381,3 +381,12 @@ DNSSECOperationsOnly:
     specifically the `DNSSECOperations` suite.
   Test-Suites:
     - DNSSECOperations
+
+StandardIntegrationTestOnly:
+  Name: Standard Integration Test (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardIntegrationTest ` suite.
+  Test-Suites:
+    - StandardIntegrationTest
+  OTE-Only: true
