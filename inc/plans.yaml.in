@@ -383,7 +383,8 @@ DNSSECOperationsOnly:
     - DNSSECOperations
 
 StandardIntegrationTestOnly:
-  Name: Standard Integration Test (OT&E Only)
+  Order: 300
+  Name: Integration Test (OT&E Only)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardIntegrationTest ` suite.
