@@ -85,8 +85,8 @@ DNSRSPChangeTest:
     - StandardDNSSEC
 
 StandardIDNTest:
-  Order: 4
-  Name: Standard IDN Test
+  Order: 140
+  Name: IDN Test
   OTE-Only: false
   Description: |
     A Registry Operator may apply to ICANN to amend its Registry Agreement
