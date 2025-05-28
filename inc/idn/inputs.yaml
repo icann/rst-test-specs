@@ -1,1 +1,28 @@
-# there are no inputs for the IDN test suite, as they are all provided in the test object.
+idn.DomainCreateExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully perform a `<create>` command for an IDN domain.
+
+    The special token `<!-- tag -->` will (if present) be replaced with the
+    language tag of the domain being created.
+
+    The XML namespace URI(s) of the child elements(s) of the `<extension>`
+    element **MUST** appear in `<extURI>` elements in the `<greeting>`, and the
+    extension(s) **MUST** be registered in the [EPP Extension
+    Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
+
+    If no extensions are required, this input parameter **MUST** be omitted. If
+    provided, its content will not be validated until the test run occurs, and
+    if found to be invalid, `EPP_INVALID_IDN_EXTENSION` error will be emitted.
+
+  Type: input
+  Required: false
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <create xmlns="our:epp:extension">
+        <tag><!-- tag --></tag>
+      </create>
+      <!-- any additional element(s) here -->
+    </extension>
