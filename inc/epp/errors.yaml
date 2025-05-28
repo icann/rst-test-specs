@@ -1145,7 +1145,7 @@ EPP_INVALID_IDN_EXTENSION:
   Severity: ERROR
   Description: |
     One or more of the extension element(s) provided in the
-    `idn.DomainCreateExtension` input parameter was invalid. This may be because
+    `idn.domainCreateExtension` input parameter was invalid. This may be because
     (a) it was not a well-formed XML instance, (b) specified an extension that
     was not registered in the EPP Extension Registry or (c) could not be
     validated against the XML schema(s) for that extension.

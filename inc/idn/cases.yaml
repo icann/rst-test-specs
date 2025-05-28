@@ -37,7 +37,7 @@ idn-01:
     - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_FROM_SAME_REGISTRAR
     - IDN_VARIANT_SERVER_REJECTS_VARIANT_CREATE_WITH_SAME_REGISTRANT
   Input-Parameters:
-    - idn.DomainCreateExtension
+    - idn.domainCreateExtension
 
 idn-02:
   Summary: ASCII domains in IDN-only TLD test

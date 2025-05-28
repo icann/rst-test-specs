@@ -1,4 +1,4 @@
-idn.DomainCreateExtension:
+idn.domainCreateExtension:
   Description: |
     An EPP `<extension>` element containing the extension elements(s) which are
     required to succesfully perform a `<create>` command for an IDN domain.
