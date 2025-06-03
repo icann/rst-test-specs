@@ -178,7 +178,37 @@ The special ID `ICANNRST` (`#x0049 #x0043 #x0041
 servers during RSP evaluation tests. However, for pre- and post-delegation tests
 this repository ID **MUST NOT** be used.
 
-# 2.9. Key acronyms and terms
+# 2.9. EPP extensions
+
+The EPP test suite requires that servers implement certain EPP extensions, as
+described in the `epp-02` test case. Test cases in the EPP test suite
+ascertain whether these extensions are properly implemented in the server.
+
+Some EPP servers may require EPP clients to include additional extension
+elements in the EPP commands that take place during a run of the EPP test suite.
+Because it is not feasible to natively implement support for all such
+extensions, the EPP test suite includes input parameters which allow test
+subjects to provide the extension element(s) which must be included in EPP
+commands.
+
+These input parameters **MUST** contain a single EPP `<extension>` element which
+contains the element(s) required for the particular EPP command to which the
+input parameter relates. These element(s) **MUST** validate against the relevant
+XML schema.
+
+If no extensions are required for a particular command, then the corresponding
+input parameter **MUST** be omitted. If provided, it will not be validated until
+the test run occurs, at which point an error code will be generated if it is
+invalid.
+
+All EPP extensions used by the EPP server **MUST** be registered in the EPP
+Extension Registry, as described in the `epp-02` test case.
+
+Other test suites which use the EPP server (i.e. the IDN, Minimum RPMs,
+Integration and SRS Gateway suites) will also use the input parameters from the
+EPP suite, if provided.
+
+# 2.10. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.
