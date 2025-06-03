@@ -330,12 +330,21 @@ epp.LoginExtension:
 
      If no extensions are required, this input parameter **MUST** be omitted. If
      provided, its content will not be validated until the test run occurs, and
-     if found to be invalid, `EPP_INVALID_EXTENSION` error will be emitted.
+     if found to be invalid, the `EPP_INVALID_EXTENSION` error will be emitted.
+
+     **Note:** the RST v2.0 service natively supports the [Login
+     Security extension (RFC
+     8807)](https://www.rfc-editor.org/rfc/rfc8807.html). If your EPP server
+     implements this extension, you **MUST NOT** include it in this input
+     parameter.
    Type: input
    Required: false
    Schema:
      Type: string
    Example: |
      <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
-       <!-- additional element(s) here -->
+       <login xmlns="our:epp:extension">
+         <!-- extension element(s) go here
+       </login>
+       <!-- any additional element(s) here -->
      </extension>
