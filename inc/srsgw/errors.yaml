@@ -195,9 +195,9 @@ SRSGW_RDAP_RESPONSES_DIFFER:
 SRSGW_EPP_INVALID_EXTENSION:
   Severity: ERROR
   Description: |
-    The XML instance provided in the `srsgw.domainCreateExtension`,
-    `srsgw.domainDeleteExtension`, `srsgw.domainRenewExtension`,
-    `srsgw.domainTransferRequestExtension` or
+    The XML instance provided in the `srsgw.loginExtension`,
+    `srsgw.domainCreateExtension`, `srsgw.domainDeleteExtension`,
+    `srsgw.domainRenewExtension`, `srsgw.domainTransferRequestExtension` or
     `srsgw.domainTransferApproveExtension` input parameters was invalid. This
     may be because (a) it was not a well-formed XML instance, (b) specified an
     extension that was not registered in the EPP Extension Registry or (c)
