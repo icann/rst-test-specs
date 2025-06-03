@@ -103,6 +103,38 @@ srsgw.rdapBaseURLs:
           type: string
           format: url
 
+srsgw.loginExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully log in to the EPP server.
+
+    The XML namespace URI(s) of the child elements(s) of the `<extension>`
+    element **MUST** appear in `<extURI>` elements in the `<greeting>`, and the
+    extension(s) **MUST** be registered in the [EPP Extension
+    Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
+
+    If no extensions are required, this input parameter **MUST** be omitted. If
+    provided, its content will not be validated until the test run occurs, and
+    if found to be invalid, the `SRSGW_EPP_INVALID_EXTENSION` error will be
+    emitted.
+
+    **Note:** the RST v2.0 service natively supports the [Login
+    Security extension (RFC
+    8807)](https://www.rfc-editor.org/rfc/rfc8807.html). If your EPP server
+    implements this extension, you **MUST NOT** include it in this input
+    parameter.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <login xmlns="our:epp:extension">
+        <!-- extension element(s) go here
+      </login>
+      <!-- any additional element(s) here -->
+    </extension>
+
 srsgw.domainCreateExtension:
   Description: |
     If a domain `<create>` command submitted through the SRS Gateway requires
