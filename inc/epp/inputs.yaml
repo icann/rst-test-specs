@@ -318,7 +318,7 @@ epp.requiredContactElements:
         - fax
         - fax:ext
 
-epp.LoginExtension:
+epp.loginExtension:
    Description: |
      An EPP `<extension>` element containing the extension elements(s) which are
      required to succesfully log in to the EPP server.
