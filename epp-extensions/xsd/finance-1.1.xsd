@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="urn:ietf:params:xml:ns:finance-1.1"
+xmlns:finance="urn:ietf:params:xml:ns:finance-1.1"
+xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+elementFormDefault="qualified">
+<annotation>
+<documentation>
+Extensible Provisioning Protocol v1.0
+Mapping for account's wallet balance and thresholds.
+</documentation>
+</annotation>
+<!-- Child elements found in EPP commands. -->
+<element name="info"/>
+
+<!-- Child response elements. -->
+<element name="infData" type="finance:infRespType"/>
+<complexType name="infRespType">
+<sequence>
+<element name="wallet" type="finance:walletRespType" minOccurs="0"
+maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+<complexType name="walletRespType">
+<sequence>
+<element name="balance" type="decimal" minOccurs="1" maxOccurs="1"/>
+<element name="threshold" type="finance:thresholdType" minOccurs="0"
+maxOccurs="unbounded"/>
+</sequence>
+<attribute name="code" type="token" use="required"/>
+</complexType>
+<complexType name="thresholdType">
+<simpleContent>
+<extension base="decimal">
+<attribute name="type" type="token" use="required"/>
+</extension>
+</simpleContent>
+</complexType>
+</schema>
