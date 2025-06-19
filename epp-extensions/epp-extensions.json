@@ -112,7 +112,7 @@
         "name": "ENUM Validation Information Mapping for the Extensible Provisioning Protocol",
         "ref": "https://www.rfc-editor.org/rfc/rfc5076.html",
         "uri": "urn:ietf:params:xml:ns:e164valex-1.1",
-        "xsd": "https://www.iana.org/assignments/xml-registry/schema/e164valex-1.0.xsd"
+        "xsd": "https://www.iana.org/assignments/xml-registry/schema/e164valex-1.1.xsd"
       },
       {
         "name": "Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)",
@@ -214,13 +214,13 @@
         "name": "Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)",
         "ref": "https://www.rfc-editor.org/rfc/rfc8334.html",
         "uri": "urn:ietf:params:xml:ns:launch-1.0",
-        "xsd": "https://www.iana.org/assignments/xml-registry/schema/epp/launch-1.0.xsd"
+        "xsd": "https://www.iana.org/assignments/xml-registry/schema/launch-1.0.xsd"
       },
       {
         "name": "Allocation Token Extension for the Extensible Provisioning Protocol (EPP)",
         "ref": "https://www.rfc-editor.org/rfc/rfc8495.html",
         "uri": "urn:ietf:params:xml:ns:allocationToken-1.0",
-        "xsd": "https://www.iana.org/assignments/xml-registry/schema/epp/allocationToken-1.0.xsd"
+        "xsd": "https://www.iana.org/assignments/xml-registry/schema/allocationToken-1.0.xsd"
       },
       {
         "name": "Organization Extension for the Extensible Provisioning Protocol (EPP)",
@@ -232,7 +232,7 @@
         "name": "Change Poll Extension for the Extensible Provisioning Protocol (EPP)",
         "ref": "https://www.rfc-editor.org/rfc/rfc8590.html",
         "uri": "urn:ietf:params:xml:ns:changePoll-1.0",
-        "xsd": "https://www.iana.org/assignments/xml-registry/schema/epp/changePoll-1.0.xsd"
+        "xsd": "https://www.iana.org/assignments/xml-registry/schema/changePoll-1.0.xsd"
       },
       {
         "name": "Registry Fee Extension for the Extensible Provisioning Protocol (EPP)",
