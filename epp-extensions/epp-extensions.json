@@ -268,31 +268,31 @@
         "name": "Related Domain Extension for the Extensible Provisioning Protocol (EPP)",
         "ref": "http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_related-domain_v00.html",
         "uri": "http://www.verisign.com/epp/relatedDomain-1.0",
-        "xsd": null
+        "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/relatedDomain-1.0.xsd"
       },
       {
         "name": "Extensible Provisioning Protocol Mapping: Personal Registration",
         "ref": "http://www.verisign.com/assets/personal-registration-extension.pdf",
         "uri": "http://www.nic.name/epp/persReg-1.0",
-        "xsd": null
+        "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/persReg-1.0.xsd"
       },
       {
         "name": "Whois Info Extension for the Extensible Provisioning Protocol (EPP)",
         "ref": "http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_whois-info_v00.html",
         "uri": "http://www.verisign.com/epp/whoisInf-1.0",
-        "xsd": null
+        "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/whoisInf-1.0.xsd"
       },
       {
         "name": "Extensible Provisioning Protocol Extension Mapping: Jobs Contact",
         "ref": "http://www.verisign.com/assets/epp-jobscontact-extension.pdf",
-        "uri": "http://www.verisign.com/epp/dotJobs-1.0",
-        "xsd": null
+        "uri": "http://www.verisign.com/epp/jobsContact-1.0",
+        "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/jobsContact-1.0.xsd"
       },
       {
         "name": "Low Balance Mapping for the Extensible Provisioning Protocol (EPP)",
         "ref": "http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_low-balance_v00.html",
         "uri": "http://www.verisign.com/epp/lowbalance-poll-1.0",
-        "xsd": null
+        "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/lowbalance-poll-1.0.xsd"
       }
     ]
   }
