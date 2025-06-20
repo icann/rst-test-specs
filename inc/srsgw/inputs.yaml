@@ -1,5 +1,5 @@
 srsgw.eppHostName:
-  Description: the fully-qualified domain name of the SRS Gateway EPP server.
+  Description: The fully-qualified domain name of the SRS Gateway EPP server.
   Required: true
   Type: input
   Example: epp.rsp.tech
@@ -8,7 +8,10 @@ srsgw.eppHostName:
     format: hostname
 
 srsgw.eppClid01:
-  Description: the username used to log in to the SRS Gateway EPP server.
+  Description: |
+    The username used to log in to the SRS Gateway EPP server. This username
+    must correspond to the same entity as that of the `epp.clid01` input
+    parameter.
   Required: true
   Type: input
   Example: clid-01
@@ -17,7 +20,10 @@ srsgw.eppClid01:
     minLength: 3
 
 srsgw.eppPwd01:
-  Description: the password used to log in to the SRS Gateway EPP server.
+  Description: |
+    The username used to log in to the SRS Gateway EPP server. This username
+    must correspond to the same entity as that of the `epp.clid02` input
+    parameter.
   Required: true
   Type: input
   Example: foo2bar
@@ -53,7 +59,7 @@ srsgw.serverIssuedClientCertificate02:
   Example: cert.pem
 
 srsgw.eppClid02:
-  Description: the username used for transfer tests.
+  Description: The username used for transfer tests.
   Required: true
   Type: input
   Example: clid-02
@@ -61,7 +67,7 @@ srsgw.eppClid02:
     type: string
 
 srsgw.eppPwd02:
-  Description: the password used for transfer tests.
+  Description: The password used for transfer tests.
   Required: true
   Type: input
   Example: foo3bar
