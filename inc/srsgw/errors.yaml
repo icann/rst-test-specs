@@ -43,12 +43,6 @@ SRSGW_DOMAIN_DELETE_FAILED:
   Description: |
     The domain `<delete>` command at the SRS Gateway EPP server failed.
 
-SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE:
-  Severity: ERROR
-  Description: |
-    Following a successful domain `<delete>` command, the domain did not have
-    the `pendingDeleteRestorable` RGP status at the primary EPP server.
-
 SRSGW_DOMAIN_RENEW_FAILED:
   Severity: CRITICAL
   Description: |
