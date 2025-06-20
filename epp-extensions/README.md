@@ -1,11 +1,14 @@
 # EPP Extension List
 
-This file contains metadata about EPP extensions that is needed for the RST v2.0
-service. For more information, please see the "description" in
+This directory contains metadata about EPP extensions that is needed for the RST
+v2.0 service. For more information, please see the "description" in
 [epp-extensions.yaml](epp-extensions.yaml). Due to technical limitations, this
 list has to be manually maintained.
 
 ## Maintenance
+
+The [YAML file](epp-extensions.yaml) is the source, the [JSON
+file](epp-extensions.json) is a compiled artifact. Only ever edit the YAML file.
 
 When changes are made to the YAML file, run `make` in this directory to generate
 the JSON version. The `last-updated` **MUST** be updated during updates,
