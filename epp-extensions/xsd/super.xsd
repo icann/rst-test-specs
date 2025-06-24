@@ -50,7 +50,7 @@
   <import namespace="http://www.verisign.com/epp/registry-1.0" schemaLocation="registry-1.0.xsd"/>
   <import namespace="http://www.verisign.com/epp/relatedDomain-1.0" schemaLocation="relatedDomain-1.0.xsd"/>
   <import namespace="urn:dkhm:params:xml:ns:dkhm-4.4" schemaLocation="dkhm-4.4.xsd"/>
-  <import namespace="http://www.nic.at/xsd/at-ext-verificationReport-1.0" schemaLocation="at-ext-verification-1.0.xsd"/>
+  <import namespace="http://www.nic.at/xsd/at-ext-verification-1.0" schemaLocation="at-ext-verification-1.0.xsd"/>
   <import namespace="http://www.unitedtld.com/epp/charge-1.0" schemaLocation="charge-1.0.xsd"/>
   <import namespace="urn:ietf:params:xml:ns:finance-1.1" schemaLocation="finance-1.1.xsd"/>
   <import namespace="urn:ietf:params:xml:ns:idn-1.0" schemaLocation="idn-1.0.xsd"/>
