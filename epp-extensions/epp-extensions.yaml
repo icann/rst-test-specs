@@ -45,7 +45,7 @@ uris:
     - name: Extensible Provisioning Protocol (EPP) Organization Mapping
       ref:  https://www.rfc-editor.org/rfc/rfc8543.html
       uri:  urn:ietf:params:xml:ns:epp:org-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/org-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/org-1.0.xsd
 
     - name: Finance Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://files.identity.digital/epp-extensions/EPP-Finance-Mapping.pdf
@@ -55,12 +55,12 @@ uris:
     - name: Registry Maintenance Notification for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc9167.html
       uri:  urn:ietf:params:xml:ns:epp:maintenance-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/maintenance-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/maintenance-1.0.xsd
 
     - name: Key Relay Mapping for the Extensible Provisioning Protocol
       ref:  https://www.rfc-editor.org/rfc/rfc8063.html
       uri:  urn:ietf:params:xml:ns:keyrelay-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/keyrelay-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdkeyrelay-1.0.xsd
 
     - name: Registry Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_registry_v00.html
@@ -101,22 +101,22 @@ uris:
     - name: Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc3915.html
       uri:  urn:ietf:params:xml:ns:rgp-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/rgp-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdrgp-1.0.xsd
 
     - name: E.164 Number Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc4114.html
       uri:  urn:ietf:params:xml:ns:e164epp-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/e164epp-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsde164epp-1.0.xsd
 
     - name: ENUM Validation Information Mapping for the Extensible Provisioning Protocol
       ref:  https://www.rfc-editor.org/rfc/rfc5076.html
       uri:  urn:ietf:params:xml:ns:e164valex-1.1
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/e164valex-1.1.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsde164valex-1.1.xsd
 
     - name: Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc5910.html
       uri:  urn:ietf:params:xml:ns:secDNS-1.1
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/secDNS-1.1.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdsecDNS-1.1.xsd
 
     - name: Common Object Attribute (COA) Extension for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_coa_v00.html
@@ -151,22 +151,22 @@ uris:
     - name: Swedish Internet Foundation EPP Extensions
       ref:  https://support.registry.se/en-US/downloads/files/epp-protocol-description-for-se-and-nu
       uri:  urn:se:iis:xml:epp:iis-1.2
-      xsd:  https://raw.githubusercontent.com/dotse/epp-client/refs/heads/main/pkg/validation/xsd/iis-1.2.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/iis-1.2.xsd
 
     - name: Swedish Internet Foundation Registry Lock Extension
       ref:  https://support.registry.se/en-US/downloads/files/epp-protocol-description-for-se-and-nu
       uri:  urn:se:iis:xml:epp:registryLock-1.0
-      xsd:  https://github.com/dotse/epp-client/raw/refs/heads/main/pkg/validation/xsd/registryLock-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/registryLock-1.0.xsd
 
     - name: Additional Email Address Extension for the Extensible Provisioning Protocol (EPP)
       ref:  RFC-ietf-regext-epp-eai-27
       uri:  urn:ietf:params:xml:ns:epp:addlEmail-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/addlEmail-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/addlEmail-1.0.xsd
 
     - name: Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values
       ref:  https://www.rfc-editor.org/rfc/rfc9803.html
       uri:  urn:ietf:params:xml:ns:epp:ttl-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/ttl-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/ttl-1.0.xsd
 
     - name: Domain Charge Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://files.identity.digital/epp-extensions/EPP-Charge-Extension.pdf
@@ -176,7 +176,7 @@ uris:
     - name: .at EPP Verification Extension
       ref:  https://github.com/nic-at/epp-verification-extension
       uri:  http://www.nic.at/xsd/at-ext-verificationReport-1.0
-      xsd:  https://raw.githubusercontent.com/nic-at/epp-verification-extension/refs/heads/main/at-ext-verification-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/at-ext-verification-1.0.xsd
 
     - name: Verification Code Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://datatracker.ietf.org/doc/html/draft-ietf-regext-verificationcode-06
@@ -191,37 +191,37 @@ uris:
     - name: DK Hostmaster local data extensions
       ref:  https://github.com/DK-Hostmaster/epp-service-specification
       uri:  urn:dkhm:xml:ns:dkhm-4.4
-      xsd:  https://raw.githubusercontent.com/Punktum-dk/epp-xsd-files/refs/heads/master/dkhm-4.4.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/dkhm-4.4.xsd
 
     - name: Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8334.html
       uri:  urn:ietf:params:xml:ns:launch-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/launch-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdlaunch-1.0.xsd
 
     - name: Allocation Token Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8495.html
       uri:  urn:ietf:params:xml:ns:allocationToken-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/allocationToken-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdallocationToken-1.0.xsd
 
     - name: Organization Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8544.html
       uri:  urn:ietf:params:xml:ns:epp:orgext-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/orgext-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/orgext-1.0.xsd
 
     - name: Change Poll Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8590.html
       uri:  urn:ietf:params:xml:ns:changePoll-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/changePoll-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdchangePoll-1.0.xsd
 
     - name: Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8748.html
       uri:  urn:ietf:params:xml:ns:epp:fee-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/fee-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/fee-1.0.xsd
 
     - name: Login Security Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8807.html
       uri:  urn:ietf:params:xml:ns:epp:loginSec-1.0
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/loginSec-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/loginSec-1.0.xsd
 
     - name: Extensible Provisioning Protocol (EPP) Unhandled Namespaces
       ref:  https://www.rfc-editor.org/rfc/rfc9038.html
@@ -231,7 +231,7 @@ uris:
     - name: Domain Name Mapping Extension for Strict Bundling Registration
       ref:  https://www.rfc-editor.org/rfc/rfc9095.html
       uri:  urn:ietf:params:xml:ns:epp:b-dn
-      xsd:  https://www.iana.org/assignments/xml-registry/schema/epp/b-dn.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/b-dn.xsd
 
     - name: Premium Domain Extension for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_premium-domain_v00.html
