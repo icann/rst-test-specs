@@ -7,13 +7,14 @@ list has to be manually maintained.
 
 ## Maintenance
 
-The [YAML file](epp-extensions.yaml) is the source, the [JSON
-file](epp-extensions.json) is a compiled artifact. Only ever edit the YAML file.
+The [YAML file](epp-extensions.yaml) is converted to JSON by the [`build-pages`
+workflow](../.github/workflows/build-pages.yaml). The [JSON
+version](https://icann.github.io/rst-test-specs/epp-extensions/epp-extensions.json)
+is what is provided for use by consumers.
 
-When changes are made to the YAML file, run `make` in this directory to generate
-the JSON version. The `last-updated` **MUST** be updated during updates,
-otherwise the `monitor-extension-registry` workflow (see below) will generate
-false positives.
+When changes are made to the YAML file, the `last-updated` property **MUST** be
+updated, otherwise the `monitor-extension-registry` workflow (see below) will
+generate false positives.
 
 ## Monitoring workflow
 

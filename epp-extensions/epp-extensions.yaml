@@ -16,22 +16,22 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2025-06-19
-
-support-contact: globalsupport@icann.org
+last-updated: 2025-06-24
 
 links:
-  - rel:   canonical
-    type:  application/yaml
-    title: Canonical URL for this resource
-    href:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/epp-extensions.yaml
+  - rel:   help
+    href:  mailto:globalsupport@icann.org
 
-  - rel:   alternate
+  - rel:   original
     type:  application/json
-    title: JSON representation
-    href:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/epp-extensions.json
+    href:  https://github.com/icann/rst-test-specs/blob/main/epp-extensions/epp-extensions.yaml
 
-  - rel:   related
+  - rel:   canonical
+    type:  application/json
+    title: Canonical representation
+    href:  https://icann.github.io/rst-test-specs/epp-extensions/epp-extensions.json
+
+  - rel:   describes
     href:  https://www.iana.org/assignments/epp-extensions/
     title: Extensions for the Extensible Provisioning Protocol (EPP)
 
@@ -218,3 +218,5 @@ uris:
     - name: Low Balance Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_low-balance_v00.html
       uri:  http://www.verisign.com/epp/lowbalance-poll-1.0
+
+# END
