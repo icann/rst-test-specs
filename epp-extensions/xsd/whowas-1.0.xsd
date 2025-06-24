@@ -14,7 +14,7 @@ Extensible Provisioning Protocol v1.0 WhoWas schema
 </annotation>
 <element name="info" type="whowas:infoType"/>
 <element name="infData" type="whowas:infDataType"/>
-<!-Child elements of the <info> command.
+<!--Child elements of the <info> command.
 -->
 <complexType name="infoType">
 <sequence>
@@ -25,7 +25,7 @@ Extensible Provisioning Protocol v1.0 WhoWas schema
 </choice>
 </sequence>
 </complexType>
-<!-Child elements of the <infData> command.
+<!--Child elements of the <infData> command.
 -->
 <complexType name="infDataType">
 <sequence>
@@ -39,13 +39,7 @@ Extensible Provisioning Protocol v1.0 WhoWas schema
 </complexType>
 <complexType name="historyType">
 <sequence>
-
-VeriSign Inc. Proprietary Information
-EPP WhoWas Mapping
-
-• page 8
-
-<element name="rec" type="whowas:recType"
+<element name="rec" type="whowas:recType"
 maxOccurs="unbounded"/>
 </sequence>
 </complexType>
@@ -63,6 +57,6 @@ minOccurs="0"
 <element name="clName" type="eppcom:labelType" />
 </sequence>
 </complexType>
-<!-End of schema.
+<!--End of schema.
 -->
 </schema>
