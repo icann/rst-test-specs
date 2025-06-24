@@ -189,7 +189,7 @@
       {
         "name": ".at EPP Verification Extension",
         "ref": "https://github.com/nic-at/epp-verification-extension",
-        "uri": "http://www.nic.at/xsd/at-ext-verificationReport-1.0",
+        "uri": "http://www.nic.at/xsd/at-ext-verification-1.0",
         "xsd": "https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/at-ext-verification-1.0.xsd"
       },
       {
