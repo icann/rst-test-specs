@@ -190,7 +190,7 @@ uris:
 
     - name: DK Hostmaster local data extensions
       ref:  https://github.com/DK-Hostmaster/epp-service-specification
-      uri:  urn:dkhm:xml:ns:dkhm-4.4
+      uri:  urn:dkhm:params:xml:ns:dkhm-4.4
       xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/dkhm-4.4.xsd
 
     - name: Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)
