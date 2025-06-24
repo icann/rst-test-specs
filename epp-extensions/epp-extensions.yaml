@@ -60,7 +60,7 @@ uris:
     - name: Key Relay Mapping for the Extensible Provisioning Protocol
       ref:  https://www.rfc-editor.org/rfc/rfc8063.html
       uri:  urn:ietf:params:xml:ns:keyrelay-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdkeyrelay-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/keyrelay-1.0.xsd
 
     - name: Registry Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_registry_v00.html
@@ -101,22 +101,22 @@ uris:
     - name: Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc3915.html
       uri:  urn:ietf:params:xml:ns:rgp-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdrgp-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/rgp-1.0.xsd
 
     - name: E.164 Number Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc4114.html
       uri:  urn:ietf:params:xml:ns:e164epp-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsde164epp-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/e164epp-1.0.xsd
 
     - name: ENUM Validation Information Mapping for the Extensible Provisioning Protocol
       ref:  https://www.rfc-editor.org/rfc/rfc5076.html
       uri:  urn:ietf:params:xml:ns:e164valex-1.1
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsde164valex-1.1.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/e164valex-1.1.xsd
 
     - name: Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc5910.html
       uri:  urn:ietf:params:xml:ns:secDNS-1.1
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdsecDNS-1.1.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/secDNS-1.1.xsd
 
     - name: Common Object Attribute (COA) Extension for the Extensible Provisioning Protocol (EPP)
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_coa_v00.html
@@ -196,12 +196,12 @@ uris:
     - name: Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8334.html
       uri:  urn:ietf:params:xml:ns:launch-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdlaunch-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/launch-1.0.xsd
 
     - name: Allocation Token Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8495.html
       uri:  urn:ietf:params:xml:ns:allocationToken-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdallocationToken-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/allocationToken-1.0.xsd
 
     - name: Organization Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8544.html
@@ -211,7 +211,7 @@ uris:
     - name: Change Poll Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8590.html
       uri:  urn:ietf:params:xml:ns:changePoll-1.0
-      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsdchangePoll-1.0.xsd
+      xsd:  https://raw.githubusercontent.com/icann/rst-test-specs/refs/heads/main/epp-extensions/xsd/changePoll-1.0.xsd
 
     - name: Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc8748.html
