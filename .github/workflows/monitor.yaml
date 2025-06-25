@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: install tools
-        run: apk -q add xq curl jq nodejs
+        run: apk -q add xq curl yq nodejs
 
       - name: retrieve registry
         run: curl --silent --fail --remote-name https://www.iana.org/assignments/epp-extensions/epp-extensions.xml
@@ -25,7 +25,7 @@ jobs:
         id: get_last_updated
         run: |
           date +registry_last_updated=%s -d $(xq -x /registry/updated epp-extensions.xml) >> $GITHUB_OUTPUT
-          date +extension_list_last_updated=%s -d $(jq -r ".[\"last-updated\"]" < epp-extensions/epp-extensions.json) >> $GITHUB_OUTPUT
+          date +extension_list_last_updated=%s -d $(yq -r ".[\"last-updated\"]" < epp-extensions/epp-extensions.yaml) >> $GITHUB_OUTPUT
 
       - name: create issue
         if: ${{ steps.get_last_updated.outputs.registry_last_updated > steps.get_last_updated.outputs.extension_list_last_updated }}
