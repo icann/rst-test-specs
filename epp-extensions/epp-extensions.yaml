@@ -42,6 +42,18 @@ links:
 uris:
 
   objects:
+    - name: Extensible Provisioning Protocol (EPP) Domain Name Mapping
+      ref:  https://www.rfc-editor.org/rfc/rfc5731.html
+      uri:  urn:ietf:params:xml:ns:domain-1.0
+
+    - name: Extensible Provisioning Protocol (EPP) Host Mapping
+      ref:  https://www.rfc-editor.org/rfc/rfc5732.html
+      uri:  urn:ietf:params:xml:ns:host-1.0
+
+    - name: Extensible Provisioning Protocol (EPP) Contact Mapping
+      ref:  https://www.rfc-editor.org/rfc/rfc5733.html
+      uri:  urn:ietf:params:xml:ns:contact-1.0
+
     - name: Extensible Provisioning Protocol (EPP) Organization Mapping
       ref:  https://www.rfc-editor.org/rfc/rfc8543.html
       uri:  urn:ietf:params:xml:ns:epp:org-1.0
