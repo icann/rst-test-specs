@@ -375,7 +375,7 @@ MinimumRPMs:
 
 StandardIntegrationTest:
   Order: 10
-  Name: Integration Test
+  Name: Registry Services Integration
   Description: |
     This test suite verifies that the critical registry services of a TLD are
     properly integrated and functioning within the requirements of the Service

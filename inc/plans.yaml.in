@@ -5,7 +5,7 @@
 #define TP_PASSFAIL As with all other [test plans](#test-plans), for this test to pass, **all** the listed test cases **MUST** pass: if **any** fail, then the test as a whole will fail.
 
 StandardPreDelegationTest:
-  Order: 1
+  Order: 100
   Name: Pre-Delegation Test
   OTE-Only: false
   Description: |
@@ -32,8 +32,25 @@ StandardPreDelegationTest:
     - StandardRDE
     - StandardIntegrationTest
 
+PreDelegationTestWithSRSGateway:
+  Name: Pre-Delegation Test with SRS Gateway
+  Order: 110
+  OTE-Only: false
+  Description: |
+    This test plan is identical to the Pre-Delegation Test plan, but adds the
+    SRS Gateway test suite, for TLDs which intend to launch with an SRS Gateway.
+  Test-Suites:
+    - StandardDNS
+    - StandardDNSSEC
+    - StandardEPP
+    - StandardRDAP
+    - StandardIDN
+    - StandardRDE
+    - StandardIntegrationTest
+    - StandardSRSGateway
+
 StandardRSPChangeTest:
-  Order: 2
+  Order: 120
   Name: RSP Change Test
   OTE-Only: false
   Description: |
@@ -61,7 +78,7 @@ StandardRSPChangeTest:
     - StandardIntegrationTest
 
 DNSRSPChangeTest:
-  Order: 3
+  Order: 130
   Name: DNS RSP Change Test
   OTE-Only: false
   Description: |
@@ -107,7 +124,7 @@ StandardIDNTest:
     - StandardIDN
 
 RSPEvaluationIDNTest:
-  Order: 5
+  Order: 150
   Name: IDN Test (RSP Evaluation)
   OTE-Only: false
   Description: |
@@ -129,7 +146,7 @@ RSPEvaluationIDNTest:
     - StandardIDN
 
 SRSGatewayTest:
-  Order: 6
+  Order: 160
   Name: SRS Gateway Test
   OTE-Only: false
   Description: |
@@ -157,7 +174,7 @@ SRSGatewayTest:
     - SRSGatewayIntegrationTest
 
 MainRSPEvaluationTest:
-  Order: 7
+  Order: 170
   Name: Main RSP Evaluation Test
   OTE-Only: false
   Description: |
@@ -187,7 +204,7 @@ MainRSPEvaluationTest:
     - StandardRDE
 
 DNSRSPEvaluationTest:
-  Order: 8
+  Order: 180
   Name: DNS RSP Evaluation Test
   OTE-Only: false
   Description: |
@@ -212,7 +229,7 @@ DNSRSPEvaluationTest:
     - StandardDNS
 
 DNSSECRSPEvaluationTest:
-  Order: 9
+  Order: 190
   Name: DNSSEC RSP Evaluation Test
   OTE-Only: false
   Description: |
@@ -236,7 +253,7 @@ DNSSECRSPEvaluationTest:
     - DNSSECOperations
 
 SRSGatewayRSPTest:
-  Order: 10
+  Order: 200
   Name: SRS Gateway RSP Evaluation Test
   OTE-Only: false
   Description: |
@@ -269,78 +286,8 @@ SRSGatewayRSPTest:
   Test-Suites:
     - StandardSRSGateway
 
-StandardDNSOnly:
-  Order: 11
-  OTE-Only: true
-  Name: StandardDNS
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardDNS` suite.
-  Test-Suites:
-    - StandardDNS
-
-StandardDNSSECOnly:
-  Order: 12
-  OTE-Only: true
-  Name: StandardDNSSEC
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardDNSSEC` suite.
-  Test-Suites:
-    - StandardDNSSEC
-
-StandardRDAPOnly:
-  Order: 13
-  OTE-Only: true
-  Name: StandardRDAP
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardRDAP` suite.
-  Test-Suites:
-    - StandardRDAP
-
-StandardEPPOnly:
-  Order: 14
-  OTE-Only: true
-  Name: StandardEPP
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardEPP` suite.
-  Test-Suites:
-    - StandardEPP
-
-StandardRDEOnly:
-  Order: 15
-  OTE-Only: true
-  Name: StandardRDE
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardRDE` suite.
-  Test-Suites:
-    - StandardRDE
-
-StandardSRSGatewayOnly:
-  Order: 16
-  OTE-Only: true
-  Name: StandardSRSGateway
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `StandardSRSGateway` suite.
-  Test-Suites:
-    - StandardSRSGateway
-
-MinimumRPMsOnly:
-  Order: 17
-  OTE-Only: true
-  Name: MinimumRPMs
-  Description: |
-    This test plan allows an RSP to request testing of a single test suite,
-    specifically the `MinimumRPMs` suite.
-  Test-Suites:
-    - MinimumRPMs
-
 AdditionalDNSTransportsTest:
-  Order: 18
+  Order: 210
   Name: Additional DNS Transports Test
   Description: |
     Registry Operators may optionally provide authoritative DNS services over
@@ -355,19 +302,92 @@ AdditionalDNSTransportsTest:
   Test-Suites:
     - AdditionalDNSTransports
 
-PreDelegationTestWithSRSGateway:
-  Name: Pre-Delegation Test with SRS Gateway
-  Order: 19
-  OTE-Only: false
+StandardDNSOnly:
+  Order: 220
+  OTE-Only: true
+  Name: DNS (OT&E Only)
   Description: |
-    This test plan is identical to the Pre-Delegation Test plan, but adds the
-    SRS Gateway test suite, for TLDs which intend to launch with an SRS Gateway.
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardDNS` suite.
   Test-Suites:
     - StandardDNS
+
+StandardDNSSECOnly:
+  Order: 230
+  OTE-Only: true
+  Name: DNSSEC (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardDNSSEC` suite.
+  Test-Suites:
     - StandardDNSSEC
-    - StandardEPP
+
+StandardRDAPOnly:
+  Order: 240
+  OTE-Only: true
+  Name: RDAP (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardRDAP` suite.
+  Test-Suites:
     - StandardRDAP
-    - StandardIDN
+
+StandardEPPOnly:
+  Order: 250
+  OTE-Only: true
+  Name: EPP (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardEPP` suite.
+  Test-Suites:
+    - StandardEPP
+
+StandardRDEOnly:
+  Order: 260
+  OTE-Only: true
+  Name: RDE (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardRDE` suite.
+  Test-Suites:
     - StandardRDE
-    - StandardIntegrationTest
+
+StandardSRSGatewayOnly:
+  Order: 270
+  OTE-Only: true
+  Name: SRS Gateway (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardSRSGateway` suite.
+  Test-Suites:
     - StandardSRSGateway
+
+MinimumRPMsOnly:
+  Order: 280
+  OTE-Only: true
+  Name: Minimum RPMs (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `MinimumRPMs` suite.
+  Test-Suites:
+    - MinimumRPMs
+
+DNSSECOperationsOnly:
+  Order: 290
+  OTE-Only: true
+  Name: DNSSEC Operations (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `DNSSECOperations` suite.
+  Test-Suites:
+    - DNSSECOperations
+
+StandardIntegrationTestOnly:
+  Order: 300
+  Name: Integration Test (OT&E Only)
+  Description: |
+    This test plan allows an RSP to request testing of a single test suite,
+    specifically the `StandardIntegrationTest ` suite.
+  Test-Suites:
+    - StandardIntegrationTest
+  OTE-Only: true
