@@ -1140,3 +1140,12 @@ EPP_DOMAIN_TRANSFER_REQUEST_FAILED:
   Description: |
     A `<transfer op="request">` command that should have been successful, did
     not result in a `1000` or `1001` response code.
+
+EPP_INVALID_IDN_EXTENSION:
+  Severity: ERROR
+  Description: |
+    One or more of the extension element(s) provided in the
+    `idn.domainCreateExtension` input parameter was invalid. This may be because
+    (a) it was not a well-formed XML instance, (b) specified an extension that
+    was not registered in the EPP Extension Registry or (c) could not be
+    validated against the XML schema(s) for that extension.
