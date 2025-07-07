@@ -299,6 +299,7 @@ StandardSRSGateway:
     - srsgw.registryDataModel
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
+    - srsgw.loginExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
