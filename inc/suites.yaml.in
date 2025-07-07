@@ -170,6 +170,7 @@ StandardEPP:
     - epp.requiredContactTypes
     - epp.supportedContactElements
     - epp.requiredContactElements
+    - epp.loginExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -240,6 +241,7 @@ StandardIDN:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.loginExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -280,6 +282,7 @@ StandardSRSGateway:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
+    - epp.loginExtension
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
@@ -368,6 +371,7 @@ MinimumRPMs:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
+    - epp.loginExtension
     - general.registryDataModel
     - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModel
@@ -407,6 +411,7 @@ StandardIntegrationTest:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.loginExtension
 
 AdditionalDNSTransports:
   Order: 11
