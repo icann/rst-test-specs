@@ -1,3 +1,52 @@
+2025-07-09:
+  - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.04):"
+
+  - |
+    The schema of the [dnssecOps.primaryServers](#Input-Parameter-dnssecOps.primaryServers)
+    input parameter has been relaxed to not require at least one IP address of
+    each type: one address of either type is accepted (see
+    [#47](https://github.com/icann/rst-test-specs/issues/47)).
+
+  - |
+    The following new input parameters have been added:
+
+      * [`epp.loginExtension`](#Input-Parameter-epp.loginExtension)
+        (see [#42](https://github.com/icann/rst-test-specs/issues/42))
+      * [`idn.domainCreateExtension`](#Input-Parameter-idn.domainCreateExtension)
+        (see [#39](https://github.com/icann/rst-test-specs/issues/39))
+      * [`srsgw.loginExtension`](#Input-Parameter-srsgw.loginExtension)
+        (see [#43](https://github.com/icann/rst-test-specs/issues/43))
+
+  - |
+    The following new error codes have been added:
+
+      * [`EPP_INVALID_EXTENSION`](#Error-EPP_INVALID_EXTENSION)
+      * [`EPP_INVALID_IDN_EXTENSION`](#Error-EPP_INVALID_IDN_EXTENSION)
+
+  - |
+    Renamed the error codes in [minimumRPMs-03](#Test-Case-minimumRPMs-03) to
+    fix use the correct terminology (see
+    [#20](https://github.com/icann/rst-test-specs/issues/20)).
+
+  - |
+    Added the [`DNSSECOperationsOnly`](#Test-Plan-DNSSECOperationsOnly) and
+    [`StandardIntegrationTestOnly`](#Test-Plan-StandardIntegrationTestOnly)
+    test plans, to allow the [DNSSEC Operations](#Test-Suite-DNSSECOperations)
+    and [Integration](#Test-Suite-StandardIntegrationTest) test suites to be
+    tested separately in OT&E
+    (see [#5](https://github.com/icann/rst-test-specs/issues/5)).
+
+  - |
+    Added the [`rdap.clientACL`](#Resource-rdap.clientACL) resource
+    (see [#3](https://github.com/icann/rst-test-specs/issues/3)).
+
+  - |
+    Updated the [epp-14-data](#Data-Provider-epp-14-data) data provider, adding
+    a column to identify which value of the
+    [`epp.secDNSInterfaces`](#Input-Parameter-epp.secDNSInterfaces) input
+    parameter each row is applicable to (see
+    [#50](https://github.com/icann/rst-test-specs/issues/50)).
+
 2025-04-25:
   - "Stable release v2025.03:"
 
