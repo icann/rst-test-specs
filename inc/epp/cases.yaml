@@ -75,7 +75,16 @@ epp-02:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
          * `urn:ietf:params:xml:ns:launch-1.0`
          * `urn:ietf:params:xml:ns:rgp-1.0`
-    8. With the exception of the `<svDate>` element, all values in the
+    8. If a namespace URI in the `<objURI>` or `<extURI>` elements of the
+       `<greeting>` begins with `urn:ietf:`, then it **MUST** be present
+       in the [`ns`
+       subregistry](https://www.iana.org/assignments/xml-registry/xml-registry.xhtml#ns)
+       of the [IETF XML
+       Registry](https://www.iana.org/assignments/xml-registry/xml-registry.xhtml)
+       (see [RFC 3688](https://www.rfc-editor.org/rfc/rfc3688.html)), and a
+       corresponding entry **MUST** be present in the [`schema`
+       subregistry](https://www.iana.org/assignments/xml-registry/xml-registry.xhtml#schema).
+    9. With the exception of the `<svDate>` element, all values in the
        `<greeting>` **MUST** match those found in the `epp.greeting` input
        parameter.
 
