@@ -379,3 +379,27 @@ RDE_UNEXPECTED_OBJECT:
   Description: |
     The deposit contained an object with a namespace URI that was not listed in
     the `<rdeMenu>` or `<header>` elements of the deposit.
+
+RDE_DOMAIN_HAS_INVALID_CRRR:
+  Severity: ERROR
+  Description: |
+    One or more contact objects have a `<crRr>` element containing a registrar
+    ID that is not present in the deposit.
+
+RDE_DOMAIN_HAS_INVALID_UPRR:
+  Severity: ERROR
+  Description: |
+    One or more contact objects have a `<upRr>` element containing a registrar
+    ID that is not present in the deposit.
+
+RDE_DOMAIN_HAS_INVALID_RERR:
+  Severity: ERROR
+  Description: |
+    One or more contact objects have a `<reRr>` element containing a registrar
+    ID that is not present in the deposit.
+
+RDE_DOMAIN_HAS_INVALID_ACRR:
+  Severity: ERROR
+  Description: |
+    One or more contact objects have a `<acRr>` element containing a registrar
+    ID that is not present in the deposit.
