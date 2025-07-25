@@ -375,8 +375,7 @@ epp-08:
 
     The client will connect using a set of alternate credentials and will
     submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** respond with a 2201 "authorization error"
-    response.
+    `epp-07`. The server **MUST** reject these commands.
   Dependencies:
     - epp-07
   Errors:
@@ -387,8 +386,8 @@ epp-08:
     - EPP_XML_PARSE_ERROR
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
-    - EPP_CONTACT_INFO_RESPONSE_NOT_2201
-    - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
+    - EPP_CONTACT_INFO_RESPONSE_NOT_REJECTED
+    - EPP_CONTACT_UPDATE_RESPONSE_NOT_REJECTED
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_INVALID_EXTENSION
 
