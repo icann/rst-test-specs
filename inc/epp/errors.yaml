@@ -309,12 +309,11 @@ EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
     The server did not response to a contact `<delete>` command with a `1xxx`
     result code.
 
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+EPP_CONTACT_INFO_RESPONSE_NOT_REJECTED:
   Severity: ERROR
   Description: |
-    The server did not response to a contact `<info>` command on a contact
-    object not under the sponsorship of the connected client with a `2201`
-    result code.
+    The server did not reject contact `<info>` command on a contact
+    object not under the sponsorship of the connected client.
 
 EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
   Severity: ERROR
@@ -407,12 +406,11 @@ EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
     response for the created object did not result in a response with the `1000`
     result code.
 
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+EPP_CONTACT_UPDATE_RESPONSE_NOT_REJECTED:
   Severity: ERROR
   Description: |
-    The server did not response to a contact `<update>` command on a contact
-    object not under the sponsorship of the connected client with a `2201`
-    result code.
+    The server did not reject a contact `<update>` command on a contact
+    object not under the sponsorship of the connected client.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
   Severity: ERROR
