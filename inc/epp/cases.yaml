@@ -635,15 +635,15 @@ epp-14:
     random syntactically valid ASCII domain names under each TLD in the TLD set.
 
     Depending on the value of the `general.registryDataModel` and
-    `epp.requiredContactTypes` input parameters, one or more contact objects
-    will be created (using pseudo-random contact information) beforehand and
-    used as the registrant (and other) contacts.
+    `epp.requiredContactTypes` input parameters, contact objects may be created
+    (using pseudo-random contact information) beforehand, to be used as the
+    registrant (and other) contacts.
 
-    If the `epp.hostModel` parameter is `objects`, then two host objects with
+    If the `epp.hostModel` parameter is `objects`, then host objects with
     syntactically valid pseudo-random names will be created and used as the
     nameservers (otherwise the names will be provided as attributes).
 
-    The client will `<create>` commands to test aspects of the server's
+    The client will use `<create>` commands to test aspects of the server's
     processing of those commands, for example:
 
     * to confirm that the server does not accept invalid values for object
