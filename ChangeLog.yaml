@@ -1,3 +1,22 @@
+2025-08-14:
+  - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.05):"
+
+  - |
+    [`DNSSEC_OPS_ZONE_IS_INVALID`](#Error-DNSSEC_OPS_ZONE_IS_INVALID) has been
+    downgraded from `CRITICAL` to `ERROR` severity (see
+    [#37](https://github.com/icann/rst-test-specs/issues/37)).
+
+  - |
+    The schema for the
+    [`epp.loginExtension`](#Input-Parameter-epp.loginExtension) input parameter
+    has been fixed (see
+    [#57](https://github.com/icann/rst-test-specs/issues/57)).
+
+  - |
+    The test specs now includes a configuration file for the [RDAP Conformance
+    Tool](https://github.com/icann/rdap-conformance-tool) (see
+    [#59](https://github.com/icann/rst-test-specs/issues/59)).
+
 2025-07-09:
   - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.04):"
 
