@@ -340,7 +340,7 @@ epp.loginExtension:
    Type: input
    Required: false
    Schema:
-     Type: string
+     type: string
    Example: |
      <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
        <login xmlns="our:epp:extension">
