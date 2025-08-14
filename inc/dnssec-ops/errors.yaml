@@ -48,7 +48,7 @@ DNSSEC_OPS_DNS_QUERY_FAILED_TOO_MANY_TIMES:
     There was an error performing a DNS query.
 
 DNSSEC_OPS_ZONE_IS_INVALID:
-  Severity: CRITICAL
+  Severity: ERROR
   Description: |
     The zone file returned by a zone transfer request was invalid. This may be
     because:
