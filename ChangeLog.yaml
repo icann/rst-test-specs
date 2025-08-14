@@ -17,6 +17,16 @@
     Tool](https://github.com/icann/rdap-conformance-tool) (see
     [#59](https://github.com/icann/rst-test-specs/issues/59)).
 
+  - |
+    The description of the [epp-13](#Test-Case-epp-13) test case has been
+    updated to clarify that internal host names will be used.
+
+  - |
+    The description of the [epp-14](#Test-Case-epp-14) test case has been
+    updated to clarify that contact objects will only be created if the
+    [`general.registryDataModel`] input parameter is `maximum` or
+    `per-registrar`.
+
 2025-07-09:
   - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.04):"
 
