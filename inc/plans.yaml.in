@@ -305,7 +305,7 @@ AdditionalDNSTransportsTest:
 StandardDNSOnly:
   Order: 220
   OTE-Only: true
-  Name: DNS (OT&E Only)
+  Name: DNS (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardDNS` suite.
@@ -315,7 +315,7 @@ StandardDNSOnly:
 StandardDNSSECOnly:
   Order: 230
   OTE-Only: true
-  Name: DNSSEC (OT&E Only)
+  Name: DNSSEC (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardDNSSEC` suite.
@@ -325,7 +325,7 @@ StandardDNSSECOnly:
 StandardRDAPOnly:
   Order: 240
   OTE-Only: true
-  Name: RDAP (OT&E Only)
+  Name: RDAP (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardRDAP` suite.
@@ -335,7 +335,7 @@ StandardRDAPOnly:
 StandardEPPOnly:
   Order: 250
   OTE-Only: true
-  Name: EPP (OT&E Only)
+  Name: EPP (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardEPP` suite.
@@ -345,7 +345,7 @@ StandardEPPOnly:
 StandardRDEOnly:
   Order: 260
   OTE-Only: true
-  Name: RDE (OT&E Only)
+  Name: RDE (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardRDE` suite.
@@ -355,7 +355,7 @@ StandardRDEOnly:
 StandardSRSGatewayOnly:
   Order: 270
   OTE-Only: true
-  Name: SRS Gateway (OT&E Only)
+  Name: SRS Gateway (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardSRSGateway` suite.
@@ -365,7 +365,7 @@ StandardSRSGatewayOnly:
 MinimumRPMsOnly:
   Order: 280
   OTE-Only: true
-  Name: Minimum RPMs (OT&E Only)
+  Name: Minimum RPMs (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `MinimumRPMs` suite.
@@ -375,7 +375,7 @@ MinimumRPMsOnly:
 DNSSECOperationsOnly:
   Order: 290
   OTE-Only: true
-  Name: DNSSEC Operations (OT&E Only)
+  Name: DNSSEC Operations (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `DNSSECOperations` suite.
@@ -384,7 +384,7 @@ DNSSECOperationsOnly:
 
 StandardIntegrationTestOnly:
   Order: 300
-  Name: Integration Test (OT&E Only)
+  Name: Integration Test (test suite)
   Description: |
     This test plan allows an RSP to request testing of a single test suite,
     specifically the `StandardIntegrationTest ` suite.

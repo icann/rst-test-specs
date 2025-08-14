@@ -249,7 +249,7 @@ sub print_test_plan_toc_list {
 
         print $h->li($h->a(
             { href => $anchor },
-            e($plan->name. ($plan->oteOnly ? ' (OT&E only)' : ''))
+            e($plan->name)
         ));
     }
 
@@ -494,7 +494,7 @@ sub print_plan {
     my ($plan, $i) = @_;
 
     print $h->a({name => sprintf('Test-Plan-%s', $plan->id)});
-    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name . ($plan->oteOnly ? ' (OT&E only)' : ''))));
+    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name)));
 
     my $j = 0;
 
