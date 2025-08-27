@@ -10,16 +10,16 @@ use common::sense;
 @WARNING = (
     {
       code  => -23100,
-      notes => "The TLD is not included in the bootstrapDomainNameSpace. See section 1.11.1 of the RDAP_Technical_Implementation_Guide_2_1."
+      notes => "The TLD is not included in the bootstrapDomainNameSpace. See section 1.11.1 of the RDAP_Technical_Implementation_Guide_2_1.",
     },
     {
       code  => -10102,
-      notes => "The IPv4 address is included in the IANA IPv4 Special-Purpose Address Registry. Dataset: specialIPv4Addresses."
+      notes => "The IPv4 address is included in the IANA IPv4 Special-Purpose Address Registry. Dataset: specialIPv4Addresses.",
     },
     {
       code  => -10202,
-      notes => "The IPv6 address is included in the IANA IPv6 Special-Purpose Address Registry. Dataset: specialIPv6Addresses."
-    }
+      notes => "The IPv6 address is included in the IANA IPv6 Special-Purpose Address Registry. Dataset: specialIPv6Addresses.",
+    },
 );
 
 @IGNORE = (
