@@ -30,6 +30,8 @@ use common::sense;
     -47000,
     -47203,
     -52104,
+    -10303,
+    -23100,
 );
 
 foreach my $code (@WARNING) {
