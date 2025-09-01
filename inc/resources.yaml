@@ -26,6 +26,22 @@ epp.client02Certificate:
     parameters to connect using the certificate found at this URL.
   URL: https://rst-api.icann.org/v1/resource/epp.client02Certificate.pem
 
+epp.client01ChainCert:
+  Description: |
+    This resource contains the intermediate certificate used to sign the
+    certificate in the `epp.client01Certificate` resource. Some servers may need
+    this certificate in order to establish a chain of trust to the CA root
+    certificate.
+  URL: https://rst-api.icann.org/v1/resource/epp.client01ChainCert.pem
+
+epp.client02ChainCert:
+  Description: |
+    This resource contains the intermediate certificate used to sign the
+    certificate in the `epp.client02Certificate` resource. Some servers may need
+    this certificate in order to establish a chain of trust to the CA root
+    certificate.
+  URL: https://rst-api.icann.org/v1/resource/epp.client02ChainCert.pem
+
 epp.client01CSR:
   Description: |
     For servers that operate a private CA, this CSR may be used to issue a
