@@ -413,6 +413,12 @@ StandardIntegrationTest:
     - epp.supportedContactElements
     - general.registryDataModel
     - epp.loginExtension
+  Resources:
+    - tmch.testCert
+    - tmch.testCRL
+    - tmch.testDNL
+    - tmch.testSMDRL
+    - tmch.testSURL
 
 AdditionalDNSTransports:
   Order: 11
