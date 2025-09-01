@@ -5,7 +5,7 @@ This site hosts the specifications for ICANN's [Registry System Testing
 
 Additional resources:
 
-* [rst.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.yaml)
+* [rst.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst.json)
   is the [Zonemaster
   profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
   used by the DNS and DNSSEC test suites.
