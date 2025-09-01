@@ -1,3 +1,32 @@
+2025-09-01:
+  - "Stable release [v2025.06](https://github.com/icann/rst-test-specs/releases/tag/v2025.06):"
+
+  - |
+    Added the
+    [`RDE_DOMAIN_HAS_INVALID_CRRR`](#Error-RDE_DOMAIN_HAS_INVALID_CRRR),
+    [`RDE_DOMAIN_HAS_INVALID_UPRR`](#Error-RDE_DOMAIN_HAS_INVALID_UPRR),
+    [`RDE_DOMAIN_HAS_INVALID_RERR`](#Error-RDE_DOMAIN_HAS_INVALID_RERR) and
+    [`RDE_DOMAIN_HAS_INVALID_ACRR`](#Error-RDE_DOMAIN_HAS_INVALID_ACRR) error
+    codes to [rde-07](#Test-Case-rde-07) (see
+    [#53](https://github.com/icann/rst-test-specs/issues/53)).
+
+  - Added the
+    [`epp.client01ChainCert`](#Resource-epp.client01ChainCert) and
+    [`epp.client02ChainCert`](#Resource-epp.client02ChainCert) resources
+    (see [#63](https://github.com/icann/rst-test-specs/issues/63)).
+
+  - The schema for the
+    [`rdap.profileVersion`](#Input-Parameter-rdap.profileVersion) input
+    parameter has been updated to reflect the retirement of the February-2019
+    profile (see [#64](https://github.com/icann/rst-test-specs/issues/64)).
+
+  - Fixed an issue with the script that generates the RDAP Conformance Tool
+    configuration file.
+
+  - |
+    Ensure EPP-related resources are referenced by all suites that relate to
+    EPP.
+
 2025-08-14:
   - "Stable release [v2025.05](https://github.com/icann/rst-test-specs/releases/tag/v2025.05):"
 
