@@ -120,23 +120,15 @@ rdap.testNameservers:
 
 rdap.profileVersion:
   Description: |
-    The version of the gTLD RDAP Profile that is supported. For more information,
+    The version of the gTLD RDAP Profile that is supported. For more information
     please see <https://www.icann.org/gtld-rdap-profile>.
 
-    * Before 2024-08-21, gTLD registries **MUST** implement the February-2019
-      version of the gTLD RDAP profile.
-
-    * From 2024-08-21 to 2025-08-20, gTLD registries **MAY** implement
-      either the February-2019 or the February-2024 version of the gTLD RDAP
-      profile.
-
-    * From 2025-08-21 onwards, gTLD registries **MUST** implement the
-      February-2024 version of the gTLD RDAP profile.
+    From 2025-08-21 onwards, gTLD registries **MUST** implement the
+    February-2024 version of the gTLD RDAP profile.
   Type: input
   Required: true
-  Example: february-2019
+  Example: february-2024
   Schema:
     type: string
     enum:
-      - february-2019
       - february-2024

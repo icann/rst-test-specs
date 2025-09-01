@@ -30,7 +30,11 @@ use common::sense;
     -47000,
     -47203,
     -52104,
+    -10303,
+    -23100,
 );
+
+$CONFIG = mirror_json(TEMPLATE_URL);
 
 foreach my $code (@WARNING) {
     push(@{$CONFIG->{definitionWarning}}, $code) if (none { $_->{code} == $code->{code} } @{$CONFIG->{definitionWarning}});
@@ -39,8 +43,6 @@ foreach my $code (@WARNING) {
 foreach my $code (@IGNORE) {
     push(@{$CONFIG->{definitionIgnore}}, $code) if (none { $_ == $code } @{$CONFIG->{definitionIgnore}});
 }
-
-$CONFIG = mirror_json(TEMPLATE_URL);
 
 $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0.};
 

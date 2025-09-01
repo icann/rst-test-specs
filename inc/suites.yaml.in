@@ -175,8 +175,10 @@ StandardEPP:
     - epp.clientACL
     - epp.client01CSR
     - epp.client01Certificate
+    - epp.client01ChainCert
     - epp.client02CSR
     - epp.client02Certificate
+    - epp.client02ChainCert
 
 StandardRDE:
   Order: 5
@@ -248,6 +250,8 @@ StandardIDN:
     - epp.client02CSR
     - epp.client01Certificate
     - epp.client02Certificate
+    - epp.client01ChainCert
+    - epp.client02ChainCert
     - idn.testLabelsForOTE
 
 StandardSRSGateway:
@@ -306,6 +310,8 @@ StandardSRSGateway:
     - epp.client02CSR
     - epp.client01Certificate
     - epp.client02Certificate
+    - epp.client01ChainCert
+    - epp.client02ChainCert
 
 DNSSECOperations:
   Order: 8
@@ -358,6 +364,8 @@ MinimumRPMs:
     - tmch.testDNL
     - tmch.testSMDRL
     - tmch.testSURL
+    - epp.client01ChainCert
+    - epp.client02ChainCert
   Input-Parameters:
     - epp.clid01
     - epp.clid01DataModel
@@ -413,6 +421,14 @@ StandardIntegrationTest:
     - epp.supportedContactElements
     - general.registryDataModel
     - epp.loginExtension
+  Resources:
+    - tmch.testCert
+    - tmch.testCRL
+    - tmch.testDNL
+    - tmch.testSMDRL
+    - tmch.testSURL
+    - epp.client01ChainCert
+    - epp.client02ChainCert
 
 AdditionalDNSTransports:
   Order: 11
