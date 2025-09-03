@@ -1,0 +1,38 @@
+name: release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: get release
+        id: get_release
+        uses: joutvhu/get-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build
+        run: docker compose run --env RELEASE=${{ steps.get_release.outputs.tag_name }} spec
+
+      - name: release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          files: |
+            rst.json
+            rdapct_config.json
+            rst-test-specs.html
+            rst-test-specs.json
+            rst-test-specs.yaml

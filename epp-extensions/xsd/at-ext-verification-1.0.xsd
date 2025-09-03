@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <schema targetNamespace="http://www.nic.at/xsd/at-ext-verification-1.0"
+          xmlns:verification="http://www.nic.at/xsd/at-ext-verification-1.0"
+          xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+          xmlns="http://www.w3.org/2001/XMLSchema"
+          elementFormDefault="qualified">
+
+    <import namespace="urn:ietf:params:xml:ns:eppcom-1.0"
+            schemaLocation="eppcom-1.0.xsd"/>
+
+    <annotation>
+      <documentation>
+        Extensible Provisioning Protocol v1.0
+        .at Domain Registrant Verification Extension
+        20240924 - nic.at GmbH - service@nic.at
+      </documentation>
+    </annotation>
+
+    <element name="create"  type="verification:createUpdateType"/>
+    <element name="update"  type="verification:createUpdateType"/>
+    <element name="infData" type="verification:infDataType"/>
+
+    <complexType name="createUpdateType">
+      <sequence>
+        <element name="report" type="verification:reportType"/>
+      </sequence>
+    </complexType>
+
+    <complexType name="infDataType">
+      <sequence>
+        <element name="report"     type="verification:reportType"
+         minOccurs="0"/>
+        <element name="status"     type="verification:statusType"/>
+        <element name="actionDate" type="dateTime"
+         minOccurs="0"/>
+      </sequence>
+    </complexType>
+
+    <complexType name="reportType">
+      <sequence>
+        <element name="result"           type="verification:resultValueType"/>
+        <element name="verificationDate" type="dateTime"/>
+        <element name="method"           type="verification:shortTokenType"     minOccurs="0"/>
+        <element name="reference"        type="verification:referenceValueType" minOccurs="0"/>
+        <element name="agent"            type="verification:shortTokenType"     minOccurs="0"/>
+      </sequence>
+      <attribute name="receivedDate"     type="dateTime"/>
+      <attribute name="clID"             type="eppcom:clIDType"/>
+    </complexType>
+
+    <simpleType name="resultValueType">
+      <restriction base="token">
+        <enumeration value="success"/>
+        <enumeration value="failure"/>
+      </restriction>
+    </simpleType>
+
+    <simpleType name="shortTokenType">
+      <restriction base="token">
+        <minLength value="1"/>
+        <maxLength value="64"/>
+      </restriction>
+    </simpleType>
+
+    <simpleType name="referenceValueType">
+      <restriction base="token">
+        <minLength value="1"/>
+        <maxLength value="512"/>
+      </restriction>
+    </simpleType>
+
+    <complexType name="statusType">
+      <simpleContent>
+        <extension base="normalizedString">
+          <attribute name="s" type="verification:statusValueType"
+           use="required"/>
+          <attribute name="lang" type="language" default="en"/>
+        </extension>
+      </simpleContent>
+    </complexType>
+
+    <simpleType name="statusValueType">
+      <restriction base="token">
+        <enumeration value="none"/>
+        <enumeration value="pending"/>
+        <enumeration value="serverHold"/>
+        <enumeration value="verified"/>
+        <enumeration value="failed"/>
+      </restriction>
+    </simpleType>
+
+  </schema>

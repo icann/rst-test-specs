@@ -4,23 +4,31 @@ SRC = rst-test-specs
 ZM_DIR=zonemaster/zonemaster-$(ZONEMASTER_VERSION)
 
 yaml: export ZM_VERSION=$(ZONEMASTER_VERSION)
-lint: export PERL5LIB=./tools/perl
-html: export PERL5LIB=./tools/perl
 
-all: zonemaster-profile includes yaml lint json html
+all: zonemaster-profile rdapct-config includes yaml lint json html
 
 zonemaster-profile:
 	@echo Generating Zonemaster profile...
 	@tools/generate-zonemaster-profile.pl "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst.json
 	@echo wrote rst.json
 
+rdapct-config:
+	@echo Generating RDAP Conformance Tool configuration...
+	@tools/generate-rdapct-config.pl > rdapct_config.json
+	@echo wrote rdapct_config.json
+
 includes:
+	@rm -rf tmp
+	@mkdir tmp
+
+	@echo Generating version number and last-updated...
+	@tools/generate-version.sh > tmp/version.txt
+	@tools/generate-last-updated.sh > tmp/last-updated.txt
+
 	@echo Downloading Zonemaster source code...
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
 
 	@echo Generating Zonemaster cases...
-	@rm -rf tmp
-	@mkdir tmp
 	@tools/generate-zonemaster-cases.pl "--version=$(ZONEMASTER_VERSION)" "$(ZM_DIR)" > tmp/zonemaster-cases.yaml
 
 	@echo Generating Zonemaster errors...
@@ -55,5 +63,4 @@ pages:
 
 clean:
 	@echo Cleaning up...
-	@rm -rfv tmp zonemaster _site rst-test-specs.yaml rst.json
-
+	@rm -rf tmp zonemaster _site tmp rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml

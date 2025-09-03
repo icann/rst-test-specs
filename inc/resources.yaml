@@ -26,6 +26,22 @@ epp.client02Certificate:
     parameters to connect using the certificate found at this URL.
   URL: https://rst-api.icann.org/v1/resource/epp.client02Certificate.pem
 
+epp.client01ChainCert:
+  Description: |
+    This resource contains the intermediate certificate used to sign the
+    certificate in the `epp.client01Certificate` resource. Some servers may need
+    this certificate in order to establish a chain of trust to the CA root
+    certificate.
+  URL: https://rst-api.icann.org/v1/resource/epp.client01ChainCert.pem
+
+epp.client02ChainCert:
+  Description: |
+    This resource contains the intermediate certificate used to sign the
+    certificate in the `epp.client02Certificate` resource. Some servers may need
+    this certificate in order to establish a chain of trust to the CA root
+    certificate.
+  URL: https://rst-api.icann.org/v1/resource/epp.client02ChainCert.pem
+
 epp.client01CSR:
   Description: |
     For servers that operate a private CA, this CSR may be used to issue a
@@ -119,9 +135,18 @@ idn.testLabelsForOTE:
     properly simulate a production test, the same set of labels should be used.
 
     This resource is a zip file containing JSON files, each of which contains
-    the test labels for the [second-level reference
+    the test labels for the [Second-Level Reference
     LGR](https://www.icann.org/resources/pages/second-level-lgr-2015-06-21-en)
-    identified by the language tag in the file name. The JSON files conform to
-    the `idnTestLabels` object type from the [RST-API
+    identified by the script or language tag in the file name. The JSON files
+    conform to the `idnTableRequest` object type from the [RST-API
     specification](https://icann.github.io/rst-api-spec/).
-  URL: https://to-be-determined.example.com/testLabelsForOTE.zip
+
+    For more information, see <https://github.com/icann/rst-idn-test-labels>.
+  URL: https://github.com/icann/rst-idn-test-labels/archive/refs/tags/v1.0.3.zip
+
+rdap.clientACL:
+  Description: |
+    A list of IPv4 and IPv6 address(es) or CIDR prefixes from which client
+    connections to the operator's RDAP server will be made. The list is a plain
+    text file with each entry on a separate line.
+  URL: https://rst-api.icann.org/v1/resource/rdap.clientACL.txt

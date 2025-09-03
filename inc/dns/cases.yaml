@@ -25,13 +25,14 @@ dns-rst02:
   Summary: Nameserver consistency check
   Maturity: BETA
   Description: |
-    This test case verifies that all the nameservers (both logical and physical)
-    specified in the `dns.nameservers` input parameter provide consistent
-    responses.
+    In addition to the other tests case in this suite, which come from
+    Zonemaster, this test case verifies that all the nameservers (both logical
+    and physical) specified in the `dns.nameservers` input parameter provide
+    consistent responses.
 
-    The test system will perform DNS queries from multiple nodes in the SLA
-    Monitoring system (SLAM) so that multiple physical nodes within an anycasted
-    logical nameserver are tested.
+    The test system will perform DNS queries from probe nodes in multiple
+    locations around the world so that multiple physical nodes within an
+    anycasted logical nameserver are tested.
 
     For each TLD in the test, the following queries will be sent, over UDP, TCP,
     and any additional transports that are supported (based on the
@@ -44,8 +45,8 @@ dns-rst02:
     * apex `NSEC3PARAM` query;
     * apex `TXT` query;
     * `A` and `AAAA` queries for in-bailiwick nameservers, if any;
-    * `nic.tld` `NS` query;
-    * `nic.tld` `DS` query.
+    * `nic.tld` `NS` and `DS` query (these records **MUST** be present in the
+      TLD zone).
 
     The EDNS(0) `do` bit, `NSID` option, and `ZONEVERSION` options will be set
     on all queries. The reported `NSID` and `ZONEVERSION` values in the response

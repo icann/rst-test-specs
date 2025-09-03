@@ -4,14 +4,14 @@ rde.depositFile:
     one of the TLDs that are associated with the test object.
   Type: file
   Required: true
-  Example: example_20231004_FULL_S1_R0.ryde
+  Example: example_2023-10-04_full_S1_R0.ryde
   Schema:
     type: string
 rde.signatureFile:
   Description: an ASCII-armoured OpenPGP signature covering the deposit file
   Required: true
   Type: file
-  Example: example_20231004_FULL_S1_R0.sig
+  Example: example_2023-10-04_fullL_S1_R0.sig
   Schema:
     type: string
 rde.publicKey:

@@ -56,7 +56,18 @@ to enumerate all the possible permutations of input values. A data provider
 consists of sets of input values, plus the expected outcome, and the error code
 that should be raised if the outcome does not match the expected outcome.
 
-## 2.3.3. Test environments
+## 2.3.3. Resources
+
+A *Resource* is a file or other set of information that may assist a test
+subject in preparing for a test. For example, it might be a list of IP addresses
+from which network connections will be initiated, or the public keys used for
+encryption and authentication.
+
+Each resource has a description and one or more URLs. Some resources have
+different contents in the OT&E or Production environments, where this is the
+case, a URL for each environment will be listed.
+
+## 2.3.4. Test environments
 
 Each test plan indicates whether the test is to be carried out in the
 production environment, or whether a test, staging or Operational Testing and
@@ -65,12 +76,12 @@ designed for "business as usual" use during the lifecycle of a TLD **MUST** be
 carried out in the production registry infrastructure, while RSP evaluation
 tests **MAY** be carried out in test, staging or OT&E environments.
 
-## 2.3.4. Test results
+## 2.3.5. Test results
 
 Test cases will generate one or more *test results*. Test results indicate the
 outcome of the test and other relevant information.
 
-## 2.3.5. General pass/fail criteria
+## 2.3.6. General pass/fail criteria
 
 In general, for a test to pass, **all** the test cases specified in the test
 suite(s) for the test plan **MUST** pass: if *any* fail, then the test as a
@@ -79,19 +90,23 @@ whole will fail.
 A test case will fail if it produces one or more [errors](#errors) with the
 `ERROR` or `CRITICAL` severities.
 
-## 2.3.6. Error severity levels
+## 2.3.7. Error severity levels
 
 The supported severity levels are a subset of the values defined in [RFC
 5424](https://www.rfc-editor.org/rfc/rfc5424.html).
 
-2. `WARNING` - an issue which does not prevent the test from *passing*, but
+1. `INFO`: useful diagnostic messages that provide context and explain what is
+   happening, or expected.
+2. `WARNING`: an issue which does not prevent the test case from *passing*, but
    which may benefit from further investigation.
-1. `ERROR` - an issue which prevents the test case from *passing*, but does not
+3. `ERROR`: an issue which prevents the test case from *passing*, but does not
    prevent the test case from *continuing*. A test case may produce multiple
-   `ERROR` results.
-2. `CRITICAL` - an issue which prevents the test case from continuing any
+   `ERROR` results. Each `ERROR` error result will have an associated error
+   code.
+4. `CRITICAL`: an issue which prevents the test suite from continuing any
    further. A test case will only produce a single `CRITICAL` result and it will
-   always be the last result in the log.
+   always be the last result in the log. Each `CRITICAL` error result will have
+   an associated error code.
 
 # 2.4. Test procedures
 
@@ -138,7 +153,62 @@ Where `[type]` will be replaced with the application type. For example, a
 form `.zz--main-1234`. Test subjects will need to configure their registry
 systems to support this TLD prior to requesting a test run.
 
-# 2.7. Key acronyms and terms
+# 2.7. External TLDs
+
+The RST system will sometimes generate domain and host names that must, for
+security and stability reasons, be guaranteed to not exist in the global DNS.
+
+To ensure this, the `.icann` top-level domain will be used as the parent TLD
+for such domain and host names. This TLD has been selected because (1) it will
+never be delegated in the DNS and (b) unlike `.invalid`, `.internal` etc,
+there is no expectation that special processing should take place for it.
+
+Registry operators whose implementations validate the existence of the parent
+TLD of a nameserver name should update their implementation to exceptionally
+allow the use of `.icann` during RST tests.
+
+# 2.8. Extensible Provisioning Protocol (EPP) Repository Identifiers
+
+EPP servers **MUST** use unique repository identifiers that are registered in the
+[EPP Repository ID registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
+(see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
+
+The special ID `ICANNRST` (`#x0049 #x0043 #x0041
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
+servers during RSP evaluation tests. However, for pre- and post-delegation tests
+this repository ID **MUST NOT** be used.
+
+# 2.9. EPP extensions
+
+The EPP test suite requires that servers implement certain EPP extensions, as
+described in the `epp-02` test case. Test cases in the EPP test suite
+ascertain whether these extensions are properly implemented in the server.
+
+Some EPP servers may require EPP clients to include additional extension
+elements in the EPP commands that take place during a run of the EPP test suite.
+Because it is not feasible to natively implement support for all such
+extensions, the EPP test suite includes input parameters which allow test
+subjects to provide the extension element(s) which must be included in EPP
+commands.
+
+These input parameters **MUST** contain a single EPP `<extension>` element which
+contains the element(s) required for the particular EPP command to which the
+input parameter relates. These element(s) **MUST** validate against the relevant
+XML schema.
+
+If no extensions are required for a particular command, then the corresponding
+input parameter **MUST** be omitted. If provided, it will not be validated until
+the test run occurs, at which point an error code will be generated if it is
+invalid.
+
+All EPP extensions used by the EPP server **MUST** be registered in the EPP
+Extension Registry, as described in the `epp-02` test case.
+
+Other test suites which use the EPP server (i.e. the IDN, Minimum RPMs,
+Integration and SRS Gateway suites) will also use the input parameters from the
+EPP suite, if provided.
+
+# 2.10. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.

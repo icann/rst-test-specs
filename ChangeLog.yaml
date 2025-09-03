@@ -1,3 +1,231 @@
+2025-09-01:
+  - "Stable release [v2025.06](https://github.com/icann/rst-test-specs/releases/tag/v2025.06):"
+
+  - |
+    Added the
+    [`RDE_DOMAIN_HAS_INVALID_CRRR`](#Error-RDE_DOMAIN_HAS_INVALID_CRRR),
+    [`RDE_DOMAIN_HAS_INVALID_UPRR`](#Error-RDE_DOMAIN_HAS_INVALID_UPRR),
+    [`RDE_DOMAIN_HAS_INVALID_RERR`](#Error-RDE_DOMAIN_HAS_INVALID_RERR) and
+    [`RDE_DOMAIN_HAS_INVALID_ACRR`](#Error-RDE_DOMAIN_HAS_INVALID_ACRR) error
+    codes to [rde-07](#Test-Case-rde-07) (see
+    [#53](https://github.com/icann/rst-test-specs/issues/53)).
+
+  - Added the
+    [`epp.client01ChainCert`](#Resource-epp.client01ChainCert) and
+    [`epp.client02ChainCert`](#Resource-epp.client02ChainCert) resources
+    (see [#63](https://github.com/icann/rst-test-specs/issues/63)).
+
+  - The schema for the
+    [`rdap.profileVersion`](#Input-Parameter-rdap.profileVersion) input
+    parameter has been updated to reflect the retirement of the February-2019
+    profile (see [#64](https://github.com/icann/rst-test-specs/issues/64)).
+
+  - Fixed an issue with the script that generates the RDAP Conformance Tool
+    configuration file.
+
+  - |
+    Ensure EPP-related resources are referenced by all suites that relate to
+    EPP.
+
+2025-08-14:
+  - "Stable release [v2025.05](https://github.com/icann/rst-test-specs/releases/tag/v2025.05):"
+
+  - |
+    [`DNSSEC_OPS_ZONE_IS_INVALID`](#Error-DNSSEC_OPS_ZONE_IS_INVALID) has been
+    downgraded from `CRITICAL` to `ERROR` severity (see
+    [#37](https://github.com/icann/rst-test-specs/issues/37)).
+
+  - |
+    The schema for the
+    [`epp.loginExtension`](#Input-Parameter-epp.loginExtension) input parameter
+    has been fixed (see
+    [#57](https://github.com/icann/rst-test-specs/issues/57)).
+
+  - |
+    The test specs now includes a configuration file for the [RDAP Conformance
+    Tool](https://github.com/icann/rdap-conformance-tool) (see
+    [#59](https://github.com/icann/rst-test-specs/issues/59)).
+
+  - |
+    The description of the [epp-13](#Test-Case-epp-13) test case has been
+    updated to clarify that internal host names will be used.
+
+  - |
+    The description of the [epp-14](#Test-Case-epp-14) test case has been
+    updated to clarify that contact objects will only be created if the
+    [`general.registryDataModel`](#Input-Parameter-general.registryDataModel)
+    input parameter is `maximum` or `per-registrar`.
+
+2025-07-09:
+  - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.04):"
+
+  - |
+    The schema of the [dnssecOps.primaryServers](#Input-Parameter-dnssecOps.primaryServers)
+    input parameter has been relaxed to not require at least one IP address of
+    each type: one address of either type is accepted (see
+    [#47](https://github.com/icann/rst-test-specs/issues/47)).
+
+  - |
+    The following new input parameters have been added:
+
+      * [`epp.loginExtension`](#Input-Parameter-epp.loginExtension)
+        (see [#42](https://github.com/icann/rst-test-specs/issues/42))
+      * [`idn.domainCreateExtension`](#Input-Parameter-idn.domainCreateExtension)
+        (see [#39](https://github.com/icann/rst-test-specs/issues/39))
+      * [`srsgw.loginExtension`](#Input-Parameter-srsgw.loginExtension)
+        (see [#43](https://github.com/icann/rst-test-specs/issues/43))
+
+  - |
+    The following new error codes have been added:
+
+      * [`EPP_INVALID_EXTENSION`](#Error-EPP_INVALID_EXTENSION)
+      * [`EPP_INVALID_IDN_EXTENSION`](#Error-EPP_INVALID_IDN_EXTENSION)
+
+  - |
+    Renamed the error codes in [minimumRPMs-03](#Test-Case-minimumRPMs-03) to
+    fix use the correct terminology (see
+    [#20](https://github.com/icann/rst-test-specs/issues/20)).
+
+  - |
+    Added the [`DNSSECOperationsOnly`](#Test-Plan-DNSSECOperationsOnly) and
+    [`StandardIntegrationTestOnly`](#Test-Plan-StandardIntegrationTestOnly)
+    test plans, to allow the [DNSSEC Operations](#Test-Suite-DNSSECOperations)
+    and [Integration](#Test-Suite-StandardIntegrationTest) test suites to be
+    tested separately in OT&E
+    (see [#5](https://github.com/icann/rst-test-specs/issues/5)).
+
+  - |
+    Added the [`rdap.clientACL`](#Resource-rdap.clientACL) resource
+    (see [#3](https://github.com/icann/rst-test-specs/issues/3)).
+
+  - |
+    Updated the [epp-14-data](#Data-Provider-epp-14-data) data provider, adding
+    a column to identify which value of the
+    [`epp.secDNSInterfaces`](#Input-Parameter-epp.secDNSInterfaces) input
+    parameter each row is applicable to (see
+    [#50](https://github.com/icann/rst-test-specs/issues/50)).
+
+2025-04-25:
+  - "Stable release v2025.03:"
+
+  - Describe the use of `.icann` for external nameserver hostnames
+    ([#9](https://github.com/icann/rst-test-specs/issues/9))
+
+  - Allow `v4Addrs` and `v6Addrs` to be optional in
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
+    ([#11](https://github.com/icann/rst-test-specs/issues/11))
+
+  - Clarify that the
+    [`epp.supportedContactElements`](#Input-Parameter-epp.supportedContactElements)
+    and
+    [`epp.requiredContactElements`](#Input-Parameter-epp.requiredContactElements)
+    input parameters **MUST** be empty if the value of the
+    [`general.registryDataModel`] input parameter is `minimum`
+    ([#23](https://github.com/icann/rst-test-specs/issues/23))
+
+  - Describe the use of `ICANNRST` as an EPP repository ID that may be used in
+    RSP evaluation tests and OT&E
+    ([#24](https://github.com/icann/rst-test-specs/issues/24))
+
+  - Add a new `hostModel` column to
+    [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data)
+    ([#28](https://github.com/icann/rst-test-specs/issues/28))
+
+2025-04-10:
+  - "Stable release v2025.02:"
+
+  - Fix the example in
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
+    ([#1](https://github.com/icann/rst-test-specs/issues/1)).
+
+  - Update [`idn.testLabelsForOTE`](#idn.testLabelsForOTE) to v1.0.2
+    ([#17](https://github.com/icann/rst-test-specs/issues/17)).
+
+  - In [dns-zz-consistency](#Test-Case-dns-zz-consistency), clarify that a
+    secure delegation for the "nic" zone **MUST** be present in the TLD zone
+    ([#16](https://github.com/icann/rst-test-specs/issues/16)).
+
+2025-03-27:
+  - Stable release v2025.01. There are no significant changes since the last
+    release except the version number.
+
+2025-03-20:
+  - |
+    [`RDE_SCHEMA_VALIDATION_ERROR`](#Error-RDE_SCHEMA_VALIDATION_ERROR) and
+    [`RDE_XML_PARSE_ERROR`](#Error-RDE_XML_PARSE_ERROR) now have the `CRITICAL`
+    severity.
+  - |
+    Added
+    [`RDE_UNEXPECTED_OBJECT`](#Error-RDE_UNEXPECTED_OBJECT) to
+    [rde-06](#Test-Case-rde-06).
+
+2025-03-11:
+  - |
+    Clarified the text of [rde-05](#Test-Case-rde-05) and
+    [rde-06](#Test-Case-rde-06).
+  - |
+    Added
+    [`RDE_MISSING_EPP_PARAMS_OBJECT`](#Error-RDE_MISSING_EPP_PARAMS_OBJECT) to
+    [rde-13](#Test-Case-rde-13).
+
+2025-03-07:
+  - |
+    Fixed the error codes in [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data).
+  - |
+    Removed `epp.registeredNames`(#Input-Parameter-epp.registeredNames) from the
+    input parameters for the [Minimum RPMs](#Test-Suite-MinimumRPMs) suite.
+  - |
+    Set the `Required` property of
+    [`srsgw.serverIssuedClientCertificate01`](#Input-Parameter-srsgw.serverIssuedClientCertificate01)
+    and
+    [`srsgw.serverIssuedClientCertificate02`](#Input-Parameter-srsgw.serverIssuedClientCertificate02)
+    to `false`.
+  - |
+    Added
+    [`RDE_DOMAIN_OBJECT_MISSING`](#Error-RDE_DOMAIN_OBJECT_MISSING),
+    [`RDE_HOST_OBJECT_MISSING`](#Error-RDE_HOST_OBJECT_MISSING),
+    [`RDE_CONTACT_OBJECT_MISSING`](#Error-RDE_CONTACT_OBJECT_MISSING) and
+    [`RDE_REGISTRAR_OBJECT_MISSING`](#Error-RDE_REGISTRAR_OBJECT_MISSING) to the
+    respective test cases in the [RDE test suite](#Test-Suite-StandardRDE).
+
+2025-03-05:
+  - |
+    Added
+    [`RDE_MENU_AND_HEADER_URIS_DIFFER`](#Error-RDE_MENU_AND_HEADER_URIS_DIFFER)
+    to [rde-05](#Test-Case-rde-05).
+
+2025-02-26:
+  - |
+    To avoid issues where EPP servers reject commands containing IP addresses in
+    the RFC 1918 and RFC 5156 registries, data providers which use addresses
+    from these registries have been updated to use globally-routable IPv4 and
+    IPv6 addresses, as applicable, from prefixes assigned to ICANN. These
+    prefixes have been reserved for use for this purpose.
+  - |
+    Updated [dnssec-92](#Test-Case-dnssec-92) to disallow algorithm 12 (GOST R
+    34.10-2001).
+
+2025-02-21:
+  - |
+    The data provider for [epp-14](#Test-Case-epp-14) has been updated to ensure
+    that it will pass for IDN-only TLDs.
+
+2025-02-12:
+  - |
+    Added [`DNSSEC_DNS_QUERY_ERROR`] to [dnssec-92](#Test-Case-dnssec-92) and
+    [dnssec-93](#Test-Case-dnssec-93).
+  - |
+    Updated the description of the
+    [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource to provide
+    more information, and an updated URL. The URL is not currently available to
+    the public but will be made available in the near future.
+
+2025-02-05:
+  - |
+    Added
+    [`RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY`](#Error-RPMS_TRADEMARK_CREATE_UNEXPECTED_SUCCESS_USING_EXPIRED_CLAIM_KEY)
+    to [minimumRPMs-03](#Test-Case-minimumRPMs-03).
+
 2025-01-28:
   - |
     Fixed the wording of [srsgw-06](#Test-Case-srsgw-06).
@@ -5,6 +233,8 @@
     Added
     [`EPP_DOMAIN_TRANSFER_REQUEST_FAILED`](#Error-EPP_DOMAIN_TRANSFER_REQUEST_FAILED)
     to [epp-19](#Test-Case-epp-19).
+  - |
+    Updated [dns-zz-consistency](#Test-Case-dns-zz-consistency).
 
 2025-01-22:
   - |
@@ -19,7 +249,7 @@
     contacts.
   - |
     The `minimumRPMS.sunriseModels` input parameter has been renamed to
-    [`minimumRPMS.sunriseModel`](#Input-Parameter-minimumRPMS.sunriseModel), and
+    [`minimumRPMS.sunriseModel`](#ut-Parameter-minimumRPMS.sunriseModel), and
     the value `both` has been removed from the enum of possible values.
 
 2025-01-14:
@@ -123,6 +353,7 @@
   - |
     Clarified that there must be entry in the [`rdap.baseURLs`](#Input-Parameter-rdap.baseURLS)
     input parameter for each TLD being tested.
+
 2024-11-13:
   - |
     Added the [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) resource
@@ -231,6 +462,7 @@
     [`epp.client01CSR`](#Resource-epp.client01CSR) and
     [`epp.client02CSR`](#Resource-epp.client02CSR) respectively, so each
     client can use a distinct certificate.
+
 2024-09-12:
   - |
     The version of Zonemaster that the DNS and DNSSEC test suites use has been
@@ -253,6 +485,7 @@
     provider.
   - Updated [epp-24](#Test-Case-epp-24) to be stand-alone.
   - Added informative references to each test suite.
+
 2024-09-04:
   - |
     Upgraded **SHOULD** to **MUST** for
