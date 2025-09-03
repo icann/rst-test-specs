@@ -445,6 +445,6 @@ AdditionalDNSTransports:
     * [RFC 9250 - DNS over Dedicated QUIC Connections](https://www.rfc-editor.org/rfc/rfc9250.html)
 
   Test-Cases:
-    - dns-zz-consistency
+    - dns-rst02
   Input-Parameters:
     - dns.nameservers

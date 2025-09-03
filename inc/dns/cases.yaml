@@ -1,4 +1,4 @@
-dns-zz-idna2008-compliance:
+dns-rst01:
   Implemented: false
   Summary: IDNA2008 compliance check
   Maturity: GAMMA
@@ -20,7 +20,7 @@ dns-zz-idna2008-compliance:
     - DNS_IDNA2008_INVALID_RNAME
     - DNS_IDNA2008_INVALID_NS_NSDNAME
 
-dns-zz-consistency:
+dns-rst02:
   Implemented: false
   Summary: Nameserver consistency check
   Maturity: BETA
