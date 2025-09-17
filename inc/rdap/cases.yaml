@@ -117,6 +117,47 @@ rdap-07:
   Errors:
     - RDAP_ENTITY_HEAD_FAILED
 
+rdap-08:
+  Summary: Non-existent domain test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent domain names.
+
+    The client will issue a `GET` request for a randomly-generated domain name.
+    The server **MUST** respond with a 404 HTTP response code. If present, the
+    body of the response **MUST** be a valid RDAP error object. The
+    `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_DOMAIN
+
+rdap-09:
+  Summary: Non-existent nameserver test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent nameservers.
+
+    The client will issue `GET` requests for two randomly-generated host names,
+    one in-bailiwick and one out of bailiwick.
+
+    In both cases, the server **MUST** respond with a 404 HTTP response code.
+    If present, the body of the response **MUST** be a valid RDAP error object.
+    The `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_NAMESERVER
+
+rdap-10:
+  Summary: Non-existent entity test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent entities.
+
+    The client will issue a `GET` request for a randomly-generated entity
+    handle. The server **MUST** respond with a 404 HTTP response code. If
+    present, the body of the response **MUST** be a valid RDAP error object. The
+    `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_ENTITY
+
 rdap-91:
   Implemented: true
   Summary: TLS version conformance check
