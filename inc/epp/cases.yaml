@@ -149,21 +149,24 @@ epp-04:
   Maturity: GAMMA
   Description: |
     The client will perform a series of `<check>` commands and will validate
-    the `avail` attribute of the `<domain:name>` elements in the server
-    response, as follows:
-
-    * syntactically invalid domain name: `avail` attribute **MUST** be `0`
-      or `false`.
-    * valid but registered domain name: `avail` attribute **MUST** be `0` or
-      `false`. The names provided in the `epp.registeredNames` input parameter
-      will be used to test this.
-    * syntactically valid, unregistered domain name: `avail` attribute
-      **MUST** be `1` or `true`. The domain name will be generated using
-      random characters.
+    the server response, using (a) syntactically invalid domain names, (b) valid
+    but registered domain names (the names provided in the `epp.registeredNames`
+    input parameter will be used to test this) and (c) syntactically valid
+    unregistered domains name generated using random characters.
 
     A "syntactically valid" domain name is one that complies with the format
     specified in [RFC 1123](https://www.rfc-editor.org/rfc/rfc1123.html). This
     test case does not consider IDN names.
+
+    For syntactically valid domain names, the server response **MUST** include
+    a `<domain:name>` element with an `avail` attribute with the appropriate
+    boolean value.
+
+    For syntactically *invalid* domain names, the server response **MUST**
+    either (a) respond normally and contain a `<domain:name>` element with an
+    `avail` attribute with a value of `0` or `false`, **OR** return an error
+    response, with one `<value>` elements in the `<result>` element(s) which
+    identify the domain name(s) that caused the server error condition.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -189,11 +192,12 @@ epp-05:
   Maturity: GAMMA
   Description: |
     If the EPP server supports host objects, this test will perform a series
-    of `<check>` commands and will validate the `avail` attribute of the
-    `<host:name>` elements in the server response, as follows:
+    of `<check>` commands and will validate the the server response.
 
-    * syntactically invalid hostname: `avail` attribute **MUST** be `0` or
-      `false`.
+    * syntactically invalid hostname: normal response with an `avail` attribute
+      of `0` or `false`, **OR** and error response containing `<value>` elements
+      in the `<result>` element(s) which identify the host name(s) that caused
+      the error.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -231,8 +235,10 @@ epp-06:
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
 
-    * syntactically invalid ID: `avail` attribute **MUST** be `0` or
-      `false`.
+    * syntactically invalid ID: normal response with an `avail` attribute
+      of `0` or `false`, **OR** and error response containing `<value>` elements
+      in the `<result>` element(s) which identify the contact ID(s) that caused
+      the error.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
