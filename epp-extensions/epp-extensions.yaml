@@ -231,4 +231,8 @@ uris:
       ref:  http://www.verisign.com/assets/epp-sdk/verisign_epp-extension_low-balance_v00.html
       uri:  http://www.verisign.com/epp/lowbalance-poll-1.0
 
+    - name: IDN EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
+      uri:  http://xmlns.tango-rs.net/epp/idn-1.0
+
 # END
