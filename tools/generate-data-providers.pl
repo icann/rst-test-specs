@@ -55,12 +55,18 @@ sub parse_xlsx {
             $row[$i] = $rows[$rc-1]->[$i] if (!defined($row[$i]) && $rc > 0);
         }
 
+        unshift(@row, sprintf('%s-row-%s', basename($file, '.xlsx'), $rc));
+
         push(@rows, \@row);
 
         $rc++;
     }
 
-    my @columns;
+    my @columns = ({
+        Name        => 'RowID',
+        Description => 'Unique ID for this row',
+        Type        => 'string',
+    });
 
     for (my $i = 0 ; $i < scalar(@names) ; $i++) {
         push(@columns, {
