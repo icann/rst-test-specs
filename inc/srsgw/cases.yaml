@@ -264,7 +264,7 @@ srsgw-08:
     response.
 
     The domain object **MUST** have the `pendingDelete` status and have an RGP
-    status of `pendingDeleteRestorable`.
+    status of `redemptionPeriod`.
   Input-Parameters:
     - srsgw.domainDeleteExtension
   Errors:
@@ -277,7 +277,7 @@ srsgw-08:
     - EPP_LOGIN_ERROR
     - SRSGW_DOMAIN_DELETE_FAILED
     - SRSGW_DOMAIN_DELETE_DOMAIN_NOT_PENDINGDELETE
-    - SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_PENDINGDELETERESTORABLE
+    - SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_REDEMPTIONPERIOD
     - SRSGW_EPP_INVALID_EXTENSION
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_INVALID_EXTENSION
