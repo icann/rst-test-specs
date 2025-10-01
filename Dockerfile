@@ -17,6 +17,7 @@ RUN apk add --quiet \
     openssl-dev \
     pandoc \
     go \
+    yq \
     perl-app-cpanminus \
     perl-autovivification \
     perl-carp-assert \

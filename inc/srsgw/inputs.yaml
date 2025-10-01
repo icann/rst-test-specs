@@ -1,5 +1,5 @@
 srsgw.eppHostName:
-  Description: the fully-qualified domain name of the SRS Gateway EPP server.
+  Description: The fully-qualified domain name of the SRS Gateway EPP server.
   Required: true
   Type: input
   Example: epp.rsp.tech
@@ -8,7 +8,10 @@ srsgw.eppHostName:
     format: hostname
 
 srsgw.eppClid01:
-  Description: the username used to log in to the SRS Gateway EPP server.
+  Description: |
+    The username used to log in to the SRS Gateway EPP server. This username
+    must correspond to the same entity as that of the `epp.clid01` input
+    parameter.
   Required: true
   Type: input
   Example: clid-01
@@ -17,7 +20,10 @@ srsgw.eppClid01:
     minLength: 3
 
 srsgw.eppPwd01:
-  Description: the password used to log in to the SRS Gateway EPP server.
+  Description: |
+    The username used to log in to the SRS Gateway EPP server. This username
+    must correspond to the same entity as that of the `epp.clid02` input
+    parameter.
   Required: true
   Type: input
   Example: foo2bar
@@ -53,7 +59,7 @@ srsgw.serverIssuedClientCertificate02:
   Example: cert.pem
 
 srsgw.eppClid02:
-  Description: the username used for transfer tests.
+  Description: The username used for transfer tests.
   Required: true
   Type: input
   Example: clid-02
@@ -61,7 +67,7 @@ srsgw.eppClid02:
     type: string
 
 srsgw.eppPwd02:
-  Description: the password used for transfer tests.
+  Description: The password used for transfer tests.
   Required: true
   Type: input
   Example: foo3bar
@@ -102,6 +108,38 @@ srsgw.rdapBaseURLs:
             The RDAP Base URL. The URL **MUST** have trailing slash (`/`).
           type: string
           format: url
+
+srsgw.loginExtension:
+  Description: |
+    An EPP `<extension>` element containing the extension elements(s) which are
+    required to succesfully log in to the EPP server.
+
+    The XML namespace URI(s) of the child elements(s) of the `<extension>`
+    element **MUST** appear in `<extURI>` elements in the `<greeting>`, and the
+    extension(s) **MUST** be registered in the [EPP Extension
+    Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
+
+    If no extensions are required, this input parameter **MUST** be omitted. If
+    provided, its content will not be validated until the test run occurs, and
+    if found to be invalid, the `SRSGW_EPP_INVALID_EXTENSION` error will be
+    emitted.
+
+    **Note:** the RST v2.0 service natively supports the [Login
+    Security extension (RFC
+    8807)](https://www.rfc-editor.org/rfc/rfc8807.html). If your EPP server
+    implements this extension, you **MUST NOT** include it in this input
+    parameter.
+  Required: false
+  Type: input
+  Schema:
+    type: string
+  Example: |
+    <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+      <login xmlns="our:epp:extension">
+        <!-- extension element(s) go here
+      </login>
+      <!-- any additional element(s) here -->
+    </extension>
 
 srsgw.domainCreateExtension:
   Description: |

@@ -43,6 +43,12 @@ SRSGW_DOMAIN_DELETE_FAILED:
   Description: |
     The domain `<delete>` command at the SRS Gateway EPP server failed.
 
+SRSGW_DOMAIN_DELETE_RGP_STATUS_NOT_REDEMPTIONPERIOD:
+  Severity: ERROR
+  Description: |
+    Following a successful domain `<delete>` command, the domain did not have
+    the `redemptionPeriod` RGP status at the primary EPP server.
+
 SRSGW_DOMAIN_RENEW_FAILED:
   Severity: CRITICAL
   Description: |
@@ -189,9 +195,9 @@ SRSGW_RDAP_RESPONSES_DIFFER:
 SRSGW_EPP_INVALID_EXTENSION:
   Severity: ERROR
   Description: |
-    The XML instance provided in the `srsgw.domainCreateExtension`,
-    `srsgw.domainDeleteExtension`, `srsgw.domainRenewExtension`,
-    `srsgw.domainTransferRequestExtension` or
+    The XML instance provided in the `srsgw.loginExtension`,
+    `srsgw.domainCreateExtension`, `srsgw.domainDeleteExtension`,
+    `srsgw.domainRenewExtension`, `srsgw.domainTransferRequestExtension` or
     `srsgw.domainTransferApproveExtension` input parameters was invalid. This
     may be because (a) it was not a well-formed XML instance, (b) specified an
     extension that was not registered in the EPP Extension Registry or (c)

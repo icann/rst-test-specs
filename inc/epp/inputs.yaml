@@ -16,7 +16,7 @@ epp.hostName:
 
 epp.greeting:
   Description: |
-    an XML instance which contains a copy of the server's `<greeting>`.
+    An XML instance which contains a copy of the server's `<greeting>`.
   Type: file
   Required: true
   Example: greeting.xml
@@ -24,7 +24,7 @@ epp.greeting:
     type: string
 
 epp.clid01:
-  Description: the username used to log in to the EPP server.
+  Description: The username used to log in to the EPP server.
   Type: input
   Required: true
   Example: clid-01
@@ -34,7 +34,7 @@ epp.clid01:
     maxLength: 16
 
 epp.pwd01:
-  Description: the password used to log in to the EPP server.
+  Description: The password used to log in to the EPP server.
   Type: input
   Required: true
   Example: foo2bar
@@ -70,7 +70,7 @@ epp.serverIssuedClientCertificate02:
     type: string
 
 epp.clid02:
-  Description: the username used for transfer tests.
+  Description: The username used for transfer tests.
   Type: input
   Required: true
   Example: clid-02
@@ -80,7 +80,7 @@ epp.clid02:
     maxLength: 16
 
 epp.pwd02:
-  Description: the password used for transfer tests.
+  Description: The password used for transfer tests.
   Type: input
   Required: true
   Example: foo3bar
@@ -317,3 +317,34 @@ epp.requiredContactElements:
         - voice:ext
         - fax
         - fax:ext
+
+epp.loginExtension:
+   Description: |
+     An EPP `<extension>` element containing the extension elements(s) which are
+     required to succesfully log in to the EPP server.
+
+     The XML namespace URI(s) of the child elements(s) of the `<extension>`
+     element **MUST** appear in `<extURI>` elements in the `<greeting>`, and the
+     extension(s) **MUST** be registered in the [EPP Extension
+     Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
+
+     If no extensions are required, this input parameter **MUST** be omitted. If
+     provided, its content will not be validated until the test run occurs, and
+     if found to be invalid, the `EPP_INVALID_EXTENSION` error will be emitted.
+
+     **Note:** the RST v2.0 service natively supports the [Login
+     Security extension (RFC
+     8807)](https://www.rfc-editor.org/rfc/rfc8807.html). If your EPP server
+     implements this extension, you **MUST NOT** include it in this input
+     parameter.
+   Type: input
+   Required: false
+   Schema:
+     type: string
+   Example: |
+     <extension xmlns='urn:ietf:params:xml:ns:epp-1.0'>
+       <login xmlns="our:epp:extension">
+         <!-- extension element(s) go here
+       </login>
+       <!-- any additional element(s) here -->
+     </extension>

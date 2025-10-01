@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+     targetNamespace=
+       "urn:ietf:params:xml:ns:verificationCode-1.0"
+     xmlns:verificationCode=
+       "urn:ietf:params:xml:ns:verificationCode-1.0"
+     xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+     xmlns="http://www.w3.org/2001/XMLSchema"
+     elementFormDefault="qualified">
+
+     <annotation>
+       <documentation>
+         Extensible Provisioning Protocol v1.0
+         Verification Code Extension.
+       </documentation>
+     </annotation>
+     <import namespace="http://www.w3.org/2000/09/xmldsig#"
+       schemaLocation="xmldsig-core-schema.xsd"/>
+
+     <!-- Abstract signed code for substitution -->
+     <element name="abstractSignedCode"
+       type="verificationCode:abstractSignedCodeType"
+       abstract="true"/>
+
+     <!-- Empty type for use in extending for a signed code -->
+     <complexType name="abstractSignedCodeType"/>
+
+     <!-- Definition of concrete signed code -->
+     <element name="signedCode"
+       type="verificationCode:signedCodeType"
+       substitutionGroup="verificationCode:abstractSignedCode"/>
+
+     <complexType name="signedCodeType">
+       <complexContent>
+         <extension base="verificationCode:abstractSignedCodeType">
+           <sequence>
+             <element name="code"
+               type="verificationCode:verificationCodeType"/>
+             <element ref="dsig:Signature"/>
+           </sequence>
+           <attribute name="id" type="ID" use="required"/>
+         </extension>
+       </complexContent>
+     </complexType>
+
+     <simpleType name="verificationCodeValueType">
+       <restriction base="token">
+           <pattern value="\d+-[A-Za-z0-9]+"/>
+       </restriction>
+     </simpleType>
+
+     <complexType name="verificationCodeType">
+       <simpleContent>
+         <extension base=
+           "verificationCode:verificationCodeValueType">
+           <attribute name="type" type="token"
+             use="required"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <!-- Definition of an encoded signed code -->
+     <element name="encodedSignedCode"
+       type="verificationCode:encodedSignedCodeListType"/>
+     <complexType name="encodedSignedCodeListType">
+       <sequence>
+          <element name="code"
+             type="verificationCode:encodedSignedCodeType"
+             minOccurs="1" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+     <complexType name="encodedSignedCodeType">
+       <simpleContent>
+         <extension base="token">
+           <attribute name="encoding"
+             type="token" default="base64"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <!-- info command extension elements -->
+     <element name="info" type="verificationCode:infoType"/>
+
+     <complexType name="infoType">
+       <simpleContent>
+         <extension base="token">
+            <attribute name="profile" type="token"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+
+     <!-- info response extension elements -->
+     <element name="infData" type="verificationCode:infDataType"/>
+
+     <complexType name="infDataType">
+       <sequence>
+         <element name="status"
+           type="verificationCode:statusEnum"/>
+         <element name="profile"
+           type="verificationCode:profileDataType"
+           minOccurs="0" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+     <complexType name="profileDataType">
+       <sequence>
+         <element name="status"
+           type="verificationCode:statusEnum"/>
+         <element name="missing"
+           type="verificationCode:missingCodes"
+           minOccurs="0"/>
+         <element name="set"
+           type="verificationCode:codesType"
+           minOccurs="0"/>
+       </sequence>
+       <attribute name="name" type="token"/>
+     </complexType>
+
+     <simpleType name="statusEnum">
+       <restriction base="token">
+         <enumeration value="notApplicable"/>
+         <enumeration value="nonCompliant"/>
+         <enumeration value="pendingCompliance"/>
+         <enumeration value="compliant"/>
+       </restriction>
+     </simpleType>
+
+     <complexType name="missingVerificationCode">
+       <simpleContent>
+         <extension base="token">
+           <attribute name="type" type="token"
+             use="required"/>
+           <attribute name="due" type="dateTime"
+             use="required"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <complexType name="missingCodes">
+       <sequence>
+         <element name="code"
+           type="verificationCode:missingVerificationCode"
+           minOccurs="1" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+     <complexType name="infoVerificationCodeType">
+       <simpleContent>
+         <extension base="token">
+           <attribute name="type" type="token"
+             use="required"/>
+           <attribute name="date" type="dateTime"
+             use="required"/>
+         </extension>
+       </simpleContent>
+     </complexType>
+
+     <complexType name="codesType">
+       <sequence>
+         <element name="code"
+           type="verificationCode:infoVerificationCodeType"
+           minOccurs="1" maxOccurs="unbounded"/>
+       </sequence>
+     </complexType>
+
+   </schema>
+

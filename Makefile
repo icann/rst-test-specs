@@ -5,12 +5,17 @@ ZM_DIR=zonemaster/zonemaster-$(ZONEMASTER_VERSION)
 
 yaml: export ZM_VERSION=$(ZONEMASTER_VERSION)
 
-all: zonemaster-profile includes yaml lint json html
+all: zonemaster-profile rdapct-config includes yaml lint json html
 
 zonemaster-profile:
 	@echo Generating Zonemaster profile...
 	@tools/generate-zonemaster-profile.pl "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst.json
 	@echo wrote rst.json
+
+rdapct-config:
+	@echo Generating RDAP Conformance Tool configuration...
+	@tools/generate-rdapct-config.pl > rdapct_config.json
+	@echo wrote rdapct_config.json
 
 includes:
 	@rm -rf tmp
