@@ -248,8 +248,7 @@ srsgw-08:
     The client will connect to the SRS Gateway EPP system, authenticate, and
     submit `<create>` commands for a pseudo-randomly generated domain name.
     Contact and nameserver will be created if required. The server **MUST**
-    respond with a 1000 or 1001 response. It will then submit a `<renew>`
-    command to ensure that the domain does not have the `addPeriod` status.
+    respond with a 1000 or 1001 response.
 
     It will wait for 30 seconds, and then connect to the primary EPP system,
     authenticate, and perform an `<info>` command. The server **MUST**
@@ -259,12 +258,16 @@ srsgw-08:
     and submit a `<delete>` command.  The server **MUST** respond with a 1001
     response.
 
-    Finally, the client will reconnect to the primary EPP system, authenticate,
-    and perform an `<info>` command. The server **MUST** respond with a 1000
-    response.
+    Finally, the client will wait for 30 seconds, and then reconnect to the
+    primary EPP system, authenticate, and confirm that:
 
-    The domain object **MUST** have the `pendingDelete` status and have an RGP
-    status of `redemptionPeriod`.
+    * if the SRS Gateway EPP server responded to the `<delete>` command with a
+      `1000` response, then the domain no longer exists;
+    * if the SRS Gateway EPP server responded to the `<delete>` command with a
+      `1001` response, then (a) the domain no longer exists (as it has been
+      purged) or (b) the domain has the `pendingDelete` status and have an RGP
+      status of `redemptionPeriod`.
+
   Input-Parameters:
     - srsgw.domainDeleteExtension
   Errors:

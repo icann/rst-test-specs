@@ -973,8 +973,8 @@ epp-21:
     * if the server responded to the `<delete>` command with a `1000`
       response, then the domain no longer exists;
     * if the server responded to the `<delete>` command with a `1001`
-      response, then the domain has the `pendingDelete` status and the
-      `redemptionPeriod` RGP status.
+      response, then (a) the domain no longer exists (as it has been purged) or
+      (b) the domain has the `pendingDelete` status.
 
     If the `<delete>` command resulted in a `1000` response, the client will
     also submit `<delete>` commands for any host and/or contact objects created.
@@ -990,7 +990,6 @@ epp-21:
     - EPP_LOGIN_ERROR
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
-    - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_INVALID_EXTENSION
 
