@@ -171,7 +171,11 @@ rdap-92:
 
     The responses returned by each service port **MUST**, with the exception
     of the `last update of RDAP database` event, be consistent, once the JSON
-    body has been parsed and canonicalised.
+    body has been parsed and canonicalised. The values that appear in the
+    `entities`, `events`, `notices`, `remarks`, `links`, `rdapConformance`,
+    `publicIDs`, `status`, `ipAddresses`, and `nameservers` properties of the
+    response may appear in any order.
+
   Errors:
     - RDAP_TLS_DNS_RESOLUTION_ERROR
     - RDAP_TLS_SERVICE_PORT_UNREACHABLE
