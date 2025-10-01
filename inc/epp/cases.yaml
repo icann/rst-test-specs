@@ -810,6 +810,8 @@ epp-16:
     - epp-16-status-data
     - epp-16-ns-data
     - epp-16-dnssec-data
+  Input-Parameters:
+    - epp.secDNSInterfaces
 
 epp-17:
   Summary: Service Port consistency test
