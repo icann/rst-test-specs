@@ -171,6 +171,7 @@ StandardEPP:
     - epp.supportedContactElements
     - epp.requiredContactElements
     - epp.loginExtension
+    - epp.secDNSInterfaces
   Resources:
     - epp.clientACL
     - epp.client01CSR
