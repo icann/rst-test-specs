@@ -379,9 +379,13 @@ epp-08:
     registrar credentials based on the values of the `epp.clid01DataModel` and
     `epp.clid02DataModel` input parameters.
 
-    The client will connect using a set of alternate credentials and will
-    submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** reject these commands.
+    The client will connect to the server and create contact objects. These
+    `<create>` commands **MUST** be successful.
+
+    It will then connect using a set of alternate credentials and submit
+    `<info>` and `<update>` commands on the contact objects created in `epp-07`.
+
+    The server **MUST** reject these commands.
   Dependencies:
     - epp-07
   Errors:
