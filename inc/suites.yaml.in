@@ -246,6 +246,7 @@ StandardIDN:
     - epp.supportedContactElements
     - general.registryDataModel
     - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
   Resources:
     - epp.clientACL
     - epp.client01CSR
@@ -289,6 +290,7 @@ StandardSRSGateway:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
@@ -383,6 +385,7 @@ MinimumRPMs:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
     - general.registryDataModel
     - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModel
@@ -423,6 +426,7 @@ StandardIntegrationTest:
     - epp.supportedContactElements
     - general.registryDataModel
     - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
   Resources:
     - tmch.testCert
     - tmch.testCRL
