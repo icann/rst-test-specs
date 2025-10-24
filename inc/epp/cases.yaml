@@ -165,8 +165,7 @@ epp-04:
     For syntactically *invalid* domain names, the server response **MUST**
     either (a) respond normally and contain a `<domain:name>` element with an
     `avail` attribute with a value of `0` or `false`, **OR** return an error
-    response, with one `<value>` elements in the `<result>` element(s) which
-    identify the domain name(s) that caused the server error condition.
+    response with a 2004 or 2005 result code.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -194,10 +193,9 @@ epp-05:
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the the server response.
 
-    * syntactically invalid hostname: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the host name(s) that caused
-      the error.
+    * syntactically invalid hostname: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2004 or 2005
+      result code.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -235,10 +233,9 @@ epp-06:
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
 
-    * syntactically invalid ID: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the contact ID(s) that caused
-      the error.
+    * syntactically invalid ID: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2004 or 2005
+      result code.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
