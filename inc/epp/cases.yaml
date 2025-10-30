@@ -1123,8 +1123,8 @@ epp-25:
   Maturity: GAMMA
   Description: |
     This test will confirm that the EPP server does not allow clients to create
-    host objects that are subordinate to domain names that are sponsored by
-    a different client.
+    and manage host objects that are subordinate to domain names that are
+    sponsored by a different client.
 
     If the `epp.hostModel` input parameter is `attributes`, this test will
     be skipped.
@@ -1136,7 +1136,10 @@ epp-25:
     EPP server and authenticate, and submit a `<create>` command for a host
     object that is subordinate to the previously created domain name.
 
-    The host `<create>` command **MUST** fail.
+    This test case will fail if (a) the `<create>` command is successful,
+    **and** (b) a subsequent `<info>` command shows that the resulting host
+    object is not sponsored by the same client that sponsors the superordinate
+    domain object.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
