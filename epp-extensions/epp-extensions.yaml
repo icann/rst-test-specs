@@ -235,4 +235,12 @@ uris:
       ref:  https://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
       uri:  http://xmlns.tango-rs.net/epp/idn-1.0
 
+    - name: CIRA Fury RGP Information for the Extensible Provisioning Protocol (EPP)
+      ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-rgp-1-epp-extension/
+      uri:  urn:ietf:params:xml:ns:fury-rgp-1.0
+
+    - name: CIRA Fury 2.1 Extension for the Extensible Provisioning Protocol (EPP)
+      ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-21-epp-extension/
+      uri:  urn:ietf:params:xml:ns:fury-2.1
+
 # END
