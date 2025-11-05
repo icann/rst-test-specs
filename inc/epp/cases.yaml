@@ -67,9 +67,8 @@ epp-02:
        **MUST** be present is the domain namespace URI. The host and contact
        namespace URIs may be required depending on the `epp.hostModel` and
        `general.registryDataModel` parameters.
-    6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
-       namespace URIs that have been registered in the IANA registry, and that
-       the mandatory extensions are also included.
+    6. All `<objURI>` and `<extURI>` element(s) in the `<greeting>` **MUST**
+       correspond to entries in the EPP Extension Registry.
     7. `<extURI>` elements containing the following XML namespaces **MUST** be
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
