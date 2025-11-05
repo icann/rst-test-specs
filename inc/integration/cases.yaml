@@ -94,7 +94,6 @@ integration-03:
     - integration.rdeSFTPHostname
     - integration.rdeSFTPDirectory
     - integration.rdeSFTPUsername
-    - integration.rriACL
   Dependencies:
     - integration-01
   Errors:
