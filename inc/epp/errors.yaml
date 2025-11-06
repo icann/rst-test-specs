@@ -1163,3 +1163,11 @@ EPP_UNEXPECTED_HOST_CREATE_SUCCESS:
   Description: |
     The server incorrectly accepted a `<create>` command for a host object that
     was subordinate to a domain under the sponsorship of a different client.
+
+EPP_HOST_CREATE_INCORRECT_CLID:
+  Severity: ERROR
+  Description: |
+    After successfully creating a host object that is subordinate to a domain
+    that is sponsored by a different client, a subsequent `<info>` command
+    showed that the host object was not sponsored by the sponsor of the
+    superordinate domain object.
