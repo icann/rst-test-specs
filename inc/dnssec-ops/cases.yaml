@@ -104,7 +104,7 @@ dnssecOps03-AlgorithmRollover:
   Description: |
     This test case verifies the RSP's ability to perform an algorithm rollover
     (as described in [Section 4.1.4 of
-    RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.2)).
+    RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.4)).
 
     The system will monitor the zone specified in the `dnssec.algorithmRolloverZone`
     input parameter. The domain may be present anywhere in the global DNS
