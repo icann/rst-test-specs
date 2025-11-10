@@ -165,7 +165,7 @@ epp-04:
     For syntactically *invalid* domain names, the server response **MUST**
     either (a) respond normally and contain a `<domain:name>` element with an
     `avail` attribute with a value of `0` or `false`, **OR** return an error
-    response with a 2004 or 2005 result code.
+    response with a 2001, 2004 or 2005 result code.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -194,8 +194,8 @@ epp-05:
     of `<check>` commands and will validate the the server response.
 
     * syntactically invalid hostname: either a normal response with an `avail`
-      attribute of `0` or `false`, or an error response with a 2004 or 2005
-      result code.
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -234,8 +234,8 @@ epp-06:
     the `<contact:id>` elements in the server response, as follows:
 
     * syntactically invalid ID: either a normal response with an `avail`
-      attribute of `0` or `false`, or an error response with a 2004 or 2005
-      result code.
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
