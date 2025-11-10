@@ -13,9 +13,11 @@ zonemaster-profile:
 	@echo wrote rst.json
 
 rdapct-config:
-	@echo Generating RDAP Conformance Tool configuration...
+	@echo Generating RDAP Conformance Tool configuration files...
 	@tools/generate-rdapct-config.pl > rdapct_config.json
 	@echo wrote rdapct_config.json
+	@tools/generate-rdapct-config.pl OTE  > rdapct_config_ote.json
+	@echo wrote rdapct_config_ote.json
 
 includes:
 	@rm -rf tmp
