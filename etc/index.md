@@ -12,7 +12,10 @@ Additional resources:
   [DNSSEC](rst-test-specs.html#Test-Suite-StandardDNSSEC) test suites.
 * [rdapct_config.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rdapct_config.json)
   is the configuration file used by the [RDAP Conformance
-  Tool](https://github.com/icann/rdap-conformance-tool).
+  Tool](https://github.com/icann/rdap-conformance-tool) in production.
+* [rdapct_config_ote.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rdapct_config_ote.json)
+  is the configuration file used by the [RDAP Conformance
+  Tool](https://github.com/icann/rdap-conformance-tool) in OT&E.
 * Machine-readable
   [JSON](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.json)
   version of the test specs, intended to be consumed by internal ICANN clients.
