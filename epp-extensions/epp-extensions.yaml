@@ -235,4 +235,32 @@ uris:
       ref:  https://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
       uri:  http://xmlns.tango-rs.net/epp/idn-1.0
 
+    - name: Auction EPP Extension for the TANGO Registration System
+      ref:  http://www.tango-rs.com/epp/tango-auction-epp-extension.pdf
+      uri:  http://xmlns.tango-rs.net/epp/auction-1.0
+
+    - name: Contact Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-contact-eligibility-epp-extension-1.1.pdf
+      uri:  http://@XMLNS_DOMAIN@/epp/contact-eligibility-1.1
+
+    - name: Domain Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-domain-eligibility-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/eligibility-1.0
+
+    - name: Domain Privacy EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-privacy-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/privacy-1.0
+
+    - name: Promotion EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-1.0
+
+    - name: Promotion Info EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
+
+    - name: XML Mark Data Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
+    - uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
+
 # END
