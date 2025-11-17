@@ -403,3 +403,15 @@ RDE_DOMAIN_HAS_INVALID_ACRR:
   Description: |
     One or more contact objects have a `<acRr>` element containing a registrar
     ID that is not present in the deposit.
+
+RDE_DOMAIN_HAS_UNEXPECTED_HOST_OBJECTS:
+  Severity: ERROR
+  Description: |
+    One or more domain objects have a `<hostObj>` element, but the value of the
+    `epp.hostModel` input parameter is `attributes`.
+
+RDE_DOMAIN_HAS_UNEXPECTED_HOST_ATTRIBUTES:
+  Severity: ERROR
+  Description: |
+    One or more domain objects have a `<hostAttr>` element, but the value of the
+    `epp.hostModel` input parameter is `objects`.
