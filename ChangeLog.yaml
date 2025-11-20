@@ -1,3 +1,41 @@
+2025-10-02:
+  - "Stable release [v2025.07](https://github.com/icann/rst-test-specs/releases/tag/v2025.07):"
+
+  - |
+    Account for out-of-band purge of the domain in
+    [epp-21](#Test-Case-epp-21) and [srsgw-08](#Test-Case-srsgw-08)
+    ([#6](https://github.com/icann/rst-test-specs/issues/6))
+
+  - |
+    [epp-08](#Test-Case-epp-08): do not expect the 2201 code
+    ([#54](https://github.com/icann/rst-test-specs/issues/54))
+
+  - |
+    [srsgw-08](#Test-Case-srsgw-08): incorrect expected RGP status after
+    `<delete>` ([#69](https://github.com/icann/rst-test-specs/issues/69))
+
+  - |
+    [rdap-92](#Test-Case-rdap-92): ordering of objects in arrays
+    ([#61](https://github.com/icann/rst-test-specs/issues/61))
+
+  - |
+    Add unique ID to data provider rows
+    ([#87](https://github.com/icann/rst-test-specs/issues/87))
+
+  - |
+    [epp-16-dnssec-data](#Data-Provider-epp-16-dnssec-data): differentiate between
+    secDNS interfaces ([#78](https://github.com/icann/rst-test-specs/issues/78))
+
+  - |
+    Server use of error result code for `<check>` for invalid domain/hostnames
+    causes issues in [epp-04](#Test-Case-epp-04), [epp-05](#Test-Case-epp-05)
+    and [epp-06](#Test-Case-epp-06)
+    ([#62](https://github.com/icann/rst-test-specs/issues/62))
+
+  - |
+    Update to the EPP Extension Registry
+    ([#85](https://github.com/icann/rst-test-specs/issues/85))
+
 2025-09-01:
   - "Stable release [v2025.06](https://github.com/icann/rst-test-specs/releases/tag/v2025.06):"
 

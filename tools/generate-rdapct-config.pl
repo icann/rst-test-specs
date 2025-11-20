@@ -32,6 +32,8 @@ use common::sense;
     -52104,
     -10303,
     -23100,
+    -13005,
+    -13006,
 );
 
 $CONFIG = mirror_json(TEMPLATE_URL);
