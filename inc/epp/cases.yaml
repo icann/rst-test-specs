@@ -776,7 +776,7 @@ epp-16:
     It will then perform `<info>` commands to confirm that the changes have been
     correctly stored by the server.
 
-    The client will also confirm that it cannot perform an `<update>` command
+    The client will then confirm that it cannot perform an `<update>` command
     on a domain sponsored by another registrar, and that the server responds
     with a `2201` authorization error.
   Errors:
