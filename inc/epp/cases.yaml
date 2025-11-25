@@ -67,9 +67,8 @@ epp-02:
        **MUST** be present is the domain namespace URI. The host and contact
        namespace URIs may be required depending on the `epp.hostModel` and
        `general.registryDataModel` parameters.
-    6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
-       namespace URIs that have been registered in the IANA registry, and that
-       the mandatory extensions are also included.
+    6. All `<objURI>` and `<extURI>` element(s) in the `<greeting>` **MUST**
+       correspond to entries in the EPP Extension Registry.
     7. `<extURI>` elements containing the following XML namespaces **MUST** be
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
@@ -165,8 +164,7 @@ epp-04:
     For syntactically *invalid* domain names, the server response **MUST**
     either (a) respond normally and contain a `<domain:name>` element with an
     `avail` attribute with a value of `0` or `false`, **OR** return an error
-    response, with one `<value>` elements in the `<result>` element(s) which
-    identify the domain name(s) that caused the server error condition.
+    response with a 2001, 2004 or 2005 result code.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -194,10 +192,9 @@ epp-05:
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the the server response.
 
-    * syntactically invalid hostname: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the host name(s) that caused
-      the error.
+    * syntactically invalid hostname: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -235,10 +232,9 @@ epp-06:
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
 
-    * syntactically invalid ID: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the contact ID(s) that caused
-      the error.
+    * syntactically invalid ID: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
@@ -379,9 +375,13 @@ epp-08:
     registrar credentials based on the values of the `epp.clid01DataModel` and
     `epp.clid02DataModel` input parameters.
 
-    The client will connect using a set of alternate credentials and will
-    submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** reject these commands.
+    The client will connect to the server and create contact objects. These
+    `<create>` commands **MUST** be successful.
+
+    It will then connect using a set of alternate credentials and submit
+    `<info>` and `<update>` commands on the contact objects created in `epp-07`.
+
+    The server **MUST** reject these commands.
   Dependencies:
     - epp-07
   Errors:
@@ -550,7 +550,6 @@ epp-11:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME
-    - EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
@@ -726,7 +725,7 @@ epp-14:
     - epp-14-data
 
 epp-15:
-  Summary: Registry object integrity test
+  Summary: Registry object integrity test (if applicable)
   Maturity: GAMMA
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
@@ -743,8 +742,7 @@ epp-15:
     objects.
 
     It will then submit `<delete>` commands for those contact and host objects
-    The server **MUST** respond with a `2305` "Object association prohibits
-    operation" error.
+    The server **MUST** reject these commands.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
