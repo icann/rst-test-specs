@@ -1,3 +1,65 @@
+2025-11-25:
+  - "Stable release [v2025.08](https://github.com/icann/rst-test-specs/releases/tag/v2025.08):"
+
+  - |
+    Updates to the EPP Extension Registry
+    ([#94](https://github.com/icann/rst-test-specs/issues/94),
+    ([#102](https://github.com/icann/rst-test-specs/issues/102) and
+    [#133](https://github.com/icann/rst-test-specs/issues/133)).
+
+  - |
+    Added
+    [`epp.supportedContactPostalInfoTypes`](#Input-Parameter-epp.supportedContactPostalInfoTypes)
+    input parameter
+    ([#96](https://github.com/icann/rst-test-specs/issues/96)).
+
+  - |
+    Added
+    [`RPMS_MISSING_CLAIMS_KEY`](#Error-RPMS_MISSING_CLAIMS_KEY)
+    ([#18](https://github.com/icann/rst-test-specs/issues/18)).
+
+  - |
+    Removed the `integration.rriACL` input parameter
+    ([#98](https://github.com/icann/rst-test-specs/issues/98)).
+
+  - |
+    [Configuration parameters](#config) are now included in HTML output
+    ([#108](https://github.com/icann/rst-test-specs/issues/108)).
+
+  - |
+    Minor fixes to [epp-02](#Test-Case-epp-02) and [epp-08](#Test-Case-epp-08)
+    ([#110](https://github.com/icann/rst-test-specs/issues/110) and
+    [#113](https://github.com/icann/rst-test-specs/issues/113)).
+
+  - |
+    [epp-04](#Test-Case-epp-04), [epp-05](#Test-Case-epp-05) and
+    [epp-06](#Test-Case-epp-06) have been updated so that they will accept any
+    EPP error response when submitting a `<check>` command for a syntactically
+    invalid domain name, host name, or contact ID
+    ([#115](https://github.com/icann/rst-test-specs/issues/115)).
+
+  - |
+    [epp-11](#Test-Case-epp-11) will no longer fail if the EPP server allows
+    creation of internal hosts without glue
+    ([#120](https://github.com/icann/rst-test-specs/issues/120)).
+
+  - |
+    Many SRS Gateway error codes have been downgraded from `CRITICAL` to `ERROR`
+    severity ([#125](https://github.com/icann/rst-test-specs/issues/125)).
+
+  - |
+    Minor fixes to several RDAP test cases
+    ([#129](https://github.com/icann/rst-test-specs/issues/129)).
+
+  - |
+    The build system will now generate separate RDAP Conformance Tool
+    configuration files for the OT&E and production environments
+    ([#131](https://github.com/icann/rst-test-specs/issues/131)).
+
+  - |
+    Updated [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) to
+    the latest version.
+
 2025-10-02:
   - "Stable release [v2025.07](https://github.com/icann/rst-test-specs/releases/tag/v2025.07):"
 
