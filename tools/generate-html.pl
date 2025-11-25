@@ -170,6 +170,8 @@ sub print_toc {
     print_provider_toc_list();
     print $h->close(li);
 
+    print $h->li($h->a({href => '#config'}, 'Configuration Parameters'));
+
     print $h->li($h->a({href => '#meta'}, 'About this document'));
 
     print $h->close(ol);
@@ -401,6 +403,8 @@ sub print_main {
 
     print_providers();
 
+    print_config();
+
     print_meta();
 
     print $h->close('main');
@@ -462,6 +466,27 @@ sub print_preamble {
     print $h->close(section);
 
     say STDERR 'wrote preamble';
+}
+
+sub print_config {
+    print $h->open(section);
+    print $h->a({name => 'config'});
+    print $h->h2(sprintf('%d. Configuration Parameters', ++$section));
+
+    print $h->open('table', { 'style' => 'width:auto' });
+    print $h->thead($h->tr([map { $h->th($_) } qw(Name Value)]));
+    print $h->open('tbody');
+
+    foreach my $param (@{$spec->spec->{'Configuration'}}) {
+        print $h->tr([map { $h->td($h->pre($_)) } $param->{'Name'}, $param->{'Value'}]);
+    }
+
+    print $h->close('tbody');
+    print $h->close('table');
+
+    print $h->close(section);
+
+    say STDERR 'wrote meta';
 }
 
 sub print_meta {
