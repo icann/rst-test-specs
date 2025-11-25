@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2025-09-26
+last-updated: 2025-10-15
 
 links:
   - rel:   help
@@ -148,7 +148,7 @@ uris:
       uri:  urn:se:iis:xml:epp:registryLock-1.0
 
     - name: Additional Email Address Extension for the Extensible Provisioning Protocol (EPP)
-      ref:  RFC-ietf-regext-epp-eai-27
+      ref:  https://www.rfc-editor.org/rfc/rfc9873.html
       uri:  urn:ietf:params:xml:ns:epp:addlEmail-1.0
 
     - name: Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values
