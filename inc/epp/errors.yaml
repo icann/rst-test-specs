@@ -714,12 +714,6 @@ EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
     The server accepts a host `<create>` command with a `<name>` element that
     contains a syntactically invalid hostname.
 
-EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE:
-  Severity: ERROR
-  Description: |
-    The server accepts a host `<create>` command for an in-bailiwick hostname
-    that does not include any `<addr>` elements.
-
 EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
   Severity: ERROR
   Description: |
