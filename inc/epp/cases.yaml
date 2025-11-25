@@ -726,7 +726,7 @@ epp-14:
     - epp-14-data
 
 epp-15:
-  Summary: Registry object integrity test
+  Summary: Registry object integrity test (if applicable)
   Maturity: GAMMA
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
@@ -743,8 +743,7 @@ epp-15:
     objects.
 
     It will then submit `<delete>` commands for those contact and host objects
-    The server **MUST** respond with a `2305` "Object association prohibits
-    operation" error.
+    The server **MUST** reject these commands.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
