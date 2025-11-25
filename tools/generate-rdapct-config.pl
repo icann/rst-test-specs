@@ -4,8 +4,27 @@ use JSON::XS;
 use IO::File;
 use List::Util qw(none);
 use constant TEMPLATE_URL => q{https://raw.githubusercontent.com/icann/rdap-conformance-tool/refs/heads/master/tool/bin/rdapct_config.json};
-use vars qw($CONFIG @WARNING @IGNORE);
+use vars qw($CONFIG @WARNING @IGNORE @IGNORE_OTE $ENVIRONMENTS $ENVIRONMENT);
 use common::sense;
+
+$ENVIRONMENTS = {
+    OTE     => 1,
+    PROD    => 1,
+};
+
+if (!exists($ARGV[0])) {
+    $ENVIRONMENT = q{PROD};
+
+} else {
+    if (exists($ENVIRONMENTS->{$ARGV[0]})) {
+        $ENVIRONMENT = $ARGV[0];
+
+    } else {
+        printf(STDERR "Invalid argument '%s', must be one of: %s\n", $ARGV[0], join(',', keys(%{$ENVIRONMENTS})));
+        exit(1);
+
+    }
+}
 
 @WARNING = (
     {
@@ -35,6 +54,15 @@ use common::sense;
     -13005,
     -13006,
 );
+
+@IGNORE_OTE = (
+    -46205,
+    -47205,
+    -49104,
+    -52106,
+);
+
+push(@IGNORE, @IGNORE_OTE) if (q{OTE} eq $ENVIRONMENT);
 
 $CONFIG = mirror_json(TEMPLATE_URL);
 
