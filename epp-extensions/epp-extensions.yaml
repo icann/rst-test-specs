@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2025-10-15
+last-updated: 2025-11-12
 
 links:
   - rel:   help
@@ -235,6 +235,33 @@ uris:
       ref:  https://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
       uri:  http://xmlns.tango-rs.net/epp/idn-1.0
 
+    - name: Auction EPP Extension for the TANGO Registration System
+      ref:  http://www.tango-rs.com/epp/tango-auction-epp-extension.pdf
+      uri:  http://xmlns.tango-rs.net/epp/auction-1.0
+
+    - name: Contact Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-contact-eligibility-epp-extension-1.1.pdf
+      uri:  http://xmlns.tango-rs.net/epp/contact-eligibility-1.1
+
+    - name: Domain Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-domain-eligibility-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/eligibility-1.0
+
+    - name: Domain Privacy EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-privacy-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/privacy-1.0
+
+    - name: Promotion EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-1.0
+
+    - name: Promotion Info EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
+
+    - name: XML Mark Data Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
+    - uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
     - name: CIRA Fury RGP Information for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-rgp-1-epp-extension/
       uri:  urn:ietf:params:xml:ns:fury-rgp-1.0
