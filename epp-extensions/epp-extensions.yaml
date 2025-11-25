@@ -261,7 +261,7 @@ uris:
 
     - name: XML Mark Data Extension for the TANGO Registration System
       ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
-    - uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
+      uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
 
     - name: CIRA Fury RGP Information for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-rgp-1-epp-extension/
