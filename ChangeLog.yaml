@@ -1,3 +1,10 @@
+2025-11-26:
+  - "Stable release [v2025.08.1](https://github.com/icann/rst-test-specs/releases/tag/v2025.08.1):"
+
+  - |
+    This release updates the configuration file(s) for the RDAP Conformance
+    Tool. There are no changes to the test specifications.
+
 2025-11-25:
   - "Stable release [v2025.08](https://github.com/icann/rst-test-specs/releases/tag/v2025.08):"
 
