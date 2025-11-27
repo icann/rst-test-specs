@@ -115,17 +115,21 @@ epp-03:
     authentication. The client will submit a series of `<login>` commands to
     confirm that:
 
-    * the server rejects a `<login>` command with a (randomly generated) non-
-      existent client ID;
-    * the server rejects a `<login>` command with a valid client ID, but an
-      invalid password;
-    * the server rejects a `<login>` command with a valid client ID and password
-      but an incorrect client certificate;
-    * the server accepts a `<login>` command with a valid client ID, password
-      and client certificate;
+    1. the server rejects a `<login>` command with a (randomly generated) non-
+       existent client ID;
+    2. the server rejects a `<login>` command with a valid client ID, but an
+       invalid password;
+    3. the server rejects a `<login>` command with a valid client ID and
+       password but uses an incorrect client certificate;
+    4. the server rejects a `<login>` command with a valid client ID and
+       password but uses the client certificate of another registrar;
+    5. the server rejects a `<login>` command with a valid client ID and
+       password but without a client certificate;
+    6. the server accepts a `<login>` command with a valid client ID, password
+       and client certificate;
 
     The client will use the object and extension XML namespaces from the
-    server's `<greeting>` as part of the `<login>` command.
+    server's `<greeting>` in the `<login>` command.
 
     If the server supports the Login Security Extension (see [RFC
     8807](https://www.rfc-editor.org/rfc/rfc8807.html)) then this will be used
