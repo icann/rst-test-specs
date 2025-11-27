@@ -117,7 +117,7 @@ rdap-07:
   Errors:
     - RDAP_ENTITY_HEAD_FAILED
 
-rdap-91:
+rdap-08:
   Implemented: true
   Summary: TLS version conformance check
   Maturity: GAMMA
@@ -153,7 +153,7 @@ rdap-91:
     - RDAP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
     - RDAP_TLS_BAD_CIPHER
 
-rdap-92:
+rdap-09:
   Implemented: true
   Summary: Service port consistency check
   Maturity: GAMMA

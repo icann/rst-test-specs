@@ -1,6 +1,5 @@
-dnssecOps01-ZSKRollover:
-  Implemented: false
-  Summary: ZSK rollover
+dnssecOps-01:
+  Summary: ZSK rollover test
   Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform a ZSK rollover (as
@@ -49,9 +48,8 @@ dnssecOps01-ZSKRollover:
     - DNSSEC_OPS_ZSK_ROLLOVER_NOT_COMPLETED
     - DNSSEC_OPS_INVALID_ALGORITHM
 
-dnssecOps02-KSKRollover:
-  Implemented: false
-  Summary: KSK rollover
+dnssecOps-02:
+  Summary: KSK rollover test
   Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform a CSK/KSK rollover
@@ -97,9 +95,8 @@ dnssecOps02-KSKRollover:
     - DNSSEC_OPS_KSK_ROLLOVER_NOT_COMPLETED
     - DNSSEC_OPS_INVALID_ALGORITHM
 
-dnssecOps03-AlgorithmRollover:
-  Implemented: false
-  Summary: algorithm rollover
+dnssecOps-03:
+  Summary: algorithm rollover test
   Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform an algorithm rollover
