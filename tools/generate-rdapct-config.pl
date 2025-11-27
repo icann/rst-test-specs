@@ -53,6 +53,8 @@ if (!exists($ARGV[0])) {
     -23100,
     -13005,
     -13006,
+    -11703,
+    -12205,
 );
 
 @IGNORE_OTE = (
@@ -74,12 +76,20 @@ foreach my $code (@IGNORE) {
     push(@{$CONFIG->{definitionIgnore}}, $code) if (none { $_ == $code } @{$CONFIG->{definitionIgnore}});
 }
 
-$CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0.};
+if (q{OTE} eq $ENVIRONMENT) {
+    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0 Operational Testing & Evaluation (OT&E) Environment.};
+
+} else {
+    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0 Production Environment.};
+
+}
 
 $CONFIG->{definitionNotes} = [ grep { length > 0 } map { chomp ; $_ } split(/\n/, <<END
 This configuration file is based on the default configuration file published in the RDAP Conformance Tool's git repository.
 It includes additional options appropriate for the Registry System Testing (RST) v2.0 system.
 END
 ) ];
+
+push(@{$CONFIG->{definitionNotes}}, q{This file is intended for use in the OT&E environment.}) if (q{OTE} eq $ENVIRONMENT);
 
 say JSON::XS->new->pretty->utf8->encode($CONFIG);
