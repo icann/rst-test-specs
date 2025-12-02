@@ -34,7 +34,7 @@ echo "Generating EPP extension data..."
 mkdir "$SITEDIR/epp-extensions"
 yq -o json epp-extensions/epp-extensions.yaml > "$SITEDIR/epp-extensions/epp-extensions.json"
 cp -R epp-extensions/xsd "$SITEDIR/epp-extensions/"
-tools/generate-superschema.pl | tee "$SITEDIR/epp-extensions/xsd/super.xsd"
+tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 
 cp rdapct_config*.json "$SITEDIR/"
 
