@@ -10,10 +10,10 @@ Additional resources:
   profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
   used by the [DNS](rst-test-specs.html#Test-Suite-StandardDNS) and
   [DNSSEC](rst-test-specs.html#Test-Suite-StandardDNSSEC) test suites.
-* [rdapct_config.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rdapct_config.json)
+* [rdapct_config.json](rdapct_config.json)
   is the configuration file used by the [RDAP Conformance
   Tool](https://github.com/icann/rdap-conformance-tool) in production.
-* [rdapct_config_ote.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rdapct_config_ote.json)
+* [rdapct_config_ote.json](rdapct_config_ote.json)
   is the configuration file used by the [RDAP Conformance
   Tool](https://github.com/icann/rdap-conformance-tool) in OT&E.
 * Machine-readable
