@@ -36,6 +36,8 @@ yq -o json epp-extensions/epp-extensions.yaml > "$SITEDIR/epp-extensions/epp-ext
 cp -R epp-extensions/xsd "$SITEDIR/epp-extensions/"
 tools/generate-superschema.pl | tee "$SITEDIR/epp-extensions/xsd/super.xsd"
 
+cp rdapct_config*.json "$SITEDIR/"
+
 chmod -R 0755 "$SITEDIR"
 
 echo "done"
