@@ -4,23 +4,23 @@ use JSON::XS;
 use IO::File;
 use List::Util qw(none);
 use constant TEMPLATE_URL => q{https://raw.githubusercontent.com/icann/rdap-conformance-tool/refs/heads/master/tool/bin/rdapct_config.json};
-use vars qw($CONFIG @WARNING @IGNORE @IGNORE_OTE $ENVIRONMENTS $ENVIRONMENT);
+use vars qw($CONFIG @WARNING @IGNORE @IGNORE_RSP $USAGES $USAGE);
 use common::sense;
 
-$ENVIRONMENTS = {
-    OTE     => 1,
+$USAGES = {
+    RSP     => 1,
     PROD    => 1,
 };
 
 if (!exists($ARGV[0])) {
-    $ENVIRONMENT = q{PROD};
+    $USAGE = q{PROD};
 
 } else {
-    if (exists($ENVIRONMENTS->{$ARGV[0]})) {
-        $ENVIRONMENT = $ARGV[0];
+    if (exists($USAGES->{$ARGV[0]})) {
+        $USAGE = $ARGV[0];
 
     } else {
-        printf(STDERR "Invalid argument '%s', must be one of: %s\n", $ARGV[0], join(',', keys(%{$ENVIRONMENTS})));
+        printf(STDERR "Invalid argument '%s', must be one of: %s\n", $ARGV[0], join(',', keys(%{$USAGES})));
         exit(1);
 
     }
@@ -57,14 +57,19 @@ if (!exists($ARGV[0])) {
     -12205,
 );
 
-@IGNORE_OTE = (
+#
+# these codes all pertain to the use of "ICANNRST" as a repository ID in domain,
+# nameserver and entity handles, so should be ignored during RSP evaluation
+# tests.
+#
+@IGNORE_RSP = (
     -46205,
     -47205,
     -49104,
     -52106,
 );
 
-push(@IGNORE, @IGNORE_OTE) if (q{OTE} eq $ENVIRONMENT);
+push(@IGNORE, @IGNORE_RSP) if (q{RSP} eq $USAGE);
 
 $CONFIG = mirror_json(TEMPLATE_URL);
 
@@ -76,11 +81,11 @@ foreach my $code (@IGNORE) {
     push(@{$CONFIG->{definitionIgnore}}, $code) if (none { $_ == $code } @{$CONFIG->{definitionIgnore}});
 }
 
-if (q{OTE} eq $ENVIRONMENT) {
-    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0 Operational Testing & Evaluation (OT&E) Environment.};
+if (q{RSP} eq $USAGE) {
+    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0 Registry Service Provider (RSP) evaluation.};
 
 } else {
-    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0 Production Environment.};
+    $CONFIG->{definitionIdentifier} = q{RDAP Conformance Tool (RDAPCT) Configuration for Registry System Testing (RST) v2.0.};
 
 }
 
@@ -90,6 +95,6 @@ It includes additional options appropriate for the Registry System Testing (RST)
 END
 ) ];
 
-push(@{$CONFIG->{definitionNotes}}, q{This file is intended for use in the OT&E environment.}) if (q{OTE} eq $ENVIRONMENT);
+push(@{$CONFIG->{definitionNotes}}, q{This file is intended for use in Registry Service Provider (RSP) evaluation.}) if (q{RSP} eq $USAGE);
 
 say JSON::XS->new->pretty->utf8->encode($CONFIG);
