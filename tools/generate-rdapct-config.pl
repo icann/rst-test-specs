@@ -57,6 +57,10 @@ if (!exists($ARGV[0])) {
     -12205,
 );
 
+#
+# these codes all pertain to the use of "ICANNRST" as a repository ID in domain,
+# nameserver and entity handles
+#
 @IGNORE_OTE = (
     -46205,
     -47205,
