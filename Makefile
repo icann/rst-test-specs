@@ -59,7 +59,7 @@ html:
 	@perl tools/generate-html.pl $(SRC).yaml > $(SRC).html
 	@echo wrote $(SRC).html
 
-pages:
+pages: rdapct-config
 	@echo Generating pages...
 	@tools/build-pages
 
