@@ -1,6 +1,17 @@
 > [!TIP]
 > [Click here to go directly to the current RST test specifications.](https://icann.github.io/rst-test-specs/rst-test-specs.html)
 
+> [!NOTE]
+> Releases of the RST v2.0 test specifications do not always align with releases
+> of the RST v2.0 service, as it is often necessary to publish an update to the
+> test specs before the corresponding update to the test system.
+>
+> As described in the [API spec](https://github.com/icann/rst-api-spec), the
+> `testPlan` property of test objects includes the version of the test specs
+> that is used for performing tests. This can be used to determine which version
+> of the test specs is currently deployed in the given environment (OT&E or
+> production).
+
 This repository contains the specifications for ICANN's [Registry System Testing
 (RST)](https://icann.org/resources/registry-system-testing-v2.0) v2.0 service.
 
