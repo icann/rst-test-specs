@@ -1117,3 +1117,42 @@ epp-24:
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_INVALID_EXTENSION
+
+epp-25:
+  Summary: Subordinate host <create> command test (if applicable)
+  Maturity: GAMMA
+  Description: |
+    This test will confirm that the EPP server implements security controls
+    related to the creation of host objects that are subordinate to domain names
+    that are sponsored by a different client.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The test client will connect to the EPP server, authenticate, and create
+    a domain name and any required contact objects.
+
+    Then, using a second set of credentials, the client will connect to the
+    EPP server, authenticate, and `<create>` commands for host objects that are
+    subordinate to the previously created domain name.
+
+    One command will specify one or more IPv4 or IPv6 address for the object.
+    This command **MUST** be rejected by the server.
+
+    One command will not specify any IPv4 or IPv6 addresses for the object. If
+    command succeeds, a subsequent `<info>` command **MUST** shows that the
+    resulting host object is sponsored by the same client that sponsors the
+    superordinate domain object.
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_INVALID_EXTENSION
+    - EPP_UNEXPECTED_HOST_CREATE_SUCCESS
+    - EPP_HOST_CREATE_INCORRECT_CLID
