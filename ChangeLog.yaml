@@ -1,3 +1,257 @@
+2025-11-26:
+  - "Stable release [v2025.08.1](https://github.com/icann/rst-test-specs/releases/tag/v2025.08.1):"
+
+  - |
+    This release updates the configuration file(s) for the RDAP Conformance
+    Tool. There are no changes to the test specifications.
+
+2025-11-25:
+  - "Stable release [v2025.08](https://github.com/icann/rst-test-specs/releases/tag/v2025.08):"
+
+  - |
+    Updates to the EPP Extension Registry
+    ([#94](https://github.com/icann/rst-test-specs/issues/94),
+    ([#102](https://github.com/icann/rst-test-specs/issues/102) and
+    [#133](https://github.com/icann/rst-test-specs/issues/133)).
+
+  - |
+    Added
+    [`epp.supportedContactPostalInfoTypes`](#Input-Parameter-epp.supportedContactPostalInfoTypes)
+    input parameter
+    ([#96](https://github.com/icann/rst-test-specs/issues/96)).
+
+  - |
+    Added
+    [`RPMS_MISSING_CLAIMS_KEY`](#Error-RPMS_MISSING_CLAIMS_KEY)
+    ([#18](https://github.com/icann/rst-test-specs/issues/18)).
+
+  - |
+    Removed the `integration.rriACL` input parameter
+    ([#98](https://github.com/icann/rst-test-specs/issues/98)).
+
+  - |
+    [Configuration parameters](#config) are now included in HTML output
+    ([#108](https://github.com/icann/rst-test-specs/issues/108)).
+
+  - |
+    Minor fixes to [epp-02](#Test-Case-epp-02) and [epp-08](#Test-Case-epp-08)
+    ([#110](https://github.com/icann/rst-test-specs/issues/110) and
+    [#113](https://github.com/icann/rst-test-specs/issues/113)).
+
+  - |
+    [epp-04](#Test-Case-epp-04), [epp-05](#Test-Case-epp-05) and
+    [epp-06](#Test-Case-epp-06) have been updated so that they will accept any
+    EPP error response when submitting a `<check>` command for a syntactically
+    invalid domain name, host name, or contact ID
+    ([#115](https://github.com/icann/rst-test-specs/issues/115)).
+
+  - |
+    [epp-11](#Test-Case-epp-11) will no longer fail if the EPP server allows
+    creation of internal hosts without glue
+    ([#120](https://github.com/icann/rst-test-specs/issues/120)).
+
+  - |
+    Many SRS Gateway error codes have been downgraded from `CRITICAL` to `ERROR`
+    severity ([#125](https://github.com/icann/rst-test-specs/issues/125)).
+
+  - |
+    Minor fixes to several RDAP test cases
+    ([#129](https://github.com/icann/rst-test-specs/issues/129)).
+
+  - |
+    The build system will now generate separate RDAP Conformance Tool
+    configuration files for the OT&E and production environments
+    ([#131](https://github.com/icann/rst-test-specs/issues/131)).
+
+  - |
+    Updated [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) to
+    the latest version.
+
+2025-10-02:
+  - "Stable release [v2025.07](https://github.com/icann/rst-test-specs/releases/tag/v2025.07):"
+
+  - |
+    Account for out-of-band purge of the domain in
+    [epp-21](#Test-Case-epp-21) and [srsgw-08](#Test-Case-srsgw-08)
+    ([#6](https://github.com/icann/rst-test-specs/issues/6))
+
+  - |
+    [epp-08](#Test-Case-epp-08): do not expect the 2201 code
+    ([#54](https://github.com/icann/rst-test-specs/issues/54))
+
+  - |
+    [srsgw-08](#Test-Case-srsgw-08): incorrect expected RGP status after
+    `<delete>` ([#69](https://github.com/icann/rst-test-specs/issues/69))
+
+  - |
+    [rdap-92](#Test-Case-rdap-92): ordering of objects in arrays
+    ([#61](https://github.com/icann/rst-test-specs/issues/61))
+
+  - |
+    Add unique ID to data provider rows
+    ([#87](https://github.com/icann/rst-test-specs/issues/87))
+
+  - |
+    [epp-16-dnssec-data](#Data-Provider-epp-16-dnssec-data): differentiate between
+    secDNS interfaces ([#78](https://github.com/icann/rst-test-specs/issues/78))
+
+  - |
+    Server use of error result code for `<check>` for invalid domain/hostnames
+    causes issues in [epp-04](#Test-Case-epp-04), [epp-05](#Test-Case-epp-05)
+    and [epp-06](#Test-Case-epp-06)
+    ([#62](https://github.com/icann/rst-test-specs/issues/62))
+
+  - |
+    Update to the EPP Extension Registry
+    ([#85](https://github.com/icann/rst-test-specs/issues/85))
+
+2025-09-01:
+  - "Stable release [v2025.06](https://github.com/icann/rst-test-specs/releases/tag/v2025.06):"
+
+  - |
+    Added the
+    [`RDE_DOMAIN_HAS_INVALID_CRRR`](#Error-RDE_DOMAIN_HAS_INVALID_CRRR),
+    [`RDE_DOMAIN_HAS_INVALID_UPRR`](#Error-RDE_DOMAIN_HAS_INVALID_UPRR),
+    [`RDE_DOMAIN_HAS_INVALID_RERR`](#Error-RDE_DOMAIN_HAS_INVALID_RERR) and
+    [`RDE_DOMAIN_HAS_INVALID_ACRR`](#Error-RDE_DOMAIN_HAS_INVALID_ACRR) error
+    codes to [rde-07](#Test-Case-rde-07) (see
+    [#53](https://github.com/icann/rst-test-specs/issues/53)).
+
+  - Added the
+    [`epp.client01ChainCert`](#Resource-epp.client01ChainCert) and
+    [`epp.client02ChainCert`](#Resource-epp.client02ChainCert) resources
+    (see [#63](https://github.com/icann/rst-test-specs/issues/63)).
+
+  - The schema for the
+    [`rdap.profileVersion`](#Input-Parameter-rdap.profileVersion) input
+    parameter has been updated to reflect the retirement of the February-2019
+    profile (see [#64](https://github.com/icann/rst-test-specs/issues/64)).
+
+  - Fixed an issue with the script that generates the RDAP Conformance Tool
+    configuration file.
+
+  - |
+    Ensure EPP-related resources are referenced by all suites that relate to
+    EPP.
+
+2025-08-14:
+  - "Stable release [v2025.05](https://github.com/icann/rst-test-specs/releases/tag/v2025.05):"
+
+  - |
+    [`DNSSEC_OPS_ZONE_IS_INVALID`](#Error-DNSSEC_OPS_ZONE_IS_INVALID) has been
+    downgraded from `CRITICAL` to `ERROR` severity (see
+    [#37](https://github.com/icann/rst-test-specs/issues/37)).
+
+  - |
+    The schema for the
+    [`epp.loginExtension`](#Input-Parameter-epp.loginExtension) input parameter
+    has been fixed (see
+    [#57](https://github.com/icann/rst-test-specs/issues/57)).
+
+  - |
+    The test specs now includes a configuration file for the [RDAP Conformance
+    Tool](https://github.com/icann/rdap-conformance-tool) (see
+    [#59](https://github.com/icann/rst-test-specs/issues/59)).
+
+  - |
+    The description of the [epp-13](#Test-Case-epp-13) test case has been
+    updated to clarify that internal host names will be used.
+
+  - |
+    The description of the [epp-14](#Test-Case-epp-14) test case has been
+    updated to clarify that contact objects will only be created if the
+    [`general.registryDataModel`](#Input-Parameter-general.registryDataModel)
+    input parameter is `maximum` or `per-registrar`.
+
+2025-07-09:
+  - "Stable release [v2025.04](https://github.com/icann/rst-test-specs/releases/tag/v2025.04):"
+
+  - |
+    The schema of the [dnssecOps.primaryServers](#Input-Parameter-dnssecOps.primaryServers)
+    input parameter has been relaxed to not require at least one IP address of
+    each type: one address of either type is accepted (see
+    [#47](https://github.com/icann/rst-test-specs/issues/47)).
+
+  - |
+    The following new input parameters have been added:
+
+      * [`epp.loginExtension`](#Input-Parameter-epp.loginExtension)
+        (see [#42](https://github.com/icann/rst-test-specs/issues/42))
+      * [`idn.domainCreateExtension`](#Input-Parameter-idn.domainCreateExtension)
+        (see [#39](https://github.com/icann/rst-test-specs/issues/39))
+      * [`srsgw.loginExtension`](#Input-Parameter-srsgw.loginExtension)
+        (see [#43](https://github.com/icann/rst-test-specs/issues/43))
+
+  - |
+    The following new error codes have been added:
+
+      * [`EPP_INVALID_EXTENSION`](#Error-EPP_INVALID_EXTENSION)
+      * [`EPP_INVALID_IDN_EXTENSION`](#Error-EPP_INVALID_IDN_EXTENSION)
+
+  - |
+    Renamed the error codes in [minimumRPMs-03](#Test-Case-minimumRPMs-03) to
+    fix use the correct terminology (see
+    [#20](https://github.com/icann/rst-test-specs/issues/20)).
+
+  - |
+    Added the [`DNSSECOperationsOnly`](#Test-Plan-DNSSECOperationsOnly) and
+    [`StandardIntegrationTestOnly`](#Test-Plan-StandardIntegrationTestOnly)
+    test plans, to allow the [DNSSEC Operations](#Test-Suite-DNSSECOperations)
+    and [Integration](#Test-Suite-StandardIntegrationTest) test suites to be
+    tested separately in OT&E
+    (see [#5](https://github.com/icann/rst-test-specs/issues/5)).
+
+  - |
+    Added the [`rdap.clientACL`](#Resource-rdap.clientACL) resource
+    (see [#3](https://github.com/icann/rst-test-specs/issues/3)).
+
+  - |
+    Updated the [epp-14-data](#Data-Provider-epp-14-data) data provider, adding
+    a column to identify which value of the
+    [`epp.secDNSInterfaces`](#Input-Parameter-epp.secDNSInterfaces) input
+    parameter each row is applicable to (see
+    [#50](https://github.com/icann/rst-test-specs/issues/50)).
+
+2025-04-25:
+  - "Stable release v2025.03:"
+
+  - Describe the use of `.icann` for external nameserver hostnames
+    ([#9](https://github.com/icann/rst-test-specs/issues/9))
+
+  - Allow `v4Addrs` and `v6Addrs` to be optional in
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
+    ([#11](https://github.com/icann/rst-test-specs/issues/11))
+
+  - Clarify that the
+    [`epp.supportedContactElements`](#Input-Parameter-epp.supportedContactElements)
+    and
+    [`epp.requiredContactElements`](#Input-Parameter-epp.requiredContactElements)
+    input parameters **MUST** be empty if the value of the
+    [`general.registryDataModel`] input parameter is `minimum`
+    ([#23](https://github.com/icann/rst-test-specs/issues/23))
+
+  - Describe the use of `ICANNRST` as an EPP repository ID that may be used in
+    RSP evaluation tests and OT&E
+    ([#24](https://github.com/icann/rst-test-specs/issues/24))
+
+  - Add a new `hostModel` column to
+    [`epp-16-ns-data`](#Data-Provider-epp-16-ns-data)
+    ([#28](https://github.com/icann/rst-test-specs/issues/28))
+
+2025-04-10:
+  - "Stable release v2025.02:"
+
+  - Fix the example in
+    [`dnssecOps.nameservers`](#Input-Parameter-dnssecOps.nameservers)
+    ([#1](https://github.com/icann/rst-test-specs/issues/1)).
+
+  - Update [`idn.testLabelsForOTE`](#idn.testLabelsForOTE) to v1.0.2
+    ([#17](https://github.com/icann/rst-test-specs/issues/17)).
+
+  - In [dns-zz-consistency](#Test-Case-dns-zz-consistency), clarify that a
+    secure delegation for the "nic" zone **MUST** be present in the TLD zone
+    ([#16](https://github.com/icann/rst-test-specs/issues/16)).
+
 2025-03-27:
   - Stable release v2025.01. There are no significant changes since the last
     release except the version number.

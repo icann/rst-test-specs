@@ -309,12 +309,11 @@ EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001:
     The server did not response to a contact `<delete>` command with a `1xxx`
     result code.
 
-EPP_CONTACT_INFO_RESPONSE_NOT_2201:
+EPP_CONTACT_INFO_RESPONSE_NOT_REJECTED:
   Severity: ERROR
   Description: |
-    The server did not response to a contact `<info>` command on a contact
-    object not under the sponsorship of the connected client with a `2201`
-    result code.
+    The server did not reject contact `<info>` command on a contact
+    object not under the sponsorship of the connected client.
 
 EPP_CONTACT_UPDATE_INFO_RESPONSE_MISSING_OR_INCORRECT_CC:
   Severity: ERROR
@@ -407,12 +406,11 @@ EPP_CONTACT_UPDATE_INFO_RESPONSE_NOT_1000:
     response for the created object did not result in a response with the `1000`
     result code.
 
-EPP_CONTACT_UPDATE_RESPONSE_NOT_2201:
+EPP_CONTACT_UPDATE_RESPONSE_NOT_REJECTED:
   Severity: ERROR
   Description: |
-    The server did not response to a contact `<update>` command on a contact
-    object not under the sponsorship of the connected client with a `2201`
-    result code.
+    The server did not reject a contact `<update>` command on a contact
+    object not under the sponsorship of the connected client.
 
 EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_CC:
   Severity: ERROR
@@ -575,12 +573,6 @@ EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS:
     response, a subsequent `<info>` command did not result in a `2303` ("Object
     does not exist") result code.
 
-EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE:
-  Severity: ERROR
-  Description: |
-    Following a successful domain `<delete>` command, which resulted in a `1001`
-    response, the domain did not have the `pendingDeleteRestorable` RGP status.
-
 EPP_DOMAIN_UPDATE_INFO_RESPONSE_MISSING_DNSSEC_DATA:
   Severity: ERROR
   Description: |
@@ -721,12 +713,6 @@ EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
   Description: |
     The server accepts a host `<create>` command with a `<name>` element that
     contains a syntactically invalid hostname.
-
-EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE:
-  Severity: ERROR
-  Description: |
-    The server accepts a host `<create>` command for an in-bailiwick hostname
-    that does not include any `<addr>` elements.
 
 EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
   Severity: ERROR
@@ -1140,3 +1126,20 @@ EPP_DOMAIN_TRANSFER_REQUEST_FAILED:
   Description: |
     A `<transfer op="request">` command that should have been successful, did
     not result in a `1000` or `1001` response code.
+
+EPP_INVALID_IDN_EXTENSION:
+  Severity: ERROR
+  Description: |
+    One or more of the extension element(s) provided in the
+    `idn.domainCreateExtension` input parameter was invalid. This may be because
+    (a) it was not a well-formed XML instance, (b) specified an extension that
+    was not registered in the EPP Extension Registry or (c) could not be
+    validated against the XML schema(s) for that extension.
+
+EPP_INVALID_EXTENSION:
+  Severity: ERROR
+  Description: |
+   One or more of the extension element(s) provided in an input parameter was
+   invalid. This may be because (a) it was not a well-formed XML instance, (b)
+   specified an extension that was not registered in the EPP Extension Registry
+   or (c) could not be validated against the XML schema(s) for that extension.

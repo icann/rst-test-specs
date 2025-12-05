@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:charge="http://www.unitedtld.com/epp/charge-1.0"
+xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+targetNamespace="http://www.unitedtld.com/epp/charge-1.0"
+elementFormDefault="qualified">
+<!-- Import common element types -->
+<import namespace="urn:ietf:params:xml:ns:eppcom-1.0"/>
+<annotation>
+<documentation>
+Extensible Provisioning Protocol v1.0 domain name extension schema for
+domains part of a charge set.
+</documentation>
+</annotation>
+<!-- Child elements found in EPP commands. -->
+
+<element name="agreement" type="charge:setListType"/>
+<!-- Child response elements. -->
+<element name="chkData" type="charge:chkRespType"/>
+<element name="infData" type="charge:setListType"/>
+<element name="creData" type="charge:setListType"/>
+<element name="trnData" type="charge:setListType"/>
+<element name="renData" type="charge:setListType"/>
+<element name="upData" type="charge:setListType"/>
+<simpleType name="setTypeValue">
+<restriction base="token">
+<enumeration value="fee"/>
+<enumeration value="price"/>
+<enumeration value="credit"/>
+<enumeration value="custom"/>
+</restriction>
+</simpleType>
+<complexType name="setAttrType">
+<simpleContent>
+<extension base="charge:setTypeValue">
+<attribute name="name" type="token" use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+<!-- EPP command types -->
+<simpleType name="commandTypeValue">
+<restriction base="token">
+<enumeration value="check"/>
+<enumeration value="create"/>
+<enumeration value="delete"/>
+<enumeration value="info"/>
+<enumeration value="renew"/>
+<enumeration value="transfer"/>
+<enumeration value="update"/>
+<enumeration value="custom"/>
+</restriction>
+</simpleType>
+<complexType name="amountType">
+
+<simpleContent>
+<extension base="decimal">
+<attribute name="command" type="charge:commandTypeValue"
+use="required"/>
+<attribute name="name" type="token" use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+<complexType name="categoryType">
+<simpleContent>
+<extension base="token">
+<attribute name="name" type="token" use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+<complexType name="setType">
+<sequence>
+<element name="category" type="charge:categoryType"/>
+<element name="type" type="charge:setAttrType"/>
+<element name="amount" type="charge:amountType" maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+<complexType name="setListType">
+<sequence>
+<element name="set" type="charge:setType" maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+<!--
+
+<check> response elements. -->
+
+<complexType name="checkType">
+<sequence>
+<element name="name" type="eppcom:labelType"/>
+<element name="set" type="charge:setType" maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+<complexType name="chkRespType">
+<sequence>
+<element name="cd" type="charge:checkType" maxOccurs="unbounded"/>
+
+</sequence>
+</complexType>
+</schema>

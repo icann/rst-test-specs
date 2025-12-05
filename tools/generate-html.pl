@@ -25,6 +25,7 @@ use constant {
 use feature qw(say);
 use bytes;
 use utf8;
+use version;
 use strict;
 
 my $spec = ICANN::RST::Spec->new($ARGV[0]);
@@ -169,6 +170,8 @@ sub print_toc {
     print_provider_toc_list();
     print $h->close(li);
 
+    print $h->li($h->a({href => '#config'}, 'Configuration Parameters'));
+
     print $h->li($h->a({href => '#meta'}, 'About this document'));
 
     print $h->close(ol);
@@ -196,20 +199,17 @@ sub print_preamble_toc_list {
     my $md;
 
     my $level = 1;
-    foreach my $el (sort { $a->textContent cmp $b->textContent } @els) {
+    foreach my $el (sort preamble_section_sort @els) {
         my $new = int(substr($el->localName, 1));
 
         $counts[$level] = 0 if ($new < $level);
 
-        my $anchor = sprintf('#Preamble-%s', $el->textContent);
-        $anchor =~ s/ /-/g;
-
         $md .= sprintf(
-            "%s%u. [%s](%s)\n",
+            "%s%u. [%s](#%s)\n",
             ("\t" x ($new-1)),
             ++$counts[$new],
             substr($el->textContent, 1+index($el->textContent, ' ')),
-            $anchor,
+            generate_preamble_anchor($el),
         );
 
         $level = $new;
@@ -218,6 +218,25 @@ sub print_preamble_toc_list {
     print ICANN::RST::Text->new($md)->html;
 
     print $h->close(details);
+}
+
+sub preamble_section_sort {
+    my ($va, $vb) = map { version->parse('v'.$_) }
+                    map { $_ =~ s/[^\d]+$//sg ; $_ }
+                    map { $_->textContent }
+                    ($a, $b);
+
+    return $va <=> $vb;
+}
+
+sub generate_preamble_anchor {
+    my $el = shift;
+
+    my $anchor = sprintf('Preamble-%s', $el->textContent);
+    $anchor =~ s/\n/ /g;
+    $anchor =~ s/ /-/g;
+
+    return $anchor;
 }
 
 sub print_test_plan_toc_list {
@@ -232,7 +251,7 @@ sub print_test_plan_toc_list {
 
         print $h->li($h->a(
             { href => $anchor },
-            e($plan->name. ($plan->oteOnly ? ' (OT&E only)' : ''))
+            e($plan->name)
         ));
     }
 
@@ -384,6 +403,8 @@ sub print_main {
 
     print_providers();
 
+    print_config();
+
     print_meta();
 
     print $h->close('main');
@@ -434,11 +455,9 @@ sub print_preamble {
 
     for (my $i = 1 ; $i <= 6 ; $i++) {
         foreach my $el ($doc->getElementsByTagName(sprintf('h%u', $i))) {
-            my $anchor = sprintf('Preamble-%s', $el->textContent);
-            $anchor =~ s/ /-/g;
-
-            my $a = $el->parentNode->insertBefore($doc->createElement('a'), $el);
-            $a->setAttribute('name', $anchor);
+            $el->parentNode
+                ->insertBefore($doc->createElement('a'), $el)
+                ->setAttribute('name', generate_preamble_anchor($el));
         }
     }
 
@@ -447,6 +466,27 @@ sub print_preamble {
     print $h->close(section);
 
     say STDERR 'wrote preamble';
+}
+
+sub print_config {
+    print $h->open(section);
+    print $h->a({name => 'config'});
+    print $h->h2(sprintf('%d. Configuration Parameters', ++$section));
+
+    print $h->open('table', { 'style' => 'width:auto' });
+    print $h->thead($h->tr([map { $h->th($_) } qw(Name Value)]));
+    print $h->open('tbody');
+
+    foreach my $param (@{$spec->spec->{'Configuration'}}) {
+        print $h->tr([map { $h->td($h->pre($_)) } $param->{'Name'}, $param->{'Value'}]);
+    }
+
+    print $h->close('tbody');
+    print $h->close('table');
+
+    print $h->close(section);
+
+    say STDERR 'wrote meta';
 }
 
 sub print_meta {
@@ -479,7 +519,7 @@ sub print_plan {
     my ($plan, $i) = @_;
 
     print $h->a({name => sprintf('Test-Plan-%s', $plan->id)});
-    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name . ($plan->oteOnly ? ' (OT&E only)' : ''))));
+    print $h->h3(sprintf('%u.%u. %s', $section, $i, e($plan->name)));
 
     my $j = 0;
 

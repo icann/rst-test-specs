@@ -22,8 +22,6 @@ dnssecOps.nameservers:
       type: object
       required:
         - name
-        - v4Addrs
-        - v6Addrs
       properties:
         name:
           description: The fully-qualified nameserver name.
@@ -47,7 +45,9 @@ dnssecOps.nameservers:
             format: ipv6
 
 dnssecOps.primaryServers:
-  Description: The primary nameserver(s) from which zones can be transferred.
+  Description: |
+    The primary nameserver(s) from which zones can be transferred. At least one
+    IPv4 or IPv6 address **MUST** be provided.
   Type: input
   Required: true
   Example:
@@ -57,9 +57,6 @@ dnssecOps.primaryServers:
       - 2001:DB8::53:2
   Schema:
     type: object
-    required:
-      - v4Addrs
-      - v6Addrs
     properties:
       v4Addrs:
         description: The IPv4 address(es) for the primary server(s).

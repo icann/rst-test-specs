@@ -67,9 +67,8 @@ epp-02:
        **MUST** be present is the domain namespace URI. The host and contact
        namespace URIs may be required depending on the `epp.hostModel` and
        `general.registryDataModel` parameters.
-    6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
-       namespace URIs that have been registered in the IANA registry, and that
-       the mandatory extensions are also included.
+    6. All `<objURI>` and `<extURI>` element(s) in the `<greeting>` **MUST**
+       correspond to entries in the EPP Extension Registry.
     7. `<extURI>` elements containing the following XML namespaces **MUST** be
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
@@ -142,27 +141,30 @@ epp-03:
     - EPP_LOGIN_UNEXPECTEDLY_FAILED
     - EPP_LOGIN_UNEXPECTEDLY_SUCCEEDED
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-04:
   Summary: Domain <check> command test
   Maturity: GAMMA
   Description: |
     The client will perform a series of `<check>` commands and will validate
-    the `avail` attribute of the `<domain:name>` elements in the server
-    response, as follows:
-
-    * syntactically invalid domain name: `avail` attribute **MUST** be `0`
-      or `false`.
-    * valid but registered domain name: `avail` attribute **MUST** be `0` or
-      `false`. The names provided in the `epp.registeredNames` input parameter
-      will be used to test this.
-    * syntactically valid, unregistered domain name: `avail` attribute
-      **MUST** be `1` or `true`. The domain name will be generated using
-      random characters.
+    the server response, using (a) syntactically invalid domain names, (b) valid
+    but registered domain names (the names provided in the `epp.registeredNames`
+    input parameter will be used to test this) and (c) syntactically valid
+    unregistered domains name generated using random characters.
 
     A "syntactically valid" domain name is one that complies with the format
     specified in [RFC 1123](https://www.rfc-editor.org/rfc/rfc1123.html). This
     test case does not consider IDN names.
+
+    For syntactically valid domain names, the server response **MUST** include
+    a `<domain:name>` element with an `avail` attribute with the appropriate
+    boolean value.
+
+    For syntactically *invalid* domain names, the server response **MUST**
+    either (a) respond normally and contain a `<domain:name>` element with an
+    `avail` attribute with a value of `0` or `false`, **OR** return an error
+    response with a 2001, 2004 or 2005 result code.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -181,17 +183,18 @@ epp-04:
     - EPP_DOMAIN_CHECK_INVALID_DOMAIN_INCORRECT_AVAIL
     - EPP_DOMAIN_CHECK_REGISTERED_DOMAIN_INCORRECT_AVAIL
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-05:
   Summary: Host <check> command test (if applicable)
   Maturity: GAMMA
   Description: |
     If the EPP server supports host objects, this test will perform a series
-    of `<check>` commands and will validate the `avail` attribute of the
-    `<host:name>` elements in the server response, as follows:
+    of `<check>` commands and will validate the the server response.
 
-    * syntactically invalid hostname: `avail` attribute **MUST** be `0` or
-      `false`.
+    * syntactically invalid hostname: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -219,6 +222,7 @@ epp-05:
     - EPP_HOST_CHECK_INVALID_HOST_INCORRECT_AVAIL
     - EPP_HOST_CHECK_REGISTERED_HOST_INCORRECT_AVAIL
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-06:
   Summary: Contact <check> command test (if applicable for the registry type)
@@ -228,8 +232,9 @@ epp-06:
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
 
-    * syntactically invalid ID: `avail` attribute **MUST** be `0` or
-      `false`.
+    * syntactically invalid ID: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
@@ -254,6 +259,7 @@ epp-06:
     - EPP_CONTACT_CHECK_INVALID_CONTACT_ID_INCORRECT_AVAIL
     - EPP_CONTACT_CHECK_REGISTERED_CONTACT_ID_INCORRECT_AVAIL
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-07:
   Summary: Contact <create> command test (if applicable for the registry type)
@@ -353,6 +359,7 @@ epp-07:
     - EPP_TLS_CONNECTION_ERROR
     - EPP_XML_PARSE_ERROR
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
   Data-Providers:
     - epp-07-data
 
@@ -368,10 +375,13 @@ epp-08:
     registrar credentials based on the values of the `epp.clid01DataModel` and
     `epp.clid02DataModel` input parameters.
 
-    The client will connect using a set of alternate credentials and will
-    submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** respond with a 2201 "authorization error"
-    response.
+    The client will connect to the server and create contact objects. These
+    `<create>` commands **MUST** be successful.
+
+    It will then connect using a set of alternate credentials and submit
+    `<info>` and `<update>` commands on the contact objects created in `epp-07`.
+
+    The server **MUST** reject these commands.
   Dependencies:
     - epp-07
   Errors:
@@ -382,9 +392,10 @@ epp-08:
     - EPP_XML_PARSE_ERROR
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
-    - EPP_CONTACT_INFO_RESPONSE_NOT_2201
-    - EPP_CONTACT_UPDATE_RESPONSE_NOT_2201
+    - EPP_CONTACT_INFO_RESPONSE_NOT_REJECTED
+    - EPP_CONTACT_UPDATE_RESPONSE_NOT_REJECTED
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-09:
   Summary: Contact <update> command test (if applicable for the registry type)
@@ -462,6 +473,8 @@ epp-09:
     - EPP_CONTACT_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
     - EPP_UNEXPECTED_COMMAND_SUCCESS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
+
   Data-Providers:
     - epp-09-postalinfo-data
     - epp-09-other-data
@@ -498,6 +511,7 @@ epp-10:
     - EPP_CONTACT_DELETE_RESPONSE_NOT_1000_OR_1001
     - EPP_CONTACT_DELETE_OBJECT_STILL_EXISTS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-11:
   Summary: Host <create> command test (if applicable)
@@ -536,7 +550,6 @@ epp-11:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME
-    - EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
@@ -544,6 +557,7 @@ epp-11:
     - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_UNEXPECTED_COMMAND_SUCCESS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
   Data-Providers:
     - epp-11-data
 
@@ -570,6 +584,7 @@ epp-12:
     - EPP_LOGIN_ERROR
     - EPP_HOST_UPDATE_AUTHZ_ERROR
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-13:
   Summary: Host <update> command test (if applicable)
@@ -582,12 +597,12 @@ epp-13:
     If the `epp.hostModel` input parameter is `attributes`, this test will
     be skipped.
 
-    The test will create host objects with pseudo-randomly generated names and
-    confirm that the server checks and validates `<update>` commands which
-    transform the values of the following elements:
+    The test will create host objects with pseudo-randomly generated "internal"
+    names and confirm that the server checks and validates `<update>` commands
+    which transform the values of the following elements:
 
-    * `<host:status>` (internal and external hosts)
-    * `<host:addr>` elements (both IPv4 and IPv6, internal hosts only)
+    * `<host:status>`
+    * `<host:addr>`
 
     Note: the server's ability to support host renames is checked in a later
     test.
@@ -611,6 +626,7 @@ epp-13:
     - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_UNEXPECTED_COMMAND_SUCCESS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
   Data-Providers:
     - epp-13-status-data
     - epp-13-addr-data
@@ -623,15 +639,15 @@ epp-14:
     random syntactically valid ASCII domain names under each TLD in the TLD set.
 
     Depending on the value of the `general.registryDataModel` and
-    `epp.requiredContactTypes` input parameters, one or more contact objects
-    will be created (using pseudo-random contact information) beforehand and
-    used as the registrant (and other) contacts.
+    `epp.requiredContactTypes` input parameters, contact objects may be created
+    (using pseudo-random contact information) beforehand, to be used as the
+    registrant (and other) contacts.
 
-    If the `epp.hostModel` parameter is `objects`, then two host objects with
+    If the `epp.hostModel` parameter is `objects`, then host objects with
     syntactically valid pseudo-random names will be created and used as the
     nameservers (otherwise the names will be provided as attributes).
 
-    The client will `<create>` commands to test aspects of the server's
+    The client will use `<create>` commands to test aspects of the server's
     processing of those commands, for example:
 
     * to confirm that the server does not accept invalid values for object
@@ -678,8 +694,6 @@ epp-14:
       the domain.
     * DNSSEC information provided in the `<create>` command is present and
       correct.
-  Input-Parameters:
-    - epp.secDNSInterfaces
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -706,11 +720,12 @@ epp-14:
     - EPP_DOMAIN_CREATE_INFO_RESPONSE_MISSING_OBJECT_PROPERTIES
     - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
   Data-Providers:
     - epp-14-data
 
 epp-15:
-  Summary: Registry object integrity test
+  Summary: Registry object integrity test (if applicable)
   Maturity: GAMMA
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
@@ -727,8 +742,7 @@ epp-15:
     objects.
 
     It will then submit `<delete>` commands for those contact and host objects
-    The server **MUST** respond with a `2305` "Object association prohibits
-    operation" error.
+    The server **MUST** reject these commands.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -740,6 +754,7 @@ epp-15:
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_CONTACT_OBJECT
     - EPP_INTEGRITY_SERVER_ACCEPTS_DELETE_FOR_LINKED_HOST_OBJECT
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-16:
   Summary: Domain <update> command test
@@ -791,6 +806,7 @@ epp-16:
     - EPP_UNEXPECTED_COMMAND_SUCCESS
     - EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_STATUS_CODE
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
   Data-Providers:
     - epp-16-status-data
     - epp-16-ns-data
@@ -822,6 +838,7 @@ epp-17:
     - EPP_LOGIN_ERROR
     - EPP_SERVICE_PORT_NOT_CONSISTENT
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-18:
   Summary: Domain <renew> command test
@@ -853,6 +870,7 @@ epp-18:
     - EPP_RENEW_INFO_RESPONSE_UNEXPECTED_EXPIRY_DATE
     - EPP_RENEW_INFO_RESPONSE_MISSING_OR_INVALID_RGP_STATUS
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-19:
   Summary: Domain <transfer> command test
@@ -912,6 +930,7 @@ epp-19:
     - EPP_TRANSFER_INFO_RESPONSE_AUTHINFO_NOT_RESET
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_TRANSFER_NOT_PROCESSED
+    - EPP_INVALID_EXTENSION
 
 epp-20:
   Summary: Domain <transfer> rejection test
@@ -939,6 +958,7 @@ epp-20:
     - EPP_TRANSFER_SERVER_ACCEPTS_INCORRECT_AUTHINFO
     - EPP_TRANSFER_INFO_RESPONSE_MISSING_OR_INVALID_STATUS_CODE
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 epp-21:
   Summary: Domain <delete> command test
@@ -953,8 +973,8 @@ epp-21:
     * if the server responded to the `<delete>` command with a `1000`
       response, then the domain no longer exists;
     * if the server responded to the `<delete>` command with a `1001`
-      response, then the domain has the `pendingDelete` status and the
-      `redemptionPeriod` RGP status.
+      response, then (a) the domain no longer exists (as it has been purged) or
+      (b) the domain has the `pendingDelete` status.
 
     If the `<delete>` command resulted in a `1000` response, the client will
     also submit `<delete>` commands for any host and/or contact objects created.
@@ -970,8 +990,8 @@ epp-21:
     - EPP_LOGIN_ERROR
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_DOMAIN_DELETE_INFO_RESPONSE_OBJECT_NOT_PENDING_DELETE
-    - EPP_DOMAIN_DELETE_INFO_RESPONSE_RGP_STATUS_NOT_PENDING_DELETE
     - EPP_GENERIC_COMMAND_ERROR
+    - EPP_INVALID_EXTENSION
 
 #epp-22:
 #  Summary: Domain restore test
@@ -1069,6 +1089,7 @@ epp-23:
     - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_HOST_RENAME_OBJECT_NOT_RENAMED
+    - EPP_INVALID_EXTENSION
 
 epp-24:
   Summary: Host <delete> command test (if applicable)
@@ -1095,3 +1116,4 @@ epp-24:
     - EPP_HOST_DELETE_INFO_RESPONSE_OBJECT_STILL_EXISTS
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_INVALID_EXTENSION

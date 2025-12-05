@@ -153,7 +153,62 @@ Where `[type]` will be replaced with the application type. For example, a
 form `.zz--main-1234`. Test subjects will need to configure their registry
 systems to support this TLD prior to requesting a test run.
 
-# 2.7. Key acronyms and terms
+# 2.7. External TLDs
+
+The RST system will sometimes generate domain and host names that must, for
+security and stability reasons, be guaranteed to not exist in the global DNS.
+
+To ensure this, the `.icann` top-level domain will be used as the parent TLD
+for such domain and host names. This TLD has been selected because (1) it will
+never be delegated in the DNS and (b) unlike `.invalid`, `.internal` etc,
+there is no expectation that special processing should take place for it.
+
+Registry operators whose implementations validate the existence of the parent
+TLD of a nameserver name should update their implementation to exceptionally
+allow the use of `.icann` during RST tests.
+
+# 2.8. Extensible Provisioning Protocol (EPP) Repository Identifiers
+
+EPP servers **MUST** use unique repository identifiers that are registered in the
+[EPP Repository ID registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
+(see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
+
+The special ID `ICANNRST` (`#x0049 #x0043 #x0041
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
+servers during RSP evaluation tests. However, for pre- and post-delegation tests
+this repository ID **MUST NOT** be used.
+
+# 2.9. EPP extensions
+
+The EPP test suite requires that servers implement certain EPP extensions, as
+described in the `epp-02` test case. Test cases in the EPP test suite
+ascertain whether these extensions are properly implemented in the server.
+
+Some EPP servers may require EPP clients to include additional extension
+elements in the EPP commands that take place during a run of the EPP test suite.
+Because it is not feasible to natively implement support for all such
+extensions, the EPP test suite includes input parameters which allow test
+subjects to provide the extension element(s) which must be included in EPP
+commands.
+
+These input parameters **MUST** contain a single EPP `<extension>` element which
+contains the element(s) required for the particular EPP command to which the
+input parameter relates. These element(s) **MUST** validate against the relevant
+XML schema.
+
+If no extensions are required for a particular command, then the corresponding
+input parameter **MUST** be omitted. If provided, it will not be validated until
+the test run occurs, at which point an error code will be generated if it is
+invalid.
+
+All EPP extensions used by the EPP server **MUST** be registered in the EPP
+Extension Registry, as described in the `epp-02` test case.
+
+Other test suites which use the EPP server (i.e. the IDN, Minimum RPMs,
+Integration and SRS Gateway suites) will also use the input parameters from the
+EPP suite, if provided.
+
+# 2.10. Key acronyms and terms
 
 RST
 : Registry System Testing. This system.

@@ -18,7 +18,8 @@ my $extn = '.xlsx';
 my $providers = {};
 
 foreach my $file (grep { basename($_) !~ /^~/ } bsd_glob(sprintf('%s/*%s', $ARGV[0], $extn))) {
-    $providers->{basename($file, $extn)} = parse_xlsx($file);
+    my $id = basename($file, $extn);
+    $providers->{$id} = parse_xlsx($file, $id);
 }
 
 my $yaml = YAML::XS::Dump($providers);
@@ -32,7 +33,7 @@ exit(0);
 # parse an XLSX file and return a hashref suitable for inclusion in the fragment
 #
 sub parse_xlsx {
-    my $file = shift;
+    my ($file, $id) = @_;
 
     my $sheet = Spreadsheet::XLSX->new($file)->{Worksheet}->[0];
 
@@ -60,7 +61,15 @@ sub parse_xlsx {
         $rc++;
     }
 
-    my @columns;
+    for (my $i = 0 ; $i < $rc ; $i++) {
+        unshift(@{$rows[$i]}, sprintf('%s-row-%s', $id, $i));
+    }
+
+    my @columns = ({
+        Name        => 'RowID',
+        Description => 'Unique ID for this row',
+        Type        => 'string',
+    });
 
     for (my $i = 0 ; $i < scalar(@names) ; $i++) {
         push(@columns, {

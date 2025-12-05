@@ -28,6 +28,7 @@ integration-01:
     - EPP_SCHEMA_VALIDATION_ERROR
     - INTEGRATION_RDAP_REQUEST_FAILED
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDAP
+    - EPP_INVALID_EXTENSION
 
 integration-02:
   Implemented: true
@@ -60,6 +61,7 @@ integration-02:
     - EPP_SCHEMA_VALIDATION_ERROR
     - INTEGRATION_DNS_QUERY_FAILED
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_DNS
+    - EPP_INVALID_EXTENSION
 
 integration-03:
   Summary: EPP -> RDE Integration Test
@@ -92,7 +94,6 @@ integration-03:
     - integration.rdeSFTPHostname
     - integration.rdeSFTPDirectory
     - integration.rdeSFTPUsername
-    - integration.rriACL
   Dependencies:
     - integration-01
   Errors:
@@ -108,3 +109,4 @@ integration-03:
     - INTEGRATION_RDE_SFTP_SERVER_UNREACHABLE
     - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDE
+    - EPP_INVALID_EXTENSION

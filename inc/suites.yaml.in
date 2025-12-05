@@ -114,6 +114,8 @@ StandardRDAP:
     * [RFC 9083 - JSON Responses for the Registration Data Access Protocol (RDAP)](https://www.rfc-editor.org/rfc/rfc9083.html)
     * [gTLD RDAP Profile](https://www.icann.org/gtld-rdap-profile)
 
+  Resources:
+    - rdap.clientACL
   Test-Cases: ^rdap-
   Input-Parameters:
     - rdap.baseURLs
@@ -168,12 +170,17 @@ StandardEPP:
     - epp.requiredContactTypes
     - epp.supportedContactElements
     - epp.requiredContactElements
+    - epp.loginExtension
+    - epp.secDNSInterfaces
+    - epp.supportedContactPostalInfoTypes
   Resources:
     - epp.clientACL
     - epp.client01CSR
     - epp.client01Certificate
+    - epp.client01ChainCert
     - epp.client02CSR
     - epp.client02Certificate
+    - epp.client02ChainCert
 
 StandardRDE:
   Order: 5
@@ -238,12 +245,16 @@ StandardIDN:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
   Resources:
     - epp.clientACL
     - epp.client01CSR
     - epp.client02CSR
     - epp.client01Certificate
     - epp.client02Certificate
+    - epp.client01ChainCert
+    - epp.client02ChainCert
     - idn.testLabelsForOTE
 
 StandardSRSGateway:
@@ -278,6 +289,8 @@ StandardSRSGateway:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
+    - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
@@ -294,12 +307,15 @@ StandardSRSGateway:
     - srsgw.registryDataModel
     - srsgw.serverIssuedClientCertificate01
     - srsgw.serverIssuedClientCertificate02
+    - srsgw.loginExtension
   Resources:
     - epp.clientACL
     - epp.client01CSR
     - epp.client02CSR
     - epp.client01Certificate
     - epp.client02Certificate
+    - epp.client01ChainCert
+    - epp.client02ChainCert
 
 DNSSECOperations:
   Order: 8
@@ -352,6 +368,8 @@ MinimumRPMs:
     - tmch.testDNL
     - tmch.testSMDRL
     - tmch.testSURL
+    - epp.client01ChainCert
+    - epp.client02ChainCert
   Input-Parameters:
     - epp.clid01
     - epp.clid01DataModel
@@ -366,6 +384,8 @@ MinimumRPMs:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
+    - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
     - general.registryDataModel
     - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModel
@@ -373,7 +393,7 @@ MinimumRPMs:
 
 StandardIntegrationTest:
   Order: 10
-  Name: Standard Integration Test
+  Name: Registry Services Integration
   Description: |
     This test suite verifies that the critical registry services of a TLD are
     properly integrated and functioning within the requirements of the Service
@@ -405,6 +425,16 @@ StandardIntegrationTest:
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
     - general.registryDataModel
+    - epp.loginExtension
+    - epp.supportedContactPostalInfoTypes
+  Resources:
+    - tmch.testCert
+    - tmch.testCRL
+    - tmch.testDNL
+    - tmch.testSMDRL
+    - tmch.testSURL
+    - epp.client01ChainCert
+    - epp.client02ChainCert
 
 AdditionalDNSTransports:
   Order: 11

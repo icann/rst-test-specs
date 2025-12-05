@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkhm="urn:dkhm:params:xml:ns:dkhm-4.4" xmlns:epp="urn:ietf:params:xml:ns:epp-1.0" xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0" xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:dkhm:params:xml:ns:dkhm-4.4" elementFormDefault="qualified">
+  <!--
+  Import common element types.
+  -->
+  <import namespace="urn:ietf:params:xml:ns:epp-1.0" schemaLocation="epp-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" schemaLocation="eppcom-1.0.xsd"/>
+  <import namespace="urn:ietf:params:xml:ns:contact-1.0" schemaLocation="contact-1.0.xsd"/>
+  <annotation>
+    <documentation>Extensible Provisioning Protocol v1.0 provisioning schema. DKHM extension v4.4</documentation>
+  </annotation>
+  <!--
+  Child elements found in EPP commands.
+  -->
+  <element name="userType" type="dkhm:userType"/>
+  <element name="EAN" type="dkhm:EAN"/>
+  <element name="CVR" type="dkhm:CVR"/>
+  <element name="mobilephone" type="dkhm:mobilephone"/>
+  <element name="secondaryEmail" type="dkhm:secondaryEmail"/>
+  <element name="pnumber" type="dkhm:pnumber"/>
+  <element name="contact" type="dkhm:contact"/>
+  <element name="trackingNo" type="dkhm:trackingNo"/>
+  <element name="domainAdvisory" type="dkhm:domainAdvisory"/>
+  <element name="orderconfirmationToken" type="dkhm:orderconfirmationToken"/>
+  <element name="domain_confirmed" type="dkhm:domain_confirmed"/>
+  <element name="contact_validated" type="dkhm:contact_validated"/>
+  <element name="registrant_validated" type="dkhm:registrant_validated"/>
+  <element name="requestedNsAdmin" type="dkhm:requestedNsAdmin"/>
+  <element name="risk_assessment" type="dkhm:risk_assessment"/>
+  <element name="url" type="dkhm:url"/>
+  <element name="authInfoExDate" type="dkhm:authInfoExDate"/>
+  <element name="authInfo" type="dkhm:authInfo"/>
+  <element name="delDate" type="dkhm:delDate"/>
+  <element name="command" type="dkhm:commandType"/>
+  <element name="autoRenew" type="dkhm:autoRenew"/>
+  <element name="management" type="dkhm:management"/>
+  <element name="vid" type="dkhm:vid"/>
+  <!--
+  Utility types.
+  -->
+  <!-- custom: contact mobilephone -->
+  <complexType name="mobilephone">
+    <complexContent>
+      <extension base="contact:e164Type"/>
+    </complexContent>
+  </complexType>
+  <!-- custom: contact secondary email -->
+  <simpleType name="secondaryEmail">
+    <restriction base="eppcom:minTokenType"/>
+  </simpleType>
+  <!-- custom: host contact -->
+  <simpleType name="contact">
+    <restriction base="eppcom:clIDType"/>
+  </simpleType>
+  <!-- custom: trackingNo  -->
+  <simpleType name="trackingNo">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: contact_validated  -->
+  <simpleType name="contact_validated">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: registrant_validated  -->
+  <simpleType name="registrant_validated">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: domain_confirmed  -->
+  <simpleType name="domain_confirmed">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: domainAdvisory  -->
+  <complexType name="domainAdvisory">
+    <attribute name="domain" type="token"/>
+    <attribute name="advisory" type="token"/>
+    <attribute name="date" type="dateTime"/>
+  </complexType>
+  <!-- custom: Usertype enumeration -->
+  <simpleType name="userType">
+    <restriction base="token">
+      <enumeration value="C"/>
+      <enumeration value="P"/>
+      <enumeration value="A"/>
+      <enumeration value="I"/>
+      <enumeration value="company"/>
+      <enumeration value="public_organization"/>
+      <!--  <enumeration value="public_organisation" /> -->
+      <enumeration value="association"/>
+      <enumeration value="individual"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: CVR -->
+  <simpleType name="CVR">
+    <restriction base="token">
+      <maxLength value="50"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: pnumber -->
+  <simpleType name="pnumber">
+    <restriction base="token">
+      <maxLength value="10"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: EAN -->
+  <simpleType name="EAN">
+    <restriction base="token">
+      <maxLength value="30"/>
+      <!-- 13 according to international std? -->
+    </restriction>
+  </simpleType>
+  <!-- custom: orderconfirmationToken  -->
+  <simpleType name="orderconfirmationToken">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: requestedNsAdmin  -->
+  <simpleType name="requestedNsAdmin">
+    <restriction base="eppcom:clIDType"/>
+  </simpleType>
+  <!-- custom: risk assessment enumeration -->
+  <simpleType name="risk_assessment">
+    <restriction base="token">
+      <enumeration value="GREEN"/>
+      <enumeration value="BLUE"/>
+      <enumeration value="YELLOW"/>
+      <enumeration value="RED"/>
+      <enumeration value="N/A"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: url  -->
+  <simpleType name="url">
+    <restriction base="token"/>
+  </simpleType>
+  <!-- custom: authInfo token expiration date -->
+  <simpleType name="authInfoExDate">
+    <restriction base="dateTime"/>
+  </simpleType>
+  <!-- custom: authInfo token -->
+  <complexType name="authInfo">
+    <simpleContent>
+      <extension base="token">
+        <attribute name="op" type="dkhm:authInfoOpType" use="required"/>
+        <attribute name="expdate" type="dateTime" use="required"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <!-- custom authInfoType -->
+  <simpleType name="authInfoOpType">
+    <restriction base="string">
+      <enumeration value="transfer"/>
+      <enumeration value="redel"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: delDate  -->
+  <simpleType name="delDate">
+    <restriction base="dateTime"/>
+  </simpleType>
+  <!-- custom: autoRenew boolean -->
+  <simpleType name="autoRenew">
+    <restriction base="token">
+      <enumeration value="true"/>
+      <enumeration value="false"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: withdraw command -->
+  <complexType name="commandType">
+    <sequence>
+      <element name="withdraw" type="dkhm:withdrawType"/>
+      <element name="extension" type="epp:extAnyType" minOccurs="0"/>
+      <element name="clTRID" type="epp:trIDStringType" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="withdrawType">
+    <sequence>
+      <any namespace="##other"/>
+    </sequence>
+  </complexType>
+  <simpleType name="management">
+    <restriction base="token">
+      <enumeration value="registrar"/>
+      <enumeration value="registrant"/>
+    </restriction>
+  </simpleType>
+  <!-- custom: vid boolean -->
+  <simpleType name="vid">
+    <restriction base="token">
+      <enumeration value="true"/>
+      <enumeration value="false"/>
+    </restriction>
+  </simpleType>
+  <!--
+    End of schema.
+  -->
+</schema>
