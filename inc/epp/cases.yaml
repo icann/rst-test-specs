@@ -1144,7 +1144,7 @@ epp-25:
     This command **MUST** be rejected by the server.
 
     One command will not specify any IPv4 or IPv6 addresses for the object. If
-    the command succeeds, a subsequent `<info>` command **MUST** shows that the
+    the command succeeds, a subsequent `<info>` command **MUST** show that the
     resulting host object is sponsored by the same client that sponsors the
     superordinate domain object.
   Errors:
