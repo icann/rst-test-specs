@@ -17,7 +17,7 @@ rdapct-config:
 	@tools/generate-rdapct-config.pl > rdapct_config.json
 	@echo wrote rdapct_config.json
 	@tools/generate-rdapct-config.pl RSP > rdapct_config_rsp.json
-	@echo wrote rdapct_config_ote.json
+	@echo wrote rdapct_config_rsp.json
 
 includes:
 	@rm -rf tmp
