@@ -30,6 +30,18 @@ gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/index.md | pandoc \
 echo "Syncing spec file..."
 curl --silent --fail --location --output "$SITEDIR/rst-test-specs.html" "https://github.com/icann/rst-test-specs/releases/download/$CURRENT_RELEASE/rst-test-specs.html"
 
+echo "Syncing historical releases..."
+pushd "$SITEDIR" > /dev/null
+curl -s https://api.github.com/repos/icann/rst-test-specs/releases | \
+    jq -r '.[] | .assets[] | .browser_download_url' | \
+    wget \
+        --mirror \
+        --quiet \
+        --input-file - \
+        --no-host-directories \
+        --cut-dirs 4
+popd > /dev/null
+
 echo "Generating EPP extension data..."
 mkdir "$SITEDIR/epp-extensions"
 yq -o json epp-extensions/epp-extensions.yaml > "$SITEDIR/epp-extensions/epp-extensions.json"
