@@ -18,6 +18,8 @@ RUN apk add --quiet \
     pandoc \
     go \
     yq \
+    jq \
+    bash \
     perl-app-cpanminus \
     perl-autovivification \
     perl-carp-assert \
