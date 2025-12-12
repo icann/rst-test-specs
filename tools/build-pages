@@ -27,8 +27,7 @@ gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/index.md | pandoc \
     --css=inc/html/style.css \
     --output="$SITEDIR/index.html"
 
-echo "Syncing spec file..."
-curl --silent --fail --location --output "$SITEDIR/rst-test-specs.html" "https://github.com/icann/rst-test-specs/releases/download/$CURRENT_RELEASE/rst-test-specs.html"
+gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/test-spec-redirect.html > "$SITEDIR/rst-test-specs.html"
 
 echo "Syncing historical releases..."
 pushd "$SITEDIR" > /dev/null

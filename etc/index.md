@@ -1,12 +1,11 @@
 This site hosts the specifications for ICANN's [Registry System Testing
 (RST)](https://icann.org/resources/registry-system-testing-v2.0/) v2.0 service.
 
-* [**Click here to access the RST Test Specifications RELEASE**](rst-test-specs.html)
+* [**Click here to access the RST Test Specifications RELEASE**](RELEASE/rst-test-specs.html)
 
 Additional resources:
 
-* [rst.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst.json)
-  is the [Zonemaster
+* [rst.json](RELEASE/rst.json) is the [Zonemaster
   profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
   used by the [DNS](rst-test-specs.html#Test-Suite-StandardDNS) and
   [DNSSEC](rst-test-specs.html#Test-Suite-StandardDNSSEC) test suites.
@@ -16,7 +15,7 @@ Additional resources:
 * [rdapct_config_rsp.json](rdapct_config_rsp.json)
   is the configuration file used during Registry Service Provider (RSP)
   evaluation tests.
-* [rst-test-specs.json](https://github.com/icann/rst-test-specs/releases/download/RELEASE/rst-test-specs.json)
+* [rst-test-specs.json](RELEASE/rst-test-specs.json)
   is a machine-readable version of the test specs, intended to be consumed by
   internal ICANN clients.
 * [GitHub repository](https://github.com/icann/rst-test-specs/), which includes:
