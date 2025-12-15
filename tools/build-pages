@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
 SITEDIR="_site"
 
 rm -rf "$SITEDIR"
@@ -29,17 +32,37 @@ gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/index.md | pandoc \
 
 gpp -x "-DRELEASE=$CURRENT_RELEASE" etc/test-spec-redirect.html > "$SITEDIR/rst-test-specs.html"
 
+echo "Retrieving list of releases..."
+curl --fail --silent https://api.github.com/repos/icann/rst-test-specs/releases > releases.json
+
 echo "Syncing historical releases..."
+
 pushd "$SITEDIR" > /dev/null
-curl -s https://api.github.com/repos/icann/rst-test-specs/releases | \
-    jq -r '.[] | .assets[] | .browser_download_url' | \
+
+jq -r '.[] | .assets[] | .browser_download_url' ../releases.json | \
     wget \
         --mirror \
         --quiet \
         --input-file - \
         --no-host-directories \
         --cut-dirs 4
+
 popd > /dev/null
+
+echo "Generating release list..."
+
+jq -r '.[] | "* [" + .name + "](" + .name + "/rst-test-specs.html) (" + (.published_at | fromdate | strftime("%B %e, %Y")) + ")"' releases.json > releases.md
+printf "\n\n<< [Back](.)\n" >> releases.md
+
+pandoc \
+    --from markdown \
+    --to html \
+    --standalone \
+    --embed-resources=true \
+    --metadata title="List of RST Releases" \
+    --css=inc/html/style.css \
+    --output="$SITEDIR/releases.html" \
+    releases.md
 
 echo "Generating EPP extension data..."
 mkdir "$SITEDIR/epp-extensions"
@@ -47,6 +70,7 @@ yq -o json epp-extensions/epp-extensions.yaml > "$SITEDIR/epp-extensions/epp-ext
 cp -R epp-extensions/xsd "$SITEDIR/epp-extensions/"
 tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 
+echo "Copying RDAP Conformance Tool configuration files..."
 cp rdapct_config*.json "$SITEDIR/"
 
 chmod -R 0755 "$SITEDIR"
