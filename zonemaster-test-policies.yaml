@@ -170,6 +170,7 @@ error_level_overrides:
     - ALGORITHM_NOT_RECOMMENDED
     - RNAME_MISUSED_AT_SIGN
     - DIFFERENT_SOURCE_IP
+    - NO_RESPONSE
 
 #
 # the list of messages above doesn't identify the module which they come from.
