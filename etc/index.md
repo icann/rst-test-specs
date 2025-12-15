@@ -18,8 +18,8 @@ Additional resources:
 * [rst-test-specs.json](RELEASE/rst-test-specs.json)
   is a machine-readable version of the test specs, intended to be consumed by
   internal ICANN clients.
+* [List of releases](releases.html)
 * [GitHub repository](https://github.com/icann/rst-test-specs/), which includes:
-  * [List of releases](https://github.com/icann/rst-test-specs/releases)
   * [Known issues](https://github.com/icann/rst-test-specs/issues)
   * [Planned changes](https://github.com/icann/rst-test-specs/milestones)
 
