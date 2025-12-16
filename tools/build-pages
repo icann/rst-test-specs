@@ -59,7 +59,7 @@ pandoc \
     --to html \
     --standalone \
     --embed-resources=true \
-    --metadata title="List of RST Releases" \
+    --metadata title="List of Test Specs Releases" \
     --css=inc/html/style.css \
     --output="$SITEDIR/releases.html" \
     releases.md
