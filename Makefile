@@ -14,8 +14,14 @@ zonemaster-profile:
 
 rdapct-config:
 	@echo Generating RDAP Conformance Tool configuration files...
-	@tools/generate-rdapct-config.pl > rdapct_config.json
+
+	#
+	# TEMPORARY hack to use the RSP eval config for all tests, will be reverted
+	# soon
+	#
+	@tools/generate-rdapct-config.pl RSP > rdapct_config.json
 	@echo wrote rdapct_config.json
+
 	@tools/generate-rdapct-config.pl RSP > rdapct_config_rsp.json
 	@echo wrote rdapct_config_rsp.json
 
