@@ -99,4 +99,4 @@ END
 
 push(@{$CONFIG->{definitionNotes}}, q{This file is intended for use in Registry Service Provider (RSP) evaluation.}) if (q{RSP} eq $USAGE);
 
-say JSON::XS->new->pretty->utf8->encode($CONFIG);
+say JSON::XS->new->pretty->utf8->canonical->encode($CONFIG);
