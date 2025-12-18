@@ -123,28 +123,6 @@ StandardIDNTest:
   Test-Suites:
     - StandardIDN
 
-RSPEvaluationIDNTest:
-  Order: 171
-  Name: IDN Test (RSP Evaluation)
-  OTE-Only: false
-  Description: |
-    This test plan is identical to the Standard IDN Test, but is intended
-    solely for use in the RSP evaluation program.
-
-    One key difference between this plan and the Standard IDN Test is that the
-    TLD string(s) that will be used will not be real (delegated or applied-for)
-    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
-    required to configure their systems to support these TLDs prior to the start
-    of the test run.
-
-    RSP_EVALUATION_ENVIRONMENT_NOTE
-
-    # Pass/fail criteria
-
-    TP_PASSFAIL
-  Test-Suites:
-    - StandardIDN
-
 SRSGatewayTest:
   Order: 160
   Name: SRS Gateway Test
@@ -202,6 +180,28 @@ MainRSPEvaluationTest:
     - MinimumRPMs
     - StandardRDAP
     - StandardRDE
+
+RSPEvaluationIDNTest:
+  Order: 171
+  Name: IDN Test (RSP Evaluation)
+  OTE-Only: false
+  Description: |
+    This test plan is identical to the Standard IDN Test, but is intended
+    solely for use in the RSP evaluation program.
+
+    One key difference between this plan and the Standard IDN Test is that the
+    TLD string(s) that will be used will not be real (delegated or applied-for)
+    TLDs but test TLDs that will be determined by ICANN. Test subjects will be
+    required to configure their systems to support these TLDs prior to the start
+    of the test run.
+
+    RSP_EVALUATION_ENVIRONMENT_NOTE
+
+    # Pass/fail criteria
+
+    TP_PASSFAIL
+  Test-Suites:
+    - StandardIDN
 
 DNSRSPEvaluationTest:
   Order: 180
