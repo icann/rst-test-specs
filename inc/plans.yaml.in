@@ -124,7 +124,7 @@ StandardIDNTest:
     - StandardIDN
 
 RSPEvaluationIDNTest:
-  Order: 150
+  Order: 171
   Name: IDN Test (RSP Evaluation)
   OTE-Only: false
   Description: |
@@ -137,7 +137,7 @@ RSPEvaluationIDNTest:
     required to configure their systems to support these TLDs prior to the start
     of the test run.
 
-    BAU_PLAN_ENVIRONMENT_NOTE
+    RSP_EVALUATION_ENVIRONMENT_NOTE
 
     # Pass/fail criteria
 
