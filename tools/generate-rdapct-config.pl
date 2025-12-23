@@ -74,6 +74,9 @@ if (!exists($ARGV[0])) {
     -11409,
     -12412,
     -12414,
+    -12314,
+    -12315,
+    
 
     -23202, # to be removed once v3.1.0 of the RCT is integrated
 );
