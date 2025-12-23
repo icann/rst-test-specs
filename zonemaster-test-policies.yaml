@@ -39,8 +39,8 @@ skip:
   - zone11
 
 #
-# these are the sections of the indiviual Zonemaster test cases that we want
-# to copy into our description
+# these are the sections of the indiviual Zonemaster test case descriptions
+# that we want to copy into our description
 #
 wanted_sections:
   - objective
@@ -171,6 +171,8 @@ error_level_overrides:
     - RNAME_MISUSED_AT_SIGN
     - DIFFERENT_SOURCE_IP
     - NO_RESPONSE
+    - DS03_ILLEGAL_ITERATION_VALUE
+    - DS03_ILLEGAL_SALT_LENGTH
 
 #
 # the list of messages above doesn't identify the module which they come from.
