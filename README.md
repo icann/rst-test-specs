@@ -1,5 +1,6 @@
 > [!TIP]
-> [Click here to go directly to the current RST test specifications.](https://icann.github.io/rst-test-specs/rst-test-specs.html)
+> [Click here to go directly to the current RST test
+> specifications.](https://icann.github.io/rst-test-specs/rst-test-specs.html)
 
 > [!NOTE]
 > Releases of the RST v2.0 test specifications do not always align with releases
@@ -63,9 +64,21 @@ spec](https://github.com/icann/rst-api-spec?tab=readme-ov-file#releasing-a-new-v
 must also be released, in order to incorporate any changes to those data
 elements.
 
+### EPP Extension List, RDAP Conformance Tool and Zonemaster configuration
+
+Unlike the test specs, changes to the [EPP Extensions
+List](epp-extensions/README.md), and configuration files for the [RDAP
+Conformance Tool](tools/generate-rdapct-config.pl) and
+[Zonemaster](tools/generate-zonemaster-profile.pl) do not require creation of a
+new release. Just update the appropriate files, and commit to the `main` branch,
+and the [`build-pages`](.github/workflows/build-pages.yaml) workflow will
+generate and publish the updated files. The RST system will pick them up
+automatically (after cache expiration).
+
 ## See Also
 
-* [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub repository](https://github.com/icann/rst-api-spec))
+* [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub
+  repository](https://github.com/icann/rst-api-spec))
 * [IDN test labels for RST v2.0](https://github.com/icann/rst-idn-test-labels)
 
 ## Copyright Statement
