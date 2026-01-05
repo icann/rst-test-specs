@@ -31,7 +31,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           files: |
-            rst.json
             rst-test-specs.html
             rst-test-specs.json
             rst-test-specs.yaml
