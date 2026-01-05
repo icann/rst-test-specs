@@ -1,3 +1,18 @@
+2026-01-05:
+  - "Version [v2026.01](https://github.com/icann/rst-test-specs/releases/tag/v2026.01):"
+
+  - |
+    Allow auto-creation of external hosts in [epp-16](#Test-Case-epp-16)
+    ([#151](https://github.com/icann/rst-test-specs/issues/151))
+
+  - |
+    Correct test environment for RSP IDN Test
+    ([#168](https://github.com/icann/rst-test-specs/pull/168))
+
+  - |
+    Updated [`idn.testLabelsForOTE`](#Resource-idn.testLabelsForOTE) to
+    the latest version ([#169](https://github.com/icann/rst-test-specs/issues/169))
+
 2025-12-05:
   - "Version [v2025.09](https://github.com/icann/rst-test-specs/releases/tag/v2025.09):"
 
