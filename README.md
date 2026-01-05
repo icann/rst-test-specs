@@ -66,7 +66,7 @@ elements.
 
 ### EPP Extension List, RDAP Conformance Tool and Zonemaster configuration
 
-Unlike the test specs, changes to the the [EPP Extensions
+Unlike the test specs, changes to the [EPP Extensions
 List](epp-extensions/README.md), and configuration files for the [RDAP
 Conformance Tool](tools/generate-rdapct-config.pl) and
 [Zonemaster](tools/generate-zonemaster-profile.pl) do not require creation of a
