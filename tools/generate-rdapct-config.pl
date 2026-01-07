@@ -55,7 +55,7 @@ if (!exists($ARGV[0])) {
     -13006,
     -11703,
     -12205,
-    -12405, 
+    -12405,
     -12206,
     -11603,
     -12406,
@@ -76,9 +76,10 @@ if (!exists($ARGV[0])) {
     -12414,
     -12314,
     -12315,
-    
+
 
     -23202, # to be removed once v3.1.0 of the RCT is integrated
+    -12107, # false positive where a JSON body is required in error responses
 );
 
 #
