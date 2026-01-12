@@ -714,12 +714,6 @@ EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME:
     The server accepts a host `<create>` command with a `<name>` element that
     contains a syntactically invalid hostname.
 
-EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE:
-  Severity: ERROR
-  Description: |
-    The server accepts a host `<create>` command for an in-bailiwick hostname
-    that does not include any `<addr>` elements.
-
 EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS:
   Severity: ERROR
   Description: |
@@ -1149,3 +1143,17 @@ EPP_INVALID_EXTENSION:
    invalid. This may be because (a) it was not a well-formed XML instance, (b)
    specified an extension that was not registered in the EPP Extension Registry
    or (c) could not be validated against the XML schema(s) for that extension.
+
+EPP_UNEXPECTED_HOST_CREATE_SUCCESS:
+  Severity: ERROR
+  Description: |
+    The server incorrectly accepted a `<create>` command for a host object that
+    was subordinate to a domain under the sponsorship of a different client.
+
+EPP_HOST_CREATE_INCORRECT_CLID:
+  Severity: ERROR
+  Description: |
+    After successfully creating a host object that is subordinate to a domain
+    that is sponsored by a different client, a subsequent `<info>` command
+    showed that the host object was not sponsored by the sponsor of the
+    superordinate domain object.

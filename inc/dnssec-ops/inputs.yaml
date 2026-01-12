@@ -6,12 +6,12 @@ dnssecOps.nameservers:
   Required: true
   Example:
     - name: ns1.example.com
-      v4addrs:
+      v4Addrs:
         - 192.0.2.1
       v6Addrs:
         - 2001:DB8::53:1
     - name: ns2.example.net
-      v4addrs:
+      v4Addrs:
         - 192.0.2.2
       v6Addrs:
         - 2001:DB8::53:2

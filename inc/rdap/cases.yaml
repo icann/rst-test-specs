@@ -31,7 +31,7 @@ rdap-02:
     If the value of the `epp.hostModel` input parameter is `attributes`, this
     test will be skipped.
 
-    The client will send domain query requests for each nameserver in the
+    The client will send nameserver query requests for each nameserver in the
     `rdap.testNameservers` input parameter and validate the responses for
     conformance with the gTLD RDAP Profile.
 
@@ -47,7 +47,7 @@ rdap-03:
     This test validates the server's response to an entity query for a
     registrar.
 
-    The client will send domain query requests for each nameserver in the
+    The client will send entity query requests for each entity in the
     `rdap.testEntities` input parameter and validate the responses for
     conformance with the gTLD RDAP Profile.
 
@@ -61,9 +61,6 @@ rdap-04:
   Maturity: BETA
   Description: |
     This test validates the server's response to a help query.
-
-    If the value of the `epp.hostModel` input parameter is `attributes`, this
-    test will be skipped.
 
     The client will send a help query to each base URL specified in the
     `rdap.baseURLs` input parameter, and validate the responses for
@@ -96,7 +93,10 @@ rdap-06:
     This test validates that the server supports `HEAD` requests for
     nameservers.
 
-    The client will issue a `HEAD` request for each domain name in the
+    If the value of the `epp.hostModel` input parameter is `attributes`, this
+    test will be skipped.
+
+    The client will issue a `HEAD` request for each nameserver in the
     `rdap.testNameservers` input parameter and confirm that the server sends a
     response with (a) a status code of `200`, (b) a valid
     `access-control-allow-origin` header field, and (c) an empty body.
@@ -110,12 +110,53 @@ rdap-07:
   Description: |
     This test validates that the server supports `HEAD` requests for entities.
 
-    The client will issue a `HEAD` request for each domain name in the
+    The client will issue a `HEAD` request for each entity in the
     `rdap.testEntities` input parameter and confirm that the server sends a
     response with (a) a status code of `200`, (b) a valid
     `access-control-allow-origin` header field, and (c) an empty body.
   Errors:
     - RDAP_ENTITY_HEAD_FAILED
+
+rdap-08:
+  Summary: Non-existent domain test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent domain names.
+
+    The client will issue a `GET` request for a randomly-generated domain name.
+    The server **MUST** respond with a 404 HTTP response code. If present, the
+    body of the response **MUST** be a valid RDAP error object. The
+    `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_DOMAIN
+
+rdap-09:
+  Summary: Non-existent nameserver test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent nameservers.
+
+    The client will issue `GET` requests for two randomly-generated host names,
+    one in-bailiwick and one out of bailiwick.
+
+    In both cases, the server **MUST** respond with a 404 HTTP response code.
+    If present, the body of the response **MUST** be a valid RDAP error object.
+    The `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_NAMESERVER
+
+rdap-10:
+  Summary: Non-existent entity test
+  Description: |
+    This test validates that the server correctly responds to queries for
+    non-existent entities.
+
+    The client will issue a `GET` request for a randomly-generated entity
+    handle. The server **MUST** respond with a 404 HTTP response code. If
+    present, the body of the response **MUST** be a valid RDAP error object. The
+    `access-control-allow-origin` header field **MUST** also be present.
+  Errors:
+    - RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_ENTITY
 
 rdap-91:
   Implemented: true

@@ -13,7 +13,7 @@ RDAP_TLS_NO_SERVICE_PORTS_REACHABLE:
   Severity: CRITICAL
   Description: |
     No service ports could be reached.
-  
+
 RDAP_TLS_REQUIRED_PROTOCOL_NOT_SUPPORTED:
   Severity: ERROR
   Description: |
@@ -59,35 +59,53 @@ RDAP_SERVICE_PORT_NOT_CONSISTENT:
 
 RDAP_DOMAIN_RESPONSE_VALIDATION_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_NAMESERVER_RESPONSE_VALIDATION_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_ENTITY_RESPONSE_VALIDATION_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_HELP_RESPONSE_VALIDATION_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_DOMAIN_HEAD_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_NAMESERVER_HEAD_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
 
 RDAP_ENTITY_HEAD_FAILED:
   Severity: ERROR
-  Description:
+  Description: |
     The response from the server could not be validated.
+
+RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_DOMAIN:
+  Severity: ERROR
+  Description: |
+    A query for a non-existent domain did not produce a conformant error
+    response.
+
+RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_NAMESERVER:
+  Severity: ERROR
+  Description: |
+    A query for a non-existent nameserver did not produce a conformant error
+    response.
+
+RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_ENTITY:
+  Severity: ERROR
+  Description: |
+    A query for a non-existent entity did not produce a conformant error
+    response.

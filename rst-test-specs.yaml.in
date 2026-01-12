@@ -14,6 +14,8 @@ Configuration:
     Value: "ZONEMASTER_VERSION"
   - Name: \ZONEMASTER_ENGINE_VERSION
     Value: "ZONEMASTER_ENGINE_VERSION"
+  - Name: RDAPCT_VERSION
+    Value: 3.0.1
 
 Preamble: |
 #exec sed 's/^/  /' inc/preamble.md
