@@ -15,6 +15,10 @@ Additional resources:
 * [rdapct_config_rsp.json](rdapct_config_rsp.json)
   is the configuration file used during Registry Service Provider (RSP)
   evaluation tests.
+* [super.xsd](epp-extensions/xsd/super.xsd) is an EPP "super schema" that
+  incorporates the XML schema files for all EPP extensions registered in the
+  [EPP Extension
+  Registry](https://www.iana.org/assignments/epp-extensions/epp-extensions.xhtml).
 * [rst-test-specs.json](RELEASE/rst-test-specs.json)
   is a machine-readable version of the test specs, intended to be consumed by
   internal ICANN clients.
