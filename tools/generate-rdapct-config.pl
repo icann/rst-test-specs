@@ -93,6 +93,7 @@ if (!exists($ARGV[0])) {
     -47205,
     -49104,
     -52106,
+    -47701, # do not require registrar RDAP URLs to be registered with IANA.
 );
 
 push(@IGNORE, @IGNORE_RSP) if (q{RSP} eq $USAGE);
