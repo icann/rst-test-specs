@@ -67,9 +67,8 @@ epp-02:
        **MUST** be present is the domain namespace URI. The host and contact
        namespace URIs may be required depending on the `epp.hostModel` and
        `general.registryDataModel` parameters.
-    6. All `<extURI>` element(s) in the `<greeting>` **MUST** contain XML
-       namespace URIs that have been registered in the IANA registry, and that
-       the mandatory extensions are also included.
+    6. All `<objURI>` and `<extURI>` element(s) in the `<greeting>` **MUST**
+       correspond to entries in the EPP Extension Registry.
     7. `<extURI>` elements containing the following XML namespaces **MUST** be
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
@@ -116,17 +115,21 @@ epp-03:
     authentication. The client will submit a series of `<login>` commands to
     confirm that:
 
-    * the server rejects a `<login>` command with a (randomly generated) non-
-      existent client ID;
-    * the server rejects a `<login>` command with a valid client ID, but an
-      invalid password;
-    * the server rejects a `<login>` command with a valid client ID and password
-      but an incorrect client certificate;
-    * the server accepts a `<login>` command with a valid client ID, password
-      and client certificate;
+    1. the server rejects a `<login>` command with a (randomly generated) non-
+       existent client ID;
+    2. the server rejects a `<login>` command with a valid client ID, but an
+       invalid password;
+    3. the server rejects a `<login>` command with a valid client ID and
+       password but uses an incorrect client certificate;
+    4. the server rejects a `<login>` command with a valid client ID and
+       password but uses the client certificate of another registrar;
+    5. the server rejects a `<login>` command with a valid client ID and
+       password but without a client certificate;
+    6. the server accepts a `<login>` command with a valid client ID, password
+       and client certificate;
 
     The client will use the object and extension XML namespaces from the
-    server's `<greeting>` as part of the `<login>` command.
+    server's `<greeting>` in the `<login>` command.
 
     If the server supports the Login Security Extension (see [RFC
     8807](https://www.rfc-editor.org/rfc/rfc8807.html)) then this will be used
@@ -165,8 +168,7 @@ epp-04:
     For syntactically *invalid* domain names, the server response **MUST**
     either (a) respond normally and contain a `<domain:name>` element with an
     `avail` attribute with a value of `0` or `false`, **OR** return an error
-    response, with one `<value>` elements in the `<result>` element(s) which
-    identify the domain name(s) that caused the server error condition.
+    response with a 2001, 2004 or 2005 result code.
 
     Checks will be carried out for all TLDs in the TLD set whose `idnOnly`
     property is `false`. If a TLD's `idnOnly` property is `true` then that TLD
@@ -194,10 +196,9 @@ epp-05:
     If the EPP server supports host objects, this test will perform a series
     of `<check>` commands and will validate the the server response.
 
-    * syntactically invalid hostname: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the host name(s) that caused
-      the error.
+    * syntactically invalid hostname: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered hostname: `avail` attribute **MUST** be `0` or
       `false`.
     * syntactically valid and unregistered hostname: `avail` attribute
@@ -235,10 +236,9 @@ epp-06:
     series of `<check>` commands and will validate the `avail` attribute of
     the `<contact:id>` elements in the server response, as follows:
 
-    * syntactically invalid ID: normal response with an `avail` attribute
-      of `0` or `false`, **OR** and error response containing `<value>` elements
-      in the `<result>` element(s) which identify the contact ID(s) that caused
-      the error.
+    * syntactically invalid ID: either a normal response with an `avail`
+      attribute of `0` or `false`, or an error response with a 2001, 2004 or
+      2005 result code.
     * valid but registered ID: `avail` attribute **MUST** be `0` or
       `false`.
     * valid and unregistered ID: `avail` attribute **MUST** be `1` or
@@ -379,9 +379,13 @@ epp-08:
     registrar credentials based on the values of the `epp.clid01DataModel` and
     `epp.clid02DataModel` input parameters.
 
-    The client will connect using a set of alternate credentials and will
-    submit `<info>` and `<update>` commands on the contact objects created in
-    `epp-07`. The server **MUST** reject these commands.
+    The client will connect to the server and create contact objects. These
+    `<create>` commands **MUST** be successful.
+
+    It will then connect using a set of alternate credentials and submit
+    `<info>` and `<update>` commands on the contact objects created in `epp-07`.
+
+    The server **MUST** reject these commands.
   Dependencies:
     - epp-07
   Errors:
@@ -550,7 +554,6 @@ epp-11:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_HOSTNAME
-    - EPP_HOST_CREATE_SERVER_DOES_NOT_REQUIRE_GLUE
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPV4_ADDRESS
     - EPP_HOST_CREATE_SERVER_ACCEPTS_INVALID_IPv6_ADDRESS
     - EPP_HOST_CREATE_INFO_RESPONSE_OBJECT_DOES_NOT_EXIST
@@ -726,7 +729,7 @@ epp-14:
     - epp-14-data
 
 epp-15:
-  Summary: Registry object integrity test
+  Summary: Registry object integrity test (if applicable)
   Maturity: GAMMA
   Description: |
     This test confirms that the EPP server will refuse a request to delete a
@@ -743,8 +746,7 @@ epp-15:
     objects.
 
     It will then submit `<delete>` commands for those contact and host objects
-    The server **MUST** respond with a `2305` "Object association prohibits
-    operation" error.
+    The server **MUST** reject these commands.
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -1124,3 +1126,42 @@ epp-24:
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_UNEXPECTED_COMMAND_FAILURE
     - EPP_INVALID_EXTENSION
+
+epp-25:
+  Summary: Subordinate host <create> command test (if applicable)
+  Maturity: GAMMA
+  Description: |
+    This test will confirm that the EPP server implements security controls
+    related to the creation of host objects that are subordinate to domain names
+    that are sponsored by a different client.
+
+    If the `epp.hostModel` input parameter is `attributes`, this test will
+    be skipped.
+
+    The test client will connect to the EPP server, authenticate, and create
+    a domain name and any required contact objects.
+
+    Then, using a second set of credentials, the client will connect to the
+    EPP server, authenticate, and `<create>` commands for host objects that are
+    subordinate to the previously created domain name.
+
+    One command will specify one or more IPv4 or IPv6 address for the object.
+    This command **MUST** be rejected by the server.
+
+    One command will not specify any IPv4 or IPv6 addresses for the object. If
+    the command succeeds, a subsequent `<info>` command **MUST** show that the
+    resulting host object is sponsored by the same client that sponsors the
+    superordinate domain object.
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_INVALID_EXTENSION
+    - EPP_UNEXPECTED_HOST_CREATE_SUCCESS
+    - EPP_HOST_CREATE_INCORRECT_CLID

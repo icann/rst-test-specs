@@ -13,9 +13,13 @@ zonemaster-profile:
 	@echo wrote rst.json
 
 rdapct-config:
-	@echo Generating RDAP Conformance Tool configuration...
-	@tools/generate-rdapct-config.pl > rdapct_config.json
+	@echo Generating RDAP Conformance Tool configuration files...
+
+	@tools/generate-rdapct-config.pl RSP > rdapct_config.json
 	@echo wrote rdapct_config.json
+
+	@tools/generate-rdapct-config.pl RSP > rdapct_config_rsp.json
+	@echo wrote rdapct_config_rsp.json
 
 includes:
 	@rm -rf tmp
@@ -57,10 +61,10 @@ html:
 	@perl tools/generate-html.pl $(SRC).yaml > $(SRC).html
 	@echo wrote $(SRC).html
 
-pages:
+pages: rdapct-config
 	@echo Generating pages...
 	@tools/build-pages
 
 clean:
 	@echo Cleaning up...
-	@rm -rf tmp zonemaster _site tmp rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml
+	@rm -rf tmp zonemaster _site tmp rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml rdapct_config*.json releases.md releases.json

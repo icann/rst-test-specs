@@ -32,7 +32,6 @@ jobs:
         with:
           files: |
             rst.json
-            rdapct_config.json
             rst-test-specs.html
             rst-test-specs.json
             rst-test-specs.yaml

@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2025-09-26
+last-updated: 2026-01-05
 
 links:
   - rel:   help
@@ -148,7 +148,7 @@ uris:
       uri:  urn:se:iis:xml:epp:registryLock-1.0
 
     - name: Additional Email Address Extension for the Extensible Provisioning Protocol (EPP)
-      ref:  RFC-ietf-regext-epp-eai-27
+      ref:  https://www.rfc-editor.org/rfc/rfc9873.html
       uri:  urn:ietf:params:xml:ns:epp:addlEmail-1.0
 
     - name: Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values
@@ -232,7 +232,75 @@ uris:
       uri:  http://www.verisign.com/epp/lowbalance-poll-1.0
 
     - name: IDN EPP Extension for the TANGO Registration System
-      ref:  https://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
+      ref:  http://www.tango-rs.com/epp/tango-idn-epp-extension.pdf
       uri:  http://xmlns.tango-rs.net/epp/idn-1.0
+
+    - name: Auction EPP Extension for the TANGO Registration System
+      ref:  http://www.tango-rs.com/epp/tango-auction-epp-extension.pdf
+      uri:  http://xmlns.tango-rs.net/epp/auction-1.0
+
+    - name: Contact Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-contact-eligibility-epp-extension-1.1.pdf
+      uri:  http://xmlns.tango-rs.net/epp/contact-eligibility-1.1
+
+    - name: Domain Eligibility EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-domain-eligibility-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/eligibility-1.0
+
+    - name: Domain Privacy EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-privacy-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/privacy-1.0
+
+    - name: Promotion EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-1.0
+
+    - name: Promotion Info EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
+
+    - name: XML Mark Data Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
+
+    - name: CIRA Fury RGP Information for the Extensible Provisioning Protocol (EPP)
+      ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-rgp-1-epp-extension/
+      uri:  urn:ietf:params:xml:ns:fury-rgp-1.0
+
+    - name: CIRA Fury 2.1 Extension for the Extensible Provisioning Protocol (EPP)
+      ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-21-epp-extension/
+      uri:  urn:ietf:params:xml:ns:fury-2.1
+
+    - name: Auction EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-auction-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/auction-1.0
+
+    - name: Contact Eligibility EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-contact-eligibility-epp-extension-1.1.pdf
+      uri:  http://xmlns.corenic.net/epp/contact-eligibility-1.1
+
+    - name: Domain Eligibility EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-domain-eligibility-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/eligibility-1.0
+
+    - name: Domain Privacy EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-privacy-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/privacy-1.0
+
+    - name: IDN EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-idn-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/idn-1.0
+
+    - name: Promotion EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-1.0
+
+    - name: Promotion Info EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
+
+    - name: XML Mark Data EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-xml-mark-data-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/mark-ext-1.0
 
 # END
