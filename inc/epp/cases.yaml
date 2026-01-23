@@ -1072,6 +1072,9 @@ epp-23:
       `<update>` command is submitted.
     * an `<update>` command which places the object within a domain sponsored
       by the test client is accepted.
+    * an `<update>` command changes the name of an external host object that has
+      associations with objects that are sponsored by a different client *MUST*
+      fail with error code 2305.
 
     The client will then perform `<info>` commands on the objects successfully
     updated, to confirm that the server has correctly stored the updated
@@ -1094,6 +1097,7 @@ epp-23:
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_HOST_RENAME_OBJECT_NOT_RENAMED
     - EPP_INVALID_EXTENSION
+    - EPP_HOST_RENAME_SERVER_INCORRECTLY_ACCEPTS_RENAME
 
 epp-24:
   Summary: Host <delete> command test (if applicable)
