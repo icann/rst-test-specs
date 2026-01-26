@@ -174,9 +174,11 @@ EPP servers **MUST** use unique repository identifiers that are registered in th
 (see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
 
 The special ID `ICANNRST` (`#x0049 #x0043 #x0041
-#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
-servers during RSP evaluation tests. However, for pre- and post-delegation tests
-this repository ID **MUST NOT** be used.
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN and **MAY** be
+used by EPP and RDAP servers during RSP evaluation tests if the test subject
+does not have an existing repository ID that is appropriate for this purpose.
+However, for pre- and post-delegation tests of production registry systems, this
+repository ID **MUST NOT** be used.
 
 # 2.9. EPP extensions
 
