@@ -70,9 +70,6 @@ yq -o json epp-extensions/epp-extensions.yaml > "$SITEDIR/epp-extensions/epp-ext
 cp -R epp-extensions/xsd "$SITEDIR/epp-extensions/"
 tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 
-echo "Copying RDAP Conformance Tool configuration files..."
-cp rdapct_config*.json "$SITEDIR/"
-
 chmod -R 0755 "$SITEDIR"
 
 echo "done"

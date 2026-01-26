@@ -778,9 +778,14 @@ epp-16:
     It will then perform `<info>` commands to confirm that the changes have been
     correctly stored by the server.
 
+    The client will then confirm that the server rejects `<update>` commands
+    that use host objects if the value of the `epp.hostModel` input parameter
+    is `attributes`, and host attributes if its value is `objects`.
+
     The client will also confirm that it cannot perform an `<update>` command
     on a domain sponsored by another registrar, and that the server responds
     with a `2201` authorization error.
+
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
