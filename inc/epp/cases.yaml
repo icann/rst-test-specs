@@ -1064,7 +1064,7 @@ epp-23:
     `<update>` commands to confirm that the server correctly accepts or rejects
     those commands, for example:
 
-    * an `<update>` command which specifies a syntatically invalid host name
+    * an `<update>` command which specifies a syntactically invalid host name
       is rejected;
     * an `<update>` command which places the object in a different top-level
       domain (that uses a different EPP repository) is accepted;
