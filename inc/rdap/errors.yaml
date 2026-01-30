@@ -109,3 +109,9 @@ RDAP_INVALID_RESPONSE_FOR_NON_EXISTENT_ENTITY:
   Description: |
     A query for a non-existent entity did not produce a conformant error
     response.
+
+RDAP_QUERY_FAILED:
+  Severity: ERROR
+  Description: |
+    An RDAP query that should have been successful produced an error response or
+    could not be completed.

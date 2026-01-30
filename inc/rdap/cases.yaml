@@ -210,15 +210,17 @@ rdap-92:
     the objects specified in the `rdap.testDomains`, `rdap.testEntities`, and
     `rdap.testNameservers` input parameters.
 
-    The responses returned by each service port **MUST**, with the exception
-    of the `last update of RDAP database` event, be consistent, once the JSON
-    body has been parsed and canonicalised. The values that appear in the
-    `entities`, `events`, `notices`, `remarks`, `links`, `rdapConformance`,
-    `publicIDs`, `status`, `ipAddresses`, and `nameservers` properties of the
-    response may appear in any order.
+    The responses returned by each service port (1) **MUST** have the 200 status
+    code, and (2) **MUST**, with the exception of the `last update of RDAP
+    database` event, be consistent, once the JSON body has been parsed and
+    canonicalised. The values that appear in the `entities`, `events`,
+    `notices`, `remarks`, `links`, `rdapConformance`, `publicIDs`, `status`,
+    `ipAddresses`, `nameservers` and `redactions` properties of the response may
+    (if present) appear in any order.
 
   Errors:
     - RDAP_TLS_DNS_RESOLUTION_ERROR
     - RDAP_TLS_SERVICE_PORT_UNREACHABLE
     - RDAP_TLS_NO_SERVICE_PORTS_REACHABLE
+    - RDAP_QUERY_FAILED
     - RDAP_SERVICE_PORT_NOT_CONSISTENT
