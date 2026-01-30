@@ -108,7 +108,7 @@ srsgw.rdapBaseURLs:
             The RDAP Base URL. The URL **MUST** have trailing slash (`/`).
           type: string
           format: url
-          pattern: /$
+          pattern: .+/$
 
 srsgw.loginExtension:
   Description: |
