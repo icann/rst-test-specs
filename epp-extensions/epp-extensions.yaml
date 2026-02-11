@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2025-12-03
+last-updated: 2026-01-05
 
 links:
   - rel:   help
@@ -270,5 +270,41 @@ uris:
     - name: CIRA Fury 2.1 Extension for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.cira.ca/en/resources/documents/registry/cira-fury-21-epp-extension/
       uri:  urn:ietf:params:xml:ns:fury-2.1
+
+    - name: Auction EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-auction-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/auction-1.0
+
+    - name: Contact Eligibility EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-contact-eligibility-epp-extension-1.1.pdf
+      uri:  http://xmlns.corenic.net/epp/contact-eligibility-1.1
+
+    - name: Domain Eligibility EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-domain-eligibility-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/eligibility-1.0
+
+    - name: Domain Privacy EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-privacy-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/privacy-1.0
+
+    - name: IDN EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-idn-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/idn-1.0
+
+    - name: Promotion EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-1.0
+
+    - name: Promotion Info EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
+
+    - name: XML Mark Data EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-xml-mark-data-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/mark-ext-1.0
+
+    - name: Art Record Extension for the .art Top Level Domain
+      ref:  https://centralnicregistry.com/epp-extensions/art-record-0-2/
+      uri:  urn:ietf:params:xml:ns:artRecord-0.2
 
 # END

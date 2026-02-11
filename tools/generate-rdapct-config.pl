@@ -55,8 +55,32 @@ if (!exists($ARGV[0])) {
     -13006,
     -11703,
     -12205,
+    -12405,
+    -12206,
+    -11603,
+    -12406,
+    -10611,
+    -10704,
+    -12217,
+    -10100,
+    -11100,
+    -12215,
+    -10402,
+    -10200,
+    -999,
+    -11404,
+    -11406,
+    -11407,
+    -11409,
+    -12412,
+    -12414,
+    -12314,
+    -12315,
+
 
     -23202, # to be removed once v3.1.0 of the RCT is integrated
+    -12107, # false positive where a JSON body is required in error responses
+    -12208, # false positive where an invalid LDH label is found in a nameserver
 );
 
 #
@@ -69,6 +93,7 @@ if (!exists($ARGV[0])) {
     -47205,
     -49104,
     -52106,
+    -47701, # do not require registrar RDAP URLs to be registered with IANA.
 );
 
 push(@IGNORE, @IGNORE_RSP) if (q{RSP} eq $USAGE);
@@ -99,4 +124,4 @@ END
 
 push(@{$CONFIG->{definitionNotes}}, q{This file is intended for use in Registry Service Provider (RSP) evaluation.}) if (q{RSP} eq $USAGE);
 
-say JSON::XS->new->pretty->utf8->encode($CONFIG);
+say JSON::XS->new->pretty->utf8->canonical->encode($CONFIG);

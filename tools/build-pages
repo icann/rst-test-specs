@@ -59,7 +59,7 @@ pandoc \
     --to html \
     --standalone \
     --embed-resources=true \
-    --metadata title="List of RST Releases" \
+    --metadata title="List of Test Specs Releases" \
     --css=inc/html/style.css \
     --output="$SITEDIR/releases.html" \
     releases.md
@@ -72,6 +72,9 @@ tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 
 echo "Copying RDAP Conformance Tool configuration files..."
 cp rdapct_config*.json "$SITEDIR/"
+
+echo "Copying Zonemaster profile..."
+cp rst.json "$SITEDIR/"
 
 chmod -R 0755 "$SITEDIR"
 
