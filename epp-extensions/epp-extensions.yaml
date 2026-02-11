@@ -303,4 +303,8 @@ uris:
       ref:  https://corenic.org/epp-extensions/core-xml-mark-data-extension-1.0.pdf
       uri:  http://xmlns.corenic.net/epp/mark-ext-1.0
 
+    - name: Art Record Extension for the .art Top Level Domain
+      ref:  https://centralnicregistry.com/epp-extensions/art-record-0-2/
+      uri:  urn:ietf:params:xml:ns:artRecord-0.2
+
 # END
