@@ -162,7 +162,7 @@ sub process_case {
     foreach my $message (sort(@messages)) {
         my $severity = $levels{$message} || $profile->{'test_levels'}->{uc($module)}->{$message} || 'WARNING';
 
-        my $description = &{$tag_descriptions->{$message}}() || '(no description provided)';
+        my $description = &{$tag_descriptions->{$message} | sub { undef }}() || '(no description provided)';
         $description =~ s/\n/\n> /g;
         $description =~ s/{/`{/g;
         $description =~ s/}/}`/g;
