@@ -403,3 +403,9 @@ RDE_DOMAIN_HAS_INVALID_ACRR:
   Description: |
     One or more contact objects have a `<acRr>` element containing a registrar
     ID that is not present in the deposit.
+
+RDE_MISSING_FILES:
+  Severity: CRITICAL
+  Description: |
+    Following decryption, one or more XML or CSV files that should have been
+    present, were not.
