@@ -137,7 +137,7 @@ rdap-09:
     non-existent nameservers.
 
     The client will issue `GET` requests for two randomly-generated host names,
-    one in-bailiwick and one out of bailiwick.
+    one internal and one external, for each TLD.
 
     In both cases, the server **MUST** respond with a 404 HTTP response code.
     If present, the body of the response **MUST** be a valid RDAP error object.

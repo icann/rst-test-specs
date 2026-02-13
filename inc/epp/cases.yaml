@@ -535,7 +535,7 @@ epp-11:
     The test will confirm that the server checks and validates the values of
     the following elements:
 
-    * `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD
+    * `<host:name>` (both internal and external, for each TLD in the TLD
       set)
     * `<host:addr>` elements (both IPv4 and IPv6)
 

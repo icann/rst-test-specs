@@ -490,15 +490,15 @@ EPP_DOMAIN_CREATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
   Severity: ERROR
   Description: |
     The server accepts a domain `<create>` command with one or more `<hostAttr>`
-    elements containing hostnames that are in-bailiwick, but for which
-    `<hostAddr>` elements are not provided.
+    elements containing "internal" hostnames, but for which `<hostAddr>`
+    elements are not provided.
 
 EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
   Severity: ERROR
   Description: |
     The server accepts a domain `<create>` command with one or more `<hostAttr>`
-    elements containing hostnames that are in-bailiwick, but for which
-    `<hostAddr>` elements are not provided.
+    elements containing "internal" hostnames, but for which `<hostAddr>`
+    elements are not provided.
 
 EPP_DOMAIN_CREATE_SERVER_ACCEPTS_INVALID_DOMAIN_NAME:
   Severity: ERROR
@@ -647,8 +647,8 @@ EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_HOST_ATTRIBUTES_WITHOUT_GLUE:
   Severity: ERROR
   Description: |
     The server accepts a domain `<update>` command with one or more `<hostAttr>`
-    elements containing hostnames that are in-bailiwick, but for which
-    `<hostAddr>` elements are not provided.
+    elements containing "internal" hostnames, but for which `<hostAddr>`
+    elements are not provided.
 
 EPP_DOMAIN_UPDATE_SERVER_ACCEPTS_INVALID_DNSSEC_DATA:
   Severity: ERROR
@@ -756,7 +756,7 @@ EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME:
   Severity: ERROR
   Description: |
     The server rejects a host `<update>` command with a `<name>` element that
-    contains a hostname that is out-of-bailiwick.
+    contains an internal hostname.
 
 EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME:
   Severity: ERROR
