@@ -75,6 +75,17 @@ and the [`build-pages`](.github/workflows/build-pages.yaml) workflow will
 generate and publish the updated files. The RST system will pick them up
 automatically (after cache expiration).
 
+### Updating the Zonemaster version used
+
+To change the version of Zonemaster used, edit [.env](.env) and set the
+`ZONEMASTER_VERSION` and `ZONEMASTER_ENGINE_VERSION` variables accordingly. Then
+generate the specs.
+
+Quite often, a new release of Zonemaster will add, remove or change the error
+codes that are generated. So before publishing a new version of the test specs,
+the delta between the old and new versions should be manually inspected, to
+ensure that any changes are acceptable and appropriate.
+
 ## See Also
 
 * [RST API Specification](https://icann.github.io/rst-api-spec) ([GitHub
