@@ -1,3 +1,25 @@
+2026-02-13:
+  - |
+    "Version [v2026.02](https://github.com/icann/rst-test-specs/releases/tag/v2026.02):"
+
+  - |
+    Update DNS and DNSSEC test suites for Zonemaster v2025.2 ([#49](https://github.com/icann/rst-test-specs/issues/49))
+
+  - |
+    Update RDAP Conformance Tool to v3.1.0 ([#158](https://github.com/icann/rst-test-specs/issues/158))
+
+  - |
+    Use "internal" and "external" instead of "in-bailiwick" and "out-of-bailiwick" ([#199](https://github.com/icann/rst-test-specs/issues/199))
+
+  - |
+    [rdap-92](#Test-Case-rdap-92): add error code for 404 (etc) response ([#202](https://github.com/icann/rst-test-specs/issues/202))
+
+  - |
+    Issue with pattern for RDAP base URLs ([#204](https://github.com/icann/rst-test-specs/issues/204))
+
+  - |
+    Add error code for missing RDE deposit file(s) ([#212](https://github.com/icann/rst-test-specs/issues/212))
+
 2026-01-26:
   - "Version [v2026.01.1](https://github.com/icann/rst-test-specs/releases/tag/v2026.01.1):"
 
