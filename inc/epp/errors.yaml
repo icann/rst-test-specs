@@ -752,7 +752,7 @@ EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN:
     The server accepts a host `<update>` command with a `<name>` element that
     contains a hostname that is subordinate to a non-existent domain.
 
-EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME:
+EPP_HOST_RENAME_SERVER_REJECTS_EXTERNAL_NAME:
   Severity: ERROR
   Description: |
     The server rejects a host `<update>` command with a `<name>` element that
