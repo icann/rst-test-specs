@@ -12,8 +12,8 @@ appear in all capitals, as shown here.
 
 # 2.1. Test plans
 
-An individual *Test Plan* addresses a particular scenario (for example, RSP
-evaluation or Pre-Delegation Testing). Each plan consists of one or more *test
+An individual *Test Plan* addresses a particular scenario, for example, RSP
+evaluation, or Pre-Delegation Testing. Each plan consists of one or more *test
 suites*, which in turn include one or more *test cases*.
 
 ## 2.1.1. Test plan types
@@ -25,12 +25,12 @@ There are two types of test plan described in this document:
   Gateway Test);
 
 * **RSP evaluation** plans, which are used as part of the [RSP evaluation
-  program](https://community.icann.org/display/SPIR/RSP+%7C+Registry+Service+Provider+Pre-Evaluation).
+  program](https://newgtldprogram.icann.org/en/application-rounds/round2/rsp).
 
 # 2.2. Test suites
 
-A *Test Suite* is a collection of *test cases* with a common theme or subject
-matter, for example, Authoritative DNS or Registry Data Escrow.
+A *Test Suite* is a collection of *test cases*, that have a common theme or
+subject matter, for example, **Authoritative DNS**, or **Registry Data Escrow**.
 
 # 2.3. Test cases
 
@@ -58,7 +58,7 @@ that should be raised if the outcome does not match the expected outcome.
 
 ## 2.3.3. Resources
 
-A *Resource* is a file or other set of information that may assist a test
+A *resource* is a file or other set of information that may assist a test
 subject in preparing for a test. For example, it might be a list of IP addresses
 from which network connections will be initiated, or the public keys used for
 encryption and authentication.
@@ -74,7 +74,7 @@ production environment, or whether a test, staging or Operational Testing and
 Evaluation (OT&E) environment may be used. In general, test plans which are
 designed for "business as usual" use during the lifecycle of a TLD **MUST** be
 carried out in the production registry infrastructure, while RSP evaluation
-tests **MAY** be carried out in test, staging or OT&E environments.
+tests **MAY** be carried out in a test, staging, OT&E, or other environment.
 
 ## 2.3.5. Test results
 
@@ -132,8 +132,8 @@ The test system will generate a linear _test sequence_ based on the
 test suite(s) and test case(s) used by the specified test plan. The test cases
 will be sorted in canonical alphanumeric order and executed in that order.
 
-If a test case produces any `ERROR` or `CRITICAL` messages, the test run will
-stop at that point.
+If a test case produces a `CRITICAL` message, the test run will stop at that
+point.
 
 Future versions may optimize the test sequence using knowledge of intercase
 dependencies to allow certain parts of the sequence to be run in parallel.
@@ -170,13 +170,16 @@ allow the use of `.icann` during RST tests.
 # 2.8. Extensible Provisioning Protocol (EPP) Repository Identifiers
 
 EPP servers **MUST** use unique repository identifiers that are registered in the
-[EPP Repository ID registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
+[EPP Repository ID
+registry](https://www.iana.org/assignments/epp-repository-ids/epp-repository-ids.xhtml)
 (see [Section 2.8 of RFC 5730](https://www.rfc-editor.org/rfc/rfc5730.html#section-2.8)).
 
 The special ID `ICANNRST` (`#x0049 #x0043 #x0041
-#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN for use in EPP
-servers during RSP evaluation tests. However, for pre- and post-delegation tests
-this repository ID **MUST NOT** be used.
+#x004e #x004e #x0052 #x0053 #x0054`) has been registered by ICANN and **MAY** be
+used by EPP and RDAP servers during RSP evaluation tests if the test subject
+does not have an existing repository ID that is appropriate for this purpose.
+However, for pre- and post-delegation tests of production registry systems, this
+repository ID **MUST NOT** be used.
 
 # 2.9. EPP extensions
 

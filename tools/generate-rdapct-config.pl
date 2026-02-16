@@ -4,7 +4,7 @@ use JSON::XS;
 use IO::File;
 use List::Util qw(none);
 use constant TEMPLATE_URL => q{https://raw.githubusercontent.com/icann/rdap-conformance-tool/refs/heads/master/tool/bin/rdapct_config.json};
-use vars qw($CONFIG @WARNING @IGNORE @IGNORE_RSP $USAGES $USAGE);
+use vars qw($CONFIG @ERROR @WARNING @IGNORE @IGNORE_RSP $USAGES $USAGE);
 use common::sense;
 
 $USAGES = {
@@ -25,6 +25,13 @@ if (!exists($ARGV[0])) {
 
     }
 }
+
+@ERROR = (
+    {
+        code    => -13020,
+        notes   => "A 404 status was returned for a request for a resource that should exist.",
+    },
+);
 
 @WARNING = (
     {
@@ -78,7 +85,6 @@ if (!exists($ARGV[0])) {
     -12315,
 
 
-    -23202, # to be removed once v3.1.0 of the RCT is integrated
     -12107, # false positive where a JSON body is required in error responses
     -12208, # false positive where an invalid LDH label is found in a nameserver
 );
@@ -93,11 +99,16 @@ if (!exists($ARGV[0])) {
     -47205,
     -49104,
     -52106,
+    -47701, # do not require registrar RDAP URLs to be registered with IANA.
 );
 
 push(@IGNORE, @IGNORE_RSP) if (q{RSP} eq $USAGE);
 
 $CONFIG = mirror_json(TEMPLATE_URL);
+
+foreach my $code (@ERROR) {
+    push(@{$CONFIG->{definitionError}}, $code) if (none { $_->{code} == $code->{code} } @{$CONFIG->{definitionError}});
+}
 
 foreach my $code (@WARNING) {
     push(@{$CONFIG->{definitionWarning}}, $code) if (none { $_->{code} == $code->{code} } @{$CONFIG->{definitionWarning}});

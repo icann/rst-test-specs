@@ -174,7 +174,7 @@ RDE_HOST_HAS_MISSING_CLID:
 RDE_HOST_HAS_MISSING_IP_ADDRESS:
   Severity: ERROR
   Description: |
-    One or more host objects with in-bailiwick hostnames do not have a `<addr>`
+    One or more host objects with internal hostnames do not have a `<addr>`
     element.
 
 RDE_HOST_HAS_MISSING_ROID:
@@ -415,3 +415,9 @@ RDE_DOMAIN_HAS_UNEXPECTED_HOST_ATTRIBUTES:
   Description: |
     One or more domain objects have a `<hostAttr>` element, but the value of the
     `epp.hostModel` input parameter is `objects`.
+
+RDE_MISSING_FILES:
+  Severity: CRITICAL
+  Description: |
+    Following decryption, one or more XML or CSV files that should have been
+    present, were not.
