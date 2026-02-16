@@ -50,6 +50,7 @@ yaml:
 lint:
 	@echo Checking YAML...
 	@perl tools/lint.pl $(SRC).yaml
+	@perl tools/lint-epp-extensions-list.pl
 
 json:
 	@echo Compiling JSON...
