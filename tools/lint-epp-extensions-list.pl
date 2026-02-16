@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 use Array::Utils qw(:all);
 use Cwd qw(abs_path);
-use Data::Printer;
 use DateTime::Format::ISO8601;
 use Data::Mirror qw(mirror_xml);
 use File::Basename qw(dirname);
