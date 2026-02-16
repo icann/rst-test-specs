@@ -174,7 +174,7 @@ RDE_HOST_HAS_MISSING_CLID:
 RDE_HOST_HAS_MISSING_IP_ADDRESS:
   Severity: ERROR
   Description: |
-    One or more host objects with in-bailiwick hostnames do not have a `<addr>`
+    One or more host objects with internal hostnames do not have a `<addr>`
     element.
 
 RDE_HOST_HAS_MISSING_ROID:
@@ -403,3 +403,9 @@ RDE_DOMAIN_HAS_INVALID_ACRR:
   Description: |
     One or more contact objects have a `<acRr>` element containing a registrar
     ID that is not present in the deposit.
+
+RDE_MISSING_FILES:
+  Severity: CRITICAL
+  Description: |
+    Following decryption, one or more XML or CSV files that should have been
+    present, were not.

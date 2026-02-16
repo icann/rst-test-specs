@@ -535,7 +535,7 @@ epp-11:
     The test will confirm that the server checks and validates the values of
     the following elements:
 
-    * `<host:name>` (both in- and out-of-bailiwick, for each TLD in the TLD
+    * `<host:name>` (both internal and external, for each TLD in the TLD
       set)
     * `<host:addr>` elements (both IPv4 and IPv6)
 
@@ -778,9 +778,14 @@ epp-16:
     It will then perform `<info>` commands to confirm that the changes have been
     correctly stored by the server.
 
+    The client will then confirm that the server rejects `<update>` commands
+    that use host objects if the value of the `epp.hostModel` input parameter
+    is `attributes`, and host attributes if its value is `objects`.
+
     The client will also confirm that it cannot perform an `<update>` command
     on a domain sponsored by another registrar, and that the server responds
     with a `2201` authorization error.
+
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -1059,7 +1064,7 @@ epp-23:
     `<update>` commands to confirm that the server correctly accepts or rejects
     those commands, for example:
 
-    * an `<update>` command which specifies a syntatically invalid host name
+    * an `<update>` command which specifies a syntactically invalid host name
       is rejected;
     * an `<update>` command which places the object in a different top-level
       domain (that uses a different EPP repository) is accepted;
@@ -1072,6 +1077,9 @@ epp-23:
       `<update>` command is submitted.
     * an `<update>` command which places the object within a domain sponsored
       by the test client is accepted.
+    * an `<update>` command changes the name of an external host object that has
+      associations with objects that are sponsored by a different client *MUST*
+      fail with error code 2305.
 
     The client will then perform `<info>` commands on the objects successfully
     updated, to confirm that the server has correctly stored the updated
@@ -1087,13 +1095,14 @@ epp-23:
     - EPP_SCHEMA_VALIDATION_ERROR
     - EPP_LOGIN_ERROR
     - EPP_HOST_RENAME_SERVER_ACCEPTS_INVALID_HOSTNAME
-    - EPP_HOST_RENAME_SERVER_REJECTS_OUT_OF_BAILIWICK_NAME
+    - EPP_HOST_RENAME_SERVER_REJECTS_EXTERNAL_NAME
     - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_NONEXISTENT_DOMAIN
     - EPP_HOST_RENAME_SERVER_ACCEPTS_RENAME_TO_ANOTHER_REGISTRARS_DOMAIN
     - EPP_HOST_RENAME_SERVER_UNEXPECTEDLY_REJECTS_RENAME
     - EPP_GENERIC_COMMAND_ERROR
     - EPP_HOST_RENAME_OBJECT_NOT_RENAMED
     - EPP_INVALID_EXTENSION
+    - EPP_HOST_RENAME_SERVER_INCORRECTLY_ACCEPTS_RENAME
 
 epp-24:
   Summary: Host <delete> command test (if applicable)
