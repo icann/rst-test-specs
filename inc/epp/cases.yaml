@@ -1169,3 +1169,94 @@ epp-25:
     - EPP_INVALID_EXTENSION
     - EPP_UNEXPECTED_HOST_CREATE_SUCCESS
     - EPP_HOST_CREATE_INCORRECT_CLID
+
+epp-26:
+  Summary: Wide glue host object access control (if applicable)
+  Description: |
+    This test case verifies that clients cannot create internal host objects
+    with glue that are subordinate to a domain object sponsored by another
+    client.
+
+    Most EPP servers restrict creation of internal hosts to the sponsor of the
+    superordinate domain object. However, some servers allow clients to create
+    a subordinate host object under any domain name.
+
+    Where the server implements a "wide glue" policy, this poses a security
+    risk, in that a malicious client could create an internal host that (a) is
+    subordinate to a victim domain and (b) has glue records which would then be
+    published in the DNS. This risk can be mitigated by forbidding the inclusion
+    of `<addr>` records in the `<create>` commands for such internal hosts (the
+    sponsoring client of the resultant host object, which must be the sponsor
+    of the superordinate domain object, must then use an `<update>` to add
+    glue to the object before it can be used).
+
+    The test client will connect to the EPP server, authenticate, and then
+    create a domain name.
+
+    It will then reconnect using an alternate set of credentials, and attempt to
+    create a host object that is subordinate to the previously created domain
+    name. The `<create>` command will include at least one IPv4 address.
+
+    The server **MUST** reject the command.
+
+    This test case will be skipped if (a) the value of the `dns.gluePolicy`
+    input parameter is `narrow`, or (b) if the value of the `epp.hostModel`
+    input parameter is `attributes`.
+
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_INVALID_EXTENSION
+    - EPP_SERVER_ACCEPTS_INTERNAL_HOST_WITH_GLUE
+
+  Input-Parameters:
+    - dns.gluePolicy
+
+epp-27:
+  Summary: Glueless internal host object access control (if applicable)
+  Description: |
+    Some EPP servers allow clients to create a subordinate host object under any
+    domain name, with the proviso that glue must not be specified in the
+    `<create>` command.
+
+    This test case verifies that EPP servers do not allow domain objects to be
+    delegated to glueless internal host objects.
+
+    This test case will be skipped if the value of the `epp.hostModel` input
+    parameter is `attributes`.
+
+    The test client will connect to the EPP server, authenticate, and then
+    create a domain name delegated to randomly-generated external host objects.
+
+    It will then reconnect using an alternate set of credentials, and attempt to
+    create a internal host object that is subordinate to the previously created
+    domain name. The `<create>` command will not include any `<addr>` elements.
+
+    If the server rejects the command, the test passes at that point.
+
+    However, if the server accepts the command, the test client will re-connect
+    using the original set of credentials, and use an `<update>` command to
+    attempt to add the previously created internal host object to the domain
+    object created in the first step.
+
+    The server **MUST** reject the command.
+
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_INVALID_EXTENSION
+    - EPP_SERVER_ALLOWS_DELEGATION_TO_GLUELESS_HOST
