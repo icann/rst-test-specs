@@ -1191,7 +1191,7 @@ epp-26:
     glue to the object before it can be used).
 
     The test client will connect to the EPP server, authenticate, and then
-    create a domain name.
+    create a domain name delegated to randomly-generated external host objects.
 
     It will then reconnect using an alternate set of credentials, and attempt to
     create a host object that is subordinate to the previously created domain

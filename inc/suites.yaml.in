@@ -410,12 +410,15 @@ StandardIntegrationTest:
 
   Test-Cases: ^integration-
   Input-Parameters:
+    - dns.gluePolicy
+    - dns.nameservers
     - epp.clid01
     - epp.clid01DataModel
     - epp.clid02
     - epp.clid02DataModel
     - epp.hostModel
     - epp.hostName
+    - epp.loginExtension
     - epp.pwd01
     - epp.pwd02
     - epp.registeredNames
@@ -424,9 +427,8 @@ StandardIntegrationTest:
     - epp.serverIssuedClientCertificate01
     - epp.serverIssuedClientCertificate02
     - epp.supportedContactElements
-    - general.registryDataModel
-    - epp.loginExtension
     - epp.supportedContactPostalInfoTypes
+    - general.registryDataModel
   Resources:
     - tmch.testCert
     - tmch.testCRL
