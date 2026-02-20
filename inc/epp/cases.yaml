@@ -74,6 +74,7 @@ epp-02:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
          * `urn:ietf:params:xml:ns:launch-1.0`
          * `urn:ietf:params:xml:ns:rgp-1.0`
+         * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
     8. With the exception of the `<svDate>` element, all values in the
        `<greeting>` **MUST** match those found in the `epp.greeting` input
        parameter.
@@ -82,7 +83,6 @@ epp-02:
     warning if any of the following XML namespace URIs are not included in the
     `<svcExtension>` element:
 
-    * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
     * `urn:ietf:params:xml:ns:epp:unhandled-namespaces-1.0`
     * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
   Input-Parameters:
