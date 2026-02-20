@@ -84,8 +84,6 @@ if (!exists($ARGV[0])) {
     -12314,
     -12315,
 
-
-    -12107, # false positive where a JSON body is required in error responses
     -12208, # false positive where an invalid LDH label is found in a nameserver
 );
 
