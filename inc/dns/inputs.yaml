@@ -87,3 +87,30 @@ dns.nameservers:
                   9250](https://www.rfc-editor.org/rfc/rfc9250.html)).
                 type: boolean
                 default: false
+
+dns.gluePolicy:
+  Description: |
+    The policy explicitly or implicitly applied to glue records, that is, the
+    IPv4 and IPv6 addresses provided by registrars for nameservers.
+
+    The possible values of this input parameter are `narrow` and `wide`, which
+    are taken from [Section 4 of draft-koch-dns-glue-clarifications]
+    (https://datatracker.ietf.org/doc/html/draft-koch-dns-glue-clarifications-05#section-4):
+
+    * "narrow": Glue RRs are published if the name server resides within or
+      below the delegated (child) zone.
+    * "wide": Glue RRs are published if the name server resides below the
+      delegating (parent) zone.
+
+    As per [Section 1.1 of RFC
+    5731](https://datatracker.ietf.org/doc/html/rfc5731#section-1.1), if the
+    value of the `epp.hostModel` input parameter is `objects`, the value of this
+    input parameter **MUST** be `narrow`.
+  Type: input
+  Required: true
+  Example: narrow
+  Schema:
+    type: string
+    enum:
+      - narrow
+      - wide
