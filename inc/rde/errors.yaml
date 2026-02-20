@@ -224,10 +224,10 @@ RDE_MISSING_OBJECT_URI:
   Description: |
     One or more expected object URIs were not found in the header.
 
-RDE_MIXED_TYPES:
+RDE_OBJECT_HAS_MIXED_TYPES:
   Severity: ERROR
   Description: |
-    The deposit contains both XML and CSV data files.
+    The deposit contains an object that is escrowed in both XML and CSV formats.
 
 RDE_NNDN_CONFLICTS_WITH_DOMAIN:
   Severity: ERROR
