@@ -47,8 +47,6 @@ integration-02:
     provide responses for the created domain names. All DNS servers **MUST**
     provide the correct DNS response for all domains within 1 hour of the
     domain's `<crDate>` element.
-  Input-Parameters:
-    - dns.nameservers
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -109,3 +107,87 @@ integration-03:
     - INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR
     - INTEGRATION_DOMAIN_NOT_PRESENT_IN_RDE
     - EPP_INVALID_EXTENSION
+
+integration-04:
+  Summary: Glue policy verification (host objects)
+  Description: |
+    This test case verifies that the registry system correctly implements the
+    specified glue policy, for EPP servers that use host objects.
+
+    This test case will be skipped unless the value of the `dns.gluePolicy`
+    input parameter is `narrow` and the value of the `epp.hostModel` input
+    parameter is `objects`.
+
+    The test client will connect to the EPP server, authenticate, and then
+    create a domain name.
+
+    It will then create three internal host objects that are subordinate to the
+    previously created domain name, each with different IP addresses.
+
+    The client will then submit an `<update>` command to assign two of the three
+    host objects to the domain, but not the third.
+
+    Then, the DNS servers specified in the `dns.nameservers` will be monitored
+    by sending periodic A/AAAA DNS queries for host names previously described.
+
+    Within 60 minutes of the completion of the `<update>` command described
+    above, the A/AAAA record(s) for the two host objects assigned to the domain
+    **MUST** be observed in DNS query responses. The A/AAAA record(s) for the
+    unlinked host object **MUST NOT** be observed in DNS query responses
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_INVALID_EXTENSION
+    - INTEGRATION_LINKED_HOST_OBJECTS_NOT_OBSERVED
+    - INTEGRATION_UNLINKED_HOST_OBJECTS_OBSERVED
+
+integration-05:
+  Summary: Glue policy verification (host attributes)
+  Description: |
+    This test case verifies that the registry system correctly implements the
+    specified glue policy, for EPP servers that use host attributes.
+
+    This test case will be skipped unless the value of the `dns.gluePolicy`
+    input parameter is `narrow` and the value of the `epp.hostModel` input
+    parameter is `attributes`.
+
+    The test client will connect to the EPP server, authenticate, and then
+    create a domain name. The `<create>` command will include `<hostAttr>`
+    elements for two names that are subordinate to the domain being created.
+    Each `<hostAttr>` element will contain at least one `<hostAddr>` element.
+
+    It will then reconnect using an alternate set of credentials, and attempt to
+    create another domain name. The `<create>` command will include `<hostAttr>`
+    elements for two names that are also subordinate to the previously created
+    domain, with different names, and different IP addresses in the `<hostAddr>`
+    element(s).
+
+    Then, the DNS servers specified in the `dns.nameservers` will be monitored
+    by sending periodic A/AAAA DNS queries for host names assigned to the two
+    domain names.
+
+    Within 60 minutes of the completion of the `<create>` command for that
+    domain, the A/AAAA record(s) for the nameservers assigned to the first
+    domain **MUST** be observed in DNS query responses. The A/AAAA record(s) for
+    the nameservers assigned to the second domain **MUST NOT** be observed in
+    DNS query responses.
+  Errors:
+    - EPP_DNS_RESOLUTION_ERROR
+    - EPP_SERVICE_PORT_UNREACHABLE
+    - EPP_NO_SERVICE_PORTS_REACHABLE
+    - EPP_TLS_CONNECTION_ERROR
+    - EPP_LOGIN_ERROR
+    - EPP_XML_PARSE_ERROR
+    - EPP_GENERIC_COMMAND_ERROR
+    - EPP_UNEXPECTED_COMMAND_FAILURE
+    - EPP_SCHEMA_VALIDATION_ERROR
+    - EPP_INVALID_EXTENSION
+    - INTEGRATION_EXPECTED_GLUE_NOT_OBSERVED
+    - INTEGRATION_UNEXPECTED_GLUE_OBSERVED
