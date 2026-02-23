@@ -107,14 +107,43 @@ push(@IGNORE, @IGNORE_RSP) if (q{RSP} eq $USAGE);
 $CONFIG = mirror_json(TEMPLATE_URL);
 
 foreach my $code (@ERROR) {
+    #
+    # add code to definitionError if not already present
+    #
     push(@{$CONFIG->{definitionError}}, $code) if (none { $_->{code} == $code->{code} } @{$CONFIG->{definitionError}});
+
+    #
+    # remove from definitionWarning if present
+    #
+    $CONFIG->{definitionWarning} = [ grep { $_->{code} != $code->{code} } @{$CONFIG->{definitionWarning}} ];
+
+    #
+    # remove from definitionIgnore if present
+    #
+    $CONFIG->{definitionIgnore} = [ grep { $_ != $code->{code} } @{$CONFIG->{definitionIgnore}} ];
 }
 
 foreach my $code (@WARNING) {
+    #
+    # add code to definitionWarning if not already present
+    #
     push(@{$CONFIG->{definitionWarning}}, $code) if (none { $_->{code} == $code->{code} } @{$CONFIG->{definitionWarning}});
+
+    #
+    # remove from definitionError if present
+    #
+    $CONFIG->{definitionError} = [ grep { $_->{code} != $code->{code} } @{$CONFIG->{definitionError}} ];
+
+    #
+    # remove from definitionIgnore if present
+    #
+    $CONFIG->{definitionIgnore} = [ grep { $_ != $code->{code} } @{$CONFIG->{definitionIgnore}} ];
 }
 
 foreach my $code (@IGNORE) {
+    #
+    # add code to definitionIgnore if not already present
+    #
     push(@{$CONFIG->{definitionIgnore}}, $code) if (none { $_ == $code } @{$CONFIG->{definitionIgnore}});
 }
 
