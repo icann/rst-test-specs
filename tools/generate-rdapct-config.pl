@@ -145,6 +145,16 @@ foreach my $code (@IGNORE) {
     # add code to definitionIgnore if not already present
     #
     push(@{$CONFIG->{definitionIgnore}}, $code) if (none { $_ == $code } @{$CONFIG->{definitionIgnore}});
+
+    #
+    # remove from definitionError if present
+    #
+    $CONFIG->{definitionError} = [ grep { $_->{code} != $code } @{$CONFIG->{definitionError}} ];
+
+    #
+    # remove from definitionError if present
+    #
+    $CONFIG->{definitionWarning} = [ grep { $_->{code} != $code } @{$CONFIG->{definitionWarning}} ];
 }
 
 if (q{RSP} eq $USAGE) {
