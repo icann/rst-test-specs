@@ -386,8 +386,6 @@ epp-08:
     `<info>` and `<update>` commands on the contact objects created in `epp-07`.
 
     The server **MUST** reject these commands.
-  Dependencies:
-    - epp-07
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -502,8 +500,6 @@ epp-10:
     from the repository. If the response to the previous `<delete>` command
     was 1001, this step will be skipped.
   Input-Parameters:
-  Dependencies:
-    - epp-09
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
