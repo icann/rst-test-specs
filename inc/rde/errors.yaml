@@ -409,3 +409,13 @@ RDE_MISSING_FILES:
   Description: |
     Following decryption, one or more XML or CSV files that should have been
     present, were not.
+
+RDE_REGISTRAR_HAS_NON_UNIQUE_ID:
+  Severity: ERROR
+  Description: |
+    One or more registrar objects have the same `<id>` element.
+
+RDE_NNDN_HAS_NON_UNIQUE_NAME:
+  Severity: ERROR
+  Description: |
+    One or more NNDN objects have the same `<aName>` element.
