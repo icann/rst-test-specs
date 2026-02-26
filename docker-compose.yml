@@ -10,6 +10,10 @@ services:
     volumes:
       - .:/app
 
+  json:
+    extends: spec
+    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app includes yaml json\""
+
   pages:
     extends: spec
     command: "sh -c \"git config --global --add safe.directory /app ; make -C /app pages\""
