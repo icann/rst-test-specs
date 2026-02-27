@@ -1,0 +1,35 @@
+name: Build (pull request)
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build-test-specs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: build
+        run:  docker compose run json
+
+      - run: ls -l
+
+      - name: upload
+        uses: actions/upload-artifact@v4
+        with:
+          if-no-files-found: error
+          path: rst-test-specs.json
+
+  build-api-spec:
+    runs-on: ubuntu-latest
+    needs: build-test-specs
+
+    steps:
+      - run: true
