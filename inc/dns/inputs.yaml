@@ -101,11 +101,6 @@ dns.gluePolicy:
       below the delegated (child) zone.
     * "wide": Glue RRs are published if the name server resides below the
       delegating (parent) zone.
-
-    As per [Section 1.1 of RFC
-    5731](https://datatracker.ietf.org/doc/html/rfc5731#section-1.1), if the
-    value of the `epp.hostModel` input parameter is `objects`, the value of this
-    input parameter **MUST** be `narrow`.
   Type: input
   Required: true
   Example: narrow
