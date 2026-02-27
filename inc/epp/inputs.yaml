@@ -14,15 +14,6 @@ epp.hostName:
     type: string
     format: hostname
 
-epp.greeting:
-  Description: |
-    An XML instance which contains a copy of the server's `<greeting>`.
-  Type: file
-  Required: true
-  Example: greeting.xml
-  Schema:
-    type: string
-
 epp.clid01:
   Description: The username used to log in to the EPP server.
   Type: input
