@@ -84,8 +84,7 @@ integration-03:
     listed in the `integration.rdeSFTPACL` resource have been added to the
     Access Control List for the SFTP server (if any).
 
-    All objects created **MUST** be found within a valid RDE deposit file (that
-    is, the deposit passes all the tests in the RDE test suite) within 24 hours
+    All objects created **MUST** be found in a RDE deposit file within 24 hours
     of each object's `<crDate>` element.
   Resources:
     - integration.rdeSFTPPublicKey
@@ -94,9 +93,6 @@ integration-03:
     - integration.rdeSFTPHostname
     - integration.rdeSFTPDirectory
     - integration.rdeSFTPUsername
-    - integration.rriACL
-  Dependencies:
-    - integration-01
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE

@@ -18,13 +18,15 @@ RUN apk add --quiet \
     pandoc \
     go \
     yq \
+    jq \
+    bash \
     perl-app-cpanminus \
     perl-autovivification \
     perl-carp-assert \
     perl-class-accessor \
     perl-clone \
     perl-cpanel-json-xs \
-    perl-datetime \
+    perl-datetime-format-iso8601 \
     perl-dev \
     perl-devel-checklib \
     perl-exporter-tiny \
@@ -91,7 +93,7 @@ ARG ZONEMASTER_ENGINE_VERSION
 #
 # install remaining dependencies
 #
-RUN cpanm --quiet --notest ICANN::RST HTML::Tiny GraphViz2 JSON::Schema \
+RUN cpanm --quiet --notest ICANN::RST HTML::Tiny GraphViz2 JSON::Schema Array::Utils \
     Data::Mirror Zonemaster::LDNS Zonemaster::Engine@${ZONEMASTER_ENGINE_VERSION}
 
 RUN GOPATH=/usr/local go install github.com/giantswarm/schemalint/v2@latest

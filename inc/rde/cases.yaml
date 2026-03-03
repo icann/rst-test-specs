@@ -43,10 +43,11 @@ rde-04:
   Description: |
     * XML deposit files **MUST** be well-formed and validate against the XML
       schema.
-    * CSV files **MUST** conform to RFC 4180.
+    * CSV files (if present) **MUST** conform to RFC 4180.
     * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
       contents.
   Errors:
+    - RDE_MISSING_FILES
     - RDE_XML_PARSE_ERROR
     - RDE_SCHEMA_VALIDATION_ERROR
     - RDE_INVALID_CSV

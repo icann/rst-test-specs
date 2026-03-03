@@ -1,6 +1,5 @@
 ---
 title: Update to the EPP Extension Registry
-assignees: gbicann
 ---
 
 The `monitor-extension-registry` workflow has detected that the [EPP Extension Registry](https://www.iana.org/assignments/epp-extensions) has been updated.

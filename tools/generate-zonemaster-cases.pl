@@ -162,7 +162,7 @@ sub process_case {
     foreach my $message (sort(@messages)) {
         my $severity = $levels{$message} || $profile->{'test_levels'}->{uc($module)}->{$message} || 'WARNING';
 
-        my $description = &{$tag_descriptions->{$message}}() || '(no description provided)';
+        my $description = &{$tag_descriptions->{$message} || sub { undef }}() || '(no description provided)';
         $description =~ s/\n/\n> /g;
         $description =~ s/{/`{/g;
         $description =~ s/}/}`/g;
@@ -271,8 +271,8 @@ sub process_case {
     # append references so links work once HTMLified
     #
     $cases->{$id}->{'Description'} .= "\n" if (scalar(%references) > 0);
-    while (my ($ref, $url) = each(%references)) {
-        $cases->{$id}->{'Description'} .= sprintf("[%s]: %s\n", $ref, $url);
+    foreach my $ref (sort(keys(%references))) {
+        $cases->{$id}->{'Description'} .= sprintf("[%s]: %s\n", $ref, $references{$ref});
     }
 }
 
