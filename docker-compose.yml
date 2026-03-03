@@ -12,7 +12,7 @@ services:
 
   json:
     extends: spec
-    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app includes yaml json\""
+    command: "sh -c \"git config --global --add safe.directory /app ; make -C /app includes yaml lint json\""
 
   pages:
     extends: spec
