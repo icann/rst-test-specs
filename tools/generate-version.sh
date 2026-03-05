@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -z "$RELEASE" ] ; then
 	echo "\"$RELEASE\"" | tr -d "v"
