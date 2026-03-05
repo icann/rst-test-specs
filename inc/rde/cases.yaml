@@ -44,14 +44,14 @@ rde-04:
     * XML deposit files **MUST** be well-formed and validate against the XML
       schema.
     * CSV files (if present) **MUST** conform to RFC 4180.
-    * Deposits **MUST NOT** contain a mix of XML and CSV files for the deposit
-      contents.
+    * Deposits **MAY** contain a mix of both models, but an object **MUST** be
+      escrowed only in one model.
   Errors:
     - RDE_MISSING_FILES
     - RDE_XML_PARSE_ERROR
     - RDE_SCHEMA_VALIDATION_ERROR
     - RDE_INVALID_CSV
-    - RDE_MIXED_TYPES
+    - RDE_OBJECT_HAS_MIXED_TYPES
 
 rde-05:
   Implemented: true
