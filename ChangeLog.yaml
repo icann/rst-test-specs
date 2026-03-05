@@ -9,7 +9,9 @@
     ([#52](https://github.com/icann/rst-test-specs/issues/52)).
 
   - |
-    New input parameter [`dns.gluePolicy`](#Input-Parameter-dns.gluePolicy)
+    New input parameter [`dns.gluePolicy`](#Input-Parameter-dns.gluePolicy).
+    This input parameter is not currently used by any test cases, but will be
+    used by new test cases to be added in a future release
     ([#122](https://github.com/icann/rst-test-specs/issues/122)).
 
   - |
