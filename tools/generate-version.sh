@@ -14,7 +14,5 @@ if [[ "$BRANCH" =~ ^[0-9]+(\.[0-9]+)+$ ]] ; then
     exit
 fi
 
-else
-    echo "Generating version using the current date" > /dev/stderr
-	echo "\"3.$(date +%Y%j)\""
-fi
+echo "Generating version using the current date" > /dev/stderr
+echo "\"3.$(date +%Y%j)\""
