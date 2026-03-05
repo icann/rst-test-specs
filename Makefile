@@ -27,6 +27,9 @@ includes:
 
 	@echo Generating version number and last-updated...
 	@tools/generate-version.sh > tmp/version.txt
+	@echo -n "Version: "
+	@cat tmp/version.txt
+
 	@tools/generate-last-updated.sh > tmp/last-updated.txt
 
 	@echo Downloading Zonemaster source code...
