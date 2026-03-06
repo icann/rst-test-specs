@@ -72,9 +72,12 @@ epp-02:
     7. `<extURI>` elements containing the following XML namespaces **MUST** be
        present in the `<greeting>`:
          * `urn:ietf:params:xml:ns:secDNS-1.1`
-         * `urn:ietf:params:xml:ns:launch-1.0`
          * `urn:ietf:params:xml:ns:rgp-1.0`
-    8. With the exception of the `<svDate>` element, all values in the
+    8. Unless the test plan is
+       [`StandardRSPChangeTest`](#Test-Plan-StandardRSPChangeTest), an
+       `<extURI>` element containing `urn:ietf:params:xml:ns:launch-1.0`
+       **MUST** be present in the `<greeting>.
+    9. With the exception of the `<svDate>` element, all values in the
        `<greeting>` **MUST** match those found in the `epp.greeting` input
        parameter.
 
@@ -85,6 +88,7 @@ epp-02:
     * `urn:ietf:params:xml:ns:epp:secure-authinfo-transfer-1.0`
     * `urn:ietf:params:xml:ns:epp:unhandled-namespaces-1.0`
     * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
+    * `urn:ietf:params:xml:ns:changePoll-1.0`
   Input-Parameters:
     - epp.greeting
   Errors:
