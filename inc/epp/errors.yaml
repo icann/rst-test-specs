@@ -1164,3 +1164,16 @@ EPP_HOST_RENAME_SERVER_INCORRECTLY_ACCEPTS_RENAME:
     In response to an `<update>` command which changes the name of an external
     host object that has associations with objects that are sponsored by a
     different client, the server does not respond with result code 2305.
+
+EPP_SERVER_ACCEPTS_INTERNAL_HOST_WITH_GLUE:
+  Severity: ERROR
+  Description: |
+    The server allowed the client to create a host object that is subordinate to
+    a domain object sponsored by another client, when glue addresses were
+    specified.
+
+EPP_SERVER_ALLOWS_DELEGATION_TO_GLUELESS_HOST:
+  Severity: ERROR
+  Description: |
+    The server accepted an `<update>` command which assigned a glueless internal
+    host object to a domain.
