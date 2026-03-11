@@ -69,6 +69,14 @@ Errors:
 
       This error may occur in any test case.
 
+  RST_REMOVED_ERROR:
+    Severity: ERROR
+    Description: |
+      A condition occurred that triggered an error which was subsequently
+      removed from the test specification.
+
+      This error may occur in any test case.
+
 #exec sed 's/^/  /' tmp/zonemaster-errors.yaml
 #exec sed 's/^/  /' inc/dns/errors.yaml
 #exec sed 's/^/  /' inc/dnssec/errors.yaml
