@@ -40,6 +40,7 @@ epp.pwd01:
   Example: foo2bar
   Schema:
     type: string
+    minLength: 6
 
 epp.serverIssuedClientCertificate01:
   Description: |
@@ -86,6 +87,7 @@ epp.pwd02:
   Example: foo3bar
   Schema:
     type: string
+    minLength: 6
 
 epp.clid01DataModel:
   Description: |
