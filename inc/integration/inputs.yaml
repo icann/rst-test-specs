@@ -23,3 +23,4 @@ integration.rdeSFTPUsername:
   Example: icann
   Schema:
     type: string
+    minLength: 1
