@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-02-16
+last-updated: 2026-03-16
 
 links:
   - rel:   help
@@ -306,5 +306,9 @@ uris:
     - name: Art Record Extension for the .art Top Level Domain
       ref:  https://centralnicregistry.com/epp-extensions/art-record-0-2/
       uri:  urn:ietf:params:xml:ns:artRecord-0.2
+
+    - name: Domain Name Variant Extension Mapping for the Extensible Provisioning Protocol (EPP)
+      ref:  https://godaddyregistry.github.io/doc/variant-1.0/variant-1.0.html
+      uri:  urn:gdr:params:xml:ns:variant-1.0
 
 # END
