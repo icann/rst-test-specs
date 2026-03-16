@@ -7,7 +7,10 @@ rde.depositFile:
   Example: example_2023-10-04_full_S1_R0.ryde
   Schema:
     type: string
-    pattern: "^[^\.].*\.ryde$"
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .ryde
+    pattern: "^[^\.\/][^\/]*\.ryde$"
 
 rde.signatureFile:
   Description: |
@@ -17,7 +20,10 @@ rde.signatureFile:
   Example: example_2023-10-04_full_S1_R0.sig
   Schema:
     type: string
-    pattern: "^[^\.].*\.sig$"
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .sig
+    pattern: "^[^\.\/][^\/]*\.sig$"
 
 rde.publicKey:
   Description: |
@@ -27,4 +33,7 @@ rde.publicKey:
   Example: rsp-rde-signing-key.asc
   Schema:
     type: string
-    pattern: "^[^\.].*\.asc$"
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .asc
+    pattern: "^[^\.\/][^\/]*\.asc$"
