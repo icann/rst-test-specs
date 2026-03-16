@@ -15,6 +15,7 @@ integration.rdeSFTPDirectory:
   Example: /path/to/deposits
   Schema:
     type: string
+    minLength: 1
 
 integration.rdeSFTPUsername:
   Description: The username that can be used to connect to the SFTP server.
