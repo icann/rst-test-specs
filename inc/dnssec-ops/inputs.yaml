@@ -99,7 +99,7 @@ dnssecOps.tsigKey:
           - hmac-sha384
           - hmac-sha512
       secret:
-        description: The TSIG secret.
+        description: The TSIG secret, encoded in Base64.
         type: string
 
 dnssecOps.csk:
