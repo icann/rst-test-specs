@@ -101,6 +101,7 @@ dnssecOps.tsigKey:
       secret:
         description: The TSIG secret, encoded in Base64.
         type: string
+        pattern: ^[A-Za-z0-9\+\/]+=*$
 
 dnssecOps.csk:
   Description: |
