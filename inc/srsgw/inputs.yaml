@@ -18,6 +18,7 @@ srsgw.eppClid01:
   Schema:
     type: string
     minLength: 3
+    maxLength: 16
 
 srsgw.eppPwd01:
   Description: |
@@ -29,6 +30,7 @@ srsgw.eppPwd01:
   Example: foo2bar
   Schema:
     type: string
+    minLength: 6
 
 srsgw.serverIssuedClientCertificate01:
   Description: |
@@ -65,6 +67,8 @@ srsgw.eppClid02:
   Example: clid-02
   Schema:
     type: string
+    minLength: 3
+    maxLength: 16
 
 srsgw.eppPwd02:
   Description: The password used for transfer tests.
@@ -73,6 +77,7 @@ srsgw.eppPwd02:
   Example: foo3bar
   Schema:
     type: string
+    minLength: 6
 
 srsgw.rdapBaseURLs:
   Description: |
