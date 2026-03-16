@@ -1,6 +1,6 @@
 rde.depositFile:
   Description: |
-    an RDE deposit file. The TLD to which the deposit relates **MUST** match
+    An RDE deposit file. The TLD to which the deposit relates **MUST** match
     one of the TLDs that are associated with the test object.
   Type: file
   Required: true
@@ -9,7 +9,8 @@ rde.depositFile:
     type: string
 
 rde.signatureFile:
-  Description: an ASCII-armoured OpenPGP signature covering the deposit file
+  Description: |
+    An ASCII-armoured OpenPGP signature covering the deposit file.
   Required: true
   Type: file
   Example: example_2023-10-04_full_S1_R0.sig
@@ -17,7 +18,8 @@ rde.signatureFile:
     type: string
 
 rde.publicKey:
-  Description: a PGP public key block
+  Description: |
+    An PGP public key block.
   Required: true
   Type: file
   Example: rsp-rde-signing-key.asc
