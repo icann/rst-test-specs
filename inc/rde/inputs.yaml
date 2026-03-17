@@ -10,7 +10,7 @@ rde.depositFile:
     # cannot start with a . or /
     # cannot contain a /
     # must end with .ryde
-    pattern: "^[^\.\/][^\/]*\.ryde$"
+    pattern: "^[^\\.\\/][^\\/]*\\.ryde$"
 
 rde.signatureFile:
   Description: |
@@ -23,7 +23,8 @@ rde.signatureFile:
     # cannot start with a . or /
     # cannot contain a /
     # must end with .sig
-    pattern: "^[^\.\/][^\/]*\.sig$"
+    pattern: |
+    pattern: "^[^\\.\\/][^\\/]*\\.sig$"
 
 rde.publicKey:
   Description: |
@@ -36,4 +37,5 @@ rde.publicKey:
     # cannot start with a . or /
     # cannot contain a /
     # must end with .asc
-    pattern: "^[^\.\/][^\/]*\.asc$"
+    pattern: |
+    pattern: "^[^\\.\\/][^\\/]*\\.asc$"
