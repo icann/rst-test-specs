@@ -55,7 +55,7 @@ epp.serverIssuedClientCertificate01:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
-    pattern: "^[^\\.\\/][^\\/]*$"
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
   Description: |
@@ -70,7 +70,7 @@ epp.serverIssuedClientCertificate02:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
-    pattern: "^[^\\.\\/][^\\/]*$"
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
   Description: The username used for transfer tests.
