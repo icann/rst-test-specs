@@ -1,6 +1,6 @@
 2026-04-13:
   - |
-    "Version [v2026.03](https://github.com/icann/rst-test-specs/releases/tag/v2026.03):"
+    Version [v2026.03](https://github.com/icann/rst-test-specs/releases/tag/v2026.03):
 
   - |
     Update [rde-07](#Test-Case-rde-07) to add
@@ -31,7 +31,7 @@
 
 2026-02-13:
   - |
-    "Version [v2026.02](https://github.com/icann/rst-test-specs/releases/tag/v2026.02):"
+    Version [v2026.02](https://github.com/icann/rst-test-specs/releases/tag/v2026.02):
 
   - |
     Update DNS and DNSSEC test suites for Zonemaster v2025.2 ([#49](https://github.com/icann/rst-test-specs/issues/49))
