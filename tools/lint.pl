@@ -232,7 +232,7 @@ sub check_error {
 
     warn(sprintf("Error '%s' appears to have a placeholder description", $error->id)) if ($error->{'Description'} =~ /^TBA/);
 
-    if (q{RST_EXCEPTION} ne $error->id) {
+    if (none { $_ eq $error->id } qw(RST_EXCEPTION RST_REMOVED_ERROR)) {
         my $used;
         CASE: foreach my $case ($spec->cases) {
             if (scalar(grep { $error->id eq $_ } @{$case->{'Errors'}}) > 0) {
