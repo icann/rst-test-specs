@@ -442,3 +442,12 @@ RDE_EPP_PARAMS_MISSING_EXTURI:
   Severity: ERROR
   Description: |
     A mandatory extension namespace URI is missing.
+RDE_REGISTRAR_HAS_NON_UNIQUE_ID:
+  Severity: ERROR
+  Description: |
+    One or more registrar objects have the same `<id>` element.
+
+RDE_NNDN_HAS_NON_UNIQUE_NAME:
+  Severity: ERROR
+  Description: |
+    One or more NNDN objects have the same `<aName>` element.
