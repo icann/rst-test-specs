@@ -283,6 +283,7 @@ rde-10:
     * `<rdeRegistrar:gurid>` which **MUST** be a valid [Registrar
       ID](https://www.iana.org/assignments/registrar-ids/registrar-ids.xhtml).
   Errors:
+    - RDE_REGISTRAR_HAS_NON_UNIQUE_ID
     - RDE_REGISTRAR_HAS_MISSING_ID
     - RDE_REGISTRAR_HAS_INVALID_ID
     - RDE_REGISTRAR_HAS_MISSING_NAME
@@ -328,6 +329,7 @@ rde-12:
     * If the NNDN has an `<idnTableId>` element, its value **MUST** match the
       `id` property of one of the IDN table objects in the deposit.
   Errors:
+    - RDE_NNDN_HAS_NON_UNIQUE_NAME
     - RDE_NNDN_CONFLICTS_WITH_DOMAIN
 
 rde-13:
