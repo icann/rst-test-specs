@@ -49,3 +49,29 @@ INTEGRATION_RDE_SFTP_SERVER_AUTHENTICATION_ERROR:
     There was an issue authenticating with the SFTP server. Persistent errors
     may result in the test failing if the expected objects are not observed in a
     valid deposit within the Service Level Requirement.
+
+INTEGRATION_LINKED_HOST_OBJECTS_NOT_OBSERVED:
+  Severity: ERROR
+  Description: |
+    A/AAAA records for internal host objects assigned to a domain name were not
+    observed in DNS query responses within 1 hour of being assigned to that
+    domain.
+
+INTEGRATION_UNLINKED_HOST_OBJECTS_OBSERVED:
+  Severity: ERROR
+  Description: |
+    A/AAAA records for an unlinked internal host object were observed in DNS
+    query responses.
+
+INTEGRATION_EXPECTED_GLUE_NOT_OBSERVED:
+  Severity: ERROR
+  Description: |
+    A/AAAA records for internal nameservers assigned to a domain name were not
+    observed in DNS query responses within 1 hour of being assigned to that
+    domain.
+
+INTEGRATION_UNEXPECTED_GLUE_OBSERVED:
+  Severity: ERROR
+  Description: |
+    A/AAAA records for an internal nameserver that was assigned to a sibling of
+    its superordinate domain were observed in DNS query responses.
