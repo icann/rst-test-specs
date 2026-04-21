@@ -40,6 +40,7 @@ epp.pwd01:
   Example: foo2bar
   Schema:
     type: string
+    minLength: 6
 
 epp.serverIssuedClientCertificate01:
   Description: |
@@ -54,6 +55,7 @@ epp.serverIssuedClientCertificate01:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
   Description: |
@@ -68,6 +70,7 @@ epp.serverIssuedClientCertificate02:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
   Description: The username used for transfer tests.
@@ -86,6 +89,7 @@ epp.pwd02:
   Example: foo3bar
   Schema:
     type: string
+    minLength: 6
 
 epp.clid01DataModel:
   Description: |
