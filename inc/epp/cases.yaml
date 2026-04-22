@@ -77,9 +77,6 @@ epp-02:
        [`StandardRSPChangeTest`](#Test-Plan-StandardRSPChangeTest), an
        `<extURI>` element containing `urn:ietf:params:xml:ns:launch-1.0`
        **MUST** be present in the `<greeting>.
-    9. With the exception of the `<svDate>` element, all values in the
-       `<greeting>` **MUST** match those found in the `epp.greeting` input
-       parameter.
 
     This test case will produce the `EPP_GREETING_RECOMMENDED_EXTENSION_MISSING`
     warning if any of the following XML namespace URIs are not included in the
