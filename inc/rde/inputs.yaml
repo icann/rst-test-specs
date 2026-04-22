@@ -28,7 +28,7 @@ rde.signatureFile:
 
 rde.publicKey:
   Description: |
-    An PGP public key block.
+    A PGP public key block.
   Required: true
   Type: file
   Example: rsp-rde-signing-key.asc
