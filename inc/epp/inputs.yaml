@@ -14,15 +14,6 @@ epp.hostName:
     type: string
     format: hostname
 
-epp.greeting:
-  Description: |
-    An XML instance which contains a copy of the server's `<greeting>`.
-  Type: file
-  Required: true
-  Example: greeting.xml
-  Schema:
-    type: string
-
 epp.clid01:
   Description: The username used to log in to the EPP server.
   Type: input
@@ -40,6 +31,7 @@ epp.pwd01:
   Example: foo2bar
   Schema:
     type: string
+    minLength: 6
 
 epp.serverIssuedClientCertificate01:
   Description: |
@@ -54,6 +46,7 @@ epp.serverIssuedClientCertificate01:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
   Description: |
@@ -68,6 +61,7 @@ epp.serverIssuedClientCertificate02:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
   Description: The username used for transfer tests.
@@ -86,6 +80,7 @@ epp.pwd02:
   Example: foo3bar
   Schema:
     type: string
+    minLength: 6
 
 epp.clid01DataModel:
   Description: |

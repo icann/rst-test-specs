@@ -77,9 +77,6 @@ epp-02:
        [`StandardRSPChangeTest`](#Test-Plan-StandardRSPChangeTest), an
        `<extURI>` element containing `urn:ietf:params:xml:ns:launch-1.0`
        **MUST** be present in the `<greeting>.
-    9. With the exception of the `<svDate>` element, all values in the
-       `<greeting>` **MUST** match those found in the `epp.greeting` input
-       parameter.
 
     This test case will produce the `EPP_GREETING_RECOMMENDED_EXTENSION_MISSING`
     warning if any of the following XML namespace URIs are not included in the
@@ -89,8 +86,6 @@ epp-02:
     * `urn:ietf:params:xml:ns:epp:unhandled-namespaces-1.0`
     * `urn:ietf:params:xml:ns:epp:loginSec-1.0`
     * `urn:ietf:params:xml:ns:changePoll-1.0`
-  Input-Parameters:
-    - epp.greeting
   Errors:
     - EPP_DNS_RESOLUTION_ERROR
     - EPP_SERVICE_PORT_UNREACHABLE
@@ -109,7 +104,6 @@ epp-02:
     - EPP_GREETING_UNEXPECTED_EXTURI
     - EPP_GREETING_MISSING_EXTURI
     - EPP_GREETING_RECOMMENDED_EXTENSION_MISSING
-    - EPP_GREETING_DOES_NOT_MATCH
 
 epp-03:
   Summary: Authentication test

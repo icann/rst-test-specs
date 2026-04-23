@@ -133,12 +133,6 @@ RDE_DOMAIN_HAS_MISSING_STATUS:
   Description: |
     One or more domain objects do not have a `<status>` element.
 
-RDE_GREETING_DOES_NOT_MATCH:
-  Severity: ERROR
-  Description: |
-    The `<eppParams>` object contains values which do not match the provided
-    EPP `<greeting>` XML instance.
-
 RDE_HOST_HAS_INVALID_CLID:
   Severity: ERROR
   Description: |
@@ -421,3 +415,39 @@ RDE_MISSING_FILES:
   Description: |
     Following decryption, one or more XML or CSV files that should have been
     present, were not.
+
+RDE_MULTIPLE_EPP_PARAMS_OBJECTS:
+  Severity: ERROR
+  Description: |
+    The deposit contained more than one EPP Parameters object.
+
+RDE_EPP_PARAMS_UNEXPECTED_OBJURI:
+  Severity: ERROR
+  Description: |
+    One or more of the `<objURI>` elements in the EPP Parameters object contain
+    an invalid namespace URI.
+
+RDE_EPP_PARAMS_MISSING_OBJURI:
+  Severity: ERROR
+  Description: |
+    A mandatory object namespace URI is missing.
+
+RDE_EPP_PARAMS_UNEXPECTED_EXTURI:
+  Severity: ERROR
+  Description: |
+    One or more of the `<extURI>` elements in the EPP Parameters object contain
+    an invalid namespace URI.
+
+RDE_EPP_PARAMS_MISSING_EXTURI:
+  Severity: ERROR
+  Description: |
+    A mandatory extension namespace URI is missing.
+RDE_REGISTRAR_HAS_NON_UNIQUE_ID:
+  Severity: ERROR
+  Description: |
+    One or more registrar objects have the same `<id>` element.
+
+RDE_NNDN_HAS_NON_UNIQUE_NAME:
+  Severity: ERROR
+  Description: |
+    One or more NNDN objects have the same `<aName>` element.
