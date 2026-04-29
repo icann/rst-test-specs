@@ -16,7 +16,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-03-17
+last-updated: 2026-04-29
 
 links:
   - rel:   help
@@ -310,5 +310,9 @@ uris:
     - name: Domain Name Variant Extension Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://godaddyregistry.github.io/doc/variant-1.0/variant-1.0.html
       uri:  urn:gdr:params:xml:ns:variant-1.0
+
+    - name: IDN EPP Extension for the CNNIC Registration System
+      ref:  https://ngboss.ngtld.cn/EN/view/noside/cnnic-idn-epp-extension-1.0.html
+      uri:  urn:ietf:params:xml:ns:cdn-1.0
 
 # END

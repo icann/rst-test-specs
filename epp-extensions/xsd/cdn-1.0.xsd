@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="urn:ietf:params:xml:ns:cdn-1.0"
+        xmlns:cdn="urn:ietf:params:xml:ns:cdn-1.0"
+        xmlns:epp="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+        
+   <!--
+   Import common element types.
+   -->
+    <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" schemaLocation="eppcom-1.0.xsd"/>
+    <import namespace="urn:ietf:params:xml:ns:epp-1.0" schemaLocation="epp-1.0.xsd"/>
+    
+   <annotation>
+     <documentation>
+       Extensible Provisioning Protocol v1.0
+       CNNIC Domain Extension Schema v1.0
+     </documentation>
+   </annotation>
+
+   <!--
+   Child elements found in EPP commands.
+   -->
+   <element name="create" type="cdn:trnDataType"/>
+   <element name="update" type="cdn:updateType"/>
+
+   <!--
+   Child elements of the <cdn:update> command
+   All elements must be present at time of creation
+   -->
+   <complexType name="updateType">
+     <sequence>
+       <element name="chg" type="cdn:chgType" minOccurs="0" />
+       <element name="add" type="cdn:addRemType" minOccurs="0" />
+       <element name="rem" type="cdn:addRemType" minOccurs="0" />
+     </sequence>
+   </complexType>
+
+   <complexType name="chgType">
+     <sequence>
+       <element name="SCDN" type="eppcom:labelType" minOccurs="0" />
+       <element name="TCDN" type="eppcom:labelType" minOccurs="0" />
+     </sequence>
+   </complexType>
+
+   <complexType name="addRemType">
+     <sequence>
+       <element name="VCDN" type="eppcom:labelType"
+        maxOccurs="unbounded" />
+     </sequence>
+   </complexType>
+
+   <!--
+   Child elements found in EPP commands.
+   -->
+   <element name="infData" type="cdn:infDataType"/>
+   <element name="creData" type="cdn:trnDataType"/>
+   <element name="delData" type="cdn:trnDataType"/>
+   <element name="renData" type="cdn:trnDataType"/>
+   <element name="trnData" type="cdn:trnDataType"/>
+
+   <!--
+   Child elements of the <cdn:infData> command
+   All elements must be present at time of creation
+   -->
+   <complexType name="infDataType">
+     <all>
+       <element name="OCDNPunycode" type="eppcom:labelType" minOccurs="0"/>
+       <element name="SCDN" type="eppcom:labelType" minOccurs="0" />
+       <element name="SCDNPunycode" type="eppcom:labelType" minOccurs="0"/>
+       <element name="TCDN" type="eppcom:labelType" minOccurs="0" />
+       <element name="TCDNPunycode" type="eppcom:labelType" minOccurs="0"/>
+       <element name="VCDNList" type="cdn:mVariantNameType" minOccurs="0" />
+     </all>
+   </complexType>
+
+   <complexType name="mVariantNameType">
+     <sequence>
+       <element name="VCDN" type="eppcom:labelType" maxOccurs="unbounded"/>
+       <element name="VCDNPunycode" type="eppcom:labelType" maxOccurs="unbounded"/>
+     </sequence>
+   </complexType>
+
+   <!--
+   <transfer> response elements.
+   All elements must be present at time of poll query
+   -->
+   <complexType name="trnDataType">
+     <sequence>
+       <element name="SCDN" type="eppcom:labelType" minOccurs="0" />
+       <element name="TCDN" type="eppcom:labelType" minOccurs="0" />
+       <element name="VCDNList" type="cdn:VCDNListType"  minOccurs="0" />
+     </sequence>
+   </complexType>
+
+   <complexType name="VCDNListType">
+     <sequence>
+       <element name="VCDN" type="eppcom:labelType" maxOccurs="unbounded" />
+     </sequence>
+   </complexType>
+
+<!--
+End of schema.
+-->
+</schema>
