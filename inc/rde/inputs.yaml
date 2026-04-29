@@ -1,23 +1,41 @@
 rde.depositFile:
   Description: |
-    an RDE deposit file. The TLD to which the deposit relates **MUST** match
+    An RDE deposit file. The TLD to which the deposit relates **MUST** match
     one of the TLDs that are associated with the test object.
   Type: file
   Required: true
   Example: example_2023-10-04_full_S1_R0.ryde
   Schema:
     type: string
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .ryde
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*\\.ryde$"
+
 rde.signatureFile:
-  Description: an ASCII-armoured OpenPGP signature covering the deposit file
+  Description: |
+    An ASCII-armoured OpenPGP signature covering the deposit file.
   Required: true
   Type: file
-  Example: example_2023-10-04_fullL_S1_R0.sig
+  Example: example_2023-10-04_full_S1_R0.sig
   Schema:
     type: string
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .sig
+    pattern: |
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*\\.sig$"
+
 rde.publicKey:
-  Description: a PGP public key block
+  Description: |
+    A PGP public key block.
   Required: true
   Type: file
   Example: rsp-rde-signing-key.asc
   Schema:
     type: string
+    # cannot start with a . or /
+    # cannot contain a /
+    # must end with .asc
+    pattern: |
+    pattern: "^[^\\.\\/\\0][^\\/\\0]*\\.asc$"

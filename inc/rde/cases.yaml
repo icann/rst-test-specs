@@ -283,6 +283,7 @@ rde-10:
     * `<rdeRegistrar:gurid>` which **MUST** be a valid [Registrar
       ID](https://www.iana.org/assignments/registrar-ids/registrar-ids.xhtml).
   Errors:
+    - RDE_REGISTRAR_HAS_NON_UNIQUE_ID
     - RDE_REGISTRAR_HAS_MISSING_ID
     - RDE_REGISTRAR_HAS_INVALID_ID
     - RDE_REGISTRAR_HAS_MISSING_NAME
@@ -328,28 +329,35 @@ rde-12:
     * If the NNDN has an `<idnTableId>` element, its value **MUST** match the
       `id` property of one of the IDN table objects in the deposit.
   Errors:
+    - RDE_NNDN_HAS_NON_UNIQUE_NAME
     - RDE_NNDN_CONFLICTS_WITH_DOMAIN
 
 rde-13:
   Summary: Validate EPP parameters object
   Maturity: GAMMA
   Description: |
-    The EPP Parameters object **MUST** be present and **MUST** match the
-    `<greeting>` element provided in the `epp.greeting` input parameter.
+    Exactly one EPP Parameters object **MUST** be present in the deposit and
+    **MUST** pass the following checks:
 
-    A test case in the EPP Test Suite will confirm that this also matches what
-    is returned when a client connects to the EPP server.
+    1. All `<objURI>` element(s) **MUST** contain XML namespace URIs that are
+       appropriate. The only mandatory URI that **MUST** be present is the
+       domain namespace URI. The host and contact namespace URIs **MAY** be
+       required, depending on the `epp.hostModel` and
+       `general.registryDataModel` input parameters.
+    2. The namespace URIs of all `<objURI>` and `<extURI>` element(s) **MUST**
+       correspond to entries in the EPP Extension Registry.
+    3. `<extURI>` elements containing the following XML namespaces **MUST** be
+       present:
+         * `urn:ietf:params:xml:ns:secDNS-1.1`
+         * `urn:ietf:params:xml:ns:rgp-1.0`
 
-    * All `<objURI>` elements present in the EPP greeting **MUST** be present in
-      the EPP Parameters object, and vice-versa.
-    * All `<extURI>` elements present in the EPP greeting **MUST** be present in
-      the EPP Parameters object, and vice-versa.
-
-  Input-Parameters:
-    - epp.greeting
   Errors:
     - RDE_MISSING_EPP_PARAMS_OBJECT
-    - RDE_GREETING_DOES_NOT_MATCH
+    - RDE_MULTIPLE_EPP_PARAMS_OBJECTS
+    - RDE_EPP_PARAMS_UNEXPECTED_OBJURI
+    - RDE_EPP_PARAMS_MISSING_OBJURI
+    - RDE_EPP_PARAMS_UNEXPECTED_EXTURI
+    - RDE_EPP_PARAMS_MISSING_EXTURI
 
 rde-14:
   Summary: Validate policy object (if applicable)
