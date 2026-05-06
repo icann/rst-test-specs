@@ -5,10 +5,12 @@ This site hosts the specifications for ICANN's [Registry System Testing
 
 Additional resources:
 
-* [rst.json](rst.json) is the [Zonemaster
+* [rst_dns.json](rst_dns.json) is the [Zonemaster
   profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
-  used by the [DNS](rst-test-specs.html#Test-Suite-StandardDNS) and
-  [DNSSEC](rst-test-specs.html#Test-Suite-StandardDNSSEC) test suites.
+  used by the [DNS](rst-test-specs.html#Test-Suite-StandardDNS) test suite.
+* [rst_dnssec.json](rst_dnssec.json) is the [Zonemaster
+  profile](https://github.com/zonemaster/zonemaster/blob/master/docs/public/configuration/profiles.md)
+  used by the [DNSSEC](rst-test-specs.html#Test-Suite-StandardDNSSEC) test suite.
 * [rdapct_config.json](rdapct_config.json)
   is the configuration file used by the [RDAP Conformance
   Tool](https://github.com/icann/rdap-conformance-tool) during production tests.

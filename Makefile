@@ -8,9 +8,11 @@ yaml: export ZM_VERSION=$(ZONEMASTER_VERSION)
 all: zonemaster-profile rdapct-config includes yaml lint json html
 
 zonemaster-profile:
-	@echo Generating Zonemaster profile...
-	@tools/generate-zonemaster-profile.pl "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst.json
-	@echo wrote rst.json
+	@echo Generating Zonemaster profiles...
+	@tools/generate-zonemaster-profile.pl --suite=dns "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst_dns.json
+	@echo wrote rst_dns.json
+	@tools/generate-zonemaster-profile.pl --suite=dnssec "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst_dnssec.json
+	@echo wrote rst_dnssec.json
 
 rdapct-config:
 	@echo Generating RDAP Conformance Tool configuration files...
@@ -71,4 +73,4 @@ pages: rdapct-config zonemaster-profile
 
 clean:
 	@echo Cleaning up...
-	@rm -rf tmp zonemaster _site tmp rst.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml rdapct_config*.json releases.md releases.json
+	@rm -rf tmp zonemaster _site tmp rst_dns.json rst_dnssec.json rst-test-specs.html rst-test-specs.json rst-test-specs.yaml rdapct_config*.json releases.md releases.json
