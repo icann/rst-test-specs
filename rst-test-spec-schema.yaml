@@ -346,6 +346,32 @@ components:
             - ERROR
             - CRITICAL
 
+    rstInputParameter:
+      additionalProperties: false
+      description: An object describing an input parameter.
+      type: object
+      required:
+        - Description
+        - Schema
+      properties:
+        Description:
+          description: A description of the input parameter in Markdown format.
+          type: string
+        Type:
+          description: the type of the parameter.
+          type: string
+          enum:
+            - input
+            - file
+        Example:
+          description: An example value.
+        Required:
+          description: Whether it is mandatory to provide this value.
+          type: boolean
+          default: false
+        Schema:
+          $ref: "https://json-schema.org/draft/2020-12/schema"
+
     rstDataProvider:
       description: |
         An object describing a Data Provider.
