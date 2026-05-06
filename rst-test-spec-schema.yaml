@@ -10,6 +10,7 @@ info:
 components:
   schemas:
     rstTestSpec:
+      additionalProperties: false
       description: |
         The `rstTestSpec` schema describes the format of the RST Test
         Specifications YAML format.
@@ -146,6 +147,7 @@ components:
                 $ref: "#/components/schemas/rstDataProvider"
 
     rstTestSpecContact:
+      additionalProperties: false
       description: |
         An object containing contact information for the maintainer of the RST
         Test Specifications YAML file.
@@ -167,6 +169,7 @@ components:
           format: email
 
     rstTestPlan:
+      additionalProperties: false
       description: An object describing a test plan.
       type: object
       required:
@@ -201,6 +204,7 @@ components:
           type: boolean
 
     rstTestSuite:
+      additionalProperties: false
       description: An object describing a test suite.
       type: object
       required:
@@ -242,6 +246,7 @@ components:
           type: array
 
     rstTestCase:
+      additionalProperties: false
       description: An object describing a test case.
       type: object
       required:
@@ -313,6 +318,7 @@ components:
           type: object
 
     rstResource:
+      additionalProperties: false
       description: An object describing a resource.
       type: object
       required:
@@ -328,6 +334,7 @@ components:
           format: url
 
     rstError:
+      additionalProperties: false
       description: An object describing an error message.
       type: object
       required:
@@ -373,6 +380,7 @@ components:
           $ref: "https://json-schema.org/draft/2020-12/schema"
 
     rstDataProvider:
+      additionalProperties: false
       description: |
         An object describing a Data Provider.
       type: object
@@ -400,6 +408,7 @@ components:
             minItems: 1
 
     rstDataProviderColumn:
+      additionalProperties: false
       description: An object describing a column in a data provider.
       type: object
       required:
