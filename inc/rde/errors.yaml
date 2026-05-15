@@ -451,3 +451,21 @@ RDE_NNDN_HAS_NON_UNIQUE_NAME:
   Severity: ERROR
   Description: |
     One or more NNDN objects have the same `<aName>` element.
+
+RDE_ISREQUIRED_ATTRIBUTE_IS_ABSENT:
+  Severity: ERROR
+  Description: |
+    The `isRequired` attribute of the `<fRegistrant>` element is unexpectedly
+    absent.
+
+RDE_ISREQUIRED_ATTRIBUTE_IS_TRUE:
+  Severity: ERROR
+  Description: |
+    The `isRequired` attribute of the `<fRegistrant>` element is unexpectedly
+    `true` or `1`.
+
+RDE_ISREQUIRED_ATTRIBUTE_IS_FALSE:
+  Severity: ERROR
+  Description: |
+    The `isRequired` attribute of the `<fRegistrant>` element is unexpectedly
+    `false` or `0`.
