@@ -371,7 +371,8 @@ rde-14:
       `per-registrar`, then a policy object that identifies the `<registrant>`
       element of domain objects **MUST** be present.
 
-    If the deposit uses the CSV model, this test case will be skipped.
+    If the deposit uses the CSV model for domain objects, this test case will be
+    skipped.
 
   Errors:
     - RDE_POLICY_OBJECT_MISSING
@@ -383,8 +384,8 @@ rde-15:
     Validate "isRequired" property of the <fRegistrant> element (if applicable)
   Maturity: GAMMA
   Description: |
-    This test case verifies that deposits which use the CSV model set the
-    `isRequired` to the appopriate value determined by the value of the
+    This test case verifies that deposits which use the CSV model for domains
+    set the `isRequired` to the appopriate value determined by the value of the
     `general.registryDataModel` input parameter.
 
     * If the `general.registryDataModel` input parameter is `maximum` or
