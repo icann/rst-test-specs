@@ -367,12 +367,12 @@ rde-14:
     deposit **MUST** conform to the Registration Data Policy and the applicable
     data model.
 
-    * If the `general.registryDataModel` input parameter is `maximum` or
-      `per-registrar`, then a policy object that identifies the `<registrant>`
-      element of domain objects **MUST** be present.
+    If the `general.registryDataModel` input parameter is `maximum`, then a
+    policy object that identifies the `<registrant>` element of domain objects
+    **MUST** be present.
 
-    If the deposit uses the CSV model for domain objects, this test case will be
-    skipped.
+    If the deposit exclusively uses the CSV model for domain objects, this test
+    case will be skipped.
 
   Errors:
     - RDE_POLICY_OBJECT_MISSING
@@ -384,16 +384,17 @@ rde-15:
     Validate "isRequired" property of the <fRegistrant> element (if applicable)
   Maturity: GAMMA
   Description: |
-    This test case verifies that deposits which use the CSV model for domains
-    set the `isRequired` to the appopriate value determined by the value of the
-    `general.registryDataModel` input parameter.
+    This test case verifies that deposits which use the CSV model for any domain
+    objects set the `isRequired` attribute of the `<fRegistrant>` element to the
+    appopriate value determined by the value of the `general.registryDataModel`
+    input parameter.
 
-    * If the `general.registryDataModel` input parameter is `maximum` or
-      `per-registrar`, then the `isRequired` attribute of the `<fRegistrant>`
-      element **MUST** be `true` or `1`. Otherwise it **MUST** be absent or
-      `false` or `0`.
+    If the `general.registryDataModel` input parameter is `maximum`, then the
+    `isRequired` attribute of the `<fRegistrant>` element **MUST** be `true` or
+    `1`. Otherwise it **MUST** be absent, `false` or `0`.
 
-    If the deposit uses the XML model, this test case will be skipped.
+    If the deposit exclusively uses the XML model for domain objects, this test
+    case will be skipped.
 
   Errors:
     - RDE_ISREQUIRED_ATTRIBUTE_IS_ABSENT
