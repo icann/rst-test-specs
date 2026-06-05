@@ -367,9 +367,8 @@ rde-14:
     deposit **MUST** conform to the Registration Data Policy and the applicable
     data model.
 
-    If the `general.registryDataModel` input parameter is `maximum`, then a
-    policy object that identifies the `<registrant>` element of domain objects
-    **MUST** be present.
+    If the `general.registryDataModel` input parameter is `maximum`, at least
+    one `<rdePolicy:policy>` object **MUST** be present.
 
     If the deposit exclusively uses the CSV model for domain objects, this test
     case will be skipped.
