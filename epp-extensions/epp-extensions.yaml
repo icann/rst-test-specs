@@ -105,6 +105,14 @@ uris:
       ref:  http://www.verisign.com/assets/epp-whowas-mapping.pdf
       uri:  http://www.verisign.com/epp/whowas-1.0
 
+    - name: Promotion Info EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
+
+    - name: Promotion Info EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
+
   extensions:
     - name: Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)
       ref:  https://www.rfc-editor.org/rfc/rfc3915.html
@@ -262,10 +270,6 @@ uris:
       ref:  https://www.tango-rs.com/epp/tango-promotion-epp-extension-1.0.pdf
       uri:  http://xmlns.tango-rs.net/epp/promotion-1.0
 
-    - name: Promotion Info EPP Extension for the TANGO Registration System
-      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
-      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
-
     - name: XML Mark Data Extension for the TANGO Registration System
       ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
       uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
@@ -301,10 +305,6 @@ uris:
     - name: Promotion EPP Extension for the CORE Registration System
       ref:  https://corenic.org/epp-extensions/core-promotion-epp-extension-1.0.pdf
       uri:  http://xmlns.corenic.net/epp/promotion-1.0
-
-    - name: Promotion Info EPP Extension for the CORE Registration System
-      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
-      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
 
     - name: XML Mark Data EPP Extension for the CORE Registration System
       ref:  https://corenic.org/epp-extensions/core-xml-mark-data-extension-1.0.pdf
