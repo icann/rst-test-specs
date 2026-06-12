@@ -15,7 +15,7 @@ zonemaster-profile:
 rdapct-config:
 	@echo Generating RDAP Conformance Tool configuration files...
 
-	@tools/generate-rdapct-config.pl RSP > rdapct_config.json
+	@tools/generate-rdapct-config.pl PROD > rdapct_config.json
 	@echo wrote rdapct_config.json
 
 	@tools/generate-rdapct-config.pl RSP > rdapct_config_rsp.json
