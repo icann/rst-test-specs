@@ -6,17 +6,24 @@ description: |
   documents.
 
   The "uris" property of this object is an object with two properties. The
-  "objects" property is a list of namespace URIs corresponding to object
-  mappings (that will be present in <objURI> elements in EPP server <greeting>
-  frames). The "extension" property is a list of URIs corresponding to protocol
-  and object extensions (that will be present in <extURI> elements).
+  "objects" property is a list of namespace URIs corresponding to "object
+  mappings" (that should be present in <objURI> elements in EPP server
+  <greeting> frames). The "extension" property is a list of URIs corresponding
+  to protocol and object extensions (that should be present in <extURI>
+  elements).
+
+  Note: an "object mapping" is defined (as per Section 2.4 of RFC 5730) as an
+  object that the server is capable of managing, that is, the client can perform
+  query (<check>, <info>) and transform (<create>, <update>, etc) commands on
+  that object, and the <extension> element is not used in either commands or
+  responses.
 
   This file is manually maintained, so there may be a delay between the addition
   of a new entry to the Extension Registry, and the appearance of its URI in
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-04-29
+last-updated: 2026-06-12
 
 links:
   - rel:   help
@@ -97,6 +104,14 @@ uris:
     - name: 'Extensible Provisioning Protocol Mapping: WhoWas'
       ref:  http://www.verisign.com/assets/epp-whowas-mapping.pdf
       uri:  http://www.verisign.com/epp/whowas-1.0
+
+    - name: Promotion Info EPP Extension for the CORE Registration System
+      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
+
+    - name: Promotion Info EPP Extension for the TANGO Registration System
+      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
+      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
 
   extensions:
     - name: Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)
@@ -255,10 +270,6 @@ uris:
       ref:  https://www.tango-rs.com/epp/tango-promotion-epp-extension-1.0.pdf
       uri:  http://xmlns.tango-rs.net/epp/promotion-1.0
 
-    - name: Promotion Info EPP Extension for the TANGO Registration System
-      ref:  https://www.tango-rs.com/epp/tango-promotion-info-epp-extension-1.0.pdf
-      uri:  http://xmlns.tango-rs.net/epp/promotion-info-1.0
-
     - name: XML Mark Data Extension for the TANGO Registration System
       ref:  https://www.tango-rs.com/epp/tango-xml-mark-data-extension-1.0.pdf
       uri:  http://xmlns.tango-rs.net/epp/mark-ext-1.0
@@ -294,10 +305,6 @@ uris:
     - name: Promotion EPP Extension for the CORE Registration System
       ref:  https://corenic.org/epp-extensions/core-promotion-epp-extension-1.0.pdf
       uri:  http://xmlns.corenic.net/epp/promotion-1.0
-
-    - name: Promotion Info EPP Extension for the CORE Registration System
-      ref:  https://corenic.org/epp-extensions/core-promotion-info-epp-extension-1.0.pdf
-      uri:  http://xmlns.corenic.net/epp/promotion-info-1.0
 
     - name: XML Mark Data EPP Extension for the CORE Registration System
       ref:  https://corenic.org/epp-extensions/core-xml-mark-data-extension-1.0.pdf
