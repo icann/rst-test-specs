@@ -1,5 +1,5 @@
 ---
-RST-Test-Plan-Schema-Version: 1.14.0
+RST-Test-Plan-Schema-Version: 1.15.0
 Version: #include tmp/version.txt
 
 Last-Updated: #include tmp/last-updated.txt
