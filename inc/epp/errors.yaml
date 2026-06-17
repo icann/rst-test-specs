@@ -1171,3 +1171,11 @@ EPP_SERVER_ALLOWS_DELEGATION_TO_GLUELESS_HOST:
   Description: |
     The server accepted an `<update>` command which assigned a glueless internal
     host object to a domain.
+
+EPP_TLS_BAD_CLIENT_CERTIFICATE:
+  Severity: CRITICAL
+  Description: |
+    The client was unable to connect to the EPP server because either or both of
+    the client certificates provided in the
+    `epp.serverIssuedClientCertificate01` and
+    `epp.serverIssuedClientCertificate02` certificates was invalid.
