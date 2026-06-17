@@ -40,10 +40,15 @@ srsgw.serverIssuedClientCertificate01:
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be omitted.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Required: false
   Type: file
   Schema:
-    type: string
+    type:
+      - string
+      - null
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
@@ -55,10 +60,15 @@ srsgw.serverIssuedClientCertificate02:
     conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
     If the server will accept ICANN's own client certificate, this parameter
     **SHOULD** be omitted.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Type: file
   Required: false
   Schema:
-    type: string
+    type:
+      - string
+      - null
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
