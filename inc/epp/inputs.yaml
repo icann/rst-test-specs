@@ -41,11 +41,16 @@ epp.serverIssuedClientCertificate01:
     used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
     the server will accept ICANN's own client certificate, this parameter
     **MUST** be empty.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
   Schema:
-    type: string
+    type:
+      - string
+      - null
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
@@ -56,11 +61,16 @@ epp.serverIssuedClientCertificate02:
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
     **MUST** be omitted.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
   Schema:
-    type: string
+    type:
+      - string
+      - null
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
