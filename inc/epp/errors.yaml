@@ -1171,3 +1171,15 @@ EPP_SERVER_ALLOWS_DELEGATION_TO_GLUELESS_HOST:
   Description: |
     The server accepted an `<update>` command which assigned a glueless internal
     host object to a domain.
+
+EPP_TLS_SERVER_REJECTS_EXTRANEOUS_CERTIFICATE:
+  Severity: ERROR
+  Description: |
+    The server denied a TLS handshake where the client presented an extraneous
+    certificate.
+
+EPP_TLS_SERVER_REJECTS_DISORDERED_CERTIFICATE_CHAIN:
+  Severity: ERROR
+  Description: |
+    The server denied a TLS handshake where the client presented a certificate
+    chain with arbitrary ordering.
