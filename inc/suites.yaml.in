@@ -80,6 +80,7 @@ StandardDNSSEC:
     * [RFC 5155 - DNS Security (DNSSEC) Hashed Authenticated Denial of Existence](https://www.rfc-editor.org/rfc/rfc5155.html)
     * [RFC 6841 - A Framework for DNSSEC Policies and DNSSEC Practice Statements](https://www.rfc-editor.org/rfc/rfc6841.html)
     * [RFC 9276 - Guidance for NSEC3 Parameter Settings](https://www.rfc-editor.org/rfc/rfc9276.html)
+    * [RFC 9904 - DNSSEC Cryptographic Algorithm Recommendation Update Process](https://www.rfc-editor.org/rfc/rfc9904.html)
 
   Test-Cases: ^dnssec-
   Input-Parameters:
