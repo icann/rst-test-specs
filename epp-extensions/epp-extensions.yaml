@@ -12,18 +12,17 @@ description: |
   to protocol and object extensions (that should be present in <extURI>
   elements).
 
-  Note: an "object mapping" is defined (as per Section 2.4 of RFC 5730) as an
-  object that the server is capable of managing, that is, the client can perform
-  query (<check>, <info>) and transform (<create>, <update>, etc) commands on
-  that object, and the <extension> element is not used in either commands or
-  responses.
+  Note: an "object mapping" is defined (as per Section 2.4 of RFC 5730) as
+  describing an object "that the server is capable of managing". Section 2.7
+  of that RFC provides further information about the difference between
+  object extensions and command-response extensions.
 
   This file is manually maintained, so there may be a delay between the addition
   of a new entry to the Extension Registry, and the appearance of its URI in
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-06-12
+last-updated: 2026-07-02
 
 links:
   - rel:   help
