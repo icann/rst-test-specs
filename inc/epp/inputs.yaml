@@ -50,7 +50,7 @@ epp.serverIssuedClientCertificate01:
   Schema:
     type:
       - string
-      - null
+      - "null"
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
@@ -70,7 +70,7 @@ epp.serverIssuedClientCertificate02:
   Schema:
     type:
       - string
-      - null
+      - "null"
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
