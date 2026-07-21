@@ -48,7 +48,7 @@ srsgw.serverIssuedClientCertificate01:
   Schema:
     type:
       - string
-      - null
+      - "null"
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
@@ -68,7 +68,7 @@ srsgw.serverIssuedClientCertificate02:
   Schema:
     type:
       - string
-      - null
+      - "null"
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
