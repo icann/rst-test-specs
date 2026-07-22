@@ -19,9 +19,9 @@ dnssecOps01-ZSKRollover:
     The zone **MUST** contain at least 10,000 delegations, where a delegation is
     considered to be one or more `NS` records with owner names that are below
     the zone's origin. If NSEC3 is used for secure denial of existence, the
-    opt-out flag `MUST NOT` be set *(that is, an `RRSIG` record should be
-    present for all `NS` rrsets, irrespective of whether a corresponding `DS`
-    record is published)*.
+    opt-out flag **MUST NOT** be set: an `RRSIG` record should be present for
+    all `NS` rrsets, irrespective of whether a corresponding `DS` record is
+    present.
 
     Monitoring will be carried out using `SOA` queries sent to multiple
     validating DNS resolvers, and by validating the result of a zone transfer
