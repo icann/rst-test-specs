@@ -46,7 +46,6 @@ Test-Cases:
 #exec sed 's/^/  /' inc/integration/cases.yaml
 
 Input-Parameters:
-#exec sed 's/^/  /' inc/general/inputs.yaml
 #exec sed 's/^/  /' inc/dns/inputs.yaml
 #exec sed 's/^/  /' inc/dnssec/inputs.yaml
 #exec sed 's/^/  /' inc/dnssec-ops/inputs.yaml
