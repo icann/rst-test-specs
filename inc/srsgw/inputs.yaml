@@ -352,7 +352,7 @@ srsgw.eppSupportedContactElements:
         - fax
         - fax:ext
 
-srsgw.registrarId01:
+srsgw.eppRegistrarId01:
   Description: |
     Where an EPP server does not use the client ID (specified in `srsgw.eppClid01`)
     as the sponsor of objects created by that client, this input parameter may
@@ -367,7 +367,7 @@ srsgw.registrarId01:
     minLength: 3
     maxLength: 16
 
-srsgw.registrarId02:
+srsgw.eppRegistrarId02:
   Description: |
     Where an EPP server does not use the client ID (specified in `srsgw.eppClid02`)
     as the sponsor of objects created by that client, this input parameter may
