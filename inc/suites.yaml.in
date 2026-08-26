@@ -161,10 +161,12 @@ StandardEPP:
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
     - epp.clid01DataModel
+    - epp.registrarId01
     - epp.clid02
     - epp.pwd02
     - epp.serverIssuedClientCertificate02
     - epp.clid02DataModel
+    - epp.registrarId02
     - epp.hostModel
     - epp.hostName
     - epp.registeredNames
