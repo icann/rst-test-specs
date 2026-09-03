@@ -55,7 +55,7 @@ dnssecOps02-KSKRollover:
   Maturity: GAMMA
   Description: |
     This test case verifies the RSP's ability to perform a CSK/KSK rollover
-    (as described in [Sections 4.1.2 and 4.13 of
+    (as described in [Sections 4.1.2 and 4.1.3 of
     RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html#section-4.1.2)).
 
     The system will monitor the zone specified in the `dnssec.kskRolloverZone`
