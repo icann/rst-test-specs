@@ -13,11 +13,14 @@ use constant {
 };
 use strict;
 
-my $version;
+my ($version, $suite);
 GetOptions(
     'version=s' => \$version,
     'help'      => sub { pod2usage() },
+    '--suite=s' => \$suite,
 ) || pod2usage();
+
+pod2usage({-message => "Bad suite '$suite'"}) unless ($suite =~ /^(dns|dnssec)$/);
 
 my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__)))
                 .'/zonemaster-test-policies.yaml');
@@ -41,6 +44,14 @@ while ($i < scalar(@{$profile->{'test_cases'}})) {
         $i++;
 
     }
+}
+
+if ('dnssec' eq $suite) {
+    $profile->{'test_cases'} = [ grep { $_ =~ /^dnssec/ } @{$profile->{'test_cases'}} ];
+
+} else {
+    $profile->{'test_cases'} = [ grep { $_ !~ /^dnssec/ } @{$profile->{'test_cases'}} ];
+
 }
 
 #

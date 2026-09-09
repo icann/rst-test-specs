@@ -4,7 +4,8 @@ tmp
 rst-test-specs.html
 rst-test-specs.json
 rst-test-specs.yaml
-rst.json
+rst_dns.json
+rst_dnssec.json
 rdapct_config*.json
 releases.json
 releases.md
