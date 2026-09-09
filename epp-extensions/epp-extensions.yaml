@@ -22,7 +22,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-09-02
+last-updated: 2026-09-09
 
 links:
   - rel:   help
@@ -320,5 +320,13 @@ uris:
     - name: IDN EPP Extension for the CNNIC Registration System
       ref:  https://ngboss.ngtld.cn/EN/view/noside/cnnic-idn-epp-extension-1.0.html
       uri:  urn:ietf:params:xml:ns:cdn-1.0
+
+    - name: Command Reversal Extension for the Extensible Provisioning Protocol (EPP)
+      ref:  https://gavinbrown.xyz/epp-reverse-extension/
+      uri:  https://gavinbrown.xyz/xmlns/epp/reverse-1.0
+
+    - name: Extensible Provisioning Protocol (EPP) Extension for Related Objects
+      ref:  https://gavinbrown.xyz/epp-related-objects-extension/
+      uri:  https://gavinbrown.xyz/xmlns/epp/related-objects-1.0
 
 # END
