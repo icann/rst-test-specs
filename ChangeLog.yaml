@@ -1,3 +1,13 @@
+2026-09-14:
+
+  - |
+    Version [v2026.07](https://github.com/icann/rst-test-specs/releases/tag/v2026.07):
+
+  - |
+    Added the [`epp.registrarId01`](#Input-Parameter-epp.registrarId01) and
+    [`epp.registrarId02`](#Input-Parameter-epp.registrarId02) input parameters
+    ([#278](https://github.com/icann/rst-test-specs/issues/278))
+
 2026-07-30:
 
   - |
