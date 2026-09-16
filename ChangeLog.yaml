@@ -1,3 +1,23 @@
+2026-09-14:
+
+  - |
+    Version [v2026.07](https://github.com/icann/rst-test-specs/releases/tag/v2026.07):
+
+  - |
+    Added the [`epp.registrarId01`](#Input-Parameter-epp.registrarId01) and
+    [`epp.registrarId02`](#Input-Parameter-epp.registrarId02) input parameters
+    ([#278](https://github.com/icann/rst-test-specs/issues/278)).
+
+  - |
+    Corrected subsection reference to
+    [RFC 6781](https://www.rfc-editor.org/rfc/rfc6781.html) in
+    [dnssecOps02-KSKRollover](#dnssecOps02-KSKRollover).
+
+  - |
+    Corrected the description of [srsgw-08](#srsgw-08) to allow the SRS Gateway
+    EPP server to respond to the `<delete>` command with a 1000 response (in
+    addition to 1001).
+
 2026-07-30:
 
   - |
@@ -5,7 +25,8 @@
 
   - |
     Update [dnssec-91](#Test-Case-dnssec-91) and [dnssec-92](#Test-Case-dnssec-92) for
-    [RFC 9904](https://www.rfc-editor.org/rfc/rfc9904.html) ([#143](https://github.com/icann/rst-test-specs/issues/143))
+    [RFC 9904](https://www.rfc-editor.org/rfc/rfc9904.html)
+    ([#143](https://github.com/icann/rst-test-specs/issues/143)).
 
 2026-06-16:
 
@@ -14,11 +35,12 @@
 
   - |
     Added [rde-15](#Test-Case-rde-15) to check the `isRequired` property of the
-    `<fRegistrant>` element ([#261](https://github.com/icann/rst-test-specs/issues/261))
+    `<fRegistrant>` element
+    ([#261](https://github.com/icann/rst-test-specs/issues/261)).
 
   - |
     Relaxed the acceptance criteria for [rde-14](#Test-Case-rde-14)
-    ([#263](https://github.com/icann/rst-test-specs/issues/263))
+    ([#263](https://github.com/icann/rst-test-specs/issues/263)).
 
 2026-05-06:
 
@@ -27,16 +49,22 @@
 
   - |
     Add [`RDE_REGISTRAR_HAS_NON_UNIQUE_ID`](#Error-RDE_REGISTRAR_HAS_NON_UNIQUE_ID)
-    and [`RDE_NNDN_HAS_NON_UNIQUE_NAME`](#Error-RDE_NNDN_HAS_NON_UNIQUE_NAME) ([#231](https://github.com/icann/rst-test-specs/issues/231))
+    and [`RDE_NNDN_HAS_NON_UNIQUE_NAME`](#Error-RDE_NNDN_HAS_NON_UNIQUE_NAME)
+    ([#231](https://github.com/icann/rst-test-specs/issues/231)).
 
   - |
     Remove `EPP_GREETING_DOES_NOT_MATCH` from [epp-02](#Test-Case-epp-02) and
     remove the `epp.greeting` input parameter. The [rde-13](#Test-Case-rde-13)
-    test case has been updated accordingly ([#233](https://github.com/icann/rst-test-specs/issues/233))
+    test case has been updated accordingly
+    ([#233](https://github.com/icann/rst-test-specs/issues/233)).
 
-  - Use Zonemaster v2025.2.1 ([#239](https://github.com/icann/rst-test-specs/issues/239))
+  - |
+    Use Zonemaster v2025.2.1
+    ([#239](https://github.com/icann/rst-test-specs/issues/239)).
 
-  - Add constraints to input parameters ([#242](https://github.com/icann/rst-test-specs/issues/242))
+  - |
+    Add constraints to input parameters
+    ([#242](https://github.com/icann/rst-test-specs/issues/242)).
 
 2026-04-13:
 
