@@ -255,8 +255,8 @@ srsgw-08:
     respond with a 1000 response.
 
     The client will then reconnect to the SRS Gateway EPP system, authenticate,
-    and submit a `<delete>` command.  The server **MUST** respond with a 1001
-    response.
+    and submit a `<delete>` command.  The server **MUST** respond with a 1000 or
+    1001 response.
 
     Finally, the client will wait for 30 seconds, and then reconnect to the
     primary EPP system, authenticate, and confirm that:
