@@ -376,6 +376,9 @@ epp.registrarId01:
     be used to specify the value that will appear in `<crID>`, `<upID>`,
     `<reID>` and `<acID>` elements in EPP responses, instead of the
     value of the `epp.clid01` input parameter.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Type: input
   Required: false
   Example: registrar1001
@@ -392,6 +395,9 @@ epp.registrarId02:
     be used to specify the value that will appear in `<crID>`, `<upID>`,
     `<reID>` and `<acID>` elements in EPP responses, instead of the
     value of the `epp.clid02` input parameter.
+
+    A JSON `null` value may be used to reset the value of this input parameter
+    after a file has previously been specified.
   Type: input
   Required: false
   Example: registrar1002
