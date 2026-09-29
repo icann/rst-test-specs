@@ -5,7 +5,14 @@ dnssec-91:
     In addition to the requirements outlined in `dnssec-05`, this test imposes
     an additional requirement on the signing algorithms used to sign zones.
 
-    Specifically, the algorithm number **MUST NOT** be lower than 8.
+    Specifically, the algorithm number indicating which algorithm is used to
+    sign resource records (a) **MUST** be present in the [DNSSEC Security
+    Algorithm
+    Numbers](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml#dns-sec-alg-numbers-1)
+    IANA registry, (b) **MUST** be suitable for zone signing, (c) **MUST NOT**
+    be unassigned, reserved or private use, and (d) the value of the "Use for
+    DNSSEC Signing" column for that algorithm **MUST** be either `MAY` or
+    `RECOMMENDED`.
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_SIGNING_ALGORITHM
@@ -17,8 +24,12 @@ dnssec-92:
     The DS record(s) submitted in the `dnssec.dsRecords` input parameter will
     be validated.
 
-    This test case will fail if any of the DS record(s) use algorithms #1
-    (SHA-1) #12 (GOST R 34.10-2001).
+    Specifically, the number in the Digest Type field(s) (a) **MUST** be present
+    in the [Digest Algorithms](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1)
+    IANA registry, (b) **MUST NOT** be unassigned, reserved or private use, and
+    (c) the value of the "Use for DNSSEC Delegation" column for that algorithm
+    **MUST** be either `MAY` or `RECOMMENDED`.
+
   Errors:
     - DNSSEC_DNS_QUERY_ERROR
     - DNSSEC_INVALID_DIGEST_ALGORITHM
