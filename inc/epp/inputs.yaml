@@ -381,6 +381,7 @@ epp.registrarId01:
   Example: registrar1001
   Schema:
     type: string
+    nullable: true
     minLength: 3
     maxLength: 16
 
@@ -396,5 +397,6 @@ epp.registrarId02:
   Example: registrar1002
   Schema:
     type: string
+    nullable: true
     minLength: 3
     maxLength: 16
