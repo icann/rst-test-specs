@@ -46,9 +46,8 @@ srsgw.serverIssuedClientCertificate01:
   Required: false
   Type: file
   Schema:
-    type:
-      - string
-      - "null"
+    type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
@@ -66,9 +65,8 @@ srsgw.serverIssuedClientCertificate02:
   Type: file
   Required: false
   Schema:
-    type:
-      - string
-      - "null"
+    type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
