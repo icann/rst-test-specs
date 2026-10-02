@@ -41,15 +41,11 @@ epp.serverIssuedClientCertificate01:
     used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
     the server will accept ICANN's own client certificate, this parameter
     **MUST** be empty.
-
-    A JSON `null` value may be used to reset the value of this input parameter
-    after a file has previously been specified.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
   Schema:
     type: string
-    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
@@ -60,15 +56,11 @@ epp.serverIssuedClientCertificate02:
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
     **MUST** be omitted.
-
-    A JSON `null` value may be used to reset the value of this input parameter
-    after a file has previously been specified.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
   Schema:
     type: string
-    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
@@ -376,15 +368,11 @@ epp.registrarId01:
     be used to specify the value that will appear in `<crID>`, `<upID>`,
     `<reID>` and `<acID>` elements in EPP responses, instead of the
     value of the `epp.clid01` input parameter.
-
-    A JSON `null` value may be used to reset the value of this input parameter
-    after a file has previously been specified.
   Type: input
   Required: false
   Example: registrar1001
   Schema:
     type: string
-    nullable: true
     minLength: 3
     maxLength: 16
 
@@ -395,14 +383,10 @@ epp.registrarId02:
     be used to specify the value that will appear in `<crID>`, `<upID>`,
     `<reID>` and `<acID>` elements in EPP responses, instead of the
     value of the `epp.clid02` input parameter.
-
-    A JSON `null` value may be used to reset the value of this input parameter
-    after a file has previously been specified.
   Type: input
   Required: false
   Example: registrar1002
   Schema:
     type: string
-    nullable: true
     minLength: 3
     maxLength: 16
