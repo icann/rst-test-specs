@@ -360,3 +360,33 @@ epp.supportedContactPostalInfoTypes:
       - loc
       - both
   Example: int
+
+epp.registrarId01:
+  Description: |
+    Where an EPP server does not use the client ID (specified in `epp.clid01`)
+    as the sponsor of objects created by that client, this input parameter may
+    be used to specify the value that will appear in `<crID>`, `<upID>`,
+    `<reID>` and `<acID>` elements in EPP responses, instead of the
+    value of the `epp.clid01` input parameter.
+  Type: input
+  Required: false
+  Example: registrar1001
+  Schema:
+    type: string
+    minLength: 3
+    maxLength: 16
+
+epp.registrarId02:
+  Description: |
+    Where an EPP server does not use the client ID (specified in `epp.clid02`)
+    as the sponsor of objects created by that client, this input parameter may
+    be used to specify the value that will appear in `<crID>`, `<upID>`,
+    `<reID>` and `<acID>` elements in EPP responses, instead of the
+    value of the `epp.clid02` input parameter.
+  Type: input
+  Required: false
+  Example: registrar1002
+  Schema:
+    type: string
+    minLength: 3
+    maxLength: 16
