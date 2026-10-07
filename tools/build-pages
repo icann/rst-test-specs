@@ -73,8 +73,8 @@ tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 echo "Copying RDAP Conformance Tool configuration files..."
 cp rdapct_config*.json "$SITEDIR/"
 
-echo "Copying Zonemaster profile..."
-cp rst.json "$SITEDIR/"
+echo "Copying Zonemaster profiles..."
+cp rst_dns.json rst_dnssec.json "$SITEDIR/"
 
 chmod -R 0755 "$SITEDIR"
 
