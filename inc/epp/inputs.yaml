@@ -46,6 +46,7 @@ epp.serverIssuedClientCertificate01:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.serverIssuedClientCertificate02:
@@ -61,6 +62,7 @@ epp.serverIssuedClientCertificate02:
   Example: rst_test_client_cert.pem
   Schema:
     type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
 
 epp.clid02:
