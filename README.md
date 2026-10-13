@@ -78,8 +78,8 @@ automatically (after cache expiration).
 ### Updating the Zonemaster version used
 
 To change the version of Zonemaster used, edit [.env](.env) and set the
-`ZONEMASTER_VERSION` and `ZONEMASTER_ENGINE_VERSION` variables accordingly. Then
-generate the specs.
+`ZONEMASTER_VERSION`, `ZONEMASTER_ENGINE_VERSION` and `ZONEMASTER_CLI_VERSION`
+variables accordingly. Then generate the specs.
 
 Quite often, a new release of Zonemaster will add, remove or change the error
 codes that are generated. So before publishing a new version of the test specs,
