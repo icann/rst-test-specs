@@ -161,10 +161,12 @@ StandardEPP:
     - epp.pwd01
     - epp.serverIssuedClientCertificate01
     - epp.clid01DataModel
+    - epp.registrarId01
     - epp.clid02
     - epp.pwd02
     - epp.serverIssuedClientCertificate02
     - epp.clid02DataModel
+    - epp.registrarId02
     - epp.hostModel
     - epp.hostName
     - epp.registeredNames
@@ -292,6 +294,8 @@ StandardSRSGateway:
     - epp.supportedContactElements
     - epp.loginExtension
     - epp.supportedContactPostalInfoTypes
+    - epp.registrarId01
+    - epp.registrarId02
     - general.registryDataModel
     - rdap.baseURLs
     - srsgw.eppClid01
@@ -391,6 +395,8 @@ MinimumRPMs:
     - minimumRPMS.claimsTLD
     - minimumRPMS.sunriseModel
     - minimumRPMS.sunriseTLD
+    - epp.registrarId01
+    - epp.registrarId02
 
 StandardIntegrationTest:
   Order: 10
