@@ -65,7 +65,7 @@ html:
 	@perl tools/generate-html.pl $(SRC).yaml > $(SRC).html
 	@echo wrote $(SRC).html
 
-pages: rdapct-config zonemaster-profile
+pages: rdapct-config
 	@echo Generating pages...
 	@tools/build-pages
 
