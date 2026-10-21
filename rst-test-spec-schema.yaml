@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 info:
   title: Schema for the RST Test Specifications
-  version: 1.14.0
+  version: 1.15.0
   description: |
     This file contains a schema which describes the RST Test Specifications YAML
     format.
@@ -10,6 +10,7 @@ info:
 components:
   schemas:
     rstTestSpec:
+      additionalProperties: false
       description: |
         The `rstTestSpec` schema describes the format of the RST Test
         Specifications YAML format.
@@ -146,6 +147,7 @@ components:
                 $ref: "#/components/schemas/rstDataProvider"
 
     rstTestSpecContact:
+      additionalProperties: false
       description: |
         An object containing contact information for the maintainer of the RST
         Test Specifications YAML file.
@@ -167,6 +169,7 @@ components:
           format: email
 
     rstTestPlan:
+      additionalProperties: false
       description: An object describing a test plan.
       type: object
       required:
@@ -201,6 +204,7 @@ components:
           type: boolean
 
     rstTestSuite:
+      additionalProperties: false
       description: An object describing a test suite.
       type: object
       required:
@@ -242,6 +246,7 @@ components:
           type: array
 
     rstTestCase:
+      additionalProperties: false
       description: An object describing a test case.
       type: object
       required:
@@ -313,6 +318,7 @@ components:
           type: object
 
     rstResource:
+      additionalProperties: false
       description: An object describing a resource.
       type: object
       required:
@@ -328,6 +334,7 @@ components:
           format: url
 
     rstError:
+      additionalProperties: false
       description: An object describing an error message.
       type: object
       required:
@@ -346,7 +353,34 @@ components:
             - ERROR
             - CRITICAL
 
+    rstInputParameter:
+      additionalProperties: false
+      description: An object describing an input parameter.
+      type: object
+      required:
+        - Description
+        - Schema
+      properties:
+        Description:
+          description: A description of the input parameter in Markdown format.
+          type: string
+        Type:
+          description: the type of the parameter.
+          type: string
+          enum:
+            - input
+            - file
+        Example:
+          description: An example value.
+        Required:
+          description: Whether it is mandatory to provide this value.
+          type: boolean
+          default: false
+        Schema:
+          $ref: "https://json-schema.org/draft/2020-12/schema"
+
     rstDataProvider:
+      additionalProperties: false
       description: |
         An object describing a Data Provider.
       type: object
@@ -374,6 +408,7 @@ components:
             minItems: 1
 
     rstDataProviderColumn:
+      additionalProperties: false
       description: An object describing a column in a data provider.
       type: object
       required:

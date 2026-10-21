@@ -10,7 +10,7 @@ mkdir "$SITEDIR"
 
 git config --global --add safe.directory /app
 
-CURRENT_RELEASE="$(git tag | tail -1)"
+CURRENT_RELEASE="$(git for-each-ref --sort=-creatordate --count=1 --format '%(refname)' refs/tags | cut -d / -f 3-)"
 
 if [ -z "$CURRENT_RELEASE" ] ; then
     echo "No release tag found! Tag list follows..."
@@ -73,8 +73,12 @@ tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 echo "Copying RDAP Conformance Tool configuration files..."
 cp rdapct_config*.json "$SITEDIR/"
 
-echo "Copying Zonemaster profiles..."
-cp rst_dns.json rst_dnssec.json "$SITEDIR/"
+#
+# FYI: v2026.08 was the last release where the Zonemaster profile was published
+# at this location.
+#
+echo "Copying v2026.08 profile to legacy location..."
+cp "$SITEDIR/v2026.08/rst.json" "$SITEDIR/"
 
 chmod -R 0755 "$SITEDIR"
 
