@@ -17,7 +17,7 @@ my ($version, $suite);
 GetOptions(
     'version=s' => \$version,
     'help'      => sub { pod2usage() },
-    '--suite=s' => \$suite,
+    'suite=s'   => \$suite,
 ) || pod2usage();
 
 pod2usage({-message => "Bad suite '$suite'"}) unless ($suite =~ /^(dns|dnssec)$/);
