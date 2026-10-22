@@ -9,6 +9,8 @@ all: zonemaster-profile rdapct-config includes yaml lint json html
 
 zonemaster-profile:
 	@echo Generating Zonemaster profiles...
+	@tools/generate-zonemaster-profile.pl "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst.json
+	@echo wrote rst.json
 	@tools/generate-zonemaster-profile.pl --suite=dns "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst_dns.json
 	@echo wrote rst_dns.json
 	@tools/generate-zonemaster-profile.pl --suite=dnssec "--version=$(ZONEMASTER_ENGINE_VERSION)" > rst_dnssec.json
