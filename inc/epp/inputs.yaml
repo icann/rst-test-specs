@@ -206,6 +206,8 @@ epp.registeredContacts:
     minItems: 2
     items:
       type: string
+      minLength: 3
+      maxLength: 16
 
 #epp.restoreReportRequired:
 #  Description: |
