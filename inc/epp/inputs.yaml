@@ -40,7 +40,7 @@ epp.serverIssuedClientCertificate01:
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid01` and `epp.pwd01` credentials. If
     the server will accept ICANN's own client certificate, this parameter
-    **MUST** be empty.
+    **MUST** be omitted or `NULL`.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
@@ -56,7 +56,7 @@ epp.serverIssuedClientCertificate02:
     resource may be provided using this parameter. This certificate will only be
     used in conjunction with the `epp.clid02` and `epp.pwd02` credentials. If
     the server will accept ICANN's own client certificate, this parameter
-    **MUST** be omitted.
+    **MUST** be omitted or `NULL`.
   Type: file
   Required: false
   Example: rst_test_client_cert.pem
