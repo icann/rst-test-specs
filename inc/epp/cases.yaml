@@ -24,11 +24,15 @@ epp-01:
        supported by major browsers.
     7. All TLS certificates **MUST NOT** have expired, and **MUST** be
        presented wth any required intermediate certificates.
-    8. The EPP server name **MUST** match at least one `subjectAltName` field
+    8. As per Section 4.4.2 of [RFC
+       8446](https://www.rfc-editor.org/rfc/rfc8446#section-4.4.2), the server
+       *MUST* accept extraneous certificates, and arbitrary orderings of
+       certificates.
+    9. The EPP server name **MUST** match at least one `subjectAltName` field
        in all presented certificates (either exact match or wildcard).
-    9. Service ports **MUST** use at least one of the ciphers recommended in
-       [RFC 9325](https://www.rfc-editor.org/rfc/rfc9325.html) (or any successor
-       document).
+    10. Service ports **MUST** use at least one of the ciphers recommended in
+        [RFC 9325](https://www.rfc-editor.org/rfc/rfc9325.html) (or any
+        successor document).
   Resources:
     - epp.tlsCertificateStore
   Errors:
@@ -45,6 +49,8 @@ epp-01:
     - EPP_TLS_CERTIFICATE_CHAIN_MISSING
     - EPP_TLS_CERTIFICATE_HOSTNAME_MISMATCH
     - EPP_TLS_BAD_CIPHER
+    - EPP_TLS_SERVER_REJECTS_EXTRANEOUS_CERTIFICATE
+    - EPP_TLS_SERVER_REJECTS_DISORDERED_CERTIFICATE_CHAIN
 
 epp-02:
   Summary: Protocol conformance test

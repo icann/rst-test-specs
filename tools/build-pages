@@ -73,8 +73,12 @@ tools/generate-superschema.pl > "$SITEDIR/epp-extensions/xsd/super.xsd"
 echo "Copying RDAP Conformance Tool configuration files..."
 cp rdapct_config*.json "$SITEDIR/"
 
-echo "Copying Zonemaster profile..."
-cp rst.json "$SITEDIR/"
+#
+# FYI: v2026.08 was the last release where the Zonemaster profile was published
+# at this location.
+#
+echo "Copying v2026.08 profile to legacy location..."
+cp "$SITEDIR/v2026.08/rst.json" "$SITEDIR/"
 
 chmod -R 0755 "$SITEDIR"
 
