@@ -39,11 +39,12 @@ srsgw.serverIssuedClientCertificate01:
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid01` and `srsgw.eppPwd01` credentials.
     If the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be omitted.
+    **MUST** be omitted or `NULL`..
   Required: false
   Type: file
   Schema:
     type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
@@ -54,11 +55,12 @@ srsgw.serverIssuedClientCertificate02:
     be provided using this parameter. This certificate will only be used in
     conjunction with the `srsgw.eppClid02` and `srsgw.eppPwd02` credentials.
     If the server will accept ICANN's own client certificate, this parameter
-    **SHOULD** be omitted.
+    **MUST** be omitted or `NULL`..
   Type: file
   Required: false
   Schema:
     type: string
+    nullable: true
     pattern: "^[^\\.\\/\\0][^\\/\\0]*$"
   Example: cert.pem
 
