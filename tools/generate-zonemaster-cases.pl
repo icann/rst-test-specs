@@ -48,17 +48,13 @@ if (version->parse($ENV{ZONEMASTER_ENGINE_VERSION}) != version->parse($Zonemaste
     exit(1);
 }
 
-my $mode = 'cases';
-my $version;
-GetOptions(
-    'version=s' => \$version,
-    'errors'    => sub { $mode = 'errors'},
-) || pod2usage(1);
+if (!exists($ENV{ZONEMASTER_VERSION})) {
+    print STDERR "Missing 'ZONEMASTER_VERSION' environment variable\n";
+    exit(1);
+}
 
-#
-# this the directory where the Zonemaster documentation is located
-#
-my $base = $ARGV[0] || pod2usage(1);
+my $mode = 'cases';
+GetOptions('errors' => sub { $mode = 'errors'}) || pod2usage(1);
 
 my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__)))
                 .'/zonemaster-test-policies.yaml');
@@ -145,14 +141,9 @@ sub process_case {
     };
 
     #
-    # relative path to case documentation
-    #
-    my $mdfile = File::Spec->catfile(qw(docs public specifications tests), sprintf('%s-TP', ucfirst($module)), lc($case).'.md');
-
-    #
     # URL of case documentation
     #
-    my $url = sprintf(ZM_URL_FMT, $version, ucfirst($module), lc($case));
+    my $url = sprintf(ZM_URL_FMT, $ENV{ZONEMASTER_ENGINE_VERSION}, ucfirst($module), lc($case));
 
     my $upgraded;
 
@@ -214,7 +205,7 @@ sub process_case {
     #
     $cases->{$id}->{'Description'} .= "\n\n".sprintf(
         CASE_DESCRIPTION_TEMPLATE,
-        $version,
+        $ENV{ZONEMASTER_VERSION}),
         $url,
     );
 
@@ -222,9 +213,16 @@ sub process_case {
     $cases->{$id}->{'Description'} .= "\n\n";
 
     #
-    # read Markdown
+    # read Markdown. The filename is concatenated from a path relative to this
+    # file, and the internal hierarchy of the documentation directory in the
+    # Zonemaster source.
     #
-    my @lines = read_file(File::Spec->catfile($base, $mdfile));
+    my @lines = read_file(File::Spec->catfile(
+        dirname(dirname(realpath(__FILE__))),
+        'zonemaster', sprintf('zonemaster-%s', $ENV{ZONEMASTER_VERSION}),
+        qw(docs public specifications tests),
+        sprintf('%s-TP', ucfirst($module)), lc($case).'.md')
+    );
 
     #
     # the summary should be the first line
@@ -285,28 +283,14 @@ into RST test cases.
 
 =head1 SYNOPSIS
 
-    generate-zonemaster-cases.pl [--errors] --version=VERSION
+    generate-zonemaster-cases.pl [--errors]
 
 =head1 OPTIONS
 
 =over
 
-=item *
-
-C<--version> tells the script what version of Zonemaster should be referenced in
-the generated documentation.
-
-=item *
-
 C<--errors> causes the script to emit a YAML fragment for the Zonemaster errors
 rather than the test cases.
-
-=item *
-
-C<--version=VERSION> specifies the version of Zonemaster which should be provided
-in test case descriptions.
-
-=item *
 
 =back
 

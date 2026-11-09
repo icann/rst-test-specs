@@ -1,7 +1,6 @@
 include .env
 
 SRC = rst-test-specs
-ZM_DIR=zonemaster/zonemaster-$(ZONEMASTER_VERSION)
 
 yaml: export ZM_VERSION=$(ZONEMASTER_VERSION)
 
@@ -36,10 +35,10 @@ includes:
 	@tools/install-zonemaster "$(ZONEMASTER_VERSION)"
 
 	@echo Generating Zonemaster cases...
-	@tools/generate-zonemaster-cases.pl "--version=$(ZONEMASTER_VERSION)" "$(ZM_DIR)" > tmp/zonemaster-cases.yaml
+	@tools/generate-zonemaster-cases.pl > tmp/zonemaster-cases.yaml
 
 	@echo Generating Zonemaster errors...
-	@tools/generate-zonemaster-cases.pl "--version=$(ZONEMASTER_VERSION)" --errors "$(ZM_DIR)" > tmp/zonemaster-errors.yaml
+	@tools/generate-zonemaster-cases.pl --errors > tmp/zonemaster-errors.yaml
 
 	@echo Generating data providers...
 	@find tools -maxdepth 1 -type f -iname '*.pl' -print
