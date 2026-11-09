@@ -143,7 +143,7 @@ sub process_case {
     #
     # URL of case documentation
     #
-    my $url = sprintf(ZM_URL_FMT, $ENV{ZONEMASTER_ENGINE_VERSION}, ucfirst($module), lc($case));
+    my $url = sprintf(ZM_URL_FMT, $ENV{ZONEMASTER_VERSION}, ucfirst($module), lc($case));
 
     my $upgraded;
 
@@ -205,7 +205,7 @@ sub process_case {
     #
     $cases->{$id}->{'Description'} .= "\n\n".sprintf(
         CASE_DESCRIPTION_TEMPLATE,
-        $ENV{ZONEMASTER_VERSION}),
+        $ENV{ZONEMASTER_VERSION},
         $url,
     );
 
