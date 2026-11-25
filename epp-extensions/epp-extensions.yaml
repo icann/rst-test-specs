@@ -22,7 +22,7 @@ description: |
   this file. If you find an entry that is missing, please contact the
   maintainers.
 
-last-updated: 2026-11-23
+last-updated: 2026-11-25
 
 links:
   - rel:   help
@@ -328,5 +328,9 @@ uris:
     - name: Extensible Provisioning Protocol (EPP) Extension for Related Objects
       ref:  https://gavinbrown.xyz/epp-related-objects-extension/
       uri:  https://gavinbrown.xyz/xmlns/epp/related-objects-1.0
+
+    - name: Namingo Identica Contact Extension for the Extensible Provisioning Protocol (EPP)
+      ref:  https://namingo.org/epp/identica-1.0.html
+      uri:  https://namingo.org/epp/identica-1.0
 
 # END
