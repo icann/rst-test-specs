@@ -35,3 +35,5 @@ jobs:
             rst-test-specs.json
             rst-test-specs.yaml
             rst.json
+            rst_dns.json
+            rst_dnssec.json

@@ -13,11 +13,14 @@ use constant {
 };
 use strict;
 
-my $version;
+my ($version, $suite);
 GetOptions(
     'version=s' => \$version,
     'help'      => sub { pod2usage() },
+    'suite=s'   => \$suite,
 ) || pod2usage();
+
+pod2usage({-message => "Bad suite '$suite'"}) unless ($suite =~ /^(dns|dnssec|)$/);
 
 my $config = YAML::XS::LoadFile(dirname(dirname(realpath(__FILE__)))
                 .'/zonemaster-test-policies.yaml');
@@ -41,6 +44,14 @@ while ($i < scalar(@{$profile->{'test_cases'}})) {
         $i++;
 
     }
+}
+
+if ('dnssec' eq $suite) {
+    $profile->{'test_cases'} = [ grep { $_ =~ /^dnssec/ } @{$profile->{'test_cases'}} ];
+
+} elsif ('dns' eq $suite) {
+    $profile->{'test_cases'} = [ grep { $_ !~ /^dnssec/ } @{$profile->{'test_cases'}} ];
+
 }
 
 #
@@ -105,9 +116,12 @@ policies
 
 =head1 SYNOPSIS
 
-    generate-zonemaster-profile.pl --version=VERSION
+    generate-zonemaster-profile.pl --version=VERSION [--suite=SUITE]
 
 The C<--version> argument identifies the version of the L<Zonemaster::Engine>
 from which the profile should be taken.
+
+The C<--suite> argument causes the profile to be limited to the given suite
+(either C<dns> or C<dnssec>).
 
 =cut
